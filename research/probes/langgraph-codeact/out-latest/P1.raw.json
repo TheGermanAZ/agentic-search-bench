@@ -1,0 +1,23 @@
+{
+  "probe": "P1",
+  "config": "default",
+  "codes": [
+    "r = lookup(21)\nmsg = r[\"value\"]\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "42\n",
+      "error": null,
+      "context_keys": [
+        "msg",
+        "r"
+      ],
+      "host_builtins_leak": false,
+      "ms": 207.9,
+      "started": 1795377260.2465181
+    }
+  ],
+  "setup_ms": 2.2,
+  "done": true
+}

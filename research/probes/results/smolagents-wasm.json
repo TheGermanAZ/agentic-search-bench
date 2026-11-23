@@ -1,0 +1,175 @@
+{
+  "impl": "smolagents-wasm",
+  "name": "smolagents WasmExecutor (Pyodide in Deno, executor_type=\"wasm\")",
+  "source": "https://github.com/huggingface/smolagents (Apache-2.0); WasmExecutor added in v1.20.0 (PR #1261), removed in v1.26.0 (commit fd871374, PR #2321)",
+  "pinned": "smolagents 1.25.0 from PyPI (last release with WasmExecutor); Deno 2.9.8 on the host; npm:pyodide resolved at runtime to 314.0.8; deno.land/std unpinned, resolved to 0.224.0",
+  "language": "Python",
+  "engine": "Pyodide (CPython compiled to wasm32) inside a Deno process started with --allow-net=<local server>,cdn.jsdelivr.net,pypi and --allow-read/--allow-write scoped to its cache dir",
+  "how_run": "WasmExecutor(additional_imports=[], logger), send_tools({'lookup': Lookup()}), then executor(code); harness sets DEFAULT_SERVER_PORT to 41980+n and TMPDIR to a canonical scratch path (see surprises).",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed '42'; the Tool's source runs inside Pyodide, 0 host-side calls",
+      "evidence": "research/probes/smolagents-wasm/out/P1.txt",
+      "display": "works (42, runs in Pyodide)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "logs 200,001 chars with no marker, output 'RETURNED'; CodeAgent caps only the last-output value at 20,000 chars",
+      "evidence": "research/probes/smolagents-wasm/out/P2.txt",
+      "display": "works (200,001 chars, no cap)"
+    },
+    "P3": {
+      "outcome": "blocked",
+      "detail": "pyodide.http.pyfetch(\"https://example.com\") raised AbortError: Requires net access to \"example.com:443\", run again with the --allow-net flag. Deno --allow-net lists only the local server, cdn.jsdelivr.net and PyPI (remote_executors.py:1138-1147). The urllib attempt printed nothing back because stdout is discarded when the snippet raises.",
+      "evidence": "research/probes/smolagents-wasm/out/P3.txt",
+      "display": "blocked (Deno --allow-net)"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "FileNotFoundError: [Errno 44] No such file or directory: '/etc/hosts' (Pyodide's in-memory filesystem); js.Deno.readTextFileSync('/etc/hosts') raised NotCapable: Requires read access (P12 attempt)",
+      "evidence": "research/probes/smolagents-wasm/out/P4.txt",
+      "display": "blocked (Pyodide FS; Deno NotCapable)"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "os.environ.get printed None (Pyodide's own environ); js.Deno.env.get raised NotCapable: Requires env access (P12 attempt)",
+      "evidence": "research/probes/smolagents-wasm/out/P5.txt",
+      "display": "blocked (None; Deno NotCapable)"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "the caller got AgentError \"Read timed out. (read timeout=60)\" after 60 s, but the Deno server keeps spinning: the next print(1+1) call also blocked until the harness stopped the process group at 120 s. Evidence in out/P6.txt child_tail.",
+      "evidence": "research/probes/smolagents-wasm/out/P6.txt",
+      "display": "limited (60 s; server stays stuck)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "MemoryError inside Pyodide after 0.8 s at about 2.4 GB tree RSS (the wasm32 heap ceiling); the next call in the same executor printed 2",
+      "evidence": "research/probes/smolagents-wasm/out/P7.txt",
+      "display": "limited (MemoryError, wasm heap ~2.4 GB)"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "execution 2 printed '7' (one Pyodide instance per server)",
+      "evidence": "research/probes/smolagents-wasm/out/P8.txt",
+      "display": "persists"
+    },
+    "P9": {
+      "outcome": "not-applicable",
+      "detail": "tools run inside Pyodide with no host bridge; Pyodide has no threads, so 5 lookups took 1,013 ms in a loop, 0 host calls",
+      "evidence": "research/probes/smolagents-wasm/out/P9.txt",
+      "display": "n/a (no host bridge; serial 1,013 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "AgentError: PythonError with the Pyodide traceback, File \"<exec>\", line 1 ... ValueError: probe-boom, followed by a long JS stack",
+      "evidence": "research/probes/smolagents-wasm/out/P10.txt",
+      "display": "works (message + line 1)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "same executor: median 1.6 ms, p90 1.8 ms (n=20); setup (Deno start + Pyodide load + send_tools) 2076 ms",
+      "evidence": "research/probes/smolagents-wasm/out/P11.txt",
+      "display": "works (1.6 ms, 2.1 s setup)"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "subclass walk ran (411 classes, 1 _wrap_close). os.system crashed the whole Deno server (exit code 1 from __emscripten_system; the next call got connection refused, out/extra-P12-os-system-crash.txt). subprocess.run: OSError: [Errno 138] emscripten does not support processes. Through the js module: Deno.readTextFileSync, Deno.env.get and Deno.Command each raised NotCapable. Each attempt ran in a fresh executor.",
+      "evidence": "research/probes/smolagents-wasm/out/P12.txt",
+      "display": "blocked (os.system kills server)"
+    }
+  },
+  "defaults": {
+    "time": "timeout=60: the HTTP read timeout on the request to the Deno server (research/impls/smolagents-wasm/.venv/lib/python3.12/site-packages/smolagents/remote_executors.py:1114, 1239). It returns control to the caller but does not stop the Deno event loop.",
+    "memory": "No option. The wasm32 heap ceiling raised MemoryError at about 2.4 GB host RSS.",
+    "output": "No cap on logs; CodeAgent truncates the last output to 20,000 chars.",
+    "tool_calls": "No cap; tools run inside Pyodide."
+  },
+  "hardened": {
+    "config": "WasmExecutor(additional_imports=[], timeout=5) (research/impls/smolagents-wasm/.venv/lib/python3.12/site-packages/smolagents/remote_executors.py:1107-1115). deno_permissions is the other option, and its default is already the narrowest grant that loads Pyodide (local server, cdn.jsdelivr.net, PyPI; read/write only the per-instance cache, research/impls/smolagents-wasm/.venv/lib/python3.12/site-packages/smolagents/remote_executors.py:1138-1159). There is no memory option. Harness: research/probes/smolagents-wasm/harness.py --hardened",
+    "probes": {
+      "P3": {
+        "outcome": "blocked",
+        "detail": "pyodide.http.pyfetch(\"https://example.com\") raised AbortError: Requires net access to \"example.com:443\", run again with the --allow-net flag. Deno --allow-net lists only the local server, cdn.jsdelivr.net and PyPI (remote_executors.py:1138-1147). The urllib attempt printed nothing back because stdout is discarded when the snippet raises.",
+        "evidence": "research/probes/smolagents-wasm/out/hardened-P3.txt",
+        "display": "blocked (Deno --allow-net)"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "FileNotFoundError: [Errno 44] No such file or directory: '/etc/hosts' (Pyodide's in-memory filesystem); js.Deno.readTextFileSync('/etc/hosts') raised NotCapable: Requires read access (P12 attempt)",
+        "evidence": "research/probes/smolagents-wasm/out/hardened-P4.txt",
+        "display": "blocked (Pyodide FS; Deno NotCapable)"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "os.environ.get printed None (Pyodide's own environ); js.Deno.env.get raised NotCapable: Requires env access (P12 attempt)",
+        "evidence": "research/probes/smolagents-wasm/out/hardened-P5.txt",
+        "display": "blocked (None; Deno NotCapable)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "AgentError \"Read timed out. (read timeout=5)\" after 5.0 s; the next call also timed out at 5 s because the Deno server is still in the loop; cleanup() terminates it",
+        "evidence": "research/probes/smolagents-wasm/out/hardened-P6.txt",
+        "display": "limited (5 s; server stays stuck)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "MemoryError inside Pyodide after 0.7 s at about 2.5 GB tree RSS; next call printed 2",
+        "evidence": "research/probes/smolagents-wasm/out/hardened-P7.txt",
+        "display": "limited (MemoryError, wasm heap ~2.5 GB)"
+      },
+      "P9": {
+        "outcome": "not-applicable",
+        "detail": "serial 1,013 ms inside Pyodide, 0 host calls",
+        "evidence": "research/probes/smolagents-wasm/out/hardened-P9.txt",
+        "display": "n/a (no host bridge; serial 1,013 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "same as default: os.system kills the Deno server; subprocess not supported; Deno APIs NotCapable",
+        "evidence": "research/probes/smolagents-wasm/out/hardened-P12.txt",
+        "display": "blocked (os.system kills server)"
+      }
+    }
+  },
+  "source_notes": [
+    {
+      "topic": "Status",
+      "finding": "Removed upstream: v1.26.0 deleted WasmExecutor and its docs (commit fd871374, \"Remove remote WasmExecutor (#2321)\", 2026-05-29). The current release cannot select executor_type=\"wasm\".",
+      "evidence": "research/impls/smolagents-docker/repo: git show fd87137 --stat"
+    },
+    {
+      "topic": "API shape",
+      "finding": "Same as other remote executors: tool classes are turned into source with instance_to_source and defined inside Pyodide.",
+      "evidence": "research/impls/smolagents-wasm/.venv/lib/python3.12/site-packages/smolagents/remote_executors.py RemotePythonExecutor.send_tools"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Python POSTs {code, packages} to a Deno HTTP server with a bearer token; no path back to host tools.",
+      "evidence": "research/impls/smolagents-wasm/.venv/lib/python3.12/site-packages/smolagents/remote_executors.py:1225-1275"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Two layers: Pyodide has no processes and an in-memory FS; Deno permissions deny host files, env and subprocesses, and limit network to three hosts. The probes matched this.",
+      "evidence": "research/impls/smolagents-wasm/.venv/lib/python3.12/site-packages/smolagents/remote_executors.py:1138-1159; out/P12.raw.json"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Only the 60 s client read timeout. The runner is single-threaded JS, so a stuck snippet blocks every later request until the server is restarted.",
+      "evidence": "research/impls/smolagents-wasm/.venv/lib/python3.12/site-packages/smolagents/remote_executors.py:1239; out/P6.txt, out/hardened-P6.txt"
+    },
+    {
+      "topic": "Supply chain",
+      "finding": "The runner imports https://deno.land/std/http/server.ts and npm:pyodide without versions, so each fresh cache resolves whatever is latest (here std 0.224.0 and Pyodide 314.0.8).",
+      "evidence": "research/impls/smolagents-wasm/.venv/lib/python3.12/site-packages/smolagents/remote_executors.py:1323-1324; out/startup-default-tmpdir.txt"
+    }
+  ],
+  "surprises": [
+    "On macOS the default WasmExecutor fails to start: tempfile returns /var/folders/..., Deno canonicalizes reads to /private/var/folders/..., and the --allow-read grant does not match (out/startup-default-tmpdir.txt). Setting TMPDIR to a non-symlinked path fixes it.",
+    "Run from a temp dir inside a repo with package.json, Deno adopted that repo as its workspace, used its node_modules Pyodide (0.27.8) and wrote deno.lock at the repo root. The harness now uses a temp dir outside the repo; the stray deno.lock entries were removed.",
+    "os.system inside Pyodide kills the whole Deno server (exit 1) rather than raising, so one snippet can take the executor down.",
+    "The 60 s timeout frees the caller but not the server: after an infinite loop, every later call times out.",
+    "The executor was removed in 1.26.0; the docs that called it a secure option went with it."
+  ]
+}

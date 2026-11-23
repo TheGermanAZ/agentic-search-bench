@@ -1,0 +1,201 @@
+{
+  "tools": [
+    {
+      "name": "execute",
+      "description": "Execute JavaScript against the tool API. Use `forge.server('name').category.tool(args)` or `forge.callTool(server, tool, args)` to call tools on connected servers. Chain multiple operations in a single call.\n\nIMPORTANT: Code runs in a sandboxed V8 isolate with NO filesystem, network, or module access. import(), require(), eval(), and Deno.* are all blocked. Use forge.callTool() for all external operations.\n\nExample: `async () => { const result = await forge.callTool('narsil', 'scan_security', { repo: 'MyProject' }); return result; }`\n\nAdditional APIs:\n- `forge.readResource(server, uri)` — read MCP resources\n- `forge.stash.put(key, value, {ttl?})` / `.get(key)` / `.delete(key)` / `.keys()` — session key-value store\n- `forge.parallel(calls, opts)` — bounded concurrent execution\n\nAlways check tool input_schema via search() before calling unfamiliar tools.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "JavaScript async arrow function to execute against the tool API.\nUse `forge.callTool(server, tool, args)` or\n`forge.server(\"name\").category.tool(args)` to call tools.\n\nRuns in a sandboxed V8 isolate — no filesystem, network, or module access.\n`import()`, `require()`, `eval()`, and `Deno.*` are all blocked.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "$schema": "https://json-schema.org/draft/2020-12/schema"
+      }
+    },
+    {
+      "name": "search",
+      "description": "Search the capability manifest to discover available tools across all connected servers. The manifest is available as `globalThis.manifest` with servers, categories, and tool schemas. Write a JavaScript async arrow function to query it.\n\nManifest structure: manifest.servers is an Array of {name, description, categories}. IMPORTANT: categories is an Object keyed by name (NOT an array) — use Object.entries() or Object.values() to iterate. Each category has a .tools Array with {name, description, input_schema}. Check input_schema for required parameters before calling a tool.\n\nExample: `async () => { const s = manifest.servers[0]; return Object.entries(s.categories).map(([name, cat]) => ({ name, tools: cat.tools.map(t => t.name) })); }`",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "JavaScript async arrow function to search the capability manifest.\nThe manifest is available as `globalThis.manifest` with servers,\ncategories, and tool schemas.\n\nIMPORTANT: `server.categories` is an Object keyed by name (NOT an array).\nUse `Object.entries(s.categories)` or `Object.values(s.categories)` to iterate.\nEach category has a `.tools` Array with `.name`, `.description`, `.input_schema`.\nCheck `input_schema.required` before calling a tool to get the right parameters.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "$schema": "https://json-schema.org/draft/2020-12/schema"
+      }
+    }
+  ]
+}
+
+server instructions (5594 chars):
+Forgemax Code Mode Gateway (1 servers, 1 tools). Use search() to discover available tools, then execute() to call them.
+
+Both tools take a `code` parameter containing a JavaScript async arrow function.
+Example: `async () => { return manifest.servers.map(s => s.name); }`
+
+Manifest shape:
+- manifest.servers: Array of { name, description, categories }
+- server.categories: Object (NOT array) keyed by category name, e.g. categories["ast"]
+- Use Object.entries(s.categories) or Object.values(s.categories) to iterate categories
+- Each category has .tools (Array) with .name, .description, .input_schema
+- Always check a tool's input_schema.required before calling it
+
+Sandboxed environment — no filesystem, network, or module imports (import/require/eval are blocked). Use forge.callTool(server, tool, args) for all external operations.
+
+When calling tools, use the tool name only (e.g. "find_symbols"), not the category-prefixed form (e.g. NOT "general.find_symbols").
+
+Additional APIs (execute mode only):
+- forge.readResource(server, uri) — read MCP resources from downstream servers
+- forge.stash.put(key, value, {ttl?}) / .get(key) / .delete(key) / .keys() — session-scoped key-value store for sharing data across executions
+- forge.parallel(calls, opts) — bounded concurrent execution of tool/resource calls
+
+## TypeScript API Definitions
+
+```typescript
+/**
+ * Forgemax Code Mode Gateway — TypeScript Definitions
+ *
+ * These type definitions describe the APIs available inside the V8 sandbox.
+ * Code submitted to `execute()` and `search()` runs in this environment.
+ *
+ * **Truncation:** Results exceeding 100,000 characters are truncated.
+ * Truncated results have: `{ _truncated: true, _data_is_fragment: true, data: string }`.
+ * The `data` field is a string fragment, NOT valid JSON — do not `JSON.parse()` it.
+ */
+
+/** Result of calling a tool on a downstream MCP server. */
+type ToolResult = Record<string, unknown>;
+
+/** Result of reading a resource from a downstream MCP server. */
+type ResourceResult = Record<string, unknown>;
+
+/** Options for forge.stash.put(). */
+interface StashPutOptions {
+  /** Time-to-live in seconds. Omit for default TTL. */
+  ttl?: number;
+}
+
+/** A single call descriptor for forge.parallel(). */
+interface ParallelCall {
+  /** The async function to execute. */
+  fn: () => Promise<unknown>;
+}
+
+/** Options for forge.parallel(). */
+interface ParallelOptions {
+  /** Maximum concurrent calls (capped at server-configured limit). */
+  concurrency?: number;
+}
+
+/** Session-scoped key-value store. */
+interface ForgeStash {
+  /**
+   * Store a value.
+   * @example await forge.stash.put("cache-key", {data: [1,2,3]}, {ttl: 3600})
+   */
+  put(key: string, value: unknown, options?: StashPutOptions): Promise<{ ok: boolean }>;
+
+  /**
+   * Retrieve a value. Returns null if not found or expired.
+   * @example const val = await forge.stash.get("cache-key")
+   */
+  get(key: string): Promise<unknown | null>;
+
+  /**
+   * Delete a value. Returns whether the key existed.
+   * @example await forge.stash.delete("cache-key")
+   */
+  delete(key: string): Promise<{ deleted: boolean }>;
+
+  /**
+   * List all keys in the current scope.
+   * @example const keys = await forge.stash.keys()
+   */
+  keys(): Promise<string[]>;
+}
+
+/** The forge global API object available in the sandbox. */
+interface Forge {
+  /**
+   * Call a tool on a downstream MCP server.
+   * @param server - Server name (e.g., "narsil")
+   * @param tool - Tool name (e.g., "find_symbols")
+   * @param args - Tool arguments object
+   * @example const result = await forge.callTool("narsil", "find_symbols", { pattern: "main" })
+   */
+  callTool(server: string, tool: string, args?: Record<string, unknown>): Promise<ToolResult>;
+
+  /**
+   * Get a server proxy for fluent tool invocation.
+   * Access tools via server.category.tool(args).
+   * @param name - Server name
+   * @example const result = await forge.server("narsil").ast.parse({ file: "main.rs" })
+   */
+  server(name: string): Record<string, Record<string, (args?: Record<string, unknown>) => Promise<ToolResult>>>;
+
+  /**
+   * Read a resource from a downstream MCP server.
+   * @param server - Server name
+   * @param uri - Resource URI
+   * @example const content = await forge.readResource("postgres", "file:///logs/app.log")
+   */
+  readResource(server: string, uri: string): Promise<ResourceResult>;
+
+  /** Session-scoped key-value store. */
+  stash: ForgeStash;
+
+  /**
+   * Execute multiple async calls with bounded concurrency.
+   * @param calls - Array of call descriptors
+   * @param options - Concurrency options
+   * @example
+   * const results = await forge.parallel(
+   *   [{ fn: () => forge.callTool("s", "t1", {}) },
+   *    { fn: () => forge.callTool("s", "t2", {}) }],
+   *   { concurrency: 4 }
+   * )
+   */
+  parallel(calls: ParallelCall[], options?: ParallelOptions): Promise<unknown[]>;
+}
+
+/** Tool definition in the capability manifest. */
+interface ManifestTool {
+  name: string;
+  description: string;
+  input_schema?: Record<string, unknown>;
+}
+
+/** Category of tools within a server. */
+interface ManifestCategory {
+  name: string;
+  description: string;
+  tools: ManifestTool[];
+}
+
+/** A connected MCP server in the manifest. */
+interface ManifestServer {
+  name: string;
+  description: string;
+  /** Categories keyed by name. Use Object.entries() to iterate. */
+  categories: Record<string, ManifestCategory>;
+}
+
+/** The capability manifest — available as globalThis.manifest in search(). */
+interface Manifest {
+  servers: ManifestServer[];
+}
+
+declare const forge: Forge;
+declare const manifest: Manifest;
+
+```

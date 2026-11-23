@@ -1,0 +1,182 @@
+--- code 1 ---
+result(1 + 1)
+--- result 1 ---
+{"ms":4.71,"hostCalls":0,"side":{"proxyLogBytes":4817},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 2 ---
+result(1 + 1)
+--- result 2 ---
+{"ms":2.58,"hostCalls":0,"side":{"proxyLogBytes":4882},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 3 ---
+result(1 + 1)
+--- result 3 ---
+{"ms":2.3,"hostCalls":0,"side":{"proxyLogBytes":4947},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 4 ---
+result(1 + 1)
+--- result 4 ---
+{"ms":2.38,"hostCalls":0,"side":{"proxyLogBytes":5012},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 5 ---
+result(1 + 1)
+--- result 5 ---
+{"ms":2.45,"hostCalls":0,"side":{"proxyLogBytes":5077},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 6 ---
+result(1 + 1)
+--- result 6 ---
+{"ms":1.93,"hostCalls":0,"side":{"proxyLogBytes":5142},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 7 ---
+result(1 + 1)
+--- result 7 ---
+{"ms":1.86,"hostCalls":0,"side":{"proxyLogBytes":5207},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 8 ---
+result(1 + 1)
+--- result 8 ---
+{"ms":1.74,"hostCalls":0,"side":{"proxyLogBytes":5272},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 9 ---
+result(1 + 1)
+--- result 9 ---
+{"ms":1.81,"hostCalls":0,"side":{"proxyLogBytes":5337},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 10 ---
+result(1 + 1)
+--- result 10 ---
+{"ms":2,"hostCalls":0,"side":{"proxyLogBytes":5402},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 11 ---
+result(1 + 1)
+--- result 11 ---
+{"ms":1.98,"hostCalls":0,"side":{"proxyLogBytes":5467},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 12 ---
+result(1 + 1)
+--- result 12 ---
+{"ms":1.64,"hostCalls":0,"side":{"proxyLogBytes":5532},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 13 ---
+result(1 + 1)
+--- result 13 ---
+{"ms":1.79,"hostCalls":0,"side":{"proxyLogBytes":5597},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 14 ---
+result(1 + 1)
+--- result 14 ---
+{"ms":1.85,"hostCalls":0,"side":{"proxyLogBytes":5662},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 15 ---
+result(1 + 1)
+--- result 15 ---
+{"ms":1.69,"hostCalls":0,"side":{"proxyLogBytes":5727},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 16 ---
+result(1 + 1)
+--- result 16 ---
+{"ms":2.18,"hostCalls":0,"side":{"proxyLogBytes":5792},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 17 ---
+result(1 + 1)
+--- result 17 ---
+{"ms":1.99,"hostCalls":0,"side":{"proxyLogBytes":5857},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 18 ---
+result(1 + 1)
+--- result 18 ---
+{"ms":1.49,"hostCalls":0,"side":{"proxyLogBytes":5922},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 19 ---
+result(1 + 1)
+--- result 19 ---
+{"ms":1.73,"hostCalls":0,"side":{"proxyLogBytes":5987},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- code 20 ---
+result(1 + 1)
+--- result 20 ---
+{"ms":1.97,"hostCalls":0,"side":{"proxyLogBytes":6052},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+2
+--- summary ---
+{"medianMs":1.95,"p90Ms":2.45,"setupMsConnectAndCreate":57}

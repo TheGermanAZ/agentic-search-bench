@@ -1,0 +1,255 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py hardened R8b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3743,
+  "peakTreeRssMb": 180,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R8b",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich'], 'timeout': 1.0, 'memory_limit': 16777216, 'max_ptc_calls': 8, 'mode': 'call', 'subagents': False}), new thread_id per execution",
+    "data": {
+      "label": "",
+      "startMs": 2464,
+      "ms": 977,
+      "ok": true,
+      "result": "<error type=\"OutOfMemory\">out of memory</error>",
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 193,
+    "totalMs": 3441
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      97,
+      25
+    ],
+    [
+      160,
+      30
+    ],
+    [
+      212,
+      33
+    ],
+    [
+      253,
+      36
+    ],
+    [
+      311,
+      39
+    ],
+    [
+      393,
+      39
+    ],
+    [
+      433,
+      39
+    ],
+    [
+      508,
+      42
+    ],
+    [
+      552,
+      43
+    ],
+    [
+      607,
+      43
+    ],
+    [
+      647,
+      46
+    ],
+    [
+      775,
+      52
+    ],
+    [
+      818,
+      52
+    ],
+    [
+      881,
+      52
+    ],
+    [
+      938,
+      54
+    ],
+    [
+      998,
+      57
+    ],
+    [
+      1042,
+      58
+    ],
+    [
+      1093,
+      58
+    ],
+    [
+      1143,
+      58
+    ],
+    [
+      1193,
+      58
+    ],
+    [
+      1245,
+      59
+    ],
+    [
+      1311,
+      62
+    ],
+    [
+      1382,
+      65
+    ],
+    [
+      1463,
+      68
+    ],
+    [
+      1525,
+      68
+    ],
+    [
+      1681,
+      68
+    ],
+    [
+      1735,
+      68
+    ],
+    [
+      1841,
+      69
+    ],
+    [
+      1889,
+      70
+    ],
+    [
+      1948,
+      75
+    ],
+    [
+      2007,
+      75
+    ],
+    [
+      2089,
+      77
+    ],
+    [
+      2172,
+      80
+    ],
+    [
+      2246,
+      85
+    ],
+    [
+      2316,
+      85
+    ],
+    [
+      2358,
+      85
+    ],
+    [
+      2432,
+      85
+    ],
+    [
+      2494,
+      87
+    ],
+    [
+      2556,
+      89
+    ],
+    [
+      2611,
+      92
+    ],
+    [
+      2656,
+      92
+    ],
+    [
+      2708,
+      92
+    ],
+    [
+      2753,
+      92
+    ],
+    [
+      2823,
+      92
+    ],
+    [
+      2953,
+      117
+    ],
+    [
+      2994,
+      134
+    ],
+    [
+      3050,
+      148
+    ],
+    [
+      3137,
+      155
+    ],
+    [
+      3188,
+      160
+    ],
+    [
+      3271,
+      162
+    ],
+    [
+      3323,
+      169
+    ],
+    [
+      3376,
+      173
+    ],
+    [
+      3415,
+      176
+    ],
+    [
+      3480,
+      177
+    ],
+    [
+      3535,
+      180
+    ],
+    [
+      3741,
+      0
+    ]
+  ]
+}

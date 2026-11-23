@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-run",
+  "probe": "P10b",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "const x = 1;\nconst y = 2;\nfunction inner() { throw new Error(\"probe-boom\"); }\ninner();"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "Error",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "probe-boom",
+        "stack": "Error: probe-boom\n    at inner (run.js:3:30)\n    at <anonymous> (run.js:4:1)",
+        "string": "Error: probe-boom"
+      },
+      "wallMs": 78.685542,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "Error: RUN_USER_SOURCE_ERROR probe-boom",
+    "ms": 79,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 132.8
+}

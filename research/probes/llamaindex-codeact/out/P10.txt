@@ -1,0 +1,53 @@
+probe: P10
+outcome: works
+display: message + line
+detail: message survives: True; 'line 2' present: True; text: 'Error: ValueError: probe-boom Traceback (most recent call last): File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 111, in execute exec(code, self.globals, self.locals) File "<string>", line 2, in <module> ValueError: probe-boom During handling of the above exception, another exception occurred: Traceback (most recent call last): File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 114, in execute exec(code, self.globals, self.locals) File "<string>", line 2, in <module> ValueError: probe-boom Er...'
+
+code:
+----
+x = 1
+raise ValueError("probe-boom")
+----
+
+setup_ms: 9.4
+wall_s (whole child process): 0.75
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.111
+host lookup calls: 0
+
+=== run 0 (67.7 ms) ===
+ok: false
+stdout: Error: ValueError: probe-boom
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 111, in execute
+    exec(code, self.globals, self.locals)
+  File "<string>", line 2, in <module>
+ValueError: probe-boom
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 114, in execute
+    exec(code, self.globals, self.locals)
+  File "<string>", line 2, in <module>
+ValueError: probe-boom
+
+error: Error: ValueError: probe-boom
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 111, in execute
+    exec(code, self.globals, self.locals)
+  File "<string>", line 2, in <module>
+ValueError: probe-boom
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 114, in execute
+    exec(code, self.globals, self.locals)
+  File "<string>", line 2, in <module>
+ValueError: probe-boom
+
+
+=== child process log (tail) ===
+

@@ -1,0 +1,50 @@
+--- code 1 ---
+result = ().__class__
+--- result 1 ---
+{"ms":2,"hostCalls":0,"ok":true,"isError":true}
+text (363 chars):
+Execution runtime error:
+
+Traceback (most recent call last):
+  code.star:1:12: in <toplevel>
+Error: tuple has no .__class__ field or method
+
+Hints:
+Check the error message above for details.
+Available server keys: probe
+Use: result = server_name.tool_name(param="value")
+Access dict values with brackets: result["key"]
+
+Environment:
+  Available server keys: probe
+--- code 2 ---
+result = __import__("os").system("echo PWNED")
+--- result 2 ---
+{"ms":3,"hostCalls":0,"ok":true,"isError":true}
+text (332 chars):
+Execution runtime error:
+
+code.star:1:10: undefined: __import__
+
+Hints:
+Variable '__import__' is not defined.
+Note: Each executeToolCode call runs in a fresh scope — no variables persist between calls.
+Available server keys: probe
+Access tools using: server_name.tool_name(param="value")
+
+Environment:
+  Available server keys: probe
+--- code 3 ---
+result = [type(probe), dir(probe), type(probe.lookup), dir(probe.lookup)]
+--- result 3 ---
+{"ms":3,"hostCalls":0,"ok":true,"isError":false}
+text (122 chars):
+Execution completed successfully.
+Return value: [
+  "struct",
+  [
+    "lookup"
+  ],
+  "builtin_function_or_method",
+  []
+]

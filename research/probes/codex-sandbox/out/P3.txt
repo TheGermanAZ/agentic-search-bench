@@ -1,0 +1,59 @@
+probe: P3
+codex: ~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex (codex-cli 0.169.0)
+CODEX_HOME: ~/p/agentic-search-bench/research/impls/codex-sandbox/codex-home (empty, no user config)
+
+--- [read-only] python urllib ---
+argv: ["python3", "-c", "import urllib.request;print(urllib.request.urlopen(\"https://example.com\", timeout=10).status)"]
+exit: 1  wall_ms: 239.2  peak_tree_rss_mb: 62.2  killed: None
+stdout chars: 0
+stdout:
+
+stderr:
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/lib/python3.15/urllib/request.py", line 1335, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...[4036 chars elided by harness]...
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/lib/python3.15/urllib/request.py", line 1338, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+
+
+--- [read-only] curl ---
+argv: ["/usr/bin/curl", "-sS", "-m", "10", "-o", "/dev/null", "-w", "%{http_code}", "https://example.com"]
+exit: 6  wall_ms: 52.7  peak_tree_rss_mb: 2.5  killed: None
+stdout chars: 3
+stdout:
+000
+stderr:
+curl: (6) Could not resolve host: example.com
+
+
+--- [workspace-write] python urllib ---
+argv: ["python3", "-c", "import urllib.request;print(urllib.request.urlopen(\"https://example.com\", timeout=10).status)"]
+exit: 1  wall_ms: 145.4  peak_tree_rss_mb: 65.6  killed: None
+stdout chars: 0
+stdout:
+
+stderr:
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/lib/python3.15/urllib/request.py", line 1335, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...[4036 chars elided by harness]...
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/lib/python3.15/urllib/request.py", line 1338, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+
+
+--- [workspace-write] curl ---
+argv: ["/usr/bin/curl", "-sS", "-m", "10", "-o", "/dev/null", "-w", "%{http_code}", "https://example.com"]
+exit: 6  wall_ms: 56.5  peak_tree_rss_mb: 11.4  killed: None
+stdout chars: 3
+stdout:
+000
+stderr:
+curl: (6) Could not resolve host: example.com
+

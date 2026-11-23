@@ -1,0 +1,32 @@
+probe: P4 (codex code-mode host, V8)
+host: codex-code-mode-host codex 0.169.0
+handshake: {"type": "connection/ready", "selectedVersion": 1, "capabilities": ["bounded-output-v1", "delegate-capacity-4096", "session-cell-execution-resource-limits", "yield-observation"]}
+session/open: {"type": "operation/response", "id": 1, "result": {"status": "ok", "value": {"type": "session/ready", "sessionId": "s1"}}}
+setup_ms (spawn + handshake): 34.7
+wall_ms: 41.3
+peak_rss_mb: 4.8
+killed: None
+
+--- execution 0 ---
+source:
+const fs = await import("fs"); text(fs.readFileSync("/etc/hosts", "utf8"));
+elapsed_ms: 4.15
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 2, "result": {"status": "ok", "value": {"Result": {"cell_id": "1", "content_items": [{"type": "input_text", "text": "Script error:\nunsupported import in exec"}], "error_text": "unsupported import in exec", "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 3984375}}}}
+
+--- execution 1 ---
+source:
+text(require("fs").readFileSync("/etc/hosts", "utf8"));
+elapsed_ms: 0.86
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 3, "result": {"status": "ok", "value": {"Result": {"cell_id": "2", "content_items": [{"type": "input_text", "text": "Script error:\nReferenceError: require is not defined\n    at exec_main.mjs:1:1"}], "error_text": "ReferenceError: require is not defined\n    at exec_main.mjs:1:1", "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 712708}}}}
+
+--- execution 2 ---
+source:
+text(await Deno.readTextFile("/etc/hosts"));
+elapsed_ms: 1.04
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 4, "result": {"status": "ok", "value": {"Result": {"cell_id": "3", "content_items": [{"type": "input_text", "text": "Script error:\nReferenceError: Deno is not defined\n    at exec_main.mjs:1:12"}], "error_text": "ReferenceError: Deno is not defined\n    at exec_main.mjs:1:12", "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 736125}}}}

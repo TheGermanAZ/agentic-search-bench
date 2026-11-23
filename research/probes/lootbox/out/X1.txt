@@ -1,0 +1,10 @@
+code:
+const r = await fetch("http://localhost:41310/client.ts"); console.log(r.status, (await r.text()).length)
+
+result:
+{
+  "id": "2ea17684-4bfa-4c12-b946-1aa2eb015f8e",
+  "result": "200 3920\n",
+  "ms": 899,
+  "hostCalls": 0
+}

@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P4",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 3.228666000000004,
+  "source": [
+    "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "require is not defined",
+          "name": "ReferenceError",
+          "stack": "ReferenceError: require is not defined\n    at main.js:47:11\n    at main.js:48:11\n    at Object.fetch (main.js:78:7)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 62.68787500000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: require is not defined",
+    "ms": 63,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 90.1
+}

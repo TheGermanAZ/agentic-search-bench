@@ -1,0 +1,56 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "name": "TanStack AI Code Mode, QuickJS WASM driver (@tanstack/ai-isolate-quickjs)",
+  "source": "https://github.com/TanStack/ai (packages/ai-code-mode, packages/ai-isolate-quickjs); npm @tanstack/ai-code-mode 1.1.2, @tanstack/ai-isolate-quickjs 1.1.0",
+  "pinned": "TanStack/ai c695ada5091e7022bf13b235220645ceb65d43b0 (npm src folders identical); quickjs-emscripten 0.31.0 (RELEASE_SYNC variant); Node v24.22.1",
+  "language": "TS (stripped with sucrase)",
+  "engine": "QuickJS compiled to WASM by quickjs-emscripten 0.31.0 (sync build), a new runtime and context per execution, running on the host's main thread",
+  "how_run": "createCodeModeTool({ driver: createQuickJSIsolateDriver(), tools: [lookup, failing] }).execute({ typescriptCode }); guest code calls external_lookup({id}).",
+  "probes": {
+    "P1": { "outcome": "works", "detail": "result 42, logs [\"42\"], 1 host call, 257 ms", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P1.txt", "display": "works (42, 1 call)" },
+    "P2": { "outcome": "works", "detail": "result and logs both return; bare expression gives undefined (needs return). No cap: 200,000-char line whole, 20 lines gave 4,000,000 chars (P2c), a 2,000,000-char return came back whole (P2e).", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P2.txt, P2b.txt, P2c.txt, P2e.txt", "display": "logs + return, no cap" },
+    "P3": { "outcome": "not-defined", "detail": "ReferenceError: 'fetch' is not defined", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P3.txt", "display": "not-defined" },
+    "P4": { "outcome": "not-defined", "detail": "'require' is not defined; import(\"fs\") could not load module 'fs'; 'Deno' is not defined", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P4.txt, P4b.txt, P4c.txt", "display": "not-defined" },
+    "P5": { "outcome": "not-defined", "detail": "'process' is not defined", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P5.txt, P5b.txt", "display": "not-defined" },
+    "P6": { "outcome": "limited", "detail": "TimeoutError: Code execution timed out after 30,026 ms (interrupt handler). The guest runs on the host's main thread, so the host event loop was blocked the whole time: a second program scheduled at 100 ms could only start at 30,019 ms.", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P6.txt", "display": "limited (30 s), blocks host" },
+    "P7": { "outcome": "limited", "detail": "MemoryLimitError \"Code execution exceeded memory limit\" after 7,315 ms, but only at peak host RSS 2,140 MB: the 128 MB setMemoryLimit did not stop it. P7b counted 2,141 pushed 1 MB strings before QuickJS reported out of memory, i.e. the ~2 GB WASM memory ceiling. The host event loop was blocked for those 7.3 s (sibling start 7,307 ms); the process survived and later programs worked.", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P7.txt, P7b.txt, P7c.txt, qjs-memlimit-check.txt", "display": "limited (~2 GB WASM cap, not 128 MB)" },
+    "P8": { "outcome": "works", "detail": "fresh: gone", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P8.txt", "display": "fresh" },
+    "P9": { "outcome": "works", "detail": "parallel: 205 ms guest-measured, 240 ms host wall, 5 host calls; 40 calls in 242 ms (P9b)", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P9.txt, P9b.txt", "display": "parallel (205 ms)" },
+    "P10": { "outcome": "works", "detail": "success false, error probe-boom. The stack has eval.js line numbers shifted by the wrapper (user line 3 shows at line 8 for the caller frame, no line for inner) and then appends \"Host: Error: probe-boom\" with the host's own stack, including absolute host file paths. Tool error messages reach the model verbatim (P10c).", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P10.txt, P10b.txt, P10c.txt", "display": "works (message; host stack leaks)" },
+    "P11": { "outcome": "works", "detail": "median 0.71 ms, p90 1.31 ms over 20 executions; first execution 36.7 ms; driver setup 20 ms. Load average 27 to 35.", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P11.txt", "display": "0.7 ms median" },
+    "P12": { "outcome": "blocked", "detail": "Function constructor runs guest-side and throws 'process' is not defined; sloppy this.process undefined; the AsyncFunction constructor builds a guest function whose promise has no process either. Raw __external_*_impl host functions are guest globals but only take a JSON string.", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/P12.txt, P12b.txt, P12c.txt, P12e.txt, P12f.txt, P12g.txt", "display": "blocked" }
+  },
+  "hardened": {
+    "config": "createCodeModeTool({ driver, tools, timeout: 5000, memoryLimit: 32 }) (docs/code-mode/code-mode.md:179-180; create-code-mode-tool.ts:96-97). The driver also has maxStackSize and wasmLocation; neither tightens P3 to P12.",
+    "probes": {
+      "P3": { "outcome": "not-defined", "detail": "'fetch' is not defined", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/hardened-P3.txt", "display": "not-defined" },
+      "P4": { "outcome": "not-defined", "detail": "'require' is not defined; import(\"fs\") could not load module", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/hardened-P4.txt, hardened-P4b.txt", "display": "not-defined" },
+      "P5": { "outcome": "not-defined", "detail": "'process' is not defined", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/hardened-P5.txt", "display": "not-defined" },
+      "P6": { "outcome": "limited", "detail": "TimeoutError after 5,026 ms; the host event loop was blocked until then (sibling start 5,021 ms)", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/hardened-P6.txt", "display": "limited (5 s), blocks host" },
+      "P7": { "outcome": "limited", "detail": "memoryLimit 32 made no difference: MemoryLimitError after 7,450 ms at peak host RSS 2,139 MB (hardened-P7b: 2,141 MB pushed)", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/hardened-P7.txt, hardened-P7b.txt", "display": "limited (~2 GB, 32 MB ignored)" },
+      "P9": { "outcome": "works", "detail": "parallel: 207 ms, 5 host calls", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/hardened-P9.txt", "display": "parallel (207 ms)" },
+      "P12": { "outcome": "blocked", "detail": "same as default", "evidence": "research/probes/tanstack-ai-codemode-quickjs/out/hardened-P12.txt, hardened-P12b.txt, hardened-P12c.txt, hardened-P12e.txt, hardened-P12g.txt", "display": "blocked" }
+    }
+  },
+  "defaults": {
+    "time": "30,000 ms wall per execution, enforced by a QuickJS interrupt handler (Date.now() > deadline) and a deadline on the program promise (ai-isolate-quickjs/src/isolate-driver.ts:281; isolate-context.ts:270-305)",
+    "memory": "128 MB via runtime.setMemoryLimit (isolate-driver.ts:228), which did not bound P7 in practice; 512 KiB stack",
+    "output": "No cap on logs or result",
+    "tool_calls": "No cap"
+  },
+  "source_notes": [
+    { "topic": "API shape", "finding": "Same Code Mode layer as the other TanStack drivers: external_<name> functions and TypeScript stubs from JSON Schema; lazy tools through discover_tools.", "evidence": "https://github.com/TanStack/ai/blob/c695ada5091e7022bf13b235220645ceb65d43b0/packages/ai-code-mode/src/create-code-mode-tool.ts#L133; create-discovery-tool.ts#L55-L108" },
+    { "topic": "Bridge", "finding": "Each binding is a QuickJS host function that returns a QuickJS promise immediately and resolves it when the host promise settles, then pumps executePendingJobs. Calls overlap, so Promise.all is parallel. The authors chose the sync build plus promises to avoid asyncify bugs.", "evidence": "https://github.com/TanStack/ai/blob/c695ada5091e7022bf13b235220645ceb65d43b0/packages/ai-isolate-quickjs/src/isolate-driver.ts#L87-L133 and #L220-L224" },
+    { "topic": "Isolation boundary", "finding": "QuickJS WASM on the host's main thread, not a worker. Guest has no host APIs (P3 to P5, P12), but CPU-bound guest code freezes the whole host event loop until the interrupt fires (P6), and memory growth is bounded only by the WASM 2 GB ceiling (P7).", "evidence": "isolate-driver.ts#L223-L229; out/P6.txt siblingStartMs 30019; out/P7b.txt" },
+    { "topic": "Limits", "finding": "setMemoryLimit is called per runtime, but QuickJS under quickjs-emscripten still allocated 2,141 MB before failing. The same happens calling quickjs-emscripten directly with both setMemoryLimit and newRuntime({memoryLimit}), on 0.31.0 and 0.32.0, so the gap is in quickjs-emscripten, not TanStack's call.", "evidence": "research/probes/tanstack-ai-codemode-quickjs/qjs-memlimit-check.mjs; out/qjs-memlimit-check.txt; out/qjs-memlimit-check-0.32.txt" },
+    { "topic": "Output channel", "finding": "{ success, result, logs, error }; console methods push every line, no caps.", "evidence": "https://github.com/TanStack/ai/blob/c695ada5091e7022bf13b235220645ceb65d43b0/packages/ai-isolate-quickjs/src/isolate-driver.ts#L231-L265" },
+    { "topic": "Errors", "finding": "The error normalizer passes error.stack through; quickjs-emscripten's unwrap error appends the host stack after \"Host:\", so absolute host paths reach the model.", "evidence": "ai-isolate-quickjs/src/error-normalizer.ts#L34; out/P10b.txt" },
+    { "topic": "Anything else", "finding": "Same approval rejection, secret-parameter warning and host-side schema validation as the other drivers. Docs call this driver \"Slower (interpreted)\", but its per-execution cost was the lowest measured here.", "evidence": "docs/code-mode/code-mode-isolates.md:52-60" }
+  ],
+  "surprises": [
+    "The documented memoryLimit (default 128 MB, hardened 32 MB) did not stop P7; the program grew the host process to about 2.1 GB before QuickJS ran out of WASM memory. Verified outside TanStack on quickjs-emscripten 0.31.0 and 0.32.0. This repo's own asb-quickjs uses quickjs-emscripten 0.32.0, and its wave-1 P7 (6.8 s to out of memory, RSS not recorded) matches this 2 GB pattern rather than its 512 MB cap. That is an inference, not a measurement of asb-quickjs.",
+    "Guest CPU loops block the host's main thread: during P6 no other request could run for 30 s.",
+    "Error stacks include the host's stack and absolute file paths (P10b).",
+    "Docs rate this driver slower than Node; measured startup was 0.71 ms median against 3.14 ms for the Node driver."
+  ]
+}

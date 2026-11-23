@@ -1,0 +1,2 @@
+{"probe":"P6","code":"reduce(1..2000000000, #acc + 1, 0)","value":null,"stdout":"","stderr":"memory budget exceeded (1:9)\n | reduce(1..2000000000, #acc + 1, 0)\n | ........^","err":"Expr runtime error: memory budget exceeded (1:9)\n | reduce(1..2000000000, #acc + 1, 0)\n | ........^","ms":0.072,"host_calls":0,"rss_mb":13.10546875}
+{"probe":"P6-after","code":"","value":null,"stdout":"","stderr":"","err":"","ms":0,"host_calls":0,"rss_mb":0,"extra":"3 s after Execute returned: goroutines=2 rss_mb=14 heap_mb=1"}

@@ -1,0 +1,3 @@
+LIMITS: {'max_memory': 10000000, 'max_feed_duration_secs': 1.0, 'max_recursion_depth': 100}
+os.environ.get: RuntimeError: 'os.environ' is not supported in this environment
+os.getenv: RuntimeError: 'os.getenv' is not supported in this environment

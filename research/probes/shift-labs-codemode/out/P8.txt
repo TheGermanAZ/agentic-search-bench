@@ -1,0 +1,32 @@
+{
+  "exec1": {
+    "code": "globalThis.kept = 7",
+    "ms": 0,
+    "hostCalls": 0,
+    "logs": []
+  },
+  "exec2": {
+    "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+    "ms": 1,
+    "hostCalls": 0,
+    "logs": [
+      "[log] gone"
+    ]
+  },
+  "viaProcessObject": [
+    {
+      "code": "var keptVar = 9; process.keptOnProcess = 11",
+      "ms": 1,
+      "hostCalls": 0,
+      "logs": []
+    },
+    {
+      "code": "console.log(typeof keptVar, process.keptOnProcess)",
+      "ms": 1,
+      "hostCalls": 0,
+      "logs": [
+        "[log] undefined 11"
+      ]
+    }
+  ]
+}

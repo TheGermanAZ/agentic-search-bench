@@ -1,0 +1,92 @@
+{
+  "mode": "hardened",
+  "probe": "P8",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 0,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "globalThis.kept = 7",
+      "ms": 30.65,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "ReferenceError: Unknown identifier 'globalThis'. (line 1, col 1)",
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+      "ms": 1.73,
+      "hostCalls": 0,
+      "result": {
+        "ok": true,
+        "value": null,
+        "logs": [
+          "gone"
+        ],
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "var kept = 7",
+      "ms": 0.96,
+      "hostCalls": 0,
+      "result": {
+        "ok": true,
+        "value": null,
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+      "ms": 1,
+      "hostCalls": 0,
+      "result": {
+        "ok": true,
+        "value": null,
+        "logs": [
+          "gone"
+        ],
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "kept = 7",
+      "ms": 1.06,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "ReferenceError: Unknown identifier 'kept'. (line 1, col 1)",
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+      "ms": 1.02,
+      "hostCalls": 0,
+      "result": {
+        "ok": true,
+        "value": null,
+        "logs": [
+          "gone"
+        ],
+        "toolCalls": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+label: P2e
+command: node probe.mjs P2e
+child exit: code=0 signal=null
+child wall ms (process start to exit): 1159
+peak child RSS: 144.3 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P2e",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return \"A\".repeat(2000000);"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "E",
+        "code": "RUN_SERIALIZATION_ERROR",
+        "message": "JavaScript runtime result exceeds the 1048576 byte size limit.",
+        "details": {
+          "bytes": 2000004,
+          "maxBytes": 1048576
+        },
+        "stack": "E: JavaScript runtime result exceeds the 1048576 byte size limit.\n    at Ve (<run-worker>)\n    at rr (<run-worker>)\n    at async Object.measureAsync (<run-worker>)\n    at async er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+        "string": "E: JavaScript runtime result exceeds the 1048576 byte size limit."
+      },
+      "wallMs": 1108.468083,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "E: RUN_SERIALIZATION_ERROR JavaScript runtime result exceeds the 1048576 byte size limit.",
+    "ms": 1108,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 168.3
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:66046) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

@@ -1,0 +1,27 @@
+{
+ "config": "default",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ]
+ },
+ "probe": "P10",
+ "result": [
+  {
+   "code": "throw new Error(\"probe-boom\")",
+   "output": "<error type=\"Error\">probe-boom\n    at &lt;eval&gt; (eval_script:1:10)\n</error>",
+   "turn_ms": 157.3,
+   "eval_ms": 149.3,
+   "host_calls": 0
+  },
+  {
+   "code": "const x = 1;\nfunction f() {\n  throw new Error(\"probe-boom\");\n}\nf();",
+   "output": "<error type=\"Error\">probe-boom\n    at f (eval_script:3:12)\n    at &lt;eval&gt; (eval_script:5:1)\n</error>",
+   "turn_ms": 94.9,
+   "eval_ms": 1.6,
+   "host_calls": 0
+  }
+ ]
+}
+
+monitor: {"config": "default", "probe": "P10", "exit_code": 0, "wall_s": 0.77, "peak_rss_mb": 203.3, "first_rss_mb": 16.1, "killed": null, "stderr_tail": []}

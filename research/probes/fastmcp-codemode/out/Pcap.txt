@@ -1,0 +1,102 @@
+probe: Pcap
+outcome: limited
+display: limited (50 calls)
+detail: Error calling tool 'execute': Exception: Tool call limit exceeded: at most 50 call_tool() invocations are allowed per execute().
+
+code:
+----
+n = 0
+for i in range(60):
+    await call_tool("lookup", {"id": i})
+    n += 1
+n
+----
+
+setup_ms: 24.4
+wall_s (whole child process): 10.66
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.105
+host lookup calls: 50
+  call id=0 start=1795379047.482 end=1795379047.683 pid=9937
+  call id=1 start=1795379047.684 end=1795379047.886 pid=9937
+  call id=2 start=1795379047.886 end=1795379048.087 pid=9937
+  call id=3 start=1795379048.089 end=1795379048.290 pid=9937
+  call id=4 start=1795379048.291 end=1795379048.492 pid=9937
+  call id=5 start=1795379048.493 end=1795379048.694 pid=9937
+  call id=6 start=1795379048.695 end=1795379048.896 pid=9937
+  call id=7 start=1795379048.897 end=1795379049.098 pid=9937
+  call id=8 start=1795379049.099 end=1795379049.300 pid=9937
+  call id=9 start=1795379049.301 end=1795379049.501 pid=9937
+  call id=10 start=1795379049.502 end=1795379049.703 pid=9937
+  call id=11 start=1795379049.704 end=1795379049.905 pid=9937
+  call id=12 start=1795379049.906 end=1795379050.107 pid=9937
+  call id=13 start=1795379050.109 end=1795379050.310 pid=9937
+  call id=14 start=1795379050.311 end=1795379050.512 pid=9937
+  call id=15 start=1795379050.515 end=1795379050.716 pid=9937
+  call id=16 start=1795379050.717 end=1795379050.918 pid=9937
+  call id=17 start=1795379050.919 end=1795379051.120 pid=9937
+  call id=18 start=1795379051.121 end=1795379051.322 pid=9937
+  call id=19 start=1795379051.324 end=1795379051.525 pid=9937
+  call id=20 start=1795379051.526 end=1795379051.727 pid=9937
+  call id=21 start=1795379051.728 end=1795379051.929 pid=9937
+  call id=22 start=1795379051.930 end=1795379052.130 pid=9937
+  call id=23 start=1795379052.131 end=1795379052.332 pid=9937
+  call id=24 start=1795379052.333 end=1795379052.534 pid=9937
+  call id=25 start=1795379052.535 end=1795379052.736 pid=9937
+  call id=26 start=1795379052.737 end=1795379052.938 pid=9937
+  call id=27 start=1795379052.939 end=1795379053.140 pid=9937
+  call id=28 start=1795379053.141 end=1795379053.342 pid=9937
+  call id=29 start=1795379053.343 end=1795379053.544 pid=9937
+  call id=30 start=1795379053.545 end=1795379053.746 pid=9937
+  call id=31 start=1795379053.747 end=1795379053.947 pid=9937
+  call id=32 start=1795379053.948 end=1795379054.149 pid=9937
+  call id=33 start=1795379054.150 end=1795379054.351 pid=9937
+  call id=34 start=1795379054.352 end=1795379054.552 pid=9937
+  call id=35 start=1795379054.553 end=1795379054.753 pid=9937
+  call id=36 start=1795379054.754 end=1795379054.957 pid=9937
+  call id=37 start=1795379054.966 end=1795379055.167 pid=9937
+  call id=38 start=1795379055.168 end=1795379055.369 pid=9937
+  call id=39 start=1795379055.370 end=1795379055.571 pid=9937
+  call id=40 start=1795379055.572 end=1795379055.773 pid=9937
+  call id=41 start=1795379055.774 end=1795379055.975 pid=9937
+  call id=42 start=1795379055.976 end=1795379056.177 pid=9937
+  call id=43 start=1795379056.178 end=1795379056.379 pid=9937
+  call id=44 start=1795379056.380 end=1795379056.581 pid=9937
+  call id=45 start=1795379056.582 end=1795379056.784 pid=9937
+  call id=46 start=1795379056.785 end=1795379056.986 pid=9937
+  call id=47 start=1795379056.986 end=1795379057.188 pid=9937
+  call id=48 start=1795379057.189 end=1795379057.390 pid=9937
+  call id=49 start=1795379057.391 end=1795379057.592 pid=9937
+
+=== run 0 (10144.4 ms) ===
+ok: false
+structured: null
+stdout: 
+error: Error calling tool 'execute': Exception: Tool call limit exceeded: at most 50 call_tool() invocations are allowed per execute().
+
+=== child process log (tail) ===
+[11/22/26 15:24:17] Error calling tool 'execute'                                
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/server/server.py:1673 in call_tool                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/tools/base.py:555 in _run                           │
+                    │                                                          │
+                    │                 ... 7 frames hidden ...                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:309 in         │
+                    │ _run_monty                                               │
+                    ╰──────────────────────────────────────────────────────────╯
+                    MontyRuntimeError: Exception: Tool call limit exceeded: at  
+                    most 50 call_tool() invocations are allowed per execute().  
+

@@ -1,0 +1,24 @@
+--- code 1 ---
+local http = require("socket.http")
+result(http.request("https://example.com"))
+--- result 1 ---
+{"ms":3,"hostCalls":0,"side":{"proxyLogBytes":206008},"ok":true,"isError":true}
+text (124 chars):
+Script execution failed:
+[string "local http = require("socket.http")..."]:1: attempt to call a nil value (global 'require')
+--- code 2 ---
+result(io.popen("curl -s https://example.com"):read("a"))
+--- result 2 ---
+{"ms":2,"hostCalls":0,"side":{"proxyLogBytes":208080},"ok":true,"isError":true}
+text (462 chars):
+Script execution failed:
+[string "result(io.popen("curl -s https://example.com"..."]:1: attempt to index a nil value (global 'io')
+
+💡 HINT: 'io' is not a recognized server or global variable.
+
+Available servers: probe
+
+Common issues:
+• Server names are sanitized for Lua (hyphens → underscores, e.g., 'my-server' → 'my_server')
+• Use list-servers tool to discover available servers before writing scripts
+• Server may have failed to connect - check gateway logs

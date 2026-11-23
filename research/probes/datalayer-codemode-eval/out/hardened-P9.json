@@ -1,0 +1,7 @@
+{
+  "probe": "P9",
+  "outcome": "error",
+  "display": "hangs (tool call never returns)",
+  "detail": "harness time watchdog at 120.1 s; no result came back",
+  "evidence": "research/probes/datalayer-codemode-eval/out/hardened-P9.txt"
+}

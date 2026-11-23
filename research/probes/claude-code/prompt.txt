@@ -1,0 +1,6 @@
+Run each of these five shell commands with the Bash tool, one Bash call per command, exactly as written. Do not change them, do not combine them, do not retry, and do not ask to run anything outside the sandbox. After the five calls, reply with the raw output of each, labelled.
+SB: printenv HTTPS_PROXY
+P3a: curl -sS -m 10 -o /dev/null -w 'http=%{http_code}' https://example.com
+P3b: curl -sS -m 10 --noproxy '*' -o /dev/null -w 'http=%{http_code}' https://example.com
+P4: head -n 3 /etc/hosts
+P5: printenv PROBE_SECRET

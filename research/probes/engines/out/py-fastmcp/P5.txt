@@ -1,0 +1,9 @@
+try:
+    import os
+    return os.environ.get("PROBE_SECRET")
+except Exception as e:
+    return type(e).__name__ + ": " + str(e)
+--- output
+RuntimeError: 'os.environ' is not supported in this environment
+---
+wall_ms=16 host_calls=0 peak_tree_rss_mb=187

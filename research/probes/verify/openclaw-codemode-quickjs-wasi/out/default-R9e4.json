@@ -1,0 +1,555 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R9e4",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 11750,
+  "peakTreeRssMb": 472,
+  "peakTreeFootprintMb": 455,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R9e4",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 916,
+          "ms": 10149,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"05bb173c8464861ca865286d\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 919,
+          "ms": 10142,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"709e9165fc33430a94e2be05\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 919,
+          "ms": 10145,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"bf3a2b4087549e4c2d953f23\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 919,
+          "ms": 10145,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"59ae382281aebadb00c9eed3\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1071,
+        "ms": 10209,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 1,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"a213f7597297f26c820c728f\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 11281,
+        "ms": 209,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"3e2cf098ac5fe40adeefd468\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 11490,
+        "ms": 205,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"e82670bf0fe5e1bea5133aa9\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 1015,
+    "hostEvents": [],
+    "totalMs": 11695
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-2 sessionKey=agent:main:verify-2 runId=verify-run-2 toolCallId=verify-2 codeModeRunId=cm_133fb2f8-a2d8-4df5-854a-a2a6cbba6ffa workerId=code-mode-quickjs:2 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-3 sessionKey=agent:main:verify-3 runId=verify-run-3 toolCallId=verify-3 codeModeRunId=cm_407aee3f-3f71-4ead-ae80-cb7c0a7901fe workerId=code-mode-quickjs:3 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-4 sessionKey=agent:main:verify-4 runId=verify-run-4 toolCallId=verify-4 codeModeRunId=cm_7542f4c6-594c-4dde-abb0-7e049d028ed8 workerId=code-mode-quickjs:4 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_ab6ad00e-eaad-4e46-8f71-281134ad0989 workerId=code-mode-quickjs:1 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      77,
+      61,
+      19
+    ],
+    [
+      230,
+      99,
+      60
+    ],
+    [
+      386,
+      124,
+      77
+    ],
+    [
+      543,
+      148,
+      101
+    ],
+    [
+      698,
+      178,
+      120
+    ],
+    [
+      851,
+      219,
+      192
+    ],
+    [
+      1006,
+      256,
+      218
+    ],
+    [
+      1162,
+      399,
+      299
+    ],
+    [
+      1315,
+      462,
+      448
+    ],
+    [
+      1471,
+      462,
+      449
+    ],
+    [
+      1626,
+      462,
+      449
+    ],
+    [
+      1781,
+      462,
+      449
+    ],
+    [
+      1934,
+      462,
+      449
+    ],
+    [
+      2088,
+      462,
+      449
+    ],
+    [
+      2239,
+      462,
+      449
+    ],
+    [
+      2395,
+      462,
+      449
+    ],
+    [
+      2550,
+      462,
+      449
+    ],
+    [
+      2704,
+      462,
+      449
+    ],
+    [
+      2860,
+      462,
+      449
+    ],
+    [
+      3015,
+      462,
+      449
+    ],
+    [
+      3165,
+      462,
+      449
+    ],
+    [
+      3319,
+      462,
+      449
+    ],
+    [
+      3475,
+      462,
+      449
+    ],
+    [
+      3627,
+      462,
+      449
+    ],
+    [
+      3787,
+      462,
+      449
+    ],
+    [
+      3935,
+      462,
+      449
+    ],
+    [
+      4088,
+      462,
+      449
+    ],
+    [
+      4243,
+      462,
+      449
+    ],
+    [
+      4397,
+      462,
+      449
+    ],
+    [
+      4550,
+      462,
+      449
+    ],
+    [
+      4707,
+      462,
+      449
+    ],
+    [
+      4858,
+      462,
+      449
+    ],
+    [
+      5014,
+      462,
+      449
+    ],
+    [
+      5161,
+      462,
+      449
+    ],
+    [
+      5322,
+      462,
+      449
+    ],
+    [
+      5481,
+      462,
+      449
+    ],
+    [
+      5631,
+      462,
+      449
+    ],
+    [
+      5787,
+      462,
+      449
+    ],
+    [
+      5943,
+      462,
+      449
+    ],
+    [
+      6094,
+      462,
+      449
+    ],
+    [
+      6246,
+      462,
+      449
+    ],
+    [
+      6401,
+      462,
+      449
+    ],
+    [
+      6555,
+      462,
+      449
+    ],
+    [
+      6707,
+      462,
+      449
+    ],
+    [
+      6864,
+      462,
+      449
+    ],
+    [
+      7013,
+      462,
+      449
+    ],
+    [
+      7168,
+      462,
+      449
+    ],
+    [
+      7324,
+      462,
+      449
+    ],
+    [
+      7478,
+      462,
+      449
+    ],
+    [
+      7643,
+      462,
+      449
+    ],
+    [
+      7791,
+      462,
+      449
+    ],
+    [
+      7945,
+      462,
+      449
+    ],
+    [
+      8098,
+      462,
+      449
+    ],
+    [
+      8272,
+      462,
+      449
+    ],
+    [
+      8408,
+      462,
+      449
+    ],
+    [
+      8567,
+      462,
+      449
+    ],
+    [
+      8719,
+      462,
+      449
+    ],
+    [
+      8870,
+      462,
+      449
+    ],
+    [
+      9020,
+      462,
+      449
+    ],
+    [
+      9180,
+      462,
+      449
+    ],
+    [
+      9330,
+      462,
+      449
+    ],
+    [
+      9486,
+      462,
+      449
+    ],
+    [
+      9691,
+      462,
+      449
+    ],
+    [
+      9833,
+      462,
+      449
+    ],
+    [
+      9991,
+      462,
+      449
+    ],
+    [
+      10142,
+      462,
+      449
+    ],
+    [
+      10299,
+      462,
+      449
+    ],
+    [
+      10453,
+      462,
+      449
+    ],
+    [
+      10610,
+      462,
+      449
+    ],
+    [
+      10768,
+      462,
+      449
+    ],
+    [
+      10923,
+      462,
+      449
+    ],
+    [
+      11077,
+      462,
+      449
+    ],
+    [
+      11232,
+      471,
+      454
+    ],
+    [
+      11384,
+      472,
+      454
+    ],
+    [
+      11538,
+      472,
+      455
+    ],
+    [
+      11693,
+      472,
+      455
+    ]
+  ]
+}

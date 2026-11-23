@@ -1,0 +1,38 @@
+[
+  {
+    "model": "claude-sonnet-5-5",
+    "strategy": "codemode",
+    "kind": "all",
+    "n": 4,
+    "correct": 4,
+    "accuracy": 1,
+    "ci": [
+      0.5100999795960008,
+      1
+    ],
+    "errors": 0,
+    "medianLatencyS": 20.377000000000002,
+    "medianToolCalls": 1,
+    "meanInputTokens": 6417,
+    "meanToolResultChars": 194,
+    "meanCostUsd": 0.008639625
+  },
+  {
+    "model": "claude-sonnet-5-5",
+    "strategy": "codemode",
+    "kind": "hard",
+    "n": 4,
+    "correct": 4,
+    "accuracy": 1,
+    "ci": [
+      0.5100999795960008,
+      1
+    ],
+    "errors": 0,
+    "medianLatencyS": 20.377000000000002,
+    "medianToolCalls": 1,
+    "meanInputTokens": 6417,
+    "meanToolResultChars": 194,
+    "meanCostUsd": 0.008639625
+  }
+]

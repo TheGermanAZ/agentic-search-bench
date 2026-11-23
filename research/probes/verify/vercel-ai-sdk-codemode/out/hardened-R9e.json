@@ -1,0 +1,334 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs hardened R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 5828,
+  "peakTreeRssMb": 347,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "hardened",
+    "test": "R9e",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 148,
+          "ms": 5289,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 180,
+          "ms": 5253,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 180,
+          "ms": 5271,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 185,
+          "ms": 5313,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 186,
+          "ms": 5331,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 187,
+          "ms": 5289,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 188,
+          "ms": 5249,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 189,
+          "ms": 5290,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 392,
+        "ms": 320,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1000,
+        "ms": 216,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 5517,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 195,
+    "hostEvents": [],
+    "totalMs": 5729
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:15509) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      106,
+      55
+    ],
+    [
+      202,
+      74
+    ],
+    [
+      364,
+      246
+    ],
+    [
+      500,
+      310
+    ],
+    [
+      594,
+      330
+    ],
+    [
+      682,
+      331
+    ],
+    [
+      888,
+      331
+    ],
+    [
+      972,
+      331
+    ],
+    [
+      1083,
+      331
+    ],
+    [
+      1218,
+      332
+    ],
+    [
+      1312,
+      333
+    ],
+    [
+      1428,
+      334
+    ],
+    [
+      1524,
+      334
+    ],
+    [
+      1614,
+      334
+    ],
+    [
+      1737,
+      335
+    ],
+    [
+      1823,
+      335
+    ],
+    [
+      2019,
+      336
+    ],
+    [
+      2192,
+      337
+    ],
+    [
+      2277,
+      337
+    ],
+    [
+      2383,
+      337
+    ],
+    [
+      2479,
+      337
+    ],
+    [
+      2661,
+      338
+    ],
+    [
+      2769,
+      338
+    ],
+    [
+      2877,
+      339
+    ],
+    [
+      2980,
+      339
+    ],
+    [
+      3086,
+      340
+    ],
+    [
+      3182,
+      340
+    ],
+    [
+      3291,
+      340
+    ],
+    [
+      3408,
+      341
+    ],
+    [
+      3498,
+      341
+    ],
+    [
+      3605,
+      341
+    ],
+    [
+      3698,
+      342
+    ],
+    [
+      3809,
+      342
+    ],
+    [
+      3908,
+      342
+    ],
+    [
+      4031,
+      343
+    ],
+    [
+      4133,
+      343
+    ],
+    [
+      4237,
+      344
+    ],
+    [
+      4399,
+      344
+    ],
+    [
+      4535,
+      344
+    ],
+    [
+      4629,
+      345
+    ],
+    [
+      4724,
+      345
+    ],
+    [
+      4829,
+      345
+    ],
+    [
+      4934,
+      345
+    ],
+    [
+      5024,
+      346
+    ],
+    [
+      5131,
+      346
+    ],
+    [
+      5230,
+      346
+    ],
+    [
+      5332,
+      346
+    ],
+    [
+      5471,
+      346
+    ],
+    [
+      5585,
+      310
+    ],
+    [
+      5676,
+      282
+    ],
+    [
+      5827,
+      283
+    ]
+  ]
+}

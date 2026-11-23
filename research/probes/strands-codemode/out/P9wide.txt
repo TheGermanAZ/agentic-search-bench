@@ -1,0 +1,39 @@
+probe: P9wide
+outcome: works
+display: parallel, 10 at a time (402 ms)
+detail: 12 gathered lookups: 12 host calls spanning 402 ms, two waves because of the 10-slot semaphore; printed 132.
+
+code:
+----
+import asyncio
+rs = await asyncio.gather(*[lookup(id=i) for i in range(12)])
+print(sum(x['value'] for x in rs))
+----
+
+setup_ms: 650.7
+wall_s (whole child process): 1.93
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.107
+host lookup calls: 12
+  call id=0 start=1795381219.838 end=1795381220.040 pid=54643
+  call id=1 start=1795381219.838 end=1795381220.041 pid=54643
+  call id=2 start=1795381219.840 end=1795381220.042 pid=54643
+  call id=3 start=1795381219.840 end=1795381220.042 pid=54643
+  call id=4 start=1795381219.842 end=1795381220.042 pid=54643
+  call id=5 start=1795381219.843 end=1795381220.053 pid=54643
+  call id=6 start=1795381219.843 end=1795381220.054 pid=54643
+  call id=7 start=1795381219.843 end=1795381220.054 pid=54643
+  call id=8 start=1795381219.843 end=1795381220.055 pid=54643
+  call id=9 start=1795381219.843 end=1795381220.055 pid=54643
+  call id=10 start=1795381220.042 end=1795381220.244 pid=54643
+  call id=11 start=1795381220.042 end=1795381220.244 pid=54643
+
+=== run 0 (461.7 ms) ===
+ok: true
+stdout: 132
+status: success
+
+=== child process log (tail) ===
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+

@@ -1,0 +1,21 @@
+probe: P7
+outcome: no-limit-within-120s
+display: no limit (killed at 4.2 GB)
+detail: harness RSS watchdog at 4.24 GB after 1.7 s; peak tree RSS 4.24 GB; no error from the sandbox
+
+code:
+----
+a = []
+while True:
+    a.append("x" * 10**6)
+----
+
+setup_ms: 9.0
+wall_s (whole child process): 1.79
+killed: harness RSS watchdog at 4.24 GB after 1.7 s
+child exit code: -9
+peak tree RSS GB: 4.24
+host lookup calls: 0
+
+=== child process log (tail) ===
+

@@ -1,0 +1,531 @@
+{
+  "probe": "L-calls-101",
+  "code": "const r = await Promise.all(Array.from({length: 101}, (_, i) => tools.probe.lookup({id: i}))); return r.length",
+  "wallMs": 30,
+  "hostToolCalls": 100,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":false,\"error\":{\"kind\":\"ToolCallLimitExceeded\",\"message\":\"Execution exceeded its tool-call limit of 100. Other tool calls were still running when the program stopped and were interrupted. toolCalls lists every call with its outcome: calls marked success did run.\"},\"toolCalls\":[{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":22},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":21},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":21},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":21},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":21},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":20},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":19},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":19},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":19},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":19},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":19},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":19},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":18},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":18},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":18},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":18},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":18},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":18},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":17},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":16},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":15},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":15},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":15},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":15},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":15},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":15},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":15},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":15},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":15},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":14},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":14},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":14},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":14},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":10},{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":10}]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": false,
+          "error": {
+            "kind": "ToolCallLimitExceeded",
+            "message": "Execution exceeded its tool-call limit of 100. Other tool calls were still running when the program stopped and were interrupted. toolCalls lists every call with its outcome: calls marked success did run."
+          },
+          "toolCalls": [
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 22
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 21
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 21
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 21
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 21
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 20
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 19
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 19
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 19
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 19
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 19
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 19
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 18
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 18
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 18
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 18
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 18
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 18
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 17
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 16
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 15
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 15
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 15
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 15
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 15
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 15
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 15
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 15
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 15
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 14
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 14
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 14
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 14
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 10
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 10
+            }
+          ]
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

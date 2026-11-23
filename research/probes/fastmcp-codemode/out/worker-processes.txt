@@ -1,0 +1,4 @@
+harness pid 47818
+PID PPID RSS_KB COMMAND (children of the harness)
+48897 47818   9392 ~/p/agentic-search-bench/research/impls/fastmcp-codemode/.venv/bin/monty subprocess
+execute result after loop: {'ok': False, 'structured': None, 'stdout': '', 'error': "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 10.000069959s > 10s"}

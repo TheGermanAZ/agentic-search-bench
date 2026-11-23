@@ -1,0 +1,7 @@
+{
+  "probe": "P3b",
+  "outcome": "works",
+  "display": "works (example.com 200)",
+  "detail": "printed HTTP 200 from https://example.com",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P3b.txt"
+}

@@ -1,0 +1,17 @@
+{
+  "probe": "P6",
+  "config": "defaults",
+  "code": "while (true) {}",
+  "wall_ms": 120007,
+  "host_calls": 0,
+  "isError": null,
+  "response_text": "{\"harnessTimeout\":true,\"ms\":120000}",
+  "response_text_length": 35,
+  "raw_flags": {
+    "harnessTimeout": true,
+    "transportClosed": false
+  },
+  "wall_ms_until_stopped_or_harness_kill": 120008,
+  "ping_after": "no answer within 5 s (server wedged)",
+  "proxy_alive": true
+}

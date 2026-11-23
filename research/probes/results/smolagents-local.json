@@ -1,0 +1,203 @@
+{
+  "impl": "smolagents-local",
+  "name": "Hugging Face smolagents CodeAgent, LocalPythonExecutor",
+  "source": "PyPI smolagents; repo https://github.com/huggingface/smolagents",
+  "pinned": "smolagents 1.26.0 (git tag v1.26.0 = 12c1bc820eca50ace6f80a21d90426d41d74f845)",
+  "language": "Python",
+  "engine": "CPython process running smolagents' own AST walker (evaluate_ast), not a separate runtime. Code runs in-process with the host, and a timeout runs it in a ThreadPoolExecutor worker thread.",
+  "how_run": "LocalPythonExecutor(additional_authorized_imports=[]) with send_tools({'lookup': Tool}), then executor(code) for each probe. This is the class CodeAgent builds when executor_type='local' (agents.py:1598-1606).",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed '42', 1 host call",
+      "evidence": "research/probes/smolagents-local/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "return value 'RETURNED' came back; print came back as 50072 chars (49999 A's) with the truncation marker: True",
+      "evidence": "research/probes/smolagents-local/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "blocked",
+      "detail": "InterpreterError: Code execution failed at line 'import urllib.request' due to: InterpreterError: Import of urllib.request is not allowed. Authorized imports are: ['math', 'collections', 'time', 'queue', 'random', 'itertools', 'stat', 'statistics', 'unicodedata', 're', 'datetime']",
+      "evidence": "research/probes/smolagents-local/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "InterpreterError: Code execution failed at line 'open(\"/etc/hosts\").read()' due to: InterpreterError: Forbidden function evaluation: 'open' is not among the explicitly allowed tools or defined/imported in the preceding code",
+      "evidence": "research/probes/smolagents-local/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "InterpreterError: Code execution failed at line 'import os' due to: InterpreterError: Import of os is not allowed. Authorized imports are: ['unicodedata', 'time', 'queue', 'collections', 're', 'stat', 'random', 'statistics', 'datetime', 'itertools', 'math']",
+      "evidence": "research/probes/smolagents-local/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "iteration cap, not the time limit: InterpreterError: Code execution failed at line 'while True:\n    pass' due to: InterpreterError: Maximum number of 1000000 iterations in While loop exceeded",
+      "evidence": "research/probes/smolagents-local/out/P6.txt",
+      "display": "limited (op count)"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "no memory limit below 4 GB: harness stopped the process at 4.17 GB peak RSS after 3.7 s; no error from the executor",
+      "evidence": "research/probes/smolagents-local/out/P7.txt"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "execution 2 printed '7'; executor.state['kept'] = 7",
+      "evidence": "research/probes/smolagents-local/out/P8.txt",
+      "display": "persists"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "serial: 1030 ms for 5 lookups (200 ms each), 5 host calls, sum 30",
+      "evidence": "research/probes/smolagents-local/out/P9.txt",
+      "display": "serial (asyncio not allowed)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "InterpreterError: 'Code execution failed at line \\'raise ValueError(\"probe-boom\")\\' due to: ValueError: probe-boom'; message survives: True; numeric line number present: False (the message quotes the failing statement instead)",
+      "evidence": "research/probes/smolagents-local/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "same executor: {'median_ms': 0.1, 'p90_ms': 0.1, 'n': 20}; fresh executor per run: {'median_ms': 0.1, 'p90_ms': 0.1, 'n': 20}; one-time setup (construct + send_tools): median 0.04 ms",
+      "evidence": "research/probes/smolagents-local/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "P12a spec: subclasses walk: InterpreterError: Code execution failed at line 'subs = ().__class__.__base__.__subclasses__()' due to: InterpreterError: Forbidden access to dunder attribute: __base__ | P12b spec: __import__ os system: InterpreterError: Code execution failed at line '__import__(\"os\").system(\"echo PWNED\")' due to: InterpreterError: Forbidden function evaluation: '__import__' is not among the explicitly allowed tools or defined/imported in the preceding code | P12c extra: collections._sys.modules os: InterpreterError: Code execution failed at line 'r = collections._sys.modules[\"os\"].system(\"echo PWNED\")' due to: InterpreterError: Forbidden access to module: sys | P12d extra: queue.threading._os: InterpreterError: Code execution failed at line 'r = queue.threading._os.system(\"echo PWNED\")' due to: InterpreterError: Forbidden access to module: threading",
+      "evidence": "research/probes/smolagents-local/out/P12.txt"
+    },
+    "P4b": {
+      "outcome": "blocked",
+      "detail": "InterpreterError: Code execution failed at line 'import os' due to: InterpreterError: Import of os is not allowed. Authorized imports are: ['unicodedata', 'queue', 'itertools', 'datetime', 're', 'stat', 'collections', 'statistics', 'time', 'math', 'random'] (extra: import-based variant) (extra beyond SPEC)",
+      "evidence": "research/probes/smolagents-local/out/P4b.txt"
+    },
+    "P6b": {
+      "outcome": "limited",
+      "detail": "returned after 35.01 s with ExecutionTimeoutError: Code execution exceeded the maximum execution time of 30 seconds (extra beyond SPEC)",
+      "evidence": "research/probes/smolagents-local/out/P6b.txt"
+    },
+    "P9b": {
+      "outcome": "blocked",
+      "detail": "InterpreterError: Code execution failed at line 'import asyncio' due to: InterpreterError: Import of asyncio is not allowed. Authorized imports are: ['itertools', 'stat', 'random', 'unicodedata', 'statistics', 'math', 'collections', 'queue', 'time', 're', 'datetime'] (extra: asyncio import, the spec's Python form) (extra beyond SPEC)",
+      "evidence": "research/probes/smolagents-local/out/P9b.txt"
+    }
+  },
+  "defaults": {
+    "time": "MAX_EXECUTION_TIME_SECONDS = 30 (local_python_executor.py:60). Not enforced as a wall clock: the caller gets the timeout only after the worker finishes (P6b, 35.01 s). The loop caps stop infinite loops first (P6, 1.9 s).",
+    "memory": "None found. 4.12 GB peak RSS reached with no error (P7), stopped by the harness.",
+    "output": "DEFAULT_MAX_LEN_OUTPUT = 50000 chars for print logs (local_python_executor.py:57). Head and tail kept with a marker in the middle (utils.py:257-265). Return value is not truncated.",
+    "tool_calls": "No cap in the executor or the CodeAgent path. MAX_OPERATIONS = 10,000,000 counts AST node evaluations, not tool calls (local_python_executor.py:58, 1444-1448)."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Tools are smolagents Tool objects passed to send_tools(). They go into static_tools and are called in the sandbox as Python functions with keyword args. There is no generated stub. Calls go through evaluate_call, and a static tool cannot be overwritten by the code.",
+      "evidence": "https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/local_python_executor.py#L1763-L1765 (send_tools); #L825 (evaluate_call); #L1708-L1723 (__init__)"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "All tools are rendered into the agent's system prompt up front through the 'tools' template variable, so the model sees every tool before writing code. The executor itself has no search or read step.",
+      "evidence": "https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/agents.py#L1269 (the template variable 'tools'); the executor itself has no discovery function"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "No bridge. A tool call is a direct Python call in the same process. The Tool's forward() runs on the host, the sandbox and host share one interpreter, and there is no RPC, postMessage, or snapshot. Host calls are counted by the probe (P1, P9).",
+      "evidence": "https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/local_python_executor.py#L825-L865 (evaluate_call dispatches Python callables)"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "The class docstring says it is not a security sandbox and points to remote executors for untrusted code. The guards are: an import allowlist (11 modules), dunder-attribute blocking, and a check that refuses module objects reached through attributes ('Forbidden access to module'). Those guards held in P3 to P5 and P12a to d. A custom AST walker is not a security boundary, so these guards are a filter, not a proof.",
+      "evidence": "https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/local_python_executor.py#L1688-L1694 (docstring); #L68-L71 (nodunder_getattr); #L156-L175 (check_safer_result); #L372 (check_import_authorized)"
+    },
+    {
+      "topic": "Import allowlist",
+      "finding": "BASE_BUILTIN_MODULES = collections, datetime, itertools, math, queue, random, re, stat, statistics, time, unicodedata. CodeAgent adds additional_authorized_imports on top, and the default is none. Only 'time' gives a clock, and there is no asyncio or threading.",
+      "evidence": "https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/utils.py#L49-L61; https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/agents.py#L1543-L1544"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "__call__ returns CodeOutput(output, logs, is_final_answer). output is the last expression's value. logs is the print buffer. Both come back to the caller, and the print buffer is truncated, not the return value (P2).",
+      "evidence": "https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/local_python_executor.py#L1747-L1758 (__call__); #L1583-L1676 (evaluate_python_code); https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/utils.py#L257-L265 (truncate_content)"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Time: MAX_EXECUTION_TIME_SECONDS = 30, applied by the timeout() wrapper, which runs the code in a ThreadPoolExecutor. The 'with' block waits for the worker in __exit__, so the caller is not cut off at 30 s (P6b). Operations: MAX_OPERATIONS = 10M, checked in evaluate_ast. While loops: MAX_WHILE_ITERATIONS = 1M, which stops P6 in 1.9 s. Memory: no limit in the source.",
+      "evidence": "https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/local_python_executor.py#L57-L60 (constants); #L285-L318 (timeout; 'with' at #L308, except at #L313); #L457-L458 (while cap); #L1444-L1448 (operations cap)"
+    },
+    {
+      "topic": "State",
+      "finding": "Persistent. The executor keeps self.state across __call__, and send_variables() writes into it. evaluate_python_code resets only the print buffer and the operation counter each call. CodeAgent creates one executor per agent instance, so variables carry across steps of one run (P8).",
+      "evidence": "https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/local_python_executor.py#L1716 (self.state); #L1627-L1628 (per-call reset of _print_outputs and _operations_count); #L1760-L1761 (send_variables); https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/agents.py#L1585 (one executor per agent)"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Any exception is re-raised as InterpreterError with the failing statement's source text, the exception type, and the message: \"Code execution failed at line '<statement>' due to: <Type>: <msg>\". The text has no numeric line number (P10).",
+      "evidence": "https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/local_python_executor.py#L1653-L1663 (error wrap, message at #L1660)"
+    },
+    {
+      "topic": "Parallelism",
+      "finding": "No parallel tool calls on the CodeAgent path. The executor has no await branch in evaluate_ast (grep for ast.Await returns 0), and asyncio is not authorized. max_tool_threads exists only on ToolCallingAgent (agents.py#L1215-L1258, #L1426).",
+      "evidence": "https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/local_python_executor.py#L1547 (import dispatch); `grep -c ast.Await` on the file returns 0; https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/agents.py#L1426 (ThreadPoolExecutor for max_tool_threads, ToolCallingAgent)"
+    }
+  ],
+  "surprises": [
+    "The source sets a 30 s limit (MAX_EXECUTION_TIME_SECONDS) and the timeout error says so, but the caller only gets that error after the worker finishes. A 35 s sleep returned after 35.01 s with ExecutionTimeoutError (P6b).",
+    "An infinite loop stops at 1.9 s from the 1M while-iteration cap, not from the 30 s limit (P6).",
+    "No memory limit found: a 1 MB-per-append loop reached 4.12 GB peak RSS with no error (P7), and the harness stopped it there. Two earlier runs were stopped at 4.13 and 4.33 GB. A third run was SIGKILLed by the OS before the watchdog wrote anything, and I did not identify the cause.",
+    "The class docstring says 'It is not a security sandbox'. The survey table lists the import allowlist and op-count cap as its controls, which is a weaker claim than the code makes.",
+    "The escape attempts in P12 did not reach the host, including module-attribute routes (collections._sys.modules, queue.threading._os). Four shapes were tried, not all of them, so this does not prove there is no escape.",
+    "The variable persistence question is settled: state persists across executions (P8). A print buffer does not persist.",
+    "The 'concurrent' tool call is impossible in CodeAgent code: asyncio is blocked (P9b) and threading is not authorized. P9 ran 5 lookups in 1024 ms, which is serial."
+  ],
+  "hardened": {
+    "config": "LocalPythonExecutor(additional_authorized_imports=[], timeout_seconds=5). timeout_seconds is the only stricter public option (src/smolagents/local_python_executor.py:1704-1713 at v1.26.0, https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/src/smolagents/local_python_executor.py#L1704-L1713). No memory or network option exists; imports are already the base allowlist. The project's own stricter path is a remote executor (docker, e2b, modal, blaxel), probed separately as smolagents-docker. With timeout_seconds=1 (out/extra-timeout1-P6.txt, extra-timeout1-P9.txt) P6 still returns only after 4.0 s because the timeout wrapper waits for the worker thread (local_python_executor.py:308-316), and P9's five serial 200 ms calls exceed the 1 s budget. Harness: research/probes/smolagents-local/hardened.py",
+    "probes": {
+      "P3": {
+        "outcome": "blocked",
+        "detail": "InterpreterError: Code execution failed at line 'import urllib.request' due to: InterpreterError: Import of urllib.request is not allowed. Authorized imports are: ['time', 're', 'datetime', 'collections', 'random', 'statistics', 'math', 'unicodedata', 'stat', 'itertools', 'queue']",
+        "evidence": "research/probes/smolagents-local/out/hardened-P3.txt",
+        "display": "blocked (import allowlist)"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "InterpreterError: Code execution failed at line 'open(\"/etc/hosts\").read()' due to: InterpreterError: Forbidden function evaluation: 'open' is not among the explicitly allowed tools or defined/imported in the preceding code",
+        "evidence": "research/probes/smolagents-local/out/hardened-P4.txt",
+        "display": "blocked (open not allowed)"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "InterpreterError: Code execution failed at line 'import os' due to: InterpreterError: Import of os is not allowed. Authorized imports are: ['queue', 'stat', 'statistics', 'unicodedata', 'itertools', 'random', 're', 'collections', 'math', 'datetime', 'time']",
+        "evidence": "research/probes/smolagents-local/out/hardened-P5.txt",
+        "display": "blocked (import os)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "iteration cap, not the time limit: InterpreterError: Code execution failed at line 'while True:\n    pass' due to: InterpreterError: Maximum number of 1000000 iterations in While loop exceeded",
+        "evidence": "research/probes/smolagents-local/out/hardened-P6.txt",
+        "display": "limited (op count, 2.0 s)"
+      },
+      "P7": {
+        "outcome": "no-limit-within-120s",
+        "detail": "no memory limit below 4 GB: harness stopped the process at 4.02 GB peak RSS after 0.3 s; no error from the executor",
+        "evidence": "research/probes/smolagents-local/out/hardened-P7.txt",
+        "display": "no-limit-within-120s (4 GB kill)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "serial: 1013 ms for 5 lookups (200 ms each), 5 host calls, sum 30",
+        "evidence": "research/probes/smolagents-local/out/hardened-P9.txt",
+        "display": "serial (1,013 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "P12a spec: subclasses walk: InterpreterError: Code execution failed at line 'subs = ().__class__.__base__.__subclasses__()' due to: InterpreterError: Forbidden access to dunder attribute: __base__ | P12b spec: __import__ os system: InterpreterError: Code execution failed at line '__import__(\"os\").system(\"echo PWNED\")' due to: InterpreterError: Forbidden function evaluation: '__import__' is not among the explicitly allowed tools or defined/imported in the preceding code | P12c extra: collections._sys.modules os: InterpreterError: Code execution failed at line 'r = collections._sys.modules[\"os\"].system(\"echo PWNED\")' due to: InterpreterError: Forbidden access to module: sys | P12d extra: queue.threading._os: InterpreterError: Code execution failed at line 'r = queue.threading._os.system(\"echo PWNED\")' due to: InterpreterError: Forbidden access to module: threading",
+        "evidence": "research/probes/smolagents-local/out/hardened-P12.txt",
+        "display": "blocked"
+      }
+    }
+  }
+}

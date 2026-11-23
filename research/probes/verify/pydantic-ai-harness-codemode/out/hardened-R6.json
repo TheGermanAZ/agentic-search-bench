@@ -1,0 +1,253 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py hardened R6",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3275,
+  "peakTreeRssMb": 109,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R6",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode({'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})]); agent.run() per execution",
+    "data": {
+      "label": "",
+      "startMs": 1673,
+      "ms": 1514,
+      "ok": true,
+      "result": [
+        "Runtime error:\nTimeoutError: feed time limit exceeded: 1.000016375s > 1s\n\n1 nested tool calls started before execution stopped:\n- lookup({'id': 1}) returned {'id': 1, 'value': 2}\nAccount for all 1 before retrying; repeating a call repeats whatever it already did.\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+      ],
+      "callsStarted": 1
+    },
+    "hostMaxEventLoopLagMs": 29,
+    "totalMs": 3187
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      96,
+      27
+    ],
+    [
+      142,
+      34
+    ],
+    [
+      195,
+      37
+    ],
+    [
+      244,
+      41
+    ],
+    [
+      293,
+      45
+    ],
+    [
+      342,
+      45
+    ],
+    [
+      404,
+      46
+    ],
+    [
+      447,
+      51
+    ],
+    [
+      493,
+      51
+    ],
+    [
+      558,
+      52
+    ],
+    [
+      599,
+      52
+    ],
+    [
+      647,
+      52
+    ],
+    [
+      705,
+      55
+    ],
+    [
+      765,
+      55
+    ],
+    [
+      860,
+      56
+    ],
+    [
+      904,
+      57
+    ],
+    [
+      974,
+      59
+    ],
+    [
+      1008,
+      60
+    ],
+    [
+      1062,
+      61
+    ],
+    [
+      1138,
+      62
+    ],
+    [
+      1172,
+      63
+    ],
+    [
+      1232,
+      66
+    ],
+    [
+      1290,
+      67
+    ],
+    [
+      1332,
+      69
+    ],
+    [
+      1374,
+      70
+    ],
+    [
+      1601,
+      71
+    ],
+    [
+      1665,
+      71
+    ],
+    [
+      1729,
+      71
+    ],
+    [
+      1766,
+      75
+    ],
+    [
+      1863,
+      77
+    ],
+    [
+      1904,
+      77
+    ],
+    [
+      1957,
+      108
+    ],
+    [
+      2020,
+      108
+    ],
+    [
+      2065,
+      108
+    ],
+    [
+      2138,
+      108
+    ],
+    [
+      2180,
+      108
+    ],
+    [
+      2236,
+      108
+    ],
+    [
+      2294,
+      108
+    ],
+    [
+      2354,
+      108
+    ],
+    [
+      2392,
+      108
+    ],
+    [
+      2455,
+      108
+    ],
+    [
+      2489,
+      108
+    ],
+    [
+      2554,
+      108
+    ],
+    [
+      2594,
+      108
+    ],
+    [
+      2651,
+      108
+    ],
+    [
+      2700,
+      108
+    ],
+    [
+      2755,
+      108
+    ],
+    [
+      2880,
+      108
+    ],
+    [
+      2934,
+      108
+    ],
+    [
+      2983,
+      108
+    ],
+    [
+      3027,
+      108
+    ],
+    [
+      3083,
+      108
+    ],
+    [
+      3147,
+      108
+    ],
+    [
+      3207,
+      108
+    ],
+    [
+      3273,
+      109
+    ]
+  ]
+}

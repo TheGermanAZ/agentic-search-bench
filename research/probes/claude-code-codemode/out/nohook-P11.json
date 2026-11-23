@@ -1,0 +1,630 @@
+{
+ "tag": "nohook",
+ "probe": "P11",
+ "settings": "~/p/agentic-search-bench/research/probes/claude-code-codemode/settings-nohook.json",
+ "permissionMode": "default",
+ "transcript": "~/.claude/projects/-Users-thegermanaz-p-agentic-search-bench-research-probes-claude-code-codemode-work/74ebaa20-ff39-4b27-af3f-6ac889a17f00.jsonl",
+ "hostLookupCalls": [],
+ "steps": [
+  {
+   "step": "P11.1",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:42:46.815Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:42:46.835Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 375248,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.2",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:42:50.143Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:42:50.149Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 387504,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.3",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:42:53.031Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:42:53.036Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 391232,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.4",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:42:56.355Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:42:56.359Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 404400,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.5",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:42:59.399Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:42:59.403Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 435184,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.6",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:02.506Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:02.513Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 437872,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.7",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:05.493Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:05.508Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 447760,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.8",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:08.668Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:08.680Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 450192,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.9",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:11.853Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:11.859Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 452896,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.10",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.2,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:15.195Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:15.204Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 454448,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.11",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:18.340Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:18.346Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 455664,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.12",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:21.641Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:21.647Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 459296,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.13",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:24.628Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:24.632Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 460784,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.14",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.2,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:28.106Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:28.115Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 462480,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.15",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:31.103Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:31.110Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 469200,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.16",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:34.294Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:34.303Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 470944,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.17",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:37.459Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:37.471Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 472400,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.18",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:40.842Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:40.849Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 472800,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.19",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:43.817Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:43.822Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 474560,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P11.20",
+   "code": "1+1",
+   "typist": "model",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "1+1",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:43:47.011Z",
+     "result": {
+      "content": "<repl-output>\n<result>2</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:43:47.016Z",
+      "toolUseResult": {
+       "code": "1+1",
+       "result": "2",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 418368,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  }
+ ]
+}

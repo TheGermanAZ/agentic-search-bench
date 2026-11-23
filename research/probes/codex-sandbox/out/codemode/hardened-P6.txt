@@ -1,0 +1,33 @@
+probe: P6 (codex code-mode host, V8, hardened)
+host: codex-code-mode-host codex 0.169.0
+session/open cellExecutionLimits sent: {"maxYieldTimeMs": 1000, "maxHeapSizeBytes": 67108864}
+session/execute yield_time_ms=1000 max_output_tokens=1000
+handshake: {"type": "connection/ready", "selectedVersion": 1, "capabilities": ["bounded-output-v1", "delegate-capacity-4096", "session-cell-execution-resource-limits", "yield-observation"]}
+session/open reply: {"type": "operation/response", "id": 1, "result": {"status": "ok", "value": {"type": "session/ready", "sessionId": "s1"}}}
+wall_ms: 120026.6
+peak_rss_mb: 26.9
+killed: killed by harness at 120s (no-limit-within-120s)
+
+--- execution 0 ---
+source:
+while (true) {}
+elapsed_ms: 1019.15
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 2, "result": {"status": "ok", "value": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1016517291}}}}
+wait at t=2089ms: {"type": "operation/response", "id": 3, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1004551542}}}}}}
+wait at t=3092ms: {"type": "operation/response", "id": 4, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1001996500}}}}}}
+wait at t=4094ms: {"type": "operation/response", "id": 5, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1001079208}}}}}}
+...
+wait at t=118434ms: {"type": "operation/response", "id": 119, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1001171334}}}}}}
+wait at t=119437ms: {"type": "operation/response", "id": 120, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1002101333}}}}}}
+wait at t=120027ms: null
+total waits/terminates: 119
+
+--- after the probe ---
+host_alive_before: false
+host_alive_after: false
+host_returncode: -9
+
+--- host stderr (tail) ---
+

@@ -1,0 +1,56 @@
+{
+  "execute_require": {
+    "tool": "execute",
+    "code": "async () => require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+    "ms": 5,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: require is not defined",
+    "rpcError": null
+  },
+  "execute_importNodeFs": {
+    "tool": "execute",
+    "code": "async () => { const fs = await import(\"node:fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\") }",
+    "ms": 4,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: No such module \"node:fs\".",
+    "rpcError": null
+  },
+  "execute_deno": {
+    "tool": "execute",
+    "code": "async () => Deno.readTextFile(\"/etc/hosts\")",
+    "ms": 3,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: Deno is not defined",
+    "rpcError": null
+  },
+  "search_require": {
+    "tool": "search",
+    "code": "async () => require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+    "ms": 127,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: require is not defined",
+    "rpcError": null
+  },
+  "search_importNodeFs": {
+    "tool": "search",
+    "code": "async () => { const fs = await import(\"node:fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\") }",
+    "ms": 122,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: No such module \"node:fs\".",
+    "rpcError": null
+  },
+  "search_deno": {
+    "tool": "search",
+    "code": "async () => Deno.readTextFile(\"/etc/hosts\")",
+    "ms": 133,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: Deno is not defined",
+    "rpcError": null
+  }
+}

@@ -1,0 +1,8 @@
+--- code 1 ---
+r = Probe.lookup(id=21)
+print(r["value"])
+result = r["value"]
+--- result 1 ---
+{"ok": true, "isError": false, "ms": 1321.59, "hostCalls": 1, "gatewayAlive": true, "rssAfterMB": 76}
+text (228 chars):
+{"result": 42, "logs": ["42"], "calls": [{"i": 1, "server": "Probe", "tool": "lookup", "ms": 581, "status": "ok", "bytes": 23, "reused": false}], "usage": {"call_count": 1, "ms": 1309, "limit_bytes": 262144, "truncated": false}}

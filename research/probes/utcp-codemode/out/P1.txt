@@ -1,0 +1,11 @@
+{
+  "probe": "P1 tool-call",
+  "code": "const r = await host.lookup({id: 21}); console.log(r.value)",
+  "wallMs": 204.12016599999998,
+  "hostCalls": 1,
+  "result": null,
+  "logs": [
+    "42"
+  ],
+  "threw": null
+}

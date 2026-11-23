@@ -1,0 +1,6 @@
+throw new Error("probe-boom")
+--- output
+ERROR: Error: probe-boom
+    at <anonymous> (line 1:11)
+---
+wall_ms=49 host_calls=0 peak_tree_rss_mb=123

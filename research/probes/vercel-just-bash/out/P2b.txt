@@ -1,0 +1,18 @@
+probe: P2b
+worker exit: 0 signal: null killed: null
+wall ms: 3556
+peak host RSS KB: 1167392
+
+script: for i in 1 2 3 4 5; do printf '%60000000s' ''; done; echo END
+exit: 126
+stdout (240000000 chars):
+                                                                                                                                                                                                                                                                                                            
+...[239999400 chars elided by this report]...
+                                                                                                                                                                                                                                                                                                            
+stderr:
+bash: pipeline: total output size exceeded (>268435456 bytes), increase executionLimits.maxOutputSize
+
+ms: 2516, host lookup calls so far: 0
+
+outcome: limited
+detail: printf 5 x 60 MB (300 MB total stdout): stdout 240000000 chars came back, END absent, exit 126, stderr "bash: pipeline: total output size exceeded (>268435456 bytes), increase executionLimits.maxOutputSize". Partial stdout is kept on the limit path (Bash.ts:963-969).

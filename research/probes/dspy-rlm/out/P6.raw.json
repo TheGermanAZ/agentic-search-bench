@@ -1,0 +1,15 @@
+{
+  "probe": "P6",
+  "config": "default",
+  "codes": [
+    "while True:\n    pass"
+  ],
+  "runs": [],
+  "setup_ms": 0.0,
+  "killed": "harness time watchdog at 120.0 s",
+  "exit_code": -9,
+  "wall_s": 120.03,
+  "peak_tree_rss_gb": 0.511,
+  "calls": [],
+  "child_log_tail": ""
+}

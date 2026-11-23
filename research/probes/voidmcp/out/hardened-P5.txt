@@ -1,0 +1,30 @@
+[
+  {
+    "probe": "P5-process.env",
+    "config": "--timeout 5s --memory 8 --max-tool-calls 10 --pool-size 1",
+    "code": "return process.env.PROBE_SECRET",
+    "wall_ms": 10,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "{\"error\":\"ReferenceError: process is not defined\",\"duration_ms\":1}",
+    "response_text_length": 66,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P5-qjs-std-getenv",
+    "config": "--timeout 5s --memory 8 --max-tool-calls 10 --pool-size 1",
+    "code": "const std = await import(\"qjs:std\"); return {one: std.getenv(\"PROBE_SECRET\"), all: std.getenviron()}",
+    "wall_ms": 9,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":{\"all\":{}},\"duration_ms\":0}",
+    "response_text_length": 37,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  }
+]

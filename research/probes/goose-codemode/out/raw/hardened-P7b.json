@@ -1,0 +1,17 @@
+{
+ "probe": "P7b",
+ "pid": 43796,
+ "env_GOOSE_DEFAULT_EXTENSION_TIMEOUT": "10",
+ "wall_ms": 721.4,
+ "peak_rss_mb": 4494.5,
+ "exit": -9,
+ "killed": "killed by harness at 4494 MB RSS after 0.6s",
+ "stderr": "",
+ "records": [
+  {
+   "exec": "config",
+   "probe": "P7b",
+   "timeout_seconds": 10
+  }
+ ]
+}

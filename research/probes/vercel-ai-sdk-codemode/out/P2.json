@@ -1,0 +1,21 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P2",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "console.log(\"A\".repeat(200000)); \"RETURNED\""
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "wallMs": 129.71225,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "ms": 130,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 151.9
+}

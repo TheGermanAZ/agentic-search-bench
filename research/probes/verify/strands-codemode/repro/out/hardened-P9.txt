@@ -1,0 +1,34 @@
+probe: hardened-P9
+outcome: works
+display: parallel (202 ms)
+detail: 5 host calls spanning 202 ms host-side (first start to last end); execution wall 211.2 ms; output '30'
+
+code:
+----
+import asyncio
+rs = await asyncio.gather(lookup(id=1), lookup(id=2), lookup(id=3), lookup(id=4), lookup(id=5))
+msg = sum(x["value"] for x in rs)
+print(msg)
+msg
+----
+
+setup_ms: 269.8
+wall_s (whole child process): 0.85
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.109
+host lookup calls: 5
+  call id=1 start=1795384500.717 end=1795384500.918 pid=90328
+  call id=2 start=1795384500.718 end=1795384500.919 pid=90328
+  call id=3 start=1795384500.718 end=1795384500.919 pid=90328
+  call id=4 start=1795384500.718 end=1795384500.919 pid=90328
+  call id=5 start=1795384500.718 end=1795384500.919 pid=90328
+
+=== run 0 (211.2 ms) ===
+ok: true
+stdout: 30
+status: success
+
+=== child process log (tail) ===
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+

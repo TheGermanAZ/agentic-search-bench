@@ -1,0 +1,15 @@
+{
+  "probe": "P7",
+  "config": "default",
+  "codes": [
+    "a = []\nwhile True:\n    a.append(\"x\" * 10**6)"
+  ],
+  "runs": [],
+  "setup_ms": 319.1,
+  "killed": "harness RSS watchdog at 4.41 GB after 2.3 s",
+  "exit_code": -9,
+  "wall_s": 2.4,
+  "peak_tree_rss_gb": 4.406,
+  "calls": [],
+  "child_log_tail": "[11/22/26 14:59:51] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-k0_wnvk0/generate              \n                             d (mcp dir:                                        \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-k0_wnvk0/generate              \n                             d/mcp)                                             \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-k0_wnvk0/generate              \n                             d/mcp/probe                                        \n"
+}

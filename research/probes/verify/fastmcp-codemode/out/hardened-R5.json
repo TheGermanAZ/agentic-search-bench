@@ -1,0 +1,332 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py hardened R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3837,
+  "peakTreeRssMb": 108,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R5",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(hardened {'limits': {'max_feed_duration_secs': 10, 'max_memory': 50000000}, 'wall_clock_timeout_secs': 60}); new in-process Client per execution",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 628,
+        "ms": 141,
+        "ok": true,
+        "result": {
+          "is_error": true,
+          "text": "Error calling tool 'execute': RuntimeError: suspension limit 1000 exceeded"
+        },
+        "callsStarted": 50
+      },
+      "atReturn": {
+        "started": 50,
+        "done": 0
+      },
+      "after3s": {
+        "started": 50,
+        "done": 0
+      }
+    },
+    "hostMaxEventLoopLagMs": 12,
+    "totalMs": 3770
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[11/22/26 16:29:51] Error calling tool 'execute'                                \n                    ╭─────────── Traceback (most recent call last) ────────────╮\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/server/server.py:1673 in call_tool                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 8 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:309 in         │\n                    │ _run_monty                                               │\n                    ╰──────────────────────────────────────────────────────────╯\n                    MontyRuntimeError: RuntimeError: suspension limit 1000      \n                    exceeded                                                    \n",
+  "rssSamplesMsMb": [
+    [
+      79,
+      31
+    ],
+    [
+      141,
+      41
+    ],
+    [
+      194,
+      46
+    ],
+    [
+      233,
+      53
+    ],
+    [
+      282,
+      56
+    ],
+    [
+      343,
+      59
+    ],
+    [
+      397,
+      63
+    ],
+    [
+      439,
+      67
+    ],
+    [
+      489,
+      75
+    ],
+    [
+      544,
+      80
+    ],
+    [
+      601,
+      83
+    ],
+    [
+      645,
+      87
+    ],
+    [
+      694,
+      91
+    ],
+    [
+      746,
+      107
+    ],
+    [
+      796,
+      108
+    ],
+    [
+      855,
+      100
+    ],
+    [
+      895,
+      100
+    ],
+    [
+      954,
+      100
+    ],
+    [
+      998,
+      100
+    ],
+    [
+      1052,
+      100
+    ],
+    [
+      1099,
+      100
+    ],
+    [
+      1149,
+      100
+    ],
+    [
+      1238,
+      100
+    ],
+    [
+      1344,
+      100
+    ],
+    [
+      1376,
+      100
+    ],
+    [
+      1421,
+      98
+    ],
+    [
+      1473,
+      98
+    ],
+    [
+      1521,
+      98
+    ],
+    [
+      1574,
+      98
+    ],
+    [
+      1624,
+      98
+    ],
+    [
+      1674,
+      98
+    ],
+    [
+      1726,
+      98
+    ],
+    [
+      1781,
+      98
+    ],
+    [
+      1825,
+      98
+    ],
+    [
+      1878,
+      98
+    ],
+    [
+      1934,
+      98
+    ],
+    [
+      1981,
+      98
+    ],
+    [
+      2033,
+      98
+    ],
+    [
+      2085,
+      98
+    ],
+    [
+      2135,
+      98
+    ],
+    [
+      2185,
+      98
+    ],
+    [
+      2235,
+      98
+    ],
+    [
+      2287,
+      98
+    ],
+    [
+      2359,
+      98
+    ],
+    [
+      2394,
+      98
+    ],
+    [
+      2440,
+      98
+    ],
+    [
+      2502,
+      98
+    ],
+    [
+      2552,
+      98
+    ],
+    [
+      2652,
+      98
+    ],
+    [
+      2740,
+      98
+    ],
+    [
+      2794,
+      98
+    ],
+    [
+      2827,
+      98
+    ],
+    [
+      2896,
+      98
+    ],
+    [
+      2927,
+      98
+    ],
+    [
+      2976,
+      98
+    ],
+    [
+      3025,
+      98
+    ],
+    [
+      3075,
+      98
+    ],
+    [
+      3125,
+      98
+    ],
+    [
+      3177,
+      98
+    ],
+    [
+      3226,
+      98
+    ],
+    [
+      3276,
+      98
+    ],
+    [
+      3326,
+      98
+    ],
+    [
+      3377,
+      98
+    ],
+    [
+      3429,
+      98
+    ],
+    [
+      3480,
+      98
+    ],
+    [
+      3533,
+      98
+    ],
+    [
+      3582,
+      98
+    ],
+    [
+      3632,
+      98
+    ],
+    [
+      3687,
+      98
+    ],
+    [
+      3740,
+      97
+    ],
+    [
+      3793,
+      97
+    ],
+    [
+      3836,
+      0
+    ]
+  ]
+}

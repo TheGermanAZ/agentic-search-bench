@@ -1,0 +1,7 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "display": "message + line",
+  "detail": "message survives: True; 'line 2' present: True; text: 'Error: ValueError: probe-boom Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 111, in execute exec(code, self.globals, self.locals) File \"<string>\", line 2, in <module> ValueError: probe-boom During handling of the above exception, another exception occurred: Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 114, in execute exec(code, self.globals, self.locals) File \"<string>\", line 2, in <module> ValueError: probe-boom Er...'",
+  "evidence": "research/probes/llamaindex-codeact/out/P10.txt"
+}

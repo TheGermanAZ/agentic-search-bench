@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "display": "limited (30 s)",
+  "detail": "stopped after 30.02 s: Error during execution: Execution timed out after 30 seconds",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/hardened-P6.txt"
+}

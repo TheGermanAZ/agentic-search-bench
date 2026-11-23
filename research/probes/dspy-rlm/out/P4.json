@@ -1,0 +1,7 @@
+{
+  "probe": "P4",
+  "outcome": "blocked",
+  "display": "blocked (not in Pyodide FS)",
+  "detail": "'[Error] FileNotFoundError: [44, \\'No such file or directory\\']' (Pyodide's in-memory FS has no /etc/hosts); js.Deno.readTextFileSync('/etc/hosts') -> 'NotCapable: Requires read access to \"/etc/hosts\"' (P12jsTry).",
+  "evidence": "research/probes/dspy-rlm/out/P4.txt"
+}

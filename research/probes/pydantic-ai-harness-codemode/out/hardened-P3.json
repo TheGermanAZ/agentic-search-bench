@@ -1,0 +1,8 @@
+{
+  "probe": "P3",
+  "outcome": "not-defined",
+  "detail": "model saw (ToolReturnPart): 'Type error in code:\\nerror[unresolved-import]: Cannot resolve imported module `urllib.request`\\n --> main.py:1:8\\n  |\\n1 | import urllib.request\\n  |        ^^^^^^^^^^^^^^\\n2 | urllib.request.urlopen(\"https://example.com\")\\n  |\\ninfo: Searched in the following paths during module resolution:\\ninfo:   1. / (first-party code)\\ninfo:   2. vendored://stdlib (stdlib typeshed stubs vendored by ty)\\ninfo: make sure'",
+  "config": "CodeMode(**{'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})",
+  "peak_tree_rss_mib": 80,
+  "harness_wall_s": 0.5
+}

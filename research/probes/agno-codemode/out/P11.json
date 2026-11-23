@@ -1,0 +1,7 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "display": "works (17.1 ms median)",
+  "detail": "20 runs in one session: median 17.1 ms, p90 27.4 ms; one-time setup 1.7 ms; fresh session per run (open+run+close, n=5): median 784.5 ms",
+  "evidence": "research/probes/agno-codemode/out/P11.txt"
+}

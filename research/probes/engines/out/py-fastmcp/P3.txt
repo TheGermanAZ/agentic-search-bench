@@ -1,0 +1,10 @@
+try:
+    import urllib.request
+    r = urllib.request.urlopen("https://example.com")
+    return r.status
+except Exception as e:
+    return type(e).__name__ + ": " + str(e)
+--- output
+ModuleNotFoundError: No module named 'urllib'
+---
+wall_ms=16 host_calls=0 peak_tree_rss_mb=187

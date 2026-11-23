@@ -1,0 +1,30 @@
+probe: P4
+outcome: works
+display: works (read /etc/hosts)
+detail: HOSTS 450 chars, mentions localhost: True
+
+code:
+----
+data = open("/etc/hosts").read()
+msg = "HOSTS " + str(len(data)) + " chars, mentions localhost: " + str("localhost" in data)
+print(msg)
+msg
+----
+
+setup_ms: 4.6
+wall_s (whole child process): 0.5
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.069
+host lookup calls: 0
+
+=== run 0 (2.8 ms) ===
+ok: true
+stdout: HOSTS 450 chars, mentions localhost: True
+
+error: null
+context_keys: ["data", "msg"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

@@ -1,0 +1,2 @@
+Default config (allow_networking=True, wave-1 sandbox helper): __import__('os').system('echo PWNED')
+MCP call raised ExceptionGroup: ExceptionGroup('unhandled errors in a TaskGroup', [ExceptionGroup('unhandled errors in a TaskGroup', [MCPError(-32000, 'Connection closed', None)])])

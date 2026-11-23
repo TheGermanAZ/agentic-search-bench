@@ -1,0 +1,67 @@
+label: P5
+command: node probe.mjs P5
+child exit: code=0 signal=null
+child wall ms (process start to exit): 424
+peak child RSS: 82.9 MB (ps every 50 ms)
+child stdout length: 1531 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P5",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 10.067917000000023,
+  "source": [
+    "return process.env.PROBE_SECRET;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "'process' is not defined",
+          "name": "ReferenceError",
+          "stack": "ReferenceError: 'process' is not defined\n    at <anonymous> (eval.js:5)\n    at <anonymous> (eval.js:6)\n    at <eval> (eval.js:11)\nHost: ReferenceError: 'process' is not defined\n    at QuickJSContext.unwrapResult (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/quickjs-emscripten-core/dist/chunk-JTKJZQYV.mjs:4:24443)\n    at QuickJSIsolateContext.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/@tanstack/ai-isolate-quickjs/dist/esm/isolate-context.js:182:34)\n    at async Object.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:181:108)\n    at async once (file://~/p/agentic-search-bench/research/probes/tanstack-ai-codemode-quickjs/probe.mjs:110:15)\n    at async file://~/p/agentic-search-bench/research/probes/tanstack-ai-codemode-quickjs/probe.mjs:152:45"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 34.106291999999996,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: 'process' is not defined",
+    "ms": 34,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 84.7
+}
+--- child stdout ---
+{
+  timestamp: [33m1795376407632[39m,
+  durationMs: [33m28[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'ReferenceError'[39m,
+    message: [32m"'process' is not defined"[39m,
+    stack: [32m"ReferenceError: 'process' is not defined\n"[39m +
+      [32m'    at <anonymous> (eval.js:5)\n'[39m +
+      [32m'    at <anonymous> (eval.js:6)\n'[39m +
+      [32m'    at <eval> (eval.js:11)\n'[39m +
+      [32m"Host: ReferenceError: 'process' is not defined\n"[39m +
+      [32m'    at QuickJSContext.unwrapResult (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/quickjs-emscripten-core/dist/chunk-JTKJZQYV.mjs:4:24443)\n'[39m +
+      [32m'    at QuickJSIsolateContext.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/@tanstack/ai-isolate-quickjs/dist/esm/isolate-context.js:182:34)\n'[39m +
+      [32m'    at async Object.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:181:108)\n'[39m +
+      [32m'    at async once (file://~/p/agentic-search-bench/research/probes/tanstack-ai-codemode-quickjs/probe.mjs:110:15)\n'[39m +
+      [32m'    at async file://~/p/agentic-search-bench/research/probes/tanstack-ai-codemode-quickjs/probe.mjs:152:45'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

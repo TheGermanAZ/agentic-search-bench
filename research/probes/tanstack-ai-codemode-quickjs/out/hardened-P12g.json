@@ -1,0 +1,44 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P12g",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 5.717790999999991,
+  "source": [
+    "const ref = globalThis.__external_lookup_ref ?? globalThis.__external_lookup_impl; let d; try { d = String(ref.deref && ref.deref()); } catch (e) { d = \"deref threw: \" + e.message; } let c; try { c = String(ref.constructor.constructor(\"return process\")()); } catch (e) { c = \"ctor threw: \" + e.message; } return { deref: d, ctor: c };"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": {
+          "deref": "undefined",
+          "ctor": "ctor threw: 'process' is not defined"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 24.65141700000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": {
+        "deref": "undefined",
+        "ctor": "ctor threw: 'process' is not defined"
+      },
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 25,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 87.3
+}

@@ -1,0 +1,14 @@
+CODE:
+import asyncio, time
+t = time.time()
+r = await asyncio.gather(*[lookup(id=i) for i in [1, 2, 3, 4, 5]])
+print(round((time.time() - t) * 1000))
+[x['value'] for x in r]
+SANDBOX_ELAPSED_MS:
+204
+RETURN:
+[2, 4, 6, 8, 10]
+EXC:
+None
+HOST_CALLS: 5
+HOST_WALL_MS: 258

@@ -1,0 +1,302 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py default R3",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 4037,
+  "peakTreeRssMb": 102,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R3",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(defaults); new in-process Client per execution",
+    "data": {
+      "recursion": {
+        "label": "recursion",
+        "startMs": 3404,
+        "ms": 241,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "RecursionError: maximum recursion depth exceeded"
+        },
+        "callsStarted": 0
+      },
+      "deep-return": {
+        "label": "deep-return",
+        "startMs": 3645,
+        "ms": 242,
+        "ok": true,
+        "result": {
+          "is_error": true,
+          "text": "Error calling tool 'execute': Error serializing to JSON: ValueError: Maximum serialization depth exceeded"
+        },
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 3887,
+        "ms": 37,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "alive"
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostMaxEventLoopLagMs": 130,
+    "totalMs": 3924
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[11/22/26 16:15:24] Error calling tool 'execute'                                \n                    ╭─────────── Traceback (most recent call last) ────────────╮\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/server/server.py:1673 in call_tool                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 3 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:78 in default_serializer              │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/pyd │\n                    │ antic/type_adapter.py:651 in dump_json                   │\n                    ╰──────────────────────────────────────────────────────────╯\n                    PydanticSerializationError: Error serializing to JSON:      \n                    ValueError: Maximum serialization depth exceeded            \n",
+  "rssSamplesMsMb": [
+    [
+      168,
+      29
+    ],
+    [
+      229,
+      34
+    ],
+    [
+      307,
+      37
+    ],
+    [
+      367,
+      37
+    ],
+    [
+      419,
+      37
+    ],
+    [
+      478,
+      38
+    ],
+    [
+      519,
+      39
+    ],
+    [
+      594,
+      41
+    ],
+    [
+      649,
+      43
+    ],
+    [
+      694,
+      44
+    ],
+    [
+      769,
+      44
+    ],
+    [
+      848,
+      44
+    ],
+    [
+      979,
+      47
+    ],
+    [
+      1042,
+      48
+    ],
+    [
+      1112,
+      49
+    ],
+    [
+      1166,
+      51
+    ],
+    [
+      1253,
+      51
+    ],
+    [
+      1332,
+      55
+    ],
+    [
+      1386,
+      56
+    ],
+    [
+      1431,
+      56
+    ],
+    [
+      1490,
+      56
+    ],
+    [
+      1537,
+      56
+    ],
+    [
+      1584,
+      56
+    ],
+    [
+      1648,
+      56
+    ],
+    [
+      1696,
+      56
+    ],
+    [
+      1737,
+      57
+    ],
+    [
+      1799,
+      57
+    ],
+    [
+      1841,
+      58
+    ],
+    [
+      1912,
+      58
+    ],
+    [
+      1963,
+      59
+    ],
+    [
+      2010,
+      61
+    ],
+    [
+      2066,
+      61
+    ],
+    [
+      2119,
+      62
+    ],
+    [
+      2175,
+      63
+    ],
+    [
+      2219,
+      65
+    ],
+    [
+      2273,
+      65
+    ],
+    [
+      2372,
+      67
+    ],
+    [
+      2421,
+      67
+    ],
+    [
+      2475,
+      67
+    ],
+    [
+      2575,
+      68
+    ],
+    [
+      2631,
+      71
+    ],
+    [
+      2678,
+      75
+    ],
+    [
+      2725,
+      76
+    ],
+    [
+      2791,
+      77
+    ],
+    [
+      2867,
+      80
+    ],
+    [
+      2917,
+      80
+    ],
+    [
+      2966,
+      80
+    ],
+    [
+      3030,
+      80
+    ],
+    [
+      3078,
+      82
+    ],
+    [
+      3131,
+      83
+    ],
+    [
+      3177,
+      83
+    ],
+    [
+      3273,
+      84
+    ],
+    [
+      3310,
+      86
+    ],
+    [
+      3374,
+      87
+    ],
+    [
+      3415,
+      87
+    ],
+    [
+      3473,
+      87
+    ],
+    [
+      3508,
+      90
+    ],
+    [
+      3573,
+      92
+    ],
+    [
+      3699,
+      94
+    ],
+    [
+      3903,
+      102
+    ],
+    [
+      4036,
+      98
+    ]
+  ]
+}

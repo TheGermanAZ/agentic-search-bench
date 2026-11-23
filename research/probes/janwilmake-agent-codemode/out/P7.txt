@@ -1,0 +1,12 @@
+{
+  "file": "P7.ts",
+  "exitCode": null,
+  "signal": "SIGKILL",
+  "killedByHarness": "4GB",
+  "wallMs": 5793,
+  "hostCalls": 0,
+  "peakTreeRssMb": 4200,
+  "stdoutChars": 0,
+  "stdout": "",
+  "stderr": ""
+}

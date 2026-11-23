@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "escaped",
+  "display": "escaped (os.system)",
+  "detail": "P12a subclasses walk: failed; 'TypeError: Type is not msgpack serializable: type' | P12b __import__('os').system: ran; 'SYSTEM 0' | P12c _wrap_close globals popen: failed; 'TypeError: Type is not msgpack serializable: type'",
+  "evidence": "research/probes/langgraph-codeact/out/P12.txt"
+}

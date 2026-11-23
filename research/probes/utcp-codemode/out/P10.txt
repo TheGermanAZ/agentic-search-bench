@@ -1,0 +1,16 @@
+{
+  "probe": "P10 errors",
+  "code": "throw new Error(\"probe-boom\")",
+  "result": null,
+  "logs": [
+    "[ERROR] Code execution failed: Error: probe-boom\n    at <isolated-vm>:5:21\n    at <isolated-vm>:6:15\n    at <isolated-vm>:11:11"
+  ],
+  "threw": null,
+  "multiLineCase": {
+    "code": "const x = 1;\nconst y = 2;\nthrow new Error(\"probe-boom-line3\");",
+    "logs": [
+      "[ERROR] Code execution failed: Error: probe-boom-line3\n    at <isolated-vm>:7:7\n    at <isolated-vm>:8:15\n    at <isolated-vm>:13:11"
+    ],
+    "threw": null
+  }
+}

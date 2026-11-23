@@ -1,0 +1,87 @@
+{
+  "impl": "datalayer-codemode-jupyter",
+  "name": "Datalayer Agent Codemode, jupyter-server sandbox variant (local Jupyter Server it starts itself)",
+  "source": "https://github.com/datalayer/agent-codemode; sandbox from PyPI code-sandboxes (repo https://github.com/datalayer/code-sandboxes)",
+  "pinned": "agent-codemode 566e324a42e86074d29fd5e6bb5da2f282d459ea (1.1.1), code-sandboxes 1.12.4 (tag v1.12.4 = d7030b0b), jupyter_server and ipykernel from the same venv",
+  "language": "Python",
+  "engine": "An ipykernel process on the host, started by a Jupyter Server subprocess that the sandbox launches with the host interpreter, driven over HTTP and websockets by jupyter-kernel-client. Same user, same machine, same environment as the host.",
+  "how_run": "Same harness as datalayer-codemode-eval with sandbox_variant='jupyter-server'. The client is built as CodeModeExecutor.setup() builds it (SandboxConfig(timeout=30, working_dir, env_vars=dict(os.environ))) plus port=41520 and python_executable=<venv python>, because the variant otherwise binds 8888 and runs `python` from PATH.",
+  "defaults": {
+    "time": "SandboxConfig.timeout=30 is passed to execute_interactive (jupyter_server.py:779-782). At 30 s the caller gets an empty, successful-looking result, but the kernel is not interrupted: it stayed at 100% CPU and the next execution in the session hung until the harness stopped it (P6b).",
+    "memory": "None. P7 reached 4.0 GB in 9.3 s and was killed by the harness.",
+    "output": "stdout, stderr and the execute_result text all come back, untruncated (P2). Errors carry an ANSI-coloured IPython traceback.",
+    "tool_calls": "CodeModeConfig.max_tool_calls defaults to None (types.py:233). It is enforced only in the host's executor.call_tool, which this variant's in-kernel MCP clients never call."
+  },
+  "hardened_config": "SandboxConfig(timeout=30, network_policy='none', env_vars={}, memory_limit=256 MiB, cpu_limit=1.0) with port=41520, passed as sandbox_client; CodeModeConfig(max_tool_calls=50). JupyterServerSandbox reads none of network_policy, env_vars, memory_limit or cpu_limit for a server it starts, so every hardened probe matched the default.",
+  "source_notes": [
+    {
+      "topic": "Bridge",
+      "finding": "Not a host bridge. Without mcp_proxy_url, setup sends the host's MCP server configs (command, args, env) into the kernel and builds agent_codemode MCPClient objects there, so the kernel spawns its own copy of each MCP server and calls it directly (P1: 42, one call, logged by a server process the kernel started). Credentials that a server needs must therefore be readable by the kernel.",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/composition/executor.py#L536-L599; research/probes/datalayer-codemode-jupyter/out/P1.txt"
+    },
+    {
+      "topic": "Parallel calls",
+      "finding": "MCPClient creates its stdio session lazily with no lock, so five concurrent first calls race: four returned {'error': 'Connection closed'} as ordinary values and one succeeded (P9d). After one warm-up call the same gather ran in parallel, 202 ms host-side (P9w).",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/proxy/mcp_client.py#L97-L120; #L221-L260; research/probes/datalayer-codemode-jupyter/out/P9d.txt; research/probes/datalayer-codemode-jupyter/out/P9w.txt"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "None beyond a separate process. The server is started with the caller's interpreter and inherits the host environment, so files, environment, network and os.system all work (P3, P4, P5, P12), with or without env_vars={}.",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/jupyter_server/jupyter_server.py#L276-L283; research/probes/datalayer-codemode-jupyter/out/hardened-P5.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "The execute timeout only bounds how long the client waits. On timeout the result is execution_ok=True with no error and the kernel keeps running the loop; the sandbox has an interrupt endpoint (_do_interrupt) but run_code does not call it on timeout.",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/jupyter_server/jupyter_server.py#L590-L607; #L779-L800; research/probes/datalayer-codemode-jupyter/out/P6b.txt"
+    },
+    {
+      "topic": "State",
+      "finding": "Persistent kernel namespace across executions (P8 printed 7).",
+      "evidence": "research/probes/datalayer-codemode-jupyter/out/P8.txt"
+    },
+    {
+      "topic": "Errors",
+      "finding": "IPython tracebacks with cell line numbers and ANSI colour codes come back in the error text (P10).",
+      "evidence": "research/probes/datalayer-codemode-jupyter/out/P10.txt"
+    },
+    {
+      "topic": "Startup",
+      "finding": "One-time setup 2.6 s (Jupyter Server plus kernel start, plus binding generation run inside the kernel); median 8.8 ms per execution afterwards (P11).",
+      "evidence": "research/probes/datalayer-codemode-jupyter/out/P11.txt"
+    }
+  ],
+  "surprises": [
+    "The only local Datalayer variant whose tool calls work is jupyter-server, and only because the kernel runs on the host and starts its own copies of the MCP servers.",
+    "A timeout returns a blank success and leaves the kernel spinning; the next call in the same session hangs (P6b).",
+    "Concurrent cold tool calls fail silently with {'error': 'Connection closed'} dicts rather than exceptions (P9d).",
+    "The variant's default port 8888 and `python` from PATH had to be overridden through constructor arguments; CodeModeConfig has no field for either."
+  ],
+  "overrides": {
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "display": "not stopped (caller freed at 30 s)",
+      "detail": "execute returned after 30.01 s with execution_ok=True, no output and no error, but the kernel kept running the loop: P6b shows the next execution in the same session hung until the harness stopped it at 120 s, and the kernel process sat at 100% CPU."
+    },
+    "hardened-P6": {
+      "outcome": "no-limit-within-120s",
+      "display": "not stopped (caller freed at 30 s)",
+      "detail": "same as default P6: returned after 30.01 s with no error; SandboxConfig hardening fields are not read by this variant."
+    },
+    "P6b": {
+      "outcome": "no-limit-within-120s",
+      "display": "kernel still busy after timeout"
+    },
+    "P7": {
+      "display": "no limit (killed at 4.0 GB)"
+    },
+    "P9": {
+      "display": "error (4 of 5 cold calls failed)"
+    },
+    "hardened-P9": {
+      "display": "error (4 of 5 cold calls failed)"
+    },
+    "P9d": {
+      "display": "4 of 5 returned {'error': ...}"
+    }
+  }
+}

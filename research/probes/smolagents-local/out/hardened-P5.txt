@@ -1,0 +1,7 @@
+config: LocalPythonExecutor(additional_authorized_imports=[], timeout_seconds=5)
+probe: P5
+code (python, run through LocalPythonExecutor):
+import os
+print(os.environ.get("PROBE_SECRET"))
+host_calls_so_far: 0
+result: {'ok': False, 'error_type': 'InterpreterError', 'error': "Code execution failed at line 'import os' due to: InterpreterError: Import of os is not allowed. Authorized imports are: ['queue', 'stat', 'statistics', 'unicodedata', 'itertools', 'random', 're', 'collections', 'math', 'datetime', 'time']", 'ms': 0.3}

@@ -1,0 +1,49 @@
+{
+  "probe": "A-approval-resume",
+  "requestId": "apr_00999dd5-a05e-4219-aded-91bf88a0b7e2",
+  "waitedBeforeResumeMs": 2000,
+  "wallMs": 226,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 4,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":true,\"value\":{\"a\":{\"id\":5,\"value\":10},\"b\":{\"id\":6,\"value\":12,\"workerCalls\":1},\"programSawMs\":2363},\"toolCalls\":[{\"name\":\"probe.gated\",\"outcome\":\"success\",\"durationMs\":2153},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":209}]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": true,
+          "value": {
+            "a": {
+              "id": 5,
+              "value": 10
+            },
+            "b": {
+              "id": 6,
+              "value": 12,
+              "workerCalls": 1
+            },
+            "programSawMs": 2363
+          },
+          "toolCalls": [
+            {
+              "name": "probe.gated",
+              "outcome": "success",
+              "durationMs": 2153
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 209
+            }
+          ]
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

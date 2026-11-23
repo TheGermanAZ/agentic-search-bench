@@ -1,0 +1,122 @@
+--- code 1 ---
+result = 1 + 1
+--- result 1 ---
+{"ok": true, "isError": false, "ms": 45.02, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 3, "limit_bytes": 262144, "truncated": false}}
+--- code 2 ---
+result = 1 + 1
+--- result 2 ---
+{"ok": true, "isError": false, "ms": 29.25, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 8, "limit_bytes": 262144, "truncated": false}}
+--- code 3 ---
+result = 1 + 1
+--- result 3 ---
+{"ok": true, "isError": false, "ms": 16.75, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 5, "limit_bytes": 262144, "truncated": false}}
+--- code 4 ---
+result = 1 + 1
+--- result 4 ---
+{"ok": true, "isError": false, "ms": 14.67, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 2, "limit_bytes": 262144, "truncated": false}}
+--- code 5 ---
+result = 1 + 1
+--- result 5 ---
+{"ok": true, "isError": false, "ms": 7.9, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 262144, "truncated": false}}
+--- code 6 ---
+result = 1 + 1
+--- result 6 ---
+{"ok": true, "isError": false, "ms": 6.36, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 262144, "truncated": false}}
+--- code 7 ---
+result = 1 + 1
+--- result 7 ---
+{"ok": true, "isError": false, "ms": 6.12, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 0, "limit_bytes": 262144, "truncated": false}}
+--- code 8 ---
+result = 1 + 1
+--- result 8 ---
+{"ok": true, "isError": false, "ms": 6.25, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 262144, "truncated": false}}
+--- code 9 ---
+result = 1 + 1
+--- result 9 ---
+{"ok": true, "isError": false, "ms": 6.22, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 262144, "truncated": false}}
+--- code 10 ---
+result = 1 + 1
+--- result 10 ---
+{"ok": true, "isError": false, "ms": 4.65, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 262144, "truncated": false}}
+--- code 11 ---
+result = 1 + 1
+--- result 11 ---
+{"ok": true, "isError": false, "ms": 8.78, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 262144, "truncated": false}}
+--- code 12 ---
+result = 1 + 1
+--- result 12 ---
+{"ok": true, "isError": false, "ms": 6.92, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 262144, "truncated": false}}
+--- code 13 ---
+result = 1 + 1
+--- result 13 ---
+{"ok": true, "isError": false, "ms": 6.88, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 262144, "truncated": false}}
+--- code 14 ---
+result = 1 + 1
+--- result 14 ---
+{"ok": true, "isError": false, "ms": 7.79, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 262144, "truncated": false}}
+--- code 15 ---
+result = 1 + 1
+--- result 15 ---
+{"ok": true, "isError": false, "ms": 17.85, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 4, "limit_bytes": 262144, "truncated": false}}
+--- code 16 ---
+result = 1 + 1
+--- result 16 ---
+{"ok": true, "isError": false, "ms": 33.55, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 6, "limit_bytes": 262144, "truncated": false}}
+--- code 17 ---
+result = 1 + 1
+--- result 17 ---
+{"ok": true, "isError": false, "ms": 9.93, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 2, "limit_bytes": 262144, "truncated": false}}
+--- code 18 ---
+result = 1 + 1
+--- result 18 ---
+{"ok": true, "isError": false, "ms": 9.75, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 3, "limit_bytes": 262144, "truncated": false}}
+--- code 19 ---
+result = 1 + 1
+--- result 19 ---
+{"ok": true, "isError": false, "ms": 8.48, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 262144, "truncated": false}}
+--- code 20 ---
+result = 1 + 1
+--- result 20 ---
+{"ok": true, "isError": false, "ms": 8.69, "hostCalls": 0, "gatewayAlive": true}
+text (118 chars):
+{"result": 2, "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 2, "limit_bytes": 262144, "truncated": false}}
+--- summary ---
+{"medianMs": 8.585, "p90Ms": 29.25, "setupMsInitializeAndList": 74.23}

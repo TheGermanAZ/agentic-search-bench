@@ -1,0 +1,29 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 30067,
+    "totalWallMs": 30222,
+    "peakTreeRssMB": 171.4,
+    "stderrTail": ""
+  },
+  "backend": "localsandbox",
+  "probe": "P6",
+  "mode": "default",
+  "setupMs": 102.2,
+  "record": {
+    "code": "while (true) {}",
+    "wallMs": 30062.1,
+    "hostCalls": 0,
+    "out": {
+      "success": false,
+      "logs": [],
+      "error": {
+        "message": "Code Mode execution timed out after 30000ms",
+        "name": "TimeoutError"
+      }
+    },
+    "threw": null
+  }
+}

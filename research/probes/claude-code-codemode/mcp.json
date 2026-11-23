@@ -1,0 +1,1 @@
+{"mcpServers": {"lookup": {"type": "stdio", "command": "node", "args": ["~/p/agentic-search-bench/research/probes/claude-code-codemode/lookup-mcp.mjs"], "env": {"LOOKUP_LOG": "~/p/agentic-search-bench/research/probes/claude-code-codemode/out/lookup-calls.log"}}}}

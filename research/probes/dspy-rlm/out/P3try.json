@@ -1,0 +1,7 @@
+{
+  "probe": "P3try",
+  "outcome": "blocked",
+  "display": "blocked (URLError / NotCapable)",
+  "detail": "urllib -> URLError Host is unreachable; pyfetch -> AbortError Requires net access to example.com:443.",
+  "evidence": "research/probes/dspy-rlm/out/P3try.txt"
+}

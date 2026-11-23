@@ -1,0 +1,38 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P12e",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 6.356500000000011,
+  "source": [
+    "return String(Object.getPrototypeOf(async function(){}).constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "[object Promise]",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 26.844708999999995,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "[object Promise]",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 27,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 85
+}

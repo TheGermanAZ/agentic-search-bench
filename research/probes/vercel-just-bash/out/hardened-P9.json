@@ -1,0 +1,33 @@
+{
+  "id": "P9",
+  "workerPid": 1489,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 1344,
+  "peakRssKbSampled": 83552,
+  "stderr": "",
+  "parsed": {
+    "probe": "P9",
+    "config": {
+      "executionLimitProfile": "hardened"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 1489
+    },
+    "runs": [
+      {
+        "script": "lookup 1 & lookup 2 & lookup 3 & lookup 4 & lookup 5 & wait; echo done",
+        "exitCode": 0,
+        "stdout": "{\"id\":1,\"value\":2}\n{\"id\":2,\"value\":4}\n{\"id\":3,\"value\":6}\n{\"id\":4,\"value\":8}\n{\"id\":5,\"value\":10}\ndone\n",
+        "stderr": "",
+        "ms": 1150,
+        "hostCalls": 5
+      }
+    ],
+    "peakRssKb": 83552,
+    "maxInFlight": 1,
+    "hostCalls": 5
+  }
+}

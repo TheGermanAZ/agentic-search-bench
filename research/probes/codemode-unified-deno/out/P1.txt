@@ -1,0 +1,54 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 798,
+    "totalWallMs": 1171,
+    "peakTreeRssMB": 225.7,
+    "stderrTail": "ers/thegermanaz/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:210:46)\n    at generateMCPProxy (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:273:34)\n    at file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:694:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:40:25.503Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nconst r = await mcp.probe.lookup({id: 21}); console.log(r.value)\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔧 Resolving 1 MCP call(s)...\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n⚠️  Could not load TypeScript declarations: ReferenceError: require is not defined\n    at loadTypeScriptDeclarations (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:210:46)\n    at generateMCPProxy (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:273:34)\n    at file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:694:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:40:25.964Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nconst r = await mcp.probe.lookup({id: 21}); console.log(JSON.stringify(r.parsed)); return r.parsed && r.parsed.value\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔧 Resolving 1 MCP call(s)...\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n🔄 Shutting down Code Mode MCP server...\n✅ MCP Manager shut down\n✅ Runtime deno shut down\n✅ Code Mode MCP server shut down complete\n"
+  },
+  "runtime": "deno",
+  "probe": "P1",
+  "mode": "default",
+  "setupMs": 302.2,
+  "executeToolDescription": "Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes with different capabilities. When MCP integration is enabled, code has access to MCP tools via the global `mcp` object (e.g., mcp.automem.store_memory(), mcp[\"sequential-thinking\"].sequentialthinking()). For TypeScript type definitions and API documentation of available MCP tools, read the resource mcp://types/declarations before writing code.",
+  "transportErrors": [],
+  "record": {
+    "spec": {
+      "code": "const r = await mcp.probe.lookup({id: 21}); console.log(r.value)",
+      "wallMs": 523.8,
+      "hostCalls": 1,
+      "out": {
+        "success": true,
+        "logs": [
+          ""
+        ],
+        "metrics": {
+          "executionTime": 35,
+          "memoryUsed": 0
+        },
+        "runtime": "deno"
+      },
+      "threw": null
+    },
+    "parsedField": {
+      "code": "const r = await mcp.probe.lookup({id: 21}); console.log(JSON.stringify(r.parsed)); return r.parsed && r.parsed.value",
+      "wallMs": 265.8,
+      "hostCalls": 1,
+      "out": {
+        "success": true,
+        "result": 42,
+        "logs": [
+          "{\"id\":21,\"value\":42}"
+        ],
+        "metrics": {
+          "executionTime": 37,
+          "memoryUsed": 0
+        },
+        "runtime": "deno"
+      },
+      "threw": null
+    }
+  }
+}

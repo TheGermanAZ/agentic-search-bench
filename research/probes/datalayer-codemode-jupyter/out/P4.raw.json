@@ -1,0 +1,27 @@
+{
+  "probe": "P4",
+  "config": "default",
+  "codes": [
+    "data = open(\"/etc/hosts\").read()\nmsg = \"HOSTS \" + str(len(data)) + \" chars, mentions localhost: \" + str(\"localhost\" in data)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "HOSTS 450 chars, mentions localhost: True",
+      "stderr": "",
+      "result": "'HOSTS 450 chars, mentions localhost: True'",
+      "error": null,
+      "interrupted": false,
+      "ms": 12.3,
+      "started": 1795378423.5481951
+    }
+  ],
+  "setup_ms": 2607.9,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 3.61,
+  "peak_tree_rss_gb": 0.38,
+  "calls": [],
+  "child_log_tail": "[11/22/26 15:13:41] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-v2na90p              \n                             d/generated (mcp dir:                              \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-v2na90p              \n                             d/generated/mcp)                                   \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-v2na90p              \n                             d/generated/mcp/probe                              \n                    INFO     Starting Jupyter server       jupyter_server.py:262\n                             subprocess on 127.0.0.1:41520                      \n                             (workdir=/var/folders/tg/x0gc                      \n                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      \n                             dl-jupyter-server-v2na90pd/wo                      \n                             rkspace)                                           \n[11/22/26 15:13:42] INFO     No existing kernels found,    jupyter_server.py:412\n                             will create a new one                              \n                    INFO     Starting the kernel client\u2026           client.py:412\n                    INFO     KernelHttpManager created a new      manager.py:258\n                             kernel: {'id':                                     \n                             '93cff7bd-4c77-4763-bcfb-1923b111d9d               \n                             9', 'name': 'python3',                             \n                             'last_activity':                                   \n                             '2026-11-22T20:13:42.318447Z',                     \n                             'execution_state': 'starting',                     \n                             'connections': 0}                                  \n                    INFO     Websocket connected                 _logging.py:104\n[11/22/26 15:13:43] INFO     Stopping the kernel client\u2026           client.py:433\n"
+}

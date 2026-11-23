@@ -1,0 +1,19 @@
+{
+ "probe": "P1",
+ "wall_ms": 287.2,
+ "peak_rss_mb": 7.8,
+ "exit": 0,
+ "killed": null,
+ "stderr": "",
+ "records": [
+  {
+   "code": "async function run() {\nconst r = await tools.call(\"lookup\", {id: 21}); console.log(r.value)\n}",
+   "elapsed_ms": 224.31454100000002,
+   "exec": 0,
+   "host_calls": 1,
+   "is_error": false,
+   "probe": "P1",
+   "text": "42\n"
+  }
+ ]
+}

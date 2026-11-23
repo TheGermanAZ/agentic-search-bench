@@ -1,0 +1,22 @@
+{
+  "probe": "P10",
+  "config": "default",
+  "codes": [
+    "x = 1\nraise ValueError(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: ValueError('probe-boom')",
+      "error": "Error during execution: ValueError('probe-boom')",
+      "context_keys": [
+        "x"
+      ],
+      "host_builtins_leak": false,
+      "ms": 2.5,
+      "started": 1795377264.635106
+    }
+  ],
+  "setup_ms": 2.0,
+  "done": true
+}

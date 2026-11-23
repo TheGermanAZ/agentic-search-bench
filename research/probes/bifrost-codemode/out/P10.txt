@@ -1,0 +1,53 @@
+--- code 1 ---
+fail("probe-boom")
+--- result 1 ---
+{"ms":4,"hostCalls":0,"ok":true,"isError":true}
+text (248 chars):
+Execution runtime error:
+
+Traceback (most recent call last):
+  code.star:1:5: in <toplevel>
+Error: fail: probe-boom
+
+Hints:
+The script stopped itself with fail(); the message above is the reason it gave.
+
+Environment:
+  Available server keys: probe
+--- code 2 ---
+x = 1
+y = 2
+fail("probe-boom")
+--- result 2 ---
+{"ms":2,"hostCalls":0,"ok":true,"isError":true}
+text (248 chars):
+Execution runtime error:
+
+Traceback (most recent call last):
+  code.star:3:5: in <toplevel>
+Error: fail: probe-boom
+
+Hints:
+The script stopped itself with fail(); the message above is the reason it gave.
+
+Environment:
+  Available server keys: probe
+--- code 3 ---
+x = 1
+y = {}
+z = y["missing"]
+--- result 3 ---
+{"ms":9,"hostCalls":0,"ok":true,"isError":true}
+text (288 chars):
+Execution runtime error:
+
+Traceback (most recent call last):
+  code.star:3:6: in <toplevel>
+Error: key "missing" not in dict
+
+Hints:
+The dict has no key "missing".
+List its keys with sorted(r.keys()), or read it with r.get("missing", default).
+
+Environment:
+  Available server keys: probe

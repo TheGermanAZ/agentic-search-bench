@@ -1,0 +1,119 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs default R3",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1126,
+  "peakTreeRssMb": 146,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "default",
+    "test": "R3",
+    "notes": "run() (module default runner, shared)",
+    "data": {
+      "A": {
+        "label": "recursion",
+        "startMs": 35,
+        "ms": 647,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": "RangeError: Maximum call stack size exceeded"
+          },
+          "stringChars": 53
+        },
+        "callsStarted": 0
+      },
+      "deep": {
+        "label": "deep-return",
+        "startMs": 682,
+        "ms": 262,
+        "ok": false,
+        "threw": "    at serializeValuePayload (run-setup.js:550:111)\n",
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 944,
+        "ms": 10,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": "alive"
+          },
+          "stringChars": 14
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 220,
+    "hostEvents": [],
+    "totalMs": 954
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:75804) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      117,
+      46
+    ],
+    [
+      185,
+      68
+    ],
+    [
+      258,
+      85
+    ],
+    [
+      321,
+      85
+    ],
+    [
+      392,
+      96
+    ],
+    [
+      539,
+      114
+    ],
+    [
+      616,
+      116
+    ],
+    [
+      708,
+      118
+    ],
+    [
+      791,
+      123
+    ],
+    [
+      875,
+      141
+    ],
+    [
+      957,
+      142
+    ],
+    [
+      1064,
+      146
+    ],
+    [
+      1124,
+      138
+    ]
+  ]
+}

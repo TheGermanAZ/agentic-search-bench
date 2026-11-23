@@ -1,0 +1,254 @@
+{
+ "probe": "P6",
+ "host": "~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex-code-mode-host",
+ "hello": {
+  "type": "connection/ready",
+  "selectedVersion": 1,
+  "capabilities": [
+   "bounded-output-v1",
+   "delegate-capacity-4096",
+   "session-cell-execution-resource-limits",
+   "yield-observation"
+  ]
+ },
+ "session_open": {
+  "type": "operation/response",
+  "id": 1,
+  "result": {
+   "status": "ok",
+   "value": {
+    "type": "session/ready",
+    "sessionId": "s1"
+   }
+  }
+ },
+ "setup_ms": 53.28,
+ "wall_ms": 120065.7,
+ "peak_rss_mb": 26.8,
+ "killed": "killed by harness at 120s (no-limit-within-120s)",
+ "records": [
+  {
+   "source": "while (true) {}",
+   "elapsed_ms": 11006.76,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 2,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Yielded": {
+       "cell_id": "1",
+       "content_items": [],
+       "code_mode_host_duration_ns": 11006416667
+      }
+     }
+    }
+   },
+   "waits": [
+    {
+     "t_ms": 22064,
+     "reply": {
+      "type": "operation/response",
+      "id": 3,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 11003118834
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 33067,
+     "reply": {
+      "type": "operation/response",
+      "id": 4,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 11003077958
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 44070,
+     "reply": {
+      "type": "operation/response",
+      "id": 5,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 11003077416
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 55075,
+     "reply": {
+      "type": "operation/response",
+      "id": 6,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 11001948958
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 66085,
+     "reply": {
+      "type": "operation/response",
+      "id": 7,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 11002536584
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 77093,
+     "reply": {
+      "type": "operation/response",
+      "id": 8,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 11003597250
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 88100,
+     "reply": {
+      "type": "operation/response",
+      "id": 9,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 11003032667
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 99107,
+     "reply": {
+      "type": "operation/response",
+      "id": 10,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 11004199041
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 110111,
+     "reply": {
+      "type": "operation/response",
+      "id": 11,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 11002616833
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 120066,
+     "reply": null
+    }
+   ]
+  }
+ ]
+}

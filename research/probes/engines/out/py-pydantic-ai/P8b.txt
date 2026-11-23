@@ -1,0 +1,8 @@
+try:
+    print(kept)  # type: ignore
+except NameError:
+    print("gone")
+--- output
+gone
+---
+wall_ms=76 host_calls=0 peak_tree_rss_mb=176

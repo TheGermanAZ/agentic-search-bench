@@ -1,0 +1,97 @@
+engine=quickjs hardened=false warmHost=false config={"enabled":true,"executor":"quickjs"} setupMs=1
+--- code 1 ---
+const r = await fetch("https://example.com"); return r.status;
+--- result 1 ---
+{"ms":349.57,"hostCalls":0,"ok":true,"waits":0}
+content text (406 chars):
+{"status":"failed","code":"internal_error","failurePhase":"guest","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"274168653c5e11e166b4cc53","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"error":"ReferenceError: fetch is not defined\n    at <anonymous> (openclaw-code-mode:user.js:1:17)\n"}
+details (487 chars):
+{
+ "status": "failed",
+ "code": "internal_error",
+ "failurePhase": "guest",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "274168653c5e11e166b4cc53",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "ReferenceError: fetch is not defined\n    at <anonymous> (openclaw-code-mode:user.js:1:17)\n"
+}
+--- code 2 ---
+return [typeof fetch, typeof XMLHttpRequest, typeof WebSocket, typeof require, typeof process];
+--- result 2 ---
+{"ms":3.94,"hostCalls":0,"ok":true,"waits":0}
+content text (299 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"274168653c5e11e166b4cc53","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"value":["undefined","undefined","undefined","undefined","undefined"]}
+details (388 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "274168653c5e11e166b4cc53",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": [
+  "undefined",
+  "undefined",
+  "undefined",
+  "undefined",
+  "undefined"
+ ]
+}
+--- code 3 ---
+try { new TextDecoder("no-such-label"); } catch (e) { const p = e.constructor.constructor("return process")(); return "example.com via host child_process curl: HTTP " + p.getBuiltinModule("child_process").execSync("curl -s -o /dev/null -w %{http_code} https://example.com").toString(); } return "no throw";
+--- result 3 ---
+{"ms":4.19,"hostCalls":0,"ok":true,"waits":0}
+content text (349 chars):
+{"status":"failed","code":"invalid_input","failurePhase":"input","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"274168653c5e11e166b4cc53","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"error":"code mode module access is disabled."}
+details (430 chars):
+{
+ "status": "failed",
+ "code": "invalid_input",
+ "failurePhase": "input",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "274168653c5e11e166b4cc53",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "code mode module access is disabled."
+}

@@ -1,0 +1,164 @@
+{
+  "probe": "P11",
+  "config": "default",
+  "codes": [
+    "print(2)"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 68.6,
+      "started": 1795377516.8887942
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 6.7,
+      "started": 1795377516.9575858
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 5.9,
+      "started": 1795377516.9644842
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 5.6,
+      "started": 1795377516.9705632
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 5.4,
+      "started": 1795377516.976355
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 6.0,
+      "started": 1795377516.981857
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 6.0,
+      "started": 1795377516.9880161
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 6.9,
+      "started": 1795377516.994605
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 6.2,
+      "started": 1795377517.001793
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 5.9,
+      "started": 1795377517.0082738
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 5.5,
+      "started": 1795377517.014395
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 5.9,
+      "started": 1795377517.020083
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 6.6,
+      "started": 1795377517.026217
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 8.2,
+      "started": 1795377517.033084
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 7.7,
+      "started": 1795377517.041576
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 13.1,
+      "started": 1795377517.049881
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 6.7,
+      "started": 1795377517.063266
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 6.7,
+      "started": 1795377517.07025
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 6.2,
+      "started": 1795377517.077255
+    },
+    {
+      "ok": true,
+      "stdout": "2\n",
+      "error": null,
+      "ms": 6.4,
+      "started": 1795377517.0837498
+    }
+  ],
+  "setup_ms": 8.5,
+  "fresh_session_ms": [
+    6.4,
+    6.2,
+    6.5,
+    5.7,
+    6.3
+  ],
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.89,
+  "peak_tree_rss_gb": 0.144,
+  "calls": [],
+  "child_log_tail": "~/p/agentic-search-bench/research/impls/llamaindex-codeact/.venv/lib/python3.12/site-packages/workflows/context/state_store.py:231: UnserializableKeyWarning: Skipping serialization of known unserializable key: memory -- This is expected but will require this item to be set manually after deserialization.\n  warnings.warn(\n"
+}

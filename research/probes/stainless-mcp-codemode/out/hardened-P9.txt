@@ -1,0 +1,21 @@
+mode: hardened
+code:
+async function run(client) {
+  const t = Date.now();
+  await Promise.all([1, 2, 3, 4, 5].map((i) => client.video.assets.retrieve(String(i))));
+  return Date.now() - t;
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "213"
+      }
+    ]
+  },
+  "ms": 677,
+  "hostCalls": 5
+}

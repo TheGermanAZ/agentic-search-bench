@@ -1,0 +1,24 @@
+{
+  "probe": "P8b",
+  "config": "default",
+  "codes": [
+    "def helper():\n    return lookup(3)['value']\nprint(helper())"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error: NameError: name 'lookup' is not defined\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 107, in execute\n    exec(exec_code, self.globals, self.locals)\n  File \"<string>\", line 4, in <module>\n  File \"<string>\", line 2, in helper\nNameError: name 'lookup' is not defined\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 114, in execute\n    exec(code, self.globals, self.locals)\n  File \"<string>\", line 3, in <module>\n  File \"<string>\", line 2, in helper\nNameError: name 'lookup' is not defined\n",
+      "error": "Error: NameError: name 'lookup' is not defined\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 107, in execute\n    exec(exec_code, self.globals, self.locals)\n  File \"<string>\", line 4, in <module>\n  File \"<string>\", line 2, in helper\nNameError: name 'lookup' is not defined\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 114, in execute\n    exec(code, self.globals, self.locals)\n  File \"<string>\", line 3, in <module>\n  File \"<string>\", line 2, in helper\nNameError: name 'lookup' is not defined\n",
+      "ms": 69.0,
+      "started": 1795377512.622972
+    }
+  ],
+  "setup_ms": 7.8,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.76,
+  "peak_tree_rss_gb": 0.143,
+  "calls": [],
+  "child_log_tail": ""
+}

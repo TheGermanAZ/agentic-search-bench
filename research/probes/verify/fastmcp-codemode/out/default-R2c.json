@@ -1,0 +1,218 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py default R2c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3101,
+  "peakTreeRssMb": 106,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R2c",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(defaults); new in-process Client per execution",
+    "data": {
+      "label": "",
+      "startMs": 2579,
+      "ms": 250,
+      "ok": true,
+      "result": {
+        "is_error": true,
+        "text": "Error calling tool 'execute': Exception: call_tool('rich') failed: Could not serialize the return value of tool 'rich' for its output schema: Unable to serialize unknown type: <class 'function'>. If this is unexpected, set the tool's output_schema to None to disable automatic serialization."
+      },
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 97,
+    "totalMs": 2829
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[11/22/26 16:15:20] Error calling tool 'rich'                                   \n                    Error calling tool 'execute'                                \n                    ╭─────────── Traceback (most recent call last) ────────────╮\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/server/server.py:1673 in call_tool                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 7 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:309 in         │\n                    │ _run_monty                                               │\n                    ╰──────────────────────────────────────────────────────────╯\n                    MontyRuntimeError: Exception: call_tool('rich') failed:     \n                    Could not serialize the return value of tool 'rich' for its \n                    output schema: Unable to serialize unknown type: <class     \n                    'function'>. If this is unexpected, set the tool's          \n                    output_schema to None to disable automatic serialization.   \n",
+  "rssSamplesMsMb": [
+    [
+      170,
+      20
+    ],
+    [
+      276,
+      29
+    ],
+    [
+      401,
+      34
+    ],
+    [
+      566,
+      34
+    ],
+    [
+      614,
+      43
+    ],
+    [
+      670,
+      43
+    ],
+    [
+      735,
+      43
+    ],
+    [
+      777,
+      45
+    ],
+    [
+      842,
+      46
+    ],
+    [
+      922,
+      47
+    ],
+    [
+      974,
+      50
+    ],
+    [
+      1024,
+      52
+    ],
+    [
+      1073,
+      55
+    ],
+    [
+      1151,
+      55
+    ],
+    [
+      1206,
+      55
+    ],
+    [
+      1254,
+      55
+    ],
+    [
+      1305,
+      56
+    ],
+    [
+      1362,
+      56
+    ],
+    [
+      1430,
+      56
+    ],
+    [
+      1477,
+      56
+    ],
+    [
+      1573,
+      56
+    ],
+    [
+      1695,
+      56
+    ],
+    [
+      1805,
+      58
+    ],
+    [
+      1859,
+      60
+    ],
+    [
+      1905,
+      62
+    ],
+    [
+      1961,
+      64
+    ],
+    [
+      2020,
+      64
+    ],
+    [
+      2066,
+      64
+    ],
+    [
+      2122,
+      66
+    ],
+    [
+      2162,
+      67
+    ],
+    [
+      2260,
+      71
+    ],
+    [
+      2315,
+      77
+    ],
+    [
+      2378,
+      80
+    ],
+    [
+      2421,
+      80
+    ],
+    [
+      2478,
+      81
+    ],
+    [
+      2531,
+      81
+    ],
+    [
+      2567,
+      82
+    ],
+    [
+      2634,
+      84
+    ],
+    [
+      2705,
+      87
+    ],
+    [
+      2756,
+      92
+    ],
+    [
+      2821,
+      105
+    ],
+    [
+      2887,
+      106
+    ],
+    [
+      2936,
+      98
+    ],
+    [
+      2991,
+      99
+    ],
+    [
+      3035,
+      0
+    ],
+    [
+      3100,
+      0
+    ]
+  ]
+}

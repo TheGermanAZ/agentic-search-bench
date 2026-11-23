@@ -1,0 +1,17 @@
+probe: P2 (codex code-mode host, V8)
+host: codex-code-mode-host codex 0.169.0
+handshake: {"type": "connection/ready", "selectedVersion": 1, "capabilities": ["bounded-output-v1", "delegate-capacity-4096", "session-cell-execution-resource-limits", "yield-observation"]}
+session/open: {"type": "operation/response", "id": 1, "result": {"status": "ok", "value": {"type": "session/ready", "sessionId": "s1"}}}
+setup_ms (spawn + handshake): 35.49
+wall_ms: 41.1
+peak_rss_mb: 7.9
+killed: None
+
+--- execution 0 ---
+source:
+text("A".repeat(200000)); "RETURNED";
+elapsed_ms: 5.38
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 2, "result": {"status": "ok", "value": {"Result": {"cell_id": "1", "content_items": [{"type": "input_text", "text": "Warning: truncated output (original token count: 50000)\nTotal output lines: 1\n\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ...[39170 chars elided by harness]... AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 5157500}}}}
+count of 'A' in response: 40000; contains RETURNED: False

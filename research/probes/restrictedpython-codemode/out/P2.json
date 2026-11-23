@@ -1,0 +1,9 @@
+{
+  "probe": "P2",
+  "outcome": "works",
+  "detail": "return value back: False (result='None'); print chars back: 0; marker: []; error=None",
+  "display": "print dropped, no return",
+  "a_count": 0,
+  "returned": false,
+  "config": "default"
+}

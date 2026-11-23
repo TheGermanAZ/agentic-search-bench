@@ -1,0 +1,8 @@
+{
+  "code": "while (true) {}",
+  "mode": "tool",
+  "wallMs": 120006,
+  "harnessError": "harness-timeout",
+  "killedForRss": false,
+  "serverAliveAfter": false
+}

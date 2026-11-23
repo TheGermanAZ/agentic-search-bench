@@ -1,0 +1,40 @@
+{
+  "worker": {
+    "exitCode": 0,
+    "signal": null,
+    "killed": null,
+    "wallMs": 229,
+    "peakRssKb": 105248
+  },
+  "parsed": {
+    "probe": "P3",
+    "host": {
+      "node": "v24.22.1",
+      "pid": 62050
+    },
+    "runs": [
+      {
+        "label": "curl https://example.com",
+        "script": "curl https://example.com",
+        "exitCode": 127,
+        "stdout": "",
+        "stderr": "bash: curl: command not found\n",
+        "ms": 33,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "curl -sS https://example.com | head -c 120",
+        "script": "curl -sS https://example.com | head -c 120",
+        "exitCode": 0,
+        "stdout": "<!doctype html><html lang=en><head><meta charset=utf-8><link rel=icon href=data:,><meta name=viewport content=\"width=dev",
+        "stderr": "",
+        "ms": 111,
+        "stdoutLength": 120,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 111248,
+    "maxInFlight": 0
+  }
+}

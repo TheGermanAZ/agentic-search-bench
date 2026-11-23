@@ -1,0 +1,30 @@
+{
+  "probe": "P9s",
+  "config": "default",
+  "codes": [
+    "tot = 0\nfor i in [1, 2, 3, 4, 5]:\n    x = lookup(i)\n    tot += x[\"value\"]\nprint(tot)\ntot"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "30",
+      "error": null,
+      "context_keys": [
+        "i",
+        "tot",
+        "x"
+      ],
+      "host_builtins_leak": false,
+      "ms": 2110.7,
+      "started": 1795377452.2383308
+    }
+  ],
+  "setup_ms": 15.9,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.41,
+  "peak_tree_rss_gb": 0.327,
+  "calls": [],
+  "child_log_tail": ""
+}

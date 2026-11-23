@@ -1,0 +1,31 @@
+probe: P12d
+outcome: escaped
+display: escaped (writes host builtins)
+detail: set
+
+code:
+----
+def f():
+    global PROBE_LEAK
+    PROBE_LEAK = 'leaked'
+f()
+print('set')
+----
+
+setup_ms: 3.3
+wall_s (whole child process): 0.26
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.069
+host lookup calls: 0
+
+=== run 0 (3.8 ms) ===
+ok: true
+stdout: set
+
+error: null
+context_keys: ["f"]
+host_builtins_leak: true
+
+=== child process log (tail) ===
+

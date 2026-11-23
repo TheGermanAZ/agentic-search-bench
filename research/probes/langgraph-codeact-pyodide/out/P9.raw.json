@@ -1,0 +1,26 @@
+{
+  "probe": "P9",
+  "config": "default",
+  "codes": [
+    "tot = 0\nfor i in [1, 2, 3, 4, 5]:\n    x = lookup(i)\n    tot += x[\"value\"]\nprint(tot)\ntot"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: name 'time' is not defined",
+      "error": "Error during execution: name 'time' is not defined",
+      "context_keys": [],
+      "host_builtins_leak": false,
+      "ms": 1183.4,
+      "started": 1795377416.7129269
+    }
+  ],
+  "setup_ms": 16.7,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.54,
+  "peak_tree_rss_gb": 0.29,
+  "calls": [],
+  "child_log_tail": ""
+}

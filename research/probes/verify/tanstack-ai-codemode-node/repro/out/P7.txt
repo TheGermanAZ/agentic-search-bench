@@ -1,0 +1,93 @@
+label: P7
+command: node probe.mjs P7
+child exit: code=0 signal=null
+child wall ms (process start to exit): 2601
+peak child RSS: 232.2 MB (ps every 50 ms)
+child stdout length: 631 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P7",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 80.35341700000004,
+  "source": [
+    "const a = []; while (true) a.push(\"x\".repeat(1e6));"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 115,
+    "siblingEndMs": 361,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "threw": {
+        "name": "Error",
+        "message": "Isolate is already disposed",
+        "stack": "Error: Isolate is already disposed\n    at NodeIsolateContext.dispose (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:66:17)\n    at disposeContext (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:112:32)\n    at Object.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:233:10)\n    at async once (file://~/p/agentic-search-bench/research/probes/verify/tanstack-ai-codemode-node/repro/probe.mjs:113:15)\n    at async file://~/p/agentic-search-bench/research/probes/verify/tanstack-ai-codemode-node/repro/probe.mjs:150:16"
+      },
+      "wallMs": 1749.020417,
+      "hostCalls": 1
+    }
+  ],
+  "concurrentSiblingRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 245.87900000000002,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 222.47191699999985,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 115,
+    "siblingEndMs": 361,
+    "main": "THREW Error: Isolate is already disposed",
+    "ms": 1749,
+    "sibling": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    },
+    "siblingMs": 246,
+    "after": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    }
+  },
+  "hostRssAfterMB": 229.2
+}
+--- child stdout ---
+{
+  timestamp: [33m1795381408988[39m,
+  durationMs: [33m1745[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'Error'[39m,
+    message: [32m'Isolate was disposed during execution due to memory limit'[39m,
+    stack: [32m'Error: Isolate was disposed during execution due to memory limit\n'[39m +
+      [32m'    at (<isolated-vm boundary>)\n'[39m +
+      [32m'    at execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:35:73)'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

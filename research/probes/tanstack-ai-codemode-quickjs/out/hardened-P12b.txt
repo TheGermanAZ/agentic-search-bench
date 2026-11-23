@@ -1,0 +1,50 @@
+label: hardened-P12b
+command: node probe.mjs P12b --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 205
+peak child RSS: 75.5 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P12b",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 5.548416000000003,
+  "source": [
+    "return String((function(){return this})().process);"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "undefined",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 29.470583000000005,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "undefined",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 29,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 84.5
+}
+--- child stdout ---
+
+--- child stderr ---
+

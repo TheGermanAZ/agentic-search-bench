@@ -1,0 +1,124 @@
+engine=quickjs hardened=false config={"enabled":true,"executor":"quickjs"} setupMs=1
+--- code 1 ---
+globalThis.kept = 7; return "set";
+--- result 1 ---
+{"ms":5.96,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"3baf9413a10824bdc24a1ff1","searchCount":0,"describeCount":0,"callCount":1,"visibleTools":["exec","wait"]},"output":[],"value":"set"}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "3baf9413a10824bdc24a1ff1",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 1,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": "set"
+}
+--- code 2 ---
+console.log(typeof kept === "undefined" ? "gone" : kept); return typeof kept === "undefined" ? "gone" : kept;
+--- result 2 ---
+{"ms":3.75,"hostCalls":0,"ok":true,"waits":0}
+content text (273 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"3baf9413a10824bdc24a1ff1","searchCount":0,"describeCount":0,"callCount":1,"visibleTools":["exec","wait"]},"output":[{"type":"text","text":"gone"}],"value":"gone"}
+details (363 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "3baf9413a10824bdc24a1ff1",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 1,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [
+  {
+   "type": "text",
+   "text": "gone"
+  }
+ ],
+ "value": "gone"
+}
+--- code 3 ---
+await store("kept", 7); return "stored";
+--- result 3 ---
+{"ms":13.72,"hostCalls":0,"ok":true,"waits":0}
+content text (480 chars):
+{"status":"failed","code":"internal_error","failurePhase":"bridge","bridgeDispatchStarted":true,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"3baf9413a10824bdc24a1ff1","searchCount":0,"describeCount":0,"callCount":1,"visibleTools":["exec","wait"]},"output":[],"error":"Error: Code Mode store/load requires an active session-bound run; start a new interactive reply with a session.\n    at <anonymous> (openclaw-code-mode:user.js:1:7)\n"}
+details (561 chars):
+{
+ "status": "failed",
+ "code": "internal_error",
+ "failurePhase": "bridge",
+ "bridgeDispatchStarted": true,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "3baf9413a10824bdc24a1ff1",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 1,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "Error: Code Mode store/load requires an active session-bound run; start a new interactive reply with a session.\n    at <anonymous> (openclaw-code-mode:user.js:1:7)\n"
+}
+--- code 4 ---
+return await load("kept");
+--- result 4 ---
+{"ms":8.35,"hostCalls":0,"ok":true,"waits":0}
+content text (481 chars):
+{"status":"failed","code":"internal_error","failurePhase":"bridge","bridgeDispatchStarted":true,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"3baf9413a10824bdc24a1ff1","searchCount":0,"describeCount":0,"callCount":1,"visibleTools":["exec","wait"]},"output":[],"error":"Error: Code Mode store/load requires an active session-bound run; start a new interactive reply with a session.\n    at <anonymous> (openclaw-code-mode:user.js:1:14)\n"}
+details (562 chars):
+{
+ "status": "failed",
+ "code": "internal_error",
+ "failurePhase": "bridge",
+ "bridgeDispatchStarted": true,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "3baf9413a10824bdc24a1ff1",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 1,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "Error: Code Mode store/load requires an active session-bound run; start a new interactive reply with a session.\n    at <anonymous> (openclaw-code-mode:user.js:1:14)\n"
+}

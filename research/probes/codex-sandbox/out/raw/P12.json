@@ -1,0 +1,100 @@
+[
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "names=[c.__name__ for c in ().__class__.__base__.__subclasses__()];print('_wrap_close' in names, 'Popen' in names);w=[c for c in ().__class__.__base__.__subclasses__() if c.__name__=='_wrap_close'][0];print('via _wrap_close:', w.__init__.__globals__['system']('echo PWNED-subclasses'))"
+  ],
+  "exit": 0,
+  "wall_ms": 48.7,
+  "peak_tree_rss_mb": 1.2,
+  "killed": null,
+  "stdout_len": 47,
+  "stdout": "PWNED-subclasses\nTrue False\nvia _wrap_close: 0\n",
+  "stderr": "",
+  "label": "python subclasses walk"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "__import__(\"os\").system(\"echo PWNED\")"
+  ],
+  "exit": 0,
+  "wall_ms": 97.4,
+  "peak_tree_rss_mb": 1.6,
+  "killed": null,
+  "stdout_len": 6,
+  "stdout": "PWNED\n",
+  "stderr": "",
+  "label": "python os.system"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "import os;print(\"exit\", os.system(\"echo PWNED > ~/p/agentic-search-bench/research/probes/codex-sandbox/out/P12-escape-write.txt\"))"
+  ],
+  "exit": 0,
+  "wall_ms": 50.9,
+  "peak_tree_rss_mb": 2.3,
+  "killed": null,
+  "stdout_len": 9,
+  "stdout": "exit 256\n",
+  "stderr": "sh: ~/p/agentic-search-bench/research/probes/codex-sandbox/out/P12-escape-write.txt: Operation not permitted\n",
+  "label": "os.system write outside workspace",
+  "escape_file_exists_after": false
+ },
+ {
+  "mode": "workspace-write",
+  "argv": [
+   "python3",
+   "-c",
+   "names=[c.__name__ for c in ().__class__.__base__.__subclasses__()];print('_wrap_close' in names, 'Popen' in names);w=[c for c in ().__class__.__base__.__subclasses__() if c.__name__=='_wrap_close'][0];print('via _wrap_close:', w.__init__.__globals__['system']('echo PWNED-subclasses'))"
+  ],
+  "exit": 0,
+  "wall_ms": 53.8,
+  "peak_tree_rss_mb": 12.0,
+  "killed": null,
+  "stdout_len": 47,
+  "stdout": "PWNED-subclasses\nTrue False\nvia _wrap_close: 0\n",
+  "stderr": "",
+  "label": "python subclasses walk"
+ },
+ {
+  "mode": "workspace-write",
+  "argv": [
+   "python3",
+   "-c",
+   "__import__(\"os\").system(\"echo PWNED\")"
+  ],
+  "exit": 0,
+  "wall_ms": 92.5,
+  "peak_tree_rss_mb": 1.8,
+  "killed": null,
+  "stdout_len": 6,
+  "stdout": "PWNED\n",
+  "stderr": "",
+  "label": "python os.system"
+ },
+ {
+  "mode": "workspace-write",
+  "argv": [
+   "python3",
+   "-c",
+   "import os;print(\"exit\", os.system(\"echo PWNED > ~/p/agentic-search-bench/research/probes/codex-sandbox/out/P12-escape-write.txt\"))"
+  ],
+  "exit": 0,
+  "wall_ms": 99.2,
+  "peak_tree_rss_mb": 2.1,
+  "killed": null,
+  "stdout_len": 9,
+  "stdout": "exit 256\n",
+  "stderr": "sh: ~/p/agentic-search-bench/research/probes/codex-sandbox/out/P12-escape-write.txt: Operation not permitted\n",
+  "label": "os.system write outside workspace",
+  "escape_file_exists_after": false
+ }
+]

@@ -1,0 +1,20 @@
+{
+  "execute": {
+    "tool": "execute",
+    "code": "async () => { const r = await fetch(\"https://example.com\"); return { status: r.status, body: await r.text() } }",
+    "ms": 6,
+    "hostCalls": 0,
+    "isError": false,
+    "text": "{\n  \"status\": 403,\n  \"body\": \"Forbidden: requests to example.com are not allowed\"\n}",
+    "rpcError": null
+  },
+  "search": {
+    "tool": "search",
+    "code": "async () => { const r = await fetch(\"https://example.com\"); return r.status }",
+    "ms": 123,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: This worker is not permitted to access the internet via global functions like fetch(). It must use capabilities (such as bindings in 'env') to talk to the outside world.",
+    "rpcError": null
+  }
+}

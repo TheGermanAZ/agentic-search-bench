@@ -1,0 +1,74 @@
+[
+  {
+    "model": "claude-sonnet-5-5",
+    "strategy": "codemode",
+    "kind": "aggregate",
+    "n": 5,
+    "correct": 5,
+    "accuracy": 1,
+    "ci": [
+      0.565508505247919,
+      1.0000000000000002
+    ],
+    "errors": 0,
+    "medianLatencyS": 5.814,
+    "medianToolCalls": 1,
+    "meanInputTokens": 5697,
+    "meanToolResultChars": 342,
+    "meanCostUsd": 0.00827008
+  },
+  {
+    "model": "claude-sonnet-5-5",
+    "strategy": "codemode",
+    "kind": "all",
+    "n": 12,
+    "correct": 12,
+    "accuracy": 1,
+    "ci": [
+      0.7574992425007574,
+      0.9999999999999998
+    ],
+    "errors": 0,
+    "medianLatencyS": 13.5925,
+    "medianToolCalls": 1,
+    "meanInputTokens": 6118,
+    "meanToolResultChars": 262,
+    "meanCostUsd": 0.008297658333333333
+  },
+  {
+    "model": "claude-sonnet-5-5",
+    "strategy": "codemode",
+    "kind": "hard",
+    "n": 4,
+    "correct": 4,
+    "accuracy": 1,
+    "ci": [
+      0.5100999795960008,
+      1
+    ],
+    "errors": 0,
+    "medianLatencyS": 17.4905,
+    "medianToolCalls": 1,
+    "meanInputTokens": 7127,
+    "meanToolResultChars": 244,
+    "meanCostUsd": 0.009274725000000001
+  },
+  {
+    "model": "claude-sonnet-5-5",
+    "strategy": "codemode",
+    "kind": "identifier",
+    "n": 3,
+    "correct": 3,
+    "accuracy": 1,
+    "ci": [
+      0.4384939195509822,
+      1
+    ],
+    "errors": 0,
+    "medianLatencyS": 16.872,
+    "medianToolCalls": 1,
+    "meanInputTokens": 5474,
+    "meanToolResultChars": 153,
+    "meanCostUsd": 0.007040866666666666
+  }
+]

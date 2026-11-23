@@ -1,0 +1,9 @@
+{
+  "result": {
+    "stdout": "443 1\n0\n0\ndocker.sock False Users False\nworkspace ['_exec.py']\nproxy b'{\"error\": \"No LM handler configured\"}'\n",
+    "stderr": "/usr/local/lib/python3.11/site-packages/dill/_dill.py:423: PicklingWarning: Cannot locate reference to <class 'bytearray_iterator'>.\n  StockPickler.save(self, obj, save_persistent_id)\n/usr/local/lib/python3.11/site-packages/dill/_dill.py:423: PicklingWarning: Cannot pickle <class 'bytearray_iterator'>: builtins.bytearray_iterator has recursive self-references that trigger a RecursionError.\n  StockPickler.save(self, obj, save_persistent_id)\n",
+    "ms": 122.8
+  },
+  "host_side_file_exists": true,
+  "wall_s": 3.51
+}

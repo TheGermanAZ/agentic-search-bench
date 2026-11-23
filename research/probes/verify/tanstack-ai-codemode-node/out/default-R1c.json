@@ -1,0 +1,128 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../tanstack-ai-codemode-node/adapter.mjs default R1c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1404,
+  "peakTreeRssMb": 82,
+  "watchKill": null,
+  "record": {
+    "impl": "tanstack-ai-codemode-node",
+    "config": "default",
+    "test": "R1c",
+    "notes": "one createCodeModeTool({driver: node}) shared; execute({typescriptCode}) as chat() calls it",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 619,
+        "ms": 669,
+        "ok": true,
+        "result": {
+          "value": {
+            "success": true,
+            "result": "A done",
+            "logs": []
+          },
+          "stringChars": 6
+        },
+        "callsStarted": 2
+      },
+      "B": {
+        "label": "B(concurrent)",
+        "startMs": 784,
+        "ms": 67,
+        "ok": true,
+        "result": {
+          "value": {
+            "success": true,
+            "result": [
+              "undefined",
+              "undefined"
+            ],
+            "logs": []
+          },
+          "stringChars": 18
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 640,
+    "hostEvents": [],
+    "totalMs": 1288
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      166,
+      56
+    ],
+    [
+      215,
+      60
+    ],
+    [
+      281,
+      61
+    ],
+    [
+      347,
+      62
+    ],
+    [
+      431,
+      66
+    ],
+    [
+      553,
+      73
+    ],
+    [
+      593,
+      78
+    ],
+    [
+      661,
+      78
+    ],
+    [
+      709,
+      78
+    ],
+    [
+      777,
+      78
+    ],
+    [
+      956,
+      81
+    ],
+    [
+      1047,
+      82
+    ],
+    [
+      1130,
+      82
+    ],
+    [
+      1211,
+      82
+    ],
+    [
+      1334,
+      82
+    ],
+    [
+      1402,
+      82
+    ]
+  ]
+}

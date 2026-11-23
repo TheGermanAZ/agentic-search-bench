@@ -1,0 +1,55 @@
+{
+  "probe": "P9b",
+  "config": "default",
+  "codes": [
+    "from concurrent.futures import ThreadPoolExecutor\nwith ThreadPoolExecutor(5) as ex:\n    rs = list(ex.map(lookup, [1, 2, 3, 4, 5]))\nprint(sum(x['value'] for x in rs))"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "30\n",
+      "error": null,
+      "ms": 298.8,
+      "started": 1795377515.1835048
+    }
+  ],
+  "setup_ms": 9.4,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.02,
+  "peak_tree_rss_gb": 0.143,
+  "calls": [
+    {
+      "id": 1,
+      "start": 1795377515.263934,
+      "end": 1795377515.464963,
+      "pid": 47930
+    },
+    {
+      "id": 2,
+      "start": 1795377515.268072,
+      "end": 1795377515.472756,
+      "pid": 47930
+    },
+    {
+      "id": 3,
+      "start": 1795377515.270266,
+      "end": 1795377515.4750268,
+      "pid": 47930
+    },
+    {
+      "id": 4,
+      "start": 1795377515.2728362,
+      "end": 1795377515.477364,
+      "pid": 47930
+    },
+    {
+      "id": 5,
+      "start": 1795377515.2750552,
+      "end": 1795377515.4773781,
+      "pid": 47930
+    }
+  ],
+  "child_log_tail": ""
+}

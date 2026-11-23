@@ -1,0 +1,8 @@
+{
+  "probe": "P2",
+  "outcome": "works",
+  "detail": "model saw 200038 chars (ToolReturnPart), 200000 'A's, RETURNED present: True, markers: [], head '{\"output\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', tail 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\\\n\", \"result\": \"RETURNED\"}'",
+  "config": "CodeMode()",
+  "peak_tree_rss_mib": 80,
+  "harness_wall_s": 0.5
+}

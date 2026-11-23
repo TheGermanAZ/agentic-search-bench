@@ -1,0 +1,5 @@
+probe: P4
+code (python, run through PythonREPL.__call__):
+print(open("/etc/hosts").read()[:60].replace("\n", " | "))
+host_calls_so_far: 0
+output: '## | # Host Database | # | # localhost is used to configure the lo\n'

@@ -1,0 +1,31 @@
+probe: P12
+code (python, run through LocalPythonExecutor):
+# P12a spec: subclasses walk
+subs = ().__class__.__base__.__subclasses__()
+print(len(subs))
+
+# P12b spec: __import__ os system
+__import__("os").system("echo PWNED")
+
+# P12c extra: collections._sys.modules os
+import collections
+r = collections._sys.modules["os"].system("echo PWNED")
+print(r)
+
+# P12d extra: queue.threading._os
+import queue
+r = queue.threading._os.system("echo PWNED")
+print(r)
+host_calls_so_far: 0
+
+# P12a spec: subclasses walk
+result: {'ok': False, 'error_type': 'InterpreterError', 'error': "Code execution failed at line 'subs = ().__class__.__base__.__subclasses__()' due to: InterpreterError: Forbidden access to dunder attribute: __base__", 'ms': 0.3}
+
+# P12b spec: __import__ os system
+result: {'ok': False, 'error_type': 'InterpreterError', 'error': 'Code execution failed at line \'__import__("os").system("echo PWNED")\' due to: InterpreterError: Forbidden function evaluation: \'__import__\' is not among the explicitly allowed tools or defined/imported in the preceding code', 'ms': 0.1}
+
+# P12c extra: collections._sys.modules os
+result: {'ok': False, 'error_type': 'InterpreterError', 'error': 'Code execution failed at line \'r = collections._sys.modules["os"].system("echo PWNED")\' due to: InterpreterError: Forbidden access to module: sys', 'ms': 0.3}
+
+# P12d extra: queue.threading._os
+result: {'ok': False, 'error_type': 'InterpreterError', 'error': 'Code execution failed at line \'r = queue.threading._os.system("echo PWNED")\' due to: InterpreterError: Forbidden access to module: threading', 'ms': 0.4}

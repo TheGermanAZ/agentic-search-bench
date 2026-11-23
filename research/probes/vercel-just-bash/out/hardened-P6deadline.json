@@ -1,0 +1,33 @@
+{
+  "id": "P6deadline",
+  "workerPid": 42057,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 30140,
+  "peakRssKbSampled": 101504,
+  "stderr": "",
+  "parsed": {
+    "probe": "P6deadline",
+    "config": {
+      "executionLimitProfile": "hardened"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 42057
+    },
+    "runs": [
+      {
+        "script": "while true; do :; done",
+        "exitCode": 124,
+        "stdout": "",
+        "stderr": "bash: execution exceeded execution deadline (30000ms)\n",
+        "ms": 30007,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 101504,
+    "maxInFlight": 0,
+    "hostCalls": 0
+  }
+}

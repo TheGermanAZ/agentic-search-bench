@@ -1,0 +1,143 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs hardened R8b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 962,
+  "peakTreeRssMb": 341,
+  "peakTreeFootprintMb": 312,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "hardened",
+    "test": "R8b",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\",\"timeoutMs\":5000,\"memoryLimitBytes\":16777216,\"maxOutputBytes\":8192,\"maxSnapshotBytes\":1048576,\"maxPendingToolCalls\":8,\"snapshotTtlSeconds\":60}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "startMs": 659,
+      "ms": 257,
+      "ok": true,
+      "result": {
+        "value": {
+          "status": "failed",
+          "code": "internal_error",
+          "waits": 0,
+          "error": "InternalError: out of memory\n    at <anonymous> (openclaw-code-mode:user.js:1:32)\n",
+          "output": [],
+          "textChars": 398,
+          "text": "{\"status\":\"failed\",\"code\":\"internal_error\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"35f1804b26266615db5b66fc\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"InternalError: out of memory\\n    at <anonymous> (openclaw-code-mode:user.js:1:32)\\n\"}"
+        },
+        "stringChars": 500
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 749,
+    "hostEvents": [],
+    "totalMs": 916
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_6238a98e-ebba-4639-a45f-829ec456bfe4 workerId=code-mode-quickjs:1 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      77,
+      62,
+      20
+    ],
+    [
+      127,
+      86,
+      20
+    ],
+    [
+      181,
+      99,
+      20
+    ],
+    [
+      228,
+      112,
+      63
+    ],
+    [
+      281,
+      124,
+      63
+    ],
+    [
+      332,
+      138,
+      102
+    ],
+    [
+      382,
+      153,
+      102
+    ],
+    [
+      436,
+      173,
+      102
+    ],
+    [
+      487,
+      178,
+      143
+    ],
+    [
+      538,
+      204,
+      143
+    ],
+    [
+      588,
+      214,
+      184
+    ],
+    [
+      640,
+      236,
+      184
+    ],
+    [
+      692,
+      239,
+      184
+    ],
+    [
+      745,
+      256,
+      214
+    ],
+    [
+      800,
+      274,
+      214
+    ],
+    [
+      851,
+      293,
+      257
+    ],
+    [
+      902,
+      314,
+      257
+    ],
+    [
+      961,
+      341,
+      257
+    ]
+  ]
+}

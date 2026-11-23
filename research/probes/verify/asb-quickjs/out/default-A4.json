@@ -1,0 +1,39 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default A4",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 35,
+  "peakTreeRssMb": 0,
+  "peakTreeFootprintMb": 0,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "A4",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "startMs": 2,
+      "ms": 21,
+      "ok": true,
+      "result": {
+        "value": "please await  the reply",
+        "stringChars": 23
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 2,
+    "hostEvents": [],
+    "totalMs": 23
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": []
+}

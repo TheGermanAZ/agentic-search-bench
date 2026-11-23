@@ -1,0 +1,6 @@
+probe P4 hardened=False
+code:
+print(open("/etc/hosts").read())
+
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 346.9}
+stdout (0 chars): ''

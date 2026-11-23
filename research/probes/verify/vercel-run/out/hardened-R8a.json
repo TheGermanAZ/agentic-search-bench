@@ -1,0 +1,74 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs hardened R8a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 493,
+  "peakTreeRssMb": 164,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "hardened",
+    "test": "R8a",
+    "notes": "createRunner({limits: HARDENED_LIMITS}) shared",
+    "data": {
+      "startMs": 37,
+      "ms": 358,
+      "ok": true,
+      "result": {
+        "value": {
+          "status": "completed",
+          "value": "done"
+        },
+        "stringChars": 13
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 70,
+    "hostEvents": [],
+    "totalMs": 395
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:33914) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      123,
+      51
+    ],
+    [
+      187,
+      93
+    ],
+    [
+      231,
+      113
+    ],
+    [
+      287,
+      137
+    ],
+    [
+      336,
+      153
+    ],
+    [
+      374,
+      157
+    ],
+    [
+      431,
+      164
+    ],
+    [
+      492,
+      0
+    ]
+  ]
+}

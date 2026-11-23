@@ -1,0 +1,8 @@
+{
+  "probe": "P5",
+  "outcome": "blocked",
+  "detail": "model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 2, in <module>\\n    os.environ.get(\"PROBE_SECRET\")\\n    ~~~~~~~~~~\\nRuntimeError: \\'os.environ\\' is not supported in this environment'",
+  "config": "CodeMode()",
+  "peak_tree_rss_mib": 101,
+  "harness_wall_s": 0.5
+}

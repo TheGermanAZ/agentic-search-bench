@@ -1,0 +1,43 @@
+probe: P8
+outcome: works
+display: persists
+detail: execution 2 printed '7'
+
+code:
+----
+kept = 7
+----
+try:
+    msg = kept
+except NameError:
+    msg = "gone"
+print(msg)
+msg
+----
+
+setup_ms: 2.0
+wall_s (whole child process): 0.37
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.064
+host lookup calls: 0
+
+=== run 0 (2.7 ms) ===
+ok: true
+stdout: <code ran, no output printed to stdout>
+error: null
+context_keys: ["kept"]
+host_builtins_leak: false
+
+=== run 1 (2.1 ms) ===
+ok: true
+stdout: 7
+
+error: null
+context_keys: ["kept", "msg"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+~/p/agentic-search-bench/research/impls/langgraph-codeact/.venv/lib/python3.12/site-packages/langgraph/checkpoint/base/__init__.py:17: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects='messages' or allowed_objects='core') to suppress this warning.
+  from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+

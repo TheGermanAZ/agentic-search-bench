@@ -1,0 +1,387 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 12544,
+  "peakTreeRssMb": 355,
+  "peakTreeFootprintMb": 326,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R7b",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "r": {
+        "startMs": 651,
+        "ms": 10133,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "failed",
+            "code": "timeout",
+            "waits": 0,
+            "error": "code mode timeout exceeded",
+            "output": [],
+            "textChars": 333,
+            "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"49010f9af1c29a2ffe490401\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+          },
+          "stringChars": 372
+        },
+        "callsStarted": 0
+      },
+      "atReturn": {
+        "started": 0,
+        "done": 0
+      },
+      "after1500ms": {
+        "started": 1,
+        "done": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 12286,
+        "ms": 216,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"3c75d5853ad47150150cf063\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0,
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 762,
+    "hostEvents": [],
+    "totalMs": 12502
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_a004e878-48cd-4d39-8511-f07f7bfa626d workerId=code-mode-quickjs:1 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      77,
+      64,
+      20
+    ],
+    [
+      284,
+      127,
+      69
+    ],
+    [
+      489,
+      195,
+      145
+    ],
+    [
+      694,
+      242,
+      193
+    ],
+    [
+      903,
+      310,
+      261
+    ],
+    [
+      1109,
+      347,
+      322
+    ],
+    [
+      1317,
+      348,
+      322
+    ],
+    [
+      1525,
+      348,
+      323
+    ],
+    [
+      1730,
+      348,
+      323
+    ],
+    [
+      1937,
+      348,
+      323
+    ],
+    [
+      2143,
+      348,
+      323
+    ],
+    [
+      2351,
+      348,
+      323
+    ],
+    [
+      2558,
+      348,
+      323
+    ],
+    [
+      2766,
+      348,
+      323
+    ],
+    [
+      2971,
+      348,
+      323
+    ],
+    [
+      3178,
+      348,
+      323
+    ],
+    [
+      3387,
+      348,
+      323
+    ],
+    [
+      3594,
+      348,
+      323
+    ],
+    [
+      3800,
+      348,
+      323
+    ],
+    [
+      4001,
+      348,
+      323
+    ],
+    [
+      4206,
+      348,
+      323
+    ],
+    [
+      4413,
+      348,
+      323
+    ],
+    [
+      4618,
+      348,
+      323
+    ],
+    [
+      4826,
+      348,
+      323
+    ],
+    [
+      5031,
+      348,
+      323
+    ],
+    [
+      5240,
+      348,
+      323
+    ],
+    [
+      5446,
+      348,
+      323
+    ],
+    [
+      5651,
+      348,
+      323
+    ],
+    [
+      5862,
+      348,
+      323
+    ],
+    [
+      6071,
+      348,
+      323
+    ],
+    [
+      6276,
+      348,
+      323
+    ],
+    [
+      6485,
+      348,
+      323
+    ],
+    [
+      6691,
+      348,
+      323
+    ],
+    [
+      6917,
+      348,
+      323
+    ],
+    [
+      7104,
+      348,
+      323
+    ],
+    [
+      7313,
+      348,
+      323
+    ],
+    [
+      7523,
+      348,
+      323
+    ],
+    [
+      7798,
+      348,
+      323
+    ],
+    [
+      7983,
+      348,
+      323
+    ],
+    [
+      8183,
+      348,
+      323
+    ],
+    [
+      8388,
+      348,
+      323
+    ],
+    [
+      8594,
+      348,
+      323
+    ],
+    [
+      8804,
+      348,
+      323
+    ],
+    [
+      9011,
+      348,
+      323
+    ],
+    [
+      9215,
+      348,
+      323
+    ],
+    [
+      9421,
+      348,
+      323
+    ],
+    [
+      9630,
+      348,
+      323
+    ],
+    [
+      9836,
+      348,
+      323
+    ],
+    [
+      10058,
+      348,
+      323
+    ],
+    [
+      10247,
+      348,
+      323
+    ],
+    [
+      10454,
+      348,
+      323
+    ],
+    [
+      10661,
+      348,
+      323
+    ],
+    [
+      10870,
+      354,
+      325
+    ],
+    [
+      11073,
+      354,
+      325
+    ],
+    [
+      11282,
+      354,
+      325
+    ],
+    [
+      11491,
+      354,
+      325
+    ],
+    [
+      11698,
+      354,
+      325
+    ],
+    [
+      11908,
+      354,
+      325
+    ],
+    [
+      12115,
+      354,
+      325
+    ],
+    [
+      12318,
+      354,
+      325
+    ],
+    [
+      12522,
+      355,
+      326
+    ]
+  ]
+}

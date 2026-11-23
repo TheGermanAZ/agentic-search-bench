@@ -1,0 +1,37 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P12b",
+  "config": {
+    "executionPolicy": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxToolInputBytes": 262144,
+      "maxToolOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "return String((function(){return this})().process);"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "value": "undefined",
+      "wallMs": 79.89825,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": "undefined",
+    "ms": 80,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 149.1
+}

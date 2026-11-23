@@ -1,0 +1,18 @@
+[
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "a=[]\nwhile True: a.append(\"x\"*10**6)"
+  ],
+  "exit": -9,
+  "wall_ms": 18461.9,
+  "peak_tree_rss_mb": 4102.5,
+  "killed": "killed by harness at 4102 MB tree RSS after 18.5s",
+  "stdout_len": 0,
+  "stdout": "",
+  "stderr": "",
+  "label": "python allocate 1e6-char strings"
+ }
+]

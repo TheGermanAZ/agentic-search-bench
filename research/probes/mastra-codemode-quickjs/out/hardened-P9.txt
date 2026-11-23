@@ -1,0 +1,27 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 228,
+    "totalWallMs": 456,
+    "peakTreeRssMB": 153.6,
+    "stderrTail": ""
+  },
+  "backend": "quickjs",
+  "probe": "P9",
+  "mode": "hardened",
+  "setupMs": 197.2,
+  "record": {
+    "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => external_lookup({id:i}))); console.log(Date.now()-t)",
+    "wallMs": 221.9,
+    "hostCalls": 5,
+    "out": {
+      "success": true,
+      "logs": [
+        "203"
+      ]
+    },
+    "threw": null
+  }
+}

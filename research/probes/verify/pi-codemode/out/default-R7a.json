@@ -1,0 +1,64 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs default R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 250,
+  "peakTreeRssMb": 100,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "default",
+    "test": "R7a",
+    "notes": "one CodemodeSandbox({}) shared",
+    "data": {
+      "startMs": 32,
+      "ms": 99,
+      "ok": true,
+      "result": {
+        "value": {
+          "ok": false,
+          "error": {
+            "kind": "script",
+            "name": "Error",
+            "message": "The script is waiting on a promise that can never settle: no tool call is pending, and timers do not exist here."
+          },
+          "output": [],
+          "calls": []
+        },
+        "stringChars": 123
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 14,
+    "hostEvents": [],
+    "totalMs": 131
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      109,
+      49
+    ],
+    [
+      152,
+      70
+    ],
+    [
+      205,
+      100
+    ],
+    [
+      249,
+      0
+    ]
+  ]
+}

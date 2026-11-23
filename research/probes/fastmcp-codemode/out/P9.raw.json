@@ -1,0 +1,56 @@
+{
+  "probe": "P9",
+  "config": "default",
+  "codes": [
+    "import asyncio\nrs = await asyncio.gather(call_tool(\"lookup\", {\"id\": 1}), call_tool(\"lookup\", {\"id\": 2}), call_tool(\"lookup\", {\"id\": 3}), call_tool(\"lookup\", {\"id\": 4}), call_tool(\"lookup\", {\"id\": 5}))\nmsg = sum(x[\"value\"] for x in rs)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "result": "30",
+      "structured": null,
+      "stdout": "",
+      "ms": 218.6,
+      "started": 1795379044.582117
+    }
+  ],
+  "setup_ms": 23.9,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.74,
+  "peak_tree_rss_gb": 0.105,
+  "calls": [
+    {
+      "id": 1,
+      "start": 1795379044.596205,
+      "end": 1795379044.797287,
+      "pid": 9792
+    },
+    {
+      "id": 2,
+      "start": 1795379044.596266,
+      "end": 1795379044.797888,
+      "pid": 9792
+    },
+    {
+      "id": 3,
+      "start": 1795379044.5964649,
+      "end": 1795379044.797992,
+      "pid": 9792
+    },
+    {
+      "id": 4,
+      "start": 1795379044.596544,
+      "end": 1795379044.798062,
+      "pid": 9792
+    },
+    {
+      "id": 5,
+      "start": 1795379044.5965629,
+      "end": 1795379044.798126,
+      "pid": 9792
+    }
+  ],
+  "child_log_tail": "30\n"
+}

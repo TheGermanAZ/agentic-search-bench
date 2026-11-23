@@ -1,0 +1,335 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py default R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 7584,
+  "peakTreeRssMb": 196,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9d",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich']}), new thread_id per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1747,
+          "ms": 5518,
+          "ok": true,
+          "result": "<error type=\"Timeout\">interrupted</error>",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1905,
+        "ms": 559,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 2464,
+        "ms": 240,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 7265,
+        "ms": 232,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 99,
+    "totalMs": 7497
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      98,
+      25
+    ],
+    [
+      210,
+      38
+    ],
+    [
+      330,
+      38
+    ],
+    [
+      445,
+      49
+    ],
+    [
+      543,
+      50
+    ],
+    [
+      648,
+      55
+    ],
+    [
+      763,
+      57
+    ],
+    [
+      856,
+      59
+    ],
+    [
+      963,
+      62
+    ],
+    [
+      1065,
+      66
+    ],
+    [
+      1159,
+      69
+    ],
+    [
+      1261,
+      69
+    ],
+    [
+      1379,
+      72
+    ],
+    [
+      1468,
+      76
+    ],
+    [
+      1586,
+      83
+    ],
+    [
+      1701,
+      85
+    ],
+    [
+      1792,
+      88
+    ],
+    [
+      1944,
+      91
+    ],
+    [
+      2032,
+      143
+    ],
+    [
+      2173,
+      159
+    ],
+    [
+      2286,
+      180
+    ],
+    [
+      2385,
+      190
+    ],
+    [
+      2515,
+      190
+    ],
+    [
+      2615,
+      193
+    ],
+    [
+      2735,
+      193
+    ],
+    [
+      2826,
+      194
+    ],
+    [
+      2986,
+      194
+    ],
+    [
+      3085,
+      194
+    ],
+    [
+      3204,
+      194
+    ],
+    [
+      3328,
+      194
+    ],
+    [
+      3448,
+      194
+    ],
+    [
+      3564,
+      194
+    ],
+    [
+      3658,
+      194
+    ],
+    [
+      3771,
+      194
+    ],
+    [
+      3871,
+      194
+    ],
+    [
+      3965,
+      194
+    ],
+    [
+      4065,
+      194
+    ],
+    [
+      4172,
+      194
+    ],
+    [
+      4272,
+      194
+    ],
+    [
+      4373,
+      194
+    ],
+    [
+      4471,
+      194
+    ],
+    [
+      4578,
+      194
+    ],
+    [
+      4681,
+      194
+    ],
+    [
+      4772,
+      194
+    ],
+    [
+      4878,
+      194
+    ],
+    [
+      4979,
+      194
+    ],
+    [
+      5118,
+      194
+    ],
+    [
+      5225,
+      194
+    ],
+    [
+      5323,
+      194
+    ],
+    [
+      5433,
+      194
+    ],
+    [
+      5563,
+      194
+    ],
+    [
+      5671,
+      194
+    ],
+    [
+      5792,
+      194
+    ],
+    [
+      5887,
+      194
+    ],
+    [
+      5990,
+      194
+    ],
+    [
+      6091,
+      194
+    ],
+    [
+      6225,
+      194
+    ],
+    [
+      6327,
+      194
+    ],
+    [
+      6470,
+      194
+    ],
+    [
+      6569,
+      194
+    ],
+    [
+      6666,
+      194
+    ],
+    [
+      6785,
+      194
+    ],
+    [
+      6895,
+      194
+    ],
+    [
+      7012,
+      194
+    ],
+    [
+      7102,
+      194
+    ],
+    [
+      7209,
+      194
+    ],
+    [
+      7329,
+      194
+    ],
+    [
+      7428,
+      196
+    ],
+    [
+      7529,
+      196
+    ]
+  ]
+}

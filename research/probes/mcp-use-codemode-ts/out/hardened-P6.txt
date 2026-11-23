@@ -1,0 +1,12 @@
+probe hardened-P6
+code:
+while (true) {}
+{"ok":false,"result":null,"error":"Script execution timed out","ms":30002.6}
+stdout (0 chars): ""
+
+
+child exit=0 signal=null killedBy=null wall=30.4s peakRSS=86MB
+stderr tail:
+[11/22/26 14:50:54] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+

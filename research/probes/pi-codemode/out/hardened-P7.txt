@@ -1,0 +1,40 @@
+{
+  "impl": "pi-codemode",
+  "config": "hardened",
+  "probe": "P7",
+  "options": {
+    "timeoutMs": 30000,
+    "memoryLimitBytes": 33554432
+  },
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+      "ms": 153,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "script",
+        "name": "InternalError",
+        "message": "out of memory",
+        "stack": "InternalError: out of memory\n    at <anonymous> (codemode.js:1:66)"
+      }
+    },
+    {
+      "code": "return \"alive\"",
+      "ms": 35,
+      "hostCalls": 0,
+      "ok": true,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "value": "alive"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "hardened", "P7"], "exit_code": 0, "wall_ms": 240, "peak_tree_rss_mb": 129.5, "watch_kill": null}

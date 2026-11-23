@@ -1,0 +1,8 @@
+{
+  "probe": "P9",
+  "outcome": "works",
+  "detail": "5 lookups spanned 211 ms on the host (first start to last end; about 200 parallel, 1000 serial); model saw '[2, 4, 6, 8, 10]' (ToolReturnPart); 5 host calls; agent-run wall 0.31 s",
+  "config": "CodeMode()",
+  "peak_tree_rss_mib": 110,
+  "harness_wall_s": 1.57
+}

@@ -1,0 +1,31 @@
+probe: Pclock
+outcome: not-defined
+display: not-defined (no time module)
+detail: import time -> ModuleNotFoundError: No module named 'time'.
+
+code:
+----
+import time
+print(time.time())
+----
+
+setup_ms: 483.3
+wall_s (whole child process): 1.12
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.093
+host lookup calls: 0
+
+=== run 0 (16.2 ms) ===
+ok: false
+stdout: 
+status: error
+error: Execution error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    import time
+ModuleNotFoundError: No module named 'time'
+
+=== child process log (tail) ===
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+

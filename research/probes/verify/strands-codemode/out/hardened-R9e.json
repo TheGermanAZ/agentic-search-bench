@@ -1,0 +1,484 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py hardened R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 10757,
+  "peakTreeRssMb": 203,
+  "peakTreeFootprintMb": 112,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9e",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller={'allowed_tools': ['lookup', 'failing', 'rich'], 'timeout': 10.0}; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 470,
+          "ms": 10020,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error: timed out after 10 seconds."
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 476,
+          "ms": 10015,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error: timed out after 10 seconds."
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 479,
+          "ms": 10013,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error: timed out after 10 seconds."
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 483,
+          "ms": 10009,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error: timed out after 10 seconds."
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 486,
+          "ms": 10007,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error: timed out after 10 seconds."
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 488,
+          "ms": 10011,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error: timed out after 10 seconds."
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 491,
+          "ms": 10010,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error: timed out after 10 seconds."
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 495,
+          "ms": 10006,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error: timed out after 10 seconds."
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 621,
+        "ms": 238,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1002,
+        "ms": 233,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 10501,
+        "ms": 215,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 32,
+    "totalMs": 10716
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      75,
+      31,
+      17
+    ],
+    [
+      230,
+      59,
+      41
+    ],
+    [
+      384,
+      77,
+      54
+    ],
+    [
+      541,
+      103,
+      69
+    ],
+    [
+      704,
+      202,
+      108
+    ],
+    [
+      859,
+      202,
+      112
+    ],
+    [
+      1060,
+      191,
+      112
+    ],
+    [
+      1185,
+      202,
+      108
+    ],
+    [
+      1338,
+      191,
+      109
+    ],
+    [
+      1504,
+      191,
+      109
+    ],
+    [
+      1655,
+      191,
+      109
+    ],
+    [
+      1815,
+      191,
+      109
+    ],
+    [
+      1976,
+      191,
+      109
+    ],
+    [
+      2128,
+      191,
+      109
+    ],
+    [
+      2289,
+      191,
+      109
+    ],
+    [
+      2444,
+      191,
+      109
+    ],
+    [
+      2585,
+      191,
+      109
+    ],
+    [
+      2747,
+      191,
+      109
+    ],
+    [
+      2925,
+      191,
+      109
+    ],
+    [
+      3065,
+      191,
+      109
+    ],
+    [
+      3223,
+      191,
+      109
+    ],
+    [
+      3375,
+      191,
+      109
+    ],
+    [
+      3517,
+      191,
+      109
+    ],
+    [
+      3676,
+      191,
+      109
+    ],
+    [
+      3835,
+      191,
+      109
+    ],
+    [
+      3990,
+      191,
+      109
+    ],
+    [
+      4141,
+      191,
+      109
+    ],
+    [
+      4298,
+      191,
+      109
+    ],
+    [
+      4448,
+      191,
+      109
+    ],
+    [
+      4610,
+      191,
+      109
+    ],
+    [
+      4777,
+      191,
+      109
+    ],
+    [
+      4994,
+      191,
+      109
+    ],
+    [
+      5126,
+      191,
+      109
+    ],
+    [
+      5280,
+      191,
+      109
+    ],
+    [
+      5446,
+      191,
+      109
+    ],
+    [
+      5598,
+      191,
+      109
+    ],
+    [
+      5748,
+      191,
+      109
+    ],
+    [
+      5977,
+      191,
+      109
+    ],
+    [
+      6133,
+      191,
+      109
+    ],
+    [
+      6298,
+      191,
+      109
+    ],
+    [
+      6433,
+      191,
+      109
+    ],
+    [
+      6594,
+      191,
+      109
+    ],
+    [
+      6736,
+      191,
+      109
+    ],
+    [
+      6894,
+      191,
+      109
+    ],
+    [
+      7118,
+      191,
+      109
+    ],
+    [
+      7259,
+      191,
+      109
+    ],
+    [
+      7405,
+      191,
+      109
+    ],
+    [
+      7574,
+      191,
+      109
+    ],
+    [
+      7727,
+      191,
+      109
+    ],
+    [
+      7882,
+      191,
+      109
+    ],
+    [
+      8045,
+      191,
+      109
+    ],
+    [
+      8227,
+      191,
+      109
+    ],
+    [
+      8369,
+      191,
+      109
+    ],
+    [
+      8540,
+      191,
+      109
+    ],
+    [
+      8698,
+      191,
+      109
+    ],
+    [
+      8854,
+      191,
+      109
+    ],
+    [
+      9002,
+      191,
+      109
+    ],
+    [
+      9175,
+      191,
+      109
+    ],
+    [
+      9316,
+      191,
+      109
+    ],
+    [
+      9477,
+      191,
+      109
+    ],
+    [
+      9627,
+      191,
+      109
+    ],
+    [
+      9792,
+      191,
+      109
+    ],
+    [
+      9957,
+      191,
+      109
+    ],
+    [
+      10167,
+      191,
+      109
+    ],
+    [
+      10298,
+      191,
+      109
+    ],
+    [
+      10506,
+      191,
+      109
+    ],
+    [
+      10629,
+      112,
+      84
+    ]
+  ]
+}

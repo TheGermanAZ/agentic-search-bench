@@ -1,0 +1,119 @@
+{
+  "config": {
+    "executorOptions": {
+      "loader": "env.LOADER",
+      "timeout": 10000,
+      "globalOutbound": null,
+      "modules": {},
+      "bindings": {}
+    }
+  },
+  "hostWorkerEnv": {
+    "hostWorkerSeesProbeSecret": "s3cr3t"
+  },
+  "processEnv": {
+    "tool": {
+      "code": "return process.env.PROBE_SECRET",
+      "mode": "tool",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 21,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": true,
+          "output": {}
+        },
+        "hostCalls": 0,
+        "hostMs": 3
+      }
+    },
+    "raw": {
+      "code": "return process.env.PROBE_SECRET",
+      "mode": "raw",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 21,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 6
+      }
+    }
+  },
+  "processEnvKeys": {
+    "tool": {
+      "code": "return Object.keys(process.env)",
+      "mode": "tool",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 17,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": true,
+          "output": {
+            "result": []
+          }
+        },
+        "hostCalls": 0,
+        "hostMs": 6
+      }
+    },
+    "raw": {
+      "code": "return Object.keys(process.env)",
+      "mode": "raw",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 13,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "result": [],
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 3
+      }
+    }
+  },
+  "globalEnv": {
+    "tool": {
+      "code": "return typeof env === 'undefined' ? 'no global env' : env",
+      "mode": "tool",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 14,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": true,
+          "output": {
+            "result": "no global env"
+          }
+        },
+        "hostCalls": 0,
+        "hostMs": 3
+      }
+    },
+    "raw": {
+      "code": "return typeof env === 'undefined' ? 'no global env' : env",
+      "mode": "raw",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 14,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "result": "no global env",
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 4
+      }
+    }
+  }
+}

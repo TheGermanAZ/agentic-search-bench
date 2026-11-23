@@ -1,0 +1,283 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R3",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 3438,
+  "peakTreeRssMb": 81,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 3364,
+    "rssMb": 81
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R3",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "A": {
+        "label": "recursion",
+        "startMs": 40,
+        "ms": 17,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": "RangeError: Maximum call stack size exceeded",
+            "logs": []
+          },
+          "stringChars": 44
+        },
+        "callsStarted": 0
+      },
+      "deep": {
+        "label": "deep-return",
+        "startMs": 57,
+        "ms": 104,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": null,
+            "logs": [
+              "[ERROR] Code execution failed: RangeError: Maximum call stack size exceeded\n    at JSON.stringify (<anonymous>)\n    at <isolated-vm>:7:56"
+            ]
+          },
+          "stringChars": 137
+        },
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 162,
+        "ms": 43,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": "alive",
+            "logs": []
+          },
+          "stringChars": 5
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 75,
+    "hostEvents": [],
+    "totalMs": 205
+  },
+  "childStdoutOtherChars": 435,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      212,
+      78
+    ],
+    [
+      312,
+      81
+    ],
+    [
+      366,
+      81
+    ],
+    [
+      431,
+      81
+    ],
+    [
+      487,
+      81
+    ],
+    [
+      532,
+      81
+    ],
+    [
+      602,
+      81
+    ],
+    [
+      686,
+      81
+    ],
+    [
+      740,
+      81
+    ],
+    [
+      788,
+      81
+    ],
+    [
+      838,
+      81
+    ],
+    [
+      886,
+      81
+    ],
+    [
+      964,
+      81
+    ],
+    [
+      1017,
+      81
+    ],
+    [
+      1073,
+      81
+    ],
+    [
+      1119,
+      81
+    ],
+    [
+      1179,
+      81
+    ],
+    [
+      1256,
+      81
+    ],
+    [
+      1302,
+      81
+    ],
+    [
+      1353,
+      81
+    ],
+    [
+      1458,
+      81
+    ],
+    [
+      1583,
+      81
+    ],
+    [
+      1641,
+      81
+    ],
+    [
+      1683,
+      81
+    ],
+    [
+      1742,
+      81
+    ],
+    [
+      1839,
+      81
+    ],
+    [
+      1932,
+      81
+    ],
+    [
+      2006,
+      81
+    ],
+    [
+      2066,
+      81
+    ],
+    [
+      2128,
+      81
+    ],
+    [
+      2178,
+      81
+    ],
+    [
+      2231,
+      81
+    ],
+    [
+      2332,
+      81
+    ],
+    [
+      2400,
+      81
+    ],
+    [
+      2449,
+      81
+    ],
+    [
+      2511,
+      81
+    ],
+    [
+      2573,
+      81
+    ],
+    [
+      2637,
+      81
+    ],
+    [
+      2687,
+      81
+    ],
+    [
+      2747,
+      81
+    ],
+    [
+      2792,
+      81
+    ],
+    [
+      2878,
+      81
+    ],
+    [
+      2929,
+      81
+    ],
+    [
+      2980,
+      81
+    ],
+    [
+      3060,
+      81
+    ],
+    [
+      3130,
+      81
+    ],
+    [
+      3182,
+      81
+    ],
+    [
+      3257,
+      81
+    ],
+    [
+      3305,
+      81
+    ],
+    [
+      3364,
+      81
+    ],
+    [
+      3433,
+      0
+    ]
+  ]
+}

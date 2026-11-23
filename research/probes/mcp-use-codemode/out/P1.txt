@@ -1,0 +1,7 @@
+code:
+r = await host.lookup(id=21)
+print(r['value'])
+
+{"ok": true, "result": null, "error": null, "ms": 212.2}
+stdout (2 chars): '42'
+host_calls=1

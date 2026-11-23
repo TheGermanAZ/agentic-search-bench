@@ -1,0 +1,20 @@
+--- code 1 ---
+while True:
+    pass
+--- result 1 ---
+{"ms":7,"hostCalls":0,"ok":true,"isError":true}
+text (363 chars):
+Execution runtime error:
+
+Traceback (most recent call last):
+  code.star:1:1: in <toplevel>
+Error: code mode resource limit: too many steps
+
+Hints:
+Check the error message above for details.
+Available server keys: probe
+Use: result = server_name.tool_name(param="value")
+Access dict values with brackets: result["key"]
+
+Environment:
+  Available server keys: probe

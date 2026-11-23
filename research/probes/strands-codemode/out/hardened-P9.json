@@ -1,0 +1,7 @@
+{
+  "probe": "P9",
+  "outcome": "works",
+  "display": "parallel (203 ms)",
+  "detail": "5 host calls spanning 203 ms host-side (first start to last end); execution wall 239.0 ms; output '30'",
+  "evidence": "research/probes/strands-codemode/out/hardened-P9.txt"
+}

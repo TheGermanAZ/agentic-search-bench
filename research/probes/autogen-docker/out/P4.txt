@@ -1,0 +1,6 @@
+probe P4 hardened=False
+code:
+print(open("/etc/hosts").read())
+
+{"ok": true, "result": null, "error": null, "ms": 264.4}
+stdout (176 chars): '127.0.0.1\tlocalhost\n::1\tlocalhost ip6-localhost ip6-loopback\nfe00::\tip6-localnet\nff00::\tip6-mcastprefix\nff02::1\tip6-allnodes\nff02::2\tip6-allrouters\n192.168.215.3\teae8f691eabb\n\n'

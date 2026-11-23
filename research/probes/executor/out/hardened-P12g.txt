@@ -1,0 +1,35 @@
+{
+  "probe": "P12g",
+  "serverPid": 16365,
+  "code": "Object.getPrototypeOf(async function(){}).constructor(\"return process\")()",
+  "wallMs": 14,
+  "hostToolCalls": 0,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 14,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":false,\"error\":{\"kind\":\"ExecutionFailure\",\"message\":\"Object.getPrototypeOf is not a function. (line 1, col 1)\",\"location\":{\"line\":1,\"column\":1}},\"toolCalls\":[]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": false,
+          "error": {
+            "kind": "ExecutionFailure",
+            "message": "Object.getPrototypeOf is not a function. (line 1, col 1)",
+            "location": {
+              "line": 1,
+              "column": 1
+            }
+          },
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

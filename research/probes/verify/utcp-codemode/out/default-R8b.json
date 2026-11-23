@@ -1,0 +1,246 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R8b",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 3427,
+  "peakTreeRssMb": 137,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 3378,
+    "rssMb": 137
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R8b",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "startMs": 36,
+      "ms": 94,
+      "ok": true,
+      "result": {
+        "value": {
+          "result": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy…[20971520 chars]…yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+          "logs": []
+        },
+        "stringChars": 20971520
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 17,
+    "hostEvents": [],
+    "totalMs": 130
+  },
+  "childStdoutOtherChars": 435,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      159,
+      49
+    ],
+    [
+      206,
+      77
+    ],
+    [
+      264,
+      117
+    ],
+    [
+      313,
+      137
+    ],
+    [
+      405,
+      137
+    ],
+    [
+      503,
+      137
+    ],
+    [
+      578,
+      137
+    ],
+    [
+      628,
+      137
+    ],
+    [
+      685,
+      137
+    ],
+    [
+      725,
+      137
+    ],
+    [
+      772,
+      137
+    ],
+    [
+      833,
+      137
+    ],
+    [
+      893,
+      137
+    ],
+    [
+      985,
+      137
+    ],
+    [
+      1038,
+      137
+    ],
+    [
+      1100,
+      137
+    ],
+    [
+      1140,
+      137
+    ],
+    [
+      1191,
+      137
+    ],
+    [
+      1266,
+      137
+    ],
+    [
+      1325,
+      137
+    ],
+    [
+      1367,
+      137
+    ],
+    [
+      1443,
+      137
+    ],
+    [
+      1485,
+      137
+    ],
+    [
+      1535,
+      137
+    ],
+    [
+      1711,
+      137
+    ],
+    [
+      1766,
+      137
+    ],
+    [
+      1816,
+      137
+    ],
+    [
+      1871,
+      137
+    ],
+    [
+      1919,
+      137
+    ],
+    [
+      2000,
+      137
+    ],
+    [
+      2059,
+      137
+    ],
+    [
+      2103,
+      137
+    ],
+    [
+      2155,
+      137
+    ],
+    [
+      2228,
+      137
+    ],
+    [
+      2265,
+      137
+    ],
+    [
+      2347,
+      137
+    ],
+    [
+      2395,
+      137
+    ],
+    [
+      2458,
+      137
+    ],
+    [
+      2529,
+      137
+    ],
+    [
+      2582,
+      137
+    ],
+    [
+      2674,
+      137
+    ],
+    [
+      2786,
+      137
+    ],
+    [
+      2858,
+      137
+    ],
+    [
+      2942,
+      137
+    ],
+    [
+      3014,
+      137
+    ],
+    [
+      3050,
+      137
+    ],
+    [
+      3124,
+      137
+    ],
+    [
+      3175,
+      137
+    ],
+    [
+      3378,
+      137
+    ],
+    [
+      3426,
+      0
+    ]
+  ]
+}

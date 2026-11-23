@@ -1,0 +1,197 @@
+{
+  "impl": "openclaw-codemode-node-vm",
+  "name": "OpenClaw Code Mode, Node executor (node:vm in a worker thread, the default)",
+  "source": "https://github.com/openclaw/openclaw (src/agents/code-mode*.ts); npm openclaw",
+  "pinned": "npm openclaw@2026.11.6 (published dist, installed with --ignore-scripts into research/impls/openclaw-codemode-node-vm/npm); source read at tag v2026.11.6 = 06afb10d3272cc9deaf38ca6a3b7b839d5935638 (2026-11-19), cloned to research/impls/openclaw-codemode-node-vm/src",
+  "language": "JS",
+  "engine": "Node.js node:vm context (fresh per cell) inside a pooled worker_threads Worker of the Gateway process, env {}, V8 heap resourceLimits; Node v24.22.1 on the host",
+  "how_run": "createCodeModeTools(ctx) + applyCodeModeCatalog({...ctx, tools: [exec, wait, lookup]}) from the published dist chunks (src/agents/code-mode.ts:220 and :313; not in the package's public exports, so imported from dist/prompt-tool-policy-XiWNJtPU.mjs), then execTool.execute(id, {code}) and waitTool.execute on status 'waiting': the same exec/wait control tools the embedded agent runtime gives the model. lookup is a plugin-tagged AgentTool (setPluginToolMeta) in the hidden catalog; guest code calls it as the async global lookup({id}). OpenClaw HOME/state/config are pointed at research/probes/<impl>/state. P11 is also measured with WARM_HOST=1, which runs cells inside a bound LegacyPluginSdkResourceHost + GatewayScheduler as the Gateway does (scripts/perf/code-mode-engine-measure.ts does the same). Executor: tools.codeMode = {enabled: true, executor: 'node'} (node is also the default executor).",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "display": "works (42, 1 call)",
+      "detail": "lookup({id:21}) returned {id:21, value:42} (the tool's details object); console.log printed 42 into output; 1 host call; 434-494 ms (new worker per cell in this harness).",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "limited",
+      "display": "truncated (512 chars + marker)",
+      "detail": "console.log of 200,000 A's came back as one 524-char text entry: 512 A's + '…[truncated]' (per-string console clip). Trailing expression \"RETURNED\" returned null; `return \"RETURNED\"` returned it with the same clipped log (P2 #2). text() of 200,000 chars became {truncated:true, omittedBytes:134619, guidance:'Output truncated; rerun with narrower args.', prefix:<65,381 chars>} under maxOutputBytes 64 KiB (#3); a 200,000-char return value got the same marker (omittedBytes 134,576, #4). Both channels return; every cut is marked.",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "escaped",
+      "display": "escaped (curl example.com 200)",
+      "detail": "fetch, XMLHttpRequest, WebSocket, require and process are undefined in the guest (ReferenceError: fetch is not defined). But through the P12 TextDecoder escape the cell ran host child_process `curl https://example.com` and got HTTP 200 (#3). An async host fetch is reachable too, but the cell then fails with 'code mode promise is pending without host work'.",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "escaped",
+      "display": "escaped (via host Function)",
+      "detail": "require(\"fs\") and import(\"fs\") are rejected before execution: invalid_input 'code mode module access is disabled...' (lexical AST check). Deno is not defined. Through the TextDecoder escape the cell read /etc/hosts with host fs.readFileSync (P12 #11).",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/P4.txt, research/probes/openclaw-codemode-node-vm/out/P12.txt"
+    },
+    "P5": {
+      "outcome": "escaped",
+      "display": "escaped (PROBE_SECRET via ps)",
+      "detail": "process.env.PROBE_SECRET: 'process is not defined' rewritten to the module-access message. After the escape, the worker's process.env is empty (Worker env {}), so p.env.PROBE_SECRET is undefined, but `ps -wwE -p <pid>` through host child_process returned PROBE_SECRET=s3cr3t from the gateway's own environment (P12 #12).",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/P5.txt, research/probes/openclaw-codemode-node-vm/out/P12.txt"
+    },
+    "P6": {
+      "outcome": "limited",
+      "display": "limited (10 s wall)",
+      "detail": "while(true){} failed with code timeout, 'code mode timeout exceeded', after 10,013 ms (worker terminated). A concurrent cell started at +100 ms returned 42 in 193 ms; a later cell returned 42.",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/P6.txt"
+    },
+    "P7": {
+      "outcome": "limited",
+      "display": "limited (64 MiB heap, worker retired)",
+      "detail": "Failed after 326 ms with runtime_unavailable: 'Code Mode worker exhausted its 64 MiB JavaScript heap...'; peak host RSS 343 MB. The concurrent and the next cell returned 42; the host process survived. Same with a warm Gateway-style host (warm-P7).",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/P7.txt, research/probes/openclaw-codemode-node-vm/out/warm-P7.txt"
+    },
+    "P8": {
+      "outcome": "works",
+      "display": "fresh",
+      "detail": "Second cell printed 'gone'. store()/load() persistence exists but needs a session-bound run: 'Code Mode store/load requires an active session-bound run' in this harness.",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/P8.txt"
+    },
+    "P9": {
+      "outcome": "works",
+      "display": "parallel (206 ms)",
+      "detail": "Promise.all of 5 lookups: 206 ms guest-measured, 5 host calls. 40 concurrent calls all succeeded in 620 ms (queued behind maxPendingToolCalls 16: three waves).",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/P9.txt"
+    },
+    "P10": {
+      "outcome": "works",
+      "display": "works (message + line:col)",
+      "detail": "status failed, code internal_error, error 'Error: probe-boom\\n    at openclaw-code-mode:user.js:1:7'. A nested throw keeps the user's lines: 'at inner (openclaw-code-mode:user.js:3:26) / at openclaw-code-mode:user.js:4:1'.",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "display": "works (median 0.95 ms warm host)",
+      "detail": "With the Gateway's bound resource host (warm workers): median 0.95 ms, p90 1.09 ms, first exec 2.5 ms. Without it (direct tool use, as in the other probes) every cell starts a new worker: median 253 ms, p90 358 ms, first 236 ms; load average 26-31 during the run. Tool creation 1 ms.",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/warm-P11.txt, research/probes/openclaw-codemode-node-vm/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "escaped",
+      "display": "escaped (TextDecoder host error)",
+      "detail": "this.constructor.constructor('return process')() is the guest Function: process is not defined (rewritten to the module-access message); sloppy-this .process undefined; handles, tool results and tool errors are guest-realm; a scan of 607 reachable objects found no host-realm constructor. But `new TextDecoder('no-such-label')` throws a host-realm RangeError (e.constructor !== RangeError); its .constructor.constructor('return process')() is the worker's real process: execSync('echo PWNED') printed PWNED, fs read /etc/hosts, pid shown, isMainThread false, and ps -E exposed PROBE_SECRET. The fatal-decode TypeError path works the same.",
+      "evidence": "research/probes/openclaw-codemode-node-vm/out/P12.txt"
+    }
+  },
+  "hardened": {
+    "config": "tools.codeMode = {enabled: true, executor: 'node', timeoutMs: 5000, memoryLimitBytes: 16 MiB, maxOutputBytes: 8192, maxSnapshotBytes: 1 MiB, maxPendingToolCalls: 8, snapshotTtlSeconds: 60} (fields and clamps: docs/tools/code-mode/configuration.md; https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L104-L117). Tight but usable values inside the documented clamps (timeoutMs floor 100 ms, memory floor 1 MiB). The project exposes no option that makes node:vm an isolation boundary; its documented hardening is executor: 'quickjs', which is the separate impl openclaw-codemode-quickjs-wasi.",
+    "probes": {
+      "P3": {
+        "outcome": "escaped",
+        "display": "escaped (same TextDecoder path)",
+        "detail": "fetch is not defined in the guest; the escape path is unchanged by any limit (see hardened-P12).",
+        "evidence": "research/probes/openclaw-codemode-node-vm/out/hardened-P3.txt"
+      },
+      "P4": {
+        "outcome": "escaped",
+        "display": "escaped (same TextDecoder path)",
+        "detail": "require/import rejected; Deno not defined; host fs reachable via the escape (hardened-P12 #11).",
+        "evidence": "research/probes/openclaw-codemode-node-vm/out/hardened-P4.txt, research/probes/openclaw-codemode-node-vm/out/hardened-P12.txt"
+      },
+      "P5": {
+        "outcome": "escaped",
+        "display": "escaped (PROBE_SECRET via ps)",
+        "detail": "process is not defined directly; via the escape, ps -E returned PROBE_SECRET=s3cr3t (hardened-P12 #12).",
+        "evidence": "research/probes/openclaw-codemode-node-vm/out/hardened-P5.txt, research/probes/openclaw-codemode-node-vm/out/hardened-P12.txt"
+      },
+      "P6": {
+        "outcome": "limited",
+        "display": "limited (5 s wall)",
+        "detail": "code timeout after 5,017 ms. In this run the concurrent trivial cell failed with runtime_unavailable 'Code Mode worker exhausted its 16 MiB JavaScript heap'; two reruns (out/rerun1, out/rerun2) had it return 42. The later cell returned 42.",
+        "evidence": "research/probes/openclaw-codemode-node-vm/out/hardened-P6.txt, research/probes/openclaw-codemode-node-vm/out/rerun1/hardened-P6.txt, research/probes/openclaw-codemode-node-vm/out/rerun2/hardened-P6.txt"
+      },
+      "P7": {
+        "outcome": "limited",
+        "display": "limited (16 MiB heap, worker retired)",
+        "detail": "runtime_unavailable '...exhausted its 16 MiB JavaScript heap' after 240 ms; peak host RSS 289 MB; concurrent and later cells returned 42.",
+        "evidence": "research/probes/openclaw-codemode-node-vm/out/hardened-P7.txt"
+      },
+      "P9": {
+        "outcome": "works",
+        "display": "parallel (218 ms)",
+        "detail": "5 lookups 218 ms guest-measured, 5 host calls; 40 calls queued behind maxPendingToolCalls 8 and finished in 1,022 ms (five waves).",
+        "evidence": "research/probes/openclaw-codemode-node-vm/out/hardened-P9.txt"
+      },
+      "P12": {
+        "outcome": "escaped",
+        "display": "escaped (TextDecoder host error)",
+        "detail": "Same as default: PWNED, /etc/hosts, PROBE_SECRET via ps -E.",
+        "evidence": "research/probes/openclaw-codemode-node-vm/out/hardened-P12.txt"
+      }
+    }
+  },
+  "defaults": {
+    "time": "timeoutMs 10,000 ms wall clock per exec or wait call (clamp 100-60,000), shared by worker preparation, guest work and inline tool waits; approval waits pause it. Pending tool calls can instead return status 'waiting' for a later wait with a fresh budget (src/agents/code-mode-runtime.ts:110; docs/tools/code-mode/configuration.md).",
+    "output": "maxOutputBytes 64 KiB shared by output entries, value and error across waits (clamp 1 KiB-10 MiB); over the cap a {truncated, omittedBytes, guidance, prefix} marker replaces the item. Console: each string clipped to 512 UTF-16 units with '…[truncated]', 16,384 units per cell then '[console output truncated]' (code-mode-runtime.ts:112; code-mode-controller-source.ts:101-115; code-mode-json.ts:93). A trailing expression returns null; only `return` sets the value.",
+    "tool_calls": "maxPendingToolCalls 16 in flight (clamp 1-128); further calls queue in the guest, up to 128 queued ordinary calls (code-mode-runtime.ts:114; code-mode-controller-source.ts:12, :227-230; code-mode-worker-types.ts:10). No per-exec total call cap was found on the exec path: 40 calls ran. Headless scripts default to 5 calls (code-mode-runtime.ts:26).",
+    "memory": "memoryLimitBytes 64 MiB, applied as the Worker's V8 resourceLimits (maxOldGenerationSizeMb = 60, maxYoungGenerationSizeMb = 4) plus a GC-pressure watchdog that fails the cell with runtime_unavailable and retires the worker. Not an RSS limit: external buffers are excluded, and up to eight warm workers may be kept (code-mode-node.ts:234-238; docs/tools/code-mode/executors.md)."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Every catalog-eligible tool becomes an async global function (callableName) plus a callable handle; bindings come from createCodeModeCatalogBindings. The model sees a bounded quick index of `name input -> output` hints built from JSON Schema, capped at 8,000 chars, and TypeScript-style declarations through API.list/API.read. Executable cells are plain JavaScript; TypeScript syntax and require/import are rejected before execution.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode.ts#L64, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode.ts#L111-L149, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-catalog.ts#L73, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L660-L671"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Hidden catalog, searched on demand: only exec and wait (plus required direct-only tools) are model-visible (telemetry visibleTools [exec, wait] in every result). Tools past the 8,000-char index are reachable through catalog.search(query) (BM25 lexical index, default 8 results, max 50) and handle.describe(). Scales past 100 tools without putting every schema in the prompt.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode.ts#L95-L100, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L629-L638, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L104-L117; research/probes/openclaw-codemode-node-vm/out/P1.txt"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Guest calls go through the controller's request() into a host callback that carries only strings (method, JSON args, id, stack); the host runs the call through runtime.callExactValue, the same tool execution path as normal turns (policy, approvals, before_tool_call hooks). Replies are queued on the host and pulled by the guest (__openclawSettleBridge). Node: host function __openclawHostRequest installed on the vm context and deleted from globals after the controller captures it.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L20-L32, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L221-L231, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-bridge.ts#L386, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-node.worker.ts#L272-L300"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "node:vm context (createContext(Object.create(null)), microtaskMode afterEvaluate, dynamic import rejected) in a worker_threads Worker with env {} and V8 heap resourceLimits. The docs say plainly that this is NOT a security boundary. The code adds one concrete hole: the host realm's TextEncoder/TextDecoder classes are injected into the context and wrapped by guest classes that hold the host instance in a #private field (comment: 'Keep native encoding prototypes private'). Errors thrown by the host decoder (bad label, fatal decode) reach guest code unwrapped, so e.constructor.constructor is the host Function: process, child_process, fs and network follow (P12 #9-#12, P3 #3). env {} hides process.env, but `ps -E` on the gateway pid returns PROBE_SECRET.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-node.worker.ts#L155-L182, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-node.worker.ts#L252-L271, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-node.ts#L228-L239, docs/tools/code-mode/executors.md ('Node's node:vm is not a security boundary'); research/probes/openclaw-codemode-node-vm/out/P12.txt"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "The model gets one JSON document: status, telemetry, ordered output entries (text(), json(), console.*) and the returned value or error. Over-budget items become an explicit truncation marker with the original JSON prefix and omittedBytes, not a silent cut. Console strings are clipped to 512 units each.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L101-L115, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-json.ts#L93, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode.ts#L226-L245; research/probes/openclaw-codemode-node-vm/out/P2.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "All limits come from tools.codeMode (global or per agent) and are clamped in resolveCodeModeConfig: timeoutMs 10 s (100 ms-60 s), memoryLimitBytes 64 MiB (1 MiB-1 GiB), maxOutputBytes 64 KiB, maxSnapshotBytes 10 MiB, maxPendingToolCalls 16, snapshotTtlSeconds 900. For Node, memoryLimitBytes becomes the Worker's maxOldGenerationSizeMb (limit-4 MB) plus 4 MB young; a GC watchdog retires near-limit workers; the deadline is enforced by terminating the worker.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L96-L119, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-node.ts#L234-L238"
+    },
+    {
+      "topic": "State",
+      "finding": "Each exec gets a fresh context (globals never carry over), confirmed by P8. Workers are pooled and reused only when cells run inside the Gateway's bound resource host; without it every Node cell starts a new worker (about 200 ms). There is opt-in persistence: store(key, value)/load(key) keep small JSON values per session across cells and restarts, but only for a session-bound run (P8 #3 fails in this harness). A suspended cell (status 'waiting') keeps its live worker and context for wait.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L430-L445, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-session-store.ts#L315, docs/tools/code-mode/executors.md 'Understand waits and limits'; research/probes/openclaw-codemode-node-vm/out/P8.txt, out/P11.txt, out/warm-P11.txt"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Guest errors return status failed with code internal_error and `Name: message` plus stack frames rewritten to openclaw-code-mode:user.js:line:col (user line numbers, wrapper removed); error text is bounded to 16,384 units. Parse errors are reported before execution with line and column. A runtime `ReferenceError: process|require|module is not defined` is rewritten into the generic 'module access is disabled' invalid_input message. Tool errors are catchable in guest code and are redacted (input shown as [redacted]).",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-source.ts#L212-L231, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-node.worker.ts#L360-L380, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/extensions/code-mode-quickjs/src/code-mode.worker.ts#L455-L470, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L62-L85"
+    },
+    {
+      "topic": "Activation and credentials",
+      "finding": "With tools.codeMode absent, activation is 'auto': Code Mode engages automatically for catalog-preferred models (for example claude-opus-5-5, gpt-5.6, gemini-3.5-flash) with the Node executor unless executor: 'quickjs' is set. Credentials stay host-side: tools run in the Gateway with their normal auth, and the guest only receives JSON results. The lexical module check (code-mode-source.ts:226) is a usability guard, not a security control: it blocks the literal require()/import() but not Function-constructor paths.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L75-L77, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L107-L108, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L128-L140, docs/tools/code-mode/configuration.md 'Shipped preferred models'"
+    },
+    {
+      "topic": "Maintenance",
+      "finding": "MIT license; tag v2026.11.6 committed 2026-11-19; npm openclaw 2026.11.6. Extensive tests under src/agents/code-mode*.test.ts, including an engine-parity suite.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/package.json, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-engine-parity.test.ts"
+    }
+  ],
+  "surprises": [
+    "The guest-API docs say TextEncoder/TextDecoder 'provide local byte conversion, not filesystem, module, or network access' (docs/tools/code-mode/guest-api.md:50-52). Under the Node executor they are the escape: errors thrown by the injected host-realm decoder carry the host Function constructor, so guest code gets process, child_process, fs and network. The wrapper hides the host prototypes (code-mode-node.worker.ts:155-182) but not the host errors.",
+    "The docs are honest that node:vm is 'not a security boundary', but it is the default executor, and with tools.codeMode absent Code Mode engages automatically ('auto') for preferred models such as claude-opus-5-5 and gpt-5.6. A default install with a preferred model therefore runs model-written code in an escapable context inside the Gateway process.",
+    "Worker env {} hides process.env from an escaped cell, but `ps -E` on the shared pid still returns the Gateway's environment, PROBE_SECRET included.",
+    "A runtime 'process is not defined' is reported as invalid_input 'code mode module access is disabled' with failurePhase 'input', although the code had already run.",
+    "Without the Gateway's bound resource host every Node cell spawns a new worker (median 253 ms); inside it, cells reuse warm workers (median 0.95 ms). Direct callers of the exec tool pay the cold path.",
+    "At memoryLimitBytes 16 MiB, a trivial concurrent `return 42` cell failed once (1 of 3 runs) with 'worker exhausted its 16 MiB JavaScript heap' while another cell was spinning.",
+    "A trailing expression yields null (documented in the exec schema), so the SPEC's P2 form returns no value; only `return` does."
+  ]
+}

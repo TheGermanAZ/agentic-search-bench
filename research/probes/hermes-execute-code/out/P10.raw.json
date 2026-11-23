@@ -1,0 +1,28 @@
+{
+  "probe": "P10",
+  "config": "default",
+  "codes": [
+    "x = 1\nraise ValueError(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "\n--- stderr ---\nTraceback (most recent call last):\n  File \"/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/hermes_kernel_ven3q3jc/hermes_kernel_runner.py\", line 124, in run_cell\n    exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<cell>\", line 2, in <module>\nValueError: probe-boom\n",
+      "model_sees": "{\"status\": \"error\", \"output\": \"\\n--- stderr ---\\nTraceback (most recent call last):\\n  File \\\"/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/hermes_kernel_ven3q3jc/hermes_kernel_runner.py\\\", line 124, in run_cell\\n    exec(compile(request[\\\"code\\\"], \\\"<cell>\\\", \\\"exec\\\"), GLOBALS)\\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"<cell>\\\", line 2, in <module>\\nValueError: probe-boom\\n\", \"exit_code\": 1, \"tool_calls_made\": 0, \"duration_seconds\": 0.05, \"kernel\": {\"mode\": \"session\", \"reused\": false, \"execution_count\": 1, \"state_reset\": false}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Traceback (most recent call last):\\n  File \\\"/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/hermes_kernel_ven3q3jc/hermes_kernel_runner.py\\\", line 124, in run_cell\\n    exec(compile(request[\\\"code\\\"], \\\"<cell>\\\", \\\"exec\\\"), GLOBALS)\\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"<cell>\\\", line 2, in <module>\\nValueError: probe-boom\\n\"}",
+      "status": "error",
+      "tool_calls_made": 0,
+      "model_sees_len": 1053,
+      "error": "Traceback (most recent call last):\n  File \"/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/hermes_kernel_ven3q3jc/hermes_kernel_runner.py\", line 124, in run_cell\n    exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<cell>\", line 2, in <module>\nValueError: probe-boom\n\n\n--- stderr ---\nTraceback (most recent call last):\n  File \"/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/hermes_kernel_ven3q3jc/hermes_kernel_runner.py\", line 124, in run_cell\n    exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<cell>\", line 2, in <module>\nValueError: probe-boom\n",
+      "ms": 64.9,
+      "started": 1795382859.749714
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.98,
+  "peak_tree_rss_gb": 0.122,
+  "calls": [],
+  "child_log_tail": ""
+}

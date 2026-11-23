@@ -1,0 +1,34 @@
+[
+  {
+    "probe": "P5-process.env",
+    "code": "return process.env.PROBE_SECRET",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: process is not defined\n    at <anonymous> (eval_script:9:21)\n    at <eval> (eval_script:18:34)\n",
+    "response_text_length": 138,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P5-globals",
+    "code": "return Object.getOwnPropertyNames(globalThis).filter(k => !/^[A-Z]/.test(k))",
+    "args_extra": {},
+    "wall_ms": 1,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "[\n  \"parseInt\",\n  \"parseFloat\",\n  \"isNaN\",\n  \"isFinite\",\n  \"queueMicrotask\",\n  \"decodeURI\",\n  \"decodeURIComponent\",\n  \"encodeURI\",\n  \"encodeURIComponent\",\n  \"escape\",\n  \"unescape\",\n  \"undefined\",\n  \"eval\",\n  \"globalThis\",\n  \"performance\",\n  \"__stderr\",\n  \"__call_tool\"\n]",
+    "response_text_length": 270,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  }
+]

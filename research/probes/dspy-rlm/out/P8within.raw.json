@@ -1,0 +1,33 @@
+{
+  "probe": "P8within",
+  "config": "default",
+  "codes": [
+    "kept = 7\n#--NEXT--\ntry:\n    msg = kept\nexcept NameError:\n    msg = \"gone\"\nprint(msg)"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "<repl_output>\n7\n\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\n(no output - did you forget to print?)\n</repl_output>",
+        "<repl_output>\n7\n\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        38,
+        2,
+        25
+      ],
+      "answer": "done",
+      "ms": 417.7,
+      "started": 1795381964.335341
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.77,
+  "peak_tree_rss_gb": 0.459,
+  "calls": [],
+  "child_log_tail": ""
+}

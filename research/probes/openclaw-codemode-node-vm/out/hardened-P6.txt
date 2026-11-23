@@ -1,0 +1,91 @@
+engine=node hardened=true config={"enabled":true,"executor":"node","timeoutMs":5000,"memoryLimitBytes":16777216,"maxOutputBytes":8192,"maxSnapshotBytes":1048576,"maxPendingToolCalls":8,"snapshotTtlSeconds":60} setupMs=1
+--- code 1 ---
+while (true) {}
+--- result 1 ---
+{"ms":5016.53,"hostCalls":0,"ok":true,"waits":0}
+content text (333 chars):
+{"status":"failed","code":"timeout","failurePhase":"guest","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"error":"code mode timeout exceeded"}
+details (414 chars):
+{
+ "status": "failed",
+ "code": "timeout",
+ "failurePhase": "guest",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "code mode timeout exceeded"
+}
+--- code 2 ---
+(concurrent, started at +100 ms) return 42;
+--- result 2 ---
+{"ms":183.44,"hostCalls":0,"ok":true,"waits":0,"finishedAfterMs":183}
+content text (485 chars):
+{"status":"failed","code":"runtime_unavailable","failurePhase":"host","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"error":"Code Mode worker exhausted its 16 MiB JavaScript heap. Paginate or narrow tool results and avoid retaining large arrays. Inspect any completed actions before retrying."}
+details (566 chars):
+{
+ "status": "failed",
+ "code": "runtime_unavailable",
+ "failurePhase": "host",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "Code Mode worker exhausted its 16 MiB JavaScript heap. Paginate or narrow tool results and avoid retaining large arrays. Inspect any completed actions before retrying."
+}
+--- code 3 ---
+return 42; (after)
+--- result 3 ---
+{"ms":236.34,"hostCalls":0,"ok":true,"waits":0}
+content text (240 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"value":42}
+details (312 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": 42
+}

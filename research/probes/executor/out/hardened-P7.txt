@@ -1,0 +1,139 @@
+{
+  "probe": "P7",
+  "serverPid": 16365,
+  "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+  "wallMs": 10017,
+  "reason": "returned",
+  "rssMbBefore": 283,
+  "peakRssMb": 1684,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":false,\"error\":{\"kind\":\"TimeoutExceeded\",\"message\":\"Execution timed out after 10000ms; earlier tool calls may have completed.\"},\"toolCalls\":[]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": false,
+          "error": {
+            "kind": "TimeoutExceeded",
+            "message": "Execution timed out after 10000ms; earlier tool calls may have completed."
+          },
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  },
+  "after": {
+    "sameSession": {
+      "code": "1+1",
+      "ms": 30,
+      "value": 2,
+      "raw": {
+        "ok": true,
+        "value": 2,
+        "toolCalls": []
+      }
+    },
+    "newSession": {
+      "code": "1+1",
+      "ms": 20,
+      "value": 2,
+      "raw": {
+        "ok": true,
+        "value": 2,
+        "toolCalls": []
+      }
+    },
+    "serverAlive": true,
+    "serverRssMbAfter": 929
+  },
+  "samples": [
+    {
+      "t": 519,
+      "rssMb": 473
+    },
+    {
+      "t": 1035,
+      "rssMb": 620
+    },
+    {
+      "t": 1547,
+      "rssMb": 765
+    },
+    {
+      "t": 2060,
+      "rssMb": 889
+    },
+    {
+      "t": 2569,
+      "rssMb": 892
+    },
+    {
+      "t": 3084,
+      "rssMb": 924
+    },
+    {
+      "t": 3599,
+      "rssMb": 1124
+    },
+    {
+      "t": 4113,
+      "rssMb": 1333
+    },
+    {
+      "t": 4625,
+      "rssMb": 1427
+    },
+    {
+      "t": 5136,
+      "rssMb": 1427
+    },
+    {
+      "t": 5653,
+      "rssMb": 1432
+    },
+    {
+      "t": 6190,
+      "rssMb": 1432
+    },
+    {
+      "t": 6858,
+      "rssMb": 1123
+    },
+    {
+      "t": 7370,
+      "rssMb": 1220
+    },
+    {
+      "t": 7887,
+      "rssMb": 1153
+    },
+    {
+      "t": 8403,
+      "rssMb": 1328
+    },
+    {
+      "t": 8957,
+      "rssMb": 1663
+    },
+    {
+      "t": 9474,
+      "rssMb": 1664
+    },
+    {
+      "t": 9981,
+      "rssMb": 1682
+    },
+    {
+      "t": 10017,
+      "rssMb": 1684
+    }
+  ]
+}

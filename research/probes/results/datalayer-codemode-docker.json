@@ -1,0 +1,180 @@
+{
+  "impl": "datalayer-codemode-docker",
+  "name": "Datalayer Agent Codemode, docker sandbox variant",
+  "source": "https://github.com/datalayer/agent-codemode; sandbox from PyPI code-sandboxes[docker]; image built from https://github.com/datalayer/code-sandboxes docker/Dockerfile",
+  "pinned": "agent-codemode 566e324a42e86074d29fd5e6bb5da2f282d459ea (1.1.1), code-sandboxes 1.12.4 (tag v1.12.4 = d7030b0b); image datalayer-codemode-docker-jupyter:1.12.4 built with the documented 'docker build -t code-sandboxes-jupyter:latest -f docker/Dockerfile .' under this worker's own tag",
+  "language": "Python",
+  "engine": "Would be a Jupyter kernel in a Docker container (python:3.11-slim, jupyter_server, ipykernel), driven over HTTP by jupyter-kernel-client. Run on OrbStack. Never reached user code: setup fails in both configurations.",
+  "how_run": "Same harness as datalayer-codemode-eval with sandbox_variant='docker'. Default: a CodeSandboxClient built exactly as CodeModeExecutor.setup() builds it (SandboxConfig(timeout=30, working_dir, env_vars=dict(os.environ))) plus image= and container_name= so containers carry this worker's prefix. Hardened: the same with env_vars={}, memory_limit=256 MiB, cpu_limit=1.0, network_policy='none'.",
+  "probes": {
+    "P1": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:01:25] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-_irgzchd/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-_irgzchd/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-_irgzchd/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P1.txt",
+      "display": "error (setup crash)"
+    },
+    "P2": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:01:57] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-gz6ubuuv/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-gz6ubuuv/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-gz6ubuuv/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P2.txt",
+      "display": "error (setup crash)"
+    },
+    "P3": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:03:22] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-gsr30ax1/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-gsr30ax1/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-gsr30ax1/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P3.txt",
+      "display": "error (setup crash)"
+    },
+    "P4": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:03:54] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-67m7gshq/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-67m7gshq/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-67m7gshq/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P4.txt",
+      "display": "error (setup crash)"
+    },
+    "P5": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:02:29] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-n8cqgitr/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-n8cqgitr/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-n8cqgitr/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P5.txt",
+      "display": "error (setup crash)"
+    },
+    "P6": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:04:26] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-eyfk3ufj/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-eyfk3ufj/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-eyfk3ufj/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P6.txt",
+      "display": "error (setup crash)"
+    },
+    "P7": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:04:58] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-lxo2ex9d/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-lxo2ex9d/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-lxo2ex9d/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P7.txt",
+      "display": "error (setup crash)"
+    },
+    "P8": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:05:29] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-bg25jj3h/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-bg25jj3h/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-bg25jj3h/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P8.txt",
+      "display": "error (setup crash)"
+    },
+    "P9": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:06:01] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-086m11yd/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-086m11yd/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-086m11yd/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P9.txt",
+      "display": "error (setup crash)"
+    },
+    "P10": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:06:33] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-h9j4wuee/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-h9j4wuee/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-h9j4wuee/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P10.txt",
+      "display": "error (setup crash)"
+    },
+    "P11": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:07:05] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-rv8qeptk/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-rv8qeptk/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-rv8qeptk/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P11.txt",
+      "display": "error (setup crash)"
+    },
+    "P12": {
+      "outcome": "error",
+      "detail": "child process died (exit 1) before any result; log: [11/22/26 15:07:36] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-wg8ma49k/genera ted (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-wg8ma49k/genera ted/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-docker-wg8ma49k/genera ted/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalay...",
+      "evidence": "research/probes/datalayer-codemode-docker/out/P12.txt",
+      "display": "error (setup crash)"
+    }
+  },
+  "defaults": {
+    "time": "Not observable: setup fails. SandboxConfig.timeout=30 would be passed to the kernel client.",
+    "memory": "Not observable: setup fails. SandboxConfig.memory_limit maps to Docker mem_limit, None by default (docker.py:143-161).",
+    "output": "Not observable: setup fails.",
+    "tool_calls": "CodeModeConfig.max_tool_calls defaults to None (types.py:233)."
+  },
+  "hardened": {
+    "config": "SandboxConfig(timeout=30, env_vars={}, memory_limit=256*1024**2, cpu_limit=1.0, network_policy='none') with image and container_name, passed as sandbox_client; CodeModeConfig(max_tool_calls=50). DockerSandbox reads memory_limit and cpu_limit (docker.py:143-161) and ignores network_policy. Setup still fails (second failure below).",
+    "probes": {
+      "P1": {
+        "outcome": "error",
+        "detail": "child process died (exit 1) before any result; log: , in set_variable data, metadata = serialize_object(value) ^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/api.py\", line 128, in serialize_object data, metadata = proxy_obj._repr_mimebundle_() ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/_proxy.py\", line 147,...",
+        "evidence": "research/probes/datalayer-codemode-docker/out/hardened-P1.txt",
+        "display": "error (setup crash)"
+      },
+      "P2": {
+        "outcome": "error",
+        "detail": "child process died (exit 1) before any result; log: , in set_variable data, metadata = serialize_object(value) ^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/api.py\", line 128, in serialize_object data, metadata = proxy_obj._repr_mimebundle_() ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/_proxy.py\", line 147,...",
+        "evidence": "research/probes/datalayer-codemode-docker/out/hardened-P2.txt",
+        "display": "error (setup crash)"
+      },
+      "P3": {
+        "outcome": "error",
+        "detail": "child process died (exit 1) before any result; log: , in set_variable data, metadata = serialize_object(value) ^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/api.py\", line 128, in serialize_object data, metadata = proxy_obj._repr_mimebundle_() ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/_proxy.py\", line 147,...",
+        "evidence": "research/probes/datalayer-codemode-docker/out/hardened-P3.txt",
+        "display": "error (setup crash)"
+      },
+      "P4": {
+        "outcome": "error",
+        "detail": "child process died (exit 1) before any result; log: , in set_variable data, metadata = serialize_object(value) ^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/api.py\", line 128, in serialize_object data, metadata = proxy_obj._repr_mimebundle_() ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/_proxy.py\", line 147,...",
+        "evidence": "research/probes/datalayer-codemode-docker/out/hardened-P4.txt",
+        "display": "error (setup crash)"
+      },
+      "P5": {
+        "outcome": "error",
+        "detail": "child process died (exit 1) before any result; log: , in set_variable data, metadata = serialize_object(value) ^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/api.py\", line 128, in serialize_object data, metadata = proxy_obj._repr_mimebundle_() ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/_proxy.py\", line 147,...",
+        "evidence": "research/probes/datalayer-codemode-docker/out/hardened-P5.txt",
+        "display": "error (setup crash)"
+      },
+      "P6": {
+        "outcome": "error",
+        "detail": "child process died (exit 1) before any result; log: , in set_variable data, metadata = serialize_object(value) ^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/api.py\", line 128, in serialize_object data, metadata = proxy_obj._repr_mimebundle_() ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/_proxy.py\", line 147,...",
+        "evidence": "research/probes/datalayer-codemode-docker/out/hardened-P6.txt",
+        "display": "error (setup crash)"
+      },
+      "P7": {
+        "outcome": "error",
+        "detail": "child process died (exit 1) before any result; log: , in set_variable data, metadata = serialize_object(value) ^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/api.py\", line 128, in serialize_object data, metadata = proxy_obj._repr_mimebundle_() ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/_proxy.py\", line 147,...",
+        "evidence": "research/probes/datalayer-codemode-docker/out/hardened-P7.txt",
+        "display": "error (setup crash)"
+      },
+      "P9": {
+        "outcome": "error",
+        "detail": "child process died (exit 1) before any result; log: , in set_variable data, metadata = serialize_object(value) ^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/api.py\", line 128, in serialize_object data, metadata = proxy_obj._repr_mimebundle_() ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/_proxy.py\", line 147,...",
+        "evidence": "research/probes/datalayer-codemode-docker/out/hardened-P9.txt",
+        "display": "error (setup crash)"
+      },
+      "P12": {
+        "outcome": "error",
+        "detail": "child process died (exit 1) before any result; log: , in set_variable data, metadata = serialize_object(value) ^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/api.py\", line 128, in serialize_object data, metadata = proxy_obj._repr_mimebundle_() ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/_proxy.py\", line 147,...",
+        "evidence": "research/probes/datalayer-codemode-docker/out/hardened-P12.txt",
+        "display": "error (setup crash)"
+      }
+    }
+  },
+  "source_notes": [
+    {
+      "topic": "Setup failure 1 (default)",
+      "finding": "CodeModeExecutor.setup() passes env_vars=dict(os.environ) and DockerSandbox puts env_vars into the container environment. With the host's HOME=/Users/<user> inside the container, jupyter server crashes creating its runtime directory (PermissionError: [Errno 13] Permission denied: '/Users'), and setup ends with 'Timed out waiting for Jupyter Server'. Reproduced directly with docker run -e HOME=... on the same image.",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/composition/executor.py#L243-L252; https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/docker/docker.py#L140-L175; research/probes/datalayer-codemode-docker/out/P1.txt; research/probes/datalayer-codemode-docker/out/home-env-repro.txt"
+    },
+    {
+      "topic": "Setup failure 2 (hardened, env_vars={})",
+      "finding": "The container starts, then register_tool_caller(self.call_tool) asks the kernel client to set_variable('__call_tool__', bound_method), which pickles it and fails: 'Cannot serialize variable __call_tool__ ... Can't get local object _make_handshake_stamp.<locals>.stamp'.",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/composition/executor.py#L374; https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/docker/docker.py#L348-L351; research/probes/datalayer-codemode-docker/out/hardened-P1.txt"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "By design the default path ships the full host environment, secrets included, into the container (failure 1 shows it arrives). That would make P5 'works' even inside Docker if setup succeeded.",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/composition/executor.py#L243-L252; https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/docker/docker.py#L140-L141"
+    },
+    {
+      "topic": "Network",
+      "finding": "DockerSandbox starts the container on the default bridge network with a published Jupyter port and never reads network_policy, so outbound network would be on. The host port is chosen by Docker (ports={'8888/tcp': ('127.0.0.1', None)}), with no option to pin it.",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/docker/docker.py#L148-L163"
+    },
+    {
+      "topic": "Bridge (as written)",
+      "finding": "For non-eval variants, tools are regenerated inside the kernel and called either through an HTTP proxy (mcp_proxy_url, served by the separate agent-runtimes project) or by MCP clients created inside the kernel from the host's server configs. The second needs agent_codemode installed in the image and the MCP server command runnable inside the container; neither is true for this image.",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/composition/executor.py#L394-L605"
+    }
+  ],
+  "surprises": [
+    "The documented docker variant cannot start through CodeModeExecutor on this Mac: forwarding the host environment into the container breaks Jupyter, and even with an empty environment the tool caller cannot be pickled into the kernel.",
+    "network_policy is a SandboxConfig field but DockerSandbox ignores it; the container gets normal outbound networking.",
+    "The container's host port is assigned by Docker and cannot be configured, so this probe could not keep to the 41500-41599 range (ports were ephemeral on 127.0.0.1)."
+  ]
+}

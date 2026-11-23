@@ -1,0 +1,7 @@
+{
+  "probe": "P10b",
+  "outcome": "works",
+  "display": "code ran twice (2 host calls)",
+  "detail": "Error: ValueError: after-call Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 111, in execute exec(code, self.globals, self.locals) File \"<string>\", line 2, in <module> ValueError: after-call During handling of the above exception, another exception occurred: Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 114, in execute ...",
+  "evidence": "research/probes/llamaindex-codeact/out/P10b.txt"
+}

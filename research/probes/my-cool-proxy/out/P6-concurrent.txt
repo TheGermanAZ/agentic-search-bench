@@ -1,0 +1,6 @@
+during P6 (t=10s): new session initialize with 5 s timeout:
+http=000 time=5.001419
+curl exit=28
+15439 100.0 104064
+15439  96.3  52496
+after harness cap:  99.7% CPU

@@ -1,0 +1,43 @@
+label: P2d
+command: node probe.mjs P2d
+child exit: code=0 signal=null
+child wall ms (process start to exit): 345
+peak child RSS: 152.9 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P2d",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return \"A\".repeat(200000);"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "value": {
+        "stringLength": 200000,
+        "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "wallMs": 241.029583,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": {
+      "stringLength": 200000,
+      "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "ms": 241,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 154.2
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:82589) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

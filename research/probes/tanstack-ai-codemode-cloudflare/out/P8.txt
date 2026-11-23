@@ -1,0 +1,58 @@
+label: P8
+command: node probe.mjs P8
+child exit: code=0 signal=null
+child wall ms (process start to exit): 312
+peak child RSS: 109.6 MB (ps every 50 ms)
+peak server (pid 76929) RSS: 76.6 MB; alive after probe: yes
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P8",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.2369999999999948,
+  "source": [
+    "globalThis.kept = 7; return \"set\";",
+    "return typeof kept === \"undefined\" ? \"gone\" : kept;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "set",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 67.058583,
+      "hostCalls": 0
+    },
+    {
+      "returned": {
+        "success": true,
+        "result": "gone",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 19.278208000000006,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "gone",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 19,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 92.2
+}
+--- child stdout ---
+
+--- child stderr ---
+

@@ -1,0 +1,198 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py default R4",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2390,
+  "peakTreeRssMb": 106,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R4",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(defaults); new in-process Client per execution",
+    "data": {
+      "label": "",
+      "startMs": 2241,
+      "ms": 55,
+      "ok": true,
+      "result": {
+        "is_error": false,
+        "text": "None"
+      },
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 4,
+    "totalMs": 2296
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      108,
+      29
+    ],
+    [
+      157,
+      35
+    ],
+    [
+      216,
+      39
+    ],
+    [
+      259,
+      40
+    ],
+    [
+      311,
+      43
+    ],
+    [
+      357,
+      43
+    ],
+    [
+      413,
+      44
+    ],
+    [
+      463,
+      44
+    ],
+    [
+      515,
+      45
+    ],
+    [
+      609,
+      46
+    ],
+    [
+      658,
+      49
+    ],
+    [
+      698,
+      50
+    ],
+    [
+      783,
+      54
+    ],
+    [
+      828,
+      56
+    ],
+    [
+      883,
+      56
+    ],
+    [
+      960,
+      56
+    ],
+    [
+      1034,
+      56
+    ],
+    [
+      1080,
+      59
+    ],
+    [
+      1130,
+      59
+    ],
+    [
+      1185,
+      59
+    ],
+    [
+      1230,
+      61
+    ],
+    [
+      1288,
+      61
+    ],
+    [
+      1397,
+      61
+    ],
+    [
+      1479,
+      63
+    ],
+    [
+      1522,
+      69
+    ],
+    [
+      1593,
+      71
+    ],
+    [
+      1642,
+      76
+    ],
+    [
+      1693,
+      78
+    ],
+    [
+      1732,
+      78
+    ],
+    [
+      1785,
+      79
+    ],
+    [
+      1841,
+      81
+    ],
+    [
+      1887,
+      82
+    ],
+    [
+      1944,
+      82
+    ],
+    [
+      1990,
+      82
+    ],
+    [
+      2039,
+      84
+    ],
+    [
+      2089,
+      86
+    ],
+    [
+      2151,
+      86
+    ],
+    [
+      2185,
+      86
+    ],
+    [
+      2293,
+      87
+    ],
+    [
+      2336,
+      91
+    ],
+    [
+      2388,
+      106
+    ]
+  ]
+}

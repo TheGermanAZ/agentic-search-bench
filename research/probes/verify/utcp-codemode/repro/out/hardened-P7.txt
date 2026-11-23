@@ -1,0 +1,36 @@
+{
+  "config": {
+    "timeoutMs": 10000,
+    "memoryLimitMB": 64,
+    "call": "client.callToolChain(code, 10000, 64)"
+  },
+  "probe": "P7 memory",
+  "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+  "hostPid": 8921,
+  "baselineRssMB": 54.9,
+  "peakHostRssMB": 145.6,
+  "p7": {
+    "wallMs": 982.5,
+    "hostCalls": 3,
+    "result": null,
+    "logs": [
+      "[ERROR] Code execution failed: Isolate was disposed during execution due to memory limit"
+    ],
+    "threw": null
+  },
+  "concurrentSession": {
+    "wallMs": 615.6,
+    "result": 6,
+    "logs": [],
+    "expected": 6
+  },
+  "trivialAfter": {
+    "code": "return 1 + 1",
+    "wallMs": 9.1,
+    "hostCalls": 0,
+    "result": 2,
+    "logs": [],
+    "threw": null
+  },
+  "hostSurvived": true
+}

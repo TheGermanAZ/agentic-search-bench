@@ -1,0 +1,92 @@
+# qwen-code-codemode P11 (default)
+--- exec 1 source ---
+1 + 1
+--- exec 1 result (214.87 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (58 chars):
+[{"type":"text","text":"(exec completed with no output)"}]
+--- summary ---
+{
+ "config": "default",
+ "exit": {
+  "code": 0,
+  "sig": null
+ },
+ "setupMsSpawnToFirstExec": 836,
+ "totalHostCalls": 0,
+ "sideRequests": 0,
+ "p11": {
+  "n": 20,
+  "medianMs": 166.575,
+  "p90Ms": 204.84,
+  "all": [
+   126.41,
+   130.19,
+   134.17,
+   135.27,
+   141.74,
+   142.65,
+   152.83,
+   158.95,
+   166.25,
+   166.38,
+   166.77,
+   168.45,
+   170.45,
+   175.82,
+   175.9,
+   198.26,
+   198.5,
+   204.84,
+   214.87,
+   216.42
+  ]
+ }
+}
+--- cli stdout (json, first 3000 chars) ---
+[{"type":"system","subtype":"init","uuid":"3d1fe8ea-aab2-4b43-a676-c87dea7ea91b","session_id":"3d1fe8ea-aab2-4b43-a676-c87dea7ea91b","cwd":"~/p/agentic-search-bench/research/probes/qwen-code-codemode/work","tools":["exec","read_mcp_resource","read_file","zoom_image","grep_search","cron_list","cron_delete","autofix_pr","web_fetch","list_agents","task_stop","skill","search_memory","enter_worktree","exit_worktree","record_artifact","get_goal","update_goal","tool_call","tool_search","agent","glob","report_findings","cron_create","loop_wakeup","send_message","manage_memory","mcp__probe__lookup"],"mcp_servers":[{"name":"probe","status":"connected"}],"model":"mock-model","permission_mode":"auto","slash_commands":["advisor","agent-delegation","auth","autofix-pr","batch","batch-api","bug","clear","compress","compress-fast","config","context","coordinate","curator","dataviz","diff","docs","doctor","effort","export","extension-creator","extensions","goal","goal-draft","hooks","import-config","init","insight","language","loop","model","new-app","output-style","pr","qc-helper","review","simplify","stats","status","stuck","summary","tasks","update","workflow-authoring","workflow-creator","workflows","zvec-grep-install"],"qwen_code_version":"0.28.4","agents":["general-purpose","Explore","statusline-setup","review-agent","claude-code","codex"]},{"type":"assistant","uuid":"6220ea55-21ff-4ce4-99d1-ece50d6af3dc","session_id":"3d1fe8ea-aab2-4b43-a676-c87dea7ea91b","parent_tool_use_id":null,"message":{"id":"6220ea55-21ff-4ce4-99d1-ece50d6af3dc","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_1","name":"exec","input":{"source":"1 + 1"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"6f1def65-aa99-4057-b90e-4307d740cff6","session_id":"3d1fe8ea-aab2-4b43-a676-c87dea7ea91b","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_1","is_error":false,"content":"(exec completed with no output)"}]}},{"type":"assistant","uuid":"395a2f88-75cc-44ef-9e20-13bb6208d5fb","session_id":"3d1fe8ea-aab2-4b43-a676-c87dea7ea91b","parent_tool_use_id":null,"message":{"id":"395a2f88-75cc-44ef-9e20-13bb6208d5fb","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_2","name":"exec","input":{"source":"1 + 1"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"8d026d97-0cd3-45f5-86a6-22ae9d920877","session_id":"3d1fe8ea-aab2-4b43-a676-c87dea7ea91b","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_2","is_error":false,"content":"(exec completed with no output)"}]}},{"type":"assistant","uuid":"0258ca27-1bc8-4827-b5f9-8e6e3a4611aa","session_id":"3d1fe8ea-aab2-4b43-a676-c87dea7ea91b","parent_tool_use_id":nul
+--- cli stderr (first 3000 chars) ---
+Warning: Node.js 24.22.1 can cause high temporary memory usage during shell safety checks. Upgrade to Node.js 26.12.1. Qwen Code will continue normally. See https://github.com/QwenLM/qwen-code/issues/15165
+
+--- mock events ---
+{"t":840.77,"kind":"exec-issued","n":1,"hostCallsSoFar":577}
+{"t":1055.64,"kind":"exec-result","n":1,"hostCallsSoFar":577,"textLen":58}
+{"t":1055.75,"kind":"exec-issued","n":2,"hostCallsSoFar":577}
+{"t":1254.25,"kind":"exec-result","n":2,"hostCallsSoFar":577,"textLen":58}
+{"t":1254.36,"kind":"exec-issued","n":3,"hostCallsSoFar":577}
+{"t":1430.26,"kind":"exec-result","n":3,"hostCallsSoFar":577,"textLen":58}
+{"t":1430.34,"kind":"exec-issued","n":4,"hostCallsSoFar":577}
+{"t":1628.6,"kind":"exec-result","n":4,"hostCallsSoFar":577,"textLen":58}
+{"t":1628.84,"kind":"exec-issued","n":5,"hostCallsSoFar":577}
+{"t":1833.68,"kind":"exec-result","n":5,"hostCallsSoFar":577,"textLen":58}
+{"t":1833.89,"kind":"exec-issued","n":6,"hostCallsSoFar":577}
+{"t":1992.84,"kind":"exec-result","n":6,"hostCallsSoFar":577,"textLen":58}
+{"t":1992.94,"kind":"exec-issued","n":7,"hostCallsSoFar":577}
+{"t":2119.35,"kind":"exec-result","n":7,"hostCallsSoFar":577,"textLen":58}
+{"t":2119.46,"kind":"exec-issued","n":8,"hostCallsSoFar":577}
+{"t":2253.63,"kind":"exec-result","n":8,"hostCallsSoFar":577,"textLen":58}
+{"t":2253.73,"kind":"exec-issued","n":9,"hostCallsSoFar":577}
+{"t":2424.18,"kind":"exec-result","n":9,"hostCallsSoFar":577,"textLen":58}
+{"t":2424.28,"kind":"exec-issued","n":10,"hostCallsSoFar":577}
+{"t":2600.1,"kind":"exec-result","n":10,"hostCallsSoFar":577,"textLen":58}
+{"t":2600.22,"kind":"exec-issued","n":11,"hostCallsSoFar":577}
+{"t":2742.87,"kind":"exec-result","n":11,"hostCallsSoFar":577,"textLen":58}
+{"t":2742.98,"kind":"exec-issued","n":12,"hostCallsSoFar":577}
+{"t":2873.17,"kind":"exec-result","n":12,"hostCallsSoFar":577,"textLen":58}
+{"t":2873.33,"kind":"exec-issued","n":13,"hostCallsSoFar":577}
+{"t":3015.07,"kind":"exec-result","n":13,"hostCallsSoFar":577,"textLen":58}
+{"t":3015.44,"kind":"exec-issued","n":14,"hostCallsSoFar":577}
+{"t":3168.27,"kind":"exec-result","n":14,"hostCallsSoFar":577,"textLen":58}
+{"t":3168.39,"kind":"exec-issued","n":15,"hostCallsSoFar":577}
+{"t":3384.81,"kind":"exec-result","n":15,"hostCallsSoFar":577,"textLen":58}
+{"t":3384.95,"kind":"exec-issued","n":16,"hostCallsSoFar":577}
+{"t":3551.72,"kind":"exec-result","n":16,"hostCallsSoFar":577,"textLen":58}
+{"t":3551.81,"kind":"exec-issued","n":17,"hostCallsSoFar":577}
+{"t":3718.06,"kind":"exec-result","n":17,"hostCallsSoFar":577,"textLen":58}
+{"t":3718.2,"kind":"exec-issued","n":18,"hostCallsSoFar":577}
+{"t":3886.65,"kind":"exec-result","n":18,"hostCallsSoFar":577,"textLen":58}
+{"t":3886.75,"kind":"exec-issued","n":19,"hostCallsSoFar":577}
+{"t":4053.13,"kind":"exec-result","n":19,"hostCallsSoFar":577,"textLen":58}
+{"t":4053.23,"kind":"exec-issued","n":20,"hostCallsSoFar":577}
+{"t":4188.5,"kind":"exec-result","n":20,"hostCallsSoFar":577,"textLen":58}
+{"t":4188.6,"kind":"final"}
+{"t":4250.55,"kind":"final"}

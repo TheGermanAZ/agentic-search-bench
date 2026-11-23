@@ -1,0 +1,7 @@
+probe: P1
+code (python, run through LocalREPL.execute_code):
+r = lookup(id=21)
+print(r['value'])
+host_calls_so_far: 1
+stdout: '42\n'
+stderr: ''

@@ -1,0 +1,48 @@
+label: P1
+command: node probe.mjs P1
+child exit: code=0 signal=null
+child wall ms (process start to exit): 659
+peak child RSS: 84.3 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P1",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 22.132374999999968,
+  "source": [
+    "const r = await external_lookup({id: 21}); console.log(r.value); return r.value;"
+  ],
+  "toolDescriptionSeenByModel": "Execute TypeScript code in a secure sandbox environment. The code can use these external API functions: external_lookup, external_failing. All external_* calls are async and must be awaited. Return a value to pass results back. Use console.log() for debugging. The tool returns { success, result, logs, error }, where result is the value your code returned.",
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": 42,
+        "logCount": 1,
+        "logChars": 2,
+        "logs": [
+          "42"
+        ]
+      },
+      "wallMs": 257.30729199999996,
+      "hostCalls": 1
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": 42,
+      "logCount": 1,
+      "logChars": 2
+    },
+    "ms": 257,
+    "hostCalls": 1
+  },
+  "hostRssAfterMB": 84
+}
+--- child stdout ---
+
+--- child stderr ---
+

@@ -1,0 +1,82 @@
+{
+  "P1": {
+    "outcome": "works",
+    "detail": "printed 42, 1 host call"
+  },
+  "P2": {
+    "outcome": "works",
+    "detail": "printed output only: 200000 A chars came back, the final RETURNED line came back via echo, exit 0. Shells have no expression return value, so there is no separate return channel. No truncation marker in 200010 chars."
+  },
+  "P3": {
+    "outcome": "not-defined",
+    "detail": "default sandbox: \"bash: curl: command not found\" (exit 127); curl is registered only when network is configured. With an allowlist of https://example.com only: exit 0, first bytes \"<!doctype html><html lang=en><head><meta\"."
+  },
+  "P4": {
+    "outcome": "blocked",
+    "detail": "cat /etc/hosts: \"cat: /etc/hosts: No such file or directory\" (exit 1); ls /etc shows only the virtual tree."
+  },
+  "P5": {
+    "outcome": "blocked",
+    "detail": "echo \"[$PROBE_SECRET]\" printed \"[]\" with PROBE_SECRET=s3cr3t set on the host. host env not visible."
+  },
+  "P6": {
+    "outcome": "limited",
+    "detail": "stopped after 369 ms (driver wall 437 ms): \"bash: too many commands executed (>100000), increase executionLimits.maxCommandCount\" exit 126"
+  },
+  "P7": {
+    "outcome": "limited",
+    "detail": "stopped after 62 ms, peak host RSS 348704 KB (worker maxRSS): \"bash: word expansion: string length limit exceeded (67108864 bytes)\" exit 126"
+  },
+  "P8": {
+    "outcome": "fresh",
+    "detail": "variable: exec 2 printed \"gone\". Side effects: file written in exec 1 read back as \"persisted\"; cd in exec 1 gives pwd \"/home/user\" in exec 2."
+  },
+  "P9": {
+    "outcome": "works",
+    "detail": "1047 ms host-side for 5 lookups (each sleeps 200 ms), 5 host calls, max in flight 1, serial, stdout \"{\"id\":1,\"value\":2} | {\"id\":2,\"value\":4} | {\"id\":3,\"value\":6} | {\"id\":4,\"value\":8} | {\"id\":5,\"value\":10} | done\""
+  },
+  "P10": {
+    "outcome": "works",
+    "detail": "unknown command: exit 127, stderr \"bash: nosuchcmd_probe_xyz: command not found\". exit 7: exit 7, stderr \"\". syntax error: exit 2, stderr \"bash: syntax error: Parse error at 1:1: syntax error near unexpected token `)'\". The caller gets text and exit code. No stack trace."
+  },
+  "P11": {
+    "outcome": "works",
+    "detail": "one-time setup (import + new Bash) 27.03 ms. Same instance, exec \"echo 2\" x20: median 0.30 ms, p90 0.44 ms. New Bash per exec x20: median 0.61 ms, p90 0.85 ms."
+  },
+  "P12": {
+    "outcome": "blocked",
+    "detail": "no attempt reached the host runtime. Attempts: node -e 'console.log(process.pid)' -> exit 127 \"bash: node: command not found\"; js-exec 'console.log(process.pid)' -> exit 127 \"bash: js-exec: command not found\"; sh -c 'echo inner-sh' -> exit 0 \"inner-sh\"; bash -c 'echo inner-bash' -> exit 0 \"inner-bash\"; /bin/sh -c 'echo inner-bin-sh' -> exit 0 \"inner-bin-sh\"; eval 'echo inner-eval' -> exit 0 \"inner-eval\"; process -> exit 127 \"bash: process: command not found\"; require fs -> exit 127 \"bash: require: command not found\"; child_process -> exit 127 \"bash: child_process: command not found\"; python3 -c 'import os; os.system(\"echo PWNED\")' -> exit 127 \"bash: python3: command not available in browser environments\"; echo \"$$ $BASHPID\" -> exit 0 \"1 1\""
+  },
+  "P6b": {
+    "outcome": "no-limit-within-120s",
+    "detail": "driver kill: time-120s; wall 120015 ms; peak host RSS 186560 KB; worker stderr: (none)"
+  },
+  "P6c": {
+    "outcome": "limited",
+    "detail": "with only maxCommandCount raised, the loop stopped after 745 ms on the loop limit: \"bash: while loop: too many iterations (100000), increase executionLimits.maxLoopIterations\" exit 126"
+  },
+  "P1js": {
+    "outcome": "works",
+    "detail": "js-exec + invokeTool printed 42, 1 host call, 352 ms"
+  },
+  "P9js": {
+    "outcome": "works",
+    "detail": "js-exec Promise.all over 5 tools.lookup calls: in-guest Date.now() delta printed 1, host-side elapsed 1176 ms, 5 host calls, max in flight 1"
+  },
+  "P12js": {
+    "outcome": "blocked",
+    "detail": "no host value seen: exit 1 \"at <eval> (-c:1:31): Function constructor is not allowed\" | exit 0 \"{\"argv\":[\"-c\"],\"env\":{\"HOME\":\"/home/user\",\"PATH\":\"/usr/bin:/bin\",\"IFS\":\" \\t\\n\",\"OSTYPE\":\"l\" | exit 0 \"function object undefined\" | exit 1 \"at <eval> (-c:1:71): ENOENT: no such file or directory, stat '<path>'\" | exit 0 \"inner-child\""
+  },
+  "P2b": {
+    "outcome": "limited",
+    "detail": "printf 5 x 60 MB (300 MB total stdout): stdout 240000000 chars came back, END absent, exit 126, stderr \"bash: pipeline: total output size exceeded (>268435456 bytes), increase executionLimits.maxOutputSize\". Partial stdout is kept on the limit path (Bash.ts:963-969)."
+  },
+  "P10b": {
+    "outcome": "works",
+    "detail": "host command threw Error(\"probe-boom\"): exec resolved, exit 0, stderr \"boom: probe-boom\", stdout \"after-boom\""
+  },
+  "P10js": {
+    "outcome": "works",
+    "detail": "js-exec uncaught throw: exit 1, stderr \"at <eval> (-c:1:16): probe-boom\". With console.log before the throw: stdout \"before\", stderr \"at <eval> (-c:1:39): probe-boom\""
+  }
+}

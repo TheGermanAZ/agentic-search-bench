@@ -1,0 +1,31 @@
+probe: P7
+outcome: error
+display: no limit (kernel died at 3.3 GB)
+detail: No memory limit on the local backend. After 32.4 s at 3.32 GB peak tree RSS the kernel died from outside; the model saw status error, 'The session kernel died while running the cell.' The host process survived. Run under mem-lock.sh.
+
+code:
+----
+a = []
+while True:
+    a.append("x" * 10**6)
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 33.44
+killed: None
+child exit code: 0
+peak tree RSS GB: 3.324
+host lookup calls: 0
+
+=== run 0 (32416.4 ms) ===
+ok: false
+stdout: 
+model_sees: {"status": "error", "output": "", "exit_code": -1, "tool_calls_made": 0, "duration_seconds": 32.31, "kernel": {"mode": "session", "reused": false, "execution_count": 1, "state_reset": false}, "stdout_truncated": false, "stdout_bytes_captured": 0, "stdout_bytes_total": 0, "stdout_bytes_omitted": 0, "error": "The session kernel died while running the cell."}
+status: error
+tool_calls_made: 0
+model_sees_len: 358
+error: The session kernel died while running the cell.
+
+
+=== child process log (tail) ===
+

@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P4c",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return await Deno.readTextFile(\"/etc/hosts\");"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "Deno is not defined",
+        "stack": "ReferenceError: Deno is not defined\n    at <anonymous> (code-mode.js:1:14)\n    at <anonymous> (code-mode.js:2:1)",
+        "string": "ReferenceError: Deno is not defined"
+      },
+      "wallMs": 80.17870800000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR Deno is not defined",
+    "ms": 80,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 149.3
+}

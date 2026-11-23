@@ -1,0 +1,33 @@
+probe: P9b
+outcome: works
+display: parallel via threads (213 ms)
+detail: 5 host calls spanning 213 ms host-side (first start to last end); execution wall 298.8 ms; output '30'
+
+code:
+----
+from concurrent.futures import ThreadPoolExecutor
+with ThreadPoolExecutor(5) as ex:
+    rs = list(ex.map(lookup, [1, 2, 3, 4, 5]))
+print(sum(x['value'] for x in rs))
+----
+
+setup_ms: 9.4
+wall_s (whole child process): 1.02
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.143
+host lookup calls: 5
+  call id=1 start=1795377515.264 end=1795377515.465 pid=47930
+  call id=2 start=1795377515.268 end=1795377515.473 pid=47930
+  call id=3 start=1795377515.270 end=1795377515.475 pid=47930
+  call id=4 start=1795377515.273 end=1795377515.477 pid=47930
+  call id=5 start=1795377515.275 end=1795377515.477 pid=47930
+
+=== run 0 (298.8 ms) ===
+ok: true
+stdout: 30
+
+error: null
+
+=== child process log (tail) ===
+

@@ -1,0 +1,17 @@
+mem-lock: waited 124s
+result: 200
+QuickJS memory usage -- 2025-09-13 version, 32-bit, malloc limit: 67108864
+
+  malloc_usable_size unavailable
+
+JSObject classes
+     55   1 Object
+process RSS MB: 273
+result: 200
+QuickJS memory usage -- 2025-09-13 version, 32-bit, malloc limit: 67108864
+
+  malloc_usable_size unavailable
+
+JSObject classes
+     55   1 Object
+process RSS MB: 240

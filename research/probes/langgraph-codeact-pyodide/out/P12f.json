@@ -1,0 +1,7 @@
+{
+  "probe": "P12f",
+  "outcome": "blocked",
+  "display": "blocked (Deno NotCapable)",
+  "detail": "Error during execution: NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag Error during execution: NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P12f.txt"
+}

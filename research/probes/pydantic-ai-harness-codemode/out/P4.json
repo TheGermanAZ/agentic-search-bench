@@ -1,0 +1,8 @@
+{
+  "probe": "P4",
+  "outcome": "blocked",
+  "detail": "model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 1, in <module>\\n    open(\"/etc/hosts\").read()\\n    ~~~~~~~~~~~~~~~~~~\\nPermissionError: Permission denied: \\'/etc/hosts\\''",
+  "config": "CodeMode()",
+  "peak_tree_rss_mib": 79,
+  "harness_wall_s": 0.5
+}

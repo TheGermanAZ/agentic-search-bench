@@ -1,0 +1,7 @@
+{
+  "probe": "P2",
+  "outcome": "limited",
+  "display": "return only (prints to host log)",
+  "detail": "RETURNED came back: True (in result); 0 of 200000 A's came back; marker found: None; stdout chars 0; error ''",
+  "evidence": "research/probes/fastmcp-codemode/out/P2.txt"
+}

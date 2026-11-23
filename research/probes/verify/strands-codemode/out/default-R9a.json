@@ -1,0 +1,457 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R9a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 60865,
+  "peakTreeRssMb": 122,
+  "peakTreeFootprintMb": 87,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9a",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 565,
+          "ms": 60030,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error:\nTimeoutError: time limit exceeded: 60.0000655s > 60s"
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 716,
+        "ms": 241,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1002,
+        "ms": 230,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 60595,
+        "ms": 228,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 34,
+    "totalMs": 60823
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      75,
+      33,
+      17
+    ],
+    [
+      876,
+      122,
+      83
+    ],
+    [
+      1670,
+      111,
+      83
+    ],
+    [
+      2454,
+      111,
+      83
+    ],
+    [
+      3231,
+      111,
+      83
+    ],
+    [
+      4001,
+      111,
+      83
+    ],
+    [
+      4777,
+      111,
+      83
+    ],
+    [
+      5598,
+      111,
+      83
+    ],
+    [
+      6387,
+      111,
+      83
+    ],
+    [
+      7225,
+      111,
+      83
+    ],
+    [
+      8108,
+      111,
+      83
+    ],
+    [
+      8916,
+      111,
+      83
+    ],
+    [
+      9757,
+      111,
+      83
+    ],
+    [
+      10528,
+      111,
+      83
+    ],
+    [
+      11300,
+      111,
+      83
+    ],
+    [
+      12086,
+      111,
+      83
+    ],
+    [
+      12874,
+      111,
+      83
+    ],
+    [
+      13644,
+      111,
+      83
+    ],
+    [
+      14428,
+      111,
+      83
+    ],
+    [
+      15228,
+      67,
+      83
+    ],
+    [
+      15991,
+      62,
+      83
+    ],
+    [
+      16760,
+      62,
+      83
+    ],
+    [
+      17534,
+      62,
+      83
+    ],
+    [
+      18306,
+      62,
+      83
+    ],
+    [
+      19079,
+      62,
+      83
+    ],
+    [
+      19849,
+      62,
+      83
+    ],
+    [
+      20677,
+      62,
+      83
+    ],
+    [
+      21444,
+      62,
+      83
+    ],
+    [
+      22224,
+      62,
+      83
+    ],
+    [
+      23088,
+      62,
+      83
+    ],
+    [
+      23857,
+      62,
+      83
+    ],
+    [
+      24631,
+      62,
+      83
+    ],
+    [
+      25405,
+      62,
+      83
+    ],
+    [
+      26184,
+      62,
+      83
+    ],
+    [
+      26951,
+      62,
+      83
+    ],
+    [
+      27733,
+      62,
+      83
+    ],
+    [
+      28552,
+      62,
+      83
+    ],
+    [
+      29332,
+      62,
+      83
+    ],
+    [
+      30120,
+      62,
+      83
+    ],
+    [
+      30870,
+      62,
+      83
+    ],
+    [
+      31640,
+      62,
+      83
+    ],
+    [
+      32408,
+      62,
+      83
+    ],
+    [
+      33189,
+      62,
+      83
+    ],
+    [
+      33957,
+      62,
+      83
+    ],
+    [
+      34727,
+      62,
+      83
+    ],
+    [
+      35499,
+      62,
+      83
+    ],
+    [
+      36320,
+      62,
+      83
+    ],
+    [
+      37113,
+      62,
+      83
+    ],
+    [
+      37901,
+      62,
+      83
+    ],
+    [
+      38645,
+      62,
+      83
+    ],
+    [
+      39428,
+      62,
+      83
+    ],
+    [
+      40190,
+      62,
+      83
+    ],
+    [
+      40972,
+      62,
+      83
+    ],
+    [
+      41742,
+      62,
+      83
+    ],
+    [
+      42548,
+      62,
+      83
+    ],
+    [
+      43361,
+      62,
+      83
+    ],
+    [
+      44154,
+      62,
+      83
+    ],
+    [
+      44931,
+      62,
+      83
+    ],
+    [
+      45720,
+      62,
+      83
+    ],
+    [
+      46547,
+      62,
+      83
+    ],
+    [
+      47330,
+      62,
+      83
+    ],
+    [
+      48119,
+      62,
+      83
+    ],
+    [
+      48940,
+      62,
+      83
+    ],
+    [
+      49833,
+      62,
+      83
+    ],
+    [
+      50613,
+      62,
+      83
+    ],
+    [
+      51410,
+      62,
+      83
+    ],
+    [
+      52176,
+      62,
+      83
+    ],
+    [
+      53048,
+      62,
+      83
+    ],
+    [
+      53821,
+      62,
+      83
+    ],
+    [
+      54599,
+      62,
+      83
+    ],
+    [
+      55412,
+      62,
+      83
+    ],
+    [
+      56216,
+      62,
+      83
+    ],
+    [
+      56966,
+      62,
+      83
+    ],
+    [
+      57890,
+      62,
+      83
+    ],
+    [
+      58788,
+      62,
+      83
+    ],
+    [
+      59535,
+      62,
+      83
+    ],
+    [
+      60300,
+      62,
+      83
+    ]
+  ]
+}

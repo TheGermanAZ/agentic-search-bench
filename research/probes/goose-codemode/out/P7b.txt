@@ -1,0 +1,6 @@
+probe: P7b
+binary: goose-codemode-probe
+process wall_ms: 355.2
+peak_rss_mb: 4255.9
+exit: -9
+killed: killed by harness at 4256 MB RSS after 0.3s

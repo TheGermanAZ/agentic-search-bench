@@ -1,0 +1,74 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P7",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 1.974375000000009,
+  "source": [
+    "const a = []; while (true) a.push(\"x\".repeat(1e6));"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 103,
+    "siblingEndMs": 15819,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)",
+          "name": "WorkerError"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 15817.743625,
+      "hostCalls": 0
+    }
+  ],
+  "concurrentSiblingRun": {
+    "returned": {
+      "success": false,
+      "error": {
+        "message": "Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)",
+        "name": "WorkerError"
+      },
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 15715.734625,
+    "hostCalls": 0
+  },
+  "afterRun": {
+    "returned": {
+      "success": false,
+      "error": {
+        "message": "Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)",
+        "name": "WorkerError"
+      },
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 2.469874999998865,
+    "hostCalls": 0
+  },
+  "summary": {
+    "siblingStartMs": 103,
+    "siblingEndMs": 15819,
+    "main": "WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)",
+    "ms": 15818,
+    "sibling": "WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)",
+    "siblingMs": 15716,
+    "after": "WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)"
+  },
+  "hostRssAfterMB": 88.7
+}

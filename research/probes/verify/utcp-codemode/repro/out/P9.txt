@@ -1,0 +1,11 @@
+{
+  "probe": "P9 parallel",
+  "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => host.lookup({id:i}))); console.log(Date.now()-t)",
+  "wallMs": 1132.082333,
+  "hostCalls": 5,
+  "result": null,
+  "logs": [
+    "1069"
+  ],
+  "threw": null
+}

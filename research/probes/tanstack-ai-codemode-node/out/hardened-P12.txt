@@ -1,0 +1,67 @@
+label: hardened-P12
+command: node probe.mjs P12 --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 334
+peak child RSS: 81.6 MB (ps every 50 ms)
+child stdout length: 554 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P12",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 77.18033400000002,
+  "source": [
+    "return String(this.constructor.constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "process is not defined",
+          "name": "ReferenceError",
+          "stack": "ReferenceError: process is not defined\n    at eval (eval at <anonymous> (<isolated-vm>:5:32), <anonymous>:3:1)\n    at <isolated-vm>:5:61\n    at <isolated-vm>:6:7\n    at <isolated-vm>:11:3"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 37.368791999999985,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: process is not defined",
+    "ms": 37,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 81.7
+}
+--- child stdout ---
+{
+  timestamp: [33m1795376374883[39m,
+  durationMs: [33m33[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'ReferenceError'[39m,
+    message: [32m'process is not defined'[39m,
+    stack: [32m'ReferenceError: process is not defined\n'[39m +
+      [32m'    at eval (eval at <anonymous> (<isolated-vm>:5:32), <anonymous>:3:1)\n'[39m +
+      [32m'    at <isolated-vm>:5:61\n'[39m +
+      [32m'    at <isolated-vm>:6:7\n'[39m +
+      [32m'    at <isolated-vm>:11:3'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

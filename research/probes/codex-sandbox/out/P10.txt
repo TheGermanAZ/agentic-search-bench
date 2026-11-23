@@ -1,0 +1,29 @@
+probe: P10
+codex: ~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex (codex-cli 0.169.0)
+CODEX_HOME: ~/p/agentic-search-bench/research/impls/codex-sandbox/codex-home (empty, no user config)
+
+--- [read-only] python raise ---
+argv: ["python3", "-c", "raise ValueError(\"probe-boom\")"]
+exit: 1  wall_ms: 83.7  peak_tree_rss_mb: 44.0  killed: None
+stdout chars: 0
+stdout:
+
+stderr:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    raise ValueError("probe-boom")
+ValueError: probe-boom
+
+
+--- [workspace-write] python raise ---
+argv: ["python3", "-c", "raise ValueError(\"probe-boom\")"]
+exit: 1  wall_ms: 88.0  peak_tree_rss_mb: 45.9  killed: None
+stdout chars: 0
+stdout:
+
+stderr:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    raise ValueError("probe-boom")
+ValueError: probe-boom
+

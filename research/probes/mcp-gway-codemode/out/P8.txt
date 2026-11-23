@@ -1,0 +1,11 @@
+--- code 1 ---
+kept = 7
+result = "set"
+--- result 1 ---
+{"ok": true, "isError": false, "ms": 6.33, "hostCalls": 0, "gatewayAlive": true, "rssAfterMB": 75}
+text (122 chars):
+{"result": "set", "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 262144, "truncated": false}}
+--- code 2 ---
+result = kept
+--- result 2 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "StarlarkError"}}, "ms": 4.63, "hostCalls": 0, "gatewayAlive": true, "rssAfterMB": 75}

@@ -1,0 +1,6 @@
+probe P4 hardened=False
+code:
+print(open("/etc/hosts").read())
+
+{"ok": false, "result": null, "error": "Execution error | details=FileNotFoundError: [Errno 44] No such file or directory: '/etc/hosts'\n", "ms": 294.4}
+stdout (0 chars): ''

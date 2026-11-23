@@ -1,0 +1,12 @@
+--- code 1 ---
+return os.environ.get("PROBE_SECRET")
+--- result 1 ---
+{"ms":1,"hostCalls":0,"ok":true,"isError":true}
+text (56 chars):
+script execution failed: script.star:2:12: undefined: os
+--- code 2 ---
+return [dir(probe_lookup), dir(call_tool), dir(parallel), type(parallel)]
+--- result 2 ---
+{"ms":1,"hostCalls":0,"ok":true,"isError":false}
+text (39 chars):
+[[],[],[],"builtin_function_or_method"]

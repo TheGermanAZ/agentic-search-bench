@@ -1,0 +1,7 @@
+{
+  "probe": "P9d",
+  "outcome": "error",
+  "display": "4 of 5 returned {'error': ...}",
+  "detail": "1 host calls; {'error': 'Connection closed'} {'error': 'Connection closed'} {'error': 'Connection closed'} {'error': 'Connection closed'} {'id': 5, 'value': 10}",
+  "evidence": "research/probes/datalayer-codemode-jupyter/out/P9d.txt"
+}

@@ -1,0 +1,309 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../tanstack-ai-codemode-node/adapter.mjs hardened R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 5445,
+  "peakTreeRssMb": 84,
+  "watchKill": null,
+  "record": {
+    "impl": "tanstack-ai-codemode-node",
+    "config": "hardened",
+    "test": "R9d",
+    "notes": "one createCodeModeTool({driver: node}) shared; execute({typescriptCode}) as chat() calls it",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 155,
+          "ms": 5020,
+          "ok": true,
+          "result": {
+            "value": {
+              "success": false,
+              "error": {
+                "message": "Script execution timed out.",
+                "name": "Error",
+                "stack": "Error: Script execution timed out.\n    at <isolated-vm>:5:43\n    at (<isolated-vm boundary>)\n    at execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:35:73)"
+              },
+              "logs": []
+            },
+            "stringChars": 308
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 308,
+        "ms": 204,
+        "ok": true,
+        "result": {
+          "value": {
+            "success": true,
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1000,
+        "ms": 203,
+        "ok": true,
+        "result": {
+          "value": {
+            "success": true,
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 5175,
+        "ms": 204,
+        "ok": true,
+        "result": {
+          "value": {
+            "success": true,
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 139,
+    "hostEvents": [],
+    "totalMs": 5379
+  },
+  "childStdoutOtherChars": 619,
+  "childStdoutHead": "{\n  timestamp: \u001b[33m1795382904799\u001b[39m,\n  durationMs: \u001b[33m5018\u001b[39m,\n  phase: \u001b[32m'execute'\u001b[39m,\n  success: \u001b[33mfalse\u001b[39m,\n  logCount: \u001b[33m0\u001b[39m,\n  error: {\n    name: \u001b[32m'Error'\u001b[39m,\n    message: \u001b[32m'Script execution timed out.'\u001b[39m,\n    stack: \u001b[32m'Error: Script execution timed out.\\n'\u001b[39m +\n      \u001b[32m'    at <isolated-vm>:5:43\\n'\u001b[39m +\n      \u001b[32m'    at (<isolated-vm boundary>)\\n'\u001b[39m +\n      \u001b[32m'    at execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:35:73)'\u001b[39m\n  }\n}\n",
+  "childStderrTail": "❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed\n",
+  "rssSamplesMsMb": [
+    [
+      86,
+      58
+    ],
+    [
+      183,
+      80
+    ],
+    [
+      282,
+      82
+    ],
+    [
+      386,
+      83
+    ],
+    [
+      487,
+      83
+    ],
+    [
+      592,
+      83
+    ],
+    [
+      691,
+      83
+    ],
+    [
+      793,
+      83
+    ],
+    [
+      896,
+      83
+    ],
+    [
+      997,
+      83
+    ],
+    [
+      1102,
+      83
+    ],
+    [
+      1204,
+      83
+    ],
+    [
+      1302,
+      83
+    ],
+    [
+      1405,
+      83
+    ],
+    [
+      1506,
+      83
+    ],
+    [
+      1656,
+      83
+    ],
+    [
+      1751,
+      83
+    ],
+    [
+      1855,
+      83
+    ],
+    [
+      1954,
+      83
+    ],
+    [
+      2061,
+      83
+    ],
+    [
+      2158,
+      83
+    ],
+    [
+      2257,
+      83
+    ],
+    [
+      2362,
+      83
+    ],
+    [
+      2466,
+      83
+    ],
+    [
+      2568,
+      83
+    ],
+    [
+      2666,
+      83
+    ],
+    [
+      2770,
+      83
+    ],
+    [
+      2869,
+      83
+    ],
+    [
+      2970,
+      83
+    ],
+    [
+      3074,
+      83
+    ],
+    [
+      3175,
+      83
+    ],
+    [
+      3277,
+      83
+    ],
+    [
+      3380,
+      83
+    ],
+    [
+      3480,
+      83
+    ],
+    [
+      3582,
+      83
+    ],
+    [
+      3688,
+      83
+    ],
+    [
+      3791,
+      83
+    ],
+    [
+      3888,
+      83
+    ],
+    [
+      3989,
+      83
+    ],
+    [
+      4092,
+      83
+    ],
+    [
+      4194,
+      83
+    ],
+    [
+      4301,
+      83
+    ],
+    [
+      4399,
+      83
+    ],
+    [
+      4507,
+      83
+    ],
+    [
+      4602,
+      83
+    ],
+    [
+      4709,
+      83
+    ],
+    [
+      4807,
+      83
+    ],
+    [
+      4907,
+      83
+    ],
+    [
+      5043,
+      83
+    ],
+    [
+      5120,
+      83
+    ],
+    [
+      5219,
+      83
+    ],
+    [
+      5319,
+      84
+    ],
+    [
+      5445,
+      84
+    ]
+  ]
+}

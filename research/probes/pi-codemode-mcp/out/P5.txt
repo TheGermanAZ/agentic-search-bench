@@ -1,0 +1,29 @@
+{
+  "impl": "pi-codemode-mcp",
+  "config": "default",
+  "probe": "P5",
+  "options": {},
+  "firstExecIncludingServerSpawnMs": 4.26,
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "return process.env.PROBE_SECRET",
+      "ms": 15,
+      "hostCalls": 0,
+      "isError": true,
+      "textChars": 915,
+      "text": "{\n  \"ok\": false,\n  \"error\": {\n    \"name\": \"ReferenceError\",\n    \"message\": \"process is not defined\",\n    \"stack\": \"ReferenceError: process is not defined\\n    at call-mcp-user-script.js:4:3\\n    at call-mcp-user-script.js:5:3\\n    at Script.runInContext (node:vm:149:12)\\n    at JavaScriptSandboxRuntime.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/sandbox-runtime.ts:84:18)\\n    at Object.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/index.ts:356:45)\\n    at async run (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:40:15)\\n    at async Object.P5 (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:58:19)\\n    at async file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:92:17\"\n  },\n  \"logs\": []\n}"
+    },
+    {
+      "code": "return Buffer.constructor.constructor(\"return process\")().env.PROBE_SECRET",
+      "ms": 3,
+      "hostCalls": 0,
+      "isError": false,
+      "textChars": 38,
+      "text": "{\n  \"result\": \"s3cr3t\",\n  \"logs\": []\n}"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P5"], "exit_code": 0, "wall_ms": 1350, "peak_tree_rss_mb": 93.2, "watch_kill": null}

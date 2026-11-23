@@ -1,0 +1,20 @@
+{
+  "name": "Probe",
+  "type": "local",
+  "description": "",
+  "enabled": true,
+  "timeout": 5000,
+  "is_code_mode_client": true,
+  "tools_to_execute": [
+    "*"
+  ],
+  "tools_to_auto_execute": [],
+  "command": [
+    "python",
+    "lookup_server.py"
+  ],
+  "cwd": "/probe",
+  "environment": {
+    "LOOKUP_COUNT_FILE": "/probe-out/lookup-count.log"
+  }
+}

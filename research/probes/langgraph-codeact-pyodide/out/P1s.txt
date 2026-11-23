@@ -1,0 +1,29 @@
+probe: P1s
+outcome: works
+display: works (42, runs in sandbox, 0 host)
+detail: 42 in printed stdout: True; 42 in returned value: False; output '42'; host lookup calls: 0
+
+code:
+----
+r = lookup(21)
+msg = r["value"]
+print(msg)
+msg
+----
+
+setup_ms: 20.8
+wall_s (whole child process): 1.76
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.336
+host lookup calls: 0
+
+=== run 0 (1314.7 ms) ===
+ok: true
+stdout: 42
+error: null
+context_keys: ["msg", "r"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

@@ -1,0 +1,45 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P8",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 16.90187499999996,
+  "source": [
+    "globalThis.kept = 7; return \"set\";",
+    "return typeof kept === \"undefined\" ? \"gone\" : kept;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "set",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 39.486958999999956,
+      "hostCalls": 0
+    },
+    {
+      "returned": {
+        "success": true,
+        "result": "gone",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 1.5485410000000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "gone",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 2,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 84.4
+}

@@ -1,0 +1,133 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 123,
+    "totalWallMs": 470,
+    "peakTreeRssMB": 205,
+    "stderrTail": "P tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n⚠️  Could not load TypeScript declarations: ReferenceError: require is not defined\n    at loadTypeScriptDeclarations (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:210:46)\n    at generateMCPProxy (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:273:34)\n    at file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:694:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:41:02.200Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nreturn Bun.spawnSync([\"sh\",\"-c\",\"echo PWNED; id -un\"]).stdout.toString()\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n⚠️  Could not load TypeScript declarations: ReferenceError: require is not defined\n    at loadTypeScriptDeclarations (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:210:46)\n    at generateMCPProxy (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:273:34)\n    at file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:694:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:41:02.232Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nconst o = await new Deno.Command(\"sh\", { args: [\"-c\", \"echo PWNED; id -un\"] }).output(); return new TextDecoder().decode(o.stdout)\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔄 Shutting down Code Mode MCP server...\n✅ MCP Manager shut down\n✅ Runtime bun shut down\n✅ Code Mode MCP server shut down complete\n"
+  },
+  "runtime": "bun",
+  "probe": "P12",
+  "mode": "default",
+  "setupMs": 257.4,
+  "executeToolDescription": "Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes with different capabilities. When MCP integration is enabled, code has access to MCP tools via the global `mcp` object (e.g., mcp.automem.store_memory(), mcp[\"sequential-thinking\"].sequentialthinking()). For TypeScript type definitions and API documentation of available MCP tools, read the resource mcp://types/declarations before writing code.",
+  "transportErrors": [],
+  "record": {
+    "A_functionCtor": {
+      "code": "return String(this.constructor.constructor(\"return process\")())",
+      "wallMs": 24.1,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "type": "runtime",
+          "message": "Bun exited with code 1: EXECUTION_ERROR: undefined is not an object (evaluating 'this.constructor')\nTypeError: undefined is not an object (evaluating 'this.constructor')\n    at <anonymous> (/private/tmp/bun-exec-req_1795376462113_wbqlq15dm.ts:30:15)\n    at /private/tmp/bun-exec-req_1795376462113_wbqlq15dm.ts:30:63\n",
+          "stack": "Error: Bun exited with code 1: EXECUTION_ERROR: undefined is not an object (evaluating 'this.constructor')\nTypeError: undefined is not an object (evaluating 'this.constructor')\n    at <anonymous> (/private/tmp/bun-exec-req_1795376462113_wbqlq15dm.ts:30:15)\n    at /private/tmp/bun-exec-req_1795376462113_wbqlq15dm.ts:30:63\n\n    at ChildProcess.<anonymous> (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/runtime/bun-runtime.js:236:28)\n    at ChildProcess.emit (node:events:514:28)\n    at maybeClose (node:internal/child_process:1172:16)\n    at Socket.<anonymous> (node:internal/child_process:527:11)\n    at Socket.emit (node:events:514:28)\n    at Pipe.<anonymous> (node:net:362:12)",
+          "code": "BUN_EXEC_FAILED",
+          "timestamp": "2026-11-22T19:41:02.126Z"
+        },
+        "metrics": {
+          "executionTime": 13,
+          "memoryUsed": 0
+        },
+        "runtime": "bun"
+      },
+      "threw": null
+    },
+    "B_sloppyThis": {
+      "code": "return String((function(){ return this })().process)",
+      "wallMs": 14.9,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "type": "runtime",
+          "message": "Bun exited with code 1: EXECUTION_ERROR: undefined is not an object (evaluating 'function() {\n      return this;\n    }().process')\nTypeError: undefined is not an object (evaluating 'function() {\n      return this;\n    }().process')\n    at <anonymous> (/private/tmp/bun-exec-req_1795376462128_pqv3r0jj9.ts:30:43)\n    at /private/tmp/bun-exec-req_1795376462128_pqv3r0jj9.ts:30:52\n",
+          "stack": "Error: Bun exited with code 1: EXECUTION_ERROR: undefined is not an object (evaluating 'function() {\n      return this;\n    }().process')\nTypeError: undefined is not an object (evaluating 'function() {\n      return this;\n    }().process')\n    at <anonymous> (/private/tmp/bun-exec-req_1795376462128_pqv3r0jj9.ts:30:43)\n    at /private/tmp/bun-exec-req_1795376462128_pqv3r0jj9.ts:30:52\n\n    at ChildProcess.<anonymous> (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/runtime/bun-runtime.js:236:28)\n    at ChildProcess.emit (node:events:514:28)\n    at maybeClose (node:internal/child_process:1172:16)\n    at Socket.<anonymous> (node:internal/child_process:527:11)\n    at Socket.emit (node:events:514:28)\n    at Pipe.<anonymous> (node:net:362:12)",
+          "code": "BUN_EXEC_FAILED",
+          "timestamp": "2026-11-22T19:41:02.141Z"
+        },
+        "metrics": {
+          "executionTime": 13,
+          "memoryUsed": 0
+        },
+        "runtime": "bun"
+      },
+      "threw": null
+    },
+    "C_typeofs": {
+      "code": "return [typeof process, typeof require, typeof Deno, typeof Bun, typeof fetch].join(\",\")",
+      "wallMs": 15.4,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "object,function,undefined,object,function",
+        "logs": [],
+        "metrics": {
+          "executionTime": 14,
+          "memoryUsed": 0
+        },
+        "runtime": "bun"
+      },
+      "threw": null
+    },
+    "D_exec_node": {
+      "code": "const p = Function(\"return process\")(); return p.getBuiltinModule(\"child_process\").execSync(\"echo PWNED; id -un\").toString()",
+      "wallMs": 41.6,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "PWNED\nthegermanaz\n",
+        "logs": [],
+        "metrics": {
+          "executionTime": 41,
+          "memoryUsed": 0
+        },
+        "runtime": "bun"
+      },
+      "threw": null
+    },
+    "E_exec_bun": {
+      "code": "return Bun.spawnSync([\"sh\",\"-c\",\"echo PWNED; id -un\"]).stdout.toString()",
+      "wallMs": 31.3,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "PWNED\nthegermanaz\n",
+        "logs": [],
+        "metrics": {
+          "executionTime": 30,
+          "memoryUsed": 0
+        },
+        "runtime": "bun"
+      },
+      "threw": null
+    },
+    "F_exec_deno": {
+      "code": "const o = await new Deno.Command(\"sh\", { args: [\"-c\", \"echo PWNED; id -un\"] }).output(); return new TextDecoder().decode(o.stdout)",
+      "wallMs": 16.4,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "type": "runtime",
+          "message": "Bun exited with code 1: EXECUTION_ERROR: Deno is not defined\nReferenceError: Deno is not defined\n    at <anonymous> (/private/tmp/bun-exec-req_1795376462232_uk4mb7pde.ts:30:21)\n    at /private/tmp/bun-exec-req_1795376462232_uk4mb7pde.ts:30:130\n",
+          "stack": "Error: Bun exited with code 1: EXECUTION_ERROR: Deno is not defined\nReferenceError: Deno is not defined\n    at <anonymous> (/private/tmp/bun-exec-req_1795376462232_uk4mb7pde.ts:30:21)\n    at /private/tmp/bun-exec-req_1795376462232_uk4mb7pde.ts:30:130\n\n    at ChildProcess.<anonymous> (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/runtime/bun-runtime.js:236:28)\n    at ChildProcess.emit (node:events:514:28)\n    at maybeClose (node:internal/child_process:1172:16)\n    at Socket.<anonymous> (node:internal/child_process:527:11)\n    at Socket.emit (node:events:514:28)\n    at Pipe.<anonymous> (node:net:362:12)",
+          "code": "BUN_EXEC_FAILED",
+          "timestamp": "2026-11-22T19:41:02.246Z"
+        },
+        "metrics": {
+          "executionTime": 14,
+          "memoryUsed": 0
+        },
+        "runtime": "bun"
+      },
+      "threw": null
+    }
+  }
+}

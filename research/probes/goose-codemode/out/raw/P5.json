@@ -1,0 +1,19 @@
+{
+ "probe": "P5",
+ "wall_ms": 58.6,
+ "peak_rss_mb": 5.0,
+ "exit": 0,
+ "killed": null,
+ "stderr": "",
+ "records": [
+  {
+   "code": "async function run() {\nreturn process.env.PROBE_SECRET\n}",
+   "elapsed_ms": 0.565375,
+   "exec": 0,
+   "host_calls": 0,
+   "is_error": true,
+   "probe": "P5",
+   "text": "Error: ReferenceError: process is not defined (code_mode.js:4:5)\n    at run (code_mode.js:2:16)\n    at <main> (code_mode.js:4:5)"
+  }
+ ]
+}

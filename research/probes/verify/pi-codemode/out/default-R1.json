@@ -1,0 +1,97 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs default R1",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 593,
+  "peakTreeRssMb": 114,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "default",
+    "test": "R1",
+    "notes": "one CodemodeSandbox({}) shared",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 62,
+        "ms": 298,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": "set",
+            "output": [],
+            "calls": [],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 3
+        },
+        "callsStarted": 0
+      },
+      "B": {
+        "label": "B",
+        "startMs": 360,
+        "ms": 143,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": [
+              "undefined",
+              "undefined",
+              "undefined",
+              "{\"a\":1}",
+              false
+            ],
+            "output": [],
+            "calls": [],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 34
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 50,
+    "hostEvents": [],
+    "totalMs": 503
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      154,
+      47
+    ],
+    [
+      219,
+      61
+    ],
+    [
+      330,
+      86
+    ],
+    [
+      460,
+      109
+    ],
+    [
+      591,
+      114
+    ]
+  ]
+}

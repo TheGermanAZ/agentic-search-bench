@@ -1,0 +1,85 @@
+probe: P12jsTry
+outcome: blocked
+display: blocked (NotCapable x4)
+detail: read /etc/hosts, env PROBE_SECRET, run echo, net example.com:443: each raised JsException NotCapable 'Requires ... access ..., run again with the --allow-... flag'.
+
+code:
+----
+try:
+    import js
+    print('JSREAD ' + str(js.Deno.readTextFileSync('/etc/hosts'))[:60])
+except BaseException as e:
+    print('A0 caught', type(e).__name__, str(e)[:300])
+----
+try:
+    import js
+    print('JSENV ' + str(js.Deno.env.get('PROBE_SECRET')))
+except BaseException as e:
+    print('A1 caught', type(e).__name__, str(e)[:300])
+----
+try:
+    import js
+    from pyodide.ffi import to_js
+    cmd = js.Deno.Command.new('echo', to_js({'args': ['PWNED']}))
+    print('JSRUN ' + str(cmd.outputSync().code))
+except BaseException as e:
+    print('A2 caught', type(e).__name__, str(e)[:300])
+----
+try:
+    import js
+    from pyodide.ffi import run_sync
+    r = run_sync(js.fetch('https://example.com'))
+    print('JSFETCH ' + str(r.status))
+except BaseException as e:
+    print('A3 caught', type(e).__name__, str(e)[:300])
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 3.37
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.504
+host lookup calls: 0
+
+=== run 0 (875.4 ms) ===
+ok: true
+stdout: <repl_output>
+A0 caught JsException NotCapable: Requires read access to "/etc/hosts", run again with the --allow-read flag
+
+</repl_output>
+model_view_all: ["<repl_output>\nA0 caught JsException NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag\n\n</repl_output>"]
+raw_outputs_untruncated_len: [109, 25]
+answer: done
+
+=== run 1 (657.1 ms) ===
+ok: true
+stdout: <repl_output>
+A1 caught JsException NotCapable: Requires env access to "PROBE_SECRET", run again with the --allow-env flag
+
+</repl_output>
+model_view_all: ["<repl_output>\nA1 caught JsException NotCapable: Requires env access to \"PROBE_SECRET\", run again with the --allow-env flag\n\n</repl_output>"]
+raw_outputs_untruncated_len: [109, 25]
+answer: done
+
+=== run 2 (521.4 ms) ===
+ok: true
+stdout: <repl_output>
+A2 caught JsException NotCapable: Requires run access to "echo", run again with the --allow-run flag
+
+</repl_output>
+model_view_all: ["<repl_output>\nA2 caught JsException NotCapable: Requires run access to \"echo\", run again with the --allow-run flag\n\n</repl_output>"]
+raw_outputs_untruncated_len: [101, 25]
+answer: done
+
+=== run 3 (580.7 ms) ===
+ok: true
+stdout: <repl_output>
+A3 caught JsException NotCapable: Requires net access to "example.com:443", run again with the --allow-net flag
+
+</repl_output>
+model_view_all: ["<repl_output>\nA3 caught JsException NotCapable: Requires net access to \"example.com:443\", run again with the --allow-net flag\n\n</repl_output>"]
+raw_outputs_untruncated_len: [112, 25]
+answer: done
+
+=== child process log (tail) ===
+

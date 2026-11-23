@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-run",
+  "probe": "P4c",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return await Deno.readTextFile(\"/etc/hosts\");"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "Deno is not defined",
+        "stack": "ReferenceError: Deno is not defined\n    at <anonymous> (run.js:1:14)",
+        "string": "ReferenceError: Deno is not defined"
+      },
+      "wallMs": 90.15287500000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR Deno is not defined",
+    "ms": 90,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 134.4
+}

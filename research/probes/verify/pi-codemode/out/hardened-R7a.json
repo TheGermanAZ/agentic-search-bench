@@ -1,0 +1,56 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs hardened R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 147,
+  "peakTreeRssMb": 88,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "hardened",
+    "test": "R7a",
+    "notes": "one CodemodeSandbox({\"timeoutMs\":30000,\"memoryLimitBytes\":33554432}) shared",
+    "data": {
+      "startMs": 27,
+      "ms": 62,
+      "ok": true,
+      "result": {
+        "value": {
+          "ok": false,
+          "error": {
+            "kind": "script",
+            "name": "Error",
+            "message": "The script is waiting on a promise that can never settle: no tool call is pending, and timers do not exist here."
+          },
+          "output": [],
+          "calls": []
+        },
+        "stringChars": 123
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 8,
+    "hostEvents": [],
+    "totalMs": 89
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      81,
+      51
+    ],
+    [
+      135,
+      88
+    ]
+  ]
+}

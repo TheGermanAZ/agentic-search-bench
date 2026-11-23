@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P10d",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.0981250000000102,
+  "source": [
+    "return await external_lookup({id: \"not-a-number\"});"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string",
+          "name": "Error",
+          "stack": "Error: Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string\n    at external_lookup (main.js:38:19)\n    at main.js:61:24\n    at main.js:62:11\n    at Object.fetch (main.js:92:7)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 50.44020900000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string",
+    "ms": 50,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 91.2
+}

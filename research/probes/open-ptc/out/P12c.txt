@@ -1,0 +1,13 @@
+mode: default
+code:
+const p = globalThis.process; console.log(typeof p, p && p.pid, p && p.env.PROBE_SECRET)
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "ae5fdcd0-d823-416d-aefb-5d0c5f95428d",
+  "success": false,
+  "output": "\n\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) NotCapable: Requires env access to \"PROBE_SECRET\", run again with the --allow-env flag\nconst p = globalThis.process; console.log(typeof p, p && p.pid, p && p.env.PROBE_SECRET)\n\u001b[0m\u001b[31m                                                                           ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mObject.getEnv [as get]\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_os/30_os.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m123\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m10\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mdenoEnvGet\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_node/_process/process.ts\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m57\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m23\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mObject.get\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_node/_process/process.ts\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m74\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m24\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/2ef0ef1224a79c23.ts\u001b[0m:\u001b[0m\u001b[33m35\u001b[0m:\u001b[0m\u001b[33m76\u001b[0m\n",
+  "ms": 23,
+  "hostCalls": 0
+}

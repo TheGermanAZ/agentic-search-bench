@@ -1,0 +1,39 @@
+{
+ "config": "hardened",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ],
+  "timeout": 1.0,
+  "memory_limit": 16777216,
+  "max_ptc_calls": 8,
+  "mode": "call",
+  "subagents": false
+ },
+ "probe": "P4",
+ "result": [
+  {
+   "code": "require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+   "output": "<error type=\"ReferenceError\">require is not defined\n    at &lt;eval&gt; (eval_script:1:1)\n</error>",
+   "turn_ms": 199.5,
+   "eval_ms": 190.8,
+   "host_calls": 0
+  },
+  {
+   "code": "const out = {};\ntry { out[\"require\"] = String(require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")); } catch (e) { out[\"require\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"importFs\"] = String((await import(\"fs\")).readFileSync(\"/etc/hosts\",\"utf8\")); } catch (e) { out[\"importFs\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"Deno\"] = String(await Deno.readTextFile(\"/etc/hosts\")); } catch (e) { out[\"Deno\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"std\"] = String(std.loadFile(\"/etc/hosts\")); } catch (e) { out[\"std\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"fsGlobal\"] = String(typeof fs); } catch (e) { out[\"fsGlobal\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"lcFsType\"] = String(typeof __lc_fs); } catch (e) { out[\"lcFsType\"] = 'THREW ' + e.name + ': ' + e.message; }\nJSON.stringify(out, null, 1)",
+   "output": "<result>{\n \"require\": \"THREW ReferenceError: require is not defined\",\n \"importFs\": \"THREW ReferenceError: Error loading module 'fs'\",\n \"Deno\": \"THREW ReferenceError: Deno is not defined\",\n \"std\": \"THREW ReferenceError: std is not defined\",\n \"fsGlobal\": \"undefined\",\n \"lcFsType\": \"function\"\n}</result>",
+   "turn_ms": 8.8,
+   "eval_ms": 3.8,
+   "host_calls": 0
+  },
+  {
+   "code": "await __lc_fs(\"readFile\", {path: \"/etc/hosts\"})",
+   "output": "<error type=\"ConcurrentEval\">fs called outside active eval</error>",
+   "turn_ms": 8.8,
+   "eval_ms": 4.7,
+   "host_calls": 0
+  }
+ ]
+}
+
+monitor: {"config": "hardened", "probe": "P4", "exit_code": 0, "wall_s": 0.8, "peak_rss_mb": 177.7, "first_rss_mb": 16.0, "killed": null, "stderr_tail": []}

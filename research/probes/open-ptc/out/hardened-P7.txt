@@ -1,0 +1,18 @@
+mode: hardened
+code:
+const a = []; while (true) a.push("x".repeat(1e6))
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "780e179a-43e6-4e87-b891-8c30697bdc8c",
+  "success": false,
+  "output": "\n\n\n\n[Process terminated after exceeding timeout of 5000 ms]",
+  "ms": 5144,
+  "hostCalls": 0
+}
+
+baseline tree RSS bytes: 106577920
+peak tree RSS bytes: 4066033664
+
+next execution after P7: {"type":"execution_result","executionId":"0490ba44-47b3-4c75-ae73-4f3fe632a4a1","success":true,"output":"alive\n\n\n","ms":23,"hostCalls":0}

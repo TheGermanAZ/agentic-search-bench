@@ -1,0 +1,7 @@
+probe: P7
+code (python, run through LocalPythonExecutor):
+a = []
+while True:
+    a.append("x" * 10**6)
+host_calls_so_far: 0
+watchdog: peak RSS 4476059648 bytes after 3.7 s, stopped

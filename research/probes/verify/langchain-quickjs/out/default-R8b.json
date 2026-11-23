@@ -1,0 +1,187 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py default R8b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2576,
+  "peakTreeRssMb": 264,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R8b",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich']}), new thread_id per execution",
+    "data": {
+      "label": "",
+      "startMs": 1160,
+      "ms": 1307,
+      "ok": true,
+      "result": "<result>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy…[4024 chars]…yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy… [truncated 20967541 chars]</result>",
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 82,
+    "totalMs": 2467
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      100,
+      28
+    ],
+    [
+      141,
+      37
+    ],
+    [
+      203,
+      45
+    ],
+    [
+      245,
+      51
+    ],
+    [
+      307,
+      56
+    ],
+    [
+      353,
+      58
+    ],
+    [
+      426,
+      59
+    ],
+    [
+      493,
+      62
+    ],
+    [
+      558,
+      66
+    ],
+    [
+      605,
+      66
+    ],
+    [
+      647,
+      69
+    ],
+    [
+      707,
+      69
+    ],
+    [
+      751,
+      72
+    ],
+    [
+      809,
+      74
+    ],
+    [
+      856,
+      77
+    ],
+    [
+      909,
+      78
+    ],
+    [
+      968,
+      85
+    ],
+    [
+      1020,
+      88
+    ],
+    [
+      1073,
+      88
+    ],
+    [
+      1117,
+      88
+    ],
+    [
+      1169,
+      88
+    ],
+    [
+      1222,
+      90
+    ],
+    [
+      1317,
+      91
+    ],
+    [
+      1415,
+      91
+    ],
+    [
+      1636,
+      116
+    ],
+    [
+      1730,
+      136
+    ],
+    [
+      1782,
+      143
+    ],
+    [
+      1870,
+      156
+    ],
+    [
+      1916,
+      165
+    ],
+    [
+      2000,
+      166
+    ],
+    [
+      2046,
+      173
+    ],
+    [
+      2130,
+      180
+    ],
+    [
+      2240,
+      180
+    ],
+    [
+      2301,
+      198
+    ],
+    [
+      2343,
+      201
+    ],
+    [
+      2392,
+      205
+    ],
+    [
+      2467,
+      208
+    ],
+    [
+      2520,
+      264
+    ],
+    [
+      2575,
+      0
+    ]
+  ]
+}

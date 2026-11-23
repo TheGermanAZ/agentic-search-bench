@@ -1,0 +1,76 @@
+{
+  "probe": "P12jsTry",
+  "config": "default",
+  "codes": [
+    "try:\n    import js\n    print('JSREAD ' + str(js.Deno.readTextFileSync('/etc/hosts'))[:60])\nexcept BaseException as e:\n    print('A0 caught', type(e).__name__, str(e)[:300])",
+    "try:\n    import js\n    print('JSENV ' + str(js.Deno.env.get('PROBE_SECRET')))\nexcept BaseException as e:\n    print('A1 caught', type(e).__name__, str(e)[:300])",
+    "try:\n    import js\n    from pyodide.ffi import to_js\n    cmd = js.Deno.Command.new('echo', to_js({'args': ['PWNED']}))\n    print('JSRUN ' + str(cmd.outputSync().code))\nexcept BaseException as e:\n    print('A2 caught', type(e).__name__, str(e)[:300])",
+    "try:\n    import js\n    from pyodide.ffi import run_sync\n    r = run_sync(js.fetch('https://example.com'))\n    print('JSFETCH ' + str(r.status))\nexcept BaseException as e:\n    print('A3 caught', type(e).__name__, str(e)[:300])"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nA0 caught JsException NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag\n\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\nA0 caught JsException NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag\n\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        109,
+        25
+      ],
+      "answer": "done",
+      "ms": 875.4,
+      "started": 1795382004.8640552
+    },
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nA1 caught JsException NotCapable: Requires env access to \"PROBE_SECRET\", run again with the --allow-env flag\n\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\nA1 caught JsException NotCapable: Requires env access to \"PROBE_SECRET\", run again with the --allow-env flag\n\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        109,
+        25
+      ],
+      "answer": "done",
+      "ms": 657.1,
+      "started": 1795382005.739858
+    },
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nA2 caught JsException NotCapable: Requires run access to \"echo\", run again with the --allow-run flag\n\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\nA2 caught JsException NotCapable: Requires run access to \"echo\", run again with the --allow-run flag\n\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        101,
+        25
+      ],
+      "answer": "done",
+      "ms": 521.4,
+      "started": 1795382006.397287
+    },
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nA3 caught JsException NotCapable: Requires net access to \"example.com:443\", run again with the --allow-net flag\n\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\nA3 caught JsException NotCapable: Requires net access to \"example.com:443\", run again with the --allow-net flag\n\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        112,
+        25
+      ],
+      "answer": "done",
+      "ms": 580.7,
+      "started": 1795382006.919103
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 3.37,
+  "peak_tree_rss_gb": 0.504,
+  "calls": [],
+  "child_log_tail": ""
+}

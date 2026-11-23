@@ -1,0 +1,10 @@
+{
+  "worker": {
+    "exitCode": null,
+    "signal": "SIGKILL",
+    "killed": "time-120s",
+    "wallMs": 120015,
+    "peakRssKb": 186560
+  },
+  "parsed": null
+}

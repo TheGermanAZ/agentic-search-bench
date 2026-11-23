@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { const t = Date.now(); const out = await Promise.all(Array.from({length: 60}, (_, i) => forge.callTool("host", "lookup", {id: i}).then(() => "ok", e => String(e)))); return { ms: Date.now() - t, ok: out.filter(x => x === "ok").length, firstError: out.find(x => x !== "ok") }; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"sandbox execution failed: failed to send tool result: Broken pipe (os error 32)\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 5317,
+  "hostCalls": 26
+}

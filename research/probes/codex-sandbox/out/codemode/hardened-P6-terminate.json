@@ -1,0 +1,146 @@
+{
+ "probe": "P6",
+ "host": "~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex-code-mode-host",
+ "limits_sent": {
+  "maxYieldTimeMs": 1000,
+  "maxHeapSizeBytes": 67108864
+ },
+ "max_output_tokens": 1000,
+ "hello": {
+  "type": "connection/ready",
+  "selectedVersion": 1,
+  "capabilities": [
+   "bounded-output-v1",
+   "delegate-capacity-4096",
+   "session-cell-execution-resource-limits",
+   "yield-observation"
+  ]
+ },
+ "session_open": {
+  "type": "operation/response",
+  "id": 1,
+  "result": {
+   "status": "ok",
+   "value": {
+    "type": "session/ready",
+    "sessionId": "s1"
+   }
+  }
+ },
+ "wall_ms": 1062.8,
+ "peak_rss_mb": 26.8,
+ "killed": null,
+ "records": [
+  {
+   "source": "while (true) {}",
+   "elapsed_ms": 1008.83,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 2,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Yielded": {
+       "cell_id": "1",
+       "content_items": [],
+       "code_mode_host_duration_ns": 1007899666
+      }
+     }
+    }
+   },
+   "waits": [
+    {
+     "t_ms": 1057,
+     "terminate": {
+      "type": "operation/response",
+      "id": 3,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Terminated": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 268542
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "after": {
+  "host_alive_before": true,
+  "same_session_trivial": {
+   "source": "text(\"alive \" + String(1 + 1));",
+   "elapsed_ms": 2.08,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 4,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Result": {
+       "cell_id": "2",
+       "content_items": [
+        {
+         "type": "input_text",
+         "text": "alive 2"
+        }
+       ],
+       "error_text": null,
+       "result_buffered_for_ns": 0,
+       "code_mode_host_duration_ns": 1684667
+      }
+     }
+    }
+   }
+  },
+  "second_session_open": {
+   "type": "operation/response",
+   "id": 5,
+   "result": {
+    "status": "ok",
+    "value": {
+     "type": "session/ready",
+     "sessionId": "s2"
+    }
+   }
+  },
+  "second_session_trivial": {
+   "source": "text(\"alive \" + String(1 + 1));",
+   "elapsed_ms": 2.47,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 6,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Result": {
+       "cell_id": "1",
+       "content_items": [
+        {
+         "type": "input_text",
+         "text": "alive 2"
+        }
+       ],
+       "error_text": null,
+       "result_buffered_for_ns": 0,
+       "code_mode_host_duration_ns": 2186417
+      }
+     }
+    }
+   }
+  },
+  "host_alive_after": true,
+  "host_returncode": null
+ }
+}

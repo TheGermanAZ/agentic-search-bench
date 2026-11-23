@@ -1,0 +1,13 @@
+mode: hardened
+code:
+console.log(String((function(){return this})().process))
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "0daa33bd-2795-4c73-af4e-1016a711f419",
+  "success": false,
+  "output": "\n\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'process')\nconsole.log(String((function(){return this})().process))\n\u001b[0m\u001b[31m                                          ^\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/19979b735fe18314.ts\u001b[0m:\u001b[0m\u001b[33m35\u001b[0m:\u001b[0m\u001b[33m43\u001b[0m\n",
+  "ms": 15,
+  "hostCalls": 0
+}

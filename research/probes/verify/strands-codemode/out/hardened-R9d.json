@@ -1,0 +1,212 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py hardened R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1469,
+  "peakTreeRssMb": 110,
+  "peakTreeFootprintMb": 82,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9d",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller={'allowed_tools': ['lookup', 'failing', 'rich'], 'timeout': 10.0}; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 448,
+          "ms": 15,
+          "ok": true,
+          "result": {
+            "status": "success",
+            "text": "(no output)"
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 598,
+        "ms": 211,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1000,
+        "ms": 214,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1214,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 2,
+    "totalMs": 1426
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      74,
+      32,
+      17
+    ],
+    [
+      128,
+      47,
+      17
+    ],
+    [
+      182,
+      55,
+      17
+    ],
+    [
+      227,
+      61,
+      42
+    ],
+    [
+      280,
+      68,
+      42
+    ],
+    [
+      335,
+      74,
+      42
+    ],
+    [
+      389,
+      81,
+      59
+    ],
+    [
+      439,
+      88,
+      59
+    ],
+    [
+      489,
+      94,
+      74
+    ],
+    [
+      541,
+      98,
+      74
+    ],
+    [
+      595,
+      98,
+      78
+    ],
+    [
+      643,
+      98,
+      78
+    ],
+    [
+      696,
+      110,
+      78
+    ],
+    [
+      745,
+      110,
+      82
+    ],
+    [
+      798,
+      110,
+      82
+    ],
+    [
+      848,
+      110,
+      82
+    ],
+    [
+      902,
+      98,
+      82
+    ],
+    [
+      952,
+      98,
+      82
+    ],
+    [
+      1005,
+      98,
+      79
+    ],
+    [
+      1056,
+      98,
+      79
+    ],
+    [
+      1107,
+      110,
+      82
+    ],
+    [
+      1160,
+      110,
+      82
+    ],
+    [
+      1212,
+      110,
+      82
+    ],
+    [
+      1264,
+      110,
+      82
+    ],
+    [
+      1316,
+      110,
+      82
+    ],
+    [
+      1367,
+      110,
+      82
+    ],
+    [
+      1421,
+      110,
+      82
+    ],
+    [
+      1468,
+      110,
+      82
+    ]
+  ]
+}

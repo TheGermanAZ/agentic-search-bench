@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "works",
+  "display": "works (example.com 200)",
+  "detail": "spec form failed with \"Error during execution: URLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))\"; same URL with an unverified SSL context printed HTTP 200, so the socket reached the network",
+  "evidence": "research/probes/langgraph-codeact/out/P3.txt"
+}

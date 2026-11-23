@@ -1,0 +1,118 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R1",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 788,
+  "peakTreeRssMb": 97,
+  "peakTreeFootprintMb": 71,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R1",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 672,
+        "ms": 19,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "set"
+        },
+        "callsStarted": 0
+      },
+      "B": {
+        "label": "B",
+        "startMs": 691,
+        "ms": 20,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "gone"
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostMaxEventLoopLagMs": 1,
+    "totalMs": 711
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      116,
+      36,
+      0
+    ],
+    [
+      176,
+      45,
+      20
+    ],
+    [
+      220,
+      52,
+      20
+    ],
+    [
+      259,
+      55,
+      39
+    ],
+    [
+      318,
+      61,
+      39
+    ],
+    [
+      368,
+      66,
+      39
+    ],
+    [
+      414,
+      67,
+      51
+    ],
+    [
+      465,
+      70,
+      51
+    ],
+    [
+      523,
+      74,
+      51
+    ],
+    [
+      582,
+      79,
+      58
+    ],
+    [
+      637,
+      86,
+      58
+    ],
+    [
+      694,
+      91,
+      58
+    ],
+    [
+      740,
+      97,
+      71
+    ],
+    [
+      786,
+      0,
+      71
+    ]
+  ]
+}

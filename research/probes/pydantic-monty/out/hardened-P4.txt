@@ -1,0 +1,3 @@
+LIMITS: {'max_memory': 10000000, 'max_feed_duration_secs': 1.0, 'max_recursion_depth': 100}
+open: PermissionError: Permission denied: '/etc/hosts'
+pathlib: PermissionError: Permission denied: '/etc/hosts'

@@ -1,0 +1,38 @@
+--- code 1 ---
+fail("probe-boom")
+--- result 1 ---
+{"ms":21,"hostCalls":0,"ok":true,"isError":true}
+text (41 chars):
+script execution failed: fail: probe-boom
+--- code 2 ---
+x = 1
+y = 2
+fail("probe-boom")
+--- result 2 ---
+{"ms":17,"hostCalls":0,"ok":true,"isError":true}
+text (41 chars):
+script execution failed: fail: probe-boom
+--- code 3 ---
+x = 1
+y = {}
+z = y["missing"]
+--- result 3 ---
+{"ms":19,"hostCalls":0,"ok":true,"isError":true}
+text (50 chars):
+script execution failed: key "missing" not in dict
+--- code 4 ---
+return probe_lookup(id="not-a-number")
+--- result 4 ---
+{"ms":17,"hostCalls":0,"ok":true,"isError":true}
+text (275 chars):
+script execution failed: MCP error -32602: Input validation error: Invalid arguments for tool lookup: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]

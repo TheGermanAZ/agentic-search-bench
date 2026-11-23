@@ -1,0 +1,28 @@
+config: {"port": 41940, "image_name": "smolagents-docker-jupyter-kernel", "container_run_kwargs": {"name": "smolagents-docker-h-p9", "mem_limit": "512m", "cpu_quota": 50000, "pids_limit": 100, "security_opt": ["no-new-privileges"], "cap_drop": ["ALL"]}}
+code:
+import time, asyncio, concurrent.futures
+t = time.time()
+rs = [lookup(id=i) for i in [1, 2, 3, 4, 5]]
+print('loop', int((time.time() - t) * 1000))
+t = time.time()
+with concurrent.futures.ThreadPoolExecutor(5) as ex:
+    rs = list(ex.map(lambda i: lookup(id=i), [1, 2, 3, 4, 5]))
+print('threads', int((time.time() - t) * 1000), sum(r['value'] for r in rs))
+
+{
+  "probe": "P9",
+  "hardened": true,
+  "harness_wall_s": 5.0,
+  "peak_container_mem_mib": 0,
+  "raw": {
+    "setup_ms": 2708,
+    "result": {
+      "ok": true,
+      "output": "None",
+      "logs": "loop 1021\nthreads 206 30\n",
+      "ms": 1239.3
+    },
+    "wall_s": 4.4
+  },
+  "child_tail": ""
+}

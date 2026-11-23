@@ -1,0 +1,2043 @@
+{
+  "counts": {
+    "rows": 85,
+    "probed": 69,
+    "notRun": 10,
+    "docsOnly": 5,
+    "eligible": 15
+  },
+  "board": [
+    {
+      "impl": "vercel-ai-sdk-codemode",
+      "config": "default"
+    },
+    {
+      "impl": "vercel-run",
+      "config": "default"
+    },
+    {
+      "impl": "pydantic-ai-harness-codemode",
+      "config": "default"
+    },
+    {
+      "impl": "fastmcp-codemode",
+      "config": "default"
+    },
+    {
+      "impl": "strands-codemode",
+      "config": "default"
+    },
+    {
+      "impl": "langchain-quickjs",
+      "config": "default"
+    },
+    {
+      "impl": "pi-codemode",
+      "config": "hardened"
+    },
+    {
+      "impl": "hermes-execute-code",
+      "config": "hardened"
+    },
+    {
+      "impl": "pydantic-monty",
+      "config": "hardened"
+    },
+    {
+      "impl": "asb-quickjs",
+      "config": "default"
+    },
+    {
+      "impl": "vercel-just-bash",
+      "config": "default"
+    },
+    {
+      "impl": "ms-agent-framework-hyperlight",
+      "config": "default"
+    },
+    {
+      "impl": "openclaw-codemode-quickjs-wasi",
+      "config": "default"
+    },
+    {
+      "impl": "mastra-codemode-isolated-vm",
+      "config": "hardened"
+    },
+    {
+      "impl": "utcp-codemode",
+      "config": "default"
+    }
+  ],
+  "gates": [
+    {
+      "impl": "agno-codemode",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (read /etc/hosts); P5 works (s3cr3t); P12 escaped (os.system, popen)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (300 s default)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (kernel died at 3.9 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (read /etc/hosts); P5 works (s3cr3t; env= cannot scrub); P12 escaped (os.system, popen)"
+        ],
+        "G2": [
+          "partial",
+          "10 s interrupt, but a cell that catches BaseException keeps the kernel at 100% CPU"
+        ],
+        "G3": [
+          "partial",
+          "time-limited (10 s) at 4.0 GB"
+        ]
+      }
+    },
+    {
+      "impl": "asb-quickjs",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (60 s CPU; 65 s wall)"
+        ],
+        "G3": [
+          "pass",
+          "limited (512 MB WASM memory)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "autogen-docker",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200)"
+        ],
+        "G2": [
+          "pass",
+          "limited (60 s)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (5.8 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200)"
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4.4 GB)"
+        ]
+      }
+    },
+    {
+      "impl": "autogen-local",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (host /etc/hosts); P5 works (s3cr3t); P12 escaped (os.system, subclasses)"
+        ],
+        "G2": [
+          "pass",
+          "limited (60 s)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4.5 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (host /etc/hosts); P5 works (s3cr3t); P12 escaped (os.system, subclasses)"
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4.2 GB)"
+        ]
+      }
+    },
+    {
+      "impl": "bifrost-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (op count, 1M steps, 40 ms)"
+        ],
+        "G3": [
+          "fail",
+          "verify: recursion is outside the memory budget; 12 concurrent scripts took the gateway past 4.1 GB"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (op count, 100k steps, 7 ms)"
+        ],
+        "G3": [
+          "fail",
+          "verify: same recursion path"
+        ]
+      }
+    },
+    {
+      "impl": "claude-code-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (300M-step budget; 30 s)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (Claude Code 4.5 GB, killed)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (300M-step budget)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (Claude Code 4.7 GB, killed)"
+        ]
+      }
+    },
+    {
+      "impl": "cloudflare-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (in-guest timer)"
+        ],
+        "G3": [
+          "fail",
+          "host crash (workerd, ~1.4 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "host crash"
+        ]
+      }
+    },
+    {
+      "impl": "cloudflare-codemode-mcp",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "host crash (workerd)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "cmcp",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (proxy wedged)"
+        ],
+        "G3": [
+          "partial",
+          "limited (64 MB, shared across runs)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "codeact",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works; P4 works; P5 works; P12 escaped"
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s alarm)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200)"
+        ],
+        "G2": [
+          "pass",
+          "limited (60 s execute timeout)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (8 GB cap)"
+        ]
+      }
+    },
+    {
+      "impl": "codemode-unified-bun",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (/etc/hosts read); P5 works (s3cr3t); P12 escaped (child_process, Bun.spawn)"
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "fail",
+          "no cap (4 GB kill at 0.9 s)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (/etc/hosts read); P5 works (s3cr3t); P12 escaped (child_process, Bun.spawn)"
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s)"
+        ],
+        "G3": [
+          "fail",
+          "no cap (4 GB kill at 1.0 s)"
+        ]
+      }
+    },
+    {
+      "impl": "codemode-unified-deno",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200)"
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "fail",
+          "no cap (4 GB kill at 11.7 s)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200)"
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s)"
+        ],
+        "G3": [
+          "partial",
+          "limited (5 s timeout, no mem cap)"
+        ]
+      }
+    },
+    {
+      "impl": "codemode-unified-quickjs",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "host hang (no limit, 120 s)"
+        ],
+        "G3": [
+          "partial",
+          "limited (WASM ~2 GB ceiling)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "host hang (no limit, 120 s)"
+        ],
+        "G3": [
+          "partial",
+          "limited (WASM ~2 GB ceiling)"
+        ]
+      }
+    },
+    {
+      "impl": "codex-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (yields)"
+        ],
+        "G3": [
+          "fail",
+          "host crash"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (yields 1 s)"
+        ],
+        "G3": [
+          "fail",
+          "host crash (64 MB limit ignored)"
+        ]
+      }
+    },
+    {
+      "impl": "codex-sandbox",
+      "default": {
+        "G1": [
+          "fail",
+          "P4 works; P5 works"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4 GB kill)"
+        ]
+      }
+    },
+    {
+      "impl": "datalayer-codemode-eval",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (read /etc/hosts); P5 works (s3cr3t); P12 escaped (os.system)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no limit (killed at 4.4 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P4 works (read /etc/hosts); P5 works (s3cr3t); P12 escaped (os.system)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no limit (killed at 4.0 GB)"
+        ]
+      }
+    },
+    {
+      "impl": "datalayer-codemode-jupyter",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (read /etc/hosts); P5 works (s3cr3t); P12 escaped (os.system)"
+        ],
+        "G2": [
+          "fail",
+          "not stopped (caller freed at 30 s)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (killed at 4.0 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (read /etc/hosts); P5 works (s3cr3t); P12 escaped (os.system)"
+        ],
+        "G2": [
+          "fail",
+          "not stopped (caller freed at 30 s)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (killed at 4.4 GB)"
+        ]
+      }
+    },
+    {
+      "impl": "docker-mcp-gateway-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (spins after)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (killed at 4.1 GB, 23 s)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "dspy-rlm",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "partial",
+          "limited (wasm32 4 GiB ceiling)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "executor",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (300 s default)"
+        ],
+        "G3": [
+          "fail",
+          "host crash (server)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s)"
+        ],
+        "G3": [
+          "partial",
+          "limited (10 s time, 1.7 GB peak)"
+        ]
+      }
+    },
+    {
+      "impl": "fastmcp-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (30.0 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (100 MB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (10.0 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (50 MB)"
+        ]
+      }
+    },
+    {
+      "impl": "forgemax",
+      "default": {
+        "G1": [
+          "partial",
+          "probes blocked, but guest stdout can forge IPC frames the host executes"
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (64 MB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "partial",
+          "same IPC forging in the production config"
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (64 MB)"
+        ]
+      }
+    },
+    {
+      "impl": "goose-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (loop count)"
+        ],
+        "G3": [
+          "partial",
+          "limited (loop count; P7b 4.2 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (loop count)"
+        ],
+        "G3": [
+          "partial",
+          "limited (loop count, not memory)"
+        ]
+      }
+    },
+    {
+      "impl": "hermes-execute-code",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (read /etc/hosts); P12 escaped (os.system, popen)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (300 s default)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (kernel died at 3.3 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s; kernel killed)"
+        ],
+        "G3": [
+          "pass",
+          "limited (512 MB container OOM)"
+        ]
+      }
+    },
+    {
+      "impl": "janwilmake-agent-codemode",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (no boundary); P5 works (s3cr3t); P12 escaped (no boundary; PWNED)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (killed at 4.2 GB)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "langchain-quickjs",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (64 MiB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (1 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (16 MiB)"
+        ]
+      }
+    },
+    {
+      "impl": "langgraph-codeact",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (read /etc/hosts); P5 works (s3cr3t); P12 escaped (os.system)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no limit (killed at 4.4 GB)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "langgraph-codeact-pyodide",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (js.fetch 200; urllib fails)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "partial",
+          "limited (wasm32 ceiling, 3.6 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (killed at 4.1 GB)"
+        ]
+      }
+    },
+    {
+      "impl": "lattice-go-agent",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "Execute returns at 20 s but the evaluation keeps running in the background"
+        ],
+        "G3": [
+          "pass",
+          "limited (Expr alloc budget)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "llamaindex-codeact",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (read /etc/hosts); P5 works (s3cr3t); P12 escaped (os.system)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no limit (killed at 4.2 GB)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "lootbox",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200)"
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s, no message)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (killed at 4.3 GB)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "mastra-codemode-isolated-vm",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "partial",
+          "limited (128 MB; 1/10 segv)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (32 MB)"
+        ]
+      }
+    },
+    {
+      "impl": "mastra-codemode-localsandbox",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (/etc/hosts read); P12 escaped (child_process exec)"
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "fail",
+          "no cap (4 GB harness kill)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P4 works (/etc/hosts read); P12 escaped (child_process exec)"
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s)"
+        ],
+        "G3": [
+          "partial",
+          "limited (5 s timeout, no mem cap)"
+        ]
+      }
+    },
+    {
+      "impl": "mastra-codemode-quickjs",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "limited (30 s; blocks host)"
+        ],
+        "G3": [
+          "pass",
+          "limited (128 MB heap)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "limited (5 s; blocks host)"
+        ],
+        "G3": [
+          "pass",
+          "limited (32 MB heap)"
+        ]
+      }
+    },
+    {
+      "impl": "mcp-gway-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (gateway frozen)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit (56 GB footprint, frozen)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (gateway frozen)"
+        ],
+        "G3": [
+          "fail",
+          "host crash (OOM-kill at 256 MiB)"
+        ]
+      }
+    },
+    {
+      "impl": "mcp-run-python",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works; P12 escaped"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "partial",
+          "MemoryError near the ~4 GiB wasm32 ceiling, no configured limit; 1 of 5 runs hit the 4 GiB harness kill first"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P12 escaped (JS realm; OS perms block)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "partial",
+          "same unconfigured wasm32 ceiling (2.9-3.6 GiB)"
+        ]
+      }
+    },
+    {
+      "impl": "mcp-use-codemode",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (via asyncio global); P4 works (via __subclasses__); P5 works (s3cr3t); P12 escaped (__subclasses__, asyncio)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4.0 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (via asyncio global); P4 works (via __subclasses__); P5 works (s3cr3t); P12 escaped (__subclasses__, asyncio)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4.0 GB)"
+        ]
+      }
+    },
+    {
+      "impl": "mcp-use-codemode-ts",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (via host process); P4 works (via host process); P5 works (s3cr3t); P12 escaped (constructor chain)"
+        ],
+        "G2": [
+          "partial",
+          "limited (30 s; not after await)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4.1 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (via host process); P4 works (via host process); P5 works (s3cr3t); P12 escaped (constructor chain)"
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s; 10 s ignored)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4.1 GB)"
+        ]
+      }
+    },
+    {
+      "impl": "ms-agent-framework-hyperlight",
+      "default": {
+        "G1": [
+          "pass",
+          "ran only with hyperlight-sandbox 0.10.0, above the package's <0.10 pin"
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (~8-10 MB guest data)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (~8-10 MB guest data)"
+        ]
+      }
+    },
+    {
+      "impl": "my-cool-proxy",
+      "default": {
+        "G1": [
+          "fail",
+          "P12 escaped (writes host Object.prototype)"
+        ],
+        "G2": [
+          "fail",
+          "no limit (freezes whole gateway)"
+        ],
+        "G3": [
+          "partial",
+          "limited (wasm32 heap, ~2.2 GB RSS)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "open-ptc",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (killed at 4.3 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s)"
+        ],
+        "G3": [
+          "partial",
+          "limited (5 s timeout, 4.1 GB)"
+        ]
+      }
+    },
+    {
+      "impl": "openclaw-codemode-node-vm",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 escaped (curl example.com 200); P4 escaped (via host Function); P5 escaped (PROBE_SECRET via ps); P12 escaped (TextDecoder host error)"
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s wall)"
+        ],
+        "G3": [
+          "pass",
+          "limited (64 MiB heap, worker retired)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 escaped (same TextDecoder path); P4 escaped (same TextDecoder path); P5 escaped (PROBE_SECRET via ps); P12 escaped (TextDecoder host error)"
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s wall)"
+        ],
+        "G3": [
+          "pass",
+          "limited (16 MiB heap, worker retired)"
+        ]
+      }
+    },
+    {
+      "impl": "openclaw-codemode-quickjs-wasi",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s wall)"
+        ],
+        "G3": [
+          "pass",
+          "limited (64 MiB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s wall)"
+        ],
+        "G3": [
+          "pass",
+          "limited (16 MiB)"
+        ]
+      }
+    },
+    {
+      "impl": "opencode-codemode",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200; permission)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (host stays up)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (host process 4.3 GB in 1 s)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "fail",
+          "no limit (host process 5.1 GB in 1 s)"
+        ]
+      }
+    },
+    {
+      "impl": "pi-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (300 s default)"
+        ],
+        "G3": [
+          "partial",
+          "limited (wasm32 4 GiB, 3.5 GB RSS)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (32 MiB)"
+        ]
+      }
+    },
+    {
+      "impl": "pi-codemode-mcp",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 escaped (host fetch, example.com 200); P4 escaped (/etc/hosts via process); P5 escaped (s3cr3t via Buffer); P12 escaped (execSync PWNED)"
+        ],
+        "G2": [
+          "partial",
+          "limited (30 s; async loop hangs host)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (killed at 4.1 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 escaped (host fetch); P4 escaped (/etc/hosts via process); P5 escaped (s3cr3t via Buffer); P12 escaped (execSync PWNED)"
+        ],
+        "G2": [
+          "partial",
+          "limited (1 s; async loop hangs host)"
+        ],
+        "G3": [
+          "partial",
+          "limited (1 s timeout, 1.1 GB)"
+        ]
+      }
+    },
+    {
+      "impl": "pydantic-ai-harness-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (256 MiB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (1 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (10 MB)"
+        ]
+      }
+    },
+    {
+      "impl": "pydantic-monty",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (1 s feed limit)"
+        ],
+        "G3": [
+          "pass",
+          "limited (10 MB max_memory)"
+        ]
+      }
+    },
+    {
+      "impl": "qwen-code-codemode",
+      "default": {
+        "G1": [
+          "fail",
+          "code calls tools.read_file('/etc/hosts') with no approval"
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s guest CPU)"
+        ],
+        "G3": [
+          "partial",
+          "out of memory near 1.9 GB; the 64 MiB setting is not enforced"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s guest CPU)"
+        ],
+        "G3": [
+          "partial",
+          "out of memory at 0.9 GB or more; the 64 MiB setting is not enforced"
+        ]
+      }
+    },
+    {
+      "impl": "restrictedpython-codemode",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (via import io); P5 works (s3cr3t); P12 escaped (import os; os.system)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4.2 GB)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "rlm",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works; P4 works; P5 works; P12 escaped"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200); P4 works (host /etc/hosts); P5 works (s3cr3t); P12 escaped (os.system)"
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s cell_timeout)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4 GiB kill)"
+        ]
+      }
+    },
+    {
+      "impl": "rlm-docker",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4 GiB kill)"
+        ]
+      },
+      "hardened": null
+    },
+    {
+      "impl": "shift-labs-codemode",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (globalThis.fetch 200); P4 works (require fs); P12 escaped (child_process PWNED)"
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "fail",
+          "host crash (7/24 runs; else 64 MB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (globalThis.fetch 200); P4 works (require fs); P12 escaped (child_process PWNED)"
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (16 MB)"
+        ]
+      }
+    },
+    {
+      "impl": "smolagents-docker",
+      "default": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4 GiB kill)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P3 works (example.com 200)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "partial",
+          "limited (512 MB OOM; caller hangs)"
+        ]
+      }
+    },
+    {
+      "impl": "smolagents-local",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (op count)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (op count, 2.0 s)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4 GB kill)"
+        ]
+      }
+    },
+    {
+      "impl": "smolagents-wasm",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "limited (60 s; server stays stuck)"
+        ],
+        "G3": [
+          "partial",
+          "limited (MemoryError, wasm heap ~2.4 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "limited (5 s; server stays stuck)"
+        ],
+        "G3": [
+          "partial",
+          "limited (MemoryError, wasm heap ~2.5 GB)"
+        ]
+      }
+    },
+    {
+      "impl": "stainless-mcp-codemode",
+      "default": {
+        "G1": [
+          "fail",
+          "P5 works (s3cr3t)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no limit; host crash on worker death"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "fail",
+          "P5 works (s3cr3t)"
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s"
+        ],
+        "G3": [
+          "fail",
+          "no limit; host crash on worker death"
+        ]
+      }
+    },
+    {
+      "impl": "strands-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (60 s VM time)"
+        ],
+        "G3": [
+          "pass",
+          "limited (256 MiB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s wall clock)"
+        ],
+        "G3": [
+          "pass",
+          "limited (256 MiB)"
+        ]
+      }
+    },
+    {
+      "impl": "symbolica-agentica",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (spins after close)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4.18 GB in 1.0 s)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (spins after close)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (4.19 GB in 1.6 s)"
+        ]
+      }
+    },
+    {
+      "impl": "tanstack-ai-codemode-cloudflare",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (local)"
+        ],
+        "G3": [
+          "fail",
+          "host crash (workerd, local)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (local)"
+        ],
+        "G3": [
+          "fail",
+          "host crash (workerd, local)"
+        ]
+      }
+    },
+    {
+      "impl": "tanstack-ai-codemode-node",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "verify: the timeout never fires while the program awaits (still running at 110 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (128 MB), execute throws"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "verify: same, the timeout covers synchronous code only"
+        ],
+        "G3": [
+          "pass",
+          "limited (32 MB), execute throws"
+        ]
+      }
+    },
+    {
+      "impl": "tanstack-ai-codemode-quickjs",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "limited (30 s), blocks host"
+        ],
+        "G3": [
+          "partial",
+          "limited (~2 GB WASM cap, not 128 MB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "limited (5 s), blocks host"
+        ],
+        "G3": [
+          "partial",
+          "limited (~2 GB, 32 MB ignored)"
+        ]
+      }
+    },
+    {
+      "impl": "tanstack-ai-codemode-quickjs-bun",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "limited (30 s), blocks host"
+        ],
+        "G3": [
+          "pass",
+          "limited (128 MB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "limited (5 s), blocks host"
+        ],
+        "G3": [
+          "pass",
+          "limited (32 MB)"
+        ]
+      }
+    },
+    {
+      "impl": "toolhive-vmcp-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "step budget stops the literal loop; one builtin call on a 1 GB string ran past 120 s"
+        ],
+        "G3": [
+          "fail",
+          "no memory limit: a 35-step script reached 4.4 GB and the gateway died"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "partial",
+          "step budget only; builtin calls cost one step"
+        ],
+        "G3": [
+          "fail",
+          "no memory limit; step budget only"
+        ]
+      }
+    },
+    {
+      "impl": "utcp-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (30 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (128 MB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (64 MB)"
+        ]
+      }
+    },
+    {
+      "impl": "vercel-ai-sdk-codemode",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s CPU)"
+        ],
+        "G3": [
+          "pass",
+          "limited (64 MiB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s CPU)"
+        ],
+        "G3": [
+          "pass",
+          "limited (32 MiB)"
+        ]
+      }
+    },
+    {
+      "impl": "vercel-just-bash",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (command count)"
+        ],
+        "G3": [
+          "pass",
+          "limited (string size)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (command count, 0.19 s)"
+        ],
+        "G3": [
+          "pass",
+          "limited (10 MiB string cap)"
+        ]
+      }
+    },
+    {
+      "impl": "vercel-run",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (10 s CPU)"
+        ],
+        "G3": [
+          "pass",
+          "limited (64 MiB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "pass",
+          "limited (5 s CPU)"
+        ],
+        "G3": [
+          "pass",
+          "limited (32 MiB)"
+        ]
+      }
+    },
+    {
+      "impl": "voidmcp",
+      "default": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (server wedged)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (killed 4.2 GB)"
+        ]
+      },
+      "hardened": {
+        "G1": [
+          "pass",
+          ""
+        ],
+        "G2": [
+          "fail",
+          "no-limit-within-120s (5 s flag ignored)"
+        ],
+        "G3": [
+          "fail",
+          "no-limit-within-120s (killed 4.2 GB)"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+default MCP env (secret not forwarded to deno) | python os.environ.get: return=None error=''
+default MCP env (secret not forwarded to deno) | js process.env: return=None error=''
+default MCP env (secret not forwarded to deno) | Deno.env.get: return=None error='pyodide.ffi.JsException: NotCapable: Requires env access to "PROBE_SECRET", run again with the --allow-env flag'
+full host env forwarded to deno | python os.environ.get: return=None error=''
+full host env forwarded to deno | js process.env: return=None error=''
+full host env forwarded to deno | Deno.env.get: return=None error='pyodide.ffi.JsException: NotCapable: Requires env access to "PROBE_SECRET", run again with the --allow-env flag'

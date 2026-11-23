@@ -1,0 +1,17 @@
+code:
+console.log("A".repeat(200000)); "RETURNED"
+
+result:
+{
+  "keys": [
+    "id",
+    "result",
+    "ms",
+    "hostCalls"
+  ],
+  "ms": 1456,
+  "resultLength": 200001,
+  "aCount": 200000,
+  "containsRETURNED": false,
+  "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n"
+}

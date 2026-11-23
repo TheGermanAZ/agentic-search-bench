@@ -1,0 +1,9 @@
+{
+  "probe": "P5",
+  "config": "default",
+  "outcome": "works",
+  "detail": "process: ReferenceError: process is not defined\nENV=s3cr3t",
+  "display": "works (s3cr3t)",
+  "peak_child_rss_mb": 86,
+  "wall_s": 0.4
+}

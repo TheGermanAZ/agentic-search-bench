@@ -1,0 +1,34 @@
+# qwen-code-codemode P8 (default)
+--- exec 1 source ---
+globalThis.kept = 7; text("set")
+--- exec 1 result (270.71 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (30 chars):
+[{"type":"text","text":"set"}]
+--- exec 2 source ---
+text(typeof kept === "undefined" ? "gone" : kept)
+--- exec 2 result (195.3 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (31 chars):
+[{"type":"text","text":"gone"}]
+--- summary ---
+{
+ "config": "default",
+ "exit": {
+  "code": 0,
+  "sig": null
+ },
+ "setupMsSpawnToFirstExec": 1970,
+ "totalHostCalls": 0,
+ "sideRequests": 0
+}
+--- cli stdout (json, first 3000 chars) ---
+[{"type":"system","subtype":"init","uuid":"d8f78b59-43ab-4c0b-8766-f782dc9f07f2","session_id":"d8f78b59-43ab-4c0b-8766-f782dc9f07f2","cwd":"~/p/agentic-search-bench/research/probes/qwen-code-codemode/work","tools":["exec","read_mcp_resource","read_file","zoom_image","grep_search","cron_list","cron_delete","autofix_pr","web_fetch","list_agents","task_stop","skill","search_memory","enter_worktree","exit_worktree","record_artifact","get_goal","update_goal","tool_call","tool_search","agent","glob","report_findings","cron_create","loop_wakeup","send_message","manage_memory","mcp__probe__lookup"],"mcp_servers":[{"name":"probe","status":"connected"}],"model":"mock-model","permission_mode":"auto","slash_commands":["advisor","agent-delegation","auth","autofix-pr","batch","batch-api","bug","clear","compress","compress-fast","config","context","coordinate","curator","dataviz","diff","docs","doctor","effort","export","extension-creator","extensions","goal","goal-draft","hooks","import-config","init","insight","language","loop","model","new-app","output-style","pr","qc-helper","review","simplify","stats","status","stuck","summary","tasks","update","workflow-authoring","workflow-creator","workflows","zvec-grep-install"],"qwen_code_version":"0.28.4","agents":["general-purpose","Explore","statusline-setup","review-agent","claude-code","codex"]},{"type":"assistant","uuid":"1a7df678-32b3-4884-88ec-d36ab9dfb970","session_id":"d8f78b59-43ab-4c0b-8766-f782dc9f07f2","parent_tool_use_id":null,"message":{"id":"1a7df678-32b3-4884-88ec-d36ab9dfb970","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_1","name":"exec","input":{"source":"globalThis.kept = 7; text(\"set\")"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"fc47ae44-e896-46e2-90c7-eded88948813","session_id":"d8f78b59-43ab-4c0b-8766-f782dc9f07f2","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_1","is_error":false,"content":"set"}]}},{"type":"assistant","uuid":"f3bc2424-4aec-4b8d-9eec-448a6744ac14","session_id":"d8f78b59-43ab-4c0b-8766-f782dc9f07f2","parent_tool_use_id":null,"message":{"id":"f3bc2424-4aec-4b8d-9eec-448a6744ac14","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_2","name":"exec","input":{"source":"text(typeof kept === \"undefined\" ? \"gone\" : kept)"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"d1ebd9d4-9adb-43e9-919a-3fdc0ebdd9d2","session_id":"d8f78b59-43ab-4c0b-8766-f782dc9f07f2","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_2","is_error":false,"content":"gone"}]}},{"type":"assistant","uuid":"3d7b4af5-ea3f-4d85-bb04-5f71beb3942d","session_id":"d8f78b59-43ab-4c0b-8766-f782dc9f07f2","p
+--- cli stderr (first 3000 chars) ---
+Warning: Node.js 24.22.1 can cause high temporary memory usage during shell safety checks. Upgrade to Node.js 26.12.1. Qwen Code will continue normally. See https://github.com/QwenLM/qwen-code/issues/15165
+
+--- mock events ---
+{"t":1978.23,"kind":"exec-issued","n":1,"hostCallsSoFar":3}
+{"t":2248.94,"kind":"exec-result","n":1,"hostCallsSoFar":3,"textLen":30}
+{"t":2249.09,"kind":"exec-issued","n":2,"hostCallsSoFar":3}
+{"t":2444.39,"kind":"exec-result","n":2,"hostCallsSoFar":3,"textLen":31}
+{"t":2444.48,"kind":"final"}
+{"t":2647.32,"kind":"final"}

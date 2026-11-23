@@ -1,0 +1,323 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py default R9a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 7196,
+  "peakTreeRssMb": 191,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9a",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich']}), new thread_id per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1396,
+          "ms": 5493,
+          "ok": true,
+          "result": "<error type=\"Timeout\">interrupted</error>",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1549,
+        "ms": 517,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 2066,
+        "ms": 238,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 6889,
+        "ms": 227,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 65,
+    "totalMs": 7116
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      101,
+      27
+    ],
+    [
+      202,
+      34
+    ],
+    [
+      313,
+      35
+    ],
+    [
+      419,
+      44
+    ],
+    [
+      516,
+      48
+    ],
+    [
+      617,
+      55
+    ],
+    [
+      722,
+      59
+    ],
+    [
+      834,
+      61
+    ],
+    [
+      939,
+      62
+    ],
+    [
+      1037,
+      66
+    ],
+    [
+      1150,
+      69
+    ],
+    [
+      1251,
+      74
+    ],
+    [
+      1341,
+      79
+    ],
+    [
+      1444,
+      87
+    ],
+    [
+      1590,
+      124
+    ],
+    [
+      1783,
+      170
+    ],
+    [
+      1928,
+      180
+    ],
+    [
+      2063,
+      185
+    ],
+    [
+      2166,
+      185
+    ],
+    [
+      2296,
+      188
+    ],
+    [
+      2387,
+      188
+    ],
+    [
+      2487,
+      189
+    ],
+    [
+      2592,
+      189
+    ],
+    [
+      2694,
+      189
+    ],
+    [
+      2801,
+      189
+    ],
+    [
+      2890,
+      189
+    ],
+    [
+      3070,
+      189
+    ],
+    [
+      3175,
+      189
+    ],
+    [
+      3273,
+      189
+    ],
+    [
+      3370,
+      189
+    ],
+    [
+      3465,
+      189
+    ],
+    [
+      3599,
+      189
+    ],
+    [
+      3696,
+      189
+    ],
+    [
+      3800,
+      189
+    ],
+    [
+      3930,
+      189
+    ],
+    [
+      4031,
+      189
+    ],
+    [
+      4132,
+      189
+    ],
+    [
+      4226,
+      189
+    ],
+    [
+      4341,
+      189
+    ],
+    [
+      4433,
+      189
+    ],
+    [
+      4569,
+      189
+    ],
+    [
+      4667,
+      189
+    ],
+    [
+      4760,
+      189
+    ],
+    [
+      4859,
+      189
+    ],
+    [
+      4966,
+      189
+    ],
+    [
+      5091,
+      189
+    ],
+    [
+      5195,
+      189
+    ],
+    [
+      5304,
+      189
+    ],
+    [
+      5398,
+      189
+    ],
+    [
+      5506,
+      189
+    ],
+    [
+      5605,
+      189
+    ],
+    [
+      5717,
+      189
+    ],
+    [
+      5816,
+      189
+    ],
+    [
+      5914,
+      189
+    ],
+    [
+      6012,
+      189
+    ],
+    [
+      6121,
+      189
+    ],
+    [
+      6235,
+      189
+    ],
+    [
+      6340,
+      189
+    ],
+    [
+      6433,
+      189
+    ],
+    [
+      6533,
+      189
+    ],
+    [
+      6635,
+      189
+    ],
+    [
+      6766,
+      189
+    ],
+    [
+      6856,
+      189
+    ],
+    [
+      6984,
+      189
+    ],
+    [
+      7096,
+      191
+    ],
+    [
+      7187,
+      191
+    ]
+  ]
+}

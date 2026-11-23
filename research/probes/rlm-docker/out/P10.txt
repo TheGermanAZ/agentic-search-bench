@@ -1,0 +1,17 @@
+code:
+raise ValueError("probe-boom")
+
+{
+  "probe": "P10",
+  "harness_wall_s": 5.6,
+  "peak_container_mem_mib": 0,
+  "raw": {
+    "result": {
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/workspace/_exec.py\", line 109, in <module>\n    exec(code, combined, combined)\n  File \"<string>\", line 1, in <module>\nValueError: probe-boom\n",
+      "ms": 456.0
+    },
+    "wall_s": 5.08
+  },
+  "child_tail": "{\"result\": {\"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"/workspace/_exec.py\\\", line 109, in <module>\\n    exec(code, combined, combined)\\n  File \\\"<string>\\\", line 1, in <module>\\nValueError: probe-boom\\n\", \"ms\": 456.0}, \"wall_s\": 5.08}\n"
+}

@@ -1,0 +1,46 @@
+label: P10d
+command: node probe.mjs P10d
+child exit: code=0 signal=null
+child wall ms (process start to exit): 417
+peak child RSS: 141.3 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 182 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P10d",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "try { await host.failing(); } catch (e) { return { name: e.name, message: e.message, stack: e.stack }; }"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "status": "completed",
+      "value": {
+        "name": "Error",
+        "message": "Host function failed.",
+        "stack": "    at apply (run-setup.js:438:33)\n    at <anonymous> (run.js:3:18)\n    at <eval> (run.js:4:1)\n"
+      },
+      "wallMs": 185.417584,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": {
+      "name": "Error",
+      "message": "Host function failed.",
+      "stack": "    at apply (run-setup.js:438:33)\n    at <anonymous> (run.js:3:18)\n    at <eval> (run.js:4:1)\n"
+    },
+    "ms": 185,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 134.5
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:1889) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

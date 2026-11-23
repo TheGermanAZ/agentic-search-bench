@@ -1,0 +1,56 @@
+--- P2-return: documented form: return a value
+code:
+print("A" * 200000)
+return "RETURNED"
+{"ok": true, "result": "RETURNED", "error": null, "ms": 7.0}
+stdout (200000 chars): 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+
+--- P3-urllib: SPEC form
+code:
+import urllib.request
+print(urllib.request.urlopen("https://example.com").status)
+{"ok": false, "result": null, "error": "__import__ not found", "ms": 2.4}
+stdout (0 chars): ''
+
+--- P4-open: SPEC form
+code:
+print(open("/etc/hosts").read())
+{"ok": false, "result": null, "error": "name 'open' is not defined", "ms": 1.9}
+stdout (0 chars): ''
+
+--- P6-async-loop: a loop that yields to the event loop: does the 30 s wait_for stop it
+code:
+while True:
+    await asyncio.sleep(0)
+{"ok": false, "result": null, "error": "Execution timeout after 30.0 seconds", "ms": 30003.4}
+stdout (0 chars): ''
+
+--- P9-loop: serial form
+code:
+loop = asyncio.get_running_loop()
+t = loop.time()
+for i in [1, 2, 3, 4, 5]:
+    await host.lookup(id=i)
+print(int((loop.time() - t) * 1000))
+{"ok": true, "result": null, "error": null, "ms": 1046.2}
+stdout (4 chars): '1043'
+
+--- P10-trace: what the model sees for an exception (error field only)
+code:
+x = 1
+raise ValueError('probe-boom')
+{"ok": false, "result": null, "error": "probe-boom", "ms": 4.7}
+stdout (0 chars): ''
+
+--- client-reach: host closures reachable from guest
+code:
+print(type(search_tools).__name__, search_tools.__closure__ is not None)
+{"ok": true, "result": null, "error": null, "ms": 3.3}
+stdout (13 chars): 'function True'
+
+--- timeout-arg: the model chooses the timeout: execute_code schema exposes it
+code:
+return 1
+{"ok": true, "result": 1, "error": null, "ms": 4.2}
+stdout (0 chars): ''
+

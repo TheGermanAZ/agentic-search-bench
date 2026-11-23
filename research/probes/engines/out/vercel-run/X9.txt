@@ -1,0 +1,5 @@
+await new Promise(() => {}); console.log('never')
+--- output
+ERROR: stopped at the 65 s limit for the whole program, including corpus calls. Do less per execution.
+---
+wall_ms=65003 host_calls=0 max_arg_chars=0 out_chars=102 peak_host_rss_mb=162

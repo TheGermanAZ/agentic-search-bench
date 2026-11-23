@@ -1,0 +1,58 @@
+{
+  "probe": "P9threads",
+  "config": "default",
+  "codes": [
+    "from hermes_tools import lookup\nfrom concurrent.futures import ThreadPoolExecutor\nwith ThreadPoolExecutor(5) as ex:\n    rs = list(ex.map(lambda i: lookup(id=i), [1, 2, 3, 4, 5]))\nprint(sum(r['value'] for r in rs))"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "30\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"30\\n\", \"exit_code\": 0, \"tool_calls_made\": 5, \"duration_seconds\": 1.22, \"kernel\": {\"mode\": \"session\", \"reused\": false, \"execution_count\": 1, \"state_reset\": false}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 5,
+      "model_sees_len": 302,
+      "ms": 1226.7,
+      "started": 1795382857.568233
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.02,
+  "peak_tree_rss_gb": 0.165,
+  "calls": [
+    {
+      "id": 1,
+      "start": 1795382857.765549,
+      "end": 1795382857.970571,
+      "pid": 22718
+    },
+    {
+      "id": 2,
+      "start": 1795382857.9719412,
+      "end": 1795382858.172658,
+      "pid": 22718
+    },
+    {
+      "id": 3,
+      "start": 1795382858.17365,
+      "end": 1795382858.3786721,
+      "pid": 22718
+    },
+    {
+      "id": 4,
+      "start": 1795382858.382127,
+      "end": 1795382858.587148,
+      "pid": 22718
+    },
+    {
+      "id": 5,
+      "start": 1795382858.588159,
+      "end": 1795382858.790658,
+      "pid": 22718
+    }
+  ],
+  "child_log_tail": ""
+}

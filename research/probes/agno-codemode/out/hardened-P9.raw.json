@@ -1,0 +1,54 @@
+{
+  "probe": "P9",
+  "config": "hardened",
+  "codes": [
+    "import asyncio\nrs = await asyncio.gather(lookup(id=1), lookup(id=2), lookup(id=3), lookup(id=4), lookup(id=5))\nmsg = sum(x[\"value\"] for x in rs)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "30\nOut[1]: 30",
+      "ms": 723.3,
+      "started": 1795383321.208912
+    }
+  ],
+  "setup_ms": 0.1,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.0,
+  "peak_tree_rss_gb": 0.12,
+  "calls": [
+    {
+      "id": 1,
+      "start": 1795383321.72452,
+      "end": 1795383321.925587,
+      "pid": 70836
+    },
+    {
+      "id": 2,
+      "start": 1795383321.724913,
+      "end": 1795383321.925985,
+      "pid": 70836
+    },
+    {
+      "id": 3,
+      "start": 1795383321.725169,
+      "end": 1795383321.926103,
+      "pid": 70836
+    },
+    {
+      "id": 4,
+      "start": 1795383321.725395,
+      "end": 1795383321.926191,
+      "pid": 70836
+    },
+    {
+      "id": 5,
+      "start": 1795383321.72596,
+      "end": 1795383321.926315,
+      "pid": 70836
+    }
+  ],
+  "child_log_tail": "WARNING CodeMode runs arbitrary Python and shell with the permissions of this process. It is not a sandbox: provide human supervision or run the agent in an isolated container.\n"
+}

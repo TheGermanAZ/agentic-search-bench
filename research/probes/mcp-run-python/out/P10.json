@@ -1,0 +1,1 @@
+{"id": "P10", "outcome": "works", "detail": "status run-error; error text 'Traceback (most recent call last):\\n  File \"main.py\", line 1, in <module>\\n    raise ValueError(\"probe-boom\")\\nValueError: probe-boom'; line number survives: True", "error": null}

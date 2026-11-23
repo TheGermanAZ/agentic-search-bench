@@ -1,0 +1,186 @@
+{
+  "impl": "mcp-run-python",
+  "name": "mcp-run-python (Pyodide in Deno)",
+  "source": "https://github.com/pydantic/mcp-run-python (archived; PyPI mcp-run-python)",
+  "pinned": "mcp-run-python 0.0.22, commit 4f93a9261d5e9905cb3e93b4817bda7c3470ac00 (archive notice, 2026-01-30); Deno 2.9.8 (Homebrew); Pyodide 0.28.2 (deno.jsonc)",
+  "language": "Python",
+  "engine": "Pyodide (CPython compiled to wasm32) running in Deno (V8). Deno permission flags limit host access.",
+  "how_run": "mcp_run_python.async_prepare_deno_env('stdio') (what code_sandbox uses) then the MCP stdio tool run_python_code; P5 and P12 also with the full host env forwarded to deno.",
+  "probes": {
+    "P1": {
+      "outcome": "not-applicable",
+      "detail": "tools/list exposes only run_python_code(python_code, global_variables). global_variables is JSON (pyodide.toPy), so no callable host function can be registered. Routing lookup through HTTP to localhost would break the rule that only example.com may be contacted.",
+      "evidence": "research/probes/mcp-run-python/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "return value 'RETURNED' and 200000 'A' chars in one output entry, no truncation marker",
+      "evidence": "research/probes/mcp-run-python/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "urllib: URLError unknown url type https. js.fetch('https://example.com') with default allow_networking=True returned 200 (577 chars). With allow_networking=False: NotCapable, requires net access.",
+      "evidence": "research/probes/mcp-run-python/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "Python open('/etc/hosts') raises FileNotFoundError (Pyodide in-memory FS). Deno.readTextFileSync('/etc/hosts') raises NotCapable (read). Reachable: Deno readDir of ./node_modules succeeds. Deno writes raise NotCapable (write). Pyodide in-memory /tmp write and read succeed.",
+      "evidence": "research/probes/mcp-run-python/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "PROBE_SECRET not visible in either config: os.environ empty, process.env stubbed to {}, Deno.env.get raises NotCapable (--allow-env absent) even with the full host env forwarded to deno.",
+      "evidence": "research/probes/mcp-run-python/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "while True: pass hung the server; the harness stopped it at 120 s. No timeout exists in the server code.",
+      "evidence": "research/probes/mcp-run-python/out/P6.txt"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "Python list growth raised MemoryError in 4 of 5 repeats after about 3.6 s (out/P7_repeats.txt). Source of the cap is inference: the wasm32 heap tops out near 4 GiB. In 1 of 5 runs the harness 4 GiB cap fired first at 4.29 GiB, so the two limits race.",
+      "evidence": "research/probes/mcp-run-python/out/P7.txt"
+    },
+    "P7b": {
+      "outcome": "no-limit-within-120s",
+      "detail": "README claim variant via js.eval: V8-side allocation was not capped. Harness killed the tree at 4.03 to 4.15 GiB in 3 of 3 repeats (out/P7b_repeats.txt).",
+      "evidence": "research/probes/mcp-run-python/out/P7b.txt"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "Python globals are fresh per run (kept gone in the same server). Yet sys attributes (7) and JS globals (9) and an Array.prototype property (42) survive across runs in the same server.",
+      "evidence": "research/probes/mcp-run-python/out/P8.txt",
+      "display": "fresh globals; sys and JS state persist"
+    },
+    "P9": {
+      "outcome": "not-applicable",
+      "detail": "No host tool exists, so host-call parallelism cannot be tested (see P1). Extra: in-sandbox asyncio.gather of five 200 ms sleeps took 203 ms.",
+      "evidence": "research/probes/mcp-run-python/out/P9.txt"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "status run-error; error text is a Python traceback with File main.py, line 1, and ValueError: probe-boom. Line number survives.",
+      "evidence": "research/probes/mcp-run-python/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "3 runs; only the last one asserted results (the other two were unasserted). Fresh server per execution: median 2784 to 2866 ms (p90 2813 to 3025 ms, n=20). Warm eval in one server median 0.69 to 2.84 ms. First enter (deno dep prepare plus server start) 1.8 to 2.0 s.",
+      "evidence": "research/probes/mcp-run-python/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "escaped",
+      "detail": "js.eval runs arbitrary JS (3). The Deno global is reached (version 2.9.8) and process.pid is readable. Deno file read and write, env and Command run all raise NotCapable under the run flags.",
+      "evidence": "research/probes/mcp-run-python/out/P12.txt"
+    }
+  },
+  "defaults": {
+    "time": "none; the server has no timeout, and an infinite loop never returns (P6)",
+    "memory": "no configured limit. Python heap hits MemoryError near 4 GiB (wasm32, inferred). V8 side not capped below 4 GiB (P7b).",
+    "output": "no cap observed (200000 chars intact in P2)",
+    "tool_calls": "not applicable: no host tools"
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "One MCP tool, run_python_code(python_code, global_variables). global_variables go through pyodide.toPy, so they are JSON values only.",
+      "evidence": "https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/deno/src/main.ts#L94 ; https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/deno/src/runCode.ts#L59-L62"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "The model sees one tool and its description. The description says code runs under Python 3.13. There is no discovery of host tools because there are none.",
+      "evidence": "https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/deno/src/main.ts#L94"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "MCP JSON-RPC over stdio between the Python client and the deno process. The sandbox makes no callbacks to the host.",
+      "evidence": "https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/code_sandbox.py#L75 (client side; this path is research/impls/mcp-run-python/src/mcp_run_python/code_sandbox.py:75)"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Deno flags are the boundary. The run step gets --allow-net (unrestricted when allow_networking is True) and --allow-read=./node_modules. No --allow-env, --allow-write, or --allow-run. The JS global is still reachable from Python.",
+      "evidence": "https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/main.py#L190-L192 ; https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/main.py#L168-L170 ; https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/deno/src/polyfill.ts#L4-L8"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "stdout and stderr go to an output array. Return value is JSON from the last expression. No truncation in the server code.",
+      "evidence": "https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/deno/src/runCode.ts#L88-L97 ; https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/deno/src/runCode.ts#L134-L140"
+    },
+    {
+      "topic": "Limits",
+      "finding": "The server code sets no timeout and no memory limit. The only memory stop observed is the wasm32 MemoryError.",
+      "evidence": "grep of mcp_run_python/deno/src/main.ts and runCode.ts for timeout, limit: no matches. Probes P6, P7, P7b."
+    },
+    {
+      "topic": "State",
+      "finding": "Each run gets fresh Python globals (globals: pyodide.toPy({...})), but the Pyodide instance is reused, so sys and the JS realm persist.",
+      "evidence": "https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/deno/src/runCode.ts#L35-L37 ; https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/deno/src/runCode.ts#L59-L60"
+    },
+    {
+      "topic": "Errors",
+      "finding": "formatError strips Pyodide-internal frames and keeps user lines.",
+      "evidence": "https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/deno/src/runCode.ts#L197-L206"
+    },
+    {
+      "topic": "Anything else",
+      "finding": "allow_networking defaults to True (code_sandbox signature). Startup loads micropip and pydantic from the Pyodide CDN. The generated prepareEnvCode.ts is gitignored and must be produced by build/build.py before the server runs.",
+      "evidence": "https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/code_sandbox.py#L58 ; https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/mcp_run_python/deno/src/runCode.ts#L112 ; https://github.com/pydantic/mcp-run-python/blob/4f93a9261d5e9905cb3e93b4817bda7c3470ac00/.gitignore#L16 (gitignore at repo root)"
+    }
+  ],
+  "surprises": [
+    "README claim that Pyodide runs arbitrary JavaScript is confirmed (P12: js.eval returns 3, Deno global reached).",
+    "README claim that Deno has no good memory limit is confirmed for the JS side (P7b 3 of 3 runs past 4 GiB). Refuted for the Python side: MemoryError near 4 GiB in 4 of 5 P7 runs.",
+    "README claim that code can taint the runtime is confirmed: Array.prototype and globalThis changes persist across runs in one server.",
+    "README claim about files is partly confirmed: Deno host reads and writes are blocked by flags, but readDir inside node_modules and in-memory /tmp work.",
+    "Fresh-globals design does not isolate state: sys attributes and JS globals survive across runs.",
+    "Default config passes --allow-net with no host list, so js.fetch can reach any host. Only example.com was contacted by the probes.",
+    "P1 and P9 cannot be expressed because there is no host-tool bridge. This is not a sandbox limit but a missing feature."
+  ],
+  "hardened": {
+    "config": "allow_networking=False is the only public limit knob. When False, --allow-net is omitted from the deno run args (main.py:188-190 `_deno_run_args`: `if allow_networking: args += ['--allow-net']`; the hardened deno argv is ['run', '--allow-read=./node_modules', '--node-modules-dir=auto', 'src/main.ts', 'stdio', '--return-mode=json'], no --allow-net, confirmed in out/hardened-P1.txt). Set via code_sandbox(allow_networking=False) (code_sandbox.py:58), async_prepare_deno_env/prepare_deno_env/run_mcp_server(allow_networking=) (main.py:29, 84, 147), or CLI `--disable-networking` (_cli.py:27-28). No time, memory, output-size or tool-call knob exists: the CLI exposes only --port/--deps/--disable-networking (_cli.py:24-28) and grep of deno/src/main.ts and runCode.ts finds no timeout or memory limit. So every probe except P3 is run identically to defaults; only P3 changes. The server already runs without --allow-env, --allow-write or --allow-run and with --allow-read scoped to ./node_modules (main.py:191-195), which is the default, not a hardening step.",
+    "probes": {
+      "P3": {
+        "outcome": "blocked",
+        "detail": "With allow_networking=False all four egress paths fail with no --allow-net: python urllib.request.urlopen -> URLError (https not a known url type, Pyodide has no socket); js.fetch, pyodide.http.pyfetch and host Deno.connect('example.com',443) each raise NotCapable 'Requires net access to \"example.com:443\"'. Default config returned 200 from js.fetch, so this knob is what closes network egress.",
+        "evidence": "research/probes/mcp-run-python/out/hardened-P3.txt",
+        "display": "blocked (no --allow-net)"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "Unchanged from default (allow_networking does not touch --allow-read/-write). python open('/etc/hosts') -> FileNotFoundError (Pyodide MEMFS); host Deno.readTextFileSync('/etc/hosts') and Deno.writeTextFileSync both NotCapable. Reachable, as on default: Deno.readDirSync inside the allowed ./node_modules, and Pyodide in-memory /tmp write+read.",
+        "evidence": "research/probes/mcp-run-python/out/hardened-P4.txt",
+        "display": "blocked (host FS NotCapable)"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "Unchanged from default (no --allow-env in either config). PROBE_SECRET=s3cr3t set in the host env; python os.environ.get -> None, js process.env -> None (polyfill stubs it to {}), host Deno.env.get -> NotCapable 'Requires env access'. Still blocked when the full host env is forwarded to the deno child process.",
+        "evidence": "research/probes/mcp-run-python/out/hardened-P5.txt",
+        "display": "blocked (no --allow-env)"
+      },
+      "P6": {
+        "outcome": "no-limit-within-120s",
+        "detail": "Unchanged from default: no time knob exists. `while True: pass` hung the server; the harness stopped the process group at 120 s. No sandbox timeout fired.",
+        "evidence": "research/probes/mcp-run-python/out/hardened-P6.txt",
+        "display": "no-limit-within-120s"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "Unchanged from default: no memory knob exists; the cap is the wasm32 Pyodide heap, not a project option. `a=[]; while True: a.append('x'*10**6)` raised Python MemoryError in 3 of 3 hardened runs after 1.7-2.2 s at a sampled peak tree RSS of 2.9-3.6 GiB, below the harness 4 GiB kill, which never fired. G3 holds: in every run a bystander sandbox (separate deno server, separate process group, opened before P7) ran print(1+1) -> 2 afterward, so the host and other sessions survive. The poisoned session's own next call returns run-error (that one Pyodide instance is dead), which is per-execution, not a host crash. Measured; see out/hardened-P7.txt and the mem-lock run.",
+        "evidence": "research/probes/mcp-run-python/out/hardened-P7.txt",
+        "display": "limited (MemoryError ~3 GiB)"
+      },
+      "P9": {
+        "outcome": "not-applicable",
+        "detail": "Unchanged from default: no host-tool bridge exists (P1), so host-call parallelism cannot be tested and the hardened config adds no host tool. In-sandbox asyncio.gather of five 200 ms sleeps took ~210 ms, so async scheduling works, but there is no host side to call.",
+        "evidence": "research/probes/mcp-run-python/out/hardened-P9.txt",
+        "display": "not-applicable (no host tool bridge)"
+      },
+      "P12": {
+        "outcome": "escaped",
+        "detail": "Unchanged from default: the language boundary is still fully escaped; only Deno's permission layer limits blast radius. Pure-Python attempts stay inside Pyodide (subclass walk finds _wrap_close and Popen but subprocess.run -> OSError 'emscripten does not support processes'). The real escape is js.eval: this.constructor.constructor('return process')() yields the live host process (pid 30467 read), and the host Deno global is reached (version 2.9.8). Every OS action off that handle is then blocked by the run flags: readTextFileSync/writeTextFileSync/Deno.Command/dlopen/env.get all NotCapable, and Deno.permissions.requestSync('run') returns 'denied' (non-interactive). The server survived each of those attempts (print('alive') ran after). Two DoS footguns, same on default: os.system('echo PWNED') and the _wrap_close->system path trigger a spawnSync that needs --allow-env and crash the whole Pyodide/deno server with a fatal error (host crash of that one server; verified identical under default in out/hardened-P12-default-ossystem.txt). Cross-client note (out/hardened-P12x.txt): hardened allow_networking=False cannot run either HTTP mode at all (--allow-net is also what lets the HTTP server bind; it dies at listen with NotCapable, verified), and in stateful HTTP all client sessions share one Pyodide realm (one RunCode, main.ts:65,217; runCode.ts:21,35-37), so the P8 realm taint is also a cross-client taint. None of this moves the word: 'escaped' = the code reached the host runtime through the language, which it does.",
+        "evidence": "research/probes/mcp-run-python/out/hardened-P12.txt",
+        "display": "escaped (JS realm; OS perms block)"
+      }
+    }
+  }
+}

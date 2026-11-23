@@ -1,0 +1,10 @@
+{
+  "setup_ms": 1462,
+  "result": {
+    "ok": true,
+    "output": "None",
+    "logs": "127.0.0.1\tlocalhost\n::1\tlocalhost ip6-localhost ip6-loopback\nfe00::\tip6-localnet\nff00::\tip6-mcastprefix\nff02::1\tip6-allnodes\nff02::2\tip6-allrouters\n192.168.215.2\t89557d3a6d70\n\n",
+    "ms": 49.8
+  },
+  "wall_s": 1.89
+}

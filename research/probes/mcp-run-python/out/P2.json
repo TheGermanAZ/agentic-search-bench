@@ -1,0 +1,1 @@
+{"id": "P2", "outcome": "works", "detail": "return_value 'RETURNED' came back; output array had 1 entries, 200000 chars, 200000 'A', truncation marker False; both channels returned", "error": null}

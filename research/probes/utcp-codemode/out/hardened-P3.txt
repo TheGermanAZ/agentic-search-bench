@@ -1,0 +1,16 @@
+{
+  "config": {
+    "timeoutMs": 10000,
+    "memoryLimitMB": 64,
+    "call": "client.callToolChain(code, 10000, 64)"
+  },
+  "probe": "P3 network",
+  "code": "await fetch(\"https://example.com\")",
+  "wallMs": 1.5,
+  "hostCalls": 0,
+  "result": null,
+  "logs": [
+    "[ERROR] Code execution failed: ReferenceError: fetch is not defined\n    at <isolated-vm>:5:15\n    at <isolated-vm>:6:15\n    at <isolated-vm>:11:11"
+  ],
+  "threw": null
+}

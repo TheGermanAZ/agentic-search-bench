@@ -1,0 +1,9 @@
+try:
+    subs = ().__class__.__base__.__subclasses__()
+    return [c.__name__ for c in subs if c.__name__ in ("_wrap_close", "Popen")]
+except Exception as e:
+    return type(e).__name__ + ": " + str(e)
+--- output
+AttributeError: 'tuple' object has no attribute '__class__'
+---
+wall_ms=16 host_calls=0 peak_tree_rss_mb=193

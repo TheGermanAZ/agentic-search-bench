@@ -1,0 +1,43 @@
+label: P12
+command: node probe.mjs P12
+child exit: code=0 signal=null
+child wall ms (process start to exit): 142
+peak child RSS: 114.5 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P12",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return String(this.constructor.constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "TypeError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "Function constructor is not allowed",
+        "stack": "TypeError: Function constructor is not allowed\n    at <anonymous> (run.js:1:32)",
+        "string": "TypeError: Function constructor is not allowed"
+      },
+      "wallMs": 77.569542,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "TypeError: RUN_USER_SOURCE_ERROR Function constructor is not allowed",
+    "ms": 78,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 132.9
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:66889) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

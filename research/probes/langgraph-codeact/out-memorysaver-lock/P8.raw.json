@@ -1,0 +1,35 @@
+{
+  "probe": "P8",
+  "config": "default",
+  "codes": [
+    "kept = 7",
+    "try:\n    msg = kept\nexcept NameError:\n    msg = \"gone\"\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "<code ran, no output printed to stdout>",
+      "error": null,
+      "context_keys": [
+        "kept"
+      ],
+      "host_builtins_leak": false,
+      "ms": 3.1,
+      "started": 1795377283.691021
+    },
+    {
+      "ok": true,
+      "stdout": "7\n",
+      "error": null,
+      "context_keys": [
+        "kept",
+        "msg"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1.8,
+      "started": 1795377283.6943622
+    }
+  ],
+  "setup_ms": 3.5,
+  "done": true
+}

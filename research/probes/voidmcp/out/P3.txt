@@ -1,0 +1,44 @@
+[
+  {
+    "probe": "P3-fetch",
+    "config": "defaults",
+    "code": "const r = await fetch(\"https://example.com\"); return r.status",
+    "wall_ms": 7,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "{\"error\":\"ReferenceError: fetch is not defined\",\"duration_ms\":0}",
+    "response_text_length": 64,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P3-std.urlGet",
+    "config": "defaults",
+    "code": "const std = await import(\"qjs:std\"); return std.urlGet(\"https://example.com\", {full: true})",
+    "wall_ms": 6,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "{\"error\":\"TypeError: not a function\",\"duration_ms\":0}",
+    "response_text_length": 53,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P3-XMLHttpRequest",
+    "config": "defaults",
+    "code": "return typeof XMLHttpRequest + ' ' + typeof WebSocket",
+    "wall_ms": 7,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":\"undefined undefined\",\"duration_ms\":0}",
+    "response_text_length": 48,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  }
+]

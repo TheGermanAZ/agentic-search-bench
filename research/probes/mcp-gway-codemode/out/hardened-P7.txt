@@ -1,0 +1,9 @@
+--- code 1 ---
+def f():
+    a = []
+    for i in range(2147483647):
+        a.append("x" * 1000000)
+    return len(a)
+result = f()
+--- result 1 ---
+{"ok": false, "error": "RemoteDisconnected: Remote end closed connection without response", "ms": 7211.69, "peakFootprintMB": 4144, "footprintKilled": true, "hostCalls": 0, "gatewayAlive": false, "concurrentP1": {"ok": false, "error": "ConnectionResetError: [Errno 54] Connection reset by peer", "ms": 6206.9, "hostCalls": 0, "gatewayAlive": false}, "concurrentP1StartedAtS": 1, "footprintAfterMB": 0}

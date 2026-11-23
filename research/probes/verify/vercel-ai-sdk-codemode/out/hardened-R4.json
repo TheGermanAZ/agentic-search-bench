@@ -1,0 +1,216 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs hardened R4",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 6200,
+  "peakTreeRssMb": 169,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "hardened",
+    "test": "R4",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "startMs": 336,
+      "ms": 5701,
+      "ok": false,
+      "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 569,
+    "hostEvents": [],
+    "totalMs": 6037
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:26305) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      143,
+      49
+    ],
+    [
+      282,
+      63
+    ],
+    [
+      374,
+      69
+    ],
+    [
+      510,
+      101
+    ],
+    [
+      609,
+      102
+    ],
+    [
+      905,
+      131
+    ],
+    [
+      1005,
+      131
+    ],
+    [
+      1153,
+      156
+    ],
+    [
+      1314,
+      156
+    ],
+    [
+      1441,
+      156
+    ],
+    [
+      1586,
+      156
+    ],
+    [
+      1692,
+      156
+    ],
+    [
+      1815,
+      156
+    ],
+    [
+      1930,
+      156
+    ],
+    [
+      2052,
+      156
+    ],
+    [
+      2167,
+      156
+    ],
+    [
+      2263,
+      156
+    ],
+    [
+      2379,
+      156
+    ],
+    [
+      2472,
+      156
+    ],
+    [
+      2669,
+      156
+    ],
+    [
+      2844,
+      156
+    ],
+    [
+      2943,
+      156
+    ],
+    [
+      3129,
+      156
+    ],
+    [
+      3245,
+      156
+    ],
+    [
+      3338,
+      156
+    ],
+    [
+      3452,
+      156
+    ],
+    [
+      3557,
+      156
+    ],
+    [
+      3685,
+      156
+    ],
+    [
+      3812,
+      156
+    ],
+    [
+      3933,
+      156
+    ],
+    [
+      4041,
+      156
+    ],
+    [
+      4271,
+      156
+    ],
+    [
+      4405,
+      156
+    ],
+    [
+      4530,
+      156
+    ],
+    [
+      4636,
+      156
+    ],
+    [
+      4807,
+      156
+    ],
+    [
+      4946,
+      156
+    ],
+    [
+      5150,
+      156
+    ],
+    [
+      5257,
+      156
+    ],
+    [
+      5373,
+      156
+    ],
+    [
+      5495,
+      156
+    ],
+    [
+      5780,
+      157
+    ],
+    [
+      5911,
+      157
+    ],
+    [
+      6020,
+      157
+    ],
+    [
+      6132,
+      169
+    ]
+  ]
+}

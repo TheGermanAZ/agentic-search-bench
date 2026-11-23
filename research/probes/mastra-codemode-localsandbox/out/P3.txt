@@ -1,0 +1,29 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 210,
+    "totalWallMs": 332,
+    "peakTreeRssMB": 182.8,
+    "stderrTail": ""
+  },
+  "backend": "localsandbox",
+  "probe": "P3",
+  "mode": "default",
+  "setupMs": 78.7,
+  "record": {
+    "code": "const r = await fetch(\"https://example.com\"); return { status: r.status, bytes: (await r.text()).length }",
+    "wallMs": 214.2,
+    "hostCalls": 0,
+    "out": {
+      "success": true,
+      "result": {
+        "status": 200,
+        "bytes": 577
+      },
+      "logs": []
+    },
+    "threw": null
+  }
+}

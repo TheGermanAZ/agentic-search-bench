@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "blocked",
+  "display": "blocked",
+  "detail": "TypeError: Type is not msgpack serializable: module",
+  "evidence": "research/probes/langgraph-codeact/out/P3.txt"
+}

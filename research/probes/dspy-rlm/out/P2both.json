@@ -1,0 +1,7 @@
+{
+  "probe": "P2both",
+  "outcome": "works",
+  "display": "return replaces print",
+  "detail": "print('PRINTED') then 'RETURNED': the model saw only RETURNED.",
+  "evidence": "research/probes/dspy-rlm/out/P2both.txt"
+}

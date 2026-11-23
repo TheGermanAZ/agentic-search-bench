@@ -1,0 +1,46 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P11",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return 1+1;"
+  ],
+  "firstExecutionMs": 79.541208,
+  "first": {
+    "ok": true,
+    "value": 2,
+    "wallMs": 79.514333,
+    "hostCalls": 0
+  },
+  "timesMs": [
+    4.7,
+    4.46,
+    4.04,
+    4.16,
+    3.7,
+    3.7,
+    3.24,
+    3.22,
+    3.52,
+    3.18,
+    3.35,
+    3.23,
+    3.61,
+    3.17,
+    3.64,
+    3.01,
+    2.82,
+    3.13,
+    3.09,
+    2.92
+  ],
+  "medianMs": 3.29,
+  "p90Ms": 4.16,
+  "summary": {
+    "median": 3.29,
+    "p90": 4.16,
+    "first": 79.5
+  },
+  "hostRssAfterMB": 171.9
+}

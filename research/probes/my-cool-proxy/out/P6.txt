@@ -1,0 +1,4 @@
+--- code 1 ---
+while true do end
+--- result 1 ---
+{"ms":120002,"hostCalls":0,"side":{"proxyLogBytes":208385},"ok":false,"error":"harness cap 120000 ms"}

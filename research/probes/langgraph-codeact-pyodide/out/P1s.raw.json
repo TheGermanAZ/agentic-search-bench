@@ -1,0 +1,29 @@
+{
+  "probe": "P1s",
+  "config": "default",
+  "codes": [
+    "r = lookup(21)\nmsg = r[\"value\"]\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "42",
+      "error": null,
+      "context_keys": [
+        "msg",
+        "r"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1314.7,
+      "started": 1795377450.542814
+    }
+  ],
+  "setup_ms": 20.8,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.76,
+  "peak_tree_rss_gb": 0.336,
+  "calls": [],
+  "child_log_tail": ""
+}

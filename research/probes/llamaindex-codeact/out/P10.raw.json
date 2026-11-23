@@ -1,0 +1,24 @@
+{
+  "probe": "P10",
+  "config": "default",
+  "codes": [
+    "x = 1\nraise ValueError(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error: ValueError: probe-boom\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 111, in execute\n    exec(code, self.globals, self.locals)\n  File \"<string>\", line 2, in <module>\nValueError: probe-boom\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 114, in execute\n    exec(code, self.globals, self.locals)\n  File \"<string>\", line 2, in <module>\nValueError: probe-boom\n",
+      "error": "Error: ValueError: probe-boom\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 111, in execute\n    exec(code, self.globals, self.locals)\n  File \"<string>\", line 2, in <module>\nValueError: probe-boom\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 114, in execute\n    exec(code, self.globals, self.locals)\n  File \"<string>\", line 2, in <module>\nValueError: probe-boom\n",
+      "ms": 67.7,
+      "started": 1795377516.197925
+    }
+  ],
+  "setup_ms": 9.4,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.75,
+  "peak_tree_rss_gb": 0.111,
+  "calls": [],
+  "child_log_tail": ""
+}

@@ -1,0 +1,60 @@
+--- code 1 ---
+return json.decode("{}")
+--- result 1 ---
+{"ms":1,"hostCalls":0,"ok":true,"isError":true}
+text (58 chars):
+script execution failed: script.star:2:12: undefined: json
+--- code 2 ---
+n = 0
+for i in range(9000):
+    n += 1
+return n
+--- result 2 ---
+{"ms":2,"hostCalls":0,"ok":true,"isError":false}
+text (4 chars):
+9000
+--- code 3 ---
+n = 0
+for i in range(20000):
+    n += 1
+return n
+--- result 3 ---
+{"ms":2,"hostCalls":0,"ok":true,"isError":true}
+text (71 chars):
+script execution failed: Starlark computation cancelled: too many steps
+--- code 4 ---
+n = 0
+for i in range(40000):
+    n += 1
+return n
+--- result 4 ---
+{"ms":2,"hostCalls":0,"ok":true,"isError":true}
+text (71 chars):
+script execution failed: Starlark computation cancelled: too many steps
+--- code 5 ---
+a = []
+for i in range(10000):
+    a.append("x")
+return len(a)
+--- result 5 ---
+{"ms":2,"hostCalls":0,"ok":true,"isError":true}
+text (71 chars):
+script execution failed: Starlark computation cancelled: too many steps
+--- code 6 ---
+a = []
+for i in range(20000):
+    a.append("x")
+return len(a)
+--- result 6 ---
+{"ms":2,"hostCalls":0,"ok":true,"isError":true}
+text (71 chars):
+script execution failed: Starlark computation cancelled: too many steps
+--- code 7 ---
+a = []
+for i in range(30000):
+    a.append("x")
+return len(a)
+--- result 7 ---
+{"ms":3,"hostCalls":0,"ok":true,"isError":true}
+text (71 chars):
+script execution failed: Starlark computation cancelled: too many steps

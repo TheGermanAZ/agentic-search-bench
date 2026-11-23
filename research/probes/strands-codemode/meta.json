@@ -1,0 +1,142 @@
+{
+ "impl": "strands-codemode",
+ "name": "Strands harness programmatic_tool_caller (Python)",
+ "source": "https://github.com/strands-agents/harness-sdk (harness-py/src/strands_harness/tools/programmatic_tool_caller.py); PyPI strands-harness",
+ "pinned": "strands-harness 0.4.0 from PyPI = harness-sdk tag harness-python/v0.4.0 = ad1ae00f35a560e492cb061b0103d10771f48cb6 (clone at research/impls/strands-codemode/src; diff -r against the installed package is empty). Runtime: strands-agents 1.65.0, pydantic-monty 0.0.23 (pinned == by strands-harness), CPython 3.12.",
+ "language": "Python (Monty subset)",
+ "engine": "Monty (Rust Python-subset interpreter) in a `monty subprocess` worker process, one fresh AsyncMonty pool per call, driven by feed_run with an external_lookup of async host functions (programmatic_tool_caller.py:293-296). Worker observed as a child process: out/worker_check.txt.",
+ "how_run": "create_harness(model=<stub Model, never called>, tools=[lookup], builtin_tools={'*': False, 'programmatic_tool_caller': True}, session/skills/memory off), then agent.tool.programmatic_tool_caller(code=..., record_direct_tool_call=False), which runs through the same ToolExecutor._stream path as a model tool_use; the returned ToolResult text is what the model would see. No LLM, no API key.",
+ "defaults": {
+  "time": "60 s of Monty VM time per call (clock pauses during tool calls) from the module constant _LIMITS, plus a 900 s wall-clock `timeout` (research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:47 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L47); research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:62 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L62)). Observed P6: 'TimeoutError: time limit exceeded: 60.0s > 60s' at 60.1 s.",
+  "memory": "256 MiB Monty heap, module constant with no option (research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:47 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L47)). Observed P7: MemoryError at 269,066,748 > 268,435,456 bytes after 0.09 s; the next call in the same agent printed 2 (out/worker_check.txt).",
+  "output": "Only print() text returns, capped at 200,000 chars with the marker '[output truncated at 200000 characters]' (research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:59 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L59); research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:287-290 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L287-L290)). The last expression is discarded (P2: RETURNED absent).",
+  "tool_calls": "No call-count cap of its own; at most 10 inner calls in flight per run (semaphore, research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:51 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L51); P9wide: 12 gathered lookups took 402 ms, two waves). Monty's max_suspensions 1000 host round trips per call (research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:47 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L47))."
+ },
+ "hardened_config": "builtin_tools={'*': False, 'programmatic_tool_caller': {'allowed_tools': ['lookup'], 'timeout': 10.0}}. allowed_tools and timeout are the only public options (ProgrammaticToolCallerConfig, research/impls/strands-codemode/src/harness-py/src/strands_harness/types/agent.py:82-92; factory args research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:299-305 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L299-L305)). The VM time, memory and suspension limits are the module constant _LIMITS with no option, so hardened P7 keeps 256 MiB. No network option exists: Monty has no network module.",
+ "source_notes": [
+  {
+   "topic": "API shape",
+   "finding": "No stubs or generated declarations. Every other registered tool (minus any programmatic_tool_caller instance) becomes an async host function in Monty's external_lookup dict, keyword arguments only, with a `_` alias for names that are not identifiers. The run_code-style tool description is static prose that lists no tools; the model learns tool signatures from the agent's normal tool list, where every tool also stays callable directly.",
+   "evidence": "research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:205-257 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L205-L257); research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:191-202 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L191-L202); research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:102-118 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L102-L118)"
+  },
+  {
+   "topic": "Discovery",
+   "finding": "All tools upfront: the model sees every tool's schema as an ordinary tool plus the static PTC description. No search or lazy loading inside the code; allowed_tools only narrows what the code may call. Does not scale past 100 tools without the full schemas in the prompt.",
+   "evidence": "research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:205-219 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L205-L219)"
+  },
+  {
+   "topic": "Bridge",
+   "finding": "Monty pauses at an external call; pydantic_monty's feed_run awaits the host coroutine, which runs the tool through the agent's ToolExecutor._stream with a copy of the parent invocation_state (so Cedar or risk-policy interventions apply, and an approval interrupt becomes a RuntimeError). Results are unwrapped to dict/list/str. Tool code and credentials stay in the host process; only arguments and results cross to the worker.",
+   "evidence": "research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:161-188 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L161-L188); research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:125-148 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L125-L148)"
+  },
+  {
+   "topic": "Isolation boundary",
+   "finding": "Language-level sandbox, stated as such: Monty's VM has no filesystem, env, network, FFI or process access and runs in a separate worker process; the docs warn it bounds the code, not the tools. Probes agree: P3 not-defined, P4 PermissionError, P5 os.environ unsupported, all three P12 attempts fail (no __class__, no __import__).",
+   "evidence": "research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:9-14 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L9-L14); research/impls/strands-codemode/src/site/src/content/docs/user-guide/harness/tools/programmatic-tool-calling.mdx:35-46 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/site/src/content/docs/user-guide/harness/tools/programmatic-tool-calling.mdx#L35-L46); research/probes/strands-codemode/out/P12.txt; research/probes/strands-codemode/out/worker_check.txt"
+  },
+  {
+   "topic": "Output channel",
+   "finding": "Only print() output reaches the model, as the ToolResult text; the last expression value is dropped. Capped at 200,000 chars with a visible truncation marker; on error, printed output and the error share the cap with at least half reserved for the error.",
+   "evidence": "research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:260-290 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L260-L290); research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:359 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L359); research/probes/strands-codemode/out/P2.txt; research/probes/strands-codemode/out/Pcap.txt"
+  },
+  {
+   "topic": "Limits",
+   "finding": "VM limits are hardcoded (60 s VM time, 256 MiB, 1000 suspensions); the only tunables are the wall-clock timeout (default 900 s, None disables it) and allowed_tools. The wall-clock timeout cancels the run and the worker stops with it (out/timeout_check.txt).",
+   "evidence": "research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:43-62 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L43-L62); research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:75-99 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L75-L99)"
+  },
+  {
+   "topic": "State",
+   "finding": "Fresh per call: a new AsyncMonty pool and session per programmatic_tool_caller invocation, no persistence or snapshots. P8 fresh.",
+   "evidence": "research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:293-296 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L293-L296); research/probes/strands-codemode/out/P8.txt"
+  },
+  {
+   "topic": "Errors",
+   "finding": "Errors return status 'error' with 'Execution error:' plus Monty's traceback display (file <python-input-0>, line, caret, message), prefixed by anything printed before the failure; syntax errors as 'Syntax error:'; wall-clock timeouts as 'timed out after N seconds.'",
+   "evidence": "research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:346-357 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L346-L357); research/probes/strands-codemode/out/P10.txt"
+  },
+  {
+   "topic": "Other",
+   "finding": "On by default in create_harness (default builtin_tools list). Inner calls share a 10-slot semaphore. A programmatic_tool_caller is never exposed to another's code, so no nested runs. The TypeScript harness (harness-ts) has its own implementation, not probed here.",
+   "evidence": "research/impls/strands-codemode/src/harness-py/src/strands_harness/defaults.py:20; research/impls/strands-codemode/src/harness-py/src/strands_harness/tools/programmatic_tool_caller.py:49-54 (https://github.com/strands-agents/harness-sdk/blob/ad1ae00f35a560e492cb061b0103d10771f48cb6/harness-py/src/strands_harness/tools/programmatic_tool_caller.py#L49-L54)"
+  }
+ ],
+ "surprises": [
+  "If the host process exits abruptly (os._exit) while guest code spins, the `monty subprocess` worker is orphaned to PID 1 and keeps burning a core until Monty's own 60 s VM limit ends it; a SIGKILL to the host's process group does take it down. Evidence research/probes/strands-codemode/out/orphan_check.txt. Two such orphans from a side check had to be killed by hand during this run.",
+  "The docs say the worker has 'memory, time, and recursion limits', but none of them is configurable: _LIMITS is a module constant. The documented per-tool config (allowed_tools, timeout) only adds a wall clock, so the hardened run cannot lower the 256 MiB memory cap.",
+  "Docs and the tool description say only print() output returns; confirmed. A last-expression value is silently dropped (P2), unlike Pydantic AI Harness CodeMode, which returns both.",
+  "strands-harness pins pydantic-monty==0.0.23, a much older Monty line than the 1.6.0 used by pydantic-ai-harness 0.71.0 and fastmcp CodeMode in this repo. Same isolation results here, but fixes in later Monty releases do not reach Strands until the pin moves.",
+  "`time` is not importable (Pclock: ModuleNotFoundError), so the SPEC's in-sandbox P9 timing cannot run; P9 is timed from host-side call spans. The tool description lists `datetime` as importable."
+ ],
+ "overrides": {
+  "P2": {
+   "outcome": "works",
+   "display": "print only (200,000 A + cap marker)",
+   "detail": "Only print output came back; RETURNED (last expression) did not. All 200,000 'A's came back, then '[output truncated at 200000 characters]' because the trailing newline made the output 200,001 chars, one past the cap."
+  },
+  "Pcap": {
+   "outcome": "limited",
+   "display": "truncated (200,000 + marker)",
+   "detail": "print('B' * 300000) came back as 200,000 'B's plus '\\n[output truncated at 200000 characters]', status success."
+  },
+  "P3": {
+   "display": "not-defined (no urllib)"
+  },
+  "hardened-P3": {
+   "display": "not-defined (no urllib)"
+  },
+  "P4": {
+   "display": "blocked (PermissionError)"
+  },
+  "hardened-P4": {
+   "display": "blocked (PermissionError)"
+  },
+  "P5": {
+   "display": "blocked (os.environ unsupported)"
+  },
+  "hardened-P5": {
+   "display": "blocked (os.environ unsupported)"
+  },
+  "P6": {
+   "display": "limited (60 s VM time)"
+  },
+  "hardened-P6": {
+   "display": "limited (10 s wall clock)"
+  },
+  "P7": {
+   "display": "limited (256 MiB)"
+  },
+  "hardened-P7": {
+   "display": "limited (256 MiB)"
+  },
+  "P8": {
+   "display": "fresh"
+  },
+  "P10": {
+   "display": "works (message + line 2)"
+  },
+  "P11": {
+   "display": "works (11.2 ms median)"
+  },
+  "P12": {
+   "display": "blocked (3 of 3)"
+  },
+  "hardened-P12": {
+   "display": "blocked (3 of 3)"
+  },
+  "P9wide": {
+   "outcome": "works",
+   "display": "parallel, 10 at a time (402 ms)",
+   "detail": "12 gathered lookups: 12 host calls spanning 402 ms, two waves because of the 10-slot semaphore; printed 132."
+  },
+  "Precur": {
+   "outcome": "limited",
+   "display": "limited (RecursionError ~1000)",
+   "detail": "Unbounded recursion stopped with 'RecursionError: maximum recursion depth exceeded' after ~1000 frames, status error, host alive."
+  },
+  "Pclock": {
+   "outcome": "not-defined",
+   "display": "not-defined (no time module)",
+   "detail": "import time -> ModuleNotFoundError: No module named 'time'."
+  }
+ }
+}

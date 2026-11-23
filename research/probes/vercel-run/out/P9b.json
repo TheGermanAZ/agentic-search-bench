@@ -1,0 +1,33 @@
+{
+  "impl": "vercel-run",
+  "probe": "P9b",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "const r = await Promise.all(Array.from({length: 40}, (_, i) => host.lookup({id: i}))); return r.length;"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "RunBridgeLimitError",
+        "code": "RUN_BRIDGE_LIMIT",
+        "message": "JavaScript runtime exceeded the 32 in-flight bridge request limit.",
+        "details": {
+          "invocationId": "run-1",
+          "maxInFlightBridgeRequests": 32
+        },
+        "stack": "RunBridgeLimitError: JavaScript runtime exceeded the 32 in-flight bridge request limit.\n    at handleHostFunctionRequest (file://~/p/agentic-search-bench/research/impls/vercel-run/pkg/node_modules/run/dist/runtime/manager.js:791:9)\n    at async runInBackground (file://~/p/agentic-search-bench/research/impls/vercel-run/pkg/node_modules/run/dist/runtime/manager.js:93:3)",
+        "string": "RunBridgeLimitError: JavaScript runtime exceeded the 32 in-flight bridge request limit."
+      },
+      "wallMs": 451.221125,
+      "hostCalls": 32
+    }
+  ],
+  "summary": {
+    "error": "RunBridgeLimitError: RUN_BRIDGE_LIMIT JavaScript runtime exceeded the 32 in-flight bridge request limit.",
+    "ms": 451,
+    "hostCalls": 32
+  },
+  "hostRssAfterMB": 135
+}

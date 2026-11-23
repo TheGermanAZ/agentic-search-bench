@@ -1,0 +1,38 @@
+probe: P7next
+outcome: works
+display: survives (next iteration ran)
+detail: In one forward: the memory loop caught MemoryError, then the next iteration printed 'next iteration 2'. Peak tree RSS 3.0 GB.
+
+code:
+----
+a = []
+try:
+    while True:
+        a.append("x" * 10**6)
+except MemoryError:
+    n = len(a)
+    a = None
+    print("caught MemoryError after", n, "MB")
+#--NEXT--
+print("next iteration", 1 + 1)
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 3.84
+killed: None
+child exit code: 0
+peak tree RSS GB: 2.975
+host lookup calls: 0
+
+=== run 0 (3062.7 ms) ===
+ok: true
+stdout: <repl_output>
+next iteration 2
+
+</repl_output>
+model_view_all: ["<repl_output>\ncaught MemoryError after 4244 MB\n\n</repl_output>", "<repl_output>\nnext iteration 2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [33, 17, 25]
+answer: done
+
+=== child process log (tail) ===
+

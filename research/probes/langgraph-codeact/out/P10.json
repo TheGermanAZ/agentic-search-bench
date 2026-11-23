@@ -1,0 +1,7 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "display": "message, no line",
+  "detail": "message survives: True; 'line 2' present: False; text: \"Error during execution: ValueError('probe-boom') Error during execution: ValueError('probe-boom')\"",
+  "evidence": "research/probes/langgraph-codeact/out/P10.txt"
+}

@@ -1,0 +1,84 @@
+{
+  "probe": "P7",
+  "config": "--timeout 5s --memory 8 --max-tool-calls 10 --pool-size 1",
+  "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+  "wall_ms": 30273,
+  "host_calls": 0,
+  "isError": null,
+  "response_text": "{\"transportClosed\":true,\"exit\":{\"code\":null,\"sig\":\"SIGKILL\",\"at\":30729.250459}}",
+  "response_text_length": 79,
+  "raw_flags": {
+    "harnessTimeout": false,
+    "transportClosed": true
+  },
+  "host_rss_tree_kb": {
+    "baseline": 87760,
+    "peak": 4254368
+  },
+  "rss_timeline_s_mb": [
+    [
+      2,
+      515
+    ],
+    [
+      4,
+      866
+    ],
+    [
+      6,
+      1199
+    ],
+    [
+      8,
+      1616
+    ],
+    [
+      10,
+      2138
+    ],
+    [
+      12,
+      2138
+    ],
+    [
+      14,
+      2138
+    ],
+    [
+      16,
+      2858
+    ],
+    [
+      18,
+      2704
+    ],
+    [
+      20,
+      2857
+    ],
+    [
+      22,
+      2857
+    ],
+    [
+      24,
+      3685
+    ],
+    [
+      26,
+      3276
+    ],
+    [
+      28,
+      2693
+    ]
+  ],
+  "killed_by_harness_at_4GB": true,
+  "next_execution": {
+    "proxy_exited": {
+      "code": null,
+      "sig": "SIGKILL",
+      "at": 30729.250459
+    }
+  }
+}

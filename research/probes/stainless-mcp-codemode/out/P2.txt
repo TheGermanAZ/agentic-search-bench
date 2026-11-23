@@ -1,0 +1,18 @@
+mode: default
+code:
+async function run(client) {
+  console.log("A".repeat(200000));
+  return "RETURNED";
+}
+
+result:
+{
+  "ms": 449,
+  "responseChars": 200073,
+  "aCount": 200000,
+  "containsRETURNED": true,
+  "blocks": [
+    8,
+    200000
+  ]
+}

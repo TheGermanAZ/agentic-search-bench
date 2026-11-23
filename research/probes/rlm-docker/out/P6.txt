@@ -1,0 +1,12 @@
+code:
+while True:
+    pass
+
+{
+  "probe": "P6",
+  "harness_wall_s": 120.6,
+  "peak_container_mem_mib": 0,
+  "harness_stop": "120 s wall",
+  "raw": null,
+  "child_tail": ""
+}

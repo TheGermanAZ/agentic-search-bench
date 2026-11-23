@@ -1,0 +1,8 @@
+{
+  "probe": "P2",
+  "outcome": "limited",
+  "detail": "return value 'RETURNED' came back; print came back as 50072 chars (49999 A's) with the truncation marker: True",
+  "logs_len": 50072,
+  "a_count": 49999,
+  "truncation_marker": true
+}

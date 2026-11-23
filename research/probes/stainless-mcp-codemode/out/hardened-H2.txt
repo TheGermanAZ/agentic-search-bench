@@ -1,0 +1,16 @@
+mode: hardened
+code:
+async function run(client) {
+  const c: any = client;
+  const name = ["cre", "ate"].join("");
+  return await c.video.assets[name]({ inputs: [] });
+}
+
+result:
+{
+  "response": {
+    "content": []
+  },
+  "ms": 414,
+  "hostCalls": 0
+}

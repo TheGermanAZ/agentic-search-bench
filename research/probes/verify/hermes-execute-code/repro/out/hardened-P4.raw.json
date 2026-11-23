@@ -1,0 +1,27 @@
+{
+  "probe": "P4",
+  "config": "hardened",
+  "codes": [
+    "data = open(\"/etc/hosts\").read()\nmsg = \"HOSTS \" + str(len(data)) + \" chars, mentions localhost: \" + str(\"localhost\" in data)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "HOSTS 148 chars, mentions localhost: True\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"HOSTS 148 chars, mentions localhost: True\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 0.94, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 42, \"stdout_bytes_total\": 42, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 0,
+      "model_sees_len": 302,
+      "ms": 2320.9,
+      "started": 1795384467.581883
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.92,
+  "peak_tree_rss_gb": 0.167,
+  "calls": [],
+  "child_log_tail": ""
+}

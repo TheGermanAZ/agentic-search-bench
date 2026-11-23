@@ -1,0 +1,57 @@
+{
+ "tag": "default",
+ "probe": "P0",
+ "settings": "~/p/agentic-search-bench/research/probes/claude-code-codemode/settings-default.json",
+ "permissionMode": "default",
+ "transcript": "~/.claude/projects/-Users-thegermanaz-p-agentic-search-bench-research-probes-claude-code-codemode-work/014fb5ae-0b35-4540-a24e-a48c99bbde78.jsonl",
+ "hostLookupCalls": [],
+ "steps": [
+  {
+   "step": "P0.1",
+   "code": "[tools.list().filter(n => n.includes(\"lookup\")), await searchTools(\"lookup\"), typeof fetch, typeof require, typeof process, typeof file]",
+   "wallS": 2.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "[tools.list().filter(n => n.includes(\"lookup\")), await searchTools(\"lookup\"), typeof fetch, typeof require, typeof process, typeof file]",
+     "exactCode": true,
+     "toolUseTs": null,
+     "result": {
+      "content": "<repl-output>\n<result>[\n  [ 'mcp__lookup__lookup' ],\n  [\n    {\n      name: 'mcp__lookup__lookup',\n      about: 'Look up a value by id. Returns {id, value}.',\n      input: '{\\n  id: number\\n}'\n    }\n  ],\n  'undefined',\n  'function',\n  'undefined',\n  'function'\n]</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T19:58:56.797Z",
+      "toolUseResult": {
+       "code": "[tools.list().filter(n => n.includes(\"lookup\")), await searchTools(\"lookup\"), typeof fetch, typeof require, typeof process, typeof file]",
+       "result": "[\n  [ 'mcp__lookup__lookup' ],\n  [\n    {\n      name: 'mcp__lookup__lookup',\n      about: 'Look up a value by id. Returns {id, value}.',\n      input: '{\\n  id: number\\n}'\n    }\n  ],\n  'undefined',\n  'function',\n  'undefined',\n  'function'\n]",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    },
+    {
+     "tool": "searchTools",
+     "codeSent": null,
+     "exactCode": false,
+     "toolUseTs": "2026-11-22T19:58:56.796Z",
+     "result": {
+      "content": "",
+      "is_error": false,
+      "ts": "2026-11-22T19:58:56.796Z",
+      "toolUseResult": [
+       {
+        "name": "mcp__lookup__lookup",
+        "about": "Look up a value by id. Returns {id, value}.",
+        "input": "{\n  id: number\n}"
+       }
+      ]
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 377536,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  }
+ ]
+}

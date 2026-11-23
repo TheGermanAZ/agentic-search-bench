@@ -1,0 +1,128 @@
+[
+  {
+    "probe": "P12-Function-ctor",
+    "config": "defaults",
+    "code": "return String(this.constructor.constructor(\"return process\")())",
+    "wall_ms": 6,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "{\"error\":\"TypeError: cannot read property 'constructor' of undefined\",\"duration_ms\":0}",
+    "response_text_length": 86,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P12-globalThis-Function-ctor",
+    "config": "defaults",
+    "code": "return String(globalThis.constructor.constructor(\"return typeof process\")())",
+    "wall_ms": 6,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":\"undefined\",\"duration_ms\":0}",
+    "response_text_length": 38,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P12-Function-return-this",
+    "config": "defaults",
+    "code": "return String(Function(\"return this\")().process)",
+    "wall_ms": 7,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":\"undefined\",\"duration_ms\":0}",
+    "response_text_length": 38,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P12-sloppy-this",
+    "config": "defaults",
+    "code": "return String((function(){return this})().process)",
+    "wall_ms": 6,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "{\"error\":\"TypeError: cannot read property 'process' of undefined\",\"duration_ms\":0}",
+    "response_text_length": 82,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P12-qjs-os-exec",
+    "config": "defaults",
+    "code": "const os = await import(\"qjs:os\"); return os.exec([\"/bin/sh\", \"-c\", \"echo PWNED\"])",
+    "wall_ms": 6,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "{\"error\":\"TypeError: not a function\",\"duration_ms\":0}",
+    "response_text_length": 53,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P12-qjs-std-popen",
+    "config": "defaults",
+    "code": "const std = await import(\"qjs:std\"); const f = std.popen(\"echo PWNED\", \"r\"); return f.getline()",
+    "wall_ms": 6,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "{\"error\":\"TypeError: not a function\",\"duration_ms\":0}",
+    "response_text_length": 53,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P12-globals",
+    "config": "defaults",
+    "code": "return Object.getOwnPropertyNames(globalThis).filter(k => !/^[A-Z]/.test(k))",
+    "wall_ms": 6,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":[\"parseInt\",\"parseFloat\",\"isNaN\",\"isFinite\",\"queueMicrotask\",\"decodeURI\",\"decodeURIComponent\",\"encodeURI\",\"encodeURIComponent\",\"escape\",\"unescape\",\"undefined\",\"eval\",\"globalThis\",\"performance\",\"gc\",\"navigator\",\"console\",\"scriptArgs\",\"__bridge_491b78de45bb1d2f\",\"__logs\",\"__scriptResult\",\"__scriptError\"],\"duration_ms\":0}",
+    "response_text_length": 330,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P12-bridge-direct",
+    "config": "defaults",
+    "code": "const b = Object.getOwnPropertyNames(globalThis).find(k => k.startsWith(\"__bridge_\")); return b ? await globalThis[b](\"lookup\", \"lookup\", JSON.stringify({id: 5})) : \"no bridge global\"",
+    "wall_ms": 209,
+    "host_calls": 1,
+    "isError": null,
+    "response_text": "{\"result\":{\"id\":5,\"value\":10},\"tool_calls\":[{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":202,\"status\":\"success\"}],\"duration_ms\":203}",
+    "response_text_length": 136,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P12-std-reexposed",
+    "config": "defaults",
+    "code": "return typeof std + ' ' + typeof os + ' ' + typeof bjson",
+    "wall_ms": 7,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":\"undefined undefined undefined\",\"duration_ms\":0}",
+    "response_text_length": 58,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  }
+]

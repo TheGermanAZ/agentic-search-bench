@@ -1,0 +1,143 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs hardened R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 975,
+  "peakTreeRssMb": 328,
+  "peakTreeFootprintMb": 303,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "hardened",
+    "test": "R7a",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\",\"timeoutMs\":5000,\"memoryLimitBytes\":16777216,\"maxOutputBytes\":8192,\"maxSnapshotBytes\":1048576,\"maxPendingToolCalls\":8,\"snapshotTtlSeconds\":60}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "startMs": 679,
+      "ms": 254,
+      "ok": true,
+      "result": {
+        "value": {
+          "status": "failed",
+          "code": "invalid_input",
+          "waits": 0,
+          "error": "code mode promise is pending without host work",
+          "output": [],
+          "textChars": 359,
+          "text": "{\"status\":\"failed\",\"code\":\"invalid_input\",\"failurePhase\":\"input\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"05d41c692a30dfe730214c2f\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode promise is pending without host work\"}"
+        },
+        "stringChars": 424
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 772,
+    "hostEvents": [],
+    "totalMs": 934
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_5c82cac5-d35b-4893-8d15-52ed5cd8088c workerId=code-mode-quickjs:1 failurePhase=input bridgeDispatchStarted=false errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      74,
+      62,
+      20
+    ],
+    [
+      125,
+      87,
+      20
+    ],
+    [
+      178,
+      100,
+      20
+    ],
+    [
+      230,
+      113,
+      67
+    ],
+    [
+      282,
+      124,
+      67
+    ],
+    [
+      331,
+      141,
+      104
+    ],
+    [
+      383,
+      155,
+      104
+    ],
+    [
+      434,
+      173,
+      104
+    ],
+    [
+      489,
+      193,
+      143
+    ],
+    [
+      544,
+      203,
+      143
+    ],
+    [
+      593,
+      211,
+      182
+    ],
+    [
+      646,
+      227,
+      182
+    ],
+    [
+      698,
+      231,
+      182
+    ],
+    [
+      751,
+      247,
+      205
+    ],
+    [
+      804,
+      265,
+      205
+    ],
+    [
+      853,
+      281,
+      242
+    ],
+    [
+      907,
+      301,
+      242
+    ],
+    [
+      961,
+      328,
+      242
+    ]
+  ]
+}

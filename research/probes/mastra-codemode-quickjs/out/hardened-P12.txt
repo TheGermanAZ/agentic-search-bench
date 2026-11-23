@@ -1,0 +1,100 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 31,
+    "totalWallMs": 266,
+    "peakTreeRssMB": 139.9,
+    "stderrTail": ""
+  },
+  "backend": "quickjs",
+  "probe": "P12",
+  "mode": "hardened",
+  "setupMs": 193.3,
+  "record": {
+    "A_functionCtor": {
+      "code": "return String(this.constructor.constructor(\"return process\")())",
+      "wallMs": 17.9,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "'process' is not defined",
+          "name": "ReferenceError"
+        }
+      },
+      "threw": null
+    },
+    "B_sloppyThis": {
+      "code": "return String((function(){ return this })().process)",
+      "wallMs": 1.9,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "undefined",
+        "logs": []
+      },
+      "threw": null
+    },
+    "C_canary": {
+      "code": "return String(Function(\"return globalThis.__HOST_CANARY\")())",
+      "wallMs": 1.3,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "undefined",
+        "logs": []
+      },
+      "threw": null
+    },
+    "D_typeofs": {
+      "code": "return [typeof process, typeof require, typeof Deno, typeof Bun, typeof fetch, typeof setTimeout].join(\",\")",
+      "wallMs": 1.6,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "undefined,undefined,undefined,undefined,undefined,undefined",
+        "logs": []
+      },
+      "threw": null
+    },
+    "E_exec": {
+      "code": "const p = Function(\"return process\")(); return p.getBuiltinModule(\"child_process\").execSync(\"echo PWNED; id -un\").toString()",
+      "wallMs": 1.5,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "'process' is not defined",
+          "name": "ReferenceError"
+        }
+      },
+      "threw": null
+    },
+    "F_globals": {
+      "code": "return Object.getOwnPropertyNames(globalThis).filter(n => /process|ivm|require|host|external/i.test(n)).join(\",\")",
+      "wallMs": 2.1,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "external_lookup",
+        "logs": []
+      },
+      "threw": null
+    },
+    "G_externalCtor": {
+      "code": "return String(external_lookup.constructor(\"return typeof process\")())",
+      "wallMs": 0.9,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "undefined",
+        "logs": []
+      },
+      "threw": null
+    }
+  }
+}

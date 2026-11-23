@@ -1,0 +1,27 @@
+{
+  "probe": "P10",
+  "config": "default",
+  "codes": [
+    "x = 1\nraise ValueError(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "stderr": "",
+      "result": null,
+      "error": "ValueError: probe-boom\n\u001b[31m---------------------------------------------------------------------------\u001b[39m\n\u001b[31mValueError\u001b[39m                                Traceback (most recent call last)\n\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[8]\u001b[39m\u001b[32m, line 2\u001b[39m\n\u001b[32m      1\u001b[39m x = \u001b[32m1\u001b[39m\n\u001b[32m----> \u001b[39m\u001b[32m2\u001b[39m \u001b[38;5;28;01mraise\u001b[39;00m ValueError(\u001b[33m\"probe-boom\"\u001b[39m)\n\n\u001b[31mValueError\u001b[39m: probe-boom",
+      "interrupted": false,
+      "ms": 62.7,
+      "started": 1795378219.635956
+    }
+  ],
+  "setup_ms": 2600.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 3.6,
+  "peak_tree_rss_gb": 0.378,
+  "calls": [],
+  "child_log_tail": "[11/22/26 15:10:17] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-6ncxgda              \n                             g/generated (mcp dir:                              \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-6ncxgda              \n                             g/generated/mcp)                                   \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-6ncxgda              \n                             g/generated/mcp/probe                              \n                    INFO     Starting Jupyter server       jupyter_server.py:262\n                             subprocess on 127.0.0.1:41520                      \n                             (workdir=/var/folders/tg/x0gc                      \n                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      \n                             dl-jupyter-server-6ncxgdag/wo                      \n                             rkspace)                                           \n[11/22/26 15:10:18] INFO     No existing kernels found,    jupyter_server.py:412\n                             will create a new one                              \n                    INFO     Starting the kernel client\u2026           client.py:412\n                    INFO     KernelHttpManager created a new      manager.py:258\n                             kernel: {'id':                                     \n                             'f2544798-a123-4530-9300-d5f8503af36               \n                             a', 'name': 'python3',                             \n                             'last_activity':                                   \n                             '2026-11-22T20:10:18.411051Z',                     \n                             'execution_state': 'starting',                     \n                             'connections': 0}                                  \n                    INFO     Websocket connected                 _logging.py:104\n[11/22/26 15:10:19] INFO     Stopping the kernel client\u2026           client.py:433\n"
+}

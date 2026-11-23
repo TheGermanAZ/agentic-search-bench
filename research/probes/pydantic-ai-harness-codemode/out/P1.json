@@ -1,0 +1,8 @@
+{
+  "probe": "P1",
+  "outcome": "works",
+  "detail": "model saw '{\"output\": \"42\\\\n\"}' (ToolReturnPart), 1 host call",
+  "config": "CodeMode()",
+  "peak_tree_rss_mib": 108,
+  "harness_wall_s": 0.87
+}

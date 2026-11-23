@@ -1,0 +1,11 @@
+{
+  "id": "P6",
+  "outcome": "limited",
+  "detail": "MontyRuntimeError: TimeoutError: feed time limit exceeded: 1.000896458s > 1s after 1.02 s wall (pool spawn included)",
+  "limits": {
+    "max_memory": 10000000,
+    "max_feed_duration_secs": 1.0,
+    "max_recursion_depth": 100
+  },
+  "peak_tree_rss_mib": 41
+}

@@ -1,0 +1,10 @@
+code:
+const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.host.lookup({id:i}))); console.log(Date.now()-t)
+
+result:
+{
+  "id": "f1bc145f-9efd-4b97-b64d-f4c7cfcbe7aa",
+  "result": "327\n",
+  "ms": 1601,
+  "hostCalls": 5
+}

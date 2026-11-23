@@ -1,0 +1,18 @@
+[
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "while True: pass"
+  ],
+  "exit": -9,
+  "wall_ms": 120030.2,
+  "peak_tree_rss_mb": 47.2,
+  "killed": "killed by harness at 120s (no-limit-within-120s)",
+  "stdout_len": 200,
+  "stdout": "##\n# Host Database\n#\n# localhost is used to configure the loopback interface\n# when the system is booting.  Do not change this entry.\n##\n127.0.0.1\tlocalhost\n255.255.255.255\tbroadcasthost\n::1          ",
+  "stderr": "",
+  "label": "python busy loop"
+ }
+]

@@ -1,0 +1,7 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "detail": "returned: 'exit_code=1: Traceback (most recent call last):\\n  File \"/workspace/tmp_code_ce1bdf95faed9afcfa0e7f510df44297faff3f87d5bd0ea59679d27084ae228b.python\", line 2, in <module>\\n    raise ValueError(\"probe-boom\")\\nValueError: probe-boom\\n\\nTraceback (most recent call last):\\n  File \"/workspace/tmp_code_ce1bdf95faed9afcfa0e7f510df44297faff3f87d5bd0ea59679d27084ae228b.python\", line 2, in <module>\\n    raise ValueError(\"probe-boom\")\\nValueError: probe-boom'; message survives: True; line number survives: True",
+  "display": "message + line",
+  "config": "default"
+}

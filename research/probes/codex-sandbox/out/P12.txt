@@ -1,0 +1,71 @@
+probe: P12
+codex: ~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex (codex-cli 0.169.0)
+CODEX_HOME: ~/p/agentic-search-bench/research/impls/codex-sandbox/codex-home (empty, no user config)
+
+--- [read-only] python subclasses walk ---
+argv: ["python3", "-c", "names=[c.__name__ for c in ().__class__.__base__.__subclasses__()];print('_wrap_close' in names, 'Popen' in names);w=[c for c in ().__class__.__base__.__subclasses__() if c.__name__=='_wrap_close'][0];print('via _wrap_close:', w.__init__.__globals__['system']('echo PWNED-subclasses'))"]
+exit: 0  wall_ms: 48.7  peak_tree_rss_mb: 1.2  killed: None
+stdout chars: 47
+stdout:
+PWNED-subclasses
+True False
+via _wrap_close: 0
+
+stderr:
+
+
+--- [read-only] python os.system ---
+argv: ["python3", "-c", "__import__(\"os\").system(\"echo PWNED\")"]
+exit: 0  wall_ms: 97.4  peak_tree_rss_mb: 1.6  killed: None
+stdout chars: 6
+stdout:
+PWNED
+
+stderr:
+
+
+--- [read-only] os.system write outside workspace ---
+argv: ["python3", "-c", "import os;print(\"exit\", os.system(\"echo PWNED > ~/p/agentic-search-bench/research/probes/codex-sandbox/out/P12-escape-write.txt\"))"]
+exit: 0  wall_ms: 50.9  peak_tree_rss_mb: 2.3  killed: None
+stdout chars: 9
+escape_file_exists_after: False
+stdout:
+exit 256
+
+stderr:
+sh: ~/p/agentic-search-bench/research/probes/codex-sandbox/out/P12-escape-write.txt: Operation not permitted
+
+
+--- [workspace-write] python subclasses walk ---
+argv: ["python3", "-c", "names=[c.__name__ for c in ().__class__.__base__.__subclasses__()];print('_wrap_close' in names, 'Popen' in names);w=[c for c in ().__class__.__base__.__subclasses__() if c.__name__=='_wrap_close'][0];print('via _wrap_close:', w.__init__.__globals__['system']('echo PWNED-subclasses'))"]
+exit: 0  wall_ms: 53.8  peak_tree_rss_mb: 12.0  killed: None
+stdout chars: 47
+stdout:
+PWNED-subclasses
+True False
+via _wrap_close: 0
+
+stderr:
+
+
+--- [workspace-write] python os.system ---
+argv: ["python3", "-c", "__import__(\"os\").system(\"echo PWNED\")"]
+exit: 0  wall_ms: 92.5  peak_tree_rss_mb: 1.8  killed: None
+stdout chars: 6
+stdout:
+PWNED
+
+stderr:
+
+
+--- [workspace-write] os.system write outside workspace ---
+argv: ["python3", "-c", "import os;print(\"exit\", os.system(\"echo PWNED > ~/p/agentic-search-bench/research/probes/codex-sandbox/out/P12-escape-write.txt\"))"]
+exit: 0  wall_ms: 99.2  peak_tree_rss_mb: 2.1  killed: None
+stdout chars: 9
+escape_file_exists_after: False
+stdout:
+exit 256
+
+stderr:
+sh: ~/p/agentic-search-bench/research/probes/codex-sandbox/out/P12-escape-write.txt: Operation not permitted
+

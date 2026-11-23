@@ -1,0 +1,9 @@
+{
+  "probe": "P4",
+  "config": "hardened",
+  "outcome": "works",
+  "detail": "read host /etc/hosts (450 chars) after: require: ReferenceError: require is not defined",
+  "display": "works (via escaped process)",
+  "peak_child_rss_mb": 86,
+  "wall_s": 0.4
+}

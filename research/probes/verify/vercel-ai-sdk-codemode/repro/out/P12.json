@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P12",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return String(this.constructor.constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "TypeError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "Function constructor is not allowed",
+        "stack": "TypeError: Function constructor is not allowed\n    at <anonymous> (code-mode.js:1:32)\n    at <anonymous> (code-mode.js:2:1)",
+        "string": "TypeError: Function constructor is not allowed"
+      },
+      "wallMs": 347.882958,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "TypeError: RUN_USER_SOURCE_ERROR Function constructor is not allowed",
+    "ms": 348,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 154.3
+}

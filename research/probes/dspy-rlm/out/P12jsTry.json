@@ -1,0 +1,7 @@
+{
+  "probe": "P12jsTry",
+  "outcome": "blocked",
+  "display": "blocked (NotCapable x4)",
+  "detail": "read /etc/hosts, env PROBE_SECRET, run echo, net example.com:443: each raised JsException NotCapable 'Requires ... access ..., run again with the --allow-... flag'.",
+  "evidence": "research/probes/dspy-rlm/out/P12jsTry.txt"
+}

@@ -1,0 +1,177 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R2c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2187,
+  "peakTreeRssMb": 87,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R2c",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "label": "",
+      "startMs": 1798,
+      "ms": 217,
+      "ok": true,
+      "result": [
+        "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 1, in <module>\n    r = await rich()\n        ~~~~~~~~~~~~\nValueError: Unable to serialize unknown type: <class 'function'>"
+      ],
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 75,
+    "totalMs": 2015
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      104,
+      22
+    ],
+    [
+      158,
+      32
+    ],
+    [
+      211,
+      34
+    ],
+    [
+      256,
+      35
+    ],
+    [
+      310,
+      35
+    ],
+    [
+      377,
+      39
+    ],
+    [
+      423,
+      41
+    ],
+    [
+      464,
+      43
+    ],
+    [
+      533,
+      44
+    ],
+    [
+      587,
+      48
+    ],
+    [
+      634,
+      48
+    ],
+    [
+      699,
+      49
+    ],
+    [
+      754,
+      52
+    ],
+    [
+      798,
+      52
+    ],
+    [
+      842,
+      52
+    ],
+    [
+      898,
+      52
+    ],
+    [
+      961,
+      55
+    ],
+    [
+      1026,
+      55
+    ],
+    [
+      1064,
+      57
+    ],
+    [
+      1143,
+      58
+    ],
+    [
+      1183,
+      59
+    ],
+    [
+      1244,
+      60
+    ],
+    [
+      1299,
+      60
+    ],
+    [
+      1389,
+      63
+    ],
+    [
+      1516,
+      65
+    ],
+    [
+      1561,
+      65
+    ],
+    [
+      1609,
+      67
+    ],
+    [
+      1658,
+      67
+    ],
+    [
+      1709,
+      69
+    ],
+    [
+      1771,
+      69
+    ],
+    [
+      1814,
+      71
+    ],
+    [
+      1872,
+      72
+    ],
+    [
+      1937,
+      76
+    ],
+    [
+      2039,
+      87
+    ],
+    [
+      2086,
+      87
+    ],
+    [
+      2186,
+      80
+    ]
+  ]
+}

@@ -1,0 +1,22 @@
+--- code 1 ---
+fail("probe-boom")
+--- result 1 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "StarlarkError"}}, "ms": 5.74, "hostCalls": 0, "gatewayAlive": true, "rssAfterMB": 74}
+--- code 2 ---
+x = 1
+y = 2
+fail("probe-boom")
+--- result 2 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "StarlarkError"}}, "ms": 7.92, "hostCalls": 0, "gatewayAlive": true, "rssAfterMB": 74}
+--- code 3 ---
+x = 1
+y = {}
+z = y["missing"]
+--- result 3 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "StarlarkError"}}, "ms": 7.6, "hostCalls": 0, "gatewayAlive": true, "rssAfterMB": 74}
+--- code 4 ---
+result = Probe.lookup(id="not-a-number")
+--- result 4 ---
+{"ok": true, "isError": false, "ms": 210.52, "hostCalls": 0, "gatewayAlive": true, "rssAfterMB": 74}
+text (504 chars):
+{"result": "MCP error -32602: Input validation error: Invalid arguments for tool lookup: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"number\",\n    \"received\": \"string\",\n    \"path\": [\n      \"id\"\n    ],\n    \"message\": \"Expected number, received string\"\n  }\n]", "logs": [], "calls": [{"i": 1, "server": "Probe", "tool": "lookup", "ms": 186, "status": "ok", "bytes": 250, "reused": false}], "usage": {"call_count": 1, "ms": 201, "limit_bytes": 262144, "truncated": false}}

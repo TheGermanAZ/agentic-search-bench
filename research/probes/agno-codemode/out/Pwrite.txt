@@ -1,0 +1,29 @@
+probe: Pwrite
+outcome: works
+display: works (wrote a host file)
+detail: WROTE True
+
+code:
+----
+import os
+p = os.path.join(os.environ['PROBE_OUT_DIR'], 'agno-write-probe.txt')
+open(p, 'w').write('x')
+msg = 'WROTE ' + str(os.path.exists(p))
+os.remove(p)
+print(msg)
+----
+
+setup_ms: 0.5
+wall_s (whole child process): 2.1
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.121
+host lookup calls: 0
+
+=== run 0 (1534.0 ms) ===
+ok: true
+stdout: WROTE True
+
+=== child process log (tail) ===
+WARNING CodeMode runs arbitrary Python and shell with the permissions of this process. It is not a sandbox: provide human supervision or run the agent in an isolated container.
+

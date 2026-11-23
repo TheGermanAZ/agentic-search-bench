@@ -1,0 +1,7 @@
+{
+  "probe": "P5b",
+  "outcome": "blocked",
+  "display": "blocked (Deno NotCapable)",
+  "detail": "Error during execution: NotCapable: Requires env access to \"PROBE_SECRET\", run again with the --allow-env flag",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P5b.txt"
+}

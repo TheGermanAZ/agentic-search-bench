@@ -1,0 +1,20 @@
+{
+  "execute": {
+    "tool": "execute",
+    "code": "async () => ({ processType: typeof process, env: typeof process === \"undefined\" ? null : process.env?.PROBE_SECRET ?? Object.keys(process.env ?? {}), globalSecret: globalThis.PROBE_SECRET ?? null, thisEnvKeys: Object.keys(globalThis.env ?? {}) })",
+    "ms": 11,
+    "hostCalls": 0,
+    "isError": false,
+    "text": "{\n  \"processType\": \"undefined\",\n  \"env\": null,\n  \"globalSecret\": null,\n  \"thisEnvKeys\": []\n}",
+    "rpcError": null
+  },
+  "search": {
+    "tool": "search",
+    "code": "async () => ({ processType: typeof process, env: typeof process === \"undefined\" ? null : process.env?.PROBE_SECRET ?? Object.keys(process.env ?? {}), globalSecret: globalThis.PROBE_SECRET ?? null, thisEnvKeys: Object.keys(globalThis.env ?? {}) })",
+    "ms": 117,
+    "hostCalls": 0,
+    "isError": false,
+    "text": "{\n  \"processType\": \"undefined\",\n  \"env\": null,\n  \"globalSecret\": null,\n  \"thisEnvKeys\": []\n}",
+    "rpcError": null
+  }
+}

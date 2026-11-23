@@ -1,0 +1,135 @@
+{
+ "tag": "hardened",
+ "probe": "P9",
+ "settings": "~/p/agentic-search-bench/research/probes/claude-code-codemode/settings-hardened.json",
+ "permissionMode": "default",
+ "transcript": "~/.claude/projects/-Users-thegermanaz-p-agentic-search-bench-research-probes-claude-code-codemode-work/90e40fa3-29d5-4071-83e4-dd57a682558b.jsonl",
+ "hostLookupCalls": [
+  {
+   "id": 1,
+   "start": 1795379861104,
+   "end": 1795379861306
+  },
+  {
+   "id": 2,
+   "start": 1795379861104,
+   "end": 1795379861306
+  },
+  {
+   "id": 3,
+   "start": 1795379861104,
+   "end": 1795379861306
+  },
+  {
+   "id": 4,
+   "start": 1795379861104,
+   "end": 1795379861306
+  },
+  {
+   "id": 5,
+   "start": 1795379861104,
+   "end": 1795379861306
+  }
+ ],
+ "steps": [
+  {
+   "step": "P9.1",
+   "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools[\"mcp__lookup__lookup\"]({id:i}))); Date.now()-t",
+   "typist": "model",
+   "wallS": 4.0,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools[\"mcp__lookup__lookup\"]({id:i}))); Date.now()-t",
+     "codeRan": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools[\"mcp__lookup__lookup\"]({id:i}))); Date.now()-t",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:37:41.052Z",
+     "result": {
+      "content": "<repl-output>\n<tools-used-before-summary>mcp__lookup__lookup</tools-used-before-summary>\n<result>218</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:37:41.314Z",
+      "toolUseResult": {
+       "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools[\"mcp__lookup__lookup\"]({id:i}))); Date.now()-t",
+       "result": "218",
+       "stdout": "",
+       "stderr": "",
+       "toolsUsed": [
+        "mcp__lookup__lookup"
+       ]
+      }
+     }
+    },
+    {
+     "tool": "mcp__lookup__lookup",
+     "codeSent": null,
+     "codeRan": null,
+     "exactCode": null,
+     "toolUseTs": "2026-11-22T20:37:41.313Z",
+     "result": {
+      "content": "",
+      "is_error": false,
+      "ts": "2026-11-22T20:37:41.313Z",
+      "toolUseResult": "{\"id\":1,\"value\":2}"
+     }
+    },
+    {
+     "tool": "mcp__lookup__lookup",
+     "codeSent": null,
+     "codeRan": null,
+     "exactCode": null,
+     "toolUseTs": "2026-11-22T20:37:41.313Z",
+     "result": {
+      "content": "",
+      "is_error": false,
+      "ts": "2026-11-22T20:37:41.313Z",
+      "toolUseResult": "{\"id\":2,\"value\":4}"
+     }
+    },
+    {
+     "tool": "mcp__lookup__lookup",
+     "codeSent": null,
+     "codeRan": null,
+     "exactCode": null,
+     "toolUseTs": "2026-11-22T20:37:41.313Z",
+     "result": {
+      "content": "",
+      "is_error": false,
+      "ts": "2026-11-22T20:37:41.313Z",
+      "toolUseResult": "{\"id\":3,\"value\":6}"
+     }
+    },
+    {
+     "tool": "mcp__lookup__lookup",
+     "codeSent": null,
+     "codeRan": null,
+     "exactCode": null,
+     "toolUseTs": "2026-11-22T20:37:41.313Z",
+     "result": {
+      "content": "",
+      "is_error": false,
+      "ts": "2026-11-22T20:37:41.313Z",
+      "toolUseResult": "{\"id\":4,\"value\":8}"
+     }
+    },
+    {
+     "tool": "mcp__lookup__lookup",
+     "codeSent": null,
+     "codeRan": null,
+     "exactCode": null,
+     "toolUseTs": "2026-11-22T20:37:41.313Z",
+     "result": {
+      "content": "",
+      "is_error": false,
+      "ts": "2026-11-22T20:37:41.313Z",
+      "toolUseResult": "{\"id\":5,\"value\":10}"
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 388160,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  }
+ ]
+}

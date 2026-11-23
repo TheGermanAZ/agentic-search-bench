@@ -1,0 +1,275 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py default R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3251,
+  "peakTreeRssMb": 386,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9b",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich']}), new thread_id per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1786,
+          "ms": 1126,
+          "ok": true,
+          "result": "<error type=\"OutOfMemory\">out of memory</error>",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1986,
+        "ms": 583,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 2573,
+        "ms": 232,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 2912,
+        "ms": 228,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 45,
+    "totalMs": 3141
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\nDropping QuickJS snapshot for slot_id=qjs_f11fb915248b477cbd8f71202535f6df (size=68288564 bytes exceeds max_snapshot_bytes=67108864)\n",
+  "rssSamplesMsMb": [
+    [
+      180,
+      31
+    ],
+    [
+      230,
+      33
+    ],
+    [
+      299,
+      33
+    ],
+    [
+      386,
+      35
+    ],
+    [
+      425,
+      37
+    ],
+    [
+      480,
+      38
+    ],
+    [
+      545,
+      44
+    ],
+    [
+      589,
+      47
+    ],
+    [
+      641,
+      49
+    ],
+    [
+      698,
+      52
+    ],
+    [
+      743,
+      55
+    ],
+    [
+      787,
+      56
+    ],
+    [
+      843,
+      58
+    ],
+    [
+      915,
+      58
+    ],
+    [
+      961,
+      60
+    ],
+    [
+      1008,
+      62
+    ],
+    [
+      1067,
+      68
+    ],
+    [
+      1122,
+      68
+    ],
+    [
+      1170,
+      68
+    ],
+    [
+      1220,
+      68
+    ],
+    [
+      1268,
+      69
+    ],
+    [
+      1338,
+      72
+    ],
+    [
+      1379,
+      74
+    ],
+    [
+      1511,
+      75
+    ],
+    [
+      1570,
+      79
+    ],
+    [
+      1621,
+      80
+    ],
+    [
+      1661,
+      83
+    ],
+    [
+      1715,
+      85
+    ],
+    [
+      1763,
+      88
+    ],
+    [
+      1826,
+      88
+    ],
+    [
+      1922,
+      91
+    ],
+    [
+      2025,
+      124
+    ],
+    [
+      2061,
+      148
+    ],
+    [
+      2151,
+      155
+    ],
+    [
+      2214,
+      161
+    ],
+    [
+      2255,
+      168
+    ],
+    [
+      2305,
+      176
+    ],
+    [
+      2362,
+      180
+    ],
+    [
+      2408,
+      182
+    ],
+    [
+      2474,
+      192
+    ],
+    [
+      2562,
+      204
+    ],
+    [
+      2627,
+      217
+    ],
+    [
+      2693,
+      229
+    ],
+    [
+      2743,
+      233
+    ],
+    [
+      2788,
+      237
+    ],
+    [
+      2854,
+      249
+    ],
+    [
+      2899,
+      253
+    ],
+    [
+      2942,
+      254
+    ],
+    [
+      3007,
+      385
+    ],
+    [
+      3051,
+      386
+    ],
+    [
+      3097,
+      386
+    ],
+    [
+      3145,
+      386
+    ],
+    [
+      3202,
+      386
+    ],
+    [
+      3248,
+      0
+    ]
+  ]
+}

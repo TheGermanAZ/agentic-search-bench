@@ -1,0 +1,371 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs hardened R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 13121,
+  "peakTreeRssMb": 57,
+  "watchKill": null,
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "hardened",
+    "test": "R5",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, 10000, 64)",
+    "data": {
+      "r": {
+        "startMs": 32,
+        "ms": 10015,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": null,
+            "logs": [
+              "[ERROR] Code execution failed: Script execution timeout after 10000ms",
+              "[WARN] Tool call \"host.lookup\" abandoned: the chain ended before it settled"
+            ]
+          },
+          "stringChars": 144
+        },
+        "callsStarted": 50
+      },
+      "atReturn": {
+        "started": 50,
+        "done": 49
+      },
+      "after3s": {
+        "started": 50,
+        "done": 50
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 27,
+    "hostEvents": [],
+    "totalMs": 13052
+  },
+  "childStdoutOtherChars": 7135,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'l",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      112,
+      52
+    ],
+    [
+      203,
+      56
+    ],
+    [
+      317,
+      56
+    ],
+    [
+      416,
+      56
+    ],
+    [
+      512,
+      56
+    ],
+    [
+      617,
+      56
+    ],
+    [
+      732,
+      56
+    ],
+    [
+      836,
+      56
+    ],
+    [
+      985,
+      56
+    ],
+    [
+      1127,
+      56
+    ],
+    [
+      1215,
+      56
+    ],
+    [
+      1333,
+      56
+    ],
+    [
+      1422,
+      57
+    ],
+    [
+      1526,
+      57
+    ],
+    [
+      1644,
+      57
+    ],
+    [
+      1730,
+      57
+    ],
+    [
+      1835,
+      57
+    ],
+    [
+      1937,
+      57
+    ],
+    [
+      2035,
+      57
+    ],
+    [
+      2136,
+      57
+    ],
+    [
+      2240,
+      57
+    ],
+    [
+      2342,
+      57
+    ],
+    [
+      2453,
+      57
+    ],
+    [
+      2551,
+      57
+    ],
+    [
+      2651,
+      57
+    ],
+    [
+      2758,
+      57
+    ],
+    [
+      2865,
+      57
+    ],
+    [
+      2962,
+      57
+    ],
+    [
+      3070,
+      57
+    ],
+    [
+      3159,
+      57
+    ],
+    [
+      3258,
+      57
+    ],
+    [
+      3356,
+      57
+    ],
+    [
+      3459,
+      57
+    ],
+    [
+      3559,
+      57
+    ],
+    [
+      3660,
+      57
+    ],
+    [
+      3764,
+      57
+    ],
+    [
+      3867,
+      57
+    ],
+    [
+      3967,
+      57
+    ],
+    [
+      4069,
+      57
+    ],
+    [
+      4176,
+      57
+    ],
+    [
+      4279,
+      57
+    ],
+    [
+      4386,
+      57
+    ],
+    [
+      4486,
+      57
+    ],
+    [
+      4585,
+      57
+    ],
+    [
+      4686,
+      57
+    ],
+    [
+      4787,
+      57
+    ],
+    [
+      5059,
+      57
+    ],
+    [
+      5146,
+      57
+    ],
+    [
+      5244,
+      57
+    ],
+    [
+      5361,
+      57
+    ],
+    [
+      5465,
+      57
+    ],
+    [
+      5588,
+      57
+    ],
+    [
+      5698,
+      57
+    ],
+    [
+      5811,
+      57
+    ],
+    [
+      5969,
+      57
+    ],
+    [
+      6105,
+      57
+    ],
+    [
+      6218,
+      57
+    ],
+    [
+      6333,
+      57
+    ],
+    [
+      6435,
+      57
+    ],
+    [
+      6632,
+      57
+    ],
+    [
+      7163,
+      43
+    ],
+    [
+      7885,
+      44
+    ],
+    [
+      8413,
+      44
+    ],
+    [
+      8744,
+      45
+    ],
+    [
+      9024,
+      45
+    ],
+    [
+      9283,
+      45
+    ],
+    [
+      9524,
+      45
+    ],
+    [
+      9726,
+      45
+    ],
+    [
+      9983,
+      46
+    ],
+    [
+      10263,
+      49
+    ],
+    [
+      10760,
+      49
+    ],
+    [
+      11025,
+      49
+    ],
+    [
+      11372,
+      49
+    ],
+    [
+      11634,
+      49
+    ],
+    [
+      11874,
+      49
+    ],
+    [
+      12177,
+      49
+    ],
+    [
+      12489,
+      49
+    ],
+    [
+      12835,
+      49
+    ],
+    [
+      13120,
+      49
+    ]
+  ]
+}

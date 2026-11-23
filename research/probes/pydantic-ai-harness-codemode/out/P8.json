@@ -1,0 +1,8 @@
+{
+  "probe": "P8",
+  "outcome": "persists",
+  "detail": "second run_code in the same agent run saw: '{\"output\": \"7\\\\n\"}'; a new agent run saw: 'Type error in code:\\nerror[unresolved-reference]: Name `kept` used when not defined\\n --> main.py:1:7\\n  |\\n1 | print(kept)\\n  |       ^^^^\\n\\n'",
+  "config": "CodeMode()",
+  "peak_tree_rss_mib": 98,
+  "harness_wall_s": 0.5
+}

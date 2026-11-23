@@ -1,0 +1,36 @@
+[
+  {
+    "probe": "P9-same-server",
+    "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => lookup.lookup({id:i}))); console.log(Date.now()-t); return Date.now()-t",
+    "args_extra": {},
+    "wall_ms": 1037,
+    "host_calls": 5,
+    "isError": false,
+    "response_text": "1036",
+    "response_text_length": 4,
+    "console_on_proxy_stderr": [
+      "[js] LOG: 1036"
+    ],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P9-two-servers",
+    "code": "const t = Date.now(); await Promise.all([1,2,3,4].map(i => (i % 2 ? lookup : lookup2).lookup({id:i}))); return Date.now()-t",
+    "args_extra": {},
+    "wall_ms": 410,
+    "host_calls": 4,
+    "isError": false,
+    "response_text": "408",
+    "response_text_length": 3,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  }
+]

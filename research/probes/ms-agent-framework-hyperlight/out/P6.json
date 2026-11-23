@@ -1,0 +1,8 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "detail": "stopped after 30.0 s: Execution error | details=Code execution exceeded its time limit.",
+  "display": "limited (30 s)",
+  "wall_s": 30.0,
+  "config": "default"
+}

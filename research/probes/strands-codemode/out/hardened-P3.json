@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "not-defined",
+  "display": "not-defined (no urllib)",
+  "detail": "Execution error: Traceback (most recent call last): File \"<python-input-0>\", line 1, in <module> import urllib.request ModuleNotFoundError: No module named 'urllib.request'",
+  "evidence": "research/probes/strands-codemode/out/hardened-P3.txt"
+}

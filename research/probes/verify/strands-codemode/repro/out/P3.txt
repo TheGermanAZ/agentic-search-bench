@@ -1,0 +1,50 @@
+probe: P3
+outcome: not-defined
+display: not-defined (no urllib)
+detail: Execution error: Traceback (most recent call last): File "<python-input-0>", line 1, in <module> import urllib.request ModuleNotFoundError: No module named 'urllib.request'
+
+code:
+----
+import urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10)
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+import ssl, urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10, context=ssl._create_unverified_context())
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+
+setup_ms: 1069.9
+wall_s (whole child process): 2.33
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.094
+host lookup calls: 0
+
+=== run 0 (312.2 ms) ===
+ok: false
+stdout: 
+status: error
+error: Execution error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    import urllib.request
+ModuleNotFoundError: No module named 'urllib.request'
+
+=== run 1 (65.0 ms) ===
+ok: false
+stdout: 
+status: error
+error: Execution error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    import ssl, urllib.request
+ModuleNotFoundError: No module named 'ssl'
+
+=== child process log (tail) ===
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+

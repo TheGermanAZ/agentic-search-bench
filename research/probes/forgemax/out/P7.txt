@@ -1,0 +1,23 @@
+mode: default
+code:
+async () => { const a = []; while (true) a.push("x".repeat(1e6)); }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"V8 heap limit exceeded\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 193,
+  "hostCalls": 0
+}
+
+baseline tree RSS bytes: 75759616
+peak tree RSS bytes: 170295296
+
+next execution after P7: {"response":{"content":[{"type":"text","text":"\"alive\""}],"isError":false},"ms":11,"hostCalls":0}

@@ -1,0 +1,61 @@
+label: P4b
+command: node probe.mjs P4b
+child exit: code=0 signal=null
+child wall ms (process start to exit): 668
+peak child RSS: 80.0 MB (ps every 50 ms)
+child stdout length: 424 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P4b",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 194.09558299999998,
+  "source": [
+    "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Not supported",
+          "name": "Error",
+          "stack": "Error: Not supported\n    at <isolated-vm>:5:12\n    at <isolated-vm>:6:7\n    at <isolated-vm>:11:3"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 34.92566599999998,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: Not supported",
+    "ms": 35,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 82.7
+}
+--- child stdout ---
+{
+  timestamp: [33m1795381356433[39m,
+  durationMs: [33m32[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'Error'[39m,
+    message: [32m'Not supported'[39m,
+    stack: [32m'Error: Not supported\n'[39m +
+      [32m'    at <isolated-vm>:5:12\n'[39m +
+      [32m'    at <isolated-vm>:6:7\n'[39m +
+      [32m'    at <isolated-vm>:11:3'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

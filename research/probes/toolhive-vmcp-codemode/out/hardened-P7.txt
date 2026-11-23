@@ -1,0 +1,16 @@
+--- code 1 ---
+a = []
+while True:
+    a.append("x" * 1000000)
+--- result 1 ---
+{"ms":3,"hostCalls":0,"peakRssMB":63,"ok":true,"isError":true}
+text (92 chars):
+script execution failed: script.star:3:5: this Starlark dialect does not support while loops
+--- code 2 ---
+a = []
+for i in range(1000000000000):
+    a.append("x" * 1000000)
+--- result 2 ---
+{"ms":53,"hostCalls":0,"peakRssMB":544,"ok":true,"isError":true}
+text (71 chars):
+script execution failed: Starlark computation cancelled: too many steps

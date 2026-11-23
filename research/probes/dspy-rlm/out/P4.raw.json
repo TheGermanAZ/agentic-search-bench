@@ -1,0 +1,32 @@
+{
+  "probe": "P4",
+  "config": "default",
+  "codes": [
+    "data = open(\"/etc/hosts\").read()\nmsg = \"HOSTS \" + str(len(data)) + \" chars, mentions localhost: \" + str(\"localhost\" in data)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "model_view_all": [
+        "<repl_output>\n[Error] FileNotFoundError: [44, 'No such file or directory']\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        60,
+        25
+      ],
+      "answer": "done",
+      "error": "<repl_output>\n[Error] FileNotFoundError: [44, 'No such file or directory']\n</repl_output>",
+      "ms": 381.6,
+      "started": 1795381961.152341
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.75,
+  "peak_tree_rss_gb": 0.47,
+  "calls": [],
+  "child_log_tail": ""
+}

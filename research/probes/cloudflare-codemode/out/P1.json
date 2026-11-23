@@ -1,0 +1,37 @@
+{
+  "tool": {
+    "code": "const r = await codemode.lookup({id: 21}); console.log(r.value)",
+    "mode": "tool",
+    "httpStatus": 200,
+    "wallMs": 214,
+    "body": {
+      "mode": "tool",
+      "res": {
+        "ok": true,
+        "output": {
+          "logs": [
+            "42"
+          ]
+        }
+      },
+      "hostCalls": 1,
+      "hostMs": 209
+    }
+  },
+  "raw": {
+    "code": "const r = await codemode.lookup({id: 21}); console.log(r.value)",
+    "mode": "raw",
+    "httpStatus": 200,
+    "wallMs": 209,
+    "body": {
+      "mode": "raw",
+      "res": {
+        "logs": [
+          "42"
+        ]
+      },
+      "hostCalls": 1,
+      "hostMs": 205
+    }
+  }
+}

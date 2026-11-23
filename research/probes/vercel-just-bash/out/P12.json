@@ -1,0 +1,130 @@
+{
+  "worker": {
+    "exitCode": 0,
+    "signal": null,
+    "killed": null,
+    "wallMs": 103,
+    "peakRssKb": 0
+  },
+  "parsed": {
+    "probe": "P12",
+    "host": {
+      "node": "v24.22.1",
+      "pid": 62425
+    },
+    "runs": [
+      {
+        "label": "node -e 'console.log(process.pid)'",
+        "script": "node -e 'console.log(process.pid)'",
+        "exitCode": 127,
+        "stdout": "",
+        "stderr": "bash: node: command not found\n",
+        "ms": 29,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "js-exec 'console.log(process.pid)'",
+        "script": "js-exec 'console.log(process.pid)'",
+        "exitCode": 127,
+        "stdout": "",
+        "stderr": "bash: js-exec: command not found\n",
+        "ms": 1,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "sh -c 'echo inner-sh'",
+        "script": "sh -c 'echo inner-sh'",
+        "exitCode": 0,
+        "stdout": "inner-sh\n",
+        "stderr": "",
+        "ms": 3,
+        "stdoutLength": 9,
+        "hostCalls": 0
+      },
+      {
+        "label": "bash -c 'echo inner-bash'",
+        "script": "bash -c 'echo inner-bash'",
+        "exitCode": 0,
+        "stdout": "inner-bash\n",
+        "stderr": "",
+        "ms": 1,
+        "stdoutLength": 11,
+        "hostCalls": 0
+      },
+      {
+        "label": "/bin/sh -c 'echo inner-bin-sh'",
+        "script": "/bin/sh -c 'echo inner-bin-sh'",
+        "exitCode": 0,
+        "stdout": "inner-bin-sh\n",
+        "stderr": "",
+        "ms": 1,
+        "stdoutLength": 13,
+        "hostCalls": 0
+      },
+      {
+        "label": "eval 'echo inner-eval'",
+        "script": "eval 'echo inner-eval'",
+        "exitCode": 0,
+        "stdout": "inner-eval\n",
+        "stderr": "",
+        "ms": 1,
+        "stdoutLength": 11,
+        "hostCalls": 0
+      },
+      {
+        "label": "process",
+        "script": "process",
+        "exitCode": 127,
+        "stdout": "",
+        "stderr": "bash: process: command not found\n",
+        "ms": 0,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "require fs",
+        "script": "require fs",
+        "exitCode": 127,
+        "stdout": "",
+        "stderr": "bash: require: command not found\n",
+        "ms": 0,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "child_process",
+        "script": "child_process",
+        "exitCode": 127,
+        "stdout": "",
+        "stderr": "bash: child_process: command not found\n",
+        "ms": 0,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "python3 -c 'import os; os.system(\"echo PWNED\")'",
+        "script": "python3 -c 'import os; os.system(\"echo PWNED\")'",
+        "exitCode": 127,
+        "stdout": "",
+        "stderr": "bash: python3: command not available in browser environments. Exclude 'python3' from your commands or use the Node.js bundle.\n",
+        "ms": 0,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "echo \"$$ $BASHPID\"",
+        "script": "echo \"$$ $BASHPID\"",
+        "exitCode": 0,
+        "stdout": "1 1\n",
+        "stderr": "",
+        "ms": 1,
+        "stdoutLength": 4,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 84864,
+    "maxInFlight": 0
+  }
+}

@@ -1,0 +1,52 @@
+label: hardened-P9
+command: node probe.mjs P9 --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 1459
+peak child RSS: 82.1 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P9",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 60.50749999999999,
+  "source": [
+    "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => external_lookup({id:i}))); const dt = Date.now()-t; console.log(dt); return dt;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": 1023,
+        "logCount": 1,
+        "logChars": 4,
+        "logs": [
+          "1023"
+        ]
+      },
+      "wallMs": 1054.520208,
+      "hostCalls": 5
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": 1023,
+      "logCount": 1,
+      "logChars": 4
+    },
+    "ms": 1055,
+    "hostCalls": 5
+  },
+  "hostRssAfterMB": 82.1
+}
+--- child stdout ---
+
+--- child stderr ---
+

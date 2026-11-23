@@ -1,0 +1,196 @@
+{
+  "impl": "bifrost-codemode",
+  "name": "Bifrost MCP Gateway Code Mode (Starlark)",
+  "source": "https://github.com/maximhq/bifrost (core/mcp/codemode/starlark); Docker image maximhq/bifrost:v2.6.0",
+  "pinned": "maximhq/bifrost:v2.6.0 image sha256:5968d007ba4f74ee01bc4ceb071decb9927a0b7bb43dbb9072208f75e2d522e3 = tag transports/v2.6.0 (172617bb045c6f43d697843c115e64f0155ed143). Source read at main 8ad61e208215a6eb928421982ffd06c430971f67; core/mcp, core/schemas/mcp.go and docs/mcp/code-mode.mdx are identical at both. Starlark engine github.com/canonical/starlark.",
+  "language": "Python subset (Starlark)",
+  "engine": "Canonical's Starlark-in-Go fork, run in-process in the Bifrost gateway on a fresh starlark.Thread per execution with step, allocation, log, call-count and context-cancellation budgets",
+  "how_run": "Official image maximhq/bifrost:v2.6.0 in a container (port 41410) with data/config.json: one HTTP MCP client `probe` (lib lookup server on the host, port 41411) with is_code_mode_client true, and one local virtual key (sk-bf-probe-local-only, created in that config, no external account) whose mcp_configs allow probe. The driver connects an MCP client to Bifrost's own /mcp endpoint with header x-bf-vk and calls the executeToolCode meta-tool with {code}. P1 was also checked through POST /v1/mcp/tool/execute.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "display": "works (42.0, 1 call, sync)",
+      "detail": "probe.lookup(id=21) returned a dict (JSON auto-decoded); print(r[\"value\"]) printed 42.0 (JSON numbers become floats in print), result returned 42. 1 host call, 211 ms. Calls are synchronous, keyword-argument form.",
+      "evidence": "research/probes/bifrost-codemode/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "limited",
+      "display": "limited (64 KiB log cap, run cancelled)",
+      "detail": "print(\"A\"*200000) exceeded max_log_bytes (64 KiB): the whole run was cancelled with isError true, \"Starlark computation cancelled: code mode log limit exceeded\", and neither the print nor result \"RETURNED\" came back. Not a truncation: no partial output. Control run with 60,000 chars returned all of it plus \"Return value: \\\"RETURNED\\\"\". Both print output and result are returned when within limits.",
+      "evidence": "research/probes/bifrost-codemode/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "display": "not-defined",
+      "detail": "urllib -> \"code.star:1:5: undefined: urllib\". load(\"net\",\"http\") -> \"load not implemented by this application\". Predeclared names are only the server structs plus json and math.",
+      "evidence": "research/probes/bifrost-codemode/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "display": "not-defined",
+      "detail": "open(...) -> \"code.star:1:10: undefined: open\".",
+      "evidence": "research/probes/bifrost-codemode/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "display": "not-defined",
+      "detail": "os -> \"undefined: os\". Gateway container had PROBE_SECRET=s3cr3t. dir(json) = decode, encode, indent; dir(math) is math functions only.",
+      "evidence": "research/probes/bifrost-codemode/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "limited",
+      "display": "limited (op count, 1M steps, 40 ms)",
+      "detail": "while True: pass stopped after 40 ms: \"code mode resource limit: too many steps\" (max_steps 1,000,000). This is an operation budget, not a clock; the clock is the 30 s tool_execution_timeout context that cancels the thread.",
+      "evidence": "research/probes/bifrost-codemode/out/P6.txt"
+    },
+    "P7": {
+      "outcome": "limited",
+      "display": "limited (op count, before 64 MiB)",
+      "detail": "a.append(\"x\"*1000000) loop stopped after 8 ms by \"too many steps\": work inside builtins is charged as steps, so the step budget fires before the 64 MiB allocation budget. Gateway RSS stayed at 276 MB peak (baseline about 263 to 277 MB). Three low-step variants ([None]*1e8, string doubling, 1e7-key dict) were also stopped by the step budget within 39 ms. The gateway and other sessions were unaffected.",
+      "evidence": "research/probes/bifrost-codemode/out/P7.txt, research/probes/bifrost-codemode/out/P7b-P7.txt"
+    },
+    "P8": {
+      "outcome": "works",
+      "display": "fresh",
+      "detail": "Second execution: \"undefined: kept\" (compile-time error). Fresh scope per call, as the tool description states.",
+      "evidence": "research/probes/bifrost-codemode/out/P8.txt"
+    },
+    "P9": {
+      "outcome": "works",
+      "display": "serial (1,035 ms)",
+      "detail": "No async in Starlark. A comprehension over five lookups took 1,035 ms, 5 host calls. Calls run one at a time on the script thread (executecode.go comment line 230).",
+      "evidence": "research/probes/bifrost-codemode/out/P9.txt"
+    },
+    "P10": {
+      "outcome": "works",
+      "display": "works (message + line, isError)",
+      "detail": "No raise in Starlark; fail(\"probe-boom\") -> isError true, \"Traceback (most recent call last):\\n  code.star:1:5: in <toplevel>\\nError: fail: probe-boom\" plus hints. A fail on user line 3 reports code.star:3:5 (no offset). A runtime KeyError reports code.star:3:6 and a targeted hint.",
+      "evidence": "research/probes/bifrost-codemode/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "display": "works (median 2.2 ms over HTTP)",
+      "detail": "20 executions of result = 1 + 1 through the /mcp HTTP endpoint: median 2.2 ms, p90 4.4 ms. One-time setup (MCP connect) 45 ms; gateway boot about 10.6 s.",
+      "evidence": "research/probes/bifrost-codemode/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "display": "blocked",
+      "detail": "().__class__ -> \"tuple has no .__class__ field or method\". __import__ -> undefined. The only reachable objects are the server struct (dir = [lookup]), builtin functions with no attributes, json and math.",
+      "evidence": "research/probes/bifrost-codemode/out/P12.txt"
+    }
+  },
+  "hardened": {
+    "config": "config.json mcp.tool_manager_config = {tool_execution_timeout: \"5s\", code_mode_limits: {max_source_bytes: 8192, max_steps: 100000, max_memory_bytes: 8388608, max_log_bytes: 8192, max_tool_calls: 8, max_value_bytes: 65536, max_nesting_depth: 16}} (docs/mcp/code-mode.mdx \"Configuring Execution Limits\", https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/docs/mcp/code-mode.mdx#L775-L820; schema https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/schemas/mcp.go#L486-L527). The knobs are continuous with no documented floor, so this is a tight but usable setting, not a unique strictest one. File: research/probes/bifrost-codemode/data-hardened/config.json",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "display": "not-defined",
+        "detail": "Same as default: undefined: urllib; load not implemented.",
+        "evidence": "research/probes/bifrost-codemode/out/hardened-P3.txt"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "display": "not-defined",
+        "detail": "undefined: open.",
+        "evidence": "research/probes/bifrost-codemode/out/hardened-P4.txt"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "display": "not-defined",
+        "detail": "undefined: os.",
+        "evidence": "research/probes/bifrost-codemode/out/hardened-P5.txt"
+      },
+      "P6": {
+        "outcome": "limited",
+        "display": "limited (op count, 100k steps, 7 ms)",
+        "detail": "\"too many steps\" after 7 ms (vs 40 ms at 1M steps), which shows the hardened config was live.",
+        "evidence": "research/probes/bifrost-codemode/out/hardened-P6.txt"
+      },
+      "P7": {
+        "outcome": "limited",
+        "display": "limited (op count, 4 ms)",
+        "detail": "\"too many steps\" after 4 ms; peak gateway RSS 263 MB.",
+        "evidence": "research/probes/bifrost-codemode/out/hardened-P7.txt"
+      },
+      "P9": {
+        "outcome": "works",
+        "display": "serial (1,037 ms)",
+        "detail": "5 calls, 1,037 ms; under max_tool_calls 8.",
+        "evidence": "research/probes/bifrost-codemode/out/hardened-P9.txt"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "display": "blocked",
+        "detail": "Same as default.",
+        "evidence": "research/probes/bifrost-codemode/out/hardened-P12.txt"
+      }
+    }
+  },
+  "defaults": {
+    "time": "max_steps 1,000,000 Starlark steps (builtin work included) per execution, plus tool_execution_timeout 30 s as the context deadline of the whole executeToolCode run (executecode.go:228; schemas/mcp.go:596, 605).",
+    "memory": "max_memory_bytes 64 MiB of accounted allocations per execution (thread.SetMaxAllocs). Cooperative accounting, not an RSS limit; no cap on concurrent executions (docs L757, L773).",
+    "output": "max_log_bytes 64 KiB of print output: exceeding it cancels the run with an error, it does not truncate. max_value_bytes 1 MiB per tool payload and result. max_source_bytes 64 KiB.",
+    "tool_calls": "max_tool_calls 64 per execution; max_nesting_depth 64."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Each code-mode MCP client becomes a predeclared Starlark struct named after the client, with one builtin per tool (plus a compatibility alias). Calls take keyword args or one dict; args are converted to Go values under the value-size budget. The model reads Python .pyi stubs generated per server (or per tool, by code_mode_binding_level).",
+      "evidence": "https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/sandbox.go#L105-L162, https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/readfile.go"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On demand, four meta-tools: listToolFiles (servers/<name>.pyi tree), readToolFile (stub with signatures, paginated), getToolDocs (one tool's full docs), executeToolCode. Only these four are listed to the MCP client (P: listTools returned exactly these), so the prompt does not grow with the catalog. This is the design behind the 96/251/508-tool benchmark.",
+      "evidence": "https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/listfiles.go, https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/readfile.go, https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/getdocs.go, https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/transports/bifrost-http/handlers/mcpserverpercaller.go#L81"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "In-process Go call from the Starlark builtin to callMCPTool, which re-checks the virtual key's and client's tool allow-lists at the call itself (AuthorizeCodeModeToolCall), then runs the call through the same plugin pipeline (governance, logging, tracing) as a direct tool call over the client's existing MCP connection. Serial by construction.",
+      "evidence": "https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/sandbox.go#L115-L151, https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/executecode.go#L254-L400, https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/utils.go#L1526"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Starlark has no I/O builtins; predeclared names are the server structs, json and math. load() has no loader. The thread requires CPUSafe|MemSafe|TimeSafe so only builtins declared safe can run. The docs state this is in-process and that the limits are cooperative accounting, not OS-enforced RSS limits, which matches the code.",
+      "evidence": "https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/sandbox.go#L24-L30, #L54-L62, #L163-L173; https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/docs/mcp/code-mode.mdx#L773"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Both print output (\"Print output:\") and the `result` global (\"Return value:\" as sorted, indented JSON) are returned. print over max_log_bytes cancels the whole run instead of truncating. Failed runs are returned with isError true.",
+      "evidence": "https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/sandbox.go#L76-L104, https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/executecode.go#L133-L203"
+    },
+    {
+      "topic": "Limits",
+      "finding": "All in MCPCodeModeLimits with defaults 64 KiB source, 1M steps, 64 MiB allocs, 64 KiB logs, 64 tool calls, 1 MiB values, depth 64; plus the 30 s tool_execution_timeout as the run's context deadline. Configurable globally via config.json, API or UI and hot-reloaded.",
+      "evidence": "https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/schemas/mcp.go#L501-L527 and #L596-L610, https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/executecode.go#L207-L237"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh thread and globals per execution; globals are never frozen or kept.",
+      "evidence": "https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/sandbox.go#L170-L183"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Errors render as a Python-style traceback with code.star:line:col and no wrapper offset, a kind (compile/syntax/runtime), and generated hints (undefined names, missing keys, unsupported try/except). Tool-call failures are returned to the script as an error value (hasattr(r, \"error\")), not raised.",
+      "evidence": "https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/sandbox.go#L184-L249, https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/executecode.go#L66-L96"
+    },
+    {
+      "topic": "Credentials and approvals",
+      "finding": "Upstream MCP credentials (headers, OAuth, per-user headers) live in the gateway's client config; the script only sees tool results. Tool calls inherit the caller's virtual key and its tool allow-list.",
+      "evidence": "https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/mcp/codemode/starlark/executecode.go#L279-L290, https://github.com/maximhq/bifrost/blob/172617bb045c6f43d697843c115e64f0155ed143/core/schemas/mcp.go#L937-L975"
+    },
+    {
+      "topic": "Published benchmark (reproducibility)",
+      "finding": "The 64/64, -58.2% (96 tools) numbers come from maximhq/bifrost-benchmarking mcp-code-mode-benchmark (last changed 2026-03-25). Not reproducible from the repo: (1) runs/ is gitignored, so no per-query logs or token counts are committed, only the summary tables in README.md and benchmark_report.md; (2) a run needs an Anthropic key for claude-sonnet-4-6 plus accounts or keys for Firecrawl, GitHub, Notion, Tavily and, for rounds 2-3, Composio-linked Linear, Apollo, Google Sheets/Calendar/Drive/Docs, Calendly and Figma; (3) \"pass\" is status == \"success\", which run_query sets for any HTTP 200 reply from Bifrost; success_criteria is copied into the result but never checked; (4) the report says six failing queries \"passed on re-run\" and were replaced. So the pass rates measure \"the agent loop returned\", not task correctness, and the token numbers cannot be checked without re-running with those accounts. Not attempted here (needs credentials).",
+      "evidence": "https://github.com/maximhq/bifrost-benchmarking/blob/3cb72a95cacaee6f73f9db5636a1a651c7dcb1e9/mcp-code-mode-benchmark/benchmark.py#L438-L440 and #L548-L561, https://github.com/maximhq/bifrost-benchmarking/blob/3cb72a95cacaee6f73f9db5636a1a651c7dcb1e9/.gitignore, https://github.com/maximhq/bifrost-benchmarking/blob/3cb72a95cacaee6f73f9db5636a1a651c7dcb1e9/mcp-code-mode-benchmark/README.md#L200-L260, https://github.com/maximhq/bifrost-benchmarking/blob/3cb72a95cacaee6f73f9db5636a1a651c7dcb1e9/mcp-code-mode-benchmark/benchmark_report.md#L167"
+    }
+  ],
+  "surprises": [
+    "P2: over-long print is not truncated; the whole execution fails and the model gets neither the prints nor the result.",
+    "Memory budget never fires first: string building inside builtins is charged as steps, so every allocation probe hit max_steps (1M) in under 40 ms. The 64 MiB allocation budget is a backstop.",
+    "Benchmark pass rate is HTTP success, not graded against the success_criteria the task files define; failing queries were re-run until they passed; raw run logs are gitignored.",
+    "The benchmark README describes tool-level binding as \".d.ts\" files per tool, while the current code emits Python .pyi stubs.",
+    "Both /mcp and /v1/mcp/tool/execute refuse to run anything without a virtual key, and a new virtual key allows no MCP tools until mcp_configs lists them (deny by default).",
+    "Docs are unusually exact: the limits table, the in-process and cooperative-accounting caveat, and the 30 s timeout all match the source."
+  ]
+}

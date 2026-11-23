@@ -1,0 +1,175 @@
+{
+ "probe": "P12",
+ "host": "~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex-code-mode-host",
+ "limits_sent": {
+  "maxYieldTimeMs": 1000,
+  "maxHeapSizeBytes": 67108864
+ },
+ "max_output_tokens": 1000,
+ "hello": {
+  "type": "connection/ready",
+  "selectedVersion": 1,
+  "capabilities": [
+   "bounded-output-v1",
+   "delegate-capacity-4096",
+   "session-cell-execution-resource-limits",
+   "yield-observation"
+  ]
+ },
+ "session_open": {
+  "type": "operation/response",
+  "id": 1,
+  "result": {
+   "status": "ok",
+   "value": {
+    "type": "session/ready",
+    "sessionId": "s1"
+   }
+  }
+ },
+ "wall_ms": 62.0,
+ "peak_rss_mb": 8.6,
+ "killed": null,
+ "records": [
+  {
+   "source": "text(String(this.constructor.constructor(\"return typeof process\")()));",
+   "elapsed_ms": 5.28,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 2,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Result": {
+       "cell_id": "1",
+       "content_items": [
+        {
+         "type": "input_text",
+         "text": "Script error:\nTypeError: Cannot read properties of undefined (reading 'constructor')\n    at exec_main.mjs:1:18"
+        }
+       ],
+       "error_text": "TypeError: Cannot read properties of undefined (reading 'constructor')\n    at exec_main.mjs:1:18",
+       "result_buffered_for_ns": 0,
+       "code_mode_host_duration_ns": 5008542
+      }
+     }
+    }
+   },
+   "waits": []
+  },
+  {
+   "source": "text(String(globalThis.constructor.constructor(\"return typeof process\")()));",
+   "elapsed_ms": 1.97,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 3,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Result": {
+       "cell_id": "2",
+       "content_items": [
+        {
+         "type": "input_text",
+         "text": "undefined"
+        }
+       ],
+       "error_text": null,
+       "result_buffered_for_ns": 0,
+       "code_mode_host_duration_ns": 1726000
+      }
+     }
+    }
+   },
+   "waits": []
+  },
+  {
+   "source": "text(String(Function(\"return this\")().process));",
+   "elapsed_ms": 1.77,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 4,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Result": {
+       "cell_id": "3",
+       "content_items": [
+        {
+         "type": "input_text",
+         "text": "undefined"
+        }
+       ],
+       "error_text": null,
+       "result_buffered_for_ns": 0,
+       "code_mode_host_duration_ns": 1430125
+      }
+     }
+    }
+   },
+   "waits": []
+  },
+  {
+   "source": "text(String((function(){return this})().process));",
+   "elapsed_ms": 1.56,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 5,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Result": {
+       "cell_id": "4",
+       "content_items": [
+        {
+         "type": "input_text",
+         "text": "Script error:\nTypeError: Cannot read properties of undefined (reading 'process')\n    at exec_main.mjs:1:40"
+        }
+       ],
+       "error_text": "TypeError: Cannot read properties of undefined (reading 'process')\n    at exec_main.mjs:1:40",
+       "result_buffered_for_ns": 0,
+       "code_mode_host_duration_ns": 1063000
+      }
+     }
+    }
+   },
+   "waits": []
+  },
+  {
+   "source": "text(JSON.stringify(Object.getOwnPropertyNames(globalThis).filter(n => !/^[A-Z]/.test(n))));",
+   "elapsed_ms": 5.12,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 6,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Result": {
+       "cell_id": "5",
+       "content_items": [
+        {
+         "type": "input_text",
+         "text": "[\"parseFloat\",\"parseInt\",\"undefined\",\"globalThis\",\"decodeURI\",\"decodeURIComponent\",\"encodeURI\",\"encodeURIComponent\",\"escape\",\"unescape\",\"eval\",\"isFinite\",\"isNaN\",\"tools\",\"clearTimeout\",\"setTimeout\",\"text\",\"content\",\"image\",\"audio\",\"generatedImage\",\"store\",\"load\",\"notify\",\"yield_control\",\"exit\",\"as_settled\",\"stream_settled\"]"
+        }
+       ],
+       "error_text": null,
+       "result_buffered_for_ns": 0,
+       "code_mode_host_duration_ns": 4828166
+      }
+     }
+    }
+   },
+   "waits": []
+  }
+ ],
+ "after": {
+  "host_alive_before": true,
+  "host_alive_after": true,
+  "host_returncode": null
+ }
+}

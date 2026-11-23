@@ -1,0 +1,77 @@
+{
+ "tag": "default",
+ "probe": "P6c",
+ "settings": "~/p/agentic-search-bench/research/probes/claude-code-codemode/settings-default.json",
+ "permissionMode": "default",
+ "transcript": "~/.claude/projects/-Users-thegermanaz-p-agentic-search-bench-research-probes-claude-code-codemode-work/6da94a67-24bc-45a8-a746-b01e61ff8160.jsonl",
+ "hostLookupCalls": [],
+ "steps": [
+  {
+   "step": "P6c.1",
+   "code": "globalThis.ticks = 0; while (true) { ticks++; await sleep(10) }",
+   "typist": "model",
+   "wallS": 34.3,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "globalThis.ticks = 0; while (true) { ticks++; await sleep(10) }",
+     "codeRan": "globalThis.ticks = 0; while (true) { ticks++; await sleep(10) }",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:42:03.571Z",
+     "result": {
+      "content": "<repl-output>\n<error>Error: REPL execution timed out after 30000ms of script time (inner tool calls excluded). Script may still be running \u2014 avoid unbounded awaits.\nThe script was stopped partway through: statements before the stop ran. No tool call had completed.</error>\n</repl-output>",
+      "is_error": true,
+      "ts": "2026-11-22T20:42:33.627Z",
+      "toolUseResult": {
+       "code": "globalThis.ticks = 0; while (true) { ticks++; await sleep(10) }",
+       "result": null,
+       "stdout": "",
+       "stderr": "",
+       "error": "Error: REPL execution timed out after 30000ms of script time (inner tool calls excluded). Script may still be running \u2014 avoid unbounded awaits.\nThe script was stopped partway through: statements before the stop ran. No tool call had completed.",
+       "plainErrorLine": {
+        "text": "Timed out after 30s, not counting time spent in tool calls",
+        "replaces": "Error: REPL execution timed out after 30000ms of script time (inner tool calls excluded). Script may still be running \u2014 avoid unbounded awaits."
+       }
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 372528,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P6c.2",
+   "code": "const a = ticks; await sleep(2000); ({ticksThen: a, ticksNow: ticks, running: running().map(r => ({id: r.id, state: r.state, ageMs: r.ageMs, self: r.self}))})",
+   "typist": "model",
+   "wallS": 6.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "const a = ticks; await sleep(2000); ({ticksThen: a, ticksNow: ticks, running: running().map(r => ({id: r.id, state: r.state, ageMs: r.ageMs, self: r.self}))})",
+     "codeRan": "const a = ticks; await sleep(2000); ({ticksThen: a, ticksNow: ticks, running: running().map(r => ({id: r.id, state: r.state, ageMs: r.ageMs, self: r.self}))})",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:42:38.381Z",
+     "result": {
+      "content": "<repl-output>\n<result>{ ticksThen: 2786, ticksNow: 2786, running: [] }</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:42:40.417Z",
+      "toolUseResult": {
+       "code": "const a = ticks; await sleep(2000); ({ticksThen: a, ticksNow: ticks, running: running().map(r => ({id: r.id, state: r.state, ageMs: r.ageMs, self: r.self}))})",
+       "result": "{ ticksThen: 2786, ticksNow: 2786, running: [] }",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 394944,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  }
+ ]
+}

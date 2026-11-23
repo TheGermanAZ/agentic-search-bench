@@ -1,0 +1,451 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py hardened R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 12217,
+  "peakTreeRssMb": 110,
+  "peakTreeFootprintMb": 82,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R7b",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller={'allowed_tools': ['lookup', 'failing', 'rich'], 'timeout': 10.0}; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 450,
+        "ms": 10011,
+        "ok": true,
+        "result": {
+          "status": "error",
+          "text": "Execution error: timed out after 10 seconds."
+        },
+        "callsStarted": 5
+      },
+      "atReturn": {
+        "started": 5,
+        "done": 5
+      },
+      "after1500ms": {
+        "started": 6,
+        "done": 6
+      },
+      "after": {
+        "label": "after",
+        "startMs": 11963,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 12,
+    "totalMs": 12175
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      80,
+      33,
+      17
+    ],
+    [
+      230,
+      60,
+      41
+    ],
+    [
+      386,
+      79,
+      57
+    ],
+    [
+      541,
+      110,
+      72
+    ],
+    [
+      695,
+      110,
+      82
+    ],
+    [
+      868,
+      110,
+      82
+    ],
+    [
+      1003,
+      110,
+      82
+    ],
+    [
+      1157,
+      110,
+      82
+    ],
+    [
+      1313,
+      110,
+      82
+    ],
+    [
+      1475,
+      110,
+      82
+    ],
+    [
+      1627,
+      110,
+      82
+    ],
+    [
+      1779,
+      110,
+      82
+    ],
+    [
+      1932,
+      110,
+      82
+    ],
+    [
+      2088,
+      110,
+      82
+    ],
+    [
+      2246,
+      110,
+      82
+    ],
+    [
+      2398,
+      110,
+      82
+    ],
+    [
+      2557,
+      110,
+      82
+    ],
+    [
+      2710,
+      110,
+      82
+    ],
+    [
+      2866,
+      110,
+      82
+    ],
+    [
+      3020,
+      110,
+      82
+    ],
+    [
+      3177,
+      110,
+      82
+    ],
+    [
+      3333,
+      110,
+      82
+    ],
+    [
+      3494,
+      110,
+      82
+    ],
+    [
+      3645,
+      110,
+      82
+    ],
+    [
+      3800,
+      110,
+      82
+    ],
+    [
+      3961,
+      110,
+      82
+    ],
+    [
+      4117,
+      110,
+      82
+    ],
+    [
+      4274,
+      110,
+      82
+    ],
+    [
+      4426,
+      110,
+      82
+    ],
+    [
+      4580,
+      110,
+      82
+    ],
+    [
+      4734,
+      110,
+      82
+    ],
+    [
+      4888,
+      110,
+      82
+    ],
+    [
+      5046,
+      110,
+      82
+    ],
+    [
+      5199,
+      110,
+      82
+    ],
+    [
+      5355,
+      110,
+      82
+    ],
+    [
+      5509,
+      110,
+      82
+    ],
+    [
+      5663,
+      110,
+      82
+    ],
+    [
+      5820,
+      110,
+      82
+    ],
+    [
+      5976,
+      110,
+      82
+    ],
+    [
+      6132,
+      110,
+      82
+    ],
+    [
+      6286,
+      110,
+      82
+    ],
+    [
+      6444,
+      110,
+      82
+    ],
+    [
+      6600,
+      110,
+      82
+    ],
+    [
+      6755,
+      110,
+      82
+    ],
+    [
+      6907,
+      110,
+      82
+    ],
+    [
+      7062,
+      110,
+      82
+    ],
+    [
+      7218,
+      110,
+      82
+    ],
+    [
+      7368,
+      110,
+      82
+    ],
+    [
+      7525,
+      110,
+      82
+    ],
+    [
+      7677,
+      110,
+      82
+    ],
+    [
+      7830,
+      110,
+      82
+    ],
+    [
+      7987,
+      110,
+      82
+    ],
+    [
+      8142,
+      110,
+      82
+    ],
+    [
+      8302,
+      110,
+      82
+    ],
+    [
+      8456,
+      110,
+      82
+    ],
+    [
+      8611,
+      110,
+      82
+    ],
+    [
+      8762,
+      110,
+      82
+    ],
+    [
+      8918,
+      110,
+      82
+    ],
+    [
+      9072,
+      110,
+      82
+    ],
+    [
+      9227,
+      110,
+      82
+    ],
+    [
+      9382,
+      110,
+      82
+    ],
+    [
+      9535,
+      110,
+      82
+    ],
+    [
+      9688,
+      110,
+      82
+    ],
+    [
+      9840,
+      110,
+      82
+    ],
+    [
+      9995,
+      110,
+      82
+    ],
+    [
+      10151,
+      110,
+      82
+    ],
+    [
+      10302,
+      110,
+      82
+    ],
+    [
+      10456,
+      110,
+      82
+    ],
+    [
+      10616,
+      98,
+      82
+    ],
+    [
+      10765,
+      98,
+      79
+    ],
+    [
+      10919,
+      98,
+      79
+    ],
+    [
+      11071,
+      98,
+      79
+    ],
+    [
+      11226,
+      98,
+      79
+    ],
+    [
+      11384,
+      98,
+      79
+    ],
+    [
+      11533,
+      98,
+      79
+    ],
+    [
+      11685,
+      98,
+      79
+    ],
+    [
+      11837,
+      98,
+      79
+    ],
+    [
+      11991,
+      98,
+      79
+    ],
+    [
+      12146,
+      110,
+      79
+    ]
+  ]
+}

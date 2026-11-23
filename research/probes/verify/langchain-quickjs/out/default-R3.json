@@ -1,0 +1,261 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py default R3",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3314,
+  "peakTreeRssMb": 191,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R3",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich']}), new thread_id per execution",
+    "data": {
+      "recursion": {
+        "label": "recursion",
+        "startMs": 2210,
+        "ms": 807,
+        "ok": false,
+        "threw": "Trap: error while executing at wasm backtrace:\n    0: <unknown>!<wasm function 801>\n    1:  0x37132 - <unknown>!<wasm function 801>\n    2:  0x37132 - <unknown>!<wasm function 801>\n    3:  0x37132 - <unknown>!<wasm function 801>\n    4:  0x37132 - <unknown>!<wasm function 801>\n    5:  0x37132 - <unknown>!<wasm function 801>\n    6:  0x37132 - <unknown>!<wasm function 801>\n    7:  0x37132 - <unknown>!<wasm function 801>\n    8:  0x37132 - <unknown>!<wasm function 801>\n    9:  0x37132 - <unknown>!<wasm function 801>\n   10:  0x37132 - <unknown>!<wasm function 801>\n   11:  0x37132 - <unknown>!<wasm function 801>\n   12:  0x37132 - <unknown>!<wasm function 801>\n   13:  0x37132 - <unknown>!<wasm function 801>\n   14:  0x37132 - <unknown>!<wasm function 801>\n   15:  0x37132 - <unknown>!<wasm function 801>\n   16:  0x37132 - <unknown>!<wasm function 801>\n   17:  0x37132 - <unknown>!<wasm function 801>\n   18:  0x37132 - <unknown>!<wasm function 801>\n   19:  0x37132 - <unknown>!<wasm function 801>\n\nCaused by:\n    wasm trap: call stack exhausted\n",
+        "callsStarted": 0
+      },
+      "deep-return": {
+        "label": "deep-return",
+        "startMs": 3018,
+        "ms": 155,
+        "ok": false,
+        "threw": "Trap: error while executing at wasm backtrace:\n    0: <unknown>!<wasm function 378>\n    1:  0x15ccc - <unknown>!<wasm function 406>\n    2:   0x416a - <unknown>!<wasm function 77>\n    3:  0x20092 - <unknown>!<wasm function 562>\n    4:  0x201d9 - <unknown>!<wasm function 570>\n    5:  0x5634d - <unknown>!<wasm function 1217>\n    6:  0x49eff - <unknown>!<wasm function 1055>\n    7:  0x494dc - <unknown>!<wasm function 1048>\n    8:  0x495c8 - <unknown>!<wasm function 1048>\n    9:  0x495c8 - <unknown>!<wasm function 1048>\n   10:  0x495c8 - <unknown>!<wasm function 1048>\n   11:  0x495c8 - <unknown>!<wasm function 1048>\n   12:  0x495c8 - <unknown>!<wasm function 1048>\n   13:  0x495c8 - <unknown>!<wasm function 1048>\n   14:  0x495c8 - <unknown>!<wasm function 1048>\n   15:  0x495c8 - <unknown>!<wasm function 1048>\n   16:  0x495c8 - <unknown>!<wasm function 1048>\n   17:  0x495c8 - <unknown>!<wasm function 1048>\n   18:  0x495c8 - <unknown>!<wasm function 1048>\n   19:  0x495c8 - <unknown>!<wasm function 1048>\n\nCaused by:\n    wasm trap: call stack exhausted\n",
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 3173,
+        "ms": 42,
+        "ok": true,
+        "result": "<stdout>\n\"alive\"\n</stdout>\n<result>null</result>",
+        "callsStarted": 0
+      }
+    },
+    "hostMaxEventLoopLagMs": 36,
+    "totalMs": 3215
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      119,
+      27
+    ],
+    [
+      207,
+      34
+    ],
+    [
+      246,
+      37
+    ],
+    [
+      317,
+      38
+    ],
+    [
+      385,
+      42
+    ],
+    [
+      428,
+      42
+    ],
+    [
+      485,
+      44
+    ],
+    [
+      539,
+      44
+    ],
+    [
+      598,
+      46
+    ],
+    [
+      651,
+      47
+    ],
+    [
+      703,
+      49
+    ],
+    [
+      747,
+      51
+    ],
+    [
+      801,
+      51
+    ],
+    [
+      865,
+      54
+    ],
+    [
+      911,
+      54
+    ],
+    [
+      1028,
+      58
+    ],
+    [
+      1141,
+      58
+    ],
+    [
+      1183,
+      58
+    ],
+    [
+      1240,
+      58
+    ],
+    [
+      1293,
+      59
+    ],
+    [
+      1340,
+      61
+    ],
+    [
+      1391,
+      62
+    ],
+    [
+      1442,
+      65
+    ],
+    [
+      1502,
+      65
+    ],
+    [
+      1568,
+      68
+    ],
+    [
+      1636,
+      71
+    ],
+    [
+      1707,
+      74
+    ],
+    [
+      1753,
+      77
+    ],
+    [
+      1824,
+      79
+    ],
+    [
+      1864,
+      83
+    ],
+    [
+      1920,
+      83
+    ],
+    [
+      1968,
+      83
+    ],
+    [
+      2059,
+      84
+    ],
+    [
+      2131,
+      86
+    ],
+    [
+      2179,
+      88
+    ],
+    [
+      2263,
+      90
+    ],
+    [
+      2314,
+      91
+    ],
+    [
+      2368,
+      91
+    ],
+    [
+      2469,
+      125
+    ],
+    [
+      2527,
+      139
+    ],
+    [
+      2571,
+      145
+    ],
+    [
+      2668,
+      157
+    ],
+    [
+      2710,
+      161
+    ],
+    [
+      2779,
+      165
+    ],
+    [
+      2843,
+      165
+    ],
+    [
+      2917,
+      166
+    ],
+    [
+      2974,
+      169
+    ],
+    [
+      3024,
+      172
+    ],
+    [
+      3071,
+      172
+    ],
+    [
+      3119,
+      178
+    ],
+    [
+      3185,
+      187
+    ],
+    [
+      3243,
+      191
+    ],
+    [
+      3313,
+      191
+    ]
+  ]
+}

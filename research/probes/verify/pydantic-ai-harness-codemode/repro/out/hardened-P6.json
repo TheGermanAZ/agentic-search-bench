@@ -1,0 +1,8 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "detail": "stopped after 1.08 s agent-run wall; model saw (ToolReturnPart): 'Runtime error:\\nTimeoutError: feed time limit exceeded: 1.0014095s > 1s\\n\\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call.'; host alive, next agent run returned '2'",
+  "config": "CodeMode(**{'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})",
+  "peak_tree_rss_mib": 97,
+  "harness_wall_s": 2.64
+}

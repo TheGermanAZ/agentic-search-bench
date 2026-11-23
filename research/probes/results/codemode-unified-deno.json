@@ -1,0 +1,193 @@
+{
+  "impl": "codemode-unified-deno",
+  "name": "CodeMode Unified, Deno runtime",
+  "source": "https://github.com/danieliser/codemode-unified",
+  "pinned": "6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93 (2025-10-01)",
+  "language": "JS/TS",
+  "engine": "A `deno run --allow-net --no-prompt` subprocess per pass (Deno 2.9.8, V8)",
+  "how_run": "MCP stdio server dist/mcp-server.js (CODEMODE_ENABLE_MCP_INTEGRATION=true, MCP_CONFIG_PATH naming a stdio MCP server that serves `lookup`), tool execute_code {code, runtime: 'deno'}; HOME pointed at a folder with .deno/bin/deno symlinked to the installed deno, because the runtime only looks there",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "spec code printed an empty line; 1 host call; r.parsed.value returned 42",
+      "evidence": "research/probes/codemode-unified-deno/out/P1.txt",
+      "display": "works (r.value empty; r.parsed)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "full 200,000-char line, no marker; result only with `return`",
+      "evidence": "research/probes/codemode-unified-deno/out/P2.txt",
+      "display": "works (200,000 chars, no cap)"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "status 200: --allow-net is hard-coded",
+      "evidence": "research/probes/codemode-unified-deno/out/P3.txt",
+      "display": "works (example.com 200)"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag (node:fs and Deno.readTextFile)",
+      "evidence": "research/probes/codemode-unified-deno/out/P4.txt",
+      "display": "blocked (no --allow-read)"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "NotCapable: Requires env access to \"PROBE_SECRET\"",
+      "evidence": "research/probes/codemode-unified-deno/out/P5.txt",
+      "display": "blocked (no --allow-env)"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "'Deno execution timeout' after 30,022 ms",
+      "evidence": "research/probes/codemode-unified-deno/out/P6.txt",
+      "display": "limited (30 s)"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "no memory limit; tree passed 4 GB host RSS at 11.7 s and the harness killed it",
+      "evidence": "research/probes/codemode-unified-deno/out/P7.txt",
+      "display": "no cap (4 GB kill at 11.7 s)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "second run returned gone",
+      "evidence": "research/probes/codemode-unified-deno/out/P8.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "5 host calls, 414 ms wall across both passes; in-code timer printed 0 ms",
+      "evidence": "research/probes/codemode-unified-deno/out/P9.txt",
+      "display": "parallel (414 ms, replayed)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "'Deno exited with code 1: EXECUTION_ERROR: probe-boom' with a stack at deno-exec-<id>.ts:30:7",
+      "evidence": "research/probes/codemode-unified-deno/out/P10.txt",
+      "display": "message + temp-file line (+29)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "median 34.9 ms, p90 47.6 ms; first run 55 ms; server setup 314 ms",
+      "evidence": "research/probes/codemode-unified-deno/out/P11.txt",
+      "display": "34.9 ms median"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "child_process: Requires env access; Deno.Command: Requires run access to \"sh\"; this.constructor fails (this undefined)",
+      "evidence": "research/probes/codemode-unified-deno/out/P12.txt",
+      "display": "blocked (no --allow-run/env)"
+    }
+  },
+  "hardened": {
+    "config": "execute_code argument timeout: 5000 (https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L879); Deno permissions cannot be changed through the MCP server",
+    "probes": {
+      "P3": {
+        "outcome": "works",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-deno/out/hardened-P3.txt",
+        "display": "works (example.com 200)"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-deno/out/hardened-P4.txt",
+        "display": "blocked (no --allow-read)"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-deno/out/hardened-P5.txt",
+        "display": "blocked (no --allow-env)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "'Deno execution timeout' after 5,024 ms",
+        "evidence": "research/probes/codemode-unified-deno/out/hardened-P6.txt",
+        "display": "limited (5 s)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "stopped by the 5 s timeout at 3.3 GB tree RSS; next execution returned 2",
+        "evidence": "research/probes/codemode-unified-deno/out/hardened-P7.txt",
+        "display": "limited (5 s timeout, no mem cap)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "5 host calls",
+        "evidence": "research/probes/codemode-unified-deno/out/hardened-P9.txt",
+        "display": "parallel (294 ms, replayed)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-deno/out/hardened-P12.txt",
+        "display": "blocked (no --allow-run/env)"
+      }
+    }
+  },
+  "defaults": {
+    "time": "30 s per pass, then SIGTERM",
+    "memory": "none (Deno's own V8 heap limit only)",
+    "output": "no cap",
+    "tool_calls": "no cap"
+  },
+  "source_notes": [
+    {
+      "topic": "Isolation boundary",
+      "finding": "Deno's permission flags are the boundary: --allow-net and --no-prompt always; read, write and env only when ExecutionOptions.permissions asks, which the MCP server never passes.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/runtime/deno-runtime.ts#L202-L222"
+    },
+    {
+      "topic": "Runtime path",
+      "finding": "Uses $HOME/.deno/bin/deno whenever HOME is set, without checking it exists; a deno installed elsewhere (Homebrew here) fails initialisation with 'Deno not found'.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/runtime/deno-runtime.ts#L38-L41; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/runtime/deno-runtime.ts#L44-L52"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Not a live bridge but a two-pass replay. Pass 1 runs the whole program with every mcp.* call returning a placeholder string and logging '__MCP_CALL__' JSON; the server then runs all logged calls with Promise.all, bakes the results into the source as literals, and runs the whole program a second time. Arguments that depend on an earlier tool result are computed from the placeholder, and every side effect happens twice (P13).",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L903-L918; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L946-L1021; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L1111-L1134; research/probes/codemode-unified-bun/out/P13_twoPass.txt"
+    },
+    {
+      "topic": "API shape",
+      "finding": "A generated `const mcp = { <server>: { <tool>: async (args) => __mcpCall('<server>.<tool>', args) } }` proxy is prepended to the program. Results come back wrapped as {content, text, parsed, isError, helpers}, so `r.value` is undefined and the value sits at r.parsed.value (P1).",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L403-L466; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L974-L1007"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On-demand mode (the default) tells the model to read the resource mcp://types/declarations, but reading it always fails: loadTypeScriptDeclarations calls require() inside an ES module. The model gets no tool names. auto-include mode (CODEMODE_TYPE_EXPOSURE) lists every tool in the description instead.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L35; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L327-L340; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L513-L529; research/probes/codemode-unified-bun/out/P15_discovery.txt"
+    },
+    {
+      "topic": "Setup",
+      "finding": "Tool access is off unless CODEMODE_ENABLE_MCP_INTEGRATION=true, which the README does not mention. execute_code defaults to runtime 'quickjs', although the README recommends Bun.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L1359; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L879"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "Tools run in the MCP server process, but on startup it prints the first 20 characters of every downstream MCP server env value with console.log, which goes to stdout, the MCP protocol channel.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L281; research/probes/codemode-unified-bun/out/envlog-stdout.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "execute_code takes a timeout (default 30 s) and nothing else; getRuntime builds every runtime with only {type}, so the memoryLimit, Deno permission and E2B apiKey fields in RuntimeConfig cannot be set through the MCP server. No output cap, no tool-call cap.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L502-L508; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L879; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L945"
+    },
+    {
+      "topic": "HTTP mode",
+      "finding": "The HTTP backend's /execute ignores the `runtime` field shown in the README curl example; its sandbox manager only wraps QuickJS.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/server.ts#L109-L128; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/sandbox/index.ts#L9-L19"
+    },
+    {
+      "topic": "Maintenance",
+      "finding": "27 commits, last on 2025-10-01, single author; package.json says MIT but the repo has no LICENSE file; not published to npm. The README badge says 'Production Ready'.",
+      "evidence": "git log at 6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93; npm view @danieliser/codemode-unified -> 404"
+    }
+  ],
+  "surprises": [
+    "Network is always on (--allow-net with no host list), so code can reach any host, including services on localhost.",
+    "Same two-pass replay as Bun: a dependent tool call got the placeholder's value (id -1).",
+    "The runtime looks only at ~/.deno/bin/deno, so a Homebrew deno is not found."
+  ]
+}

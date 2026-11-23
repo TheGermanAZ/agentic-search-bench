@@ -1,0 +1,6 @@
+const x = 1;
+const = 5;
+--- output
+ERROR: SyntaxError: Unexpected token '=' [line 2:7]
+---
+wall_ms=2 host_calls=0 max_arg_chars=0 out_chars=51 peak_host_rss_mb=310

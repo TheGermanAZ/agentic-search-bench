@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P12c",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 2.854750000000003,
+  "source": [
+    "return String(external_lookup.constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "[object Promise]",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 144.457333,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "[object Promise]",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 144,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 45.2
+}

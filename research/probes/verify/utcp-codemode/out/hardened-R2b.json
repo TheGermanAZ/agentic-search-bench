@@ -1,0 +1,292 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs hardened R2b",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 3212,
+  "peakTreeRssMb": 57,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 3207,
+    "rssMb": 57
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "hardened",
+    "test": "R2b",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, 10000, 64)",
+    "data": {
+      "startMs": 42,
+      "ms": 14,
+      "ok": true,
+      "result": {
+        "value": {
+          "result": {
+            "type": "object",
+            "name": "Error",
+            "msg": "host-tool-boom internal detail db=postgres://user:pw@host",
+            "stack": "Error: host-tool-boom internal detail db=postgres://user:pw@host\n    at global.host.failing (<isolated-vm>:16:40)\n    at <isolated-vm>:5:39\n    at <isolated-vm>:6:15\n    at <isolated-vm>:11:11",
+            "own": [
+              "stack",
+              "message"
+            ],
+            "esc": "undefined"
+          },
+          "logs": []
+        },
+        "stringChars": 281
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 23,
+    "hostEvents": [],
+    "totalMs": 56
+  },
+  "childStdoutOtherChars": 572,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.failing' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.failing' via callable 'failing'\n",
+  "childStderrTail": "[DirectCommunicationProtocol Error] Failed to call tool 'host.failing' via callable 'failing': host-tool-boom internal detail db=postgres://user:pw@host\n",
+  "rssSamplesMsMb": [
+    [
+      98,
+      47
+    ],
+    [
+      175,
+      57
+    ],
+    [
+      220,
+      57
+    ],
+    [
+      264,
+      57
+    ],
+    [
+      332,
+      57
+    ],
+    [
+      386,
+      57
+    ],
+    [
+      463,
+      57
+    ],
+    [
+      512,
+      57
+    ],
+    [
+      551,
+      57
+    ],
+    [
+      618,
+      57
+    ],
+    [
+      650,
+      57
+    ],
+    [
+      704,
+      57
+    ],
+    [
+      756,
+      57
+    ],
+    [
+      803,
+      57
+    ],
+    [
+      855,
+      57
+    ],
+    [
+      911,
+      57
+    ],
+    [
+      964,
+      57
+    ],
+    [
+      1010,
+      57
+    ],
+    [
+      1065,
+      57
+    ],
+    [
+      1118,
+      57
+    ],
+    [
+      1164,
+      57
+    ],
+    [
+      1210,
+      57
+    ],
+    [
+      1263,
+      57
+    ],
+    [
+      1324,
+      57
+    ],
+    [
+      1371,
+      57
+    ],
+    [
+      1426,
+      57
+    ],
+    [
+      1463,
+      57
+    ],
+    [
+      1517,
+      57
+    ],
+    [
+      1571,
+      57
+    ],
+    [
+      1618,
+      57
+    ],
+    [
+      1664,
+      57
+    ],
+    [
+      1719,
+      57
+    ],
+    [
+      1771,
+      57
+    ],
+    [
+      1833,
+      57
+    ],
+    [
+      1877,
+      57
+    ],
+    [
+      1927,
+      57
+    ],
+    [
+      1974,
+      57
+    ],
+    [
+      2027,
+      57
+    ],
+    [
+      2080,
+      57
+    ],
+    [
+      2159,
+      57
+    ],
+    [
+      2216,
+      57
+    ],
+    [
+      2278,
+      57
+    ],
+    [
+      2321,
+      57
+    ],
+    [
+      2374,
+      57
+    ],
+    [
+      2469,
+      57
+    ],
+    [
+      2508,
+      57
+    ],
+    [
+      2558,
+      57
+    ],
+    [
+      2627,
+      57
+    ],
+    [
+      2699,
+      57
+    ],
+    [
+      2749,
+      57
+    ],
+    [
+      2798,
+      57
+    ],
+    [
+      2853,
+      57
+    ],
+    [
+      2901,
+      57
+    ],
+    [
+      2959,
+      57
+    ],
+    [
+      3003,
+      57
+    ],
+    [
+      3049,
+      57
+    ],
+    [
+      3109,
+      57
+    ],
+    [
+      3159,
+      57
+    ],
+    [
+      3207,
+      57
+    ]
+  ]
+}

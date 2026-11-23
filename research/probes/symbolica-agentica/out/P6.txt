@@ -1,0 +1,11 @@
+probe=P6 mode=from_env AGENTICA_NO_SANDBOX=None PROBE_SECRET set in host: True
+sandbox mode: wasm
+baseline host RSS 152 MiB
+host loop responsive during run: 0.1 s sleep took 104 ms
+sibling session during run: 'sibling alive 2\n'
+NO-LIMIT: still running after 120.3 s (harness limit 120 s)
+closing sandbox (aclose) ...
+CPU seconds burned in the 5 s after aclose(): 5.1 (~5 means the guest loop is still spinning on a host thread)
+peak host RSS 153 MiB
+sibling session after: 'sibling alive after 4\n'
+[harness] exit=0 wall=128s container=symbolica-agentica-P6-50861

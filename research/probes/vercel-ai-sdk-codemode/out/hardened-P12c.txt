@@ -1,0 +1,57 @@
+label: hardened-P12c
+command: node probe.mjs P12c --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 191
+peak child RSS: 134.9 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P12c",
+  "config": {
+    "executionPolicy": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxToolInputBytes": 262144,
+      "maxToolOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "return String(tools.lookup.constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "TypeError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "Function constructor is not allowed",
+        "stack": "TypeError: Function constructor is not allowed\n    at <anonymous> (code-mode.js:1:28)\n    at <anonymous> (code-mode.js:2:1)",
+        "string": "TypeError: Function constructor is not allowed"
+      },
+      "wallMs": 80.73420800000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "TypeError: RUN_USER_SOURCE_ERROR Function constructor is not allowed",
+    "ms": 81,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 150.9
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:90412) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

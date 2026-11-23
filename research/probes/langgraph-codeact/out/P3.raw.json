@@ -1,0 +1,43 @@
+{
+  "probe": "P3",
+  "config": "default",
+  "codes": [
+    "import urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10)\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg",
+    "import ssl, urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10, context=ssl._create_unverified_context())\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: URLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))",
+      "error": "Error during execution: URLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))",
+      "context_keys": [
+        "urllib"
+      ],
+      "host_builtins_leak": false,
+      "ms": 45.7,
+      "started": 1795377307.178678
+    },
+    {
+      "ok": true,
+      "stdout": "HTTP 200\n",
+      "error": null,
+      "context_keys": [
+        "msg",
+        "r",
+        "ssl",
+        "urllib"
+      ],
+      "host_builtins_leak": false,
+      "ms": 38.6,
+      "started": 1795377307.227674
+    }
+  ],
+  "setup_ms": 3.4,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.38,
+  "peak_tree_rss_gb": 0.068,
+  "calls": [],
+  "child_log_tail": ""
+}

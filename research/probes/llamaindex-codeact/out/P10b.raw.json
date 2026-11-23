@@ -1,0 +1,37 @@
+{
+  "probe": "P10b",
+  "config": "default",
+  "codes": [
+    "r = lookup(1)\nraise ValueError('after-call')"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error: ValueError: after-call\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 111, in execute\n    exec(code, self.globals, self.locals)\n  File \"<string>\", line 2, in <module>\nValueError: after-call\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 114, in execute\n    exec(code, self.globals, self.locals)\n  File \"<string>\", line 2, in <module>\nValueError: after-call\n",
+      "error": "Error: ValueError: after-call\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 111, in execute\n    exec(code, self.globals, self.locals)\n  File \"<string>\", line 2, in <module>\nValueError: after-call\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 114, in execute\n    exec(code, self.globals, self.locals)\n  File \"<string>\", line 2, in <module>\nValueError: after-call\n",
+      "ms": 488.9,
+      "started": 1795377524.816077
+    }
+  ],
+  "setup_ms": 11.8,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.19,
+  "peak_tree_rss_gb": 0.143,
+  "calls": [
+    {
+      "id": 1,
+      "start": 1795377524.888819,
+      "end": 1795377525.092026,
+      "pid": 48558
+    },
+    {
+      "id": 1,
+      "start": 1795377525.092292,
+      "end": 1795377525.2973099,
+      "pid": 48558
+    }
+  ],
+  "child_log_tail": ""
+}

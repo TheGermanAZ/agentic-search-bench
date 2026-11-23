@@ -1,0 +1,34 @@
+# qwen-code-codemode P5 (default)
+--- exec 1 source ---
+text(process.env.PROBE_SECRET)
+--- exec 1 result (206.45 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (167 chars):
+[{"type":"text","text":"Script error:\n'process' is not defined\n    at <anonymous> (exec.js:4:43)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]
+--- exec 2 source ---
+text(typeof process + "," + Object.getOwnPropertyNames(globalThis).join(","))
+--- exec 2 result (258.21 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (701 chars):
+[{"type":"text","text":"undefined,Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,Array,Object,Function,Iterator,parseInt,parseFloat,isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,eval,Number,Boolean,String,Math,Reflect,Symbol,globalThis,BigInt,Date,RegExp,JSON,Proxy,Map,Set,WeakMap,WeakSet,ArrayBuffer,Uint8ClampedArray,Int8Array,Uint8Array,Int16Array,Uint16Array,Int32Array,Uint32Array,BigInt64Array,BigUint64Array,Float16Array,Float32Array,Float64Array,DataView,Promise,WeakRef,FinalizationRegistry,tools,ALL_TOOLS,text,image,audio,generatedImage,setTimeout,clearTimeout,exit"}]
+--- summary ---
+{
+ "config": "default",
+ "exit": {
+  "code": 0,
+  "sig": null
+ },
+ "setupMsSpawnToFirstExec": 2434,
+ "totalHostCalls": 0,
+ "sideRequests": 0
+}
+--- cli stdout (json, first 3000 chars) ---
+[{"type":"system","subtype":"init","uuid":"c8a64386-3367-48f1-8bcc-acc82b2c061d","session_id":"c8a64386-3367-48f1-8bcc-acc82b2c061d","cwd":"~/p/agentic-search-bench/research/probes/qwen-code-codemode/work","tools":["exec","read_mcp_resource","read_file","zoom_image","grep_search","cron_list","cron_delete","autofix_pr","web_fetch","list_agents","task_stop","skill","search_memory","enter_worktree","exit_worktree","record_artifact","get_goal","update_goal","tool_call","tool_search","agent","glob","report_findings","cron_create","loop_wakeup","send_message","manage_memory","mcp__probe__lookup"],"mcp_servers":[{"name":"probe","status":"connected"}],"model":"mock-model","permission_mode":"auto","slash_commands":["advisor","agent-delegation","auth","autofix-pr","batch","batch-api","bug","clear","compress","compress-fast","config","context","coordinate","curator","dataviz","diff","docs","doctor","effort","export","extension-creator","extensions","goal","goal-draft","hooks","import-config","init","insight","language","loop","model","new-app","output-style","pr","qc-helper","review","simplify","stats","status","stuck","summary","tasks","update","workflow-authoring","workflow-creator","workflows","zvec-grep-install"],"qwen_code_version":"0.28.4","agents":["general-purpose","Explore","statusline-setup","review-agent","claude-code","codex"]},{"type":"assistant","uuid":"b148bee3-813d-4c05-8c97-dc5d4a1ca369","session_id":"c8a64386-3367-48f1-8bcc-acc82b2c061d","parent_tool_use_id":null,"message":{"id":"b148bee3-813d-4c05-8c97-dc5d4a1ca369","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_1","name":"exec","input":{"source":"text(process.env.PROBE_SECRET)"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"fe746194-8618-4c60-bf81-40b5826e993d","session_id":"c8a64386-3367-48f1-8bcc-acc82b2c061d","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_1","is_error":true,"content":"Script error:\n'process' is not defined\n    at <anonymous> (exec.js:4:43)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]}},{"type":"assistant","uuid":"a739bdff-dd1f-478b-b1e0-3bfae175202c","session_id":"c8a64386-3367-48f1-8bcc-acc82b2c061d","parent_tool_use_id":null,"message":{"id":"a739bdff-dd1f-478b-b1e0-3bfae175202c","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_2","name":"exec","input":{"source":"text(typeof process + \",\" + Object.getOwnPropertyNames(globalThis).join(\",\"))"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"4696e521-9d4e-4e44-bd34-0300ebc963d0","session_id":"c8a64386-3367-48f1-8bcc-acc82b2c061d","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_2
+--- cli stderr (first 3000 chars) ---
+Warning: Node.js 24.22.1 can cause high temporary memory usage during shell safety checks. Upgrade to Node.js 26.12.1. Qwen Code will continue normally. See https://github.com/QwenLM/qwen-code/issues/15165
+
+--- mock events ---
+{"t":2440.89,"kind":"exec-issued","n":1,"hostCallsSoFar":3}
+{"t":2647.34,"kind":"exec-result","n":1,"hostCallsSoFar":3,"textLen":167}
+{"t":2647.43,"kind":"exec-issued","n":2,"hostCallsSoFar":3}
+{"t":2905.64,"kind":"exec-result","n":2,"hostCallsSoFar":3,"textLen":701}
+{"t":2905.74,"kind":"final"}
+{"t":3052.58,"kind":"final"}

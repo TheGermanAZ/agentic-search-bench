@@ -1,0 +1,29 @@
+probe: hardened-P3b
+outcome: blocked
+display: blocked (Deno NotCapable)
+detail: Error during execution: NotCapable: Requires net access to "example.com:443", run again with the --allow-net flag
+
+code:
+----
+import js
+from pyodide.ffi import run_sync
+r = run_sync(js.fetch('https://example.com'))
+print('HTTP', r.status)
+----
+
+setup_ms: 16.0
+wall_s (whole child process): 1.55
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.294
+host lookup calls: 0
+
+=== run 0 (1187.3 ms) ===
+ok: false
+stdout: Error during execution: NotCapable: Requires net access to "example.com:443", run again with the --allow-net flag
+error: Error during execution: NotCapable: Requires net access to "example.com:443", run again with the --allow-net flag
+context_keys: []
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

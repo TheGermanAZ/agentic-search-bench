@@ -1,0 +1,57 @@
+{
+  "id": "P7",
+  "workerPid": 98252,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 779,
+  "peakRssKbSampled": 115040,
+  "stderr": "",
+  "parsed": {
+    "probe": "P7",
+    "config": {
+      "executionLimitProfile": "hardened"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 98252
+    },
+    "runs": [
+      {
+        "script": "s=xxxxxxxxxxxxxxxx; while true; do s=\"$s$s\"; done; echo ${#s}",
+        "exitCode": 126,
+        "stdout": "",
+        "stderr": "bash: word expansion: string length limit exceeded (10485760 bytes)\n",
+        "ms": 78,
+        "hostCalls": 1
+      }
+    ],
+    "concurrentSession": {
+      "script": "for i in 1 2 3; do lookup $i; done | wc -l",
+      "exitCode": 0,
+      "stdout": "3\n",
+      "stderr": "",
+      "ms": 679,
+      "hostCalls": 3
+    },
+    "sameInstanceAfter": {
+      "script": "echo $((1 + 1))",
+      "exitCode": 0,
+      "stdout": "2\n",
+      "stderr": "",
+      "ms": 3,
+      "hostCalls": 3
+    },
+    "freshInstanceAfter": {
+      "script": "echo $((1 + 1))",
+      "exitCode": 0,
+      "stdout": "2\n",
+      "stderr": "",
+      "ms": 1,
+      "hostCalls": 3
+    },
+    "peakRssKb": 119104,
+    "maxInFlight": 1,
+    "hostCalls": 3
+  }
+}

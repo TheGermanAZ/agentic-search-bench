@@ -1,0 +1,32 @@
+--- code 1 ---
+r = probe_lookup(id=21)
+v = r["text"].split('"value":')[1].rstrip("}")
+print(v)
+return {"raw": r, "value": v}
+--- result 1 ---
+{"ms":234,"hostCalls":1,"ok":true,"isError":false}
+text (72 chars):
+{"raw":{"text":"{\"id\":21,\"value\":42}"},"value":"42"}
+Script logs:
+42
+--- code 2 ---
+r = probe_lookup(id=21)
+print(r["value"])
+return r["value"]
+--- result 2 ---
+{"ms":215,"hostCalls":1,"ok":true,"isError":true}
+text (48 chars):
+script execution failed: key "value" not in dict
+--- code 3 ---
+r = call_tool("probe_lookup", id=21)
+return r
+--- result 3 ---
+{"ms":216,"hostCalls":1,"ok":true,"isError":false}
+text (35 chars):
+{"text":"{\"id\":21,\"value\":42}"}
+--- code 4 ---
+return call_tool("lookup", id=21)
+--- result 4 ---
+{"ms":7,"hostCalls":0,"ok":true,"isError":true}
+text (57 chars):
+script execution failed: call_tool: unknown tool "lookup"

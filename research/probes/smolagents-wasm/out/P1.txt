@@ -1,0 +1,21 @@
+config: WasmExecutor(additional_imports=[])
+code:
+"r = lookup(id=21)\nprint(r['value'])"
+
+{
+  "probe": "P1",
+  "hardened": false,
+  "harness_wall_s": 2.7,
+  "peak_tree_rss_mib": 281,
+  "raw": {
+    "setup_ms": 2087,
+    "result": {
+      "ok": true,
+      "output": "None",
+      "logs": "42\n",
+      "ms": 206.8
+    },
+    "wall_s": 2.32
+  },
+  "child_tail": ""
+}

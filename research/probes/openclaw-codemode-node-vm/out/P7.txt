@@ -1,0 +1,88 @@
+engine=node hardened=false config={"enabled":true,"executor":"node"} setupMs=1
+--- code 1 ---
+const a = []; while (true) a.push("x".repeat(1e6));
+--- result 1 ---
+{"ms":325.5,"hostCalls":0,"peakRssMB":343,"ok":true,"waits":0}
+content text (485 chars):
+{"status":"failed","code":"runtime_unavailable","failurePhase":"host","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"9ac0fed918bb3979f4257024","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"error":"Code Mode worker exhausted its 64 MiB JavaScript heap. Paginate or narrow tool results and avoid retaining large arrays. Inspect any completed actions before retrying."}
+details (566 chars):
+{
+ "status": "failed",
+ "code": "runtime_unavailable",
+ "failurePhase": "host",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "9ac0fed918bb3979f4257024",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "Code Mode worker exhausted its 64 MiB JavaScript heap. Paginate or narrow tool results and avoid retaining large arrays. Inspect any completed actions before retrying."
+}
+--- code 2 ---
+(concurrent, started at +100 ms) return 42;
+--- result 2 ---
+{"ms":165.32,"hostCalls":0,"ok":true,"waits":0,"finishedAfterMs":165}
+content text (240 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"9ac0fed918bb3979f4257024","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"value":42}
+details (312 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "9ac0fed918bb3979f4257024",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": 42
+}
+--- code 3 ---
+return 42; (after)
+--- result 3 ---
+{"ms":142.06,"hostCalls":0,"ok":true,"waits":0}
+content text (240 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"9ac0fed918bb3979f4257024","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"value":42}
+details (312 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "9ac0fed918bb3979f4257024",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": 42
+}

@@ -1,0 +1,52 @@
+label: hardened-P9
+command: node probe.mjs P9 --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 377
+peak child RSS: 164.1 MB (ps every 50 ms)
+child stdout length: 4 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P9",
+  "config": {
+    "executionPolicy": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxToolInputBytes": 262144,
+      "maxToolOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.lookup({id:i}))); const dt = Date.now()-t; console.log(dt); return dt;"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "value": 261,
+      "wallMs": 285.102125,
+      "hostCalls": 5
+    }
+  ],
+  "summary": {
+    "value": 261,
+    "ms": 285,
+    "hostCalls": 5
+  },
+  "hostRssAfterMB": 164.3
+}
+--- child stdout ---
+261
+
+--- child stderr ---
+(node:90171) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

@@ -1,0 +1,195 @@
+{
+  "impl": "langchain-quickjs",
+  "name": "LangChain deepagents CodeInterpreterMiddleware (langchain-quickjs)",
+  "source": "https://github.com/langchain-ai/deepagents/tree/3285b5cac24ea0d6375f256312267685d3dbcd5a/libs/partners/quickjs (PyPI langchain-quickjs 0.4.0)",
+  "pinned": "langchain-quickjs 0.4.0 = deepagents tag langchain-quickjs==0.4.0, commit 3285b5cac24ea0d6375f256312267685d3dbcd5a (installed wheel diffed identical to the tag); quickjs-rs 0.3.0; deepagents 0.7.41; langchain 1.5.2; langchain-core 1.8.4; langgraph 1.2.24 (research/impls/langchain-quickjs/requirements.lock.txt)",
+  "language": "JS",
+  "engine": "quickjs-ng compiled to wasm32-wasip1 (rquickjs), run in-process by wasmtime through quickjs-rs 0.3.0, a pure-Python wheel. One wasm instance per Context, one Context per LangGraph thread, each on its own worker thread. The langchain-quickjs README says PyO3; quickjs-rs 0.3.0 is not PyO3.",
+  "how_run": "langchain.agents.create_agent(model=<scripted stand-in that turns each human message into one eval tool call>, tools=[lookup], middleware=[CodeInterpreterMiddleware(ptc=[\"lookup\"], ...)], checkpointer=InMemorySaver()).ainvoke(...); the probe output is the eval ToolMessage text. No LLM. research/probes/langchain-quickjs/run_all.py both.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "tools.lookup({id: 21}) then console.log(r.value) printed 42, 1 host call. Tool output: \"<stdout>\\n42\\n</stdout>\\n<result>null</result>\". The tool result reaches JS as a native object, not a string.",
+      "evidence": "research/probes/langchain-quickjs/out/P1.txt",
+      "display": "works (42, 1 host call)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "Both came back. <result>RETURNED</result> plus a <stdout> block of 4,000 chars: 3,974 A's then the marker \"… [truncated 196000 chars]\". The real drop is 196,026 chars, so the marker undercounts by the 26 chars it replaced.",
+      "evidence": "research/probes/langchain-quickjs/out/P2.txt",
+      "display": "truncated (4,000 + marker)"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "ReferenceError: fetch is not defined. typeof XMLHttpRequest and WebSocket are \"undefined\". import(\"https://example.com\") and import(\"os\") -> ReferenceError: Error loading module. No request left the host.",
+      "evidence": "research/probes/langchain-quickjs/out/P3.txt",
+      "display": "not-defined (no fetch)"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "require -> ReferenceError: require is not defined. import(\"fs\") -> Error loading module 'fs'. Deno and std not defined, typeof fs \"undefined\". A host function __lc_fs is installed even with fs=None; calling __lc_fs(\"readFile\", {path: \"/etc/hosts\"}) returns <error type=\"ConcurrentEval\">fs called outside active eval</error>, so it refuses.",
+      "evidence": "research/probes/langchain-quickjs/out/P4.txt",
+      "display": "not-defined (no require/fs)"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "ReferenceError: process is not defined, with PROBE_SECRET=s3cr3t in the host env. std.getenv and import(\"std\") also fail; scriptArgs undefined. WASI gets no env (quickjs_rs/_engine.py:357-360).",
+      "evidence": "research/probes/langchain-quickjs/out/P5.txt",
+      "display": "not-defined (no process)"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "<error type=\"Timeout\">interrupted</error> after 5,202 ms of eval time (default timeout 5.0 s). The same thread then ran \"typeof before + ' / ' + (1 + 1)\" and got \"number / 2\": the Context survives a timeout and keeps state set before the loop (out/extras.txt).",
+      "evidence": "research/probes/langchain-quickjs/out/P6.txt",
+      "display": "limited (5 s)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "<error type=\"OutOfMemory\">out of memory</error> after 394 ms (64 MiB QuickJS heap). Peak host process RSS 340 MB. A neighbour thread ran tools.lookup during the probe and got 6; afterwards both threads evaluated 1+1 and 2+2 correctly. The host call count of 1 on the P7 row is the neighbour's call. The 68 MB post-OOM snapshot exceeded max_snapshot_bytes (64 MiB) and was dropped with only a log warning.",
+      "evidence": "research/probes/langchain-quickjs/out/P7.txt",
+      "display": "limited (64 MiB)"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "Default mode=\"thread\": the second turn on the same thread_id printed 7. State is kept in a live Context and checkpointed as a whole-memory snapshot (1.3 MB).",
+      "evidence": "research/probes/langchain-quickjs/out/P8.txt",
+      "display": "persists"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "Five 200 ms lookups under Promise.all took 206 ms in-guest, 5 host calls. Async host functions run on the agent's event loop concurrently.",
+      "evidence": "research/probes/langchain-quickjs/out/P9.txt",
+      "display": "parallel (206 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "Returned <error type=\"Error\">probe-boom\\n    at &lt;eval&gt; (eval_script:1:10)\\n</error>. For the 5-line case: \"at f (eval_script:3:12)\" and \"at <eval> (eval_script:5:1)\", the exact user lines. Code starting with \"(\" gets lines shifted by 1 or 2 (out/extras.txt). Message and stack are capped at 4,000 chars.",
+      "evidence": "research/probes/langchain-quickjs/out/P10.txt",
+      "display": "works (message + line)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "20 executions of 1+1, each on a fresh thread (new slot, worker, wasm instance): eval tool median 3.7 ms, p90 4.1 ms; whole agent turn median 7.8 ms, p90 8.6 ms. One-time: import 409 ms, middleware + agent build 2.6 ms, first eval in the process 162 ms (wasm instantiate and compile, inferred). Turns after the first on one thread cost about 95 ms more for the snapshot diff (out/extras.txt).",
+      "evidence": "research/probes/langchain-quickjs/out/P11.txt",
+      "display": "3.7 ms median (p90 4.1)"
+    },
+    "P12": {
+      "outcome": "not-defined",
+      "detail": "No escape. this.constructor.constructor(\"return process\")() -> ReferenceError: process is not defined. (function(){return this})().process -> TypeError: cannot read property 'process' of undefined. std, os, Deno, Bun undefined. Guest-visible host functions: __console_log/warn/error, __tools_names, __tools_call, task, __lc_fs, tools. __tools_call reaches only allowlisted tools (same as tools.lookup).",
+      "evidence": "research/probes/langchain-quickjs/out/P12.txt",
+      "display": "not-defined (no process)"
+    }
+  },
+  "defaults": {
+    "time": "timeout=5.0 s per eval (middleware.py:71, 291), enforced by a deadline the QuickJS interrupt poll reads (quickjs_rs/runtime.py:65-73). It counts VM time only: the deadline is pushed back by every host wait (quickjs_rs/context.py:820-830). Measured: with timeout=1.0, eight serial 200 ms tool calls finished at 1,780 ms (out/extras.txt). Documented at README.md:115-126.",
+    "memory": "memory_limit=64 MiB (middleware.py:70, 290), applied as the QuickJS allocator limit inside each wasm instance (_repl.py:228-235; quickjs_rs/_engine.py:1248-1266). No wasmtime store limiter on linear memory was found.",
+    "output": "max_result_chars=4000 (middleware.py:73): <result>, <error>, and <stdout> are each cut to 4,000 chars with \"… [truncated N chars]\" (_format.py:16, 176-222). Console output is capped while collecting (_repl.py:132-156).",
+    "tool_calls": "max_ptc_calls=256 tools.* calls per eval (middleware.py:72, _ptc.py:216-230); over the cap the eval ends with PTCCallBudgetExceeded (measured at 8 in hardened, out/extras.txt). fs calls share the budget (_repl.py:519-522). task() dispatches have a concurrency cap of 32 but no count cap (_repl.py:69, 211)."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "An explicit allowlist (ptc=[names or BaseTool]) picks tools (_ptc.py:66-134). In the guest, globalThis.tools is a Proxy that maps any allowlisted camelCase name to __tools_call(name, input) and lists names via __tools_names() (_ptc.py:434-457). The prompt gets TS-ish signatures rendered from each tool's args schema (_prompt.py:461-540).",
+      "evidence": "https://github.com/langchain-ai/deepagents/blob/3285b5cac24ea0d6375f256312267685d3dbcd5a/libs/partners/quickjs/langchain_quickjs/_ptc.py#L434-L457"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Every exposed tool's signature goes into the system prompt on each model call (middleware.py:654-705). The exception is tools flagged extras[\"defer_loading\"]: they stay callable but are left out until provider tool search finds them (middleware.py:695-699, _prompt.py:472-480). That is the only path that scales past 100 tools, and it needs ProviderToolSearchMiddleware in front.",
+      "evidence": "https://github.com/langchain-ai/deepagents/blob/3285b5cac24ea0d6375f256312267685d3dbcd5a/libs/partners/quickjs/langchain_quickjs/middleware.py#L686-L705"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "__tools_call is an async QuickJS host function. It debits the per-eval budget, injects ToolRuntime/state/store, and runs tool.arun on the agent's outer event loop via run_coroutine_threadsafe (_repl.py:159-171, 431-504). The guest gets a Promise, so Promise.all over tools runs in parallel (P9 206 ms). Command updates from tools are written to graph state (_ptc.py:398-416). Tools run on the host with host credentials; the guest sees only return values.",
+      "evidence": "https://github.com/langchain-ai/deepagents/blob/3285b5cac24ea0d6375f256312267685d3dbcd5a/libs/partners/quickjs/langchain_quickjs/_repl.py#L460-L504"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "The engine is quickjs-ng in a wasm32-wasip1 guest under wasmtime, in the host Python process. WASI gets only inherited stdout/stderr: no preopened dirs, no env, no args (quickjs_rs/_engine.py:357-360). No module loader is set, so every import fails. quickjs-rs names wasmtime as the residual escape path and recommends process isolation for hostile multi-tenant use (quickjs-rs README, Security). The capability surface is whatever the host registers: console, tools, task, and an __lc_fs function that refuses unless fs= is set (_repl.py:237-263, 506-518). With fs=True, code can read, write, and delete anything the backend reaches, bypassing permissions and HITL (middleware.py:133-141).",
+      "evidence": "research/impls/langchain-quickjs/.venv/lib/python3.12/site-packages/quickjs_rs/_engine.py:357-360 (quickjs-rs 0.3.0 wheel); https://github.com/langchain-ai/deepagents/blob/3285b5cac24ea0d6375f256312267685d3dbcd5a/libs/partners/quickjs/langchain_quickjs/_repl.py#L237-L263"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "The model gets one string: an optional <stdout> block, then <result> or <error type=...>, XML-escaped, each cut to max_result_chars with a marker (_format.py:176-222). The last expression's value is returned and a final Promise is awaited first (_repl.py:596-612). Unmarshalable values render as <result kind=\"handle\">[Function] arity=N</result>.",
+      "evidence": "https://github.com/langchain-ai/deepagents/blob/3285b5cac24ea0d6375f256312267685d3dbcd5a/libs/partners/quickjs/langchain_quickjs/_format.py#L176-L222"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Constructor knobs: memory_limit, timeout (None disables), max_ptc_calls (None disables), max_result_chars, max_subagent_concurrency, max_snapshot_bytes (middleware.py:287-346). The timeout bounds JS execution only, not wall time (quickjs_rs/context.py:820-830). Overlapping evals on one thread are refused, not queued (_repl.py:571-578). The process keeps at most 32 warm slots (_repl.py:75).",
+      "evidence": "https://github.com/langchain-ai/deepagents/blob/3285b5cac24ea0d6375f256312267685d3dbcd5a/libs/partners/quickjs/langchain_quickjs/middleware.py#L287-L346"
+    },
+    {
+      "topic": "State",
+      "finding": "mode=\"thread\" (default) keeps one live Context per thread and, after each agent run, snapshots the whole wasm memory (1.3 MB here) into checkpointer state as a bsdiff4 patch chain (middleware.py:767-801, _snapshot.py:157-175). Restore is lazy on the next eval. Snapshots are unauthenticated unless snapshot_signing_key is set, and quickjs-rs calls snapshots trusted input (middleware.py:256-269). A snapshot over max_snapshot_bytes is dropped with a warning, which resets the thread's state (middleware.py:740-753). mode=\"turn\" and \"call\" close the Context after the turn or each call (_repl.py:675-676).",
+      "evidence": "https://github.com/langchain-ai/deepagents/blob/3285b5cac24ea0d6375f256312267685d3dbcd5a/libs/partners/quickjs/langchain_quickjs/middleware.py#L736-L801"
+    },
+    {
+      "topic": "Errors",
+      "finding": "JS throws keep name, message and stack (_repl.py:680-683). Host-side failures map to Timeout, Deadlock, OutOfMemory, PTCCallBudgetExceeded, UnsupportedCommand, MarshalError, ConcurrentEval, or the Python exception name for task() (_repl.py:618-671). Cancellation re-raises as CancelledError. Errors never raise to the agent; they return as ToolMessage text.",
+      "evidence": "https://github.com/langchain-ai/deepagents/blob/3285b5cac24ea0d6375f256312267685d3dbcd5a/libs/partners/quickjs/langchain_quickjs/_repl.py#L618-L683"
+    },
+    {
+      "topic": "Other: approvals",
+      "finding": "PTC calls and task() dispatches skip ToolNode, so interrupt_on / HITL approval does not apply per call; the allowlist is the security boundary (middleware.py:216-220, README.md:206, 274). The eval tool itself can be gated.",
+      "evidence": "https://github.com/langchain-ai/deepagents/blob/3285b5cac24ea0d6375f256312267685d3dbcd5a/libs/partners/quickjs/langchain_quickjs/middleware.py#L201-L228"
+    }
+  ],
+  "surprises": [
+    "The README calls the engine \"QuickJS embedded via PyO3 + rquickjs\" and quickjs-rs \"a PyO3 extension module\" (README.md:3, 49). quickjs-rs 0.3.0, the version the pin allows (pyproject quickjs-rs>=0.3.0,<0.4.0), is a pure-Python wheel that runs quickjs-ng compiled to wasm under wasmtime (quickjs-rs 0.3.0 METADATA). That is a stronger boundary than the README describes.",
+    "Date.now() is the real host clock: the guest value was 5 ms off host time.time() (out/extras.txt), and P9 measured 206 ms with it. The README (README.md:93), the system prompt (_prompt.py:330-333), and the eval tool schema (\"No network/real-clock access\", middleware.py:97) all say there is no real clock. The middleware builds Runtime without a clock callback (_repl.py:231-234), so quickjs-rs uses native WASI clocks (quickjs_rs/_engine.py:369-372).",
+    "A host function __lc_fs is on globalThis in every Context even with fs=None (_repl.py:262, 506-512). Calling it fails with the misleading type ConcurrentEval: \"fs called outside active eval\" (_repl.py:514-518). It is not an escape, but guest code can see a filesystem hook that the docs say does not exist.",
+    "A global task() exists by default (subagents=True) with no task tool configured; calling it returns <error type=\"RuntimeError\">task tool not configured for this eval</error> (out/extras.txt).",
+    "The README says the memory limit is \"shared across every context\" of the Runtime (README.md:128; middleware.py:144-145). In quickjs-rs 0.3.0 each Context is its own wasm instance with its own limit (quickjs_rs/_engine.py:1248-1266). The middleware uses one Context per thread, so the effective limit is per thread.",
+    "The README and docstring type PTC tools as Promise<string> (README.md:213; middleware.py:202). They return native JS values (P1 read r.value directly), which the system prompt states correctly.",
+    "The stdout truncation marker undercounts: 3,974 chars kept, and the marker says 196000 dropped when 196,026 were (_format.py:209-216, out/P2.txt).",
+    "Documented but notable: timeout counts VM time only. With timeout=1.0, an eval awaiting eight 200 ms tool calls ran 1,780 ms and succeeded. G2 bounds CPU loops, not an eval's wall time; max_ptc_calls is the only bound on tool-wait time.",
+    "In thread mode every turn after the first adds about 95 ms (turn 96-101 ms vs eval 1.4 ms, out/extras.txt), inferred to be the bsdiff4 diff of the 1.3 MB memory snapshot. After the P7 OOM the snapshot was 68 MB, over max_snapshot_bytes, and was dropped with only a log warning, so that thread's REPL state resets silently.",
+    "Stack line numbers are exact for statement code (P10: 3:12 and 5:1) but shift by 1 to 2 lines when the code starts with \"(\" (P12 step 2 reports 3:1 for a 1-line program). The cause is a guess: the TOP_LEVEL_CONST_TO_VAR source transform (_repl.py:233)."
+  ],
+  "hardened": {
+    "config": "CodeInterpreterMiddleware(ptc=[\"lookup\"], timeout=1.0, memory_limit=16*1024*1024, max_ptc_calls=8, mode=\"call\", subagents=False), all public constructor options (middleware.py:287-303, documented at README.md:278-293 and middleware.py:143-269). fs stays None (the default, no fs). mode=\"call\" gives a fresh Context per eval, so snapshots and snapshot_signing_key do not apply. The 1 s, 16 MiB and 8-call values were chosen by this run; no floor is documented. No network option exists because there is no network to turn on.",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "ReferenceError: fetch is not defined. XMLHttpRequest and WebSocket undefined; import of https://example.com fails with Error loading module.",
+        "evidence": "research/probes/langchain-quickjs/out/hardened-P3.txt",
+        "display": "not-defined (no fetch)"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "detail": "require is not defined; import(\"fs\") fails; Deno and std undefined. __lc_fs is still installed and refuses with ConcurrentEval \"fs called outside active eval\".",
+        "evidence": "research/probes/langchain-quickjs/out/hardened-P4.txt",
+        "display": "not-defined (no require/fs)"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "detail": "ReferenceError: process is not defined with PROBE_SECRET=s3cr3t set on the host; std.getenv not available.",
+        "evidence": "research/probes/langchain-quickjs/out/hardened-P5.txt",
+        "display": "not-defined (no process)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "<error type=\"Timeout\">interrupted</error> after 1,164 ms of eval time.",
+        "evidence": "research/probes/langchain-quickjs/out/hardened-P6.txt",
+        "display": "limited (1 s)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "<error type=\"OutOfMemory\">out of memory</error> after 216 ms. Peak host RSS 191 MB. A concurrent neighbour thread's tools.lookup returned 6, and both threads ran 1+1 / 2+2 afterwards.",
+        "evidence": "research/probes/langchain-quickjs/out/hardened-P7.txt",
+        "display": "limited (16 MiB)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "Five 200 ms lookups took 206 ms in-guest, 5 host calls. A ninth call in one eval ends it with PTCCallBudgetExceeded (limit=8) (out/extras.txt).",
+        "evidence": "research/probes/langchain-quickjs/out/hardened-P9.txt",
+        "display": "parallel (206 ms)"
+      },
+      "P12": {
+        "outcome": "not-defined",
+        "detail": "Same as default: process not reachable through Function or sloppy this; std, os, Deno, Bun undefined. task is gone (subagents=False); __lc_fs, __tools_call, __tools_names, console remain. Also ran P8: mode=\"call\" printed \"gone\" (out/hardened-P8.txt).",
+        "evidence": "research/probes/langchain-quickjs/out/hardened-P12.txt",
+        "display": "not-defined (no process)"
+      }
+    }
+  }
+}

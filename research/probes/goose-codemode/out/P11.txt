@@ -1,0 +1,262 @@
+probe: P11
+binary: goose-codemode-probe
+process wall_ms: 68.1
+peak_rss_mb: 7.8
+exit: 0
+killed: None
+
+--- execution 0 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 1.54
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 1 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.78
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 2 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 1.04
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 3 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 3.84
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 4 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.74
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 5 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.31
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 6 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 1.04
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 7 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.81
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 8 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.66
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 9 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.65
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 10 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.40
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 11 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.16
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 12 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.25
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 13 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.15
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 14 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.15
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 15 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.15
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 16 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.17
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 17 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.44
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 18 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.62
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 19 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 7.95
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+--- execution 20 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.37
+host_calls: 0
+returned chars: 9
+text returned to model:
+Result: 2
+
+first execution in process (cold) ms: 1.54
+20 later executions median ms: 0.53
+20 later executions p90 ms: 1.04

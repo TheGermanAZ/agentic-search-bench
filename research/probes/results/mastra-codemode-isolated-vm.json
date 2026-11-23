@@ -1,0 +1,187 @@
+{
+  "impl": "mastra-codemode-isolated-vm",
+  "name": "Mastra Code Mode, isolated-vm transport",
+  "source": "npm @mastra/core 1.85.0 (createCodeMode from @mastra/core/tools); repo https://github.com/mastra-ai/mastra; npm @mastra/isolated-vm 0.1.4",
+  "language": "TS (types stripped before running)",
+  "pinned": "@mastra/core 1.85.0 + @mastra/isolated-vm 0.1.4 (isolated-vm 6.2.0 prebuilt darwin-arm64, esbuild 0.28.2); source read at aa82a4a7858c637f654be24391ff306dcb568c00",
+  "engine": "V8 isolate via isolated-vm, in the host Node process (needs --no-node-snapshot); new isolate per run",
+  "how_run": "node --no-node-snapshot; createCodeMode({ tools: { lookup } }, new IsolatedVmCodeModeTransport()).tool.execute({ code }, {})",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed 42, 1 host call, 237 ms",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P1.txt",
+      "display": "works (42, 1 call)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "full 200,000-char log line, no marker; result only with `return`",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P2.txt",
+      "display": "works (200,000 chars, no cap)"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "ReferenceError: fetch is not defined",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P3.txt",
+      "display": "not-defined"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "require is not defined; import('fs') -> 'Not supported'; process, Deno not defined",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P4.txt",
+      "display": "not-defined"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "process is not defined",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P5.txt",
+      "display": "not-defined"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "TimeoutError after 30,037 ms; the host event loop kept running (50 of 51 timer ticks in the 5 s hardened-P6x run)",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P6.txt; research/probes/mastra-codemode-isolated-vm/out/hardened-P6x.txt",
+      "display": "limited (30 s)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "'Isolate was disposed during execution due to memory limit' after 0.8 to 1.3 s; in 9 of 10 runs the host went on to make a tool call. In the first run the host process died with SIGSEGV (exit 139) right after the result came back",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P7.txt; research/probes/mastra-codemode-isolated-vm/out/P7-run1-segv.txt; P7-rerun1..9",
+      "display": "limited (128 MB; 1/10 segv)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "second execution printed gone",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P8.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "in-code 204 ms, 5 host calls",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P9.txt",
+      "display": "parallel (204 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "{message: 'probe-boom', name: 'Error'}; no stack or line",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P10.txt",
+      "display": "message only (no line)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "median 1.6 ms, p90 2.9 ms; first execution 35 ms; setup 84 ms",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P11.txt",
+      "display": "1.6 ms median"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "Function constructor: process is not defined; sloppy this.process undefined; host canary undefined",
+      "evidence": "research/probes/mastra-codemode-isolated-vm/out/P12.txt",
+      "display": "blocked"
+    }
+  },
+  "hardened": {
+    "config": "createCodeMode({ tools, timeout: 5000 }, new IsolatedVmCodeModeTransport({ memoryLimitMb: 32 })); options at https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/types.ts#L32-L33 and https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/isolated-vm/src/transport.ts#L35-L41",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "fetch is not defined",
+        "evidence": "research/probes/mastra-codemode-isolated-vm/out/hardened-P3.txt",
+        "display": "not-defined"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "detail": "require not defined; import 'Not supported'",
+        "evidence": "research/probes/mastra-codemode-isolated-vm/out/hardened-P4.txt",
+        "display": "not-defined"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "detail": "process is not defined",
+        "evidence": "research/probes/mastra-codemode-isolated-vm/out/hardened-P5.txt",
+        "display": "not-defined"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "TimeoutError after 5,042 ms; host loop not blocked",
+        "evidence": "research/probes/mastra-codemode-isolated-vm/out/hardened-P6.txt; research/probes/mastra-codemode-isolated-vm/out/hardened-P6x.txt",
+        "display": "limited (5 s)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "isolate disposed at the memory limit after 152 to 172 ms; host made a tool call afterwards",
+        "evidence": "research/probes/mastra-codemode-isolated-vm/out/hardened-P7.txt",
+        "display": "limited (32 MB)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "5 host calls in parallel",
+        "evidence": "research/probes/mastra-codemode-isolated-vm/out/hardened-P9.txt",
+        "display": "parallel (203 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "same as default",
+        "evidence": "research/probes/mastra-codemode-isolated-vm/out/hardened-P12.txt",
+        "display": "blocked"
+      }
+    }
+  },
+  "defaults": {
+    "time": "30 s (createCodeMode default), enforced by the eval timeout and a host timer",
+    "memory": "128 MB V8 isolate heap",
+    "output": "no cap on logs or result",
+    "tool_calls": "no cap"
+  },
+  "source_notes": [
+    {
+      "topic": "Bridge",
+      "finding": "Bootstrap passes two host References ($0 rpc, $1 log) into evalClosure; guest code only sees external_* closures over them. Arguments and results cross as JSON strings, and rpc uses apply with result.promise so calls overlap.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/isolated-vm/src/transport.ts#L208-L248"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "New ivm.Isolate with memoryLimit per run, disposed in finally. Two timeout layers: the eval timeout stops sync loops, a host timer disposes the isolate while it awaits.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/isolated-vm/src/transport.ts#L184-L194; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/isolated-vm/src/transport.ts#L275-L292"
+    },
+    {
+      "topic": "Deployment",
+      "finding": "The constructor throws unless Node runs with --no-node-snapshot, because isolate creation otherwise crashes the process. TypeScript is stripped on the host with esbuild, a native binary.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/isolated-vm/src/transport.ts#L48-L58; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/isolated-vm/src/transport.ts#L131"
+    },
+    {
+      "topic": "API shape",
+      "finding": "Each Mastra tool's input and output schema goes zod -> JSON Schema -> a TypeScript string, and becomes one `declare function external_<id>(input): Promise<output>` line with the tool description as a doc comment.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/stub-generator.ts#L164-L186"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Everything upfront: createCodeModeInstructions joins a fixed usage contract and every stub into one instructions string for the system prompt. No search or lazy loading; the docs scope tools by making several createCodeMode instances instead.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/stub-generator.ts#L189-L213"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "Tools run on the host: each external_* call re-enters the real Mastra tool's execute with the outer tool's requestContext, mastra instance and workspace, and an allow-list rejects tool ids that were not exposed. Credentials the tool uses stay on the host side of the bridge.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/code-mode.ts#L102-L119"
+    },
+    {
+      "topic": "Defaults",
+      "finding": "Timeout defaults to 30 s for every backend (DEFAULT_TIMEOUT). The tool id defaults to execute_typescript.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/code-mode.ts#L20-L21"
+    },
+    {
+      "topic": "Errors",
+      "finding": "The result type declares error.line, but no transport ever sets it: the stdio runner, the isolated-vm envelope and the QuickJS envelope all copy only message and name. The model never sees a line number or stack.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/types.ts#L50-L54; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/runner.ts#L153-L157; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/isolated-vm/src/transport.ts#L266-L270; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/quickjs/src/transport.ts#L425-L429"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Both console output (logs[], one entry per call, in order) and the program's `return` value come back. Nothing truncates either; a bare final expression is not returned because the program is wrapped in an async function body.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/transport.ts#L76-L80; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/runner.ts#L38-L40"
+    }
+  ],
+  "surprises": [
+    "One of ten default P7 runs ended with the host process segfaulting (exit 139) right after Mastra returned the memory-limit error; the other nine continued normally.",
+    "error.line is in the result type but never filled."
+  ]
+}

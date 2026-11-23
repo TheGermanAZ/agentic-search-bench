@@ -1,0 +1,46 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 47,
+    "totalWallMs": 191,
+    "peakTreeRssMB": 70.3,
+    "stderrTail": ""
+  },
+  "backend": "isolated-vm",
+  "probe": "P5",
+  "mode": "hardened",
+  "setupMs": 92.1,
+  "record": {
+    "hostEnvHasSecret": "s3cr3t",
+    "spec": {
+      "code": "return process.env.PROBE_SECRET",
+      "wallMs": 41.5,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "process is not defined",
+          "name": "ReferenceError"
+        }
+      },
+      "threw": null
+    },
+    "envKeys": {
+      "code": "return Object.keys(process.env)",
+      "wallMs": 2,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "process is not defined",
+          "name": "ReferenceError"
+        }
+      },
+      "threw": null
+    }
+  }
+}

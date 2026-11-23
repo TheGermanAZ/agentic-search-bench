@@ -1,0 +1,5 @@
+try { await corpus.read("y".repeat(2e8)) } catch (e) { console.log("caught: " + e.message) }
+--- output
+caught: out of memory
+---
+wall_ms=2039 host_calls=0 max_arg_chars=0 out_chars=21 peak_host_rss_mb=786

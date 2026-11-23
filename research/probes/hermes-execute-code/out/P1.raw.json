@@ -1,0 +1,34 @@
+{
+  "probe": "P1",
+  "config": "default",
+  "codes": [
+    "from hermes_tools import lookup\nr = lookup(id=21)\nmsg = r[\"value\"]\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "42\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"42\\n\", \"exit_code\": 0, \"tool_calls_made\": 1, \"duration_seconds\": 0.45, \"kernel\": {\"mode\": \"session\", \"reused\": false, \"execution_count\": 1, \"state_reset\": false}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 1,
+      "model_sees_len": 302,
+      "ms": 454.0,
+      "started": 1795382841.035027
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.97,
+  "peak_tree_rss_gb": 0.165,
+  "calls": [
+    {
+      "id": 21,
+      "start": 1795382841.2854311,
+      "end": 1795382841.486079,
+      "pid": 14600
+    }
+  ],
+  "child_log_tail": ""
+}

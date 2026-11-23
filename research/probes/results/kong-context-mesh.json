@@ -1,0 +1,117 @@
+{
+  "impl": "kong-context-mesh",
+  "name": "Kong Context Mesh (Code Mode MCP servers)",
+  "source": "Closed, Konnect-managed. Docs https://developer.konghq.com/context-mesh/",
+  "pinned": "Docs read 2026-11-22 (developer.konghq.com/context-mesh and /context-mesh/get-started). No public source repo or downloadable artifact for the generated server was found.",
+  "language": "Not stated in the docs",
+  "engine": "Not stated in the docs",
+  "how_run": "Not run: docs-only row. Deploying needs a Konnect account (personal access token), Kong Operator 2.4 with ENABLE_CONTROLLER_KONNECT=true and FEATURE_GATES=mcp-server on Kubernetes, and a Konnect control plane; the MCP server code is generated and managed by Konnect. No local or open-source path exists.",
+  "probes": {
+    "P1": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    },
+    "P2": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    },
+    "P3": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    },
+    "P4": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    },
+    "P5": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    },
+    "P6": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    },
+    "P7": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    },
+    "P8": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    },
+    "P9": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    },
+    "P10": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    },
+    "P11": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    },
+    "P12": {
+      "outcome": "blocked-needs-credentials",
+      "display": "blocked-needs-credentials",
+      "detail": "Context Mesh runs only through Kong Konnect: the get-started guide needs a Konnect personal access token and a Konnect control plane, and the generated MCP server code is managed by Konnect. Docs-only row; nothing ran locally.",
+      "evidence": "https://developer.konghq.com/context-mesh/get-started/"
+    }
+  },
+  "hardened": null,
+  "defaults": {
+    "time": "Not documented.",
+    "memory": "Not documented (advanced mode lets you set the Kubernetes pod's CPU and memory, which is a deployment resource, not a sandbox limit).",
+    "output": "Not documented beyond \"returns only the final result to the context window\".",
+    "tool_calls": "Not documented.",
+    "hardened_null_reason": "Cannot run without a Konnect account."
+  },
+  "source_notes": [
+    {
+      "topic": "Availability",
+      "finding": "\"Context Mesh is in active development.\" MCP servers \"can only be linked to and proxied with Kong Gateway control planes that were provisioned with Kong Operator\", and \"MCP server code managed by Konnect\" is listed for both deployment modes. Advanced mode is Tech Preview.",
+      "evidence": "https://developer.konghq.com/context-mesh.md"
+    },
+    {
+      "topic": "API shape and discovery",
+      "finding": "Generates one Code Mode MCP server per configuration from OpenAPI 3.0 specs (uploaded or from Catalog) plus existing MCP servers added by upstream URL, exposing them \"as a single SDK-like interface rather than one tool per operation\". The docs link Cloudflare's Code Mode post but do not name the tools, the language, or the sandbox.",
+      "evidence": "https://developer.konghq.com/context-mesh.md"
+    },
+    {
+      "topic": "Isolation, bridge, limits, errors, state",
+      "finding": "Not documented. The generated server runs as a Kubernetes workload managed by Kong Operator behind a Kong Gateway Service (mcpserver-<id>), so gateway plugins can govern it, but nothing says what runs the agent's code or what it can reach.",
+      "evidence": "https://developer.konghq.com/context-mesh.md"
+    },
+    {
+      "topic": "Claims",
+      "finding": "\"reduces token consumption by ~99% (from ~120,000 tokens to ~1,200 tokens)\" with no method, workload or source given.",
+      "evidence": "https://developer.konghq.com/context-mesh.md"
+    }
+  ],
+  "surprises": [
+    "The ~99% token-reduction figure has no benchmark, workload or method behind it on the page.",
+    "The docs never say what language the agent writes or what runs it, so even a docs-only security comparison is not possible."
+  ]
+}

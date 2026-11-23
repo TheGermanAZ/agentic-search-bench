@@ -1,0 +1,20 @@
+probe: P6
+outcome: no-limit-within-120s
+display: no-limit-within-120s
+detail: harness time watchdog at 120.0 s; nothing stopped the loop
+
+code:
+----
+while True:
+    pass
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 120.03
+killed: harness time watchdog at 120.0 s
+child exit code: -9
+peak tree RSS GB: 0.511
+host lookup calls: 0
+
+=== child process log (tail) ===
+

@@ -1,0 +1,7 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "display": "median 6.3 ms",
+  "detail": "20 runs in one session: median 6.3 ms, p90 8.2 ms; one-time setup 8.5 ms; fresh session per run (open+run+close, n=5): median 6.3 ms",
+  "evidence": "research/probes/llamaindex-codeact/out/P11.txt"
+}

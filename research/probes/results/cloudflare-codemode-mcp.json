@@ -1,0 +1,140 @@
+{
+  "impl": "cloudflare-codemode-mcp",
+  "name": "Cloudflare API MCP server (server-side Code Mode: search + execute)",
+  "source": "https://github.com/cloudflare/mcp",
+  "pinned": "b8602d6d5ce543ef5933ea3d98f06be8e20759fa (2026-11-19); deps from its package-lock via npm ci; runs on its own local vitest + @cloudflare/vitest-plugin workerd pool, no Cloudflare account",
+  "language": "JS",
+  "engine": "V8 isolate per tool call from the Worker Loader binding (env.LOADER.get with a random id); `search` isolates are loaded by the forge-tools service Worker, `execute` isolates by the main Worker",
+  "how_run": "The repo's own test harness (npm test style: vitest with @cloudflare/vitest-plugin) drives the real Worker through MCP tools/call with a dummy bearer token; MSW mocks only the Cloudflare API, including a GET /lookup/:id route that stands in for the host tool.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "Host tool mapped to `cloudflare.request({method:'GET', path:'/lookup/21'})` (the only tool in execute), answered by MSW after 200 ms through GlobalOutbound. The SPEC form ending in console.log returned the text 'undefined' to the model; the '42' went to the server's stdout (vitest log). The return variant returned '42'. 1 host call each.",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P1.json, research/probes/cloudflare-codemode-mcp/out/vitest-fast.log"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "Only the return value comes back ('RETURNED'); 0 of 200,000 printed chars reach the caller (they go to the Worker's stdout). A returned 200,000-char string came back as 24,114 chars ending in '--- TRUNCATED ---\\nResponse was ~50,000 tokens (limit: 6,000). Use more specific queries to reduce response size.' The literal bare-statement form fails: 'Error: Failed to start Worker:\\nUncaught SyntaxError: Unexpected token ';'\\n  at worker.js:375:73' because code is not normalized.",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P2.json"
+    },
+    "P3": {
+      "outcome": "blocked",
+      "detail": "execute: fetch resolves to HTTP 403 with body 'Forbidden: requests to example.com are not allowed' (GlobalOutbound allows only the API host; no request leaves). search: fetch throws 'This worker is not permitted to access the internet via global functions like fetch()...' (globalOutbound null).",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P3.json"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "Both tools: 'Error: require is not defined', 'Error: No such module \"node:fs\".', 'Error: Deno is not defined'.",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P4.json"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "PROBE_SECRET=s3cr3t in the vitest host process env. In both sandboxes `process` is undefined (no nodejs_compat), no global PROBE_SECRET, no global env. The host Worker's secrets (test CLOUDFLARE_CLIENT_SECRET, cookie key, API token) are not visible.",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P5.json"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "execute and search: `async () => { while (true) {} }` never returned; harness killed vitest at 135 s wall (about 10 s of it suite startup). Neither path sets a timeout.",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P6_execute.json, research/probes/cloudflare-codemode-mcp/out/P6_search.json",
+      "display": "no-limit-within-120s"
+    },
+    "P7": {
+      "outcome": "error",
+      "detail": "execute and search: 'V8 fatal error; location = Reached heap limit' crashed the whole workerd process ('The Workers runtime crashed unexpectedly and is being restarted'). The MCP call returned nothing. Peak RSS 2,121,984 KB (execute) and 2,139,584 KB (search), about 32 s wall including startup.",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P7_execute.json, research/probes/cloudflare-codemode-mcp/out/vitest-P7_execute.log, research/probes/cloudflare-codemode-mcp/out/P7_search.json, research/probes/cloudflare-codemode-mcp/out/vitest-P7_search.log",
+      "display": "host crash (workerd)"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "Second call returned 'gone' in both execute and search.",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P8.json",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "206 ms for 5 parallel cloudflare.request calls, 5 host calls. Each run allows at most 20 requests in flight (MOST_IN_FLIGHT).",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P9.json",
+      "display": "parallel (206 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "Text 'Error: probe-boom', isError true, in both tools. No stack or line. A syntax error instead reports a line:col in the generated module, e.g. 'Uncaught SyntaxError: Unexpected identifier 'is'\\n  at worker.js:375:61'.",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P10.json"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "20 full MCP tools/call round trips through the real Worker (auth, transport, sandbox): execute `async () => 1+1` median 3 ms, p90 4 ms; search median 120 ms, p90 126 ms, because each search isolate parses the 27 MB spec text module. One-time setup: the vitest suite (Worker build and boot) took 8.2 s.",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P11.json, research/probes/cloudflare-codemode-mcp/out/vitest-fast.log"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "Both tools: Function constructor gives 'Error: Code generation from strings disallowed for this context'; sloppy this gives \"Error: Cannot read properties of undefined (reading 'process')\". `this` is the CodeExecutor / SearchSandbox entrypoint.",
+      "evidence": "research/probes/cloudflare-codemode-mcp/out/P12.json"
+    }
+  },
+  "defaults": {
+    "time": "None in code. search has no timeout at all; execute stops early only when the rate-limit wait budget (30 s) or the 1,000 unsent-requests cap trips. Sync loops ran past 120 s locally.",
+    "memory": "None set. Locally the workerd V8 heap limit crashed the whole runtime. Production Worker limits not observed (no account).",
+    "output": "Return value only, capped at ~6,000 tokens = 24,000 chars with a '--- TRUNCATED ---' marker. Each call can pass truncate:false, and the connection can turn it off with ?truncateToolResult=false. console output is not returned.",
+    "tool_calls": "No count cap; at most 20 cloudflare.request calls in flight per run; 1,000 'not sent' rate-limit answers stop the run.",
+    "hardened_reason": "No stricter public option exists at commit b8602d6. No timeout, CPU or memory knob: both Worker Loader calls hard-code their config with no `limits` (src/tools/execute.ts:150-154, src/forge-tools/search.ts:29-53) and wrangler.jsonc sets no `limits`. The only public config is the query params codemode, experimentalOutputSchema, truncateToolResult and scopeChallenge (src/mcp-handler.ts:49-63) and the vars CLOUDFLARE_API_BASE, CLOUDFLARE_OAUTH_DOMAIN, MCP_RESOURCE and RESPONSE_VALIDATION_SAMPLE_RATE (wrangler.jsonc vars; worker-configuration.d.ts:66). Truncation is already on by default in code mode (src/server.ts:72, cap 6,000 tokens at src/truncate.ts:19-21) and the model can still pass truncate:false per call. execute's network allowlist is already the single API host (src/tools/execute.ts:78-119). Rate-limit pacing constants are hard-coded (src/rate-limit.ts:45-100). ?codemode=false removes code execution entirely rather than hardening it. So the default run is also the hardened run."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "No per-tool code generation in Code Mode. The model gets two hand-written TypeScript declarations: SPEC_TYPES for the `spec` object (OpenAPI 3 shape) in `search`, and CLOUDFLARE_TYPES for `cloudflare.request({method, path, query, headers, body})` plus `accountId` in `execute`. The 2,500+ operations stay data. With ?codemode=false the server instead registers ~3,000 forge-generated direct tools.",
+      "evidence": "src/tools/search.ts:25-58 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/search.ts#L25-L58); src/constants.ts:27-39 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/constants.ts#L27-L39); src/tools/execute.ts:613-619 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L613-L619); src/server.ts:84-99 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/server.ts#L84-L99)"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On demand. The model writes JS that walks the pre-resolved OpenAPI spec (`spec.paths`) in the `search` tool; the description lists only the first 30 products and some example queries. A `docs` tool is registered alongside.",
+      "evidence": "src/tools/search.ts:15-28 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/search.ts#L15-L28); src/forge-tools/search.ts:29-56 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/forge-tools/search.ts#L29-L56); src/server.ts:95-99 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/server.ts#L95-L99)"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "No RPC tool dispatch. execute's sandbox calls its own fetch(); the Worker Loader routes all outbound traffic to the GlobalOutbound WorkerEntrypoint (globalOutbound: exports.GlobalOutbound({props})), which rejects hosts other than the API base with a 403, applies policy guards, injects the bearer token, and retries. search has no bridge at all: the spec is a text module inside its isolate.",
+      "evidence": "src/tools/execute.ts:78-119 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L78-L119); src/tools/execute.ts:150-154 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L150-L154); src/tools/execute.ts:295-296 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L295-L296)"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Worker Loader V8 isolate per call, compat date 2026-01-12, no nodejs_compat, globalOutbound null for search and the GlobalOutbound proxy for execute. The blog claims 'no file system, no environment variables to leak through prompt injection and external fetches disabled by default'; probes P3-P5 and P12 match. Code is spliced verbatim into the module source as `(${code})()`.",
+      "evidence": "src/forge-tools/search.ts:29-53 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/forge-tools/search.ts#L29-L53); src/tools/execute.ts:150-154 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L150-L154); src/tools/execute.ts:531 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L531)"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Only the returned value. Neither harness overrides console, so logs go to Workers Logs, not the model. Results go through truncateResponse (structural JSON truncation, 6,000 tokens x 4 chars) unless truncate is false.",
+      "evidence": "src/tools/execute.ts:527-543 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L527-L543); src/forge-tools/search.ts:42-49 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/forge-tools/search.ts#L42-L49); src/truncate.ts:19-22 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/truncate.ts#L19-L22); src/truncate.ts:41-50 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/truncate.ts#L41-L50)"
+    },
+    {
+      "topic": "Limits",
+      "finding": "No timeout or CPU/memory limit in code. execute has rate-limit pacing: 30 s wait budget, 5 s longest single hold, 20 in flight, stop after 1,000 unsent requests. The comments rely on the MCP client's 60 s timeout.",
+      "evidence": "src/rate-limit.ts:41-91 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/rate-limit.ts#L41-L91); src/tools/execute.ts:230-259 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L230-L259)"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh isolate per call with a random id. The code comments say dynamic-worker isolates disallow eval, so code cannot be passed into a warm isolate. No snapshots.",
+      "evidence": "src/forge-tools/search.ts:19-30 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/forge-tools/search.ts#L19-L30); src/tools/execute.ts:122-149 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L122-L149)"
+    },
+    {
+      "topic": "Errors",
+      "finding": "The sandbox returns err.message only, and the tool returns 'Error: <message>' with isError true. Hints are appended for unknown accounts, GraphQL permission refusals, and missing OAuth scopes (step-up challenge, only when replaySafe).",
+      "evidence": "src/tools/execute.ts:532-542 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L532-L542); src/utils/errors.ts:9-18 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/utils/errors.ts#L9-L18); src/tools/execute.ts:700-727 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L700-L727)"
+    },
+    {
+      "topic": "Credentials, approvals, async",
+      "finding": "The API token lives only in GlobalOutbound props and never enters the isolate. OAuth 2.1 with downscoped tokens through workers-oauth-provider. The sandbox records each request so a failed run can be marked replay-safe for step-up. execute is annotated destructiveHint true; there is no human approval gate in the server. Async and Promise.all work.",
+      "evidence": "src/tools/execute.ts:66-100 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L66-L100); src/tools/execute.ts:668-679 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/tools/execute.ts#L668-L679); src/index.ts:33-62 (https://github.com/cloudflare/mcp/blob/b8602d6d5ce543ef5933ea3d98f06be8e20759fa/src/index.ts#L33-L62)"
+    }
+  ],
+  "surprises": [
+    "The blog says the server exports just two tools. At this commit Code Mode registers five: docs, search, execute, whoami and submit_feedback (server.ts:95-99), plus MCP skills.",
+    "cloudflare/mcp does not use @cloudflare/codemode at all (package.json dependencies). It has its own harness, which differs from the SDK's openApiMcpServer: a `spec` global instead of codemode.spec(), no normalizeCode, no 60 s timeout.",
+    "No execution timeout in either tool. A sync loop ran past 120 s locally, so the code relies on the platform CPU limit and the client's timeout.",
+    "console.log output never reaches the model. A probe that prints its answer returns 'undefined'.",
+    "Code is not normalized. Anything but a function expression fails with a SyntaxError at a line in the generated worker.js.",
+    "In execute, fetch to a non-API host does not throw. It returns a synthetic 403 Response that code can read.",
+    "Each search call re-parses the 27 MB spec in a new isolate: about 120 ms per call locally against about 3 ms for execute.",
+    "A sandbox OOM crashed the whole local runtime, MCP Worker included, so the client got no error result."
+  ],
+  "hardened": null
+}

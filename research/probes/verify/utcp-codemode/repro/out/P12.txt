@@ -1,0 +1,56 @@
+{
+  "probe": "P12 escape",
+  "hostCanaryValue": "host-canary-123",
+  "attempts": {
+    "A: return this.constructor.constructor(\"return process\")()": {
+      "code": "return this.constructor.constructor(\"return process\")()",
+      "result": null,
+      "logs": [
+        "[ERROR] Code execution failed: ReferenceError: process is not defined\n    at eval (eval at <anonymous> (<isolated-vm>:5:39), <anonymous>:3:1)\n    at <isolated-vm>:5:68\n    at <isolated-vm>:6:15\n    at <isolated-vm>:11:11"
+      ],
+      "threw": null
+    },
+    "B: return (function(){return this})().process": {
+      "code": "return (function(){ return this; })().process",
+      "result": null,
+      "logs": [],
+      "threw": null
+    },
+    "C: return Function(\"return typeof process\")()": {
+      "code": "return Function(\"return typeof process\")()",
+      "result": "undefined",
+      "logs": [],
+      "threw": null
+    },
+    "D: canary return Function(\"return globalThis.__HOST_CANARY\")()": {
+      "code": "return Function(\"return globalThis.__HOST_CANARY\")()",
+      "result": null,
+      "logs": [],
+      "threw": null
+    },
+    "E: return __callToolRef.constructor.constructor(\"return typeof process\")()": {
+      "code": "return __callToolRef.constructor.constructor(\"return typeof process\")()",
+      "result": "undefined",
+      "logs": [],
+      "threw": null
+    },
+    "F: return typeof require/module/ivm/Deno/Bun": {
+      "code": "return [typeof require, typeof module, typeof ivm, typeof Deno, typeof Bun].join(\",\")",
+      "result": "undefined,undefined,undefined,undefined,undefined",
+      "logs": [],
+      "threw": null
+    },
+    "G: return own global names matching process|ivm|require|HOST": {
+      "code": "return Object.getOwnPropertyNames(globalThis).filter(n => /process|ivm|require|host/i.test(n)).join(\",\")",
+      "result": "host",
+      "logs": [],
+      "threw": null
+    },
+    "H: return this === globalThis": {
+      "code": "return this === globalThis",
+      "result": true,
+      "logs": [],
+      "threw": null
+    }
+  }
+}

@@ -1,0 +1,13 @@
+mode: default
+code:
+console.log(require("fs").readFileSync("/etc/hosts","utf8"))
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "ec599d36-bfc5-4c99-8775-9c1b301bc535",
+  "success": false,
+  "output": "\n\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) ReferenceError: require is not defined\nconsole.log(require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\"))\n\u001b[0m\u001b[31m        ^\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/e6c598fe853550f7.ts\u001b[0m:\u001b[0m\u001b[33m35\u001b[0m:\u001b[0m\u001b[33m9\u001b[0m\n\n    \u001b[0m\u001b[33minfo:\u001b[0m Deno supports CommonJS modules in \u001b[4m.cjs\u001b[24m files, or when the closest\n          \u001b[4mpackage.json\u001b[24m has a \u001b[3m\"type\": \"commonjs\"\u001b[23m option.\n    \u001b[0m\u001b[36mhint:\u001b[0m Rewrite this module to ESM,\n          or change the file extension to \u001b[4m.cjs\u001b[24m,\n          or add \u001b[4mpackage.json\u001b[24m next to the file with \u001b[3m\"type\": \"commonjs\"\u001b[23m option,\n          or pass \u001b[3m--unstable-detect-cjs\u001b[23m flag to detect CommonJS when loading.\n    \u001b[0m\u001b[32mdocs:\u001b[0m \u001b[4mhttps://docs.deno.com/go/commonjs\u001b[24m\n",
+  "ms": 17,
+  "hostCalls": 0
+}

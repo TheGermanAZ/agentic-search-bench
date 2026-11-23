@@ -1,0 +1,41 @@
+{
+  "id": "P4",
+  "workerPid": 98545,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 329,
+  "peakRssKbSampled": 79296,
+  "stderr": "",
+  "parsed": {
+    "probe": "P4",
+    "config": {
+      "executionLimitProfile": "hardened"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 98545
+    },
+    "runs": [
+      {
+        "script": "cat /etc/hosts",
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "cat: /etc/hosts: No such file or directory\n",
+        "ms": 129,
+        "hostCalls": 0
+      },
+      {
+        "script": "ls /etc | head -5",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "ls: /etc: No such file or directory\n",
+        "ms": 14,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 83840,
+    "maxInFlight": 0,
+    "hostCalls": 0
+  }
+}

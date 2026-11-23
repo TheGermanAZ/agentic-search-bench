@@ -1,0 +1,25 @@
+{
+  "probe": "P7",
+  "config": "hardened",
+  "codes": [
+    "a = []\nwhile True:\n    a.append(\"x\" * 10**6)"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 3, in <module>\n    a.append(\"x\" * 10**6)\n             ~~~~~~~~~~~\nMemoryError: memory limit exceeded: 269066748 bytes > 268435456 bytes",
+      "ms": 206.3,
+      "started": 1795381429.161907
+    }
+  ],
+  "setup_ms": 857.2,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.22,
+  "peak_tree_rss_gb": 0.241,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

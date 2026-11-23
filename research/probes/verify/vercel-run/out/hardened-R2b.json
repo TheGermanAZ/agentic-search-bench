@@ -1,0 +1,74 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs hardened R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 311,
+  "peakTreeRssMb": 128,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "hardened",
+    "test": "R2b",
+    "notes": "createRunner({limits: HARDENED_LIMITS}) shared",
+    "data": {
+      "startMs": 40,
+      "ms": 179,
+      "ok": true,
+      "result": {
+        "value": {
+          "status": "completed",
+          "value": {
+            "type": "object",
+            "name": "Error",
+            "msg": "Host function failed.",
+            "stack": "    at apply (run-setup.js:438:33)\n    at <anonymous> (run.js:3:25)\n    at <eval> (run.js:4:1)\n",
+            "own": [
+              "message",
+              "name",
+              "code",
+              "stack"
+            ],
+            "esc": "threw Function constructor is not allowed"
+          }
+        },
+        "stringChars": 197
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 78,
+    "hostEvents": [],
+    "totalMs": 220
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:69485) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      108,
+      52
+    ],
+    [
+      165,
+      86
+    ],
+    [
+      222,
+      104
+    ],
+    [
+      268,
+      120
+    ],
+    [
+      310,
+      128
+    ]
+  ]
+}

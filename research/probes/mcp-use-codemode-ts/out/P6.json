@@ -1,0 +1,9 @@
+{
+  "probe": "P6",
+  "config": "default",
+  "outcome": "limited",
+  "detail": "stopped after 30.0 s: Script execution timed out",
+  "display": "limited (30 s)",
+  "peak_child_rss_mb": 87,
+  "wall_s": 30.4
+}

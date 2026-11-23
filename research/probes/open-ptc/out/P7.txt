@@ -1,0 +1,18 @@
+mode: default
+code:
+const a = []; while (true) a.push("x".repeat(1e6))
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "866762ed-e949-4d60-ba50-e03d4095cd44",
+  "success": false,
+  "output": "\n\n",
+  "ms": 7561,
+  "hostCalls": 0
+}
+
+baseline tree RSS bytes: 105627648
+peak tree RSS bytes: 4305453056
+harness killed sandbox child at 4305 MB tree RSS, 7399 ms
+next execution after P7: {"type":"execution_result","executionId":"9b6a5082-abd7-4029-bd53-fd7b8b30b0a5","success":true,"output":"alive\n\n\n","ms":25,"hostCalls":0}

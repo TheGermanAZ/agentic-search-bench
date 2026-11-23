@@ -1,0 +1,8 @@
+{
+  "tools": { "codeModeOnly": true },
+  "general": { "enableAutoUpdate": false },
+  "privacy": { "usageStatisticsEnabled": false },
+  "telemetry": { "enabled": false },
+  "security": { "auth": { "selectedType": "openai" } },
+  "mcpServers": { "probe": { "command": "node", "args": [], "env": {}, "trust": true } }
+}

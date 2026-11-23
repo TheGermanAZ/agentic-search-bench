@@ -1,0 +1,43 @@
+probe: P8
+outcome: works
+display: persists
+detail: execution 2 printed '7'
+
+code:
+----
+kept = 7
+----
+try:
+    msg = kept
+except NameError:
+    msg = "gone"
+print(msg)
+msg
+----
+
+setup_ms: 0.1
+wall_s (whole child process): 0.96
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.15
+host lookup calls: 0
+
+=== run 0 (78.3 ms) ===
+ok: true
+stdout: 
+model_sees: {"status": "success", "output": "", "exit_code": 0, "tool_calls_made": 0, "duration_seconds": 0.05, "kernel": {"mode": "session", "reused": false, "execution_count": 1, "state_reset": false}, "stdout_truncated": false, "stdout_bytes_captured": 0, "stdout_bytes_total": 0, "stdout_bytes_omitted": 0}
+status: success
+tool_calls_made: 0
+model_sees_len: 298
+
+=== run 1 (1.9 ms) ===
+ok: true
+stdout: 7
+
+model_sees: {"status": "success", "output": "7\n", "exit_code": 0, "tool_calls_made": 0, "duration_seconds": 0.0, "kernel": {"mode": "session", "reused": true, "execution_count": 2, "state_reset": false}, "stdout_truncated": false, "stdout_bytes_captured": 2, "stdout_bytes_total": 2, "stdout_bytes_omitted": 0}
+status: success
+tool_calls_made: 0
+model_sees_len: 299
+
+=== child process log (tail) ===
+

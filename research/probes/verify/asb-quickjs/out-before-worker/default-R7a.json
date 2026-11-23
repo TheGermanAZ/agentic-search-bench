@@ -1,0 +1,43 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 99,
+  "peakTreeRssMb": 0,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "R7a",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "startMs": 12,
+      "ms": 29,
+      "ok": true,
+      "result": {
+        "value": "\"resolved?\"",
+        "stringChars": 11
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 1,
+    "hostEvents": [],
+    "totalMs": 41
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      97,
+      0
+    ]
+  ]
+}

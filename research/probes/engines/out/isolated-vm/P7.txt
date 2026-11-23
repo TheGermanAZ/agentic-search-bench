@@ -1,0 +1,5 @@
+const a = []; while (true) a.push("x".repeat(1e6) + a.length)
+--- output
+ERROR: the sandbox stopped this program: it used more than the 512 MB memory limit
+---
+wall_ms=1654 host_calls=0 peak_tree_rss_mb=689

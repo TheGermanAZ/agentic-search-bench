@@ -1,0 +1,6 @@
+const m = new WebAssembly.Memory({ initial: 1, maximum: 65536 }); let n = 0; while (true) { m.grow(1024); new Uint8Array(m.buffer).fill(1, n * 65536 * 1024); n++; if (n % 8 === 0) console.log(n * 64, 'MB'); }
+--- output
+ERROR: ReferenceError: WebAssembly is not defined
+    at line 1:11
+---
+wall_ms=1 host_calls=0 max_arg_chars=0 out_chars=66 peak_host_rss_mb=594

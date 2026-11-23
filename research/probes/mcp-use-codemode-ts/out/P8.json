@@ -1,0 +1,9 @@
+{
+  "probe": "P8",
+  "config": "default",
+  "outcome": "fresh",
+  "detail": "second execution printed \"gone\"",
+  "display": "fresh",
+  "peak_child_rss_mb": 86,
+  "wall_s": 0.5
+}

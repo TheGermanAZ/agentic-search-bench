@@ -1,0 +1,24 @@
+--- code 1 ---
+print(string.rep("A", 200000))
+result("RETURNED")
+--- result 1 ---
+{"ms":21,"hostCalls":0,"side":{"proxyLogBytes":201880},"ok":true,"isError":false}
+text (47 chars):
+Script executed successfully.
+
+Result:
+RETURNED
+--- code 2 ---
+result(string.rep("A", 200000))
+--- result 2 ---
+{"ms":5,"hostCalls":0,"side":{"proxyLogBytes":201963},"ok":true,"isError":false}
+text (279 chars):
+Result offloaded (200000 bytes, string).
+
+Execution ID: 1795377117472_e3beio2z9
+
+Retrieve and filter in a follow-up script:
+
+  local data = _gateway.get_result({ id = "1795377117472_e3beio2z9" }):await()
+  -- Example: get first 1000 characters
+  result(string.sub(data, 1, 1000))

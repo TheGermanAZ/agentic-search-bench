@@ -1,0 +1,38 @@
+--- code 1 ---
+t = [lambda i=i: probe_lookup(id=i) for i in [1, 2, 3, 4, 5]]
+rs = parallel(t)
+return [r["text"] for r in rs]
+--- result 1 ---
+{"ms":234,"hostCalls":5,"ok":true,"isError":false}
+text (127 chars):
+["{\"id\":1,\"value\":2}","{\"id\":2,\"value\":4}","{\"id\":3,\"value\":6}","{\"id\":4,\"value\":8}","{\"id\":5,\"value\":10}"]
+--- code 2 ---
+rs = [probe_lookup(id=i) for i in [1, 2, 3, 4, 5]]
+return [r["text"] for r in rs]
+--- result 2 ---
+{"ms":1135,"hostCalls":5,"ok":true,"isError":false}
+text (127 chars):
+["{\"id\":1,\"value\":2}","{\"id\":2,\"value\":4}","{\"id\":3,\"value\":6}","{\"id\":4,\"value\":8}","{\"id\":5,\"value\":10}"]
+--- code 3 ---
+t = [lambda i=i: probe_lookup(id=i) for i in range(1, 21)]
+rs = parallel(t)
+return len(rs)
+--- result 3 ---
+{"ms":516,"hostCalls":20,"ok":true,"isError":false}
+text (2 chars):
+20
+--- code 4 ---
+t = [lambda i=i: probe_lookup(id=i) for i in [1, 2, 3, 4, 5]]
+rs = parallel(t)
+return [r["value"] for r in rs]
+--- result 4 ---
+{"ms":228,"hostCalls":5,"ok":true,"isError":true}
+text (48 chars):
+script execution failed: key "value" not in dict
+--- code 5 ---
+rs = [probe_lookup(id=i) for i in [1, 2, 3, 4, 5]]
+return [r["value"] for r in rs]
+--- result 5 ---
+{"ms":1068,"hostCalls":5,"ok":true,"isError":true}
+text (48 chars):
+script execution failed: key "value" not in dict

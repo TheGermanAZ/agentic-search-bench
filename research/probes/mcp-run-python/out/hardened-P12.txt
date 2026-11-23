@@ -1,0 +1,15 @@
+Each attempt runs in a fresh server, then print('alive') runs in that same server to show whether it survived.
+py subclasses: os._wrap_close / subprocess.Popen present: status=success return=[425, True, True] error='' output=[] | server after: 'alive'
+py os._wrap_close -> __init__.__globals__['system']('echo PWNED'): MCP call raised ExceptionGroup: 'unhandled errors in a TaskGroup (1 sub-exception)' (deno server exited; see hardened-P12.log)
+py __import__('os').system('echo PWNED'): MCP call raised ExceptionGroup: 'unhandled errors in a TaskGroup (1 sub-exception)' (deno server exited; see hardened-P12.log)
+py subprocess.run(['echo','PWNED']): status=run-error return=None error='OSError: [Errno 138] emscripten does not support processes.' output=[] | server after: 'alive'
+js.eval arbitrary JS: status=success return=3 error='' output=[] | server after: 'alive'
+spec JS: this.constructor.constructor('return process')().pid: status=success return=30467 error='' output=[] | server after: 'alive'
+spec JS: (function(){return this})().process: status=success return='True' error='' output=[] | server after: 'alive'
+host Deno object reached, version: status=success return='2.9.8' error='' output=[] | server after: 'alive'
+Deno.readTextFileSync /etc/hosts: status=run-error return=None error='pyodide.ffi.JsException: NotCapable: Requires read access to "/etc/hosts", run again with the --allow-read flag' output=[] | server after: 'alive'
+Deno.writeTextFileSync /tmp: status=run-error return=None error='pyodide.ffi.JsException: NotCapable: Requires write access to "/tmp/probe-escape.txt", run again with the --allow-write flag' output=[] | server after: 'alive'
+Deno.Command echo PWNED: status=success return='raised: NotCapable: Requires run access to "echo", run again with the --allow-run flag' error='' output=[] | server after: 'alive'
+Deno.permissions.requestSync run (escalate): status=success return='denied' error='' output=[] | server after: 'alive'
+Deno.dlopen libc (FFI): status=run-error return=None error='pyodide.ffi.JsException: NotCapable: Requires ffi access to "/usr/lib/libSystem.B.dylib", run again with the --allow-ffi flag' output=[] | server after: 'alive'
+Deno.env.get with full host env forwarded: status=run-error return=None error='pyodide.ffi.JsException: NotCapable: Requires env access to "PROBE_SECRET", run again with the --allow-env flag' output=[]

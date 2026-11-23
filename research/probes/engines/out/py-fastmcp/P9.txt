@@ -1,0 +1,7 @@
+import asyncio
+rs = await asyncio.gather(*[call_tool("read", {"id": str(i)}) for i in [1, 2, 3, 4, 5]])
+return ",".join(str(r["result"]["value"]) for r in rs)
+--- output
+2,4,6,8,10
+---
+wall_ms=228 host_calls=5 peak_tree_rss_mb=203

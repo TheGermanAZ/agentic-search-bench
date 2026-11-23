@@ -1,0 +1,7 @@
+{
+  "probe": "P9wide",
+  "outcome": "works",
+  "display": "parallel, 10 at a time (402 ms)",
+  "detail": "12 gathered lookups: 12 host calls spanning 402 ms, two waves because of the 10-slot semaphore; printed 132.",
+  "evidence": "research/probes/strands-codemode/out/P9wide.txt"
+}

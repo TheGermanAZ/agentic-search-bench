@@ -1,0 +1,10 @@
+{
+  "probe": "P4",
+  "config": {
+    "kernel_mode": "subprocess",
+    "cell_timeout": 30
+  },
+  "peak_tree_rss_mib": 105,
+  "wall_s": 1.81,
+  "child": "{\"r\": {\"ok\": true, \"stdout\": \"##\\n# Host Database\\n#\\n# localhost is used to configure the lo\\n\", \"stderr\": \"\", \"s\": 0.02}, \"host_calls\": 0, \"extra\": \"\"}"
+}

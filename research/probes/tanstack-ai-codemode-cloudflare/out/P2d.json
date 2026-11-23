@@ -1,0 +1,41 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P2d",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.353332999999992,
+  "source": [
+    "return \"A\".repeat(200000);"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": {
+          "stringLength": 200000,
+          "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 57.332292000000024,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": {
+        "stringLength": 200000,
+        "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 57,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 91.1
+}

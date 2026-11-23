@@ -1,0 +1,12 @@
+code:
+const x = 1;
+const y = 2;
+throw new Error("probe-boom line 3")
+
+result:
+{
+  "id": "473fcf7e-1738-4069-ad1b-028d86f14ea1",
+  "error": "\u001b[0m\u001b[32mDownload\u001b[0m http://localhost:41310/client.ts?v=1\n\u001b[0m\u001b[32mCheck\u001b[0m file:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/f6ee4d2f368e16eb.ts\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) Error: probe-boom line 3\nthrow new Error(\"probe-boom line 3\")\n\u001b[0m\u001b[31m      ^\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/f6ee4d2f368e16eb.ts\u001b[0m:\u001b[0m\u001b[33m6\u001b[0m:\u001b[0m\u001b[33m7\u001b[0m\n",
+  "ms": 886,
+  "hostCalls": 0
+}

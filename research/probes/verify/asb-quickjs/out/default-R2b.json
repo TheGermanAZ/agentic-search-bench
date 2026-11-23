@@ -1,0 +1,45 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 80,
+  "peakTreeRssMb": 57,
+  "peakTreeFootprintMb": 38,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "R2b",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "startMs": 9,
+      "ms": 28,
+      "ok": true,
+      "result": {
+        "value": "{\"type\":\"object\",\"name\":\"Error\",\"msg\":\"host-tool-boom internal detail db=<url>\",\"stack\":\"    at <anonymous> (eval.js:8:46)\\n    at <eval> (eval.js:1:27)\\n\",\"own\":[\"message\",\"stack\"],\"esc\":\"undefined\"}",
+        "stringChars": 200
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 1,
+    "hostEvents": [],
+    "totalMs": 37
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      79,
+      57,
+      38
+    ]
+  ]
+}

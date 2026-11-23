@@ -1,0 +1,8 @@
+probe: CTX
+code (python, run through LocalREPL.execute_code):
+print(type(context), len(context)) ...
+host_calls_so_far: 0
+context stdout: "str 66000 3000\nstr True\nAvailable variables: {'f': 'TextIOWrapper', 'context_0': 'str', 'context': 'str'}\n"
+stderr: ''
+corpus written to /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/repl_env_5d50f434-468d-4a21-9e58-0cb53a904000_d9h_atvo/context_0.txt (plain text, exists=True, matches=True)
+temp_dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/repl_env_5d50f434-468d-4a21-9e58-0cb53a904000_d9h_atvo

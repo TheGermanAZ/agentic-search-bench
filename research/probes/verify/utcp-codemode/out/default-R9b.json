@@ -1,0 +1,271 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R9b",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 4537,
+  "peakTreeRssMb": 209,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 4490,
+    "rssMb": 206
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R9b",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 36,
+          "ms": 883,
+          "ok": true,
+          "result": {
+            "value": {
+              "result": null,
+              "logs": [
+                "[ERROR] Code execution failed: Isolate was disposed during execution due to memory limit"
+              ]
+            },
+            "stringChars": 88
+          },
+          "callsStarted": 1
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 190,
+        "ms": 222,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1000,
+        "ms": 203,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1203,
+        "ms": 203,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 17,
+    "hostEvents": [],
+    "totalMs": 1406
+  },
+  "childStdoutOtherChars": 837,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      103,
+      52
+    ],
+    [
+      191,
+      96
+    ],
+    [
+      293,
+      133
+    ],
+    [
+      402,
+      164
+    ],
+    [
+      509,
+      179
+    ],
+    [
+      598,
+      190
+    ],
+    [
+      714,
+      193
+    ],
+    [
+      814,
+      194
+    ],
+    [
+      914,
+      209
+    ],
+    [
+      1012,
+      206
+    ],
+    [
+      1115,
+      206
+    ],
+    [
+      1214,
+      206
+    ],
+    [
+      1316,
+      206
+    ],
+    [
+      1415,
+      206
+    ],
+    [
+      1519,
+      206
+    ],
+    [
+      1617,
+      206
+    ],
+    [
+      1719,
+      206
+    ],
+    [
+      1822,
+      206
+    ],
+    [
+      1924,
+      206
+    ],
+    [
+      2043,
+      206
+    ],
+    [
+      2144,
+      206
+    ],
+    [
+      2240,
+      206
+    ],
+    [
+      2344,
+      206
+    ],
+    [
+      2438,
+      206
+    ],
+    [
+      2541,
+      206
+    ],
+    [
+      2644,
+      206
+    ],
+    [
+      2748,
+      206
+    ],
+    [
+      2847,
+      206
+    ],
+    [
+      2954,
+      206
+    ],
+    [
+      3074,
+      206
+    ],
+    [
+      3159,
+      206
+    ],
+    [
+      3256,
+      206
+    ],
+    [
+      3367,
+      206
+    ],
+    [
+      3460,
+      206
+    ],
+    [
+      3565,
+      206
+    ],
+    [
+      3665,
+      206
+    ],
+    [
+      3767,
+      206
+    ],
+    [
+      3867,
+      206
+    ],
+    [
+      3972,
+      206
+    ],
+    [
+      4096,
+      206
+    ],
+    [
+      4189,
+      206
+    ],
+    [
+      4293,
+      206
+    ],
+    [
+      4422,
+      206
+    ],
+    [
+      4536,
+      0
+    ]
+  ]
+}

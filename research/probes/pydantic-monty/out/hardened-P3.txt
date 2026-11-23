@@ -1,0 +1,9 @@
+LIMITS: {'max_memory': 10000000, 'max_feed_duration_secs': 1.0, 'max_recursion_depth': 100}
+CODE (urllib):
+urllib
+RESULT:
+MontyRuntimeError: ModuleNotFoundError: No module named 'urllib'
+CODE (socket):
+socket
+RESULT:
+MontyRuntimeError: ModuleNotFoundError: No module named 'socket'

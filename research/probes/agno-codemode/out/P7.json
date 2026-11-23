@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "error",
+  "display": "no limit (kernel died at 3.9 GB)",
+  "detail": "No memory limit. After 39.3 s at 3.86 GB peak tree RSS the kernel died from outside (no Agno limit fired; stderr tail only shows the TCP warning). aexecute raised KernelDiedError: 'The kernel ... died while executing the cell. A fresh kernel will start on the next execute; previous state is gone.' The host process survived. Run under mem-lock.sh.",
+  "evidence": "research/probes/agno-codemode/out/P7.txt"
+}

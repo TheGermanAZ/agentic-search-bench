@@ -1,0 +1,8 @@
+{
+  "name": "cloudflare-codemode-probe-hardened",
+  "main": "hardened-harness.ts",
+  "compatibility_date": "2026-06-11",
+  "compatibility_flags": ["nodejs_compat"],
+  "worker_loaders": [{ "binding": "LOADER" }],
+  "dev": { "port": 41800, "ip": "127.0.0.1", "inspector_port": 41801 }
+}

@@ -1,0 +1,9 @@
+probe: P8
+code (python, run through LocalPythonExecutor):
+execution 1: kept = 7
+execution 2: try print(kept) except NameError print('gone')
+host_calls_so_far: 0
+execution 1: {'ok': True, 'output': '7', 'logs': '', 'is_final_answer': False, 'ms': 0.2}
+execution 2: {'ok': True, 'output': 'None', 'logs': '7\n', 'is_final_answer': False, 'ms': 0.2}
+executor.state has 'kept': True
+executor.state['kept'] = 7

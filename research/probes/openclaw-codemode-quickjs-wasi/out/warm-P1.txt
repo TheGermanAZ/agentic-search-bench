@@ -1,0 +1,37 @@
+engine=quickjs hardened=false warmHost=true config={"enabled":true,"executor":"quickjs"} setupMs=1
+--- code 1 ---
+const r = await lookup({id: 21}); console.log(r.value); return r;
+--- result 1 ---
+{"ms":547.48,"hostCalls":1,"ok":true,"waits":0}
+content text (285 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"9146d3b544ebd08605d9d42c","searchCount":0,"describeCount":0,"callCount":1,"visibleTools":["exec","wait"]},"output":[{"type":"text","text":"42"}],"value":{"id":21,"value":42}}
+details (385 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "9146d3b544ebd08605d9d42c",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 1,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [
+  {
+   "type": "text",
+   "text": "42"
+  }
+ ],
+ "value": {
+  "id": 21,
+  "value": 42
+ }
+}

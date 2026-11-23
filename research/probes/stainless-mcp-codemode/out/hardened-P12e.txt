@@ -1,0 +1,22 @@
+mode: hardened
+code:
+async function run(client) {
+  const spec = "node:child_process";
+  const cp: any = await import(spec);
+  return String(cp.execSync("echo PWNED"));
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Error: Command failed: echo PWNED"
+      }
+    ],
+    "isError": true
+  },
+  "ms": 429,
+  "hostCalls": 0
+}

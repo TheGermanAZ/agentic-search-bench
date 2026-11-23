@@ -1,0 +1,86 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py hardened R4",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 690,
+  "peakTreeRssMb": 96,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R4",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(hardened {'limits': {'max_feed_duration_secs': 10, 'max_memory': 50000000}, 'wall_clock_timeout_secs': 60}); new in-process Client per execution",
+    "data": {
+      "label": "",
+      "startMs": 590,
+      "ms": 34,
+      "ok": true,
+      "result": {
+        "is_error": false,
+        "text": "None"
+      },
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 1,
+    "totalMs": 624
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      79,
+      30
+    ],
+    [
+      131,
+      40
+    ],
+    [
+      181,
+      45
+    ],
+    [
+      235,
+      51
+    ],
+    [
+      282,
+      56
+    ],
+    [
+      337,
+      58
+    ],
+    [
+      399,
+      62
+    ],
+    [
+      439,
+      66
+    ],
+    [
+      485,
+      75
+    ],
+    [
+      536,
+      79
+    ],
+    [
+      587,
+      84
+    ],
+    [
+      638,
+      89
+    ],
+    [
+      689,
+      96
+    ]
+  ]
+}

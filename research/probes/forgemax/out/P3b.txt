@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { return typeof fetch; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "\"undefined\""
+      }
+    ],
+    "isError": false
+  },
+  "ms": 12,
+  "hostCalls": 0
+}

@@ -1,0 +1,10 @@
+subs = ().__class__.__base__.__subclasses__()  # type: ignore
+print([c.__name__ for c in subs if c.__name__ in ("_wrap_close", "Popen")])
+--- output
+ERROR: Runtime error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    subs = ().__class__.__base__.__subclasses__()  # type: ignore
+AttributeError: 'tuple' object has no attribute '__class__'
+---
+wall_ms=23 host_calls=0 peak_tree_rss_mb=177

@@ -1,0 +1,42 @@
+{
+ "tag": "default",
+ "probe": "P10",
+ "settings": "~/p/agentic-search-bench/research/probes/claude-code-codemode/settings-default.json",
+ "permissionMode": "default",
+ "transcript": "~/.claude/projects/-Users-thegermanaz-p-agentic-search-bench-research-probes-claude-code-codemode-work/d7c6a48a-ce87-419e-a56a-c379b36abf3d.jsonl",
+ "hostLookupCalls": [],
+ "steps": [
+  {
+   "step": "P10.1",
+   "code": "throw new Error(\"probe-boom\")",
+   "typist": "model",
+   "wallS": 2.0,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "throw new Error(\"probe-boom\")",
+     "codeRan": "throw new Error(\"probe-boom\")",
+     "exactCode": true,
+     "toolUseTs": null,
+     "result": {
+      "content": "<repl-output>\n<error>Error: probe-boom\nThrown at (statements quoted from the script as it ran, which is reformatted):\n  in &lt;anonymous&gt;: throw new Error(\"probe-boom\");\nThe script threw partway through: statements before the failing one ran. No tool call had completed.</error>\n</repl-output>",
+      "is_error": true,
+      "ts": "2026-11-22T20:34:05.476Z",
+      "toolUseResult": {
+       "code": "throw new Error(\"probe-boom\")",
+       "result": null,
+       "stdout": "",
+       "stderr": "",
+       "error": "Error: probe-boom\nThrown at (statements quoted from the script as it ran, which is reformatted):\n  in <anonymous>: throw new Error(\"probe-boom\");\nThe script threw partway through: statements before the failing one ran. No tool call had completed."
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 363920,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  }
+ ]
+}

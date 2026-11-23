@@ -1,0 +1,30 @@
+{
+  "impl": "vercel-run",
+  "probe": "P2d",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return \"A\".repeat(200000);"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "status": "completed",
+      "value": {
+        "stringLength": 200000,
+        "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "wallMs": 181.4945,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": {
+      "stringLength": 200000,
+      "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "ms": 181,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 141.8
+}

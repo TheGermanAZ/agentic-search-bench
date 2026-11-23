@@ -1,0 +1,27 @@
+{
+  "probe": "P6b",
+  "config": "default",
+  "codes": [
+    "while True:\n    pass",
+    "msg = 'after'\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 30016.1,
+      "started": 1795378681.888145
+    }
+  ],
+  "setup_ms": 2629.7,
+  "killed": "harness time watchdog at 120.1 s",
+  "exit_code": -9,
+  "wall_s": 120.08,
+  "peak_tree_rss_gb": 0.38,
+  "calls": [],
+  "child_log_tail": "[11/22/26 15:17:59] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-dqbp69l              \n                             2/generated (mcp dir:                              \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-dqbp69l              \n                             2/generated/mcp)                                   \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-dqbp69l              \n                             2/generated/mcp/probe                              \n                    INFO     Starting Jupyter server       jupyter_server.py:262\n                             subprocess on 127.0.0.1:41520                      \n                             (workdir=/var/folders/tg/x0gc                      \n                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      \n                             dl-jupyter-server-dqbp69l2/wo                      \n                             rkspace)                                           \n[11/22/26 15:18:00] INFO     No existing kernels found,    jupyter_server.py:412\n                             will create a new one                              \n                    INFO     Starting the kernel client\u2026           client.py:412\n                    INFO     KernelHttpManager created a new      manager.py:258\n                             kernel: {'id':                                     \n                             '27571adb-53bd-4bef-b01f-f01d27158a6               \n                             c', 'name': 'python3',                             \n                             'last_activity':                                   \n                             '2026-11-22T20:18:00.658625Z',                     \n                             'execution_state': 'starting',                     \n                             'connections': 0}                                  \n                    INFO     Websocket connected                 _logging.py:104\n"
+}

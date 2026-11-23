@@ -1,0 +1,85 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 743,
+    "totalWallMs": 1041,
+    "peakTreeRssMB": 193.3,
+    "stderrTail": "ch-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:273:34)\n    at file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:694:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:41:58.327Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nrequire(\"fs\").appendFileSync(\"~/p/agentic-search-bench/research/probes/codemode-unified-bun/out/twopass-side-effect-default.txt\", \"program-ran\\n\"); const r = await mcp.probe.lookup({id: 4}); return r.parsed\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔧 Resolving 1 MCP call(s)...\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n⚠️  Could not load TypeScript declarations: ReferenceError: require is not defined\n    at loadTypeScriptDeclarations (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:210:46)\n    at generateMCPProxy (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:273:34)\n    at file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:694:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:41:58.563Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nglobalThis.__n = (globalThis.__n || 0) + 1; console.log(\"program-ran\"); const r = await mcp.probe.lookup({id: 3}); return r.parsed\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔧 Resolving 1 MCP call(s)...\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n🔄 Shutting down Code Mode MCP server...\n✅ MCP Manager shut down\n✅ Runtime bun shut down\n✅ Code Mode MCP server shut down complete\n"
+  },
+  "runtime": "bun",
+  "probe": "P13_twoPass",
+  "mode": "default",
+  "setupMs": 235.5,
+  "executeToolDescription": "Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes with different capabilities. When MCP integration is enabled, code has access to MCP tools via the global `mcp` object (e.g., mcp.automem.store_memory(), mcp[\"sequential-thinking\"].sequentialthinking()). For TypeScript type definitions and API documentation of available MCP tools, read the resource mcp://types/declarations before writing code.",
+  "transportErrors": [],
+  "record": {
+    "dependentCalls": {
+      "code": "const a = await mcp.probe.lookup({id: 1}); const b = await mcp.probe.lookup({id: a.parsed ? a.parsed.value : -1}); return { a: a.parsed, b: b.parsed }",
+      "wallMs": 265.9,
+      "hostCalls": 2,
+      "out": {
+        "success": true,
+        "result": {
+          "a": {
+            "id": 1,
+            "value": 2
+          },
+          "b": {
+            "id": -1,
+            "value": -2
+          }
+        },
+        "logs": [],
+        "metrics": {
+          "executionTime": 11,
+          "memoryUsed": 0
+        },
+        "runtime": "bun"
+      },
+      "threw": null
+    },
+    "fileSideEffect": {
+      "code": "require(\"fs\").appendFileSync(\"~/p/agentic-search-bench/research/probes/codemode-unified-bun/out/twopass-side-effect-default.txt\", \"program-ran\\n\"); const r = await mcp.probe.lookup({id: 4}); return r.parsed",
+      "wallMs": 235.1,
+      "hostCalls": 1,
+      "out": {
+        "success": true,
+        "result": {
+          "id": 4,
+          "value": 8
+        },
+        "logs": [],
+        "metrics": {
+          "executionTime": 15,
+          "memoryUsed": 0
+        },
+        "runtime": "bun"
+      },
+      "threw": null,
+      "timesProgramRan": 2
+    },
+    "sideEffectCount": {
+      "code": "globalThis.__n = (globalThis.__n || 0) + 1; console.log(\"program-ran\"); const r = await mcp.probe.lookup({id: 3}); return r.parsed",
+      "wallMs": 236.3,
+      "hostCalls": 1,
+      "out": {
+        "success": true,
+        "result": {
+          "id": 3,
+          "value": 6
+        },
+        "logs": [
+          "program-ran"
+        ],
+        "metrics": {
+          "executionTime": 16,
+          "memoryUsed": 0
+        },
+        "runtime": "bun"
+      },
+      "threw": null
+    }
+  }
+}

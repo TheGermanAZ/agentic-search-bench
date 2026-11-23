@@ -1,0 +1,317 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs default R3",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 4999,
+  "peakTreeRssMb": 167,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "default",
+    "test": "R3",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "A": {
+        "label": "recursion",
+        "startMs": 484,
+        "ms": 501,
+        "ok": true,
+        "result": {
+          "value": "RangeError: Maximum call stack size exceeded",
+          "stringChars": 44
+        },
+        "callsStarted": 0
+      },
+      "deep": {
+        "label": "deep-return",
+        "startMs": 986,
+        "ms": 3805,
+        "ok": false,
+        "threw": "RangeError: Maximum call stack size exceeded\n    at wasm://wasm/0026e776:wasm-function[101]:0x10b9d\n    at wasm://wasm/0026e776:wasm-function[930]:0x46f02\n    at wasm://wasm/0026e776:wasm-function[933]:0x474e3\n    at wasm://wasm/0026e776:wasm-function[933]:0x47776\n    at wasm://wasm/0026e776:wasm-function[933]:0x47776\n    at wasm://wasm/0026e776:wasm-function[933]:0x47776\n    at wasm://wasm/0026e776:wasm-function[933]:0x47776\n    at wasm://wasm/0026e776:wasm-function[933]:0x47776\n    at wasm://wasm/0026e776:wasm-function[933]:0x47776\n    at wasm://wasm/0026e776:wasm-function[933]:0x47776",
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 4791,
+        "ms": 40,
+        "ok": true,
+        "result": {
+          "value": "alive",
+          "stringChars": 5
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 585,
+    "hostEvents": [],
+    "totalMs": 4831
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:78857) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      209,
+      50
+    ],
+    [
+      362,
+      62
+    ],
+    [
+      457,
+      66
+    ],
+    [
+      578,
+      68
+    ],
+    [
+      711,
+      82
+    ],
+    [
+      805,
+      119
+    ],
+    [
+      852,
+      130
+    ],
+    [
+      947,
+      131
+    ],
+    [
+      1010,
+      133
+    ],
+    [
+      1082,
+      133
+    ],
+    [
+      1153,
+      151
+    ],
+    [
+      1206,
+      155
+    ],
+    [
+      1250,
+      158
+    ],
+    [
+      1324,
+      158
+    ],
+    [
+      1393,
+      159
+    ],
+    [
+      1464,
+      161
+    ],
+    [
+      1570,
+      164
+    ],
+    [
+      1703,
+      164
+    ],
+    [
+      1755,
+      164
+    ],
+    [
+      1881,
+      164
+    ],
+    [
+      1930,
+      164
+    ],
+    [
+      2002,
+      164
+    ],
+    [
+      2070,
+      164
+    ],
+    [
+      2131,
+      164
+    ],
+    [
+      2222,
+      164
+    ],
+    [
+      2268,
+      164
+    ],
+    [
+      2338,
+      164
+    ],
+    [
+      2411,
+      164
+    ],
+    [
+      2484,
+      165
+    ],
+    [
+      2540,
+      165
+    ],
+    [
+      2594,
+      165
+    ],
+    [
+      2674,
+      165
+    ],
+    [
+      2717,
+      165
+    ],
+    [
+      2865,
+      165
+    ],
+    [
+      2997,
+      165
+    ],
+    [
+      3082,
+      165
+    ],
+    [
+      3141,
+      165
+    ],
+    [
+      3288,
+      165
+    ],
+    [
+      3370,
+      166
+    ],
+    [
+      3431,
+      166
+    ],
+    [
+      3501,
+      166
+    ],
+    [
+      3600,
+      166
+    ],
+    [
+      3649,
+      166
+    ],
+    [
+      3720,
+      166
+    ],
+    [
+      3763,
+      166
+    ],
+    [
+      3812,
+      166
+    ],
+    [
+      3894,
+      166
+    ],
+    [
+      4019,
+      166
+    ],
+    [
+      4103,
+      166
+    ],
+    [
+      4161,
+      166
+    ],
+    [
+      4240,
+      166
+    ],
+    [
+      4295,
+      166
+    ],
+    [
+      4371,
+      166
+    ],
+    [
+      4430,
+      166
+    ],
+    [
+      4482,
+      166
+    ],
+    [
+      4563,
+      166
+    ],
+    [
+      4606,
+      166
+    ],
+    [
+      4662,
+      167
+    ],
+    [
+      4718,
+      167
+    ],
+    [
+      4787,
+      167
+    ],
+    [
+      4827,
+      167
+    ],
+    [
+      4882,
+      167
+    ],
+    [
+      4937,
+      167
+    ],
+    [
+      4997,
+      167
+    ]
+  ]
+}

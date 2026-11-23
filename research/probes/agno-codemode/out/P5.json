@@ -1,0 +1,7 @@
+{
+  "probe": "P5",
+  "outcome": "works",
+  "display": "works (s3cr3t)",
+  "detail": "sandbox printed 's3cr3t'; host PROBE_SECRET was set",
+  "evidence": "research/probes/agno-codemode/out/P5.txt"
+}

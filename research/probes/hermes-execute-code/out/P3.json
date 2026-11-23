@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "works",
+  "display": "works (example.com 200)",
+  "detail": "The SPEC form failed only on certificate verification with the uv-managed Python's CA store; the same URL with an unverified SSL context printed HTTP 200.",
+  "evidence": "research/probes/hermes-execute-code/out/P3.txt"
+}

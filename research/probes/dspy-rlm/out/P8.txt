@@ -1,0 +1,44 @@
+probe: P8
+outcome: works
+display: persists within one RLM call
+detail: Two iterations of one forward: the second printed 7 (P8within). Two separate forwards: the second printed 'gone'.
+
+code:
+----
+kept = 7
+----
+try:
+    msg = kept
+except NameError:
+    msg = "gone"
+print(msg)
+msg
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 1.34
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.502
+host lookup calls: 0
+
+=== run 0 (559.0 ms) ===
+ok: true
+stdout: <repl_output>
+(no output - did you forget to print?)
+</repl_output>
+model_view_all: ["<repl_output>\n(no output - did you forget to print?)\n</repl_output>"]
+raw_outputs_untruncated_len: [38, 25]
+answer: done
+
+=== run 1 (423.1 ms) ===
+ok: true
+stdout: <repl_output>
+gone
+</repl_output>
+model_view_all: ["<repl_output>\ngone\n</repl_output>"]
+raw_outputs_untruncated_len: [4, 25]
+answer: done
+
+=== child process log (tail) ===
+

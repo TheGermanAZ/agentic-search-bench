@@ -1,0 +1,20 @@
+mode: default
+code:
+async function run(client) {
+  throw new Error("probe-boom");
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Error: probe-boom"
+      }
+    ],
+    "isError": true
+  },
+  "ms": 443,
+  "hostCalls": 0
+}

@@ -1,0 +1,1 @@
+{"id": "P5", "outcome": "blocked", "detail": "secret not visible in either config: os.environ empty, process.env stubbed to {}, Deno.env.get raises NotCapable (no --allow-env) even when the full host env is forwarded", "error": null}

@@ -1,0 +1,30 @@
+--- code 1 ---
+result(io.open("/etc/hosts"):read("a"))
+--- result 1 ---
+{"ms":2,"hostCalls":0,"side":{"proxyLogBytes":210118},"ok":true,"isError":true}
+text (453 chars):
+Script execution failed:
+[string "result(io.open("/etc/hosts"):read("a"))"]:1: attempt to index a nil value (global 'io')
+
+💡 HINT: 'io' is not a recognized server or global variable.
+
+Available servers: probe
+
+Common issues:
+• Server names are sanitized for Lua (hyphens → underscores, e.g., 'my-server' → 'my_server')
+• Use list-servers tool to discover available servers before writing scripts
+• Server may have failed to connect - check gateway logs
+--- code 2 ---
+result(loadfile("/etc/hosts"))
+--- result 2 ---
+{"ms":2,"hostCalls":0,"side":{"proxyLogBytes":211989},"ok":true,"isError":true}
+text (117 chars):
+Script execution failed:
+[string "result(loadfile("/etc/hosts"))"]:1: attempt to call a nil value (global 'loadfile')
+--- code 3 ---
+result(dofile("/etc/hosts"))
+--- result 3 ---
+{"ms":6,"hostCalls":0,"side":{"proxyLogBytes":213850},"ok":true,"isError":true}
+text (113 chars):
+Script execution failed:
+[string "result(dofile("/etc/hosts"))"]:1: attempt to call a nil value (global 'dofile')

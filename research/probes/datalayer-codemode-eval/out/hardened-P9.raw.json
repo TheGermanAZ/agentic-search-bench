@@ -1,0 +1,15 @@
+{
+  "probe": "P9",
+  "config": "hardened",
+  "codes": [
+    "from generated.mcp.probe import lookup\nimport asyncio\nrs = await asyncio.gather(lookup({\"id\": 1}), lookup({\"id\": 2}), lookup({\"id\": 3}), lookup({\"id\": 4}), lookup({\"id\": 5}))\nmsg = sum(x[\"value\"] for x in rs)\nprint(msg)\nmsg"
+  ],
+  "runs": [],
+  "setup_ms": 316.6,
+  "killed": "harness time watchdog at 120.1 s",
+  "exit_code": -9,
+  "wall_s": 120.06,
+  "peak_tree_rss_gb": 0.18,
+  "calls": [],
+  "child_log_tail": "[11/22/26 15:13:07] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-ildldngw/generate              \n                             d (mcp dir:                                        \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-ildldngw/generate              \n                             d/mcp)                                             \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-ildldngw/generate              \n                             d/mcp/probe                                        \n"
+}

@@ -1,0 +1,149 @@
+{
+  "impl": "rlm-docker",
+  "name": "Recursive Language Models (RLM): DockerREPL",
+  "source": "https://github.com/alexzhang13/rlm (MIT)",
+  "pinned": "commit e11f1a8f8ee4490686e16dd6463233abe08a07eb (rlm 0.1.3), same clone as rlm at research/impls/rlm/repo; image python:3.11-slim",
+  "language": "Python",
+  "engine": "CPython 3.11 in a python:3.11-slim Docker container; each cell is `docker exec python /workspace/_exec.py`, which exec()s the code with dill-persisted locals",
+  "how_run": "DockerREPL(custom_tools=...) then env.execute_code(code), the call RLM makes per cell; environment='docker' in get_environment. No LLM (lm_handler_address None). Harness pins the proxy port to 41920+n and names the container rlm-docker-<probe>.",
+  "probes": {
+    "P1": {
+      "outcome": "not-applicable",
+      "detail": "a host callable in custom_tools is skipped with a comment ('is a host callable and is not available in the docker environment', docker_repl.py:248-253); calling it gave NameError: name 'lookup' is not defined, 0 host calls. Passed as a code string, lookup runs inside the container and printed 42 (0 host calls).",
+      "evidence": "research/probes/rlm-docker/out/P1.txt",
+      "display": "n/a (host callables skipped)"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "execute_code returned all 200,001 chars of stdout; the last expression 'RETURNED' is dropped (exec). The RLM loop's format_iteration cuts the model view to 20,036 chars ending '... + [180002 chars...]' (rlm/utils/parsing.py, out/P2-model-view.txt)",
+      "evidence": "research/probes/rlm-docker/out/P2.txt",
+      "display": "limited (20,000 + marker, model view)"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "printed 200 from https://example.com; the container runs on the default bridge network (docker_repl.py:530-545 passes no network flag) and setup itself pip-installs dill and requests",
+      "evidence": "research/probes/rlm-docker/out/P3.txt",
+      "display": "works (example.com 200)"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "read the container's own /etc/hosts (127.0.0.1 localhost ... 0.250.250.254 host.docker.internal), not the host's. The host temp workspace is mounted read-write at /workspace.",
+      "evidence": "research/probes/rlm-docker/out/P4.txt",
+      "display": "blocked (container /etc/hosts only)"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "printed None: docker run passes no host environment",
+      "evidence": "research/probes/rlm-docker/out/P5.txt",
+      "display": "blocked (None)"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "docker exec is called with no timeout (docker_repl.py:705-708) and no RLM option sets one; harness stopped it at 120 s and removed the container",
+      "evidence": "research/probes/rlm-docker/out/P6.txt",
+      "display": "no-limit-within-120s"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "no --memory flag (docker_repl.py:530-545); harness removed the container at 4,808 MiB cgroup memory about 1.5 s into the cell. Docker Desktop VM total is 16 GB, the only ceiling.",
+      "evidence": "research/probes/rlm-docker/out/P7.txt",
+      "display": "no-limit-within-120s (4 GiB kill)"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "execution 2 printed '7': each cell is a new python process, and _locals is dill-dumped to /workspace/state.dill between cells (docker_repl.py:323-356)",
+      "evidence": "research/probes/rlm-docker/out/P8.txt",
+      "display": "persists (dill file)"
+    },
+    "P9": {
+      "outcome": "not-applicable",
+      "detail": "no host-tool bridge for custom tools. lookup as a code string inside the container: loop 1,022 ms, 5 threads 207 ms, 0 host calls. Only llm_query/rlm_query cross to the host, over the HTTP proxy.",
+      "evidence": "research/probes/rlm-docker/out/P9.txt",
+      "display": "n/a (no host bridge; threads 207 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "stderr: 'Traceback ... File \"/workspace/_exec.py\", line 109 ... File \"<string>\", line 1, in <module>\\nValueError: probe-boom'; message and line survive",
+      "evidence": "research/probes/rlm-docker/out/P10.txt",
+      "display": "works (message + line 1)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "same env, one docker exec per cell: median 215 ms, p90 389 ms (n=20); setup (docker run + pip install dill requests) 3254 ms; fresh env incl. setup [3356, 3567, 2784, 3582, 2719] ms",
+      "evidence": "research/probes/rlm-docker/out/P11.txt",
+      "display": "works (215 ms/cell, 3.3 s setup)"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "subclass walk ran (443 classes, 1 _wrap_close); __import__('os').system and _wrap_close.__init__.__globals__['system'] both returned 0, inside the container. No docker.sock, no /Users. Two host-facing paths exist: the sandbox wrote a file into the host-mounted workspace (seen on the host), and it reached the host proxy at host.docker.internal (answered 'No LM handler configured').",
+      "evidence": "research/probes/rlm-docker/out/P12.txt",
+      "display": "blocked (os.system ran in container)"
+    }
+  },
+  "defaults": {
+    "time": "None. execute_code runs docker exec with no timeout (research/impls/rlm/repo/rlm/environments/docker_repl.py:705-708); RLM max_timeout is checked only between iterations (rlm.py:421-422). P6 ran to the 120 s harness stop.",
+    "memory": "None. docker run has no --memory/--cpus/--pids-limit (research/impls/rlm/repo/rlm/environments/docker_repl.py:530-545). P7 reached 4,808 MiB before the harness kill.",
+    "output": "execute_code returns all stdout uncapped (200,001 chars); the RLM loop caps the model view at 20,000 chars per block, head only, with a \"... + [N chars...]\" marker (rlm/utils/parsing.py).",
+    "tool_calls": "No custom-tool bridge (host callables skipped). llm_query/rlm_query go through a host ThreadingHTTPServer proxy; rlm_query_batched is capped at max_concurrent_subcalls=4.",
+    "hardened_null_reason": "DockerREPL exposes only `image` (plus shared env args); it has no timeout, memory, CPU, network or mount option (docker_repl.py:431-452, 530-545; docs/src/app/environments/docker/page.tsx:43-50), so there is no stricter configuration to run."
+  },
+  "hardened": null,
+  "source_notes": [
+    {
+      "topic": "Hardened config",
+      "finding": "No stricter option exists. DockerREPL takes only `image` plus the shared env arguments (docker_repl.py:431-452); docs list image, setup_code, context_payload, lm_handler_address (docs/src/app/environments/docker/page.tsx:43-50). There is no timeout, memory, CPU, network or read-only flag to set, so hardened is null.",
+      "evidence": "research/impls/rlm/repo/rlm/environments/docker_repl.py:431-452, https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/docker_repl.py#L530-L545"
+    },
+    {
+      "topic": "API shape",
+      "finding": "custom_tools values that are code strings are pasted into the per-cell script; plain data is JSON-loaded; host callables are dropped with a warning comment. The model sees tool names and descriptions via format_tools_for_prompt.",
+      "evidence": "research/impls/rlm/repo/rlm/environments/docker_repl.py:223-265"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "All custom tools are listed upfront in the system prompt; no search.",
+      "evidence": "rlm/environments/base_env.py format_tools_for_prompt"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Only llm_query/llm_query_batched/rlm_query/rlm_query_batched cross the boundary: container code POSTs to http://host.docker.internal:<port>, a ThreadingHTTPServer on the host bound to 0.0.0.0 (all interfaces), which forwards to the LM handler socket. LM credentials stay on the host.",
+      "evidence": "research/impls/rlm/repo/rlm/environments/docker_repl.py:291-320, 512-527"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "A Docker container, default bridge network, running as root (python:3.11-slim default user), with the host temp workspace bind-mounted read-write at /workspace. The module docstring says \"fully isolated from the host LM process\"; the README groups docker with non-isolated local environments. P4/P5/P12 stayed in the container; the sandbox can write the host workspace and call the proxy.",
+      "evidence": "research/impls/rlm/repo/rlm/environments/docker_repl.py:1-18, 530-545; research/impls/rlm/repo/README.md:89; out/P12.txt"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "stdout and stderr captured in the container script and returned in a JSON line; last expression dropped; RLM caps the model view at 20,000 chars.",
+      "evidence": "research/impls/rlm/repo/rlm/environments/docker_repl.py:358-395; out/P2-model-view.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "None in DockerREPL: no exec timeout, no container limits, no output cap at the env level.",
+      "evidence": "research/impls/rlm/repo/rlm/environments/docker_repl.py:530-545, 705-708"
+    },
+    {
+      "topic": "State",
+      "finding": "Persists across cells through /workspace/state.dill; values that dill cannot pickle are silently dropped.",
+      "evidence": "research/impls/rlm/repo/rlm/environments/docker_repl.py:333-347"
+    },
+    {
+      "topic": "Errors",
+      "finding": "traceback.print_exc into stderr, so the model sees the full traceback with line numbers (line 109 is the harness exec line, line 1 the user code).",
+      "evidence": "out/P10.txt"
+    },
+    {
+      "topic": "Other backends",
+      "finding": "E2B, Modal, Daytona and Prime backends (e2b_repl.py, modal_repl.py, daytona_repl.py, prime_repl.py) need accounts and API keys: blocked-needs-credentials, not probed.",
+      "evidence": "research/impls/rlm/repo/rlm/environments/{e2b,modal,daytona,prime}_repl.py; pyproject.toml optional-dependencies"
+    }
+  ],
+  "surprises": [
+    "Host callables passed as custom_tools are silently replaced by a comment in the container script; the first call fails with NameError. Tools must be source strings, so any credentials a tool needs must be inside the container.",
+    "The LM proxy binds 0.0.0.0 on an OS-chosen port (docker_repl.py:512-520), so other machines on the network can reach llm_query while a session runs.",
+    "Each setup runs pip install dill requests inside the container, so the default needs network, and setup took about 3.3 s.",
+    "No execution timeout anywhere: an infinite loop holds the RLM iteration forever."
+  ]
+}

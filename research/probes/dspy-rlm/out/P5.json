@@ -1,0 +1,7 @@
+{
+  "probe": "P5",
+  "outcome": "blocked",
+  "display": "blocked (env empty)",
+  "detail": "os.environ.get('PROBE_SECRET') -> None inside Pyodide; js.Deno.env.get('PROBE_SECRET') -> 'NotCapable: Requires env access to \"PROBE_SECRET\"' (P12jsTry). The Deno process does hold the host env.",
+  "evidence": "research/probes/dspy-rlm/out/P5.txt"
+}

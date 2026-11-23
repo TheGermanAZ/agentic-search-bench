@@ -1,0 +1,255 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py hardened R9a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2464,
+  "peakTreeRssMb": 127,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9a",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode({'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})]); agent.run() per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 963,
+          "ms": 1170,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTimeoutError: feed time limit exceeded: 1.000161042s > 1s\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+          ],
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1115,
+        "ms": 269,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1384,
+        "ms": 251,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 2134,
+        "ms": 252,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 69,
+    "totalMs": 2386
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      100,
+      30
+    ],
+    [
+      145,
+      37
+    ],
+    [
+      207,
+      43
+    ],
+    [
+      266,
+      51
+    ],
+    [
+      311,
+      52
+    ],
+    [
+      361,
+      52
+    ],
+    [
+      405,
+      53
+    ],
+    [
+      453,
+      54
+    ],
+    [
+      508,
+      56
+    ],
+    [
+      557,
+      57
+    ],
+    [
+      612,
+      57
+    ],
+    [
+      659,
+      59
+    ],
+    [
+      709,
+      60
+    ],
+    [
+      760,
+      63
+    ],
+    [
+      809,
+      64
+    ],
+    [
+      863,
+      66
+    ],
+    [
+      913,
+      70
+    ],
+    [
+      962,
+      71
+    ],
+    [
+      1012,
+      72
+    ],
+    [
+      1075,
+      76
+    ],
+    [
+      1120,
+      77
+    ],
+    [
+      1168,
+      77
+    ],
+    [
+      1225,
+      116
+    ],
+    [
+      1263,
+      126
+    ],
+    [
+      1324,
+      126
+    ],
+    [
+      1380,
+      126
+    ],
+    [
+      1427,
+      126
+    ],
+    [
+      1475,
+      98
+    ],
+    [
+      1527,
+      127
+    ],
+    [
+      1569,
+      127
+    ],
+    [
+      1622,
+      127
+    ],
+    [
+      1674,
+      127
+    ],
+    [
+      1728,
+      98
+    ],
+    [
+      1809,
+      98
+    ],
+    [
+      1843,
+      98
+    ],
+    [
+      1899,
+      98
+    ],
+    [
+      1948,
+      98
+    ],
+    [
+      2000,
+      98
+    ],
+    [
+      2046,
+      98
+    ],
+    [
+      2103,
+      98
+    ],
+    [
+      2162,
+      98
+    ],
+    [
+      2209,
+      98
+    ],
+    [
+      2262,
+      109
+    ],
+    [
+      2308,
+      109
+    ],
+    [
+      2356,
+      109
+    ],
+    [
+      2418,
+      109
+    ],
+    [
+      2463,
+      109
+    ]
+  ]
+}

@@ -1,0 +1,18 @@
+probe=P4 mode=from_env AGENTICA_NO_SANDBOX='1' PROBE_SECRET set in host: True
+sandbox mode: no_sandbox
+--- exec 1 (0 ms)
+output repr (first 600): "'127.0.0.1\\tlocalhost\\n::1\\tlocalhost ip6-localhost ip6-loopback\\nfe00::\\tip6-localnet\\nff00::\\tip6-mcastprefix\\nff02::1\\tip6-allnodes\\nff02::2\\tip6-allrouters\\n192.168.215.5\\t10d006b2a73d\\n'\n"
+len(output): 192
+out_str: "'127.0.0.1\\tlocalhost\\n::1\\tlocalhost ip6-localhost ip6-loopback\\nfe00::\\tip6-localnet\\nff00::\\tip6-mcastprefix\\nff02::1\\tip6-allnodes\\nff02::2\\tip6-allrouters\\n192.168.215.5\\t10d006b2a73d\\n'"
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 2 (1 ms)
+output repr (first 600): "['bin', 'boot', 'dev', 'etc', 'home', 'lib', 'media', 'mnt', 'opt', 'proc', 'root', 'run', 'sbin', 'srv', 'sys', 'tmp', 'usr', 'var', 'probe', '.dockerenv']\n"
+len(output): 157
+out_str: "['bin', 'boot', 'dev', 'etc', 'home', 'lib', 'media', 'mnt', 'opt', 'proc', 'root', 'run', 'sbin', 'srv', 'sys', 'tmp', 'usr', 'var', 'probe', '.dockerenv']"
+exception_name: None
+traceback_str: None
+has_result: False
+host lookup calls: 0
+[harness] exit=0 wall=2s container=symbolica-agentica-nosandbox-P4-55462

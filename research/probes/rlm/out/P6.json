@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "no-limit-within-120s",
+  "detail": "no limit stopped the cell within 120 s; harness stopped it",
+  "killed_by": "harness time watchdog",
+  "peak_rss_gb": 0.03
+}

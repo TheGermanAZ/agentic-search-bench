@@ -1,0 +1,46 @@
+{
+  "probe": "P6",
+  "runs": 5,
+  "rows": [
+    {
+      "run": 1,
+      "wallMs": 468,
+      "execMs": 388,
+      "exitCode": 126,
+      "stderr": "bash: too many commands executed (>100000), increase executionLimits.maxCommandCount",
+      "peakRssKb": 100592
+    },
+    {
+      "run": 2,
+      "wallMs": 457,
+      "execMs": 384,
+      "exitCode": 126,
+      "stderr": "bash: too many commands executed (>100000), increase executionLimits.maxCommandCount",
+      "peakRssKb": 101536
+    },
+    {
+      "run": 3,
+      "wallMs": 454,
+      "execMs": 377,
+      "exitCode": 126,
+      "stderr": "bash: too many commands executed (>100000), increase executionLimits.maxCommandCount",
+      "peakRssKb": 100704
+    },
+    {
+      "run": 4,
+      "wallMs": 446,
+      "execMs": 377,
+      "exitCode": 126,
+      "stderr": "bash: too many commands executed (>100000), increase executionLimits.maxCommandCount",
+      "peakRssKb": 101280
+    },
+    {
+      "run": 5,
+      "wallMs": 453,
+      "execMs": 384,
+      "exitCode": 126,
+      "stderr": "bash: too many commands executed (>100000), increase executionLimits.maxCommandCount",
+      "peakRssKb": 101040
+    }
+  ]
+}

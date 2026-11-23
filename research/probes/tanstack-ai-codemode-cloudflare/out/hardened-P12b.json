@@ -1,0 +1,38 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P12b",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 2.171166999999997,
+  "source": [
+    "return String((function(){return this})().process);"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Cannot read properties of undefined (reading 'process')",
+          "name": "TypeError",
+          "stack": "TypeError: Cannot read properties of undefined (reading 'process')\n    at main.js:47:52\n    at main.js:48:11\n    at Object.fetch (main.js:78:7)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 41.081500000000005,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "TypeError: Cannot read properties of undefined (reading 'process')",
+    "ms": 41,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 89.4
+}

@@ -1,0 +1,9 @@
+{
+  "probe": "P9",
+  "config": "hardened",
+  "outcome": "works",
+  "detail": "216 ms for five 200 ms lookups (parallel); 5 host-side calls",
+  "display": "parallel (216 ms)",
+  "peak_child_rss_mb": 94,
+  "wall_s": 1
+}

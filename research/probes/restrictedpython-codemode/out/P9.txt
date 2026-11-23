@@ -1,0 +1,9 @@
+code:
+import time
+t = time.time()
+rs = [tools.lookup(id=i) for i in [1, 2, 3, 4, 5]]
+result = int((time.time() - t) * 1000)
+
+{"ok": true, "result": 1018, "error": null, "ms": 1018.7}
+stdout (0 chars): ''
+host_calls=5

@@ -1,0 +1,245 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py hardened R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 6054,
+  "peakTreeRssMb": 181,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R7b",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich'], 'timeout': 1.0, 'memory_limit': 16777216, 'max_ptc_calls': 8, 'mode': 'call', 'subagents': False}), new thread_id per execution",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 2273,
+        "ms": 1598,
+        "ok": true,
+        "result": "<error type=\"Timeout\">interrupted</error>",
+        "callsStarted": 0
+      },
+      "atReturn": {
+        "started": 0,
+        "done": 0
+      },
+      "after1500ms": {
+        "started": 1,
+        "done": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 5372,
+        "ms": 302,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 69,
+    "totalMs": 5674
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      102,
+      27
+    ],
+    [
+      210,
+      36
+    ],
+    [
+      371,
+      39
+    ],
+    [
+      493,
+      46
+    ],
+    [
+      610,
+      50
+    ],
+    [
+      722,
+      50
+    ],
+    [
+      812,
+      54
+    ],
+    [
+      920,
+      58
+    ],
+    [
+      1055,
+      58
+    ],
+    [
+      1191,
+      61
+    ],
+    [
+      1307,
+      64
+    ],
+    [
+      1399,
+      65
+    ],
+    [
+      1496,
+      69
+    ],
+    [
+      1600,
+      71
+    ],
+    [
+      1703,
+      74
+    ],
+    [
+      1810,
+      76
+    ],
+    [
+      1903,
+      78
+    ],
+    [
+      2005,
+      81
+    ],
+    [
+      2115,
+      85
+    ],
+    [
+      2252,
+      86
+    ],
+    [
+      2345,
+      90
+    ],
+    [
+      2470,
+      125
+    ],
+    [
+      2568,
+      156
+    ],
+    [
+      2767,
+      169
+    ],
+    [
+      2869,
+      174
+    ],
+    [
+      3084,
+      180
+    ],
+    [
+      3172,
+      180
+    ],
+    [
+      3288,
+      180
+    ],
+    [
+      3373,
+      180
+    ],
+    [
+      3507,
+      180
+    ],
+    [
+      3600,
+      180
+    ],
+    [
+      3733,
+      180
+    ],
+    [
+      3832,
+      180
+    ],
+    [
+      3946,
+      181
+    ],
+    [
+      4063,
+      180
+    ],
+    [
+      4145,
+      180
+    ],
+    [
+      4248,
+      180
+    ],
+    [
+      4365,
+      180
+    ],
+    [
+      4487,
+      180
+    ],
+    [
+      4624,
+      180
+    ],
+    [
+      4759,
+      180
+    ],
+    [
+      4862,
+      180
+    ],
+    [
+      4986,
+      180
+    ],
+    [
+      5129,
+      180
+    ],
+    [
+      5250,
+      180
+    ],
+    [
+      5361,
+      180
+    ],
+    [
+      5480,
+      180
+    ],
+    [
+      5601,
+      181
+    ],
+    [
+      5761,
+      181
+    ]
+  ]
+}

@@ -1,0 +1,13 @@
+--- code 1 ---
+kept = 7
+return "set"
+--- result 1 ---
+{"ms":18,"hostCalls":0,"ok":true,"isError":false}
+text (5 chars):
+"set"
+--- code 2 ---
+return kept
+--- result 2 ---
+{"ms":4,"hostCalls":0,"ok":true,"isError":true}
+text (58 chars):
+script execution failed: script.star:2:12: undefined: kept

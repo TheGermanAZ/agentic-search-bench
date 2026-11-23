@@ -1,0 +1,19 @@
+mode: hardened
+code:
+async function run(client) {
+  return (globalThis as any).process.env.PROBE_SECRET;
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "s3cr3t"
+      }
+    ]
+  },
+  "ms": 434,
+  "hostCalls": 0
+}

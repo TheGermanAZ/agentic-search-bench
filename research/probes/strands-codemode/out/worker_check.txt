@@ -1,0 +1,7 @@
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+harness pid 1314; children while the loop spins:
+   2108  1314  40.7  11488 ~/p/agentic-search-bench/research/impls/strands-codemode/.venv/bin/monty subprocess
+   3286  1314   0.0   1968 ps -A -o pid=,ppid=,%cpu=,rss=,command=
+P7 then next run in the same agent:
+  P7 -> error "<python-input-0>", line 3, in <module>     a.append("x" * 10**6)              ~~~~~~~~~~~ MemoryError: memory limit exceeded: 269066748 bytes > 268435456 bytes
+  next -> success 2

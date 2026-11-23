@@ -1,0 +1,6 @@
+{
+  "probe": "P4b",
+  "outcome": "blocked",
+  "detail": "InterpreterError: Code execution failed at line 'import os' due to: InterpreterError: Import of os is not allowed. Authorized imports are: ['unicodedata', 'queue', 'itertools', 'datetime', 're', 'stat', 'collections', 'statistics', 'time', 'math', 'random'] (extra: import-based variant)",
+  "wall_ms": 0.3
+}

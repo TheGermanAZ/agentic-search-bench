@@ -1,0 +1,29 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 449,
+    "totalWallMs": 871,
+    "peakTreeRssMB": 182.1,
+    "stderrTail": ""
+  },
+  "backend": "localsandbox",
+  "probe": "P3",
+  "mode": "hardened",
+  "setupMs": 337.4,
+  "record": {
+    "code": "const r = await fetch(\"https://example.com\"); return { status: r.status, bytes: (await r.text()).length }",
+    "wallMs": 414.9,
+    "hostCalls": 0,
+    "out": {
+      "success": false,
+      "logs": [],
+      "error": {
+        "message": "fetch failed",
+        "name": "TypeError"
+      }
+    },
+    "threw": null
+  }
+}

@@ -1,0 +1,456 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/hermes-execute-code/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../hermes-execute-code/adapter.py hardened R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 21878,
+  "peakTreeRssMb": 323,
+  "peakTreeFootprintMb": 179,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9b",
+    "impl": "hermes-execute-code",
+    "notes": "HERMES_HOME=home-hardened (docker, no network, 512 MB, 1 CPU, strict, timeout 10 s, 50 calls); one process, fresh task_id (container + kernel) per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1156,
+          "ms": 16777,
+          "ok": true,
+          "result": {
+            "status": "timeout",
+            "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "tool_calls_made": 0,
+            "model_sees_chars": 639,
+            "model_sees_head": "{\"status\": \"timeout\", \"output\": \"⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 12.42, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}"
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1306,
+        "ms": 7989,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "42\n",
+          "error": null,
+          "tool_calls_made": 1,
+          "model_sees_chars": 261,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"42\\n\", \"tool_calls_made\": 1, \"duration_seconds\": 3.09, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 9295,
+        "ms": 4340,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "42\n",
+          "error": null,
+          "tool_calls_made": 1,
+          "model_sees_chars": 261,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"42\\n\", \"tool_calls_made\": 1, \"duration_seconds\": 2.86, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 17934,
+        "ms": 3808,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "42\n",
+          "error": null,
+          "tool_calls_made": 1,
+          "model_sees_chars": 261,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"42\\n\", \"tool_calls_made\": 1, \"duration_seconds\": 1.88, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 1
+      }
+    },
+    "adapterStats": {
+      "tasks": 4
+    },
+    "hostMaxEventLoopLagMs": 68,
+    "totalMs": 21742
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      116,
+      23,
+      0
+    ],
+    [
+      407,
+      54,
+      36
+    ],
+    [
+      742,
+      74,
+      57
+    ],
+    [
+      1089,
+      95,
+      67
+    ],
+    [
+      1344,
+      168,
+      109
+    ],
+    [
+      1597,
+      215,
+      122
+    ],
+    [
+      1958,
+      215,
+      136
+    ],
+    [
+      2292,
+      216,
+      136
+    ],
+    [
+      2635,
+      216,
+      136
+    ],
+    [
+      2912,
+      216,
+      136
+    ],
+    [
+      3264,
+      216,
+      136
+    ],
+    [
+      3668,
+      216,
+      136
+    ],
+    [
+      4008,
+      216,
+      136
+    ],
+    [
+      4264,
+      216,
+      136
+    ],
+    [
+      4524,
+      216,
+      137
+    ],
+    [
+      4824,
+      216,
+      137
+    ],
+    [
+      5115,
+      171,
+      136
+    ],
+    [
+      5498,
+      214,
+      136
+    ],
+    [
+      5807,
+      216,
+      135
+    ],
+    [
+      6138,
+      170,
+      137
+    ],
+    [
+      6410,
+      216,
+      137
+    ],
+    [
+      6671,
+      170,
+      123
+    ],
+    [
+      6942,
+      171,
+      150
+    ],
+    [
+      7188,
+      163,
+      111
+    ],
+    [
+      7688,
+      160,
+      121
+    ],
+    [
+      7992,
+      216,
+      137
+    ],
+    [
+      8277,
+      178,
+      129
+    ],
+    [
+      8537,
+      188,
+      139
+    ],
+    [
+      8791,
+      143,
+      139
+    ],
+    [
+      9050,
+      267,
+      139
+    ],
+    [
+      9348,
+      186,
+      126
+    ],
+    [
+      9692,
+      245,
+      151
+    ],
+    [
+      9944,
+      233,
+      165
+    ],
+    [
+      10202,
+      233,
+      152
+    ],
+    [
+      10473,
+      191,
+      139
+    ],
+    [
+      10732,
+      219,
+      147
+    ],
+    [
+      10987,
+      233,
+      139
+    ],
+    [
+      11315,
+      160,
+      153
+    ],
+    [
+      11573,
+      227,
+      138
+    ],
+    [
+      11839,
+      230,
+      137
+    ],
+    [
+      12103,
+      257,
+      126
+    ],
+    [
+      12373,
+      227,
+      152
+    ],
+    [
+      12677,
+      133,
+      126
+    ],
+    [
+      12950,
+      312,
+      179
+    ],
+    [
+      13406,
+      164,
+      126
+    ],
+    [
+      13707,
+      143,
+      137
+    ],
+    [
+      13971,
+      178,
+      139
+    ],
+    [
+      14250,
+      211,
+      139
+    ],
+    [
+      14530,
+      179,
+      152
+    ],
+    [
+      14854,
+      133,
+      126
+    ],
+    [
+      15108,
+      133,
+      138
+    ],
+    [
+      15434,
+      133,
+      138
+    ],
+    [
+      15746,
+      133,
+      139
+    ],
+    [
+      16008,
+      133,
+      126
+    ],
+    [
+      16259,
+      178,
+      138
+    ],
+    [
+      16531,
+      178,
+      140
+    ],
+    [
+      16817,
+      133,
+      126
+    ],
+    [
+      17070,
+      133,
+      126
+    ],
+    [
+      17409,
+      133,
+      126
+    ],
+    [
+      17766,
+      177,
+      134
+    ],
+    [
+      18034,
+      177,
+      139
+    ],
+    [
+      18396,
+      211,
+      139
+    ],
+    [
+      18700,
+      223,
+      152
+    ],
+    [
+      19008,
+      223,
+      152
+    ],
+    [
+      19311,
+      178,
+      139
+    ],
+    [
+      19714,
+      178,
+      139
+    ],
+    [
+      20062,
+      133,
+      139
+    ],
+    [
+      20419,
+      142,
+      138
+    ],
+    [
+      20680,
+      169,
+      134
+    ],
+    [
+      20933,
+      174,
+      140
+    ],
+    [
+      21201,
+      133,
+      151
+    ],
+    [
+      21515,
+      133,
+      137
+    ],
+    [
+      21761,
+      178,
+      138
+    ]
+  ]
+}

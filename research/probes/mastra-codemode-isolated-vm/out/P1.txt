@@ -1,0 +1,27 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 230,
+    "totalWallMs": 383,
+    "peakTreeRssMB": 109.4,
+    "stderrTail": ""
+  },
+  "backend": "isolated-vm",
+  "probe": "P1",
+  "mode": "default",
+  "setupMs": 88.1,
+  "record": {
+    "code": "const r = await external_lookup({id: 21}); console.log(r.value)",
+    "wallMs": 237.1,
+    "hostCalls": 1,
+    "out": {
+      "success": true,
+      "logs": [
+        "42"
+      ]
+    },
+    "threw": null
+  }
+}

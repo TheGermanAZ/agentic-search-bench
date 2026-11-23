@@ -1,0 +1,32 @@
+{
+  "probe": "P8",
+  "config": "default",
+  "codes": [
+    "kept = 7",
+    "try:\n    msg = kept\nexcept NameError:\n    msg = \"gone\"\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "",
+      "error": null,
+      "ms": 74.9,
+      "started": 1795377511.956851
+    },
+    {
+      "ok": true,
+      "stdout": "7\n\n\n7",
+      "error": null,
+      "ms": 12.2,
+      "started": 1795377512.0323179
+    }
+  ],
+  "setup_ms": 9.5,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.63,
+  "peak_tree_rss_gb": 0.143,
+  "calls": [],
+  "child_log_tail": "~/p/agentic-search-bench/research/impls/llamaindex-codeact/.venv/lib/python3.12/site-packages/workflows/context/state_store.py:231: UnserializableKeyWarning: Skipping serialization of known unserializable key: memory -- This is expected but will require this item to be set manually after deserialization.\n  warnings.warn(\n"
+}

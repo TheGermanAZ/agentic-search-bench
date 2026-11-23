@@ -1,0 +1,1 @@
+{"mcpServers":{"probe":{"command":"~/.local/state/fnm_multishells/2953_1794773017137/bin/node","args":["~/p/agentic-search-bench/research/probes/codemode-unified-bun/lookup-server.mjs","~/p/agentic-search-bench/research/probes/codemode-unified-bun/out/calls-envlog.jsonl"],"env":{"FAKE_API_KEY":"sk-fake-0123456789abcdefSECRETTAIL"}}}}

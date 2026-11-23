@@ -1,0 +1,27 @@
+{
+  "probe": "P4",
+  "config": "hardened",
+  "codes": [
+    "data = open(\"/etc/hosts\").read()\nmsg = \"HOSTS \" + str(len(data)) + \" chars, mentions localhost: \" + str(\"localhost\" in data)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "HOSTS 450 chars, mentions localhost: True",
+      "stderr": "",
+      "result": "'HOSTS 450 chars, mentions localhost: True'",
+      "error": null,
+      "interrupted": false,
+      "ms": 12.1,
+      "started": 1795378427.1671
+    }
+  ],
+  "setup_ms": 2571.2,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 3.63,
+  "peak_tree_rss_gb": 0.378,
+  "calls": [],
+  "child_log_tail": "[11/22/26 15:13:44] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-319f67u              \n                             h/generated (mcp dir:                              \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-319f67u              \n                             h/generated/mcp)                                   \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-319f67u              \n                             h/generated/mcp/probe                              \n                    INFO     Starting Jupyter server       jupyter_server.py:262\n                             subprocess on 127.0.0.1:41520                      \n                             (workdir=/var/folders/tg/x0gc                      \n                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      \n                             code-sandbox-_63x3b_m)                             \n[11/22/26 15:13:45] INFO     No existing kernels found,    jupyter_server.py:412\n                             will create a new one                              \n                    INFO     Starting the kernel client\u2026           client.py:412\n                    INFO     KernelHttpManager created a new      manager.py:258\n                             kernel: {'id':                                     \n                             'c9583e8b-5328-42ba-9d9f-b393ed56401               \n                             8', 'name': 'python3',                             \n                             'last_activity':                                   \n                             '2026-11-22T20:13:45.953836Z',                     \n                             'execution_state': 'starting',                     \n                             'connections': 0}                                  \n[11/22/26 15:13:46] INFO     Websocket connected                 _logging.py:104\n[11/22/26 15:13:47] INFO     Stopping the kernel client\u2026           client.py:433\n"
+}

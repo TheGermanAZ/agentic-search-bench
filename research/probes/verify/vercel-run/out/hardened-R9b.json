@@ -1,0 +1,195 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs hardened R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1462,
+  "peakTreeRssMb": 174,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "hardened",
+    "test": "R9b",
+    "notes": "createRunner({limits: HARDENED_LIMITS}) shared",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 19,
+          "ms": 164,
+          "ok": false,
+          "threw": "InternalError: out of memory\n    at <anonymous> (run.js:1:39)",
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 190,
+        "ms": 209,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": 42
+          },
+          "stringChars": 9
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1000,
+        "ms": 205,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": 42
+          },
+          "stringChars": 9
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1205,
+        "ms": 204,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": 42
+          },
+          "stringChars": 9
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 23,
+    "hostEvents": [],
+    "totalMs": 1409
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:16316) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      75,
+      80
+    ],
+    [
+      130,
+      112
+    ],
+    [
+      177,
+      155
+    ],
+    [
+      231,
+      174
+    ],
+    [
+      278,
+      143
+    ],
+    [
+      327,
+      143
+    ],
+    [
+      380,
+      143
+    ],
+    [
+      430,
+      143
+    ],
+    [
+      482,
+      143
+    ],
+    [
+      533,
+      143
+    ],
+    [
+      585,
+      143
+    ],
+    [
+      635,
+      143
+    ],
+    [
+      686,
+      143
+    ],
+    [
+      743,
+      143
+    ],
+    [
+      790,
+      143
+    ],
+    [
+      839,
+      143
+    ],
+    [
+      888,
+      143
+    ],
+    [
+      941,
+      143
+    ],
+    [
+      993,
+      143
+    ],
+    [
+      1041,
+      143
+    ],
+    [
+      1095,
+      144
+    ],
+    [
+      1144,
+      144
+    ],
+    [
+      1196,
+      144
+    ],
+    [
+      1248,
+      144
+    ],
+    [
+      1299,
+      145
+    ],
+    [
+      1350,
+      145
+    ],
+    [
+      1409,
+      145
+    ],
+    [
+      1461,
+      146
+    ]
+  ]
+}

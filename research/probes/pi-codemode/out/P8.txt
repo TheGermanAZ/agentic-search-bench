@@ -1,0 +1,32 @@
+{
+  "impl": "pi-codemode",
+  "config": "default",
+  "probe": "P8",
+  "options": {},
+  "hostCalls": 0,
+  "results": [
+    {
+      "step": 1,
+      "ok": true,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": []
+    },
+    {
+      "step": 2,
+      "ok": true,
+      "output": [
+        {
+          "type": "text",
+          "text": "gone",
+          "console": true
+        }
+      ],
+      "outputTextChars": 4,
+      "calls": []
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P8"], "exit_code": 0, "wall_ms": 254, "peak_tree_rss_mb": 101.9, "watch_kill": null}

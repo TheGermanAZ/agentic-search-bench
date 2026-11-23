@@ -1,0 +1,18 @@
+probe=P8 mode=from_env AGENTICA_NO_SANDBOX=None PROBE_SECRET set in host: True
+sandbox mode: wasm
+--- exec 1 (4 ms)
+output repr (first 600): ''
+len(output): 0
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 2 (3 ms)
+output repr (first 600): '7\n'
+len(output): 2
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+host lookup calls: 0
+[harness] exit=0 wall=3s container=symbolica-agentica-P8-39322

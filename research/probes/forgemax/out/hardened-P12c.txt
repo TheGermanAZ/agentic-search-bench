@@ -1,0 +1,18 @@
+mode: hardened
+code:
+async () => { const f = (function(){}).constructor; return String(f); }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "\"undefined\""
+      }
+    ],
+    "isError": false
+  },
+  "ms": 4,
+  "hostCalls": 0
+}

@@ -1,0 +1,6 @@
+r = await read(21)
+print(r["value"])
+--- output
+42
+---
+wall_ms=329 host_calls=1 peak_tree_rss_mb=137

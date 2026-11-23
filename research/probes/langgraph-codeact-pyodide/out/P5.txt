@@ -1,0 +1,29 @@
+probe: P5
+outcome: blocked
+display: blocked (env empty)
+detail: os.environ has no PROBE_SECRET (printed None); host had it set
+
+code:
+----
+import os
+msg = "ENV " + str(os.environ.get("PROBE_SECRET"))
+print(msg)
+msg
+----
+
+setup_ms: 16.4
+wall_s (whole child process): 1.59
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.294
+host lookup calls: 0
+
+=== run 0 (1181.0 ms) ===
+ok: true
+stdout: ENV None
+error: null
+context_keys: ["msg", "os"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

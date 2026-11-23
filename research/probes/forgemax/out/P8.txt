@@ -1,0 +1,35 @@
+mode: default
+code:
+async () => { globalThis.kept = 7; return "set"; }
+---
+async () => { return typeof kept === "undefined" ? "gone" : kept; }
+
+result:
+{
+  "first": {
+    "response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "\"set\""
+        }
+      ],
+      "isError": false
+    },
+    "ms": 12,
+    "hostCalls": 0
+  },
+  "second": {
+    "response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "\"gone\""
+        }
+      ],
+      "isError": false
+    },
+    "ms": 12,
+    "hostCalls": 0
+  }
+}

@@ -1,0 +1,27 @@
+probe: hardened-P12f
+outcome: blocked
+display: blocked (Deno NotCapable)
+detail: Error during execution: NotCapable: Requires read access to "/etc/hosts", run again with the --allow-read flag Error during execution: NotCapable: Requires read access to "/etc/hosts", run again with the --allow-read flag
+
+code:
+----
+import js
+print('READ', js.Deno.readTextFileSync('/etc/hosts')[:40])
+----
+
+setup_ms: 15.4
+wall_s (whole child process): 1.49
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.316
+host lookup calls: 0
+
+=== run 0 (1112.3 ms) ===
+ok: false
+stdout: Error during execution: NotCapable: Requires read access to "/etc/hosts", run again with the --allow-read flag
+error: Error during execution: NotCapable: Requires read access to "/etc/hosts", run again with the --allow-read flag
+context_keys: []
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

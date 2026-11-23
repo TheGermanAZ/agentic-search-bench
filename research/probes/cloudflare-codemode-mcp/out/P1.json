@@ -1,0 +1,20 @@
+{
+  "specCode": {
+    "tool": "execute",
+    "code": "async () => { const r = await cloudflare.request({ method: \"GET\", path: \"/lookup/\" + 21 }); console.log(r.result.value) }",
+    "ms": 1644,
+    "hostCalls": 1,
+    "isError": false,
+    "text": "undefined",
+    "rpcError": null
+  },
+  "returnVariant": {
+    "tool": "execute",
+    "code": "async () => { const r = await cloudflare.request({ method: \"GET\", path: \"/lookup/\" + 21 }); return r.result.value }",
+    "ms": 208,
+    "hostCalls": 1,
+    "isError": false,
+    "text": "42",
+    "rpcError": null
+  }
+}

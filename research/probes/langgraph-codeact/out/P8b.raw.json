@@ -1,0 +1,28 @@
+{
+  "probe": "P8b",
+  "config": "default",
+  "codes": [
+    "def helper():\n    return lookup(3)['value']\nprint(helper())"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: NameError(\"name 'lookup' is not defined\")",
+      "error": "Error during execution: NameError(\"name 'lookup' is not defined\")",
+      "context_keys": [
+        "helper"
+      ],
+      "host_builtins_leak": false,
+      "ms": 2.4,
+      "started": 1795378865.7014341
+    }
+  ],
+  "setup_ms": 3.8,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.39,
+  "peak_tree_rss_gb": 0.057,
+  "calls": [],
+  "child_log_tail": ""
+}

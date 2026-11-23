@@ -1,0 +1,47 @@
+label: P9
+command: node probe.mjs P9
+child exit: code=0 signal=null
+child wall ms (process start to exit): 620
+peak child RSS: 99.1 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P9",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 16.748541999999986,
+  "source": [
+    "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => external_lookup({id:i}))); const dt = Date.now()-t; console.log(dt); return dt;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": 205,
+        "logCount": 1,
+        "logChars": 3,
+        "logs": [
+          "205"
+        ]
+      },
+      "wallMs": 240.24704200000002,
+      "hostCalls": 5
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": 205,
+      "logCount": 1,
+      "logChars": 3
+    },
+    "ms": 240,
+    "hostCalls": 5
+  },
+  "hostRssAfterMB": 87.4
+}
+--- child stdout ---
+
+--- child stderr ---
+

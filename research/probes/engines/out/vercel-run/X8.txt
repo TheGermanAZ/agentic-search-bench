@@ -1,0 +1,6 @@
+const x = 1;
+const = 5;
+--- output
+ERROR: SyntaxError: variable name expected
+---
+wall_ms=9 host_calls=0 max_arg_chars=0 out_chars=42 peak_host_rss_mb=185

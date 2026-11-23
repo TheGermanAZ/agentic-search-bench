@@ -1,0 +1,164 @@
+{
+  "probe": "P11",
+  "config": "default",
+  "codes": [
+    "print(2)"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 27.4,
+      "started": 1795381214.636991
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 19.3,
+      "started": 1795381214.665805
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 11.5,
+      "started": 1795381214.6854131
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 10.4,
+      "started": 1795381214.6972642
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 17.6,
+      "started": 1795381214.7079701
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 9.9,
+      "started": 1795381214.7257879
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 11.3,
+      "started": 1795381214.735879
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 9.5,
+      "started": 1795381214.747408
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 9.1,
+      "started": 1795381214.757267
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 12.8,
+      "started": 1795381214.7688498
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 16.2,
+      "started": 1795381214.782015
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 9.5,
+      "started": 1795381214.798483
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 9.7,
+      "started": 1795381214.8082361
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 11.5,
+      "started": 1795381214.81816
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 10.5,
+      "started": 1795381214.830152
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 11.1,
+      "started": 1795381214.841075
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 11.6,
+      "started": 1795381214.852577
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 10.4,
+      "started": 1795381214.8644822
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 9.8,
+      "started": 1795381214.875914
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "status": "success",
+      "ms": 12.2,
+      "started": 1795381214.886144
+    }
+  ],
+  "setup_ms": 567.7,
+  "fresh_session_ms": [
+    15.5,
+    15.3,
+    14.0,
+    14.2,
+    24.0
+  ],
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.14,
+  "peak_tree_rss_gb": 0.099,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

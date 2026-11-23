@@ -1,0 +1,101 @@
+{
+  "note": "supplementary: what `this` and the harness locals expose to model code",
+  "thisShape": {
+    "tool": {
+      "code": "return { ctor: this.constructor.name, envKeys: Object.keys(this.env ?? {}), ctxType: typeof this.ctx, ctxKeys: this.ctx ? Object.keys(Object.getPrototypeOf(this.ctx) ?? {}) : null }",
+      "mode": "tool",
+      "httpStatus": 200,
+      "wallMs": 12,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": true,
+          "output": {
+            "result": {
+              "ctor": "CodeExecutor",
+              "envKeys": [],
+              "ctxType": "object",
+              "ctxKeys": [
+                "waitUntil",
+                "passThroughOnException",
+                "mapVirtualHost",
+                "abort"
+              ]
+            }
+          }
+        },
+        "hostCalls": 0,
+        "hostMs": 6
+      }
+    },
+    "raw": {
+      "code": "return { ctor: this.constructor.name, envKeys: Object.keys(this.env ?? {}), ctxType: typeof this.ctx, ctxKeys: this.ctx ? Object.keys(Object.getPrototypeOf(this.ctx) ?? {}) : null }",
+      "mode": "raw",
+      "httpStatus": 200,
+      "wallMs": 5,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "result": {
+            "ctor": "CodeExecutor",
+            "envKeys": [],
+            "ctxType": "object",
+            "ctxKeys": [
+              "waitUntil",
+              "passThroughOnException",
+              "mapVirtualHost",
+              "abort"
+            ]
+          },
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    }
+  },
+  "dispatcherDirect": {
+    "tool": {
+      "code": "return JSON.parse(await __dispatchers.codemode.call(\"lookup\", JSON.stringify([{ id: 4 }])))",
+      "mode": "tool",
+      "httpStatus": 200,
+      "wallMs": 210,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": true,
+          "output": {
+            "result": {
+              "result": {
+                "id": 4,
+                "value": 8
+              }
+            }
+          }
+        },
+        "hostCalls": 1,
+        "hostMs": 206
+      }
+    },
+    "raw": {
+      "code": "return JSON.parse(await __dispatchers.codemode.call(\"lookup\", JSON.stringify([{ id: 4 }])))",
+      "mode": "raw",
+      "httpStatus": 200,
+      "wallMs": 209,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "result": {
+            "result": {
+              "id": 4,
+              "value": 8
+            }
+          },
+          "logs": []
+        },
+        "hostCalls": 1,
+        "hostMs": 205
+      }
+    }
+  }
+}

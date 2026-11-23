@@ -1,0 +1,6 @@
+const a = []; while (true) a.push("x".repeat(1e6) + a.length)
+--- output
+ERROR: out of memory
+    at <eval> (eval.js:1:45)
+---
+wall_ms=1466 host_calls=0 peak_tree_rss_mb=661

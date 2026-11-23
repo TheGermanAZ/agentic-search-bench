@@ -1,0 +1,9 @@
+{
+  "probe": "P6b",
+  "config": "default",
+  "outcome": "no-limit-within-120s",
+  "detail": "harness: still running after 120 s; the probe process (host) never returned",
+  "display": "no-limit-within-120s",
+  "peak_child_rss_mb": 87,
+  "wall_s": 120.1
+}

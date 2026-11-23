@@ -1,0 +1,5 @@
+probe: P10
+code (python, run through LocalPythonExecutor):
+raise ValueError("probe-boom")
+host_calls_so_far: 0
+result: {'ok': False, 'error_type': 'InterpreterError', 'error': 'Code execution failed at line \'raise ValueError("probe-boom")\' due to: ValueError: probe-boom', 'ms': 0.2}

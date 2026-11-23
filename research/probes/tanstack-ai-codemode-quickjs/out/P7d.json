@@ -1,0 +1,39 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P7d",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 4.009084000000001,
+  "source": [
+    "let s = \"x\"; try { while (true) s = s + s; } catch (e) { return { len: s.length, err: String(e) }; }"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": {
+          "len": 67108864,
+          "err": "InternalError: out of memory"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 63.538124999999994,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": {
+        "len": 67108864,
+        "err": "InternalError: out of memory"
+      },
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 64,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 227.5
+}

@@ -1,0 +1,126 @@
+{
+  "impl": "openai-ptc",
+  "name": "OpenAI Programmatic Tool Calling (Responses API and Agents API)",
+  "source": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling ; https://github.com/openai/openai-python",
+  "pinned": "docs fetched 2026-11-22 (markdown at https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling.md); openai-python@f63f14b34754fa77fc839ac2cf95da3ef42e1f6a",
+  "language": "JavaScript (top-level await)",
+  "engine": "OpenAI-hosted fresh isolated V8 runtime per program",
+  "how_run": "Not run: no API key on this machine. Documented entry point is a Responses API request with {type: programmatic_tool_calling} plus allowed_callers: [\"programmatic\"] on each eligible tool.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "Docs only, not run. Tools appear as tools.* inside the program; a client-owned call surfaces as a function_call item whose caller.caller_id matches the program's call_id, and the client returns function_call_output with the same caller. Example: \"const [stock, demand] = await Promise.all([tools.get_inventory({ sku: 'sku_123' }), tools.get_demand({ sku: 'sku_123' })]);\"",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#understand-program-response-items"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "No console: output only via text(...) or image(...). Docs: \"Programs ... can emit output with text(...) or image(...).\" The result arrives as a program_output item with a result string and status completed or incomplete. console.log would be not-defined per the runtime description. Truncation of a 200,000-char text() is not documented. SDK type ProgramOutput has only result and status, no stderr field.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#understand-the-runtime-environment ; https://github.com/openai/openai-python/blob/f63f14b34754fa77fc839ac2cf95da3ef42e1f6a/src/openai/types/responses/response_output_item.py#L66-L80"
+    },
+    "P3": {
+      "outcome": "blocked",
+      "detail": "Docs: \"OpenAI runs each generated program in a fresh, isolated V8 runtime. The runtime supports JavaScript with top-level await, but it does not provide Node.js, package installation, direct network access, a general-purpose filesystem, subprocess execution, a console, or persistent JavaScript state between program executions.\" Not run.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#understand-the-runtime-environment"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "Docs: no \"general-purpose filesystem\" (same sentence). The client's host files are also unreachable by construction. Not run.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#understand-the-runtime-environment"
+    },
+    "P5": {
+      "outcome": "not-applicable",
+      "detail": "The program runs on OpenAI's servers, so the client's PROBE_SECRET is never sent (inference). Docs say the runtime has no Node.js, so process.env does not exist.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#understand-the-runtime-environment"
+    },
+    "P6": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Docs are silent on a time limit. program_output.status can be incomplete; the cause list is not documented.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling"
+    },
+    "P7": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Docs are silent on a memory limit.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "Docs: no \"persistent JavaScript state between program executions.\"",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#understand-the-runtime-environment",
+      "display": "fresh (docs)"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "Docs example runs two tool calls with Promise.all and the template says \"Run independent calls concurrently when safe.\" Both function_call items arrive in one response. Elapsed time depends on the client.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#understand-program-response-items",
+      "display": "parallel (docs)"
+    },
+    "P10": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Docs do not show how a thrown exception is reported. ProgramOutput has no error field in the SDK, only result and status.",
+      "evidence": "https://github.com/openai/openai-python/blob/f63f14b34754fa77fc839ac2cf95da3ef42e1f6a/src/openai/types/responses/response_output_item.py#L66-L80"
+    },
+    "P11": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "No startup figure in the docs.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling"
+    },
+    "P12": {
+      "outcome": "not-defined",
+      "detail": "Docs claim no Node.js and no subprocess execution, so process and child_process should not exist. Not tested.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#understand-the-runtime-environment"
+    }
+  },
+  "defaults": {
+    "time": "not documented",
+    "memory": "not documented",
+    "output": "text(...)/image(...) only, as program_output.result (string)",
+    "tool_calls": "not documented"
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Tools are exposed as tools.<name>(args). Function tools may declare output_schema so generated code can rely on returned fields. allowed_callers values: direct, programmatic, or both.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#configure-programmatic-tool-calling"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "All allowed tools upfront. Tool search runs only as a top-level tool, not from inside a program; deferred tools become callable from a later program once loaded.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#combine-with-tool-search"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Pause/resume across Responses API calls. The program item carries an opaque fingerprint \"used to resume or replay the program\"; the client must copy caller into each function_call_output. Stateless mode replays every program, reasoning, function-call, output and program_output item.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#continue-after-client-owned-function-calls ; https://github.com/openai/openai-python/blob/f63f14b34754fa77fc839ac2cf95da3ef42e1f6a/src/openai/types/responses/response_output_item.py#L49-L64"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Fresh V8 runtime; no Node.js, network, filesystem, subprocess, console, or persistent state.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#understand-the-runtime-environment"
+    },
+    {
+      "topic": "Notable (hosted tools from code)",
+      "finding": "allowed_callers: [\"programmatic\"] is supported on function, custom, mcp, apply_patch, local and hosted shell, and code_interpreter. MCP require_approval \"can pause the program until you approve the call.\"",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#supported-tools"
+    },
+    {
+      "topic": "Notable (data)",
+      "finding": "\"Programmatic Tool Calling supports Zero Data Retention (ZDR) workflows without requiring a persistent code-execution container.\"",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#understand-the-runtime-environment"
+    },
+    {
+      "topic": "Notable (routing)",
+      "finding": "\"Adaptive search or semantic evaluation\" -> direct tool calling; \"Final citation or native artifact validation\" -> direct unless the program preserves native output and validates every item.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#choose-when-to-use-programmatic-tool-calling"
+    },
+    {
+      "topic": "Agents API",
+      "finding": "PTC is on by default; the harness gives the agent an exec tool. \"Orchestrating a tool in JavaScript doesn't change where the tool runs.\"",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#agents-api"
+    }
+  ],
+  "surprises": [
+    "OpenAI documents no time, memory, output-size or call-count limits for the program runtime.",
+    "Hosted tools (code_interpreter, hosted shell, MCP) can be called from inside a program, so a PTC program can drive a networked or file-holding container even though the V8 runtime itself has neither.",
+    "PTC supports ZDR; Anthropic PTC is not ZDR eligible."
+  ]
+}

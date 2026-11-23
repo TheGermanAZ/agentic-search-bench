@@ -1,0 +1,387 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py default R9c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 30978,
+  "peakTreeRssMb": 118,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9c",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(defaults); new in-process Client per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 453,
+          "ms": 30267,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 30.221123834s > 30s"
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 604,
+        "ms": 213,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 30720,
+        "ms": 216,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 67,
+    "totalMs": 30936
+  },
+  "childStdoutOtherChars": 2820185,
+  "childStdoutHead": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "childStderrTail": "[11/22/26 16:29:49] Error calling tool 'execute'                                \n                    ╭─────────── Traceback (most recent call last) ────────────╮\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/server/server.py:1673 in call_tool                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 7 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:309 in         │\n                    │ _run_monty                                               │\n                    ╰──────────────────────────────────────────────────────────╯\n                    MontyRuntimeError: TimeoutError: feed time limit exceeded:  \n                    30.221123834s > 30s                                         \n",
+  "rssSamplesMsMb": [
+    [
+      73,
+      33
+    ],
+    [
+      429,
+      81
+    ],
+    [
+      794,
+      118
+    ],
+    [
+      1171,
+      118
+    ],
+    [
+      1538,
+      109
+    ],
+    [
+      1912,
+      109
+    ],
+    [
+      2294,
+      109
+    ],
+    [
+      2671,
+      109
+    ],
+    [
+      3058,
+      110
+    ],
+    [
+      3439,
+      110
+    ],
+    [
+      3815,
+      110
+    ],
+    [
+      4192,
+      110
+    ],
+    [
+      4574,
+      110
+    ],
+    [
+      4954,
+      110
+    ],
+    [
+      5331,
+      110
+    ],
+    [
+      5706,
+      110
+    ],
+    [
+      6093,
+      110
+    ],
+    [
+      6476,
+      110
+    ],
+    [
+      6858,
+      110
+    ],
+    [
+      7230,
+      110
+    ],
+    [
+      7609,
+      110
+    ],
+    [
+      7996,
+      110
+    ],
+    [
+      8371,
+      110
+    ],
+    [
+      8758,
+      110
+    ],
+    [
+      9135,
+      110
+    ],
+    [
+      9521,
+      110
+    ],
+    [
+      9915,
+      110
+    ],
+    [
+      10302,
+      110
+    ],
+    [
+      10691,
+      110
+    ],
+    [
+      11082,
+      110
+    ],
+    [
+      11472,
+      110
+    ],
+    [
+      11865,
+      110
+    ],
+    [
+      12250,
+      110
+    ],
+    [
+      12653,
+      110
+    ],
+    [
+      13050,
+      110
+    ],
+    [
+      13484,
+      110
+    ],
+    [
+      13961,
+      110
+    ],
+    [
+      14360,
+      110
+    ],
+    [
+      14760,
+      110
+    ],
+    [
+      15156,
+      110
+    ],
+    [
+      15545,
+      110
+    ],
+    [
+      15951,
+      110
+    ],
+    [
+      16358,
+      110
+    ],
+    [
+      16716,
+      110
+    ],
+    [
+      17113,
+      110
+    ],
+    [
+      17492,
+      110
+    ],
+    [
+      17876,
+      110
+    ],
+    [
+      18264,
+      110
+    ],
+    [
+      18656,
+      110
+    ],
+    [
+      19061,
+      110
+    ],
+    [
+      19463,
+      110
+    ],
+    [
+      19864,
+      110
+    ],
+    [
+      20276,
+      110
+    ],
+    [
+      20665,
+      110
+    ],
+    [
+      21065,
+      110
+    ],
+    [
+      21456,
+      110
+    ],
+    [
+      21849,
+      110
+    ],
+    [
+      22234,
+      110
+    ],
+    [
+      22712,
+      110
+    ],
+    [
+      23107,
+      110
+    ],
+    [
+      23495,
+      110
+    ],
+    [
+      23935,
+      110
+    ],
+    [
+      24331,
+      110
+    ],
+    [
+      24727,
+      110
+    ],
+    [
+      25141,
+      110
+    ],
+    [
+      25552,
+      110
+    ],
+    [
+      25935,
+      110
+    ],
+    [
+      26332,
+      110
+    ],
+    [
+      26733,
+      110
+    ],
+    [
+      27134,
+      110
+    ],
+    [
+      27545,
+      110
+    ],
+    [
+      27929,
+      110
+    ],
+    [
+      28404,
+      110
+    ],
+    [
+      28845,
+      110
+    ],
+    [
+      29232,
+      110
+    ],
+    [
+      29636,
+      110
+    ],
+    [
+      30043,
+      110
+    ],
+    [
+      30440,
+      110
+    ],
+    [
+      30822,
+      110
+    ]
+  ]
+}

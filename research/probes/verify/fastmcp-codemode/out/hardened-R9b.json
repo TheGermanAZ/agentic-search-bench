@@ -1,0 +1,199 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py hardened R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1678,
+  "peakTreeRssMb": 109,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9b",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(hardened {'limits': {'max_feed_duration_secs': 10, 'max_memory': 50000000}, 'wall_clock_timeout_secs': 60}); new in-process Client per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 813,
+          "ms": 52,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': MemoryError: memory limit exceeded: 50044922 bytes > 50000000 bytes"
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 964,
+        "ms": 215,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1179,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1391,
+        "ms": 211,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 10,
+    "totalMs": 1602
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[11/22/26 16:31:09] Error calling tool 'execute'                                \n                    ╭─────────── Traceback (most recent call last) ────────────╮\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/server/server.py:1673 in call_tool                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 8 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:309 in         │\n                    │ _run_monty                                               │\n                    ╰──────────────────────────────────────────────────────────╯\n                    MontyRuntimeError: MemoryError: memory limit exceeded:      \n                    50044922 bytes > 50000000 bytes                             \n",
+  "rssSamplesMsMb": [
+    [
+      76,
+      24
+    ],
+    [
+      125,
+      34
+    ],
+    [
+      177,
+      40
+    ],
+    [
+      228,
+      44
+    ],
+    [
+      291,
+      50
+    ],
+    [
+      329,
+      52
+    ],
+    [
+      392,
+      54
+    ],
+    [
+      430,
+      55
+    ],
+    [
+      482,
+      58
+    ],
+    [
+      532,
+      63
+    ],
+    [
+      584,
+      66
+    ],
+    [
+      635,
+      74
+    ],
+    [
+      700,
+      78
+    ],
+    [
+      736,
+      80
+    ],
+    [
+      786,
+      83
+    ],
+    [
+      838,
+      86
+    ],
+    [
+      888,
+      89
+    ],
+    [
+      941,
+      97
+    ],
+    [
+      990,
+      99
+    ],
+    [
+      1040,
+      99
+    ],
+    [
+      1092,
+      109
+    ],
+    [
+      1143,
+      109
+    ],
+    [
+      1192,
+      109
+    ],
+    [
+      1246,
+      109
+    ],
+    [
+      1295,
+      109
+    ],
+    [
+      1346,
+      109
+    ],
+    [
+      1396,
+      109
+    ],
+    [
+      1450,
+      109
+    ],
+    [
+      1499,
+      109
+    ],
+    [
+      1550,
+      109
+    ],
+    [
+      1602,
+      109
+    ],
+    [
+      1651,
+      109
+    ]
+  ]
+}

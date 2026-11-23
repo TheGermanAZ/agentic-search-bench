@@ -1,0 +1,10 @@
+{
+  "probe": "P9",
+  "config": {
+    "kernel_mode": "subprocess",
+    "cell_timeout": 30
+  },
+  "peak_tree_rss_mib": 106,
+  "wall_s": 2.72,
+  "child": "{\"r\": {\"ok\": true, \"stdout\": \"206 30\\n1018\\nkernel pid 24827 parent 24764\\n\", \"stderr\": \"\", \"s\": 1.27}, \"host_calls\": 0, \"extra\": \"\"}"
+}

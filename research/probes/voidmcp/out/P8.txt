@@ -1,0 +1,58 @@
+[
+  {
+    "probe": "P8-exec1",
+    "config": "defaults",
+    "code": "globalThis.kept = 7; return 'set'",
+    "wall_ms": 7,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":\"set\",\"duration_ms\":0}",
+    "response_text_length": 32,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P8-exec2",
+    "config": "defaults",
+    "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+    "wall_ms": 7,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"logs\":[{\"level\":\"log\",\"msg\":\"gone\"}],\"duration_ms\":0}",
+    "response_text_length": 55,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P8-fs-exec1",
+    "config": "defaults",
+    "code": "const std = await import(\"qjs:std\"); const f = std.open(\"/kept.txt\", \"w\"); f.puts(\"7\"); f.close(); return \"wrote\"",
+    "wall_ms": 7,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":\"wrote\",\"duration_ms\":0}",
+    "response_text_length": 34,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P8-fs-exec2",
+    "config": "defaults",
+    "code": "const std = await import(\"qjs:std\"); return std.loadFile(\"/kept.txt\")",
+    "wall_ms": 7,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":\"7\",\"duration_ms\":0}",
+    "response_text_length": 30,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  }
+]

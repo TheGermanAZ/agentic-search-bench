@@ -1,0 +1,473 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default R9c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 65274,
+  "peakTreeRssMb": 1367,
+  "peakTreeFootprintMb": 1176,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "R9c",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 2,
+          "ms": 65002,
+          "ok": true,
+          "result": {
+            "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[8102 chars]…xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxERROR: stopped at the 65 s limit for the whole program, including corpus calls. Do less per execution.",
+            "stringChars": 8102
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 152,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 211,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 65004,
+        "ms": 214,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 12,
+    "hostEvents": [],
+    "totalMs": 65218
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      77,
+      65,
+      43
+    ],
+    [
+      907,
+      163,
+      71
+    ],
+    [
+      1736,
+      168,
+      49
+    ],
+    [
+      2558,
+      169,
+      49
+    ],
+    [
+      3389,
+      169,
+      49
+    ],
+    [
+      4219,
+      328,
+      104
+    ],
+    [
+      5050,
+      941,
+      359
+    ],
+    [
+      5927,
+      1098,
+      445
+    ],
+    [
+      6723,
+      1210,
+      547
+    ],
+    [
+      7550,
+      1219,
+      553
+    ],
+    [
+      8379,
+      1219,
+      554
+    ],
+    [
+      9202,
+      1220,
+      553
+    ],
+    [
+      10030,
+      1220,
+      553
+    ],
+    [
+      10859,
+      1220,
+      553
+    ],
+    [
+      11690,
+      1229,
+      559
+    ],
+    [
+      12518,
+      1229,
+      559
+    ],
+    [
+      13342,
+      1229,
+      559
+    ],
+    [
+      14183,
+      1231,
+      560
+    ],
+    [
+      15000,
+      1232,
+      560
+    ],
+    [
+      15832,
+      1232,
+      561
+    ],
+    [
+      16655,
+      1232,
+      561
+    ],
+    [
+      17484,
+      1232,
+      561
+    ],
+    [
+      18317,
+      1232,
+      561
+    ],
+    [
+      19140,
+      1234,
+      563
+    ],
+    [
+      19974,
+      1235,
+      563
+    ],
+    [
+      20799,
+      1235,
+      563
+    ],
+    [
+      21639,
+      1238,
+      565
+    ],
+    [
+      22460,
+      1241,
+      568
+    ],
+    [
+      23287,
+      1244,
+      571
+    ],
+    [
+      24118,
+      1248,
+      573
+    ],
+    [
+      24945,
+      1252,
+      575
+    ],
+    [
+      25775,
+      1253,
+      573
+    ],
+    [
+      26600,
+      1255,
+      574
+    ],
+    [
+      27428,
+      1255,
+      573
+    ],
+    [
+      28276,
+      1257,
+      573
+    ],
+    [
+      29104,
+      1258,
+      573
+    ],
+    [
+      29936,
+      1259,
+      572
+    ],
+    [
+      30764,
+      1259,
+      572
+    ],
+    [
+      31596,
+      1261,
+      573
+    ],
+    [
+      32425,
+      1262,
+      573
+    ],
+    [
+      33266,
+      1263,
+      572
+    ],
+    [
+      34135,
+      1264,
+      572
+    ],
+    [
+      34943,
+      1265,
+      572
+    ],
+    [
+      35761,
+      1266,
+      572
+    ],
+    [
+      36591,
+      1267,
+      572
+    ],
+    [
+      37503,
+      1268,
+      571
+    ],
+    [
+      38321,
+      1269,
+      571
+    ],
+    [
+      39172,
+      1227,
+      639
+    ],
+    [
+      40007,
+      1155,
+      745
+    ],
+    [
+      40838,
+      1011,
+      952
+    ],
+    [
+      41649,
+      976,
+      983
+    ],
+    [
+      42478,
+      977,
+      981
+    ],
+    [
+      43313,
+      978,
+      981
+    ],
+    [
+      44129,
+      979,
+      981
+    ],
+    [
+      44958,
+      980,
+      981
+    ],
+    [
+      45778,
+      986,
+      984
+    ],
+    [
+      46606,
+      994,
+      984
+    ],
+    [
+      47435,
+      1025,
+      986
+    ],
+    [
+      48251,
+      1203,
+      909
+    ],
+    [
+      49073,
+      1281,
+      598
+    ],
+    [
+      49896,
+      1244,
+      592
+    ],
+    [
+      50734,
+      1181,
+      596
+    ],
+    [
+      51555,
+      1176,
+      609
+    ],
+    [
+      52381,
+      1241,
+      160
+    ],
+    [
+      53199,
+      1242,
+      157
+    ],
+    [
+      54020,
+      1242,
+      157
+    ],
+    [
+      54864,
+      1242,
+      157
+    ],
+    [
+      55664,
+      1242,
+      157
+    ],
+    [
+      56503,
+      1242,
+      153
+    ],
+    [
+      57324,
+      1242,
+      153
+    ],
+    [
+      58153,
+      1242,
+      153
+    ],
+    [
+      58983,
+      1242,
+      153
+    ],
+    [
+      59800,
+      1340,
+      184
+    ],
+    [
+      60623,
+      1340,
+      184
+    ],
+    [
+      61451,
+      1354,
+      172
+    ],
+    [
+      62273,
+      1362,
+      175
+    ],
+    [
+      63093,
+      1362,
+      175
+    ],
+    [
+      63922,
+      1362,
+      175
+    ],
+    [
+      64759,
+      1362,
+      175
+    ]
+  ]
+}

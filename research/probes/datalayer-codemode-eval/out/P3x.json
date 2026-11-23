@@ -1,0 +1,7 @@
+{
+  "probe": "P3x",
+  "outcome": "works",
+  "display": "works (raw _socket connect)",
+  "detail": "RAW CONNECT ok 'RAW CONNECT ok'",
+  "evidence": "research/probes/datalayer-codemode-eval/out/P3x.txt"
+}

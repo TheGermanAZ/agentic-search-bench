@@ -1,0 +1,411 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/../_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/adapter.mjs default R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 12529,
+  "peakTreeRssMb": 165,
+  "peakTreeFootprintMb": 85,
+  "watchKill": null,
+  "record": {
+    "impl": "bifrost-codemode",
+    "config": "default",
+    "test": "R7b",
+    "notes": "maximhq/bifrost:v2.6.0, data/config.json; gateway restarted for this test (9546 ms); new MCP client per execution; Starlark codes",
+    "data": {
+      "r": {
+        "startMs": 9677,
+        "ms": 1102,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": true,
+            "textChars": 364,
+            "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:1:19: in <toplevel>\nError: code mode resource limit: too many steps\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+          },
+          "stringChars": 364
+        },
+        "callsStarted": 5
+      },
+      "atReturn": {
+        "started": 5,
+        "done": 5
+      },
+      "after1500ms": {
+        "started": 6,
+        "done": 6
+      },
+      "after": {
+        "label": "after",
+        "startMs": 12281,
+        "ms": 213,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 50,
+            "text": "Execution completed successfully.\nReturn value: 42"
+          },
+          "stringChars": 50
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "gatewayStartMs": 9546,
+      "containerBaselineMb": 269,
+      "containerPeakMb": 271,
+      "containerLastMb": 271,
+      "containerKilled": null,
+      "containerRssMsMb": [
+        [
+          61,
+          269
+        ],
+        [
+          526,
+          271
+        ],
+        [
+          969,
+          271
+        ],
+        [
+          1426,
+          271
+        ],
+        [
+          1875,
+          271
+        ],
+        [
+          2321,
+          271
+        ],
+        [
+          2767,
+          271
+        ]
+      ]
+    },
+    "hostMaxEventLoopLagMs": 51,
+    "hostEvents": [],
+    "totalMs": 12494
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      78,
+      63,
+      22
+    ],
+    [
+      283,
+      120,
+      45
+    ],
+    [
+      488,
+      120,
+      45
+    ],
+    [
+      689,
+      76,
+      33
+    ],
+    [
+      894,
+      76,
+      33
+    ],
+    [
+      1102,
+      76,
+      33
+    ],
+    [
+      1306,
+      76,
+      33
+    ],
+    [
+      1514,
+      76,
+      33
+    ],
+    [
+      1721,
+      76,
+      32
+    ],
+    [
+      1929,
+      76,
+      32
+    ],
+    [
+      2137,
+      76,
+      33
+    ],
+    [
+      2342,
+      76,
+      33
+    ],
+    [
+      2545,
+      76,
+      33
+    ],
+    [
+      2754,
+      76,
+      33
+    ],
+    [
+      2956,
+      82,
+      33
+    ],
+    [
+      3158,
+      76,
+      33
+    ],
+    [
+      3362,
+      76,
+      32
+    ],
+    [
+      3564,
+      76,
+      32
+    ],
+    [
+      3772,
+      76,
+      33
+    ],
+    [
+      3978,
+      76,
+      33
+    ],
+    [
+      4182,
+      76,
+      33
+    ],
+    [
+      4388,
+      76,
+      33
+    ],
+    [
+      4591,
+      76,
+      33
+    ],
+    [
+      4797,
+      76,
+      33
+    ],
+    [
+      5004,
+      76,
+      33
+    ],
+    [
+      5210,
+      76,
+      32
+    ],
+    [
+      5448,
+      83,
+      33
+    ],
+    [
+      5639,
+      76,
+      33
+    ],
+    [
+      5836,
+      76,
+      32
+    ],
+    [
+      6063,
+      76,
+      32
+    ],
+    [
+      6253,
+      76,
+      33
+    ],
+    [
+      6446,
+      76,
+      35
+    ],
+    [
+      6653,
+      76,
+      32
+    ],
+    [
+      6863,
+      76,
+      33
+    ],
+    [
+      7138,
+      76,
+      33
+    ],
+    [
+      7340,
+      76,
+      33
+    ],
+    [
+      7535,
+      76,
+      32
+    ],
+    [
+      7742,
+      76,
+      32
+    ],
+    [
+      7946,
+      76,
+      33
+    ],
+    [
+      8146,
+      76,
+      33
+    ],
+    [
+      8358,
+      76,
+      33
+    ],
+    [
+      8558,
+      75,
+      33
+    ],
+    [
+      8766,
+      76,
+      33
+    ],
+    [
+      8969,
+      76,
+      33
+    ],
+    [
+      9186,
+      76,
+      33
+    ],
+    [
+      9387,
+      76,
+      33
+    ],
+    [
+      9608,
+      76,
+      33
+    ],
+    [
+      9795,
+      113,
+      35
+    ],
+    [
+      10002,
+      114,
+      71
+    ],
+    [
+      10224,
+      114,
+      71
+    ],
+    [
+      10426,
+      114,
+      71
+    ],
+    [
+      10632,
+      159,
+      71
+    ],
+    [
+      10834,
+      114,
+      71
+    ],
+    [
+      11038,
+      115,
+      71
+    ],
+    [
+      11244,
+      114,
+      71
+    ],
+    [
+      11450,
+      114,
+      71
+    ],
+    [
+      11657,
+      115,
+      71
+    ],
+    [
+      11858,
+      115,
+      71
+    ],
+    [
+      12064,
+      115,
+      71
+    ],
+    [
+      12269,
+      115,
+      71
+    ],
+    [
+      12476,
+      115,
+      72
+    ]
+  ]
+}

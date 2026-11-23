@@ -1,0 +1,33 @@
+{
+  "id": "P1",
+  "workerPid": 96711,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 658,
+  "peakRssKbSampled": 83104,
+  "stderr": "",
+  "parsed": {
+    "probe": "P1",
+    "config": {
+      "executionLimitProfile": "hardened"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 96711
+    },
+    "runs": [
+      {
+        "script": "lookup 21 | jq -r .value",
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": "",
+        "ms": 397,
+        "hostCalls": 1
+      }
+    ],
+    "peakRssKb": 83392,
+    "maxInFlight": 1,
+    "hostCalls": 1
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "impl": "pi-codemode",
+  "config": "default",
+  "probe": "P10",
+  "options": {},
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "throw new Error(\"probe-boom\")",
+      "ms": 128,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "script",
+        "name": "Error",
+        "message": "probe-boom",
+        "stack": "Error: probe-boom\n    at <anonymous> (codemode.js:1:39)"
+      }
+    },
+    {
+      "code": "const x = 1;\nconst y = 2;\nthrow new Error(\"probe-boom\")",
+      "ms": 100,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "script",
+        "name": "Error",
+        "message": "probe-boom",
+        "stack": "Error: probe-boom\n    at <anonymous> (codemode.js:3:11)"
+      }
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P10"], "exit_code": 0, "wall_ms": 410, "peak_tree_rss_mb": 105.5, "watch_kill": null}

@@ -1,0 +1,11 @@
+import os
+print(os.environ.get("PROBE_SECRET"))
+--- output
+ERROR: Runtime error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 2, in <module>
+    print(os.environ.get("PROBE_SECRET"))
+          ~~~~~~~~~~
+RuntimeError: 'os.environ' is not supported in this environment
+---
+wall_ms=18 host_calls=0 peak_tree_rss_mb=172

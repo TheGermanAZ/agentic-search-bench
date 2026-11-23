@@ -1,0 +1,6 @@
+{
+  "probe": "P9b",
+  "outcome": "blocked",
+  "detail": "InterpreterError: Code execution failed at line 'import asyncio' due to: InterpreterError: Import of asyncio is not allowed. Authorized imports are: ['itertools', 'stat', 'random', 'unicodedata', 'statistics', 'math', 'collections', 'queue', 'time', 're', 'datetime'] (extra: asyncio import, the spec's Python form)",
+  "wall_ms": 0.2
+}

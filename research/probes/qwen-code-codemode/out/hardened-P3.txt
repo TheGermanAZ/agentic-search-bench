@@ -1,0 +1,44 @@
+# qwen-code-codemode hardened-P3 (hardened)
+--- exec 1 source ---
+const r = await fetch("https://example.com"); text(r.status)
+--- exec 1 result (179 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (165 chars):
+[{"type":"text","text":"Script error:\n'fetch' is not defined\n    at <anonymous> (exec.js:4:54)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]
+--- exec 2 source ---
+text([typeof fetch, typeof XMLHttpRequest, typeof WebSocket].join(","))
+--- exec 2 result (267.63 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (56 chars):
+[{"type":"text","text":"undefined,undefined,undefined"}]
+--- exec 3 source ---
+const r = await tools.web_fetch({url: "https://example.com", prompt: "Return the page title verbatim."}); text(r.output.slice(0, 600))
+--- exec 3 result (150.61 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (220 chars):
+[{"type":"text","text":"Script error:\nUnknown or unavailable code mode tool: web_fetch\n    at get (setup.js:20:26)\n    at <anonymous> (exec.js:4:59)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]
+--- summary ---
+{
+ "config": "hardened",
+ "exit": {
+  "code": 0,
+  "sig": null
+ },
+ "setupMsSpawnToFirstExec": 1062,
+ "totalHostCalls": 0,
+ "remoteEndpoints": [
+  "127.0.0.1:42101"
+ ],
+ "sideRequests": 0
+}
+--- cli stdout (json, first 3000 chars) ---
+[{"type":"system","subtype":"init","uuid":"7e2bead6-5af2-47fb-86a9-cce6d8992fa9","session_id":"7e2bead6-5af2-47fb-86a9-cce6d8992fa9","cwd":"~/p/agentic-search-bench/research/probes/qwen-code-codemode/work","tools":["exec","cron_list","cron_delete","autofix_pr","list_agents","task_stop","skill","search_memory","enter_worktree","exit_worktree","record_artifact","get_goal","update_goal","tool_call","tool_search","agent","report_findings","cron_create","loop_wakeup","send_message","manage_memory","mcp__probe__lookup"],"mcp_servers":[{"name":"probe","status":"connected"}],"model":"mock-model","permission_mode":"default","slash_commands":["advisor","agent-delegation","auth","autofix-pr","batch","batch-api","bug","clear","compress","compress-fast","config","context","coordinate","curator","dataviz","diff","docs","doctor","effort","export","extension-creator","extensions","goal","goal-draft","hooks","import-config","init","insight","language","loop","model","new-app","output-style","pr","qc-helper","review","simplify","stats","status","stuck","summary","tasks","update","workflow-authoring","workflow-creator","workflows","zvec-grep-install"],"qwen_code_version":"0.28.4","agents":["general-purpose","Explore","statusline-setup","review-agent","claude-code","codex"]},{"type":"assistant","uuid":"057a7785-8ec7-4e16-8c9e-12bf25764782","session_id":"7e2bead6-5af2-47fb-86a9-cce6d8992fa9","parent_tool_use_id":null,"message":{"id":"057a7785-8ec7-4e16-8c9e-12bf25764782","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_1","name":"exec","input":{"source":"const r = await fetch(\"https://example.com\"); text(r.status)"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"fefaf37a-f054-434d-a194-2c1154bb0751","session_id":"7e2bead6-5af2-47fb-86a9-cce6d8992fa9","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_1","is_error":true,"content":"Script error:\n'fetch' is not defined\n    at <anonymous> (exec.js:4:54)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]}},{"type":"assistant","uuid":"20e90236-cbde-442a-80ee-f145fae4f063","session_id":"7e2bead6-5af2-47fb-86a9-cce6d8992fa9","parent_tool_use_id":null,"message":{"id":"20e90236-cbde-442a-80ee-f145fae4f063","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_2","name":"exec","input":{"source":"text([typeof fetch, typeof XMLHttpRequest, typeof WebSocket].join(\",\"))"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"d9bc2c4a-44f4-4230-b279-7b55d9096228","session_id":"7e2bead6-5af2-47fb-86a9-cce6d8992fa9","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_2","is_error":false,"content":"undefined,undefined,und
+--- cli stderr (first 3000 chars) ---
+Warning: Node.js 24.22.1 can cause high temporary memory usage during shell safety checks. Upgrade to Node.js 26.12.1. Qwen Code will continue normally. See https://github.com/QwenLM/qwen-code/issues/15165
+
+--- mock events ---
+{"t":1066.43,"kind":"exec-issued","n":1,"hostCallsSoFar":579}
+{"t":1245.43,"kind":"exec-result","n":1,"hostCallsSoFar":579,"textLen":165}
+{"t":1245.57,"kind":"exec-issued","n":2,"hostCallsSoFar":579}
+{"t":1513.2,"kind":"exec-result","n":2,"hostCallsSoFar":579,"textLen":56}
+{"t":1513.35,"kind":"exec-issued","n":3,"hostCallsSoFar":579}
+{"t":1663.96,"kind":"exec-result","n":3,"hostCallsSoFar":579,"textLen":220}
+{"t":1664.08,"kind":"final"}
+{"t":1816.16,"kind":"final"}

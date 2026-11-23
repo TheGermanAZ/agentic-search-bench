@@ -1,0 +1,118 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs default R1c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1118,
+  "peakTreeRssMb": 163,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "default",
+    "test": "R1c",
+    "notes": "run() (module default runner, shared)",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 175,
+        "ms": 773,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": "A done"
+          },
+          "stringChars": 15
+        },
+        "callsStarted": 2
+      },
+      "B": {
+        "label": "B(concurrent)",
+        "startMs": 354,
+        "ms": 153,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": [
+              "undefined",
+              "undefined"
+            ]
+          },
+          "stringChars": 27
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 286,
+    "hostEvents": [],
+    "totalMs": 948
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:69487) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      231,
+      54
+    ],
+    [
+      298,
+      55
+    ],
+    [
+      372,
+      83
+    ],
+    [
+      429,
+      92
+    ],
+    [
+      570,
+      111
+    ],
+    [
+      628,
+      138
+    ],
+    [
+      693,
+      163
+    ],
+    [
+      741,
+      163
+    ],
+    [
+      786,
+      163
+    ],
+    [
+      855,
+      163
+    ],
+    [
+      932,
+      163
+    ],
+    [
+      999,
+      163
+    ],
+    [
+      1070,
+      163
+    ],
+    [
+      1117,
+      0
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "impl": "vercel-run",
+  "probe": "P8",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "globalThis.kept = 7; return \"set\";",
+    "return typeof kept === \"undefined\" ? \"gone\" : kept;"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "status": "completed",
+      "value": "set",
+      "wallMs": 79.367792,
+      "hostCalls": 0
+    },
+    {
+      "ok": true,
+      "status": "completed",
+      "value": "gone",
+      "wallMs": 5.269750000000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": "gone",
+    "ms": 5,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 139.1
+}

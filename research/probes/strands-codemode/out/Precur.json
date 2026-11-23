@@ -1,0 +1,7 @@
+{
+  "probe": "Precur",
+  "outcome": "limited",
+  "display": "limited (RecursionError ~1000)",
+  "detail": "Unbounded recursion stopped with 'RecursionError: maximum recursion depth exceeded' after ~1000 frames, status error, host alive.",
+  "evidence": "research/probes/strands-codemode/out/Precur.txt"
+}

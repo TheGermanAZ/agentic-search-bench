@@ -1,0 +1,17 @@
+{
+  "config": {
+    "timeoutMs": 10000,
+    "memoryLimitMB": 64,
+    "call": "client.callToolChain(code, 10000, 64)"
+  },
+  "probe": "P6 infinite loop",
+  "code": "while (true) {}",
+  "wallSeconds": 10.01,
+  "wallMs": 10009.7,
+  "hostCalls": 0,
+  "result": null,
+  "logs": [
+    "[ERROR] Code execution failed: Script execution timeout after 10000ms"
+  ],
+  "threw": null
+}

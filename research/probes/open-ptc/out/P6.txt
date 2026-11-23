@@ -1,0 +1,13 @@
+mode: default
+code:
+while (true) {}
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "aa01c14d-9beb-49a4-a079-6d5cc78a5c15",
+  "success": false,
+  "output": "\n\n\n\n[Process terminated after exceeding timeout of 30000 ms]",
+  "ms": 30043,
+  "hostCalls": 0
+}

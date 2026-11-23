@@ -1,0 +1,10 @@
+code:
+const r = await tools.host.lookup({id: 21}); console.log(r.value)
+
+result:
+{
+  "id": "391cb2f7-928a-4b65-9cdc-5f30c4c7c950",
+  "result": "42\n",
+  "ms": 2366,
+  "hostCalls": 1
+}

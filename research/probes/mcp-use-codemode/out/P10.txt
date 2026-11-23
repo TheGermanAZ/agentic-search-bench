@@ -1,0 +1,6 @@
+code:
+x = 1
+raise ValueError("probe-boom")
+
+{"ok": false, "result": null, "error": "probe-boom", "ms": 2.5}
+stdout (0 chars): ''

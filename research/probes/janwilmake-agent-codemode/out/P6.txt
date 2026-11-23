@@ -1,0 +1,11 @@
+{
+  "file": "P6.ts",
+  "exitCode": null,
+  "signal": "SIGKILL",
+  "killedByHarness": "120s",
+  "wallMs": 120294,
+  "hostCalls": 0,
+  "stdoutChars": 0,
+  "stdout": "",
+  "stderr": ""
+}

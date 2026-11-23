@@ -1,0 +1,9 @@
+probe: P6b
+worker exit: null signal: SIGKILL killed: time-120s
+wall ms: 120015
+peak host RSS KB: 186560
+
+no parsed output; worker stderr:
+
+outcome: no-limit-within-120s
+detail: driver kill: time-120s; wall 120015 ms; peak host RSS 186560 KB; worker stderr: (none)

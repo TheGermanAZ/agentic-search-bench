@@ -1,0 +1,48 @@
+{
+  "config": {
+    "executorOptions": {
+      "loader": "env.LOADER",
+      "timeout": 10000,
+      "globalOutbound": null,
+      "modules": {},
+      "bindings": {}
+    }
+  },
+  "tool": {
+    "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => codemode.lookup({id:i}))); console.log(Date.now()-t)",
+    "mode": "tool",
+    "path": "/run",
+    "httpStatus": 200,
+    "wallMs": 252,
+    "body": {
+      "mode": "tool",
+      "res": {
+        "ok": true,
+        "output": {
+          "logs": [
+            "226"
+          ]
+        }
+      },
+      "hostCalls": 5,
+      "hostMs": 232
+    }
+  },
+  "raw": {
+    "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => codemode.lookup({id:i}))); console.log(Date.now()-t)",
+    "mode": "raw",
+    "path": "/run",
+    "httpStatus": 200,
+    "wallMs": 251,
+    "body": {
+      "mode": "raw",
+      "res": {
+        "logs": [
+          "228"
+        ]
+      },
+      "hostCalls": 5,
+      "hostMs": 232
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "execute": {
+    "tool": "execute",
+    "code": "async () => { throw new Error(\"probe-boom\") }",
+    "ms": 3,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: probe-boom",
+    "rpcError": null
+  },
+  "search": {
+    "tool": "search",
+    "code": "async () => { throw new Error(\"probe-boom\") }",
+    "ms": 114,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: probe-boom",
+    "rpcError": null
+  },
+  "syntaxError": {
+    "tool": "execute",
+    "code": "async () => { this is not js }",
+    "ms": 4,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: Failed to start Worker:\nUncaught SyntaxError: Unexpected identifier 'is'\n  at worker.js:375:61",
+    "rpcError": null
+  }
+}

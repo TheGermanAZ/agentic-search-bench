@@ -1,0 +1,49 @@
+label: P2
+command: bun probe.mjs P2
+child exit: code=0 signal=null
+child wall ms (process start to exit): 191
+peak child RSS: 60.6 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P2",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 2.4608750000000015,
+  "source": [
+    "console.log(\"A\".repeat(200000)); \"RETURNED\""
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "logCount": 1,
+        "logChars": 200000,
+        "logs": [
+          {
+            "stringLength": 200000,
+            "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        ]
+      },
+      "wallMs": 131.543917,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "logCount": 1,
+      "logChars": 200000
+    },
+    "ms": 132,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 48.6
+}
+--- child stdout ---
+
+--- child stderr ---
+

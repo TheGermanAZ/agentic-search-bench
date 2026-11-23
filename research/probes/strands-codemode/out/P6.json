@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "display": "limited (60 s VM time)",
+  "detail": "stopped after 60.09 s: Execution error: TimeoutError: time limit exceeded: 60.002132209s > 60s",
+  "evidence": "research/probes/strands-codemode/out/P6.txt"
+}

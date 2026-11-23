@@ -1,0 +1,22 @@
+probe: P3 (hardened)
+binary: goose-codemode-hardened-probe
+GOOSE_DEFAULT_EXTENSION_TIMEOUT=10
+process wall_ms: 56.7
+peak_rss_mb: 3.2
+exit: 0
+killed: None
+
+{"exec": "config", "probe": "P3", "timeout_seconds": 10}
+
+--- execution 0 ---
+code:
+async function run() {
+await fetch("https://example.com")
+}
+is_error: True
+elapsed_ms: 0.98
+host_calls: 0
+text returned to model:
+Error: ReferenceError: fetch is not defined (code_mode.js:4:5)
+    at run (code_mode.js:1:22)
+    at <main> (code_mode.js:4:5)

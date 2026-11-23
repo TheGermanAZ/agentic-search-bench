@@ -1,0 +1,37 @@
+label: P5b
+command: node probe.mjs P5b
+child exit: code=0 signal=null
+child wall ms (process start to exit): 189
+peak child RSS: 134.4 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P5b",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return typeof process + \"|\" + Object.getOwnPropertyNames(globalThis).join(\",\");"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "value": "undefined|Object,Function,Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,Iterator,Array,parseInt,parseFloat,isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,eval,Number,Boolean,String,Math,Reflect,Symbol,globalThis,BigInt,Date,RegExp,JSON,Proxy,Map,Set,WeakMap,WeakSet,ArrayBuffer,Uint8ClampedArray,Int8Array,Uint8Array,Int16Array,Uint16Array,Int32Array,Uint32Array,BigInt64Array,BigUint64Array,Float16Array,Float32Array,Float64Array,DataView,Promise,WeakRef,FinalizationRegistry,console,__runCreateBridgePromise,__runAssertNoDetachedBridgeCalls,__codeMode,__runSerializeJsonPayload",
+      "wallMs": 80.474875,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": "undefined|Object,Function,Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,Iterator,Array,parseInt,parseFloat,isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,eval,Number,Boolean,String,Math,Reflect,Symbol,globalThis,BigInt,Date,RegExp,JSON,Proxy,Map,Set,WeakMap,WeakSet,ArrayBuffer,Uint8ClampedArray,Int8Array,Uint8Array,Int16Array,Uint16Array,Int32Array,Uint32Array,BigInt64Array,BigUint64Array,Float16Array,Float32Array,Float64Array,DataView,Promise,WeakRef,FinalizationRegistry,console,__runCreateBridgePromise,__runAssertNoDetachedBridgeCalls,__codeMode,__runSerializeJsonPayload",
+    "ms": 80,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 149.3
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:83401) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

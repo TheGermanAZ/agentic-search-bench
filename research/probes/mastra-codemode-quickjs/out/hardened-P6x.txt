@@ -1,0 +1,31 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 5031,
+    "totalWallMs": 5685,
+    "peakTreeRssMB": 142.6,
+    "stderrTail": ""
+  },
+  "backend": "quickjs",
+  "probe": "P6x",
+  "mode": "hardened",
+  "setupMs": 524.8,
+  "record": {
+    "code": "while (true) {}",
+    "wallMs": 5045,
+    "hostCalls": 0,
+    "out": {
+      "success": false,
+      "logs": [],
+      "error": {
+        "message": "Code Mode execution timed out after 5000ms",
+        "name": "TimeoutError"
+      }
+    },
+    "threw": null,
+    "hostTimerTicksEvery100ms": 0,
+    "expectedTicksIfNotBlocked": 50
+  }
+}

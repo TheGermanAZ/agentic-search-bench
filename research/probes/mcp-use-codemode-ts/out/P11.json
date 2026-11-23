@@ -1,0 +1,9 @@
+{
+  "probe": "P11",
+  "config": "default",
+  "outcome": "works",
+  "detail": "execute_code median 0.3 ms, p90 0.3 ms over 20 executions (new vm context each); session setup 229.2 ms",
+  "display": "median 0.3 ms",
+  "peak_child_rss_mb": 91,
+  "wall_s": 0.6
+}

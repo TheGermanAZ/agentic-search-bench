@@ -1,0 +1,32 @@
+{
+  "tool": {
+    "code": "const r = await fetch(\"https://example.com\"); return r.status",
+    "mode": "tool",
+    "httpStatus": 200,
+    "wallMs": 7,
+    "body": {
+      "mode": "tool",
+      "res": {
+        "ok": false,
+        "thrown": "Code execution failed: This worker is not permitted to access the internet via global functions like fetch(). It must use capabilities (such as bindings in 'env') to talk to the outside world."
+      },
+      "hostCalls": 0,
+      "hostMs": 5
+    }
+  },
+  "raw": {
+    "code": "const r = await fetch(\"https://example.com\"); return r.status",
+    "mode": "raw",
+    "httpStatus": 200,
+    "wallMs": 4,
+    "body": {
+      "mode": "raw",
+      "res": {
+        "error": "This worker is not permitted to access the internet via global functions like fetch(). It must use capabilities (such as bindings in 'env') to talk to the outside world.",
+        "logs": []
+      },
+      "hostCalls": 0,
+      "hostMs": 2
+    }
+  }
+}

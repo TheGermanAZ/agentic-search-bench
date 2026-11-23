@@ -1,0 +1,1 @@
+{"id": "P4", "outcome": "blocked", "detail": "open: PermissionError: Permission denied: '/etc/hosts'; pathlib: PermissionError: Permission denied: '/etc/hosts'", "error": null}

@@ -1,0 +1,247 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R1c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1935,
+  "peakTreeRssMb": 378,
+  "peakTreeFootprintMb": 357,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R1c",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 992,
+        "ms": 853,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": "A done",
+            "output": [],
+            "textChars": 246,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"388d524bc9eeff688f6e19ce\",\"searchCount\":0,\"describeCount\":0,\"callCount\":2,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":\"A done\"}"
+          },
+          "stringChars": 261
+        },
+        "callsStarted": 2
+      },
+      "B": {
+        "label": "B(concurrent)",
+        "startMs": 1165,
+        "ms": 265,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": [
+              "undefined",
+              "undefined"
+            ],
+            "output": [],
+            "textChars": 263,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"ff034f20c3059749213cbc5f\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":[\"undefined\",\"undefined\"]}"
+          },
+          "stringChars": 290
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0,
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 1145,
+    "hostEvents": [],
+    "totalMs": 1845
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      133,
+      65,
+      0
+    ],
+    [
+      186,
+      72,
+      19
+    ],
+    [
+      274,
+      102,
+      19
+    ],
+    [
+      328,
+      109,
+      19
+    ],
+    [
+      369,
+      114,
+      73
+    ],
+    [
+      457,
+      125,
+      73
+    ],
+    [
+      506,
+      138,
+      73
+    ],
+    [
+      559,
+      150,
+      109
+    ],
+    [
+      617,
+      163,
+      109
+    ],
+    [
+      647,
+      173,
+      109
+    ],
+    [
+      705,
+      176,
+      142
+    ],
+    [
+      754,
+      196,
+      142
+    ],
+    [
+      803,
+      206,
+      182
+    ],
+    [
+      867,
+      217,
+      182
+    ],
+    [
+      924,
+      238,
+      182
+    ],
+    [
+      959,
+      242,
+      182
+    ],
+    [
+      1020,
+      244,
+      217
+    ],
+    [
+      1078,
+      247,
+      217
+    ],
+    [
+      1123,
+      256,
+      217
+    ],
+    [
+      1177,
+      274,
+      229
+    ],
+    [
+      1261,
+      279,
+      229
+    ],
+    [
+      1315,
+      310,
+      229
+    ],
+    [
+      1363,
+      336,
+      287
+    ],
+    [
+      1421,
+      355,
+      287
+    ],
+    [
+      1487,
+      377,
+      287
+    ],
+    [
+      1528,
+      378,
+      356
+    ],
+    [
+      1570,
+      378,
+      356
+    ],
+    [
+      1620,
+      378,
+      356
+    ],
+    [
+      1690,
+      378,
+      357
+    ],
+    [
+      1726,
+      378,
+      357
+    ],
+    [
+      1777,
+      378,
+      357
+    ],
+    [
+      1825,
+      378,
+      357
+    ],
+    [
+      1898,
+      378,
+      357
+    ],
+    [
+      1933,
+      0,
+      345
+    ]
+  ]
+}

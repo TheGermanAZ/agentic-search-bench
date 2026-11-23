@@ -1,0 +1,30 @@
+probe: P12d
+outcome: blocked
+display: blocked (stays in Pyodide)
+detail: set
+
+code:
+----
+def f():
+    global PROBE_LEAK
+    PROBE_LEAK = 'leaked'
+f()
+print('set')
+----
+
+setup_ms: 18.4
+wall_s (whole child process): 1.53
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.291
+host lookup calls: 0
+
+=== run 0 (1123.5 ms) ===
+ok: true
+stdout: set
+error: null
+context_keys: ["f"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

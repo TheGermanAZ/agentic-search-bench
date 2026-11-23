@@ -1,0 +1,41 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P12",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    },
+    "driver": {
+      "maxToolCalls": 100
+    }
+  },
+  "runtime": "bun 1.4.4",
+  "setupMs": 7.393375000000006,
+  "source": [
+    "return String(this.constructor.constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "'process' is not defined",
+          "name": "ReferenceError",
+          "stack": "    at anonymous (<input>:3:8)\n    at <anonymous> (<code-mode>:5:61)\n    at <anonymous> (<code-mode>:6:7)\n    at <eval> (<code-mode>:11:3)\n"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 200.825084,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: 'process' is not defined",
+    "ms": 201,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 43.8
+}

@@ -1,0 +1,8 @@
+{
+  "P11": {
+    "id": "P11",
+    "outcome": "works",
+    "detail": "fresh checkout+feed: median 0.05 ms, p90 0.06 ms (n=20); one feed inside one checkout: median 0.033 ms, p90 0.035 ms (n=20); one-time pool setup (Monty() enter, spawns worker): 3.7 ms",
+    "error": null
+  }
+}

@@ -1,0 +1,9 @@
+# agentgateway OSS at 888badbbe91f2a57ec8e7bf5a5ef3acda34b1fe5 (2026-11-20T14:04:11-08:00)
+$ rg -n -i 'run_code|code_mode|codemode|rquickjs|quickjs|boa_engine|deno_core' -g '!*.lock' .
+./crates/agentgateway/src/llm/model_router.rs:1187:			encode_model_path_segment(target)
+./crates/agentgateway/src/llm/model_router.rs:1201:				encode_model_path_segment(target)
+./crates/agentgateway/src/llm/model_router.rs:1220:		encode_model_path_segment(target)
+./crates/agentgateway/src/llm/model_router.rs:1224:fn encode_model_path_segment(model: &str) -> String {
+(exit 0 : 1 means no match)
+$ rg -n 'entMcp|toolMode' .
+(exit 0)

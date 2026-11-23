@@ -1,0 +1,20 @@
+mode: hardened
+code:
+async function run(client) {
+  return String((this as any).constructor.constructor("return process")());
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "TypeError: Cannot read properties of undefined (reading 'constructor')"
+      }
+    ],
+    "isError": true
+  },
+  "ms": 840,
+  "hostCalls": 0
+}

@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P12f",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.113125000000025,
+  "source": [
+    "const names = Object.getOwnPropertyNames(globalThis).filter(n => n.startsWith(\"__\")); const out = {}; for (const n of names) { const v = globalThis[n]; out[n] = typeof v + \":\" + (v && Object.getOwnPropertyNames(Object.getPrototypeOf(v) || {}).join(\"/\")); } return out;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": {},
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 47.18475000000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": {},
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 47,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 89.6
+}

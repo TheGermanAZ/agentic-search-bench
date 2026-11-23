@@ -1,0 +1,63 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 5,
+    "totalWallMs": 181,
+    "peakTreeRssMB": 122.7,
+    "stderrTail": "', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nreturn require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\").slice(0, 60)\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:45:32.532Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nconst fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\").slice(0, 60)\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:45:32.532Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nreturn (await Deno.readTextFile(\"/etc/hosts\")).slice(0, 60)\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:45:32.533Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nreturn (await Bun.file(\"/etc/hosts\").text()).slice(0, 60)\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔄 Shutting down Code Mode MCP server...\n✅ MCP Manager shut down\n✅ Runtime isolated-vm shut down\n✅ Code Mode MCP server shut down complete\n"
+  },
+  "runtime": "isolated-vm",
+  "probe": "P4",
+  "mode": "default",
+  "setupMs": 139.1,
+  "executeToolDescription": "Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes with different capabilities. When MCP integration is enabled, code has access to MCP tools via the global `mcp` object (e.g., mcp.automem.store_memory(), mcp[\"sequential-thinking\"].sequentialthinking()). For TypeScript type definitions and API documentation of available MCP tools, read the resource mcp://types/declarations before writing code.",
+  "transportErrors": [],
+  "record": {
+    "require": {
+      "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\").slice(0, 60)",
+      "wallMs": 1.3,
+      "hostCalls": 0,
+      "out": {
+        "error": "isolated-vm runtime not yet implemented",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:32.532Z"
+      },
+      "threw": null
+    },
+    "dynamicImport": {
+      "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\").slice(0, 60)",
+      "wallMs": 0.3,
+      "hostCalls": 0,
+      "out": {
+        "error": "isolated-vm runtime not yet implemented",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:32.532Z"
+      },
+      "threw": null
+    },
+    "denoReadTextFile": {
+      "code": "return (await Deno.readTextFile(\"/etc/hosts\")).slice(0, 60)",
+      "wallMs": 0.3,
+      "hostCalls": 0,
+      "out": {
+        "error": "isolated-vm runtime not yet implemented",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:32.532Z"
+      },
+      "threw": null
+    },
+    "bunFile": {
+      "code": "return (await Bun.file(\"/etc/hosts\").text()).slice(0, 60)",
+      "wallMs": 0.2,
+      "hostCalls": 0,
+      "out": {
+        "error": "isolated-vm runtime not yet implemented",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:32.533Z"
+      },
+      "threw": null
+    }
+  }
+}

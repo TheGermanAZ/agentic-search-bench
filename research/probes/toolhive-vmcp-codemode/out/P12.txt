@@ -1,0 +1,26 @@
+--- code 1 ---
+return ().__class__
+--- result 1 ---
+{"ms":2,"hostCalls":0,"ok":true,"isError":true}
+text (64 chars):
+script execution failed: tuple has no .__class__ field or method
+--- code 2 ---
+return __import__("os").system("echo PWNED")
+--- result 2 ---
+{"ms":7,"hostCalls":0,"ok":true,"isError":true}
+text (64 chars):
+script execution failed: script.star:2:12: undefined: __import__
+--- code 3 ---
+return [type(probe_lookup), str(probe_lookup), type(call_tool), str(parallel)]
+--- result 3 ---
+{"ms":7,"hostCalls":0,"ok":true,"isError":false}
+text (145 chars):
+["builtin_function_or_method","\u003cbuilt-in function probe_lookup\u003e","builtin_function_or_method","\u003cbuilt-in function parallel\u003e"]
+--- code 4 ---
+def f():
+    return f()
+return f()
+--- result 4 ---
+{"ms":10,"hostCalls":0,"ok":true,"isError":true}
+text (54 chars):
+script execution failed: function f called recursively

@@ -1,0 +1,7 @@
+{
+  "probe": "P8",
+  "outcome": "works",
+  "display": "persists",
+  "detail": "execution 2 printed '7'",
+  "evidence": "research/probes/hermes-execute-code/out/P8.txt"
+}

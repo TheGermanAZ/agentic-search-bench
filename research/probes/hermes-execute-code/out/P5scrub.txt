@@ -1,0 +1,38 @@
+probe: P5scrub
+outcome: works
+display: leaks (PATH* var; parent env via ps)
+detail: PATHFINDER_DB_URL reached the kernel (printed redacted as postgres://probe:***@db.invalid/x in the output the model sees); PROBE_PLAIN_VALUE dropped; ps -E -ww -p <ppid> showed PROBE_SECRET=s3cr3t in the parent's environment (2,598 chars).
+
+code:
+----
+import os, subprocess
+ppid = os.getppid()
+print('PATHFINDER_DB_URL', os.environ.get('PATHFINDER_DB_URL'))
+print('PROBE_PLAIN_VALUE', os.environ.get('PROBE_PLAIN_VALUE'))
+print('HERMES_RPC_TOKEN set:', bool(os.environ.get('HERMES_RPC_TOKEN')))
+# the host process is the kernel's parent: ask ps for that one pid's environment
+env = subprocess.run(['ps', '-E', '-ww', '-o', 'command=', '-p', str(ppid)], capture_output=True, text=True).stdout
+print('PARENT_ENV has PROBE_SECRET=s3cr3t:', 'PROBE_SECRET=s3cr3t' in env, '| ps output chars:', len(env))
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 0.95
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.145
+host lookup calls: 0
+
+=== run 0 (81.6 ms) ===
+ok: true
+stdout: PATHFINDER_DB_URL postgres://probe:***@db.invalid/x
+PROBE_PLAIN_VALUE None
+HERMES_RPC_TOKEN set: True
+PARENT_ENV has PROBE_SECRET=s3cr3t: True | ps output chars: 2598
+
+model_sees: {"status": "success", "output": "PATHFINDER_DB_URL postgres://probe:***@db.invalid/x\nPROBE_PLAIN_VALUE None\nHERMES_RPC_TOKEN set: True\nPARENT_ENV has PROBE_SECRET=s3cr3t: True | ps output chars: 2598\n", "exit_code": 0, "tool_calls_made": 0, "duration_seconds": 0.06, "kernel": {"mode": "session", "reused": false, "execution_count": 1, "state_reset": false}, "stdout_truncated": false, "stdout_bytes_captured": 167, "stdout_bytes_total": 167, "stdout_bytes_omitted": 0}
+status: success
+tool_calls_made: 0
+model_sees_len: 473
+
+=== child process log (tail) ===
+

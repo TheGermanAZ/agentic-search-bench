@@ -1,0 +1,21 @@
+code:
+import time, concurrent.futures
+t = time.time()
+rs = [lookup(id=i) for i in [1, 2, 3, 4, 5]]
+print('loop', int((time.time() - t) * 1000))
+t = time.time()
+with concurrent.futures.ThreadPoolExecutor(5) as ex:
+    rs = list(ex.map(lambda i: lookup(id=i), [1, 2, 3, 4, 5]))
+print('threads', int((time.time() - t) * 1000), sum(r['value'] for r in rs))
+
+{
+  "probe": "P9",
+  "container": "codeact-hardened-P9",
+  "startup_s": 1.4,
+  "elapsed_s": 1.23,
+  "output": "loop 1016\nthreads 204 30\n",
+  "after": null,
+  "mem_peak_mib": 0,
+  "harness_killed_at_4gib": false,
+  "config": "JupyterGatewayDocker RESOURCE_CONSTRAINTS={'mem_limit': '8g', 'nano_cpus': 2e9}, JupyterKernel.execute timeout=60"
+}

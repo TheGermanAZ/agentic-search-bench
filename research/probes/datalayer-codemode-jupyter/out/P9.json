@@ -1,0 +1,7 @@
+{
+  "probe": "P9",
+  "outcome": "error",
+  "display": "error (4 of 5 cold calls failed)",
+  "detail": "1 host calls; KeyError: 'value' \u001b[31m---------------------------------------------------------------------------\u001b[39m \u001b[31mKeyError\u001b[39m Traceback (most recent call last) \u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[8]\u001b[39m\u001b[32m, line 4\u001b[39m \u001b[32m 1\u001b[39m \u001b[38;5;28;01mfrom\u001b[39;00m generated.mcp.probe \u001b[38;5;28;01mimport\u001b[39;00m lookup \u001b[32m 2\u001b[39m \u001b[38;5;28;01mimport\u001b[39;00m asyncio \u001b[32m 3\u001b[39m rs = \u001b[38;5;28;01mawait\u001b[39;...",
+  "evidence": "research/probes/datalayer-codemode-jupyter/out/P9.txt"
+}

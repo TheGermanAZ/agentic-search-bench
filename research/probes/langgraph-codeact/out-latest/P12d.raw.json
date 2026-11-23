@@ -1,0 +1,18 @@
+{
+  "probe": "P12d",
+  "config": "default",
+  "codes": [
+    "def f():\n    global PROBE_LEAK\n    PROBE_LEAK = 'leaked'\nf()\nprint('set')"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": "TypeError: Type is not msgpack serializable: function",
+      "raised": true,
+      "ms": 2.7,
+      "started": 1795377265.75366
+    }
+  ],
+  "setup_ms": 2.0,
+  "done": true
+}

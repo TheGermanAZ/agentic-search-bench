@@ -1,0 +1,11 @@
+{
+  "id": "P9",
+  "outcome": "works",
+  "detail": "sandbox elapsed 203 ms, 5 host call(s), return [2, 4, 6, 8, 10], host wall 212 ms; suspended time does not count toward max_feed_duration_secs",
+  "limits": {
+    "max_memory": 10000000,
+    "max_feed_duration_secs": 1.0,
+    "max_recursion_depth": 100
+  },
+  "peak_tree_rss_mib": 43
+}

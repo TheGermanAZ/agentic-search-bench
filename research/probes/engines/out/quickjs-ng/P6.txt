@@ -1,0 +1,5 @@
+while (true) {}
+--- output
+ERROR: stopped at the 60 s CPU limit. Do less per execution.
+---
+wall_ms=60071 host_calls=0 peak_tree_rss_mb=138

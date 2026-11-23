@@ -1,0 +1,26 @@
+probe: P10js
+worker exit: 0 signal: null killed: null
+wall ms: 223
+peak host RSS KB: 171600
+
+script: js-exec -c 'throw new Error("probe-boom")'
+exit: 1
+stdout (0 chars):
+
+stderr:
+at <eval> (-c:1:16): probe-boom
+
+ms: 134, host lookup calls so far: 0
+
+script: js-exec -c 'console.log("before"); throw new Error("probe-boom")'
+exit: 1
+stdout (7 chars):
+before
+
+stderr:
+at <eval> (-c:1:39): probe-boom
+
+ms: 13, host lookup calls so far: 0
+
+outcome: works
+detail: js-exec uncaught throw: exit 1, stderr "at <eval> (-c:1:16): probe-boom". With console.log before the throw: stdout "before", stderr "at <eval> (-c:1:39): probe-boom"

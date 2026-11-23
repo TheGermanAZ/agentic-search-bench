@@ -1,0 +1,8 @@
+probe: P10
+code (python, run through LocalREPL.execute_code):
+raise ValueError("probe-boom")
+host_calls_so_far: 0
+ok: True
+stdout: ''
+stderr: '\nValueError: probe-boom'
+final_answer: None

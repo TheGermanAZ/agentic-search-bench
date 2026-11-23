@@ -1,0 +1,28 @@
+{
+  "probe": "P7",
+  "config": "hardened",
+  "codes": [
+    "a = []\nwhile True:\n    a.append(\"x\" * 10**6)"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "model_sees": "{\"status\": \"error\", \"output\": \"\", \"tool_calls_made\": 0, \"duration_seconds\": 1.1, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Remote kernel protocol failure; kernel killed, state lost.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0}",
+      "status": "error",
+      "tool_calls_made": 0,
+      "model_sees_len": 337,
+      "error": "\n",
+      "ms": 1965.0,
+      "started": 1795383155.1621919
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.55,
+  "peak_tree_rss_gb": 0.168,
+  "calls": [],
+  "child_log_tail": ""
+}

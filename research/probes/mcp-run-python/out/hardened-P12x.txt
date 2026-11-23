@@ -1,0 +1,16 @@
+Finding 1 (verified live): hardened allow_networking=False cannot run either HTTP mode. --allow-net is
+stripped (main.py:189-190), so the server dies at http listen with NotCapable (main.ts:176). Only stdio
+works hardened. Below, each (mode, allow_networking) is started once and we record whether it bound:
+  streamable_http_stateless allow_networking=False: bound=False | last log line: '    at \x1b[0m\x1b[2m\x1b[38;5;245mfile:///private/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/tmpsvydj98o/mcp-run-python/\x1b[0m\x1b[0m\x1b[36msrc/main.ts\x1b[0m:\x1b[0m\x1b[33m356\x1b[0m:\x1b[0m\x1b[33m7\x1b[0m' | ~/p/agentic-search-bench/research/probes/mcp-run-python/out/hardened-P12x-streamable_http_stateless-net0.server.log
+  streamable_http_stateless allow_networking=True: bound=True | last log line: 'Listening on port 41880' | ~/p/agentic-search-bench/research/probes/mcp-run-python/out/hardened-P12x-streamable_http_stateless-net1.server.log
+  streamable_http allow_networking=False: bound=False | last log line: '    at \x1b[0m\x1b[2m\x1b[38;5;245mfile:///private/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/tmp750ps3a3/mcp-run-python/\x1b[0m\x1b[0m\x1b[36msrc/main.ts\x1b[0m:\x1b[0m\x1b[33m356\x1b[0m:\x1b[0m\x1b[33m7\x1b[0m' | ~/p/agentic-search-bench/research/probes/mcp-run-python/out/hardened-P12x-streamable_http-net0.server.log
+  streamable_http allow_networking=True: bound=True | last log line: 'Listening on port 41881' | ~/p/agentic-search-bench/research/probes/mcp-run-python/out/hardened-P12x-streamable_http-net1.server.log
+
+Finding 2 (source): in stateful HTTP, all client sessions share ONE realm. createStatefulHttpServer makes
+one mcpServer (main.ts:217) shared across every session transport; createServer makes one RunCode
+(main.ts:65); RunCode caches one this.pyodide reused across all .run() calls (runCode.ts:21, 35-37). So two
+different MCP clients execute Python in the same Pyodide instance and JS realm. Combined with wave-1 P8
+(globalThis and Array.prototype taint survive across runs in one server), one client can taint the realm a
+second client's code runs in. Stateless HTTP instead builds a fresh server per request (main.ts:191), so
+each request is isolated. This is a cross-client version of the P12/P8 taint, not a new host escape: the
+Deno permission boundary (files/env/run/ffi) is unchanged, so it does not move the P12 outcome word.

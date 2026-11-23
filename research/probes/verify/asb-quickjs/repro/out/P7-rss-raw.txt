@@ -1,0 +1,12 @@
+
+Bun v1.4.4 (macOS arm64)
+        0.02 real         0.00 user         0.00 sys
+
+Bun v1.4.4 (macOS arm64)
+        0.01 real         0.00 user         0.00 sys
+
+Bun v1.4.4 (macOS arm64)
+        0.01 real         0.00 user         0.00 sys
+
+Bun v1.4.4 (macOS arm64)
+        0.01 real         0.00 user         0.00 sys

@@ -1,0 +1,169 @@
+{
+  "impl": "langgraph-codeact-pyodide",
+  "name": "LangGraph CodeAct (archived) with the Pyodide eval_fn from examples/pyodide_sandbox_example.py (langchain-sandbox PyodideSandbox)",
+  "source": "https://github.com/langchain-ai/langgraph-codeact (archived) + https://github.com/langchain-ai/langchain-sandbox (archived)",
+  "pinned": "langgraph-codeact de14f16f5eb96351086c675c6a1bca238974b57d with its uv.lock: langchain-sandbox 0.0.5 (tag langchain_sandbox==0.0.5 = 65760b8430df99aa2e4c936310c392a07ff7b65c), which runs jsr:@eyurtsev/pyodide-sandbox@0.0.3 (Pyodide 0.27.8) on the machine's Deno 2.9.8",
+  "language": "Python (Pyodide)",
+  "engine": "Pyodide (CPython compiled to wasm32) inside a new `deno run` subprocess per execution, with Deno permission flags: allow_net as configured, read and write limited to node_modules, no env, no run, no ffi.",
+  "how_run": "create_codeact(model, [lookup], create_pyodide_eval_fn(PyodideSandbox(allow_net=True))).compile() driven with ainvoke and a scripted fake chat model, context passed back in as graph input. The eval_fn is copied verbatim from the example; one line forwards execute() keyword arguments, empty in the default run. A deno.json in the probe folder keeps Deno's node_modules there.",
+  "defaults": {
+    "time": "None: the example calls sandbox.execute(code=...) without timeout_seconds, and the default is None (pyodide.py:200-207, :306). P6 ran 120 s until the harness stopped it.",
+    "memory": "No configured limit. P7 ended with MemoryError (empty message) after 1.7 s at 3.6 GB host RSS, which is the wasm32 heap ceiling, not a setting.",
+    "output": "Only captured stdout, as one user message; the last expression is lost because the code runs inside a generated execute() function (P2). No truncation.",
+    "tool_calls": "No cap. Tools are not called over a bridge at all (see source notes)."
+  },
+  "hardened_config": "PyodideSandbox(allow_net=False) (the library default) and sandbox.execute(..., timeout_seconds=30, memory_limit_mb=256): constructor at pyodide.py:67-198, execute options at :200-276 (langchain-sandbox 0.0.5).",
+  "source_notes": [
+    {
+      "topic": "API shape and bridge",
+      "finding": "There is no host bridge. The example's eval_fn turns every callable in the context into source text with inspect.getsource() and pastes it in front of the code, and every other variable as name = repr(value). Tools therefore run inside Pyodide, not on the host, and only if their source is self-contained: a tool that uses a module-level import (as math_example.py's sin uses math) fails with NameError (P1, P9). A self-contained copy returned 42 with 0 host calls (P1s).",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/examples/pyodide_sandbox_example.py#L12-L75; research/probes/langgraph-codeact-pyodide/out/P1.txt; research/probes/langgraph-codeact-pyodide/out/P1s.txt"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "Because tool source is copied into the sandbox, any secret a tool needs has to be inside the sandbox too (as a literal or via a permission the sandbox is given). Inferred from the eval_fn; nothing in the example keeps credentials on the host.",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/examples/pyodide_sandbox_example.py#L35-L43"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Upfront, the same create_default_prompt as the eval example: every tool's signature and docstring in the system prompt.",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/langgraph_codeact/__init__.py#L29-L52"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Deno's permission system around a Pyodide wasm runtime. Python's `js` module still reaches the Deno global (P12e printed Deno's version and pid), so the boundary that held was Deno's: file read, env and subprocess attempts all raised NotCapable (P12f, P5b, P12 os.system), and Pyodide's /etc/hosts is its own virtual file system (P4 Errno 44).",
+      "evidence": "https://github.com/langchain-ai/langchain-sandbox/blob/65760b8430df99aa2e4c936310c392a07ff7b65c/libs/sandbox-py/langchain_sandbox/pyodide.py#L164-L198; research/probes/langgraph-codeact-pyodide/out/P12e.txt; research/probes/langgraph-codeact-pyodide/out/P12f.txt"
+    },
+    {
+      "topic": "Network",
+      "finding": "The example turns networking on (PyodideSandbox(allow_net=True), unrestricted). urllib cannot do https in Pyodide (P3), but js.fetch via pyodide.ffi.run_sync reached example.com with HTTP 200 (P3b). With allow_net=False the same call raised NotCapable (hardened-P3b).",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/examples/pyodide_sandbox_example.py#L111; research/probes/langgraph-codeact-pyodide/out/P3b.txt; research/probes/langgraph-codeact-pyodide/out/hardened-P3b.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "timeout_seconds wraps process.communicate() in asyncio.wait_for and kills the Deno process (hardened P6 stopped at 30.0 s). memory_limit_mb only adds --v8-flags=--max-old-space-size, which does not bound Pyodide's WebAssembly memory: hardened P7 with 256 MB passed 4.1 GB and was killed by the harness.",
+      "evidence": "https://github.com/langchain-ai/langchain-sandbox/blob/65760b8430df99aa2e4c936310c392a07ff7b65c/libs/sandbox-py/langchain_sandbox/pyodide.py#L274-L276; #L304-L331; research/probes/langgraph-codeact-pyodide/out/hardened-P7.txt"
+    },
+    {
+      "topic": "State",
+      "finding": "A new Deno process per execution; variables persist only because the eval_fn re-injects them as repr() literals, so P8 printed 7. Values whose repr is not valid Python cannot carry over.",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/examples/pyodide_sandbox_example.py#L35-L43"
+    },
+    {
+      "topic": "Errors",
+      "finding": "The generated wrapper catches every exception and returns {'error': str(e)}, so the model sees 'Error during execution: probe-boom' without the exception type or a line number (P10).",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/examples/pyodide_sandbox_example.py#L16-L27; research/probes/langgraph-codeact-pyodide/out/P10.txt"
+    },
+    {
+      "topic": "Startup",
+      "finding": "Median 1,135 ms per execution (P11): every call starts Deno, loads Pyodide and runs once. The in-sandbox P9 loop took about 975 ms more than an empty run (2,110 ms), so the five 200 ms calls ran serially.",
+      "evidence": "research/probes/langgraph-codeact-pyodide/out/P11.txt; research/probes/langgraph-codeact-pyodide/out/P9s.txt"
+    },
+    {
+      "topic": "Supply chain",
+      "finding": "langchain-sandbox 0.0.5, the version in langgraph-codeact's uv.lock, fetches its Deno entry point from a personal JSR scope at run time: PKG_NAME = 'jsr:@eyurtsev/pyodide-sandbox@0.0.3' (0.0.6 moved to jsr:@langchain/pyodide-sandbox@0.0.4). With node_modules_dir='auto', Deno installs npm packages next to the nearest package.json.",
+      "evidence": "https://github.com/langchain-ai/langchain-sandbox/blob/65760b8430df99aa2e4c936310c392a07ff7b65c/libs/sandbox-py/langchain_sandbox/pyodide.py#L40; #L198"
+    }
+  ],
+  "surprises": [
+    "The Pyodide example is presented as the secure option, but it does not bridge tools to the host at all: it pastes each tool's source into the sandbox, which breaks any tool that relies on its module's imports, including the example's own sin/cos helpers that use math.",
+    "The example enables unrestricted network (allow_net=True) and sets no timeout, so the default run has network on and no time limit (P3b, P6).",
+    "memory_limit_mb does not limit Pyodide memory (hardened P7 reached 4.1 GB).",
+    "On first run Deno's node_modules_dir='auto' resolved to this repo's root package.json, installed every root dependency into the repo's node_modules/.deno, replaced six top-level node_modules entries and .bin with symlinks into it, and wrote deno.lock at the repo root. The versions match bun.lock and a bun import check still passed; deno.lock was removed, the node_modules layout was left as is. A deno.json in the probe folder now contains it."
+  ],
+  "overrides": {
+    "P1": {
+      "display": "error (tool source lacks its imports)"
+    },
+    "P1s": {
+      "outcome": "works",
+      "display": "works (42, runs in sandbox, 0 host)"
+    },
+    "P2": {
+      "display": "stdout only (200,000 A, no marker)"
+    },
+    "P3": {
+      "outcome": "works",
+      "display": "works (js.fetch 200; urllib fails)",
+      "detail": "urllib.request: 'unknown url type: https' (Pyodide has no https handler). The same URL through js.fetch with pyodide.ffi.run_sync printed HTTP 200 (P3b), and Deno reports net permission 'granted' (P3c): network is on in the example's configuration."
+    },
+    "hardened-P3": {
+      "display": "blocked"
+    },
+    "hardened-P3b": {
+      "display": "blocked (Deno NotCapable)"
+    },
+    "P3b": {
+      "display": "works (example.com 200)"
+    },
+    "P3c": {
+      "display": "net permission granted"
+    },
+    "P4": {
+      "display": "blocked (virtual FS, Errno 44)"
+    },
+    "hardened-P4": {
+      "display": "blocked (virtual FS, Errno 44)"
+    },
+    "P5b": {
+      "display": "blocked (Deno NotCapable)"
+    },
+    "hardened-P5b": {
+      "display": "blocked (Deno NotCapable)"
+    },
+    "P6": {
+      "display": "no-limit-within-120s"
+    },
+    "hardened-P6": {
+      "display": "limited (30 s)"
+    },
+    "P7": {
+      "display": "limited (wasm32 ceiling, 3.6 GB)"
+    },
+    "hardened-P7": {
+      "display": "no limit (killed at 4.1 GB)"
+    },
+    "P9": {
+      "display": "error (tool source lacks its imports)"
+    },
+    "P9s": {
+      "outcome": "works",
+      "display": "serial (~975 ms, in sandbox)",
+      "detail": "printed 30; 0 host calls because the tool runs inside Pyodide; execution took 2,110.7 ms against a 1,135 ms median empty execution (P11), so the five 200 ms sleeps ran one after another"
+    },
+    "hardened-P9s": {
+      "outcome": "works",
+      "display": "serial (~975 ms, in sandbox)",
+      "detail": "printed 30 in 2,109.1 ms, same as default P9s"
+    },
+    "P12": {
+      "display": "blocked (Deno perms)"
+    },
+    "hardened-P12": {
+      "display": "blocked (Deno perms)"
+    },
+    "P12d": {
+      "outcome": "blocked",
+      "display": "blocked (stays in Pyodide)"
+    },
+    "P12e": {
+      "outcome": "works",
+      "display": "reaches Deno global (no perms)"
+    },
+    "hardened-P12e": {
+      "outcome": "works",
+      "display": "reaches Deno global (no perms)"
+    },
+    "P12f": {
+      "outcome": "blocked",
+      "display": "blocked (Deno NotCapable)"
+    },
+    "hardened-P12f": {
+      "outcome": "blocked",
+      "display": "blocked (Deno NotCapable)"
+    },
+    "hardened-P9": {
+      "display": "error (tool source lacks its imports)"
+    }
+  }
+}

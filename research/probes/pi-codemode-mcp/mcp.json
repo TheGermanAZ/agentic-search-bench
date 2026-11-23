@@ -1,0 +1,5 @@
+{
+  "mcpServers": {
+    "host": { "command": "node", "args": ["~/p/agentic-search-bench/research/probes/pi-codemode-mcp/lookup-server.mjs"] }
+  }
+}

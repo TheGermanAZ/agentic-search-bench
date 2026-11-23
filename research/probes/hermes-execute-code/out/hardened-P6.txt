@@ -1,0 +1,30 @@
+probe: hardened-P6
+outcome: limited
+display: limited (10 s; kernel killed)
+detail: stopped after 12.40 s: Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh. ⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.
+
+code:
+----
+while True:
+    pass
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 13.36
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.189
+host lookup calls: 0
+
+=== run 0 (12404.1 ms) ===
+ok: false
+stdout: ⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.
+model_sees: {"status": "timeout", "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.", "tool_calls_made": 0, "duration_seconds": 11.61, "kernel": {"reused": false, "remote": true, "ended": true, "state_lost": true, "note": "Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel."}, "stdout_truncated": false, "stdout_bytes_captured": 0, "stdout_bytes_total": 0, "stdout_bytes_omitted": 0, "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh."}
+status: timeout
+tool_calls_made: 0
+model_sees_len: 639
+error: Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.
+⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.
+
+=== child process log (tail) ===
+

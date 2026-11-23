@@ -1,0 +1,13 @@
+probe P10
+code:
+const x = 1;
+throw new Error("probe-boom")
+{"ok":false,"result":null,"error":"probe-boom","ms":1.5}
+stdout (0 chars): ""
+
+
+child exit=0 signal=null killedBy=null wall=0.4s peakRSS=86MB
+stderr tail:
+[11/22/26 14:50:44] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+

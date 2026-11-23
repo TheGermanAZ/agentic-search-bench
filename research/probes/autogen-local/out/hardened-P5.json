@@ -1,0 +1,7 @@
+{
+  "probe": "P5",
+  "outcome": "works",
+  "detail": "ENV=s3cr3t",
+  "display": "works (s3cr3t)",
+  "config": "hardened"
+}

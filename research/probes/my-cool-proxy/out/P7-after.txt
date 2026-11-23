@@ -1,0 +1,5 @@
+proxy RSS after P7: 1208960 KB
+{'medianMs': 1.95, 'p90Ms': 2.45, 'setupMsConnectAndCreate': 57} 
+Result:
+2
+proxy RSS after 20 more runs: 1175088 KB

@@ -1,0 +1,11 @@
+probe P7 hardened=True
+code:
+a = []
+while True:
+    a.append("x" * 10**6)
+{"ok": false, "result": null, "error": "RuntimeError: Execution failed: guest execution failed: Guest aborted: 13 Out of physical memory: Guest aborted: 13 Out of physical memory", "ms": 340.5}
+stdout (0 chars): ''
+baseline tree RSS 46 MB, peak 760 MB
+same session after P7: ok=True stdout='2\n' error=None
+fresh session after: {"ok": true, "result": null, "error": null, "ms": 286.8}
+stdout (2 chars): '2\n'

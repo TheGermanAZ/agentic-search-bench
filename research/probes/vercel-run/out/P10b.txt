@@ -1,0 +1,43 @@
+label: P10b
+command: node probe.mjs P10b
+child exit: code=0 signal=null
+child wall ms (process start to exit): 145
+peak child RSS: 110.9 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P10b",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "const x = 1;\nconst y = 2;\nfunction inner() { throw new Error(\"probe-boom\"); }\ninner();"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "Error",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "probe-boom",
+        "stack": "Error: probe-boom\n    at inner (run.js:3:30)\n    at <anonymous> (run.js:4:1)",
+        "string": "Error: probe-boom"
+      },
+      "wallMs": 78.685542,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "Error: RUN_USER_SOURCE_ERROR probe-boom",
+    "ms": 79,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 132.8
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:66854) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

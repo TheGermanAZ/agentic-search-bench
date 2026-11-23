@@ -1,0 +1,6 @@
+LIMITS: {'max_memory': 10000000, 'max_feed_duration_secs': 1.0, 'max_recursion_depth': 100}
+CODE: while True: pass
+OUTCOME: limited
+MontyRuntimeError: TimeoutError: feed time limit exceeded: 1.000896458s > 1s after 1.02 s wall (pool spawn included)
+DISPLAY:
+TimeoutError: feed time limit exceeded: 1.000896458s > 1s

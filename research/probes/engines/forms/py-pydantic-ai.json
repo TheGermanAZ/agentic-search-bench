@@ -1,0 +1,10 @@
+{
+ "P1": "r = await read(id=\"21\")\nprint(r[\"value\"] if r else None)",
+ "P9": "import asyncio\nrs = await asyncio.gather(*[read(id=str(i)) for i in [1, 2, 3, 4, 5]])\nprint(\",\".join(str(r[\"value\"]) for r in rs if r))",
+ "E1": "try:\n    await search(query=\"x\")\nexcept Exception as e:\n    print(\"caught: \" + str(e))",
+ "P3": "import urllib.request  # type: ignore\nr = urllib.request.urlopen(\"https://example.com\")\nprint(r.status)",
+ "P8b": "try:\n    print(kept)  # type: ignore\nexcept NameError:\n    print(\"gone\")",
+ "P12a": "subs = ().__class__.__base__.__subclasses__()  # type: ignore\nprint([c.__name__ for c in subs if c.__name__ in (\"_wrap_close\", \"Popen\")])",
+ "P12b": "print(__import__(\"os\").system(\"echo PWNED\"))  # type: ignore",
+ "P12c": "try:\n    print(sorted(globals()))  # type: ignore\nexcept Exception as e:\n    print(\"err \" + type(e).__name__ + \": \" + str(e))"
+}

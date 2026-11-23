@@ -1,0 +1,29 @@
+{
+  "supervisor": {
+    "exitCode": 139,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 771,
+    "totalWallMs": 2971,
+    "peakTreeRssMB": 260.7,
+    "stderrTail": "mem-lock: waited 2s\n~/p/agentic-search-bench/research/probes/mem-lock.sh: line 15:  6857 Segmentation fault: 11  \"$@\"\n"
+  },
+  "backend": "isolated-vm",
+  "probe": "P7",
+  "mode": "default",
+  "setupMs": 124.7,
+  "record": {
+    "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+    "wallMs": 763,
+    "hostCalls": 0,
+    "out": {
+      "success": false,
+      "logs": [],
+      "error": {
+        "message": "Isolate was disposed during execution due to memory limit",
+        "name": "Error"
+      }
+    },
+    "threw": null
+  }
+}

@@ -1,0 +1,20 @@
+[K[36m⠋[0m Starting lootbox 🎁[K[36m⠙[0m Starting lootbox 🎁[K[36m⠹[0m Starting lootbox 🎁[K[36m⠸[0m Starting lootbox 🎁WebSocket connected
+📨 WebSocket received message
+📋 Parsed message type: SCRIPT { id: "56da6dfb-cdec-4487-af7d-d5a25246aa1c" }
+🎬 Starting script execution...
+📄 Script length: 66 chars
+🔧 execute_llm_script: Starting execution
+📦 Using client from http://localhost:41310/client.ts?v=1 (version 1)
+📁 Created temp file: /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/1a183cf6eebff4c4.ts
+[K[36m⠼[0m Starting lootbox 🎁[K[K
+  [35m▶[0m [1mlootbox[0m [2mv0.0.54[0m
+
+  [32m➜[0m  Local:   [36mhttp://localhost:[1m41310[0m
+  [32m➜[0m  WebSocket: [36mws://localhost:[1m41310[36m/ws[0m
+  [90m○[0m  RPC: 1 function
+  [90m○[0m  Tools: [2m.lootbox/tools[0m
+
+  [1mready[0m in [1m2089ms[0m
+
+✅ Script execution completed { success: false }
+📤 Sending response back to client { hasResult: false, hasError: true }

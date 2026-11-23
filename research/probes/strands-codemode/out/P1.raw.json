@@ -1,0 +1,31 @@
+{
+  "probe": "P1",
+  "config": "default",
+  "codes": [
+    "r = await lookup(id=21)\nmsg = r[\"value\"]\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "42",
+      "status": "success",
+      "ms": 1142.6,
+      "started": 1795381184.813419
+    }
+  ],
+  "setup_ms": 5909.8,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 13.69,
+  "peak_tree_rss_gb": 0.108,
+  "calls": [
+    {
+      "id": 21,
+      "start": 1795381185.7304251,
+      "end": 1795381185.931517,
+      "pid": 50008
+    }
+  ],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

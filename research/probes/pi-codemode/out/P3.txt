@@ -1,0 +1,37 @@
+{
+  "impl": "pi-codemode",
+  "config": "default",
+  "probe": "P3",
+  "options": {},
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "await fetch(\"https://example.com\")",
+      "ms": 45,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "script",
+        "name": "ReferenceError",
+        "message": "fetch is not defined",
+        "stack": "ReferenceError: fetch is not defined\n    at <anonymous> (codemode.js:1:35)"
+      }
+    },
+    {
+      "code": "return typeof fetch + \"/\" + typeof XMLHttpRequest + \"/\" + typeof WebSocket",
+      "ms": 27,
+      "hostCalls": 0,
+      "ok": true,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "value": "undefined/undefined/undefined"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P3"], "exit_code": 0, "wall_ms": 152, "peak_tree_rss_mb": 102.5, "watch_kill": null}

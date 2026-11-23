@@ -1,0 +1,32 @@
+probe: P1
+outcome: works
+display: works (42, 1 call)
+detail: 42 in printed stdout: True; 42 in returned value: False; output '<repl_output> 42 </repl_output>'; host lookup calls: 1
+
+code:
+----
+r = lookup(id=21)
+msg = r["value"]
+print(msg)
+msg
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 1.09
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.517
+host lookup calls: 1
+  call id=21 start=1795381948.439 end=1795381948.642 pid=12369
+
+=== run 0 (739.0 ms) ===
+ok: true
+stdout: <repl_output>
+42
+</repl_output>
+model_view_all: ["<repl_output>\n42\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== child process log (tail) ===
+

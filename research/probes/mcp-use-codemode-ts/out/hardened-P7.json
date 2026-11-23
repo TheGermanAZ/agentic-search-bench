@@ -1,0 +1,9 @@
+{
+  "probe": "P7",
+  "config": "hardened",
+  "outcome": "no-limit-within-120s",
+  "detail": "harness: 4.07 GB RSS after 7.9 s; the probe process (host) never returned",
+  "display": "no-limit-within-120s (4.1 GB)",
+  "peak_child_rss_mb": 4173,
+  "wall_s": 8
+}

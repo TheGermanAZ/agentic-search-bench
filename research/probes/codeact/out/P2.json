@@ -1,0 +1,7 @@
+{
+  "probe": "P2",
+  "outcome": "limited",
+  "detail": "returned 2022 chars (2000 A's); truncation marker: True; 'RETURNED' in returned text: False (the last expression's Out line is after the cut)",
+  "returned_len": 2022,
+  "returned_value_present": false
+}

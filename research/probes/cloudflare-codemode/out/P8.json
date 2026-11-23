@@ -1,0 +1,38 @@
+{
+  "ex1": {
+    "code": "globalThis.kept = 7",
+    "mode": "tool",
+    "httpStatus": 200,
+    "wallMs": 4,
+    "body": {
+      "mode": "tool",
+      "res": {
+        "ok": true,
+        "output": {
+          "result": 7
+        }
+      },
+      "hostCalls": 0,
+      "hostMs": 2
+    }
+  },
+  "ex2": {
+    "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+    "mode": "tool",
+    "httpStatus": 200,
+    "wallMs": 3,
+    "body": {
+      "mode": "tool",
+      "res": {
+        "ok": true,
+        "output": {
+          "logs": [
+            "gone"
+          ]
+        }
+      },
+      "hostCalls": 0,
+      "hostMs": 1
+    }
+  }
+}

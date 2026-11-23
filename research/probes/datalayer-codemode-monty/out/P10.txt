@@ -1,0 +1,55 @@
+probe: P10
+outcome: error
+display: host crash
+detail: child process died (exit 1) before any result; log: [11/22/26 14:59:50] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-monty-6dqr0j4n/generat ed (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-monty-6dqr0j4n/generat ed/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-monty-6dqr0j4n/generat ed/mcp/probe Traceback (most recent call last): File "~/p/agentic-search-bench/research/probes/datalayer-...
+
+code:
+----
+
+setup_ms: None
+wall_s (whole child process): 1.01
+killed: None
+child exit code: 1
+peak tree RSS GB: 0.181
+host lookup calls: 0
+
+=== child process log (tail) ===
+[11/22/26 14:59:50] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-monty-6dqr0j4n/generat              
+                             ed (mcp dir:                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-monty-6dqr0j4n/generat              
+                             ed/mcp)                                            
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-monty-6dqr0j4n/generat              
+                             ed/mcp/probe                                       
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/probes/datalayer-codemode-monty/probe_core.py", line 470, in <module>
+    child(sys.argv[2], sys.argv[3])
+  File "~/p/agentic-search-bench/research/probes/datalayer-codemode-monty/probe_core.py", line 159, in child
+    loop.run_until_complete(go())
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/probes/datalayer-codemode-monty/probe_core.py", line 126, in go
+    sess = await ad.open_session(config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/probes/datalayer-codemode-monty/adapter.py", line 57, in open_session
+    await executor.setup()
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-monty/.venv/lib/python3.12/site-packages/agent_codemode/composition/executor.py", line 267, in setup
+    await self._setup_sandbox_environment()
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-monty/.venv/lib/python3.12/site-packages/agent_codemode/composition/executor.py", line 374, in _setup_sandbox_environment
+    self._sandbox_client.register_tool_caller(self.call_tool)
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-monty/.venv/lib/python3.12/site-packages/code_sandboxes/client.py", line 588, in register_tool_caller
+    self._sandbox.register_tool_caller(caller)
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-monty/.venv/lib/python3.12/site-packages/code_sandboxes/base.py", line 1147, in register_tool_caller
+    self._setup_tool_caller()
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-monty/.venv/lib/python3.12/site-packages/code_sandboxes/base.py", line 1160, in _setup_tool_caller
+    self._set_internal_variable("__call_tool__", self._tool_caller)
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-monty/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/monty/monty.py", line 255, in _set_internal_variable
+    self._repl.feed_run(f"{name} = {value!r}")
+pydantic_monty.MontySyntaxError: Expected an expression
+

@@ -1,0 +1,41 @@
+probe: P3
+outcome: blocked
+display: blocked
+detail: TypeError: Type is not msgpack serializable: module
+
+code:
+----
+import urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10)
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+import ssl, urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10, context=ssl._create_unverified_context())
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+
+setup_ms: 2.1
+wall_s (whole child process): 0.5
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.074
+host lookup calls: 0
+
+=== run 0 (74.4 ms) ===
+ok: false
+error: TypeError: Type is not msgpack serializable: module
+raised: true
+
+=== run 1 (68.7 ms) ===
+ok: false
+error: TypeError: Type is not msgpack serializable: HTTPResponse
+raised: true
+
+=== child process log (tail) ===
+~/p/agentic-search-bench/research/impls/langgraph-codeact/.venv/lib/python3.12/site-packages/langgraph/checkpoint/base/__init__.py:17: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects='messages' or allowed_objects='core') to suppress this warning.
+  from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+

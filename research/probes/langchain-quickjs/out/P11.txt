@@ -1,0 +1,36 @@
+{
+ "config": "default",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ]
+ },
+ "probe": "P11",
+ "result": {
+  "import_ms": 408.9,
+  "build_agent_ms": 2.6,
+  "first_execution": {
+   "code": "1+1",
+   "output": "<result>2</result>",
+   "turn_ms": 169.8,
+   "eval_ms": 161.9,
+   "host_calls": 0
+  },
+  "fresh_thread_executions": 20,
+  "turn_ms": {
+   "median": 7.8,
+   "p90": 8.6,
+   "min": 7.4,
+   "max": 9.0
+  },
+  "eval_ms": {
+   "median": 3.7,
+   "p90": 4.1,
+   "min": 3.5,
+   "max": 4.2
+  },
+  "sample_output": "<result>2</result>"
+ }
+}
+
+monitor: {"config": "default", "probe": "P11", "exit_code": 0, "wall_s": 0.89, "peak_rss_mb": 248.2, "first_rss_mb": 16.0, "killed": null, "stderr_tail": []}

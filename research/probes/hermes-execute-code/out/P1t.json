@@ -1,0 +1,7 @@
+{
+  "probe": "P1t",
+  "outcome": "works",
+  "display": "works (42 via terminal)",
+  "detail": "Unpatched built-in terminal tool from the kernel: terminal('sleep 0.2; echo $((21*2))') -> output '42'.",
+  "evidence": "research/probes/hermes-execute-code/out/P1t.txt"
+}

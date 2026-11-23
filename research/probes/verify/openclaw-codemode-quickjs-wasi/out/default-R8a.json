@@ -1,0 +1,192 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R8a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1426,
+  "peakTreeRssMb": 339,
+  "peakTreeFootprintMb": 286,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R8a",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "startMs": 1045,
+      "ms": 328,
+      "ok": true,
+      "result": {
+        "value": {
+          "status": "completed",
+          "waits": 0,
+          "value": "done",
+          "output": [
+            {
+              "type": "text",
+              "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[truncated]"
+            }
+          ],
+          "textChars": 793,
+          "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"322d5ab3b93e01eb21c692e7\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[{\"type\":\"text\",\"text\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[793 chars]…xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[truncated]\"}],\"value\":\"done\"}"
+        },
+        "stringChars": 1334
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 1156,
+    "hostEvents": [],
+    "totalMs": 1373
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      75,
+      60,
+      18
+    ],
+    [
+      124,
+      73,
+      18
+    ],
+    [
+      181,
+      89,
+      18
+    ],
+    [
+      229,
+      98,
+      56
+    ],
+    [
+      284,
+      106,
+      56
+    ],
+    [
+      338,
+      113,
+      76
+    ],
+    [
+      386,
+      123,
+      76
+    ],
+    [
+      439,
+      126,
+      76
+    ],
+    [
+      490,
+      135,
+      94
+    ],
+    [
+      543,
+      146,
+      94
+    ],
+    [
+      594,
+      149,
+      115
+    ],
+    [
+      647,
+      162,
+      115
+    ],
+    [
+      697,
+      173,
+      142
+    ],
+    [
+      748,
+      175,
+      142
+    ],
+    [
+      801,
+      194,
+      142
+    ],
+    [
+      854,
+      203,
+      173
+    ],
+    [
+      906,
+      207,
+      173
+    ],
+    [
+      955,
+      214,
+      188
+    ],
+    [
+      1006,
+      228,
+      188
+    ],
+    [
+      1060,
+      231,
+      188
+    ],
+    [
+      1111,
+      245,
+      209
+    ],
+    [
+      1164,
+      264,
+      209
+    ],
+    [
+      1218,
+      268,
+      240
+    ],
+    [
+      1270,
+      292,
+      240
+    ],
+    [
+      1321,
+      309,
+      240
+    ],
+    [
+      1375,
+      339,
+      286
+    ],
+    [
+      1426,
+      0,
+      286
+    ]
+  ]
+}

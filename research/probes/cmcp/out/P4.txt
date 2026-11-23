@@ -1,0 +1,98 @@
+[
+  {
+    "probe": "P4-require",
+    "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+    "args_extra": {},
+    "wall_ms": 1,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: require is not defined\n    at <anonymous> (eval_script:9:21)\n    at <eval> (eval_script:18:58)\n",
+    "response_text_length": 138,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P4-import-fs",
+    "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\")",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: could not load module 'fs'\n",
+    "response_text_length": 70,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P4-import-qjs-std",
+    "code": "const std = await import(\"qjs:std\"); return std.loadFile(\"/etc/hosts\")",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: could not load module 'qjs:std'\n",
+    "response_text_length": 75,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P4-import-std",
+    "code": "const std = await import(\"std\"); return std.loadFile(\"/etc/hosts\")",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: could not load module 'std'\n",
+    "response_text_length": 71,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P4-import-file",
+    "code": "const m = await import(\"/etc/hosts\"); return String(m)",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: could not load module '/etc/hosts'\n",
+    "response_text_length": 78,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P4-Deno",
+    "code": "return await Deno.readTextFile(\"/etc/hosts\")",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: Deno is not defined\n    at <anonymous> (eval_script:9:21)\n    at <eval> (eval_script:18:47)\n",
+    "response_text_length": 135,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  }
+]

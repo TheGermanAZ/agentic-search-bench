@@ -1,0 +1,16 @@
+config: get_environment('ipython', {'kernel_mode': 'subprocess', 'cell_timeout': 30})
+code:
+import time, concurrent.futures
+t = time.time()
+with concurrent.futures.ThreadPoolExecutor(5) as ex:
+    rs = list(ex.map(lambda i: lookup(id=i), [1, 2, 3, 4, 5]))
+print(int((time.time() - t) * 1000), sum(r['value'] for r in rs))
+t = time.time()
+rs = [lookup(id=i) for i in [1, 2, 3, 4, 5]]
+print(int((time.time() - t) * 1000))
+import os
+print('kernel pid', os.getpid(), 'parent', os.getppid())
+result: {'ok': True, 'stdout': '206 30\n1018\nkernel pid 24827 parent 24764\n', 'stderr': '', 's': 1.27}
+host-side lookup calls: 0
+host pid: 24764
+wall: 1.83 s

@@ -1,0 +1,50 @@
+{
+  "worker": {
+    "exitCode": 0,
+    "signal": null,
+    "killed": null,
+    "wallMs": 98,
+    "peakRssKb": 0
+  },
+  "parsed": {
+    "probe": "P10",
+    "host": {
+      "node": "v24.22.1",
+      "pid": 62404
+    },
+    "runs": [
+      {
+        "label": "nosuchcmd_probe_xyz",
+        "script": "nosuchcmd_probe_xyz",
+        "exitCode": 127,
+        "stdout": "",
+        "stderr": "bash: nosuchcmd_probe_xyz: command not found\n",
+        "ms": 28,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "exit 7",
+        "script": "exit 7",
+        "exitCode": 7,
+        "stdout": "",
+        "stderr": "",
+        "ms": 2,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "echo )",
+        "script": "echo )",
+        "exitCode": 2,
+        "stdout": "",
+        "stderr": "bash: syntax error: Parse error at 1:1: syntax error near unexpected token `)'\n",
+        "ms": 2,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 83024,
+    "maxInFlight": 0
+  }
+}

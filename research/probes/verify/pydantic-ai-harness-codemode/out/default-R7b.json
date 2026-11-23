@@ -1,0 +1,345 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 32492,
+  "peakTreeRssMb": 109,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R7b",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 586,
+        "ms": 30066,
+        "ok": true,
+        "result": [
+          "Runtime error:\nTimeoutError: feed time limit exceeded: 30.000099835s > 30s\n\n5 nested tool calls started before execution stopped:\n- lookup({'id': 0}) returned {'id': 0, 'value': 0}\n- lookup({'id': 1}) returned {'id': 1, 'value': 2}\n- lookup({'id': 2}) returned {'id': 2, 'value': 4}\n- lookup({'id': 3}) returned {'id': 3, 'value': 6}\n- lookup({'id': 4}) returned {'id': 4, 'value': 8}\nAccount for all 5 before retrying; repeating a call repeats whatever it already did.\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+        ],
+        "callsStarted": 5
+      },
+      "atReturn": {
+        "started": 5,
+        "done": 5
+      },
+      "after1500ms": {
+        "started": 6,
+        "done": 6
+      },
+      "after": {
+        "label": "after",
+        "startMs": 32155,
+        "ms": 263,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 22,
+    "totalMs": 32418
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      98,
+      29
+    ],
+    [
+      524,
+      63
+    ],
+    [
+      925,
+      109
+    ],
+    [
+      1328,
+      109
+    ],
+    [
+      1743,
+      109
+    ],
+    [
+      2295,
+      109
+    ],
+    [
+      2771,
+      109
+    ],
+    [
+      3193,
+      109
+    ],
+    [
+      3621,
+      109
+    ],
+    [
+      4034,
+      109
+    ],
+    [
+      4654,
+      109
+    ],
+    [
+      5230,
+      109
+    ],
+    [
+      5657,
+      109
+    ],
+    [
+      6086,
+      109
+    ],
+    [
+      6526,
+      109
+    ],
+    [
+      6928,
+      109
+    ],
+    [
+      7518,
+      109
+    ],
+    [
+      7922,
+      109
+    ],
+    [
+      8335,
+      109
+    ],
+    [
+      8748,
+      109
+    ],
+    [
+      9152,
+      109
+    ],
+    [
+      9603,
+      109
+    ],
+    [
+      10019,
+      109
+    ],
+    [
+      10453,
+      109
+    ],
+    [
+      10853,
+      109
+    ],
+    [
+      11294,
+      109
+    ],
+    [
+      11732,
+      109
+    ],
+    [
+      12130,
+      109
+    ],
+    [
+      12596,
+      109
+    ],
+    [
+      13021,
+      109
+    ],
+    [
+      13493,
+      109
+    ],
+    [
+      13905,
+      109
+    ],
+    [
+      14366,
+      109
+    ],
+    [
+      14926,
+      109
+    ],
+    [
+      15358,
+      109
+    ],
+    [
+      15785,
+      109
+    ],
+    [
+      16258,
+      109
+    ],
+    [
+      16668,
+      109
+    ],
+    [
+      17085,
+      109
+    ],
+    [
+      17499,
+      109
+    ],
+    [
+      17979,
+      109
+    ],
+    [
+      18418,
+      109
+    ],
+    [
+      18823,
+      109
+    ],
+    [
+      19287,
+      109
+    ],
+    [
+      19695,
+      109
+    ],
+    [
+      20117,
+      109
+    ],
+    [
+      20529,
+      109
+    ],
+    [
+      21080,
+      109
+    ],
+    [
+      21576,
+      109
+    ],
+    [
+      22011,
+      109
+    ],
+    [
+      22443,
+      109
+    ],
+    [
+      23066,
+      109
+    ],
+    [
+      23593,
+      109
+    ],
+    [
+      24044,
+      109
+    ],
+    [
+      24603,
+      109
+    ],
+    [
+      25099,
+      109
+    ],
+    [
+      25535,
+      82
+    ],
+    [
+      25935,
+      82
+    ],
+    [
+      26420,
+      82
+    ],
+    [
+      26818,
+      82
+    ],
+    [
+      27221,
+      82
+    ],
+    [
+      27653,
+      82
+    ],
+    [
+      28176,
+      82
+    ],
+    [
+      28579,
+      82
+    ],
+    [
+      29004,
+      82
+    ],
+    [
+      29403,
+      82
+    ],
+    [
+      29816,
+      82
+    ],
+    [
+      30223,
+      82
+    ],
+    [
+      30629,
+      82
+    ],
+    [
+      31075,
+      68
+    ],
+    [
+      31500,
+      68
+    ],
+    [
+      31918,
+      68
+    ],
+    [
+      32381,
+      97
+    ]
+  ]
+}

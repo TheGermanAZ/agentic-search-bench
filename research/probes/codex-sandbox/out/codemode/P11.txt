@@ -1,0 +1,180 @@
+probe: P11 (codex code-mode host, V8)
+host: codex-code-mode-host codex 0.169.0
+handshake: {"type": "connection/ready", "selectedVersion": 1, "capabilities": ["bounded-output-v1", "delegate-capacity-4096", "session-cell-execution-resource-limits", "yield-observation"]}
+session/open: {"type": "operation/response", "id": 1, "result": {"status": "ok", "value": {"type": "session/ready", "sessionId": "s1"}}}
+setup_ms (spawn + handshake): 35.29
+wall_ms: 55.9
+peak_rss_mb: 7.9
+killed: None
+
+--- execution 0 ---
+source:
+text(String(1+1));
+elapsed_ms: 4.33
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 2, "result": {"status": "ok", "value": {"Result": {"cell_id": "1", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 4169375}}}}
+
+--- execution 1 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.82
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 3, "result": {"status": "ok", "value": {"Result": {"cell_id": "2", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 681584}}}}
+
+--- execution 2 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.86
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 4, "result": {"status": "ok", "value": {"Result": {"cell_id": "3", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 715416}}}}
+
+--- execution 3 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.65
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 5, "result": {"status": "ok", "value": {"Result": {"cell_id": "4", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 572208}}}}
+
+--- execution 4 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.75
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 6, "result": {"status": "ok", "value": {"Result": {"cell_id": "5", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 629458}}}}
+
+--- execution 5 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.78
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 7, "result": {"status": "ok", "value": {"Result": {"cell_id": "6", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 643167}}}}
+
+--- execution 6 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.96
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 8, "result": {"status": "ok", "value": {"Result": {"cell_id": "7", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 855833}}}}
+
+--- execution 7 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.81
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 9, "result": {"status": "ok", "value": {"Result": {"cell_id": "8", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 646458}}}}
+
+--- execution 8 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.9
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 10, "result": {"status": "ok", "value": {"Result": {"cell_id": "9", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 769916}}}}
+
+--- execution 9 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.71
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 11, "result": {"status": "ok", "value": {"Result": {"cell_id": "10", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 616500}}}}
+
+--- execution 10 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.77
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 12, "result": {"status": "ok", "value": {"Result": {"cell_id": "11", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 659917}}}}
+
+--- execution 11 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.85
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 13, "result": {"status": "ok", "value": {"Result": {"cell_id": "12", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 749209}}}}
+
+--- execution 12 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.73
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 14, "result": {"status": "ok", "value": {"Result": {"cell_id": "13", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 627375}}}}
+
+--- execution 13 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.74
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 15, "result": {"status": "ok", "value": {"Result": {"cell_id": "14", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 623292}}}}
+
+--- execution 14 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.77
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 16, "result": {"status": "ok", "value": {"Result": {"cell_id": "15", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 639000}}}}
+
+--- execution 15 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.89
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 17, "result": {"status": "ok", "value": {"Result": {"cell_id": "16", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 785708}}}}
+
+--- execution 16 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.71
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 18, "result": {"status": "ok", "value": {"Result": {"cell_id": "17", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 604083}}}}
+
+--- execution 17 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.81
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 19, "result": {"status": "ok", "value": {"Result": {"cell_id": "18", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 677917}}}}
+
+--- execution 18 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.91
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 20, "result": {"status": "ok", "value": {"Result": {"cell_id": "19", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 763541}}}}
+
+--- execution 19 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.79
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 21, "result": {"status": "ok", "value": {"Result": {"cell_id": "20", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 659458}}}}
+
+--- execution 20 ---
+source:
+text(String(1+1));
+elapsed_ms: 0.72
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 22, "result": {"status": "ok", "value": {"Result": {"cell_id": "21", "content_items": [{"type": "input_text", "text": "2"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 605666}}}}
+
+first execution ms: 4.33
+20 later executions median ms: 0.785
+20 later executions p90 ms: 0.9

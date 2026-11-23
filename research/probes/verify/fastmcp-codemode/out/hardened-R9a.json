@@ -1,0 +1,339 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py hardened R9a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 11413,
+  "peakTreeRssMb": 112,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9a",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(hardened {'limits': {'max_feed_duration_secs': 10, 'max_memory': 50000000}, 'wall_clock_timeout_secs': 60}); new in-process Client per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 988,
+          "ms": 10106,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 10.000028958s > 10s"
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1139,
+        "ms": 225,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1364,
+        "ms": 226,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 11094,
+        "ms": 220,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 39,
+    "totalMs": 11314
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[11/22/26 16:30:45] Error calling tool 'execute'                                \n                    ╭─────────── Traceback (most recent call last) ────────────╮\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/server/server.py:1673 in call_tool                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 8 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:309 in         │\n                    │ _run_monty                                               │\n                    ╰──────────────────────────────────────────────────────────╯\n                    MontyRuntimeError: TimeoutError: feed time limit exceeded:  \n                    10.000028958s > 10s                                         \n",
+  "rssSamplesMsMb": [
+    [
+      145,
+      26
+    ],
+    [
+      300,
+      42
+    ],
+    [
+      440,
+      52
+    ],
+    [
+      591,
+      56
+    ],
+    [
+      715,
+      64
+    ],
+    [
+      860,
+      73
+    ],
+    [
+      1007,
+      80
+    ],
+    [
+      1156,
+      89
+    ],
+    [
+      1318,
+      111
+    ],
+    [
+      1458,
+      111
+    ],
+    [
+      1601,
+      110
+    ],
+    [
+      1801,
+      100
+    ],
+    [
+      1996,
+      100
+    ],
+    [
+      2186,
+      100
+    ],
+    [
+      2432,
+      100
+    ],
+    [
+      2627,
+      100
+    ],
+    [
+      2844,
+      100
+    ],
+    [
+      3068,
+      100
+    ],
+    [
+      3267,
+      100
+    ],
+    [
+      3497,
+      100
+    ],
+    [
+      3672,
+      100
+    ],
+    [
+      3846,
+      100
+    ],
+    [
+      4063,
+      100
+    ],
+    [
+      4225,
+      100
+    ],
+    [
+      4406,
+      100
+    ],
+    [
+      4566,
+      100
+    ],
+    [
+      4711,
+      100
+    ],
+    [
+      4852,
+      100
+    ],
+    [
+      4981,
+      100
+    ],
+    [
+      5167,
+      100
+    ],
+    [
+      5342,
+      100
+    ],
+    [
+      5488,
+      100
+    ],
+    [
+      5640,
+      100
+    ],
+    [
+      5780,
+      100
+    ],
+    [
+      5928,
+      100
+    ],
+    [
+      6107,
+      100
+    ],
+    [
+      6292,
+      100
+    ],
+    [
+      6459,
+      100
+    ],
+    [
+      6621,
+      100
+    ],
+    [
+      6788,
+      100
+    ],
+    [
+      6938,
+      100
+    ],
+    [
+      7097,
+      100
+    ],
+    [
+      7259,
+      100
+    ],
+    [
+      7397,
+      100
+    ],
+    [
+      7587,
+      100
+    ],
+    [
+      7733,
+      100
+    ],
+    [
+      7886,
+      100
+    ],
+    [
+      8062,
+      100
+    ],
+    [
+      8247,
+      100
+    ],
+    [
+      8404,
+      100
+    ],
+    [
+      8588,
+      100
+    ],
+    [
+      8754,
+      100
+    ],
+    [
+      8874,
+      100
+    ],
+    [
+      9019,
+      100
+    ],
+    [
+      9187,
+      100
+    ],
+    [
+      9359,
+      100
+    ],
+    [
+      9555,
+      100
+    ],
+    [
+      9702,
+      100
+    ],
+    [
+      9908,
+      100
+    ],
+    [
+      10107,
+      100
+    ],
+    [
+      10322,
+      100
+    ],
+    [
+      10551,
+      100
+    ],
+    [
+      10798,
+      100
+    ],
+    [
+      10997,
+      100
+    ],
+    [
+      11125,
+      100
+    ],
+    [
+      11286,
+      106
+    ],
+    [
+      11409,
+      106
+    ]
+  ]
+}

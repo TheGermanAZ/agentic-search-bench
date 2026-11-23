@@ -1,0 +1,4 @@
+ERROR: probe-boom
+    at <eval> (eval.js:1:16)
+---
+wall_ms=4 host_calls=0

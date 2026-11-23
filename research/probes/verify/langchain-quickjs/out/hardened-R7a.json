@@ -1,0 +1,223 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py hardened R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2861,
+  "peakTreeRssMb": 173,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R7a",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich'], 'timeout': 1.0, 'memory_limit': 16777216, 'max_ptc_calls': 8, 'mode': 'call', 'subagents': False}), new thread_id per execution",
+    "data": {
+      "label": "",
+      "startMs": 2046,
+      "ms": 642,
+      "ok": true,
+      "result": "<error type=\"Deadlock\">eval_async's top-level promise is pending but no async host calls are in flight. Did you forget to register a function as async (is_async=True)? Or is a JS Promise missing its resolver?</error>",
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 18,
+    "totalMs": 2688
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      98,
+      28
+    ],
+    [
+      165,
+      34
+    ],
+    [
+      210,
+      37
+    ],
+    [
+      263,
+      39
+    ],
+    [
+      308,
+      41
+    ],
+    [
+      430,
+      43
+    ],
+    [
+      478,
+      47
+    ],
+    [
+      529,
+      47
+    ],
+    [
+      575,
+      50
+    ],
+    [
+      636,
+      54
+    ],
+    [
+      682,
+      56
+    ],
+    [
+      723,
+      58
+    ],
+    [
+      782,
+      58
+    ],
+    [
+      823,
+      58
+    ],
+    [
+      877,
+      58
+    ],
+    [
+      934,
+      59
+    ],
+    [
+      978,
+      60
+    ],
+    [
+      1030,
+      62
+    ],
+    [
+      1084,
+      62
+    ],
+    [
+      1137,
+      65
+    ],
+    [
+      1182,
+      67
+    ],
+    [
+      1265,
+      67
+    ],
+    [
+      1310,
+      68
+    ],
+    [
+      1359,
+      69
+    ],
+    [
+      1421,
+      71
+    ],
+    [
+      1521,
+      73
+    ],
+    [
+      1559,
+      77
+    ],
+    [
+      1614,
+      77
+    ],
+    [
+      1660,
+      79
+    ],
+    [
+      1720,
+      80
+    ],
+    [
+      1768,
+      80
+    ],
+    [
+      1821,
+      83
+    ],
+    [
+      1869,
+      85
+    ],
+    [
+      1927,
+      88
+    ],
+    [
+      1973,
+      89
+    ],
+    [
+      2059,
+      89
+    ],
+    [
+      2150,
+      90
+    ],
+    [
+      2191,
+      91
+    ],
+    [
+      2275,
+      101
+    ],
+    [
+      2333,
+      136
+    ],
+    [
+      2403,
+      149
+    ],
+    [
+      2452,
+      159
+    ],
+    [
+      2508,
+      162
+    ],
+    [
+      2617,
+      166
+    ],
+    [
+      2663,
+      173
+    ],
+    [
+      2716,
+      173
+    ],
+    [
+      2807,
+      173
+    ],
+    [
+      2860,
+      0
+    ]
+  ]
+}

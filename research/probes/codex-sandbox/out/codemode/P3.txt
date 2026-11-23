@@ -1,0 +1,16 @@
+probe: P3 (codex code-mode host, V8)
+host: codex-code-mode-host codex 0.169.0
+handshake: {"type": "connection/ready", "selectedVersion": 1, "capabilities": ["bounded-output-v1", "delegate-capacity-4096", "session-cell-execution-resource-limits", "yield-observation"]}
+session/open: {"type": "operation/response", "id": 1, "result": {"status": "ok", "value": {"type": "session/ready", "sessionId": "s1"}}}
+setup_ms (spawn + handshake): 34.67
+wall_ms: 39.4
+peak_rss_mb: 6.5
+killed: None
+
+--- execution 0 ---
+source:
+await fetch("https://example.com");
+elapsed_ms: 4.48
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 2, "result": {"status": "ok", "value": {"Result": {"cell_id": "1", "content_items": [{"type": "input_text", "text": "Script error:\nReferenceError: fetch is not defined\n    at exec_main.mjs:1:1"}], "error_text": "ReferenceError: fetch is not defined\n    at exec_main.mjs:1:1", "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 4298000}}}}

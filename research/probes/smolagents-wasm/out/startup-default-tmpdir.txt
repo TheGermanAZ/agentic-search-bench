@@ -1,0 +1,18 @@
+    raise RuntimeError(f"Failed to start Deno server: {stderr}")
+RuntimeError: Failed to start Deno server: Download https://deno.land/std/http/server.ts
+Download https://registry.npmjs.org/pyodide
+Warning Implicitly using latest version (0.224.0) for https://deno.land/std/http/server.ts
+Download https://deno.land/std@0.224.0/http/server.ts
+Download https://deno.land/std@0.224.0/async/delay.ts
+Download https://registry.npmjs.org/@types%2femscripten
+Download https://registry.npmjs.org/ws
+Download https://registry.npmjs.org/bufferutil
+Download https://registry.npmjs.org/utf-8-validate
+Download https://registry.npmjs.org/pyodide/-/pyodide-314.0.8.tgz
+Download https://registry.npmjs.org/@types/emscripten/-/emscripten-1.41.6.tgz
+Download https://registry.npmjs.org/ws/-/ws-8.23.0.tgz
+wasm instantiation failed!
+NotCapable: Requires read access to "/private/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/pyodide_deno_je8v5ouu/deno_cache/npm/registry.npmjs.org/pyodide/314.0.8/pyodide.asm.wasm", run again with the --allow-read flag
+error: Uncaught (in promise) NotCapable: Requires read access to "/private/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/pyodide_deno_je8v5ouu/deno_cache/npm/registry.npmjs.org/pyodide/314.0.8/python_stdlib.zip", run again with the --allow-read flag
+Warning Couldn't format source line: Line 131 is out of bounds (source may have changed at runtime)
+

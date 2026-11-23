@@ -1,0 +1,14 @@
+probe P1
+code:
+const r = await host.lookup({id: 21}); console.log(r.value)
+{"ok":true,"error":null,"ms":205.1}
+stdout (2 chars): "42"
+
+
+child exit=0 signal=null killedBy=null wall=0.6s peakRSS=87MB
+stderr tail:
+[11/22/26 14:48:10] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+

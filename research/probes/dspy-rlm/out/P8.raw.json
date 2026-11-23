@@ -1,0 +1,46 @@
+{
+  "probe": "P8",
+  "config": "default",
+  "codes": [
+    "kept = 7",
+    "try:\n    msg = kept\nexcept NameError:\n    msg = \"gone\"\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "<repl_output>\n(no output - did you forget to print?)\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\n(no output - did you forget to print?)\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        38,
+        25
+      ],
+      "answer": "done",
+      "ms": 559.0,
+      "started": 1795381962.996883
+    },
+    {
+      "ok": true,
+      "stdout": "<repl_output>\ngone\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\ngone\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        4,
+        25
+      ],
+      "answer": "done",
+      "ms": 423.1,
+      "started": 1795381963.55616
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.34,
+  "peak_tree_rss_gb": 0.502,
+  "calls": [],
+  "child_log_tail": ""
+}

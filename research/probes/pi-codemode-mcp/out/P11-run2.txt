@@ -1,0 +1,40 @@
+{
+  "impl": "pi-codemode-mcp",
+  "config": "default",
+  "probe": "P11",
+  "options": {},
+  "warmupExecIncludingServerSpawnMs": 335.33,
+  "hostCalls": 0,
+  "hostCallLog": [],
+  "results": [
+    {
+      "timesMs": [
+        0.97,
+        0.72,
+        1.67,
+        0.74,
+        1.62,
+        0.7,
+        0.8,
+        0.92,
+        0.65,
+        0.53,
+        0.55,
+        0.58,
+        0.53,
+        1.12,
+        0.61,
+        0.38,
+        0.4,
+        0.47,
+        1.01,
+        1.16
+      ],
+      "medianMs": 0.71,
+      "p90Ms": 1.16
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P11"], "exit_code": 0, "wall_ms": 835, "peak_tree_rss_mb": 194.2, "watch_kill": null}

@@ -1,0 +1,32 @@
+{
+  "runs_ms": [
+    0.36,
+    0.57,
+    0.35,
+    0.34,
+    0.38,
+    0.37,
+    0.29,
+    0.28,
+    0.26,
+    0.3,
+    0.28,
+    0.35,
+    0.37,
+    0.39,
+    0.33,
+    0.26,
+    0.29,
+    0.81,
+    0.27,
+    0.28
+  ],
+  "median_ms": 0.33,
+  "p90_ms": 0.57,
+  "one_time_setup_ms": {
+    "docker_run_to_initialize": 223,
+    "to_tools_list": 224
+  },
+  "note": "round trip through docker run -i stdio; includes TS transpile of the generated declarations",
+  "uptime": "14:44  up 42 days, 21:42, 2 users, load averages: 39.50 41.76 28.72"
+}

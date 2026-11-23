@@ -1,0 +1,39 @@
+{
+  "probe": "P7next",
+  "config": "hardened",
+  "codes": [
+    "a = []\nwhile True:\n    a.append(\"x\" * 10**6)",
+    "print('next cell', 1 + 1)"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "\u23f0 Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+      "model_sees": "{\"status\": \"timeout\", \"output\": \"\u23f0 Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 10.51, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}",
+      "status": "timeout",
+      "tool_calls_made": 0,
+      "model_sees_len": 639,
+      "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\n\u23f0 Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+      "ms": 11271.3,
+      "started": 1795383157.868653
+    },
+    {
+      "ok": true,
+      "stdout": "next cell 2\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"next cell 2\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 1.06, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 12, \"stdout_bytes_total\": 12, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 0,
+      "model_sees_len": 272,
+      "ms": 1064.9,
+      "started": 1795383169.140484
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 12.93,
+  "peak_tree_rss_gb": 0.213,
+  "calls": [],
+  "child_log_tail": ""
+}

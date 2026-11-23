@@ -1,0 +1,11 @@
+{
+  "file": "P9.ts",
+  "exitCode": 0,
+  "signal": null,
+  "killedByHarness": null,
+  "wallMs": 566,
+  "hostCalls": 5,
+  "stdoutChars": 4,
+  "stdout": "252\n",
+  "stderr": ""
+}

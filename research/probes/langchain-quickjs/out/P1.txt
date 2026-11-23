@@ -1,0 +1,20 @@
+{
+ "config": "default",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ]
+ },
+ "probe": "P1",
+ "result": [
+  {
+   "code": "const r = await tools.lookup({id: 21}); console.log(r.value)",
+   "output": "<stdout>\n42\n</stdout>\n<result>null</result>",
+   "turn_ms": 424.7,
+   "eval_ms": 415.1,
+   "host_calls": 1
+  }
+ ]
+}
+
+monitor: {"config": "default", "probe": "P1", "exit_code": 0, "wall_s": 1.32, "peak_rss_mb": 183.3, "first_rss_mb": 16.4, "killed": null, "stderr_tail": []}

@@ -1,0 +1,41 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P4b",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    },
+    "driver": {
+      "maxToolCalls": 100
+    }
+  },
+  "runtime": "bun 1.4.4",
+  "setupMs": 2.2662910000000025,
+  "source": [
+    "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "could not load module 'fs'",
+          "name": "ReferenceError",
+          "stack": ""
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 128.461417,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: could not load module 'fs'",
+    "ms": 128,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 45.2
+}

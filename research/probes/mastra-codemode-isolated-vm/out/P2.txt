@@ -1,0 +1,50 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 39,
+    "totalWallMs": 169,
+    "peakTreeRssMB": 71.4,
+    "stderrTail": ""
+  },
+  "backend": "isolated-vm",
+  "probe": "P2",
+  "mode": "default",
+  "setupMs": 78.5,
+  "record": {
+    "literalSpecForm": {
+      "code": "console.log(\"A\".repeat(200000)); \"RETURNED\"",
+      "wallMs": 30.8,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "logs": [
+          {
+            "length": 200000,
+            "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        ]
+      },
+      "threw": null
+    },
+    "returnForm": {
+      "code": "console.log(\"A\".repeat(200000)); return \"RETURNED\"",
+      "wallMs": 3.7,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "RETURNED",
+        "logs": [
+          {
+            "length": 200000,
+            "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        ]
+      },
+      "threw": null
+    }
+  }
+}

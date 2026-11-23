@@ -1,0 +1,13 @@
+mode: hardened
+code:
+console.log(String(this.constructor.constructor("return process")()))
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "7718227b-229e-4069-8f30-cac9623ce063",
+  "success": false,
+  "output": "\n\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'constructor')\nconsole.log(String(this.constructor.constructor(\"return process\")()))\n\u001b[0m\u001b[31m                        ^\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/c44e635b5834be9a.ts\u001b[0m:\u001b[0m\u001b[33m35\u001b[0m:\u001b[0m\u001b[33m25\u001b[0m\n",
+  "ms": 14,
+  "hostCalls": 0
+}

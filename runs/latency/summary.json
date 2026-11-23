@@ -1,0 +1,726 @@
+{
+  "pooled": [
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "agentic",
+      "kind": "aggregate",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 42.861999999999995,
+      "medianToolCalls": 6,
+      "meanInputTokens": 35844,
+      "meanToolResultChars": 8596,
+      "meanCostUsd": 0.051501950000000005
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "codemode",
+      "kind": "aggregate",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 4.0665,
+      "medianToolCalls": 1,
+      "meanInputTokens": 5254,
+      "meanToolResultChars": 232,
+      "meanCostUsd": 0.0102755
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "rag",
+      "kind": "aggregate",
+      "n": 2,
+      "correct": 0,
+      "accuracy": 0,
+      "ci": [
+        0,
+        0.6576280471103807
+      ],
+      "errors": 0,
+      "medianLatencyS": 5.429,
+      "medianToolCalls": 0,
+      "meanInputTokens": 3795,
+      "meanToolResultChars": 0,
+      "meanCostUsd": 0.02018765
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "tools",
+      "kind": "aggregate",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 10.9485,
+      "medianToolCalls": 7,
+      "meanInputTokens": 44327,
+      "meanToolResultChars": 20457,
+      "meanCostUsd": 0.06760005
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "agentic",
+      "kind": "all",
+      "n": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "ci": [
+        0.6755843804891231,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 29.411,
+      "medianToolCalls": 4.5,
+      "meanInputTokens": 39707,
+      "meanToolResultChars": 11494,
+      "meanCostUsd": 0.05671968749999999
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "codemode",
+      "kind": "all",
+      "n": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "ci": [
+        0.6755843804891231,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 7.313000000000001,
+      "medianToolCalls": 1,
+      "meanInputTokens": 5794,
+      "meanToolResultChars": 863,
+      "meanCostUsd": 0.010181275
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "rag",
+      "kind": "all",
+      "n": 8,
+      "correct": 2,
+      "accuracy": 0.25,
+      "ci": [
+        0.07147768885802765,
+        0.5907301208974108
+      ],
+      "errors": 0,
+      "medianLatencyS": 5.429,
+      "medianToolCalls": 0,
+      "meanInputTokens": 3438,
+      "meanToolResultChars": 0,
+      "meanCostUsd": 0.016725287499999998
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "tools",
+      "kind": "all",
+      "n": 8,
+      "correct": 7,
+      "accuracy": 0.875,
+      "ci": [
+        0.5291051942301385,
+        0.9775830911367039
+      ],
+      "errors": 0,
+      "medianLatencyS": 8.755500000000001,
+      "medianToolCalls": 2.5,
+      "meanInputTokens": 28456,
+      "meanToolResultChars": 15176,
+      "meanCostUsd": 0.048016637499999994
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "agentic",
+      "kind": "hard",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 30.4685,
+      "medianToolCalls": 4.5,
+      "meanInputTokens": 30518,
+      "meanToolResultChars": 8559,
+      "meanCostUsd": 0.058613250000000006
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "codemode",
+      "kind": "hard",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 8.25,
+      "medianToolCalls": 1,
+      "meanInputTokens": 5103,
+      "meanToolResultChars": 76,
+      "meanCostUsd": 0.00797045
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "rag",
+      "kind": "hard",
+      "n": 2,
+      "correct": 0,
+      "accuracy": 0,
+      "ci": [
+        0,
+        0.6576280471103807
+      ],
+      "errors": 0,
+      "medianLatencyS": 7.438,
+      "medianToolCalls": 0,
+      "meanInputTokens": 3451,
+      "meanToolResultChars": 0,
+      "meanCostUsd": 0.01389105
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "tools",
+      "kind": "hard",
+      "n": 2,
+      "correct": 1,
+      "accuracy": 0.5,
+      "ci": [
+        0.09452865480086611,
+        0.905471345199134
+      ],
+      "errors": 0,
+      "medianLatencyS": 50.261500000000005,
+      "medianToolCalls": 7.5,
+      "meanInputTokens": 53562,
+      "meanToolResultChars": 31872,
+      "meanCostUsd": 0.09316849999999999
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "agentic",
+      "kind": "identifier",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 9.5525,
+      "medianToolCalls": 2,
+      "meanInputTokens": 12690,
+      "meanToolResultChars": 1716,
+      "meanCostUsd": 0.0134811
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "codemode",
+      "kind": "identifier",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 7.313000000000001,
+      "medianToolCalls": 1,
+      "meanInputTokens": 4987,
+      "meanToolResultChars": 115,
+      "meanCostUsd": 0.00795035
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "rag",
+      "kind": "identifier",
+      "n": 2,
+      "correct": 0,
+      "accuracy": 0,
+      "ci": [
+        0,
+        0.6576280471103807
+      ],
+      "errors": 0,
+      "medianLatencyS": 5.5765,
+      "medianToolCalls": 0,
+      "meanInputTokens": 2984,
+      "meanToolResultChars": 0,
+      "meanCostUsd": 0.0169032
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "tools",
+      "kind": "identifier",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 8.0065,
+      "medianToolCalls": 1,
+      "meanInputTokens": 6031,
+      "meanToolResultChars": 322,
+      "meanCostUsd": 0.007765349999999999
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "agentic",
+      "kind": "semantic",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 29.411,
+      "medianToolCalls": 6.5,
+      "meanInputTokens": 79777,
+      "meanToolResultChars": 27106,
+      "meanCostUsd": 0.10328245
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "codemode",
+      "kind": "semantic",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 7.120500000000001,
+      "medianToolCalls": 1.5,
+      "meanInputTokens": 7834,
+      "meanToolResultChars": 3029,
+      "meanCostUsd": 0.0145288
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "rag",
+      "kind": "semantic",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 3.7565,
+      "medianToolCalls": 0,
+      "meanInputTokens": 3521,
+      "meanToolResultChars": 0,
+      "meanCostUsd": 0.015919250000000003
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "tools",
+      "kind": "semantic",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 4.249499999999999,
+      "medianToolCalls": 1,
+      "meanInputTokens": 9906,
+      "meanToolResultChars": 8054,
+      "meanCostUsd": 0.02353265
+    }
+  ],
+  "strict": [
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "agentic",
+      "kind": "aggregate",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 42.861999999999995,
+      "medianToolCalls": 6,
+      "meanInputTokens": 35844,
+      "meanToolResultChars": 8596,
+      "meanCostUsd": 0.051501950000000005
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "codemode",
+      "kind": "aggregate",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 4.0665,
+      "medianToolCalls": 1,
+      "meanInputTokens": 5254,
+      "meanToolResultChars": 232,
+      "meanCostUsd": 0.0102755
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "rag",
+      "kind": "aggregate",
+      "n": 2,
+      "correct": 0,
+      "accuracy": 0,
+      "ci": [
+        0,
+        0.6576280471103807
+      ],
+      "errors": 0,
+      "medianLatencyS": 5.429,
+      "medianToolCalls": 0,
+      "meanInputTokens": 3795,
+      "meanToolResultChars": 0,
+      "meanCostUsd": 0.02018765
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "tools",
+      "kind": "aggregate",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 10.9485,
+      "medianToolCalls": 7,
+      "meanInputTokens": 44327,
+      "meanToolResultChars": 20457,
+      "meanCostUsd": 0.06760005
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "agentic",
+      "kind": "all",
+      "n": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "ci": [
+        0.6755843804891231,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 29.411,
+      "medianToolCalls": 4.5,
+      "meanInputTokens": 39707,
+      "meanToolResultChars": 11494,
+      "meanCostUsd": 0.05671968749999999
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "codemode",
+      "kind": "all",
+      "n": 8,
+      "correct": 8,
+      "accuracy": 1,
+      "ci": [
+        0.6755843804891231,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 7.313000000000001,
+      "medianToolCalls": 1,
+      "meanInputTokens": 5794,
+      "meanToolResultChars": 863,
+      "meanCostUsd": 0.010181275
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "rag",
+      "kind": "all",
+      "n": 8,
+      "correct": 2,
+      "accuracy": 0.25,
+      "ci": [
+        0.07147768885802765,
+        0.5907301208974108
+      ],
+      "errors": 0,
+      "medianLatencyS": 5.429,
+      "medianToolCalls": 0,
+      "meanInputTokens": 3438,
+      "meanToolResultChars": 0,
+      "meanCostUsd": 0.016725287499999998
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "tools",
+      "kind": "all",
+      "n": 8,
+      "correct": 7,
+      "accuracy": 0.875,
+      "ci": [
+        0.5291051942301385,
+        0.9775830911367039
+      ],
+      "errors": 0,
+      "medianLatencyS": 8.755500000000001,
+      "medianToolCalls": 2.5,
+      "meanInputTokens": 28456,
+      "meanToolResultChars": 15176,
+      "meanCostUsd": 0.048016637499999994
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "agentic",
+      "kind": "hard",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 30.4685,
+      "medianToolCalls": 4.5,
+      "meanInputTokens": 30518,
+      "meanToolResultChars": 8559,
+      "meanCostUsd": 0.058613250000000006
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "codemode",
+      "kind": "hard",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 8.25,
+      "medianToolCalls": 1,
+      "meanInputTokens": 5103,
+      "meanToolResultChars": 76,
+      "meanCostUsd": 0.00797045
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "rag",
+      "kind": "hard",
+      "n": 2,
+      "correct": 0,
+      "accuracy": 0,
+      "ci": [
+        0,
+        0.6576280471103807
+      ],
+      "errors": 0,
+      "medianLatencyS": 7.438,
+      "medianToolCalls": 0,
+      "meanInputTokens": 3451,
+      "meanToolResultChars": 0,
+      "meanCostUsd": 0.01389105
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "tools",
+      "kind": "hard",
+      "n": 2,
+      "correct": 1,
+      "accuracy": 0.5,
+      "ci": [
+        0.09452865480086611,
+        0.905471345199134
+      ],
+      "errors": 0,
+      "medianLatencyS": 50.261500000000005,
+      "medianToolCalls": 7.5,
+      "meanInputTokens": 53562,
+      "meanToolResultChars": 31872,
+      "meanCostUsd": 0.09316849999999999
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "agentic",
+      "kind": "identifier",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 9.5525,
+      "medianToolCalls": 2,
+      "meanInputTokens": 12690,
+      "meanToolResultChars": 1716,
+      "meanCostUsd": 0.0134811
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "codemode",
+      "kind": "identifier",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 7.313000000000001,
+      "medianToolCalls": 1,
+      "meanInputTokens": 4987,
+      "meanToolResultChars": 115,
+      "meanCostUsd": 0.00795035
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "rag",
+      "kind": "identifier",
+      "n": 2,
+      "correct": 0,
+      "accuracy": 0,
+      "ci": [
+        0,
+        0.6576280471103807
+      ],
+      "errors": 0,
+      "medianLatencyS": 5.5765,
+      "medianToolCalls": 0,
+      "meanInputTokens": 2984,
+      "meanToolResultChars": 0,
+      "meanCostUsd": 0.0169032
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "tools",
+      "kind": "identifier",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 8.0065,
+      "medianToolCalls": 1,
+      "meanInputTokens": 6031,
+      "meanToolResultChars": 322,
+      "meanCostUsd": 0.007765349999999999
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "agentic",
+      "kind": "semantic",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 29.411,
+      "medianToolCalls": 6.5,
+      "meanInputTokens": 79777,
+      "meanToolResultChars": 27106,
+      "meanCostUsd": 0.10328245
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "codemode",
+      "kind": "semantic",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 7.120500000000001,
+      "medianToolCalls": 1.5,
+      "meanInputTokens": 7834,
+      "meanToolResultChars": 3029,
+      "meanCostUsd": 0.0145288
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "rag",
+      "kind": "semantic",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 3.7565,
+      "medianToolCalls": 0,
+      "meanInputTokens": 3521,
+      "meanToolResultChars": 0,
+      "meanCostUsd": 0.015919250000000003
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "strategy": "tools",
+      "kind": "semantic",
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1,
+      "ci": [
+        0.3423719528896193,
+        1
+      ],
+      "errors": 0,
+      "medianLatencyS": 4.249499999999999,
+      "medianToolCalls": 1,
+      "meanInputTokens": 9906,
+      "meanToolResultChars": 8054,
+      "meanCostUsd": 0.02353265
+    }
+  ]
+}

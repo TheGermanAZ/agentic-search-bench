@@ -1,0 +1,420 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs default R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 110411,
+  "peakTreeRssMb": 116,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "default",
+    "test": "R9d",
+    "notes": "one CodemodeSandbox({}) shared",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "ok": false,
+          "threw": "NO-RETURN within 110000 ms"
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 186,
+        "ms": 286,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 201.26708299999996
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 369,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 201.3726670000001
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 110035,
+        "ms": 240,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 200.47725000001083
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 202,
+    "hostEvents": [],
+    "totalMs": 110275
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      287,
+      46
+    ],
+    [
+      2160,
+      95
+    ],
+    [
+      4053,
+      95
+    ],
+    [
+      6030,
+      95
+    ],
+    [
+      7278,
+      95
+    ],
+    [
+      8578,
+      95
+    ],
+    [
+      9537,
+      95
+    ],
+    [
+      10446,
+      88
+    ],
+    [
+      14917,
+      88
+    ],
+    [
+      16572,
+      88
+    ],
+    [
+      17848,
+      88
+    ],
+    [
+      26659,
+      49
+    ],
+    [
+      27691,
+      49
+    ],
+    [
+      28963,
+      49
+    ],
+    [
+      30210,
+      49
+    ],
+    [
+      31343,
+      49
+    ],
+    [
+      32892,
+      50
+    ],
+    [
+      33977,
+      50
+    ],
+    [
+      54859,
+      49
+    ],
+    [
+      55941,
+      49
+    ],
+    [
+      56820,
+      49
+    ],
+    [
+      57755,
+      49
+    ],
+    [
+      58648,
+      49
+    ],
+    [
+      59583,
+      49
+    ],
+    [
+      60396,
+      49
+    ],
+    [
+      61148,
+      49
+    ],
+    [
+      62061,
+      49
+    ],
+    [
+      62922,
+      49
+    ],
+    [
+      63658,
+      52
+    ],
+    [
+      64650,
+      52
+    ],
+    [
+      65652,
+      52
+    ],
+    [
+      66638,
+      52
+    ],
+    [
+      67498,
+      52
+    ],
+    [
+      68499,
+      52
+    ],
+    [
+      69576,
+      52
+    ],
+    [
+      70443,
+      52
+    ],
+    [
+      71224,
+      52
+    ],
+    [
+      72022,
+      52
+    ],
+    [
+      72847,
+      52
+    ],
+    [
+      73830,
+      52
+    ],
+    [
+      74712,
+      52
+    ],
+    [
+      75543,
+      52
+    ],
+    [
+      76287,
+      52
+    ],
+    [
+      77396,
+      52
+    ],
+    [
+      78720,
+      52
+    ],
+    [
+      79361,
+      48
+    ],
+    [
+      79915,
+      48
+    ],
+    [
+      80461,
+      48
+    ],
+    [
+      81060,
+      48
+    ],
+    [
+      81614,
+      49
+    ],
+    [
+      83658,
+      49
+    ],
+    [
+      86042,
+      49
+    ],
+    [
+      89704,
+      49
+    ],
+    [
+      91918,
+      49
+    ],
+    [
+      92507,
+      49
+    ],
+    [
+      93393,
+      49
+    ],
+    [
+      94053,
+      49
+    ],
+    [
+      94613,
+      49
+    ],
+    [
+      95173,
+      49
+    ],
+    [
+      95733,
+      49
+    ],
+    [
+      96883,
+      49
+    ],
+    [
+      97623,
+      49
+    ],
+    [
+      98662,
+      49
+    ],
+    [
+      99774,
+      49
+    ],
+    [
+      100704,
+      49
+    ],
+    [
+      101696,
+      49
+    ],
+    [
+      102840,
+      49
+    ],
+    [
+      103950,
+      49
+    ],
+    [
+      104928,
+      49
+    ],
+    [
+      106109,
+      51
+    ],
+    [
+      107149,
+      51
+    ],
+    [
+      107757,
+      51
+    ],
+    [
+      108325,
+      51
+    ],
+    [
+      108890,
+      51
+    ],
+    [
+      109437,
+      51
+    ],
+    [
+      109997,
+      51
+    ]
+  ]
+}

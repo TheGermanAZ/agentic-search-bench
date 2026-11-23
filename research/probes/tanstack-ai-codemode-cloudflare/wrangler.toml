@@ -1,0 +1,14 @@
+# The package's own wrangler.toml (packages/ai-isolate-cloudflare/wrangler.toml), with main pointed at the
+# published ready-made Worker and the dev port moved into this worker's assigned range.
+name = "tanstack-ai-code-mode"
+main = "worker.mjs"
+compatibility_date = "2026-05-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[worker_loaders]]
+binding = "LOADER"
+
+[dev]
+port = 41010
+ip = "127.0.0.1"
+local_protocol = "http"

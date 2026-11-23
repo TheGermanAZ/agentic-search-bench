@@ -1,0 +1,98 @@
+[
+  {
+    "probe": "P12-Function-ctor",
+    "code": "return String(this.constructor.constructor(\"return typeof process\")())",
+    "args_extra": {},
+    "wall_ms": 1,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "\"undefined\"",
+    "response_text_length": 11,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P12-Function-ctor-process",
+    "code": "return String(this.constructor.constructor(\"return process\")())",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: process is not defined\n    at anonymous (<input>:1:1)\n    at <anonymous> (eval_script:18:32)\n    at <eval> (eval_script:18:66)\n",
+    "response_text_length": 170,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P12-sloppy-this",
+    "code": "return String((function(){return this})().process)",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "\"undefined\"",
+    "response_text_length": 11,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P12-native-bridge",
+    "code": "return typeof __call_tool + \" \" + typeof __stderr",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "\"function function\"",
+    "response_text_length": 19,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P12-import-os",
+    "code": "const os = await import(\"os\"); return os.exec([\"/bin/sh\",\"-c\",\"echo PWNED\"])",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: could not load module 'os'\n",
+    "response_text_length": 70,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P12-stderr-inject",
+    "code": "__stderr(\"\\n{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"method\\\":\\\"forged\\\"}\"); return \"wrote to proxy stderr\"",
+    "args_extra": {},
+    "wall_ms": 1,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "\"wrote to proxy stderr\"",
+    "response_text_length": 23,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  }
+]

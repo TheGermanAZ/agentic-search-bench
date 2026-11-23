@@ -1,0 +1,125 @@
+{
+  "impl": "datalayer-codemode-monty",
+  "name": "Datalayer Agent Codemode, monty sandbox variant",
+  "source": "https://github.com/datalayer/agent-codemode; sandbox from PyPI code-sandboxes[monty] (repo https://github.com/datalayer/code-sandboxes)",
+  "pinned": "agent-codemode 566e324a42e86074d29fd5e6bb5da2f282d459ea (1.1.1), code-sandboxes 1.12.4 (tag v1.12.4 = d7030b0b), pydantic-monty 0.0.18 (the last release that has MontyRepl; a fresh install resolves 1.6.0, which fails earlier)",
+  "language": "Python (Monty subset)",
+  "engine": "Would be pydantic-monty's in-process MontyRepl. Never reached user code: CodeModeExecutor.setup() raises before the first execution.",
+  "how_run": "Same harness as datalayer-codemode-eval with CodeModeConfig(sandbox_variant='monty'); executor.setup() raises in every configuration, so no probe code ran.",
+  "defaults": {
+    "time": "Not observable: setup fails. MontySandbox only takes a limits dict at construction and MontyRepl.feed_run takes no timeout (monty.py:129-146).",
+    "memory": "Not observable: setup fails.",
+    "output": "Not observable: setup fails.",
+    "tool_calls": "CodeModeConfig.max_tool_calls defaults to None (types.py:233)."
+  },
+  "hardened_config": "sandbox_client=CodeSandboxClient.create(variant='monty', config=SandboxConfig(timeout=30, network_policy='none', env_vars={}), limits={'max_duration_secs': 10, 'max_memory': 50_000_000}) and CodeModeConfig(max_tool_calls=50). Setup raises the same MontySyntaxError, so the hardened run has the same outcome.",
+  "source_notes": [
+    {
+      "topic": "Setup failure 1 (current pydantic-monty)",
+      "finding": "code-sandboxes[monty] depends on an unpinned pydantic-monty. The current release (1.6.0) has no MontyRepl, so MontySandbox.start() raises AttributeError: module 'pydantic_monty' has no attribute 'MontyRepl'. MontyRepl last exists in 0.0.18 (checked 0.0.16 to 1.6.0).",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/monty/monty.py#L95-L127; research/probes/datalayer-codemode-monty/out/setup-crash-monty-1.6.0-P11.txt"
+    },
+    {
+      "topic": "Setup failure 2 (any pydantic-monty)",
+      "finding": "With 0.0.18 the sandbox starts, but CodeModeExecutor registers its tool caller with register_tool_caller(self.call_tool), and MontySandbox._set_internal_variable implements that as feed_run(f'{name} = {value!r}'). The repr of a bound method is not Python, so setup raises MontySyntaxError: Expected an expression. The bridge cannot be installed in this variant at all.",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/composition/executor.py#L374; https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/base.py#L1131-L1160; https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/monty/monty.py#L252-L255; research/probes/datalayer-codemode-monty/out/P1.txt"
+    },
+    {
+      "topic": "Isolation boundary (as written)",
+      "finding": "MontySandbox runs pydantic-monty's MontyRepl in-process, with external_functions given at construction. The module docstring claims no access to filesystem, environment or network unless granted. Not observable here; wave 1's pydantic-monty row covers the interpreter itself.",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/monty/monty.py#L5-L19; research/probes/results/pydantic-monty.json"
+    },
+    {
+      "topic": "Limits (as written)",
+      "finding": "Its own docstring says MontyRepl.feed_run 'takes no limits (only Monty.run does)', and _do_interrupt returns False because the REPL cannot be interrupted, so a per-call timeout is not possible in this variant.",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/monty/monty.py#L129-L146"
+    },
+    {
+      "topic": "State (as written)",
+      "finding": "MontyRepl keeps heap and namespace across feed_run calls, so state would persist.",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/monty/monty.py#L17-L18; #L113-L114"
+    }
+  ],
+  "surprises": [
+    "The README and docs list 'monty' as a supported sandbox_variant ('Secure in-process interpreter'), but CodeModeExecutor cannot finish setup with it under any pydantic-monty release: the current one lacks MontyRepl, and the old one cannot parse the tool caller assignment.",
+    "No test in the agent-codemode repo exercises the monty variant (grep finds 'monty' only in the README, the docs page and the types.py docstring)."
+  ],
+  "overrides": {
+    "P1": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "P10": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "P11": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "P12": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "P2": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "P3": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "P4": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "P5": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "P6": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "P7": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "P8": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "P9": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "hardened-P12": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "hardened-P3": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "hardened-P4": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "hardened-P5": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "hardened-P6": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "hardened-P7": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    },
+    "hardened-P9": {
+      "outcome": "error",
+      "display": "error (setup crash)"
+    }
+  }
+}

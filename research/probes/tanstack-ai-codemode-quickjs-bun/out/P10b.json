@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P10b",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 3.0722079999999963,
+  "source": [
+    "const x = 1;\nconst y = 2;\nfunction inner() { throw new Error(\"probe-boom\"); }\ninner();"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "probe-boom",
+          "name": "Error",
+          "stack": "    at inner (<code-mode>:7:35)\n    at <anonymous> (<code-mode>:8:6)\n    at <anonymous> (<code-mode>:9:7)\n    at <eval> (<code-mode>:14:3)\n"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 205.12720899999997,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: probe-boom",
+    "ms": 205,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 45.7
+}

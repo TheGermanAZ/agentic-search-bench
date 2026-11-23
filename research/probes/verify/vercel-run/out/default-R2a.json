@@ -1,0 +1,80 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs default R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1147,
+  "peakTreeRssMb": 140,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "default",
+    "test": "R2a",
+    "notes": "run() (module default runner, shared)",
+    "data": {
+      "startMs": 38,
+      "ms": 968,
+      "ok": false,
+      "threw": "    at detachedError (run-setup.js:311:40)\n    at value (run-setup.js:398:13)\n    at serializeValuePayload (run-setup.js:542:18)\n",
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 330,
+    "hostEvents": [],
+    "totalMs": 1006
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:71330) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      330,
+      82
+    ],
+    [
+      410,
+      85
+    ],
+    [
+      483,
+      85
+    ],
+    [
+      564,
+      112
+    ],
+    [
+      690,
+      114
+    ],
+    [
+      782,
+      115
+    ],
+    [
+      848,
+      119
+    ],
+    [
+      892,
+      119
+    ],
+    [
+      947,
+      140
+    ],
+    [
+      1029,
+      140
+    ],
+    [
+      1145,
+      140
+    ]
+  ]
+}

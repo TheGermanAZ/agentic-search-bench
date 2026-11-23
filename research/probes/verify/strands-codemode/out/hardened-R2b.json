@@ -1,0 +1,120 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py hardened R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 933,
+  "peakTreeRssMb": 97,
+  "peakTreeFootprintMb": 76,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R2b",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller={'allowed_tools': ['lookup', 'failing', 'rich'], 'timeout': 10.0}; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "label": "",
+      "startMs": 841,
+      "ms": 34,
+      "ok": true,
+      "result": {
+        "status": "success",
+        "text": "['RuntimeError', \"Tool 'failing' error: Error: RuntimeError - host-tool-boom internal detail db=postgres://user:pw@host\", 'RuntimeError(\"Tool \\'failing\\' error: Error: RuntimeError - host-tool-boom internal detail db=postgres://user:pw@host\")']"
+      },
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 0,
+    "totalMs": 875
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      77,
+      28,
+      14
+    ],
+    [
+      129,
+      35,
+      14
+    ],
+    [
+      188,
+      44,
+      14
+    ],
+    [
+      235,
+      50,
+      33
+    ],
+    [
+      281,
+      54,
+      33
+    ],
+    [
+      334,
+      56,
+      41
+    ],
+    [
+      385,
+      57,
+      41
+    ],
+    [
+      438,
+      61,
+      41
+    ],
+    [
+      497,
+      64,
+      47
+    ],
+    [
+      544,
+      68,
+      47
+    ],
+    [
+      591,
+      74,
+      58
+    ],
+    [
+      644,
+      79,
+      58
+    ],
+    [
+      698,
+      82,
+      58
+    ],
+    [
+      762,
+      87,
+      68
+    ],
+    [
+      825,
+      90,
+      68
+    ],
+    [
+      869,
+      93,
+      68
+    ],
+    [
+      932,
+      97,
+      76
+    ]
+  ]
+}

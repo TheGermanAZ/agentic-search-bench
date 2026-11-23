@@ -1,0 +1,26 @@
+{
+  "probe": "P1",
+  "config": "default",
+  "codes": [
+    "r = lookup(21)\nmsg = r[\"value\"]\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: name 'time' is not defined",
+      "error": "Error during execution: name 'time' is not defined",
+      "context_keys": [],
+      "host_builtins_leak": false,
+      "ms": 1746.8,
+      "started": 1795377389.458648
+    }
+  ],
+  "setup_ms": 24.2,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.81,
+  "peak_tree_rss_gb": 0.346,
+  "calls": [],
+  "child_log_tail": ""
+}

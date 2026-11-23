@@ -1,0 +1,10 @@
+{
+  "setup_ms": 1583,
+  "result": {
+    "ok": true,
+    "output": "None",
+    "logs": "loop 1017\nthreads 207 30\n",
+    "ms": 1238.6
+  },
+  "wall_s": 3.28
+}

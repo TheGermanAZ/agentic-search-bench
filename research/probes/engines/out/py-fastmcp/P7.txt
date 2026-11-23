@@ -1,0 +1,7 @@
+a = []
+while True:
+    a.append("x" * 10**6 + str(len(a)))
+--- output
+ERROR: Error calling tool 'execute'
+---
+wall_ms=77 host_calls=0 peak_tree_rss_mb=221

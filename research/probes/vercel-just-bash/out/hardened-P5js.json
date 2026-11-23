@@ -1,0 +1,33 @@
+{
+  "id": "P5js",
+  "workerPid": 99488,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 532,
+  "peakRssKbSampled": 139584,
+  "stderr": "(node:99488) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "parsed": {
+    "probe": "P5js",
+    "config": {
+      "executionLimitProfile": "hardened"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 99488
+    },
+    "runs": [
+      {
+        "script": "js-exec -c 'console.log(\"[\" + process.env.PROBE_SECRET + \"]\")'",
+        "exitCode": 0,
+        "stdout": "[undefined]\n",
+        "stderr": "",
+        "ms": 324,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 164464,
+    "maxInFlight": 0,
+    "hostCalls": 0
+  }
+}

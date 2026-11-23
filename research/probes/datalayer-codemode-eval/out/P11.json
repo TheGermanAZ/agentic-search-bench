@@ -1,0 +1,7 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "display": "median 0.7 ms",
+  "detail": "20 runs in one session: median 0.7 ms, p90 0.9 ms; one-time setup 311.1 ms; fresh session per run (open+run+close, n=0): median None ms",
+  "evidence": "research/probes/datalayer-codemode-eval/out/P11.txt"
+}

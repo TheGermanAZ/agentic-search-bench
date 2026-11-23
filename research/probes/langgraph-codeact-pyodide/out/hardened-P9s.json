@@ -1,0 +1,7 @@
+{
+  "probe": "P9s",
+  "outcome": "works",
+  "display": "serial (~975 ms, in sandbox)",
+  "detail": "printed 30 in 2,109.1 ms, same as default P9s",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/hardened-P9s.txt"
+}

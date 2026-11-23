@@ -1,0 +1,2 @@
+context.runtime.setMemoryLimit {"pushed":2141,"err":"InternalError: out of memory"} rssMB 2118
+newRuntime({memoryLimit}) {"pushed":2141,"err":"InternalError: out of memory"} rssMB 2120

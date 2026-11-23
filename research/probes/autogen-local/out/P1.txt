@@ -1,0 +1,8 @@
+code:
+from functions import lookup
+r = lookup(id=21)
+print(r['value'])
+
+{"ok": true, "result": null, "error": null, "ms": 362.7}
+stdout (15 chars): 'LOOKUP_CALL\n42\n'
+host_calls=0

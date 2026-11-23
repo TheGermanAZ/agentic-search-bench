@@ -1,0 +1,190 @@
+{
+ "impl": "hermes-execute-code",
+ "name": "Hermes Agent execute_code (Nous Research)",
+ "source": "https://github.com/NousResearch/hermes-agent (tools/code_execution_tool.py, tools/code_kernel.py, tools/code_execution_env.py, tools/code_execution_rpc.py)",
+ "pinned": "hermes-agent tag v0.23.3 = caafe5389ae585ef77387a962aee05b1bcf17029, editable install from the clone with `uv sync --frozen --python 3.14` (the project's documented dev path; setup.py refuses wheel builds). CPython 3.14. Hardened image nousresearch/hermes-sandbox:desktop (the default sandbox image, pulled 2026-11-22).",
+ "language": "Python (full CPython)",
+ "engine": "Default (local backend): a persistent CPython session kernel subprocess (hermes_kernel_runner.py) per conversation, in its own process group, with a scrubbed environment; tool calls over a Unix socket RPC. Hardened: the same kernel inside a Docker container (docker backend) with file-based RPC polled through docker exec.",
+ "how_run": "tools.code_execution_tool.execute_code(code, task_id=<per session>, enabled_tools=[lookup, terminal, read_file, write_file]), the function the registered execute_code handler calls; its JSON string is what the model sees. HERMES_HOME pointed at research/impls/hermes-execute-code/home (or home-hardened) so ~/.hermes is never read. lookup needed an in-process patch (see source_notes 'API shape'); P1t/P9t use the built-in terminal tool unpatched. No LLM.",
+ "defaults": {
+  "time": "code_execution.timeout=300 s per call (research/impls/hermes-execute-code/src/tools/code_execution_tool.py:45 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L45); docs research/impls/hermes-execute-code/src/website/docs/user-guide/features/code-execution.md:169-176 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/website/docs/user-guide/features/code-execution.md#L169-L176)); the kernel is killed and its state lost. P6 hit the harness's 120 s stop first; side check out/p6_default_check.txt: killed at 300.1 s, next call ran in a fresh kernel.",
+  "memory": "None on the local backend: no memory option for the local kernel. P7 grew to 3.3 GB in 32 s, then the kernel died from outside; the model saw 'The session kernel died while running the cell.' The Docker backend's container_memory (default 5,120 MB) is the only memory knob.",
+  "output": "stdout capped at 50,000 bytes, 40% head / 60% tail with '... [OUTPUT TRUNCATED - N bytes omitted out of T total] ...', the full text spilled to $HERMES_HOME/cache/exec and its path returned; stderr 10,000 bytes; output passes through secret redaction (research/impls/hermes-execute-code/src/tools/code_execution_tool.py:47-79 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L47-L79); research/impls/hermes-execute-code/src/tools/code_execution_tool.py:515-520 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L515-L520)). Only stdout returns: no last-expression value.",
+  "tool_calls": "max_tool_calls=50 per execute_code call, enforced host-side before dispatch (research/impls/hermes-execute-code/src/tools/code_execution_tool.py:46 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L46); research/impls/hermes-execute-code/src/tools/code_execution_rpc.py:93-110 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_rpc.py#L93-L110)). Ptoolcap: 50 of 55 lookups succeeded."
+ },
+ "hardened_config": "HERMES_HOME=research/impls/hermes-execute-code/home-hardened with config.yaml: terminal.backend=docker, docker_image=nousresearch/hermes-sandbox:desktop (default), docker_network=false (--network=none), container_cpu=1, container_memory=512, container_persistent=false, docker_mount_cwd_to_workspace=false, docker_extra_args=['--label','asb-impl=hermes-execute-code'] (only to find this probe's containers); code_execution.mode=strict, timeout=10, max_tool_calls=50. Keys documented at research/impls/hermes-execute-code/src/website/docs/user-guide/configuration.md:2993-3004 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/website/docs/user-guide/configuration.md#L2993-L3004) and research/impls/hermes-execute-code/src/website/docs/user-guide/configuration.md:422-467 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/website/docs/user-guide/configuration.md#L422-L467). Containers observed with --cap-drop ALL, pids_limit 2048, NetworkMode none, Memory 536870912 (out/hardened-docker-state-*.txt). Containers are named hermes-<hex> by Hermes (tools/environments/docker.py:1039), not with this impl's prefix; docker_cleanup.sh removed every one by label after each probe.",
+ "source_notes": [
+  {
+   "topic": "API shape",
+   "finding": "The model's execute_code schema lists Python signatures for a hardcoded set of seven built-in tools (web_search, web_extract, read_file, write_file, search_files, patch, terminal), intersected with the session's enabled tools. A hermes_tools.py stub module is generated from the _TOOL_STUBS dict; each stub sends a JSON RPC. A user or plugin tool cannot be exposed through any option: this probe had to add `lookup` to SANDBOX_ALLOWED_TOOLS and _TOOL_STUBS in-process, after registering it with registry.register.",
+   "evidence": "research/impls/hermes-execute-code/src/tools/code_execution_tool.py:40-42 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L40-L42); research/impls/hermes-execute-code/src/tools/code_execution_tool.py:125-148 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L125-L148); research/impls/hermes-execute-code/src/tools/code_execution_tool.py:199-206 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L199-L206); research/impls/hermes-execute-code/src/tools/code_execution_tool.py:596-603 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L596-L603); research/probes/hermes-execute-code/adapter.py"
+  },
+  {
+   "topic": "Discovery",
+   "finding": "All upfront, and small by construction: the execute_code description carries the signatures of at most seven tools. No search; it does not reach MCP or plugin tools at all.",
+   "evidence": "research/impls/hermes-execute-code/src/tools/code_execution_tool.py:848-862 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L848-L862); research/impls/hermes-execute-code/src/tools/code_execution_tool.py:864-924 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L864-L924)"
+  },
+  {
+   "topic": "Bridge",
+   "finding": "Local: the stub connects to a per-kernel Unix socket with a 32-byte token; the host's RPC loop checks the allowlist and the 50-call budget, then runs the tool through model_tools.handle_function_call under the current cell's authority (approvals, session). Tools and their credentials stay in the host process. The loop serves one request at a time, so calls are serial even from threads (P9threads 1,025 ms). Remote backends: request files polled through env.execute (hardened P9: 4,429 ms for five calls).",
+   "evidence": "research/impls/hermes-execute-code/src/tools/code_kernel.py:265-330 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_kernel.py#L265-L330); research/impls/hermes-execute-code/src/tools/code_kernel.py:554-571 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_kernel.py#L554-L571); research/impls/hermes-execute-code/src/tools/code_execution_rpc.py:93-120 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_rpc.py#L93-L120); research/impls/hermes-execute-code/src/tools/code_execution_rpc.py:145-175 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_rpc.py#L145-L175); research/probes/hermes-execute-code/out/P9threads.txt; research/probes/hermes-execute-code/out/hardened-P9.txt"
+  },
+  {
+   "topic": "Isolation boundary",
+   "finding": "The docstring is explicit: '\"Sandbox\" means the security envelope (env scrubbing, tool whitelist + call budget, output redaction), not an isolation jail'. Locally the kernel is plain CPython with the user's permissions: network, /etc/hosts, file writes and os.system all work. The env scrub is a name filter: names containing KEY/TOKEN/SECRET/... are dropped and anything starting with PATH, HOME, LC_, XDG_, CONDA... passes, so PATHFINDER_DB_URL reached the kernel; and the kernel read PROBE_SECRET from its parent's environment with `ps -E -p <ppid>`. The Docker backend is a real boundary: --network=none, cap-drop ALL, no host files, no forwarded env.",
+   "evidence": "research/impls/hermes-execute-code/src/tools/code_execution_tool.py:722-735 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L722-L735); research/impls/hermes-execute-code/src/tools/code_execution_env.py:25-35 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_env.py#L25-L35); research/impls/hermes-execute-code/src/tools/code_execution_env.py:57-97 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_env.py#L57-L97); research/probes/hermes-execute-code/out/P5scrub.txt; research/probes/hermes-execute-code/out/hardened-P5scrub.txt; research/probes/hermes-execute-code/out/hardened-docker-state-P3.txt"
+  },
+  {
+   "topic": "Output channel",
+   "finding": "Only stdout (plus a '--- stderr ---' block on errors) returns, inside a JSON envelope with status, tool_calls_made, duration and kernel state; the last expression's value is not returned. Output above 50,000 bytes is head/tail truncated with a marker and the full text is spilled to a file whose path is returned. Output is secret-redacted (P5scrub showed the URL password as ***), but the script itself holds the raw value.",
+   "evidence": "research/impls/hermes-execute-code/src/tools/code_execution_tool.py:53-79 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L53-L79); research/impls/hermes-execute-code/src/tools/code_execution_tool.py:515-520 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L515-L520); research/probes/hermes-execute-code/out/P2.txt; research/probes/hermes-execute-code/out/P5scrub.txt"
+  },
+  {
+   "topic": "Limits",
+   "finding": "Per call: timeout 300 s, 50 tool calls, 50 KB stdout, 10 KB stderr, all from config.yaml code_execution.*. No memory or CPU limit locally; the Docker backend adds container_memory/container_cpu (cgroup).",
+   "evidence": "research/impls/hermes-execute-code/src/tools/code_execution_tool.py:44-50 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L44-L50); research/impls/hermes-execute-code/src/website/docs/user-guide/features/code-execution.md:169-186 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/website/docs/user-guide/features/code-execution.md#L169-L186); research/impls/hermes-execute-code/src/website/docs/user-guide/configuration.md:422-467 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/website/docs/user-guide/configuration.md#L422-L467)"
+  },
+  {
+   "topic": "State",
+   "finding": "One persistent session kernel per conversation (P8 persists); a timeout, interrupt or kernel death drops it and the next call starts fresh. Kernels are reaped after kernel_idle_timeout=1800 s or beyond max_session_kernels=4.",
+   "evidence": "research/impls/hermes-execute-code/src/website/docs/user-guide/features/code-execution.md:188-200 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/website/docs/user-guide/features/code-execution.md#L188-L200); research/probes/hermes-execute-code/out/P8.txt"
+  },
+  {
+   "topic": "Errors",
+   "finding": "The kernel's traceback goes back under '--- stderr ---' with 'File \"<cell>\", line 2' and the message (P10), plus a hint for missing hermes_tools imports. A kernel death or remote protocol failure returns status 'error' with a one-line note and no cause.",
+   "evidence": "research/impls/hermes-execute-code/src/tools/code_execution_tool.py:183-197 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L183-L197); research/impls/hermes-execute-code/src/tools/code_kernel.py:1010-1013 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_kernel.py#L1010-L1013); research/probes/hermes-execute-code/out/P10.txt; research/probes/hermes-execute-code/out/hardened-P7.txt"
+  },
+  {
+   "topic": "Other",
+   "finding": "Approvals: check_execute_code_guard approves a script as a whole in gateway/ask contexts, but a local non-interactive session (the path probed here) is auto-approved; container backends skip the guard. A gateway-lifecycle guard rejects scripts that would stop the Hermes gateway. Telemetry (shared metrics) is consent-gated and was set off in config.",
+   "evidence": "research/impls/hermes-execute-code/src/tools/approval.py:1480-1505; research/impls/hermes-execute-code/src/tools/code_execution_tool.py:748-770 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/tools/code_execution_tool.py#L748-L770); research/impls/hermes-execute-code/src/website/docs/user-guide/features/code-execution.md:235-243 (https://github.com/NousResearch/hermes-agent/blob/caafe5389ae585ef77387a962aee05b1bcf17029/website/docs/user-guide/features/code-execution.md#L235-L243)"
+  }
+ ],
+ "surprises": [
+  "The docs' security box says the script 'cannot read secrets from environment variables unless explicitly allowed' (code-execution.md:237-239). On the local backend it can: the kernel's parent is the agent process, and `ps -E -ww -p <ppid>` printed its full environment, including PROBE_SECRET=s3cr3t (out/P5scrub.txt). Any credential whose name starts with a safe prefix (PATH..., HOME..., LC_..., XDG_..., CONDA...) also passes the scrub (PATHFINDER_DB_URL).",
+  "A user or plugin tool cannot be called from execute_code: the in-sandbox tool set is a hardcoded frozenset of seven built-ins plus a hardcoded stub dict. The SPEC `lookup` tool needed an in-process monkeypatch.",
+  "Tool calls are strictly serial: five 200 ms lookups took 1,026 ms in a loop and 1,025 ms from a ThreadPoolExecutor; through the Docker backend's file RPC they took 4,429 ms.",
+  "Hardened (Docker, 512 MB): the memory probe was OOM-killed by the cgroup, but the model was told only 'Remote kernel protocol failure; kernel killed, state lost.' (hardened-P7) or, in a second run where only the kernel process died, a 10 s timeout message (hardened-P7next). Neither names memory.",
+  "In a local session with no approval surface, execute_code auto-approves arbitrary code (approval.py:1486-1490 documents this as trusted-by-config).",
+  "Hermes names its containers hermes-<hex> and keeps them running after the agent process exits (hardened-docker-state-P1.txt: still 'running' after the probe child exited); this probe removed them by label."
+ ],
+ "overrides": {
+  "P2": {
+   "outcome": "limited",
+   "display": "truncated (50,000 + marker; print only)",
+   "detail": "stdout only (RETURNED, the last expression, is not returned): 50,000 of 200,000 A's as head 20,000 + tail 30,000 around '... [OUTPUT TRUNCATED - 150,001 bytes omitted out of 200,001 total] ...'; the full text was spilled to $HERMES_HOME/cache/exec/stdout-<digest>.txt and the path returned in 'warning'."
+  },
+  "Pcap": {
+   "outcome": "limited",
+   "display": "truncated (50,000 + marker)",
+   "detail": "print('B' * 120000): 50,000 B's around '... [OUTPUT TRUNCATED - 70,001 bytes omitted out of 120,001 total] ...'."
+  },
+  "P3": {
+   "display": "works (example.com 200)",
+   "detail": "The SPEC form failed only on certificate verification with the uv-managed Python's CA store; the same URL with an unverified SSL context printed HTTP 200."
+  },
+  "hardened-P3": {
+   "outcome": "blocked",
+   "display": "blocked (--network=none)",
+   "detail": "urllib.error.URLError: <urlopen error [Errno -3] Temporary failure in name resolution> (container NetworkMode none)."
+  },
+  "hardened-P4": {
+   "outcome": "blocked",
+   "display": "blocked (container's own /etc/hosts)",
+   "detail": "Read 148 chars: the container's /etc/hosts, not the host's 450-char file. Hardened Pwrite: FileNotFoundError for the host path."
+  },
+  "P5": {
+   "display": "blocked by name (ps -E bypass)",
+   "detail": "os.environ.get('PROBE_SECRET') -> None (name contains SECRET, scrubbed). But P5scrub read PROBE_SECRET=s3cr3t from the parent process's environment with ps -E, and PATHFINDER_DB_URL passed the scrub."
+  },
+  "P5scrub": {
+   "outcome": "works",
+   "display": "leaks (PATH* var; parent env via ps)",
+   "detail": "PATHFINDER_DB_URL reached the kernel (printed redacted as postgres://probe:***@db.invalid/x in the output the model sees); PROBE_PLAIN_VALUE dropped; ps -E -ww -p <ppid> showed PROBE_SECRET=s3cr3t in the parent's environment (2,598 chars)."
+  },
+  "hardened-P5": {
+   "display": "blocked (env empty)"
+  },
+  "hardened-P5scrub": {
+   "outcome": "blocked",
+   "display": "blocked (no forward; ps sees no host)",
+   "detail": "In the container: PATHFINDER_DB_URL None, PROBE_PLAIN_VALUE None, ps of the parent pid returned nothing (0 chars)."
+  },
+  "P6": {
+   "display": "no-limit-within-120s (300 s default)",
+   "detail": "Harness stopped it at 120 s; the default timeout is 300 s. Side check out/p6_default_check.txt: status timeout at 300.1 s, 'Cell timed out after 300s; the session kernel was killed and its state was lost.', and the next call printed 2 in a fresh kernel."
+  },
+  "hardened-P6": {
+   "display": "limited (10 s; kernel killed)"
+  },
+  "P7": {
+   "outcome": "error",
+   "display": "no limit (kernel died at 3.3 GB)",
+   "detail": "No memory limit on the local backend. After 32.4 s at 3.32 GB peak tree RSS the kernel died from outside; the model saw status error, 'The session kernel died while running the cell.' The host process survived. Run under mem-lock.sh."
+  },
+  "hardened-P7": {
+   "display": "limited (512 MB container OOM)",
+   "detail": "The container cgroup OOM-killed it after 1.97 s (docker inspect: OOMKilled=true, exit 137; out/hardened-docker-state-P7.txt). The model saw status error, output '', note 'Remote kernel protocol failure; kernel killed, state lost.' In hardened-P7next the kernel process was OOM-killed inside a container that stayed up; the host reported a 10 s timeout and the next cell printed 'next cell 2'. Run under mem-lock.sh."
+  },
+  "hardened-P7next": {
+   "outcome": "limited",
+   "display": "OOM shown as timeout; next cell ran"
+  },
+  "P8": {
+   "display": "persists"
+  },
+  "P9": {
+   "display": "serial (1,026 ms)"
+  },
+  "P9threads": {
+   "display": "serial (1,025 ms, 5 threads)"
+  },
+  "P9t": {
+   "outcome": "works",
+   "display": "serial (1,502 ms, terminal)",
+   "detail": "Unpatched stand-in: five terminal('sleep 0.2') calls in a loop took 1,502 ms measured in the kernel."
+  },
+  "P1t": {
+   "outcome": "works",
+   "display": "works (42 via terminal)",
+   "detail": "Unpatched built-in terminal tool from the kernel: terminal('sleep 0.2; echo $((21*2))') -> output '42'."
+  },
+  "hardened-P9": {
+   "display": "serial (4,429 ms, file RPC)"
+  },
+  "P10": {
+   "display": "works (message + line 2)"
+  },
+  "hardened-P10": {
+   "display": "works (message + line 2)"
+  },
+  "P11": {
+   "display": "works (0.7 ms warm; 63 ms new kernel)",
+   "detail": "20 cells in one session kernel: median 0.7 ms, p90 1.0 ms. Fresh session (new kernel, run, shutdown), n=5: median 62.8 ms."
+  },
+  "P12": {
+   "display": "escaped (os.system, popen)"
+  },
+  "hardened-P12": {
+   "outcome": "blocked",
+   "display": "blocked (os.system ran in container)",
+   "detail": "All three ran inside the container (subclasses walk, os.system -> 0, _wrap_close popen -> PWNED2), which has no host mounts, no network and all capabilities dropped; nothing reached the host."
+  },
+  "Pwrite": {
+   "outcome": "works",
+   "display": "works (wrote a host file)"
+  },
+  "hardened-Pwrite": {
+   "outcome": "blocked",
+   "display": "blocked (host path absent)"
+  },
+  "Ptoolcap": {
+   "outcome": "limited",
+   "display": "limited (50 calls)",
+   "detail": "55 sequential lookups: 50 returned values, the rest returned 'Tool call limit reached (50)'."
+  },
+  "hardened-P1": {
+   "display": "works (42, 1 call)"
+  }
+ }
+}

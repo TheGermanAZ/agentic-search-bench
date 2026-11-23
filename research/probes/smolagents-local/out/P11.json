@@ -1,0 +1,16 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "detail": "same executor: {'median_ms': 0.1, 'p90_ms': 0.1, 'n': 20}; fresh executor per run: {'median_ms': 0.1, 'p90_ms': 0.1, 'n': 20}; one-time setup (construct + send_tools): median 0.04 ms",
+  "same_executor": {
+    "median_ms": 0.1,
+    "p90_ms": 0.1,
+    "n": 20
+  },
+  "fresh_executor": {
+    "median_ms": 0.1,
+    "p90_ms": 0.1,
+    "n": 20
+  },
+  "setup_ms_median": 0.04
+}

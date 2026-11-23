@@ -1,0 +1,38 @@
+{
+  "mode": "default",
+  "probe": "P3",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 0,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "const r = await fetch(\"https://example.com\"); return { status: r.status, len: (await r.text()).length }",
+      "ms": 80.29,
+      "hostCalls": 0,
+      "result": {
+        "output": "{\"status\":200,\"len\":577}",
+        "toolCalls": [
+          {
+            "tool": "fetch",
+            "status": "completed",
+            "input": {
+              "method": "GET",
+              "url": "https://example.com"
+            }
+          }
+        ],
+        "files": []
+      }
+    },
+    {
+      "code": "return typeof fetch",
+      "ms": 1.07,
+      "hostCalls": 0,
+      "result": {
+        "output": "function",
+        "toolCalls": [],
+        "files": []
+      }
+    }
+  ]
+}

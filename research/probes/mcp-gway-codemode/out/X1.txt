@@ -1,0 +1,20 @@
+--- code 1 ---
+print("SECRET-FROM-A-1")
+r = Probe.lookup(id=1)
+print("SECRET-FROM-A-2")
+r2 = Probe.lookup(id=2)
+print("SECRET-FROM-A-3")
+result = "A done"
+--- result 1 ---
+{"ok": true, "isError": false, "ms": 643.3, "hostCalls": 3, "gatewayAlive": true}
+text (368 chars):
+{"result": "A done", "logs": ["SECRET-FROM-A-2", "SECRET-FROM-A-3"], "calls": [{"i": 1, "server": "Probe", "tool": "lookup", "ms": 421, "status": "ok", "bytes": 21, "reused": false}, {"i": 2, "server": "Probe", "tool": "lookup", "ms": 203, "status": "ok", "bytes": 21, "reused": true}], "usage": {"call_count": 2, "ms": 638, "limit_bytes": 262144, "truncated": false}}
+--- code 2 ---
+r = Probe.lookup(id=3)
+result = "B done"
+--- result 2 ---
+{"ok": true, "isError": false, "ms": 471.7, "hostCalls": 3, "gatewayAlive": true}
+text (246 chars):
+{"result": "B done", "logs": ["SECRET-FROM-A-2"], "calls": [{"i": 1, "server": "Probe", "tool": "lookup", "ms": 435, "status": "ok", "bytes": 21, "reused": false}], "usage": {"call_count": 1, "ms": 449, "limit_bytes": 262144, "truncated": false}}
+--- summary ---
+{"note": "A and B are separate HTTP requests; B starts 150 ms after A. Look for SECRET-FROM-A in B's logs."}

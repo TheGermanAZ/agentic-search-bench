@@ -1,0 +1,10 @@
+{
+  "probe": "P3",
+  "config": {
+    "kernel_mode": "subprocess",
+    "cell_timeout": 30
+  },
+  "peak_tree_rss_mib": 154,
+  "wall_s": 3.37,
+  "child": "{\"r\": {\"ok\": true, \"stdout\": \"200\\n\", \"stderr\": \"\", \"s\": 0.26}, \"host_calls\": 0, \"extra\": \"\"}"
+}

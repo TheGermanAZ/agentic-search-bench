@@ -1,0 +1,14 @@
+code:
+print(open("/etc/hosts").read())
+
+{
+  "probe": "P4",
+  "container": "codeact-hardened-P4",
+  "startup_s": 2.4,
+  "elapsed_s": 0.05,
+  "output": "127.0.0.1\tlocalhost\n::1\tlocalhost ip6-localhost ip6-loopback\nfe00::\tip6-localnet\nff00::\tip6-mcastprefix\nff02::1\tip6-allnodes\nff02::2\tip6-allrouters\n192.168.215.4\t1778ae638cc9\n\n",
+  "after": null,
+  "mem_peak_mib": 0,
+  "harness_killed_at_4gib": false,
+  "config": "JupyterGatewayDocker RESOURCE_CONSTRAINTS={'mem_limit': '8g', 'nano_cpus': 2e9}, JupyterKernel.execute timeout=60"
+}

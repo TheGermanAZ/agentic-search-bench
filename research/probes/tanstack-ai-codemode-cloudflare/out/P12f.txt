@@ -1,0 +1,46 @@
+label: P12f
+command: node probe.mjs P12f
+child exit: code=0 signal=null
+child wall ms (process start to exit): 217
+peak child RSS: 89.6 MB (ps every 50 ms)
+peak server (pid 76929) RSS: 80.7 MB; alive after probe: yes
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P12f",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.113125000000025,
+  "source": [
+    "const names = Object.getOwnPropertyNames(globalThis).filter(n => n.startsWith(\"__\")); const out = {}; for (const n of names) { const v = globalThis[n]; out[n] = typeof v + \":\" + (v && Object.getOwnPropertyNames(Object.getPrototypeOf(v) || {}).join(\"/\")); } return out;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": {},
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 47.18475000000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": {},
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 47,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 89.6
+}
+--- child stdout ---
+
+--- child stderr ---
+

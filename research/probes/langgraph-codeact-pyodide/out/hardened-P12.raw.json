@@ -1,0 +1,58 @@
+{
+  "probe": "P12",
+  "config": "hardened",
+  "codes": [
+    "subs = ().__class__.__base__.__subclasses__()\nnames = [c.__name__ for c in subs]\nmsg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)\nprint(msg)\nmsg",
+    "msg = \"SYSTEM \" + str(__import__(\"os\").system(\"echo PWNED\"))\nprint(msg)\nmsg",
+    "wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']\nmsg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "SUBS 397 True True",
+      "error": null,
+      "context_keys": [
+        "msg",
+        "names",
+        "subs"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1131.9,
+      "started": 1795377665.6242938
+    },
+    {
+      "ok": false,
+      "stdout": "Error during execution: Pyodide has suffered a fatal error. Please report this to the Pyodide maintainers.\nThe cause of the fatal error was:\nNotCapable: Requires env access, run again with the --allow-env flag\n    at Object.toObject (ext:deno_os/30_os.js:133:12)\n    at normalizeSpawnArguments (ext:deno_node/internal/child_process.ts:1085:41)\n    at Object.spawnSync (ext:deno_node/child_process.ts:231:10)\n    at __emscripten_system (file://~/p/agentic-search-bench/research/probes/langgraph-codeact-pyodide/node_modules/.deno/pyodide@0.27.8/node_modules/pyodide/pyodide.asm.js:10:288682)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x4b582f)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x3e114f)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x20c5f8)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x1c5018)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x2a2d8d)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x29884c) {\n  pyodide_fatal_error: true\n}\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) NotCapable: Requires env access, run again with the --allow-env flag\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mObject.toObject\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_os/30_os.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m133\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m12\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mnormalizeSpawnArguments\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_node/internal/child_process.ts\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m1085\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m41\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mObject.spawnSync\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_node/child_process.ts\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m231\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m10\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at \u001b[0m\u001b[1m\u001b[3m__emscripten_system\u001b[0m (\u001b[0m\u001b[2m\u001b[38;5;245mfile://~/p/agentic-search-bench/research/probes/langgraph-codeact-pyodide/\u001b[0m\u001b[0m\u001b[36mnode_modules/.deno/pyodide@0.27.8/node_modules/pyodide/pyodide.asm.js\u001b[0m:\u001b[0m\u001b[33m10\u001b[0m:\u001b[0m\u001b[33m288682\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x4b582f\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x3e114f\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x20c5f8\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x1c5018\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x2a2d8d\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x29884c\u001b[0m)\n",
+      "error": "Error during execution: Pyodide has suffered a fatal error. Please report this to the Pyodide maintainers.\nThe cause of the fatal error was:\nNotCapable: Requires env access, run again with the --allow-env flag\n    at Object.toObject (ext:deno_os/30_os.js:133:12)\n    at normalizeSpawnArguments (ext:deno_node/internal/child_process.ts:1085:41)\n    at Object.spawnSync (ext:deno_node/child_process.ts:231:10)\n    at __emscripten_system (file://~/p/agentic-search-bench/research/probes/langgraph-codeact-pyodide/node_modules/.deno/pyodide@0.27.8/node_modules/pyodide/pyodide.asm.js:10:288682)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x4b582f)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x3e114f)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x20c5f8)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x1c5018)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x2a2d8d)\n    at <anonymous> (wasm://wasm/0268cb26:wasm-function[0]:0x29884c) {\n  pyodide_fatal_error: true\n}\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) NotCapable: Requires env access, run again with the --allow-env flag\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mObject.toObject\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_os/30_os.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m133\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m12\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mnormalizeSpawnArguments\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_node/internal/child_process.ts\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m1085\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m41\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mObject.spawnSync\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_node/child_process.ts\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m231\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m10\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at \u001b[0m\u001b[1m\u001b[3m__emscripten_system\u001b[0m (\u001b[0m\u001b[2m\u001b[38;5;245mfile://~/p/agentic-search-bench/research/probes/langgraph-codeact-pyodide/\u001b[0m\u001b[0m\u001b[36mnode_modules/.deno/pyodide@0.27.8/node_modules/pyodide/pyodide.asm.js\u001b[0m:\u001b[0m\u001b[33m10\u001b[0m:\u001b[0m\u001b[33m288682\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x4b582f\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x3e114f\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x20c5f8\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x1c5018\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x2a2d8d\u001b[0m)\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mwasm://wasm/0268cb26\u001b[0m:\u001b[0m\u001b[33mwasm-function[0]\u001b[0m:\u001b[0m\u001b[33m0x29884c\u001b[0m)\n",
+      "context_keys": [
+        "msg",
+        "names",
+        "subs"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1124.0,
+      "started": 1795377666.75652
+    },
+    {
+      "ok": false,
+      "stdout": "Error during execution: [Errno 138] emscripten does not support processes.",
+      "error": "Error during execution: [Errno 138] emscripten does not support processes.",
+      "context_keys": [
+        "msg",
+        "names",
+        "subs"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1164.7,
+      "started": 1795377667.8808699
+    }
+  ],
+  "setup_ms": 15.5,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 3.74,
+  "peak_tree_rss_gb": 0.326,
+  "calls": [],
+  "child_log_tail": ""
+}

@@ -1,0 +1,74 @@
+probe: P3 (hardened)
+codex: ~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex (codex-cli 0.169.0)
+CODEX_HOME: ~/p/agentic-search-bench/research/impls/codex-sandbox/codex-home-hardened (empty, config only from the flags below)
+flags: codex sandbox "-c" "shell_environment_policy.inherit=\"core\"" "-c" "shell_environment_policy.ignore_default_excludes=false" "-c" "permissions.hardened.filesystem={\":minimal\"=\"read\",\":workspace_roots\"=\"read\",\"/opt/homebrew/Cellar/python@3.15/3.15.0_1\"=\"read\",\"/etc/**\"=\"deny\",\"/private/etc/**\"=\"deny\"}" "-c" "permissions.hardened.network.enabled=false" "-P" "hardened" "-C" "~/p/agentic-search-bench/research/probes/codex-sandbox/work" -- <argv>
+
+--- python urllib ---
+argv: ["/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/bin/python3.15", "-c", "import urllib.request;print(urllib.request.urlopen(\"https://example.com\", timeout=10).status)"]
+exit: 1  wall_ms: 141.6  peak_tree_rss_mb: 52.7  killed: None
+stdout:
+
+stderr:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import urllib.request;print(urllib.request.urlopen("https://example.com", timeout=10).status)
+                                ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/lib/python3.15/urllib/request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/lib/python3.15/urllib/request.py", line 489, in open
+    response = self._open(req, data)
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/lib/python3.15/urllib/request.py", line 511, in _open
+    return self._call_chain(self.handle_open, 'unknown',
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                            'unknown_open', req)
+                            ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/lib/python3.15/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/lib/python3.15/urllib/request.py", line 1411, in unknown_open
+    raise URLError('unknown url type: %s' % type)
+urllib.error.URLError: <urlopen error unknown url type: https>
+
+
+--- shell curl ---
+argv: ["/usr/bin/curl", "-sS", "-m", "10", "-o", "/dev/null", "-w", "%{http_code}", "https://example.com"]
+exit: 1  wall_ms: 53.0  peak_tree_rss_mb: 2.8  killed: None
+stdout:
+
+stderr:
+Auto configuration failed
+8437685632:error:02FFF001:system library:func(4095):Operation not permitted:/AppleInternal/Library/BuildRoots/4~CNqEugB7-7yoTeHDwKLZ0PRIsI79y9XP33qXeIo/Library/Caches/com.apple.xbs/TemporaryDirectory.MoIAiI/Sources/libressl/libressl-3.3/crypto/bio/bss_file.c:122:fopen('/private/etc/ssl/openssl.cnf', 'rb')
+8437685632:error:20FFF002:BIO routines:CRYPTO_internal:system lib:/AppleInternal/Library/BuildRoots/4~CNqEugB7-7yoTeHDwKLZ0PRIsI79y9XP33qXeIo/Library/Caches/com.apple.xbs/TemporaryDirectory.MoIAiI/Sources/libressl/libressl-3.3/crypto/bio/bss_file.c:127:
+8437685632:error:0EFFF002:configuration file routines:CRYPTO_internal:system lib:/AppleInternal/Library/BuildRoots/4~CNqEugB7-7yoTeHDwKLZ0PRIsI79y9XP33qXeIo/Library/Caches/com.apple.xbs/TemporaryDirectory.MoIAiI/Sources/libressl/libressl-3.3/crypto/conf/conf_def.c:202:
+
+
+--- python raw socket to example.com:443 (no ssl module needed) ---
+argv: ["/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/bin/python3.15", "-c", "import socket;s=socket.create_connection((\"example.com\", 443), timeout=10);print(\"connected\", s.getpeername())"]
+exit: 1  wall_ms: 99.0  peak_tree_rss_mb: 48.0  killed: None
+stdout:
+
+stderr:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import socket;s=socket.create_connection(("example.com", 443), timeout=10);print("connected", s.getpeername())
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/lib/python3.15/socket.py", line 859, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+               ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/lib/python3.15/socket.py", line 998, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+
+--- shell curl with OPENSSL_CONF=/dev/null (skips the denied /etc/ssl config) ---
+argv: ["/bin/sh", "-c", "OPENSSL_CONF=/dev/null /usr/bin/curl -sS -m 10 -o /dev/null -w \"%{http_code}\" https://example.com"]
+exit: 1  wall_ms: 55.1  peak_tree_rss_mb: 15.7  killed: None
+stdout:
+
+stderr:
+Auto configuration failed
+8437685632:error:02FFF001:system library:func(4095):Operation not permitted:/AppleInternal/Library/BuildRoots/4~CNqEugB7-7yoTeHDwKLZ0PRIsI79y9XP33qXeIo/Library/Caches/com.apple.xbs/TemporaryDirectory.MoIAiI/Sources/libressl/libressl-3.3/crypto/bio/bss_file.c:122:fopen('/private/etc/ssl/openssl.cnf', 'rb')
+8437685632:error:20FFF002:BIO routines:CRYPTO_internal:system lib:/AppleInternal/Library/BuildRoots/4~CNqEugB7-7yoTeHDwKLZ0PRIsI79y9XP33qXeIo/Library/Caches/com.apple.xbs/TemporaryDirectory.MoIAiI/Sources/libressl/libressl-3.3/crypto/bio/bss_file.c:127:
+8437685632:error:0EFFF002:configuration file routines:CRYPTO_internal:system lib:/AppleInternal/Library/BuildRoots/4~CNqEugB7-7yoTeHDwKLZ0PRIsI79y9XP33qXeIo/Library/Caches/com.apple.xbs/TemporaryDirectory.MoIAiI/Sources/libressl/libressl-3.3/crypto/conf/conf_def.c:202:
+

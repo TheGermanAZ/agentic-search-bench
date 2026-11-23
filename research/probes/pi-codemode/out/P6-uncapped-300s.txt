@@ -1,0 +1,23 @@
+{
+  "impl": "pi-codemode",
+  "config": "default",
+  "probe": "P6",
+  "options": {},
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "while (true) {}",
+      "ms": 300006,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "timeout",
+        "message": "Execution timed out after 300000 ms"
+      }
+    }
+  ]
+}
+exit=0

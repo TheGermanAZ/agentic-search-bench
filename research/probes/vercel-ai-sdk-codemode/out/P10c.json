@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P10c",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return await tools.failing({});"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "RunError",
+        "code": "CODE_MODE_HOST_TOOL_ERROR",
+        "message": "Host tool failed.",
+        "stack": "RunError: Host tool failed.\n    at <anonymous> (code-mode.js:1:233)\n    at <anonymous> (code-mode.js:1:20)\n    at <anonymous> (code-mode.js:2:1)",
+        "string": "RunError: Host tool failed."
+      },
+      "wallMs": 83.743333,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "RunError: CODE_MODE_HOST_TOOL_ERROR Host tool failed.",
+    "ms": 84,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 150.9
+}

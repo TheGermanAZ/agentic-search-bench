@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "display": "limited (10 s wall clock)",
+  "detail": "stopped after 10.01 s: Execution error: timed out after 10 seconds.",
+  "evidence": "research/probes/strands-codemode/out/hardened-P6.txt"
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "probe": "P7hog-exec1",
+    "code": "globalThis.hog = []; try { while (true) globalThis.hog.push(\"h\".repeat(1e6)); } catch (e) { return \"held \" + globalThis.hog.length + \" MB in a global: \" + e.message }",
+    "args_extra": {},
+    "wall_ms": 146,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "\"held 66 MB in a global: out of memory\"",
+    "response_text_length": 39,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P7hog-exec2",
+    "code": "return \"y\".repeat(5e6).length",
+    "args_extra": {},
+    "wall_ms": 1,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: out of memory\n    at <anonymous> (eval_script:18:12)\n    at <eval> (eval_script:18:32)\n",
+    "response_text_length": 130,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P7hog-exec3-tool-call",
+    "code": "const r = await lookup.lookup({id: 21}); return JSON.parse(r.content[0].text).value",
+    "args_extra": {},
+    "wall_ms": 205,
+    "host_calls": 1,
+    "isError": false,
+    "response_text": "42",
+    "response_text_length": 2,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  }
+]

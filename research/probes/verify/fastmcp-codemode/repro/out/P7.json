@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "limited",
+  "display": "limited (100 MB)",
+  "detail": "stopped after 0.13 s, peak tree RSS 0.099 GB: Error calling tool 'execute': MemoryError: memory limit exceeded: 100045946 bytes > 100000000 bytes",
+  "evidence": "research/probes/repro/out/P7.txt"
+}

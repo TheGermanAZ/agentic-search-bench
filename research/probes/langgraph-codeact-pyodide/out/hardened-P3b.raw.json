@@ -1,0 +1,26 @@
+{
+  "probe": "P3b",
+  "config": "hardened",
+  "codes": [
+    "import js\nfrom pyodide.ffi import run_sync\nr = run_sync(js.fetch('https://example.com'))\nprint('HTTP', r.status)"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: NotCapable: Requires net access to \"example.com:443\", run again with the --allow-net flag",
+      "error": "Error during execution: NotCapable: Requires net access to \"example.com:443\", run again with the --allow-net flag",
+      "context_keys": [],
+      "host_builtins_leak": false,
+      "ms": 1187.3,
+      "started": 1795377626.818975
+    }
+  ],
+  "setup_ms": 16.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.55,
+  "peak_tree_rss_gb": 0.294,
+  "calls": [],
+  "child_log_tail": ""
+}

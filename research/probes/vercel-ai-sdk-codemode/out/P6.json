@@ -1,0 +1,52 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P6",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "while (true) {}"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 127,
+    "siblingEndMs": 424,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "CodeModeCpuTimeoutError",
+        "code": "CODE_MODE_CPU_TIMEOUT",
+        "message": "Code mode execution exceeded its CPU time limit of 10000ms.",
+        "details": {
+          "cpuTimeoutMs": 10000
+        },
+        "stack": "G: JavaScript runtime exceeded its CPU time limit of 10000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+        "string": "CodeModeCpuTimeoutError: Code mode execution exceeded its CPU time limit of 10000ms."
+      },
+      "wallMs": 10120.916625,
+      "hostCalls": 1
+    }
+  ],
+  "concurrentSiblingRun": {
+    "ok": true,
+    "value": 42,
+    "wallMs": 296.321625,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "ok": true,
+    "value": 42,
+    "wallMs": 207.86408400000073,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 127,
+    "siblingEndMs": 424,
+    "error": "CodeModeCpuTimeoutError: CODE_MODE_CPU_TIMEOUT Code mode execution exceeded its CPU time limit of 10000ms.",
+    "ms": 10121,
+    "sibling": 42,
+    "after": 42
+  },
+  "hostRssAfterMB": 172.8
+}

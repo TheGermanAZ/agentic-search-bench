@@ -1,0 +1,6 @@
+print("A" * 200000)
+return "RETURNED"
+--- output
+RETURNED
+---
+wall_ms=18 host_calls=0 peak_tree_rss_mb=186

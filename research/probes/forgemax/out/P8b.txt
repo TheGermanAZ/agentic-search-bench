@@ -1,0 +1,35 @@
+mode: default
+code:
+forge.stash.put("kept", 7)
+---
+forge.stash.get("kept")
+
+result:
+{
+  "first": {
+    "response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"ok\": true\n}"
+        }
+      ],
+      "isError": false
+    },
+    "ms": 13,
+    "hostCalls": 0
+  },
+  "second": {
+    "response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "7"
+        }
+      ],
+      "isError": false
+    },
+    "ms": 12,
+    "hostCalls": 0
+  }
+}

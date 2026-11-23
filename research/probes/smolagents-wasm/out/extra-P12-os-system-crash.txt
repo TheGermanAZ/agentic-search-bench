@@ -1,0 +1,18 @@
+Failed to communicate with Deno server: ('Connection aborted.', 
+RemoteDisconnected('Remote end closed connection without response'))
+os.system -> AgentError: Failed to communicate with Deno server: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+deno exit code after 2 s: 1
+deno stderr tail: 1:10)
+    at __emscripten_system (file:///private/tmp/claude-501/-Users-thegermanaz--t3-scratch-2026-11-22-look-at-my-server-web-09be555c/9b4d05d1-7140-479c-b768-c080e09081c0/scratchpad/wasm-tmp/pyodide_deno_luslu2iy/deno_cache/npm/registry.npmjs.org/pyodide/314.0.8/pyodide.asm.mjs:1:143575)
+    at <anonymous> (wasm://wasm/0249cf12:wasm-function[0]:0x58bec8)
+    at <anonymous> (wasm://wasm/0249cf12:wasm-function[0]:0x379563)
+    at <anonymous> (wasm://wasm/0249cf12:wasm-function[0]:0x10d131)
+    at <anonymous> (wasm://wasm/0249cf12:wasm-function[0]:0xbe861)
+    at <anonymous> (wasm://wasm/0249cf12:wasm-function[0]:0x1c52c2)
+    at <anonymous> (wasm://wasm/0249cf12:wasm-function[0]:0x1bd195)
+
+Failed to communicate with Deno server: HTTPConnectionPool(host='127.0.0.1', 
+port=41993): Max retries exceeded with url: / (Caused by 
+NewConnectionError("HTTPConnection(host='127.0.0.1', port=41993): Failed to 
+establish a new connection: [Errno 61] Connection refused"))
+next call -> AgentError: Failed to communicate with Deno server: HTTPConnectionPool(host='127.0.0.1', port=41993): Max retries exceeded with url: / (Caused by NewConnectionE

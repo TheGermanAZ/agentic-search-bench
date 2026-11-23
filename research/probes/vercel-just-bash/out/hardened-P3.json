@@ -1,0 +1,41 @@
+{
+  "id": "P3",
+  "workerPid": 97869,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 284,
+  "peakRssKbSampled": 77424,
+  "stderr": "",
+  "parsed": {
+    "probe": "P3",
+    "config": {
+      "executionLimitProfile": "hardened"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 97869
+    },
+    "runs": [
+      {
+        "script": "curl https://example.com",
+        "exitCode": 127,
+        "stdout": "",
+        "stderr": "bash: curl: command not found\n",
+        "ms": 91,
+        "hostCalls": 0
+      },
+      {
+        "script": "wget -qO- https://example.com",
+        "exitCode": 127,
+        "stdout": "",
+        "stderr": "bash: wget: command not found\n",
+        "ms": 1,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 83552,
+    "maxInFlight": 0,
+    "hostCalls": 0
+  }
+}

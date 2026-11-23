@@ -1,0 +1,52 @@
+label: P2b
+command: node probe.mjs P2b
+child exit: code=0 signal=null
+child wall ms (process start to exit): 295
+peak child RSS: 89.7 MB (ps every 50 ms)
+peak server (pid 76929) RSS: 75.2 MB; alive after probe: yes
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P2b",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.3175830000000133,
+  "source": [
+    "console.log(\"A\".repeat(200000)); return \"RETURNED\";"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "RETURNED",
+        "logCount": 1,
+        "logChars": 200000,
+        "logs": [
+          {
+            "stringLength": 200000,
+            "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        ]
+      },
+      "wallMs": 58.85175000000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "RETURNED",
+      "logCount": 1,
+      "logChars": 200000
+    },
+    "ms": 59,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 90.5
+}
+--- child stdout ---
+
+--- child stderr ---
+

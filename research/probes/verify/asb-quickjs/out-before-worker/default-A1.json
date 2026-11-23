@@ -1,0 +1,129 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default A1",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 435,
+  "peakTreeRssMb": 167,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "A1",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "keys": {
+        "label": "globals",
+        "startMs": 11,
+        "ms": 12,
+        "ok": true,
+        "result": {
+          "value": "function __host",
+          "stringChars": 15
+        },
+        "callsStarted": 0
+      },
+      "ctor": {
+        "label": "constructor",
+        "startMs": 23,
+        "ms": 184,
+        "ok": true,
+        "result": {
+          "value": "6488955 db,vectors,chunkMsg,embedder 50000 200000",
+          "stringChars": 49
+        },
+        "callsStarted": 0
+      },
+      "proto": {
+        "label": "__proto__",
+        "startMs": 207,
+        "ms": 2,
+        "ok": true,
+        "result": {
+          "value": "{\"__error\":\"fn is not a function. (In 'fn(corpus, call.args)', 'fn' is an instance of Object)\"}",
+          "stringChars": 95
+        },
+        "callsStarted": 0
+      },
+      "tostr": {
+        "label": "toString",
+        "startMs": 209,
+        "ms": 1,
+        "ok": true,
+        "result": {
+          "value": "\"[object Undefined]\"",
+          "stringChars": 20
+        },
+        "callsStarted": 0
+      },
+      "bad": {
+        "label": "invalid-json",
+        "startMs": 210,
+        "ms": 3,
+        "ok": true,
+        "result": {
+          "value": "guest caught: SyntaxError: JSON Parse error: Expected '}'",
+          "stringChars": 57
+        },
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 213,
+        "ms": 202,
+        "ok": true,
+        "result": {
+          "value": "42",
+          "stringChars": 2
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 194,
+    "hostEvents": [],
+    "totalMs": 415
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      77,
+      82
+    ],
+    [
+      124,
+      137
+    ],
+    [
+      175,
+      151
+    ],
+    [
+      226,
+      167
+    ],
+    [
+      278,
+      151
+    ],
+    [
+      329,
+      151
+    ],
+    [
+      381,
+      151
+    ],
+    [
+      432,
+      151
+    ]
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "impl": "pi-codemode",
+  "config": "agent",
+  "probe": "P7",
+  "options": {
+    "timeoutMs": null,
+    "memoryLimitBytes": 268435456
+  },
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+      "ms": 877,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "script",
+        "name": "InternalError",
+        "message": "out of memory",
+        "stack": "InternalError: out of memory\n    at <anonymous> (codemode.js:1:66)"
+      }
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "agent", "P7"], "exit_code": 0, "wall_ms": 928, "peak_tree_rss_mb": 337.5, "watch_kill": null}

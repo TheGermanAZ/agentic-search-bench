@@ -1,0 +1,468 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py default R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 33956,
+  "peakTreeRssMb": 181,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9e",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(defaults); new in-process Client per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 3091,
+          "ms": 30510,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 30.039441s > 30s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 3116,
+          "ms": 30485,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 30.007973709s > 30s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 3116,
+          "ms": 30485,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 30.050835917s > 30s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 3116,
+          "ms": 30484,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 30.03926025s > 30s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 3116,
+          "ms": 30482,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 30.000064208s > 30s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 3117,
+          "ms": 30484,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 30.05192275s > 30s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 3117,
+          "ms": 30484,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 30.050561583s > 30s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 3117,
+          "ms": 30483,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 30.011647709s > 30s"
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 3293,
+        "ms": 401,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 3694,
+        "ms": 241,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 33602,
+        "ms": 273,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 155,
+    "totalMs": 33875
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "         │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:309 in         │\n                    │ _run_monty                                               │\n                    ╰──────────────────────────────────────────────────────────╯\n                    MontyRuntimeError: TimeoutError: feed time limit exceeded:  \n                    30.05192275s > 30s                                          \n                    Error calling tool 'execute'                                \n                    ╭─────────── Traceback (most recent call last) ────────────╮\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/server/server.py:1673 in call_tool                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 7 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:309 in         │\n                    │ _run_monty                                               │\n                    ╰──────────────────────────────────────────────────────────╯\n                    MontyRuntimeError: TimeoutError: feed time limit exceeded:  \n                    30.039441s > 30s                                            \n",
+  "rssSamplesMsMb": [
+    [
+      99,
+      29
+    ],
+    [
+      487,
+      44
+    ],
+    [
+      881,
+      56
+    ],
+    [
+      1252,
+      58
+    ],
+    [
+      1641,
+      61
+    ],
+    [
+      2060,
+      77
+    ],
+    [
+      2458,
+      83
+    ],
+    [
+      2929,
+      86
+    ],
+    [
+      3279,
+      95
+    ],
+    [
+      3726,
+      180
+    ],
+    [
+      4096,
+      171
+    ],
+    [
+      4512,
+      171
+    ],
+    [
+      5141,
+      171
+    ],
+    [
+      5529,
+      171
+    ],
+    [
+      5971,
+      171
+    ],
+    [
+      6329,
+      171
+    ],
+    [
+      6684,
+      171
+    ],
+    [
+      7075,
+      171
+    ],
+    [
+      7476,
+      171
+    ],
+    [
+      7822,
+      171
+    ],
+    [
+      8380,
+      171
+    ],
+    [
+      8726,
+      171
+    ],
+    [
+      9135,
+      171
+    ],
+    [
+      9520,
+      171
+    ],
+    [
+      9881,
+      171
+    ],
+    [
+      10252,
+      171
+    ],
+    [
+      10644,
+      171
+    ],
+    [
+      11013,
+      171
+    ],
+    [
+      11367,
+      171
+    ],
+    [
+      11714,
+      171
+    ],
+    [
+      12147,
+      171
+    ],
+    [
+      12541,
+      171
+    ],
+    [
+      12977,
+      171
+    ],
+    [
+      13399,
+      171
+    ],
+    [
+      13760,
+      171
+    ],
+    [
+      14106,
+      171
+    ],
+    [
+      14519,
+      171
+    ],
+    [
+      14874,
+      171
+    ],
+    [
+      15279,
+      171
+    ],
+    [
+      15759,
+      171
+    ],
+    [
+      16101,
+      171
+    ],
+    [
+      16456,
+      171
+    ],
+    [
+      16834,
+      171
+    ],
+    [
+      17208,
+      171
+    ],
+    [
+      17636,
+      171
+    ],
+    [
+      17990,
+      171
+    ],
+    [
+      18403,
+      171
+    ],
+    [
+      19089,
+      171
+    ],
+    [
+      19470,
+      171
+    ],
+    [
+      19824,
+      171
+    ],
+    [
+      20328,
+      171
+    ],
+    [
+      20749,
+      171
+    ],
+    [
+      21136,
+      171
+    ],
+    [
+      21575,
+      171
+    ],
+    [
+      22135,
+      171
+    ],
+    [
+      22545,
+      171
+    ],
+    [
+      22965,
+      171
+    ],
+    [
+      23391,
+      171
+    ],
+    [
+      23856,
+      171
+    ],
+    [
+      24303,
+      171
+    ],
+    [
+      24770,
+      171
+    ],
+    [
+      25297,
+      171
+    ],
+    [
+      25737,
+      171
+    ],
+    [
+      26315,
+      171
+    ],
+    [
+      26737,
+      171
+    ],
+    [
+      27302,
+      171
+    ],
+    [
+      27717,
+      169
+    ],
+    [
+      28113,
+      168
+    ],
+    [
+      28607,
+      155
+    ],
+    [
+      29042,
+      155
+    ],
+    [
+      29451,
+      155
+    ],
+    [
+      29834,
+      155
+    ],
+    [
+      30395,
+      155
+    ],
+    [
+      30927,
+      155
+    ],
+    [
+      31396,
+      155
+    ],
+    [
+      31827,
+      155
+    ],
+    [
+      32244,
+      155
+    ],
+    [
+      32762,
+      152
+    ],
+    [
+      33213,
+      152
+    ],
+    [
+      33768,
+      105
+    ]
+  ]
+}

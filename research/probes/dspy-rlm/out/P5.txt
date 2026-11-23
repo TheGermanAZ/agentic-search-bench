@@ -1,0 +1,31 @@
+probe: P5
+outcome: blocked
+display: blocked (env empty)
+detail: os.environ.get('PROBE_SECRET') -> None inside Pyodide; js.Deno.env.get('PROBE_SECRET') -> 'NotCapable: Requires env access to "PROBE_SECRET"' (P12jsTry). The Deno process does hold the host env.
+
+code:
+----
+import os
+msg = "ENV " + str(os.environ.get("PROBE_SECRET"))
+print(msg)
+msg
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 1.09
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.485
+host lookup calls: 0
+
+=== run 0 (529.4 ms) ===
+ok: true
+stdout: <repl_output>
+ENV None
+</repl_output>
+model_view_all: ["<repl_output>\nENV None\n</repl_output>"]
+raw_outputs_untruncated_len: [8, 25]
+answer: done
+
+=== child process log (tail) ===
+

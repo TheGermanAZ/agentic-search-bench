@@ -1,0 +1,29 @@
+{
+  "impl": "pi-codemode-mcp",
+  "config": "default",
+  "probe": "P3",
+  "options": {},
+  "firstExecIncludingServerSpawnMs": 2.4,
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "const r = await fetch(\"https://example.com\"); return r.status",
+      "ms": 10,
+      "hostCalls": 0,
+      "isError": true,
+      "textChars": 912,
+      "text": "{\n  \"ok\": false,\n  \"error\": {\n    \"name\": \"ReferenceError\",\n    \"message\": \"fetch is not defined\",\n    \"stack\": \"ReferenceError: fetch is not defined\\n    at call-mcp-user-script.js:4:13\\n    at call-mcp-user-script.js:5:3\\n    at Script.runInContext (node:vm:149:12)\\n    at JavaScriptSandboxRuntime.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/sandbox-runtime.ts:84:18)\\n    at Object.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/index.ts:356:45)\\n    at async run (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:40:15)\\n    at async Object.P3 (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:51:19)\\n    at async file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:92:17\"\n  },\n  \"logs\": []\n}"
+    },
+    {
+      "code": "return [typeof fetch, typeof require, typeof process, typeof Buffer, typeof setTimeout].join(\"/\")",
+      "ms": 4,
+      "hostCalls": 0,
+      "isError": false,
+      "textChars": 79,
+      "text": "{\n  \"result\": \"undefined/undefined/undefined/function/function\",\n  \"logs\": []\n}"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P3"], "exit_code": 0, "wall_ms": 882, "peak_tree_rss_mb": 96.7, "watch_kill": null}

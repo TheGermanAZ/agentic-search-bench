@@ -1,0 +1,427 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py hardened R9c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 10795,
+  "peakTreeRssMb": 126,
+  "peakTreeFootprintMb": 90,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9c",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller={'allowed_tools': ['lookup', 'failing', 'rich'], 'timeout': 10.0}; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 523,
+          "ms": 10008,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[200042 chars]…xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n[output truncated at 199956 characters]\n\nExecution error: timed out after 10 seconds."
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 673,
+        "ms": 216,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 215,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 10532,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 4,
+    "totalMs": 10744
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      85,
+      30,
+      0
+    ],
+    [
+      232,
+      56,
+      39
+    ],
+    [
+      384,
+      72,
+      52
+    ],
+    [
+      536,
+      90,
+      67
+    ],
+    [
+      688,
+      113,
+      79
+    ],
+    [
+      839,
+      125,
+      86
+    ],
+    [
+      992,
+      114,
+      86
+    ],
+    [
+      1147,
+      126,
+      90
+    ],
+    [
+      1299,
+      114,
+      90
+    ],
+    [
+      1455,
+      114,
+      86
+    ],
+    [
+      1604,
+      114,
+      86
+    ],
+    [
+      1757,
+      114,
+      86
+    ],
+    [
+      1908,
+      114,
+      86
+    ],
+    [
+      2060,
+      114,
+      86
+    ],
+    [
+      2213,
+      114,
+      86
+    ],
+    [
+      2365,
+      114,
+      86
+    ],
+    [
+      2519,
+      114,
+      86
+    ],
+    [
+      2670,
+      114,
+      86
+    ],
+    [
+      2824,
+      114,
+      86
+    ],
+    [
+      2976,
+      114,
+      86
+    ],
+    [
+      3130,
+      114,
+      86
+    ],
+    [
+      3281,
+      114,
+      86
+    ],
+    [
+      3436,
+      114,
+      86
+    ],
+    [
+      3589,
+      114,
+      86
+    ],
+    [
+      3742,
+      114,
+      86
+    ],
+    [
+      3894,
+      114,
+      86
+    ],
+    [
+      4047,
+      114,
+      86
+    ],
+    [
+      4201,
+      114,
+      86
+    ],
+    [
+      4354,
+      114,
+      86
+    ],
+    [
+      4505,
+      114,
+      86
+    ],
+    [
+      4660,
+      114,
+      86
+    ],
+    [
+      4813,
+      114,
+      86
+    ],
+    [
+      4964,
+      114,
+      86
+    ],
+    [
+      5117,
+      114,
+      86
+    ],
+    [
+      5271,
+      114,
+      86
+    ],
+    [
+      5422,
+      114,
+      86
+    ],
+    [
+      5576,
+      114,
+      86
+    ],
+    [
+      5739,
+      114,
+      86
+    ],
+    [
+      5892,
+      114,
+      86
+    ],
+    [
+      6047,
+      114,
+      86
+    ],
+    [
+      6196,
+      114,
+      86
+    ],
+    [
+      6349,
+      114,
+      86
+    ],
+    [
+      6502,
+      114,
+      86
+    ],
+    [
+      6655,
+      114,
+      86
+    ],
+    [
+      6808,
+      114,
+      86
+    ],
+    [
+      6963,
+      114,
+      86
+    ],
+    [
+      7115,
+      114,
+      86
+    ],
+    [
+      7272,
+      114,
+      86
+    ],
+    [
+      7423,
+      114,
+      86
+    ],
+    [
+      7575,
+      114,
+      86
+    ],
+    [
+      7728,
+      114,
+      86
+    ],
+    [
+      7880,
+      114,
+      86
+    ],
+    [
+      8033,
+      114,
+      86
+    ],
+    [
+      8186,
+      114,
+      86
+    ],
+    [
+      8338,
+      114,
+      86
+    ],
+    [
+      8491,
+      114,
+      86
+    ],
+    [
+      8642,
+      114,
+      86
+    ],
+    [
+      8797,
+      114,
+      86
+    ],
+    [
+      8950,
+      114,
+      86
+    ],
+    [
+      9101,
+      114,
+      86
+    ],
+    [
+      9256,
+      114,
+      86
+    ],
+    [
+      9409,
+      114,
+      86
+    ],
+    [
+      9562,
+      114,
+      86
+    ],
+    [
+      9712,
+      114,
+      86
+    ],
+    [
+      9864,
+      114,
+      86
+    ],
+    [
+      10017,
+      114,
+      86
+    ],
+    [
+      10170,
+      114,
+      86
+    ],
+    [
+      10321,
+      114,
+      86
+    ],
+    [
+      10473,
+      114,
+      86
+    ],
+    [
+      10625,
+      111,
+      86
+    ],
+    [
+      10778,
+      111,
+      83
+    ]
+  ]
+}

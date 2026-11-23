@@ -1,0 +1,7 @@
+{
+  "probe": "P2",
+  "outcome": "works",
+  "display": "full (200,000 A)",
+  "detail": "RETURNED came back: True (in result); 200000 of 200000 A's came back; marker found: None; stdout chars 200000; error ''",
+  "evidence": "research/probes/datalayer-codemode-jupyter/out/P2.txt"
+}

@@ -1,0 +1,8 @@
+CODE: raise ValueError('probe-boom')
+STATUS: run-error
+ERROR:
+Traceback (most recent call last):
+  File "main.py", line 1, in <module>
+    raise ValueError("probe-boom")
+ValueError: probe-boom
+

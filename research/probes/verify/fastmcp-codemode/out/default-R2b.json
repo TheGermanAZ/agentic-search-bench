@@ -1,0 +1,302 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py default R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 4430,
+  "peakTreeRssMb": 108,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R2b",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(defaults); new in-process Client per execution",
+    "data": {
+      "label": "",
+      "startMs": 3806,
+      "ms": 528,
+      "ok": true,
+      "result": {
+        "is_error": false,
+        "text": "[\"Exception\",\"call_tool('failing') failed: Error calling tool 'failing': host-tool-boom internal detail db=postgres://user:pw@host\",\"Exception(\\\"call_tool('failing') failed: Error calling tool 'failing': host-tool-boom internal detail db=postgres://user:pw@host\\\")\"]"
+      },
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 76,
+    "totalMs": 4334
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "         │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 5 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/probe │\n                    │ s/verify/_py/../fastmcp-codemode/adapter.py:40 in        │\n                    │ failing                                                  │\n                    │                                                          │\n                    │   37 │   @mcp.tool                                       │\n                    │   38 │   async def failing() -> dict:                    │\n                    │   39 │   │   \"\"\"Always fails.\"\"\"                         │\n                    │ ❱ 40 │   │   return await host[\"failing\"]()              │\n                    │   41 │                                                   │\n                    │   42 │   @mcp.tool                                       │\n                    │   43 │   async def rich() -> dict:                       │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/probe │\n                    │ s/verify/_py/rcore.py:38 in failing                      │\n                    │                                                          │\n                    │    35                                                    │\n                    │    36                                                    │\n                    │    37 async def failing():                               │\n                    │ ❱  38 │   raise RuntimeError(\"host-tool-boom internal de │\n                    │    39                                                    │\n                    │    40                                                    │\n                    │    41 async def rich():                                  │\n                    ╰──────────────────────────────────────────────────────────╯\n                    RuntimeError: host-tool-boom internal detail                \n                    db=postgres://user:pw@host                                  \n",
+  "rssSamplesMsMb": [
+    [
+      107,
+      29
+    ],
+    [
+      181,
+      33
+    ],
+    [
+      237,
+      34
+    ],
+    [
+      288,
+      36
+    ],
+    [
+      335,
+      37
+    ],
+    [
+      426,
+      38
+    ],
+    [
+      476,
+      41
+    ],
+    [
+      530,
+      43
+    ],
+    [
+      579,
+      43
+    ],
+    [
+      626,
+      43
+    ],
+    [
+      751,
+      45
+    ],
+    [
+      799,
+      45
+    ],
+    [
+      913,
+      46
+    ],
+    [
+      962,
+      47
+    ],
+    [
+      1049,
+      47
+    ],
+    [
+      1141,
+      48
+    ],
+    [
+      1194,
+      51
+    ],
+    [
+      1242,
+      51
+    ],
+    [
+      1287,
+      51
+    ],
+    [
+      1361,
+      55
+    ],
+    [
+      1401,
+      56
+    ],
+    [
+      1466,
+      56
+    ],
+    [
+      1514,
+      56
+    ],
+    [
+      1564,
+      56
+    ],
+    [
+      1606,
+      56
+    ],
+    [
+      1705,
+      57
+    ],
+    [
+      1753,
+      58
+    ],
+    [
+      1808,
+      58
+    ],
+    [
+      1883,
+      59
+    ],
+    [
+      1939,
+      62
+    ],
+    [
+      2000,
+      62
+    ],
+    [
+      2057,
+      62
+    ],
+    [
+      2111,
+      62
+    ],
+    [
+      2181,
+      64
+    ],
+    [
+      2228,
+      67
+    ],
+    [
+      2276,
+      71
+    ],
+    [
+      2333,
+      77
+    ],
+    [
+      2419,
+      77
+    ],
+    [
+      2472,
+      77
+    ],
+    [
+      2514,
+      77
+    ],
+    [
+      2600,
+      78
+    ],
+    [
+      2674,
+      78
+    ],
+    [
+      2739,
+      79
+    ],
+    [
+      2795,
+      79
+    ],
+    [
+      2841,
+      80
+    ],
+    [
+      2941,
+      80
+    ],
+    [
+      2999,
+      80
+    ],
+    [
+      3088,
+      80
+    ],
+    [
+      3160,
+      81
+    ],
+    [
+      3211,
+      81
+    ],
+    [
+      3274,
+      83
+    ],
+    [
+      3312,
+      83
+    ],
+    [
+      3396,
+      84
+    ],
+    [
+      3468,
+      85
+    ],
+    [
+      3539,
+      86
+    ],
+    [
+      3594,
+      87
+    ],
+    [
+      3666,
+      87
+    ],
+    [
+      3754,
+      87
+    ],
+    [
+      3821,
+      89
+    ],
+    [
+      3860,
+      91
+    ],
+    [
+      3921,
+      91
+    ],
+    [
+      3979,
+      92
+    ],
+    [
+      4100,
+      92
+    ],
+    [
+      4174,
+      108
+    ],
+    [
+      4244,
+      100
+    ],
+    [
+      4335,
+      100
+    ],
+    [
+      4429,
+      100
+    ]
+  ]
+}

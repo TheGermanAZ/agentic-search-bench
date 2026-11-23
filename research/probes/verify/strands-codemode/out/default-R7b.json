@@ -1,0 +1,456 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 62296,
+  "peakTreeRssMb": 110,
+  "peakTreeFootprintMb": 82,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R7b",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 499,
+        "ms": 60021,
+        "ok": true,
+        "result": {
+          "status": "error",
+          "text": "Execution error:\nTimeoutError: time limit exceeded: 60.000085124s > 60s"
+        },
+        "callsStarted": 5
+      },
+      "atReturn": {
+        "started": 5,
+        "done": 5
+      },
+      "after1500ms": {
+        "started": 6,
+        "done": 6
+      },
+      "after": {
+        "label": "after",
+        "startMs": 62023,
+        "ms": 220,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 16,
+    "totalMs": 62243
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      77,
+      31,
+      17
+    ],
+    [
+      851,
+      110,
+      82
+    ],
+    [
+      1626,
+      110,
+      82
+    ],
+    [
+      2402,
+      110,
+      82
+    ],
+    [
+      3176,
+      110,
+      82
+    ],
+    [
+      3942,
+      110,
+      82
+    ],
+    [
+      4717,
+      110,
+      82
+    ],
+    [
+      5482,
+      110,
+      82
+    ],
+    [
+      6264,
+      110,
+      82
+    ],
+    [
+      7034,
+      110,
+      82
+    ],
+    [
+      7803,
+      110,
+      82
+    ],
+    [
+      8579,
+      110,
+      82
+    ],
+    [
+      9351,
+      110,
+      82
+    ],
+    [
+      10120,
+      110,
+      82
+    ],
+    [
+      10897,
+      110,
+      82
+    ],
+    [
+      11669,
+      110,
+      82
+    ],
+    [
+      12433,
+      110,
+      82
+    ],
+    [
+      13203,
+      110,
+      82
+    ],
+    [
+      13974,
+      110,
+      82
+    ],
+    [
+      14742,
+      110,
+      82
+    ],
+    [
+      15516,
+      110,
+      82
+    ],
+    [
+      16297,
+      110,
+      82
+    ],
+    [
+      17078,
+      110,
+      82
+    ],
+    [
+      17846,
+      110,
+      82
+    ],
+    [
+      18621,
+      110,
+      82
+    ],
+    [
+      19399,
+      110,
+      82
+    ],
+    [
+      20169,
+      110,
+      82
+    ],
+    [
+      20945,
+      110,
+      82
+    ],
+    [
+      21718,
+      110,
+      82
+    ],
+    [
+      22489,
+      110,
+      82
+    ],
+    [
+      23330,
+      110,
+      82
+    ],
+    [
+      24487,
+      110,
+      82
+    ],
+    [
+      25628,
+      32,
+      82
+    ],
+    [
+      26393,
+      32,
+      82
+    ],
+    [
+      27163,
+      32,
+      82
+    ],
+    [
+      27931,
+      32,
+      82
+    ],
+    [
+      28703,
+      32,
+      82
+    ],
+    [
+      29468,
+      32,
+      82
+    ],
+    [
+      30242,
+      32,
+      82
+    ],
+    [
+      31017,
+      32,
+      82
+    ],
+    [
+      31805,
+      32,
+      82
+    ],
+    [
+      32572,
+      32,
+      82
+    ],
+    [
+      33346,
+      32,
+      82
+    ],
+    [
+      34118,
+      32,
+      82
+    ],
+    [
+      34889,
+      32,
+      82
+    ],
+    [
+      35659,
+      32,
+      82
+    ],
+    [
+      36438,
+      32,
+      82
+    ],
+    [
+      37210,
+      32,
+      82
+    ],
+    [
+      37985,
+      32,
+      82
+    ],
+    [
+      38757,
+      32,
+      82
+    ],
+    [
+      39535,
+      32,
+      82
+    ],
+    [
+      40335,
+      32,
+      82
+    ],
+    [
+      41110,
+      32,
+      82
+    ],
+    [
+      41890,
+      32,
+      82
+    ],
+    [
+      42667,
+      32,
+      82
+    ],
+    [
+      43438,
+      32,
+      82
+    ],
+    [
+      44209,
+      32,
+      82
+    ],
+    [
+      44984,
+      32,
+      82
+    ],
+    [
+      45750,
+      32,
+      82
+    ],
+    [
+      46520,
+      32,
+      82
+    ],
+    [
+      47295,
+      32,
+      82
+    ],
+    [
+      48071,
+      32,
+      82
+    ],
+    [
+      48839,
+      32,
+      82
+    ],
+    [
+      49610,
+      32,
+      82
+    ],
+    [
+      50378,
+      32,
+      82
+    ],
+    [
+      51162,
+      32,
+      82
+    ],
+    [
+      51933,
+      32,
+      82
+    ],
+    [
+      52699,
+      32,
+      82
+    ],
+    [
+      53473,
+      32,
+      82
+    ],
+    [
+      54247,
+      32,
+      82
+    ],
+    [
+      55025,
+      32,
+      82
+    ],
+    [
+      55797,
+      32,
+      82
+    ],
+    [
+      56568,
+      32,
+      82
+    ],
+    [
+      57337,
+      32,
+      82
+    ],
+    [
+      58114,
+      32,
+      82
+    ],
+    [
+      58878,
+      32,
+      82
+    ],
+    [
+      59650,
+      32,
+      82
+    ],
+    [
+      60474,
+      32,
+      82
+    ],
+    [
+      61241,
+      34,
+      79
+    ],
+    [
+      62014,
+      34,
+      79
+    ]
+  ]
+}

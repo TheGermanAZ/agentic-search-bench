@@ -1,0 +1,7 @@
+{
+  "probe": "P2",
+  "outcome": "works",
+  "display": "print only (200,000 A + cap marker)",
+  "detail": "Only print output came back; RETURNED (last expression) did not. All 200,000 'A's came back, then '[output truncated at 200000 characters]' because the trailing newline made the output 200,001 chars, one past the cap.",
+  "evidence": "research/probes/strands-codemode/out/P2.txt"
+}

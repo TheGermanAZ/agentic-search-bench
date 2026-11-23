@@ -1,0 +1,19 @@
+{
+ "probe": "P10",
+ "wall_ms": 60.8,
+ "peak_rss_mb": 6.4,
+ "exit": 0,
+ "killed": null,
+ "stderr": "",
+ "records": [
+  {
+   "code": "async function run() {\nthrow new Error(\"probe-boom\")\n}",
+   "elapsed_ms": 0.5517500000000001,
+   "exec": 0,
+   "host_calls": 0,
+   "is_error": true,
+   "probe": "P10",
+   "text": "Error: Error: probe-boom (code_mode.js:4:5)\n    at run (code_mode.js:2:7)\n    at <main> (code_mode.js:4:5)"
+  }
+ ]
+}

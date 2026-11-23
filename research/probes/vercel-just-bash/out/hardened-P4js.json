@@ -1,0 +1,33 @@
+{
+  "id": "P4js",
+  "workerPid": 98823,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 520,
+  "peakRssKbSampled": 151072,
+  "stderr": "(node:98823) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "parsed": {
+    "probe": "P4js",
+    "config": {
+      "executionLimitProfile": "hardened"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 98823
+    },
+    "runs": [
+      {
+        "script": "js-exec -c 'console.log(require(\"fs\").readFileSync(\"/etc/hosts\", \"utf8\").slice(0, 60))'",
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "at <eval> (-c:1:71): ENOENT: no such file or directory, stat '<path>'\n",
+        "ms": 334,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 166704,
+    "maxInFlight": 0,
+    "hostCalls": 0
+  }
+}

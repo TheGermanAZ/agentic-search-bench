@@ -1,0 +1,528 @@
+{
+  "probe": "L-calls-100",
+  "code": "const r = await Promise.all(Array.from({length: 100}, (_, i) => tools.probe.lookup({id: i}))); return r.length",
+  "wallMs": 426,
+  "hostToolCalls": 100,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":true,\"value\":100,\"toolCalls\":[{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":272},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":272},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":296},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":296},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":300},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":307},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":308},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":309},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":309},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":309},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":315},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":316},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":315},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":311},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":314},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":317},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":317},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":317},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":318},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":319},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":321},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":352},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":353},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":353},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":353},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":353},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":353},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":321},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":352},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":352},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":354},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":362},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":361},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":362},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":362},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":361},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":381},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":381},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":381},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":381},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":382},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":382},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":382},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":362},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":382},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":383},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":382},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":383},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":381},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":360},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":378},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":380},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":380},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":391},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":391},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":392},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":392},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":392},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":393},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":393},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":393},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":390},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":393},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":393},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":394},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":394},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":394},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":395},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":395},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":391},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":395},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":395},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":396},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":396},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":392},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":392},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":394},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":396},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":402},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":397},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":401},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":401},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":408},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":408},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":408},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":408},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":409},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":409},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":409},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":409},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":410},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":410},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":410},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":410},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":410},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":407},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":410},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":409},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":396},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":396}]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": true,
+          "value": 100,
+          "toolCalls": [
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 272
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 272
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 296
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 296
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 300
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 307
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 308
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 309
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 309
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 309
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 315
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 316
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 315
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 311
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 314
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 317
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 317
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 317
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 318
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 319
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 321
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 352
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 353
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 353
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 353
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 353
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 353
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 321
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 352
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 352
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 354
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 362
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 361
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 362
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 362
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 361
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 381
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 381
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 381
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 381
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 382
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 382
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 382
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 362
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 382
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 383
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 382
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 383
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 381
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 360
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 378
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 380
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 380
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 391
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 391
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 392
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 392
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 392
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 393
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 393
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 393
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 390
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 393
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 393
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 394
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 394
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 394
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 395
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 395
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 391
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 395
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 395
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 396
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 396
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 392
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 392
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 394
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 396
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 402
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 397
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 401
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 401
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 408
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 408
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 408
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 408
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 409
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 409
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 409
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 409
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 410
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 410
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 410
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 410
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 410
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 407
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 410
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 409
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 396
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 396
+            }
+          ]
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

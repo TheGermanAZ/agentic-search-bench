@@ -1,0 +1,203 @@
+{
+  "impl": "toolhive-vmcp-codemode",
+  "name": "ToolHive Virtual MCP (vMCP) code mode (Starlark execute_tool_script)",
+  "source": "https://github.com/stacklok/toolhive (pkg/script, pkg/vmcp/codemode); release binary toolhive_0.67.1_darwin_arm64.tar.gz",
+  "pinned": "v0.67.1 = 2d33d6bea91715c3421ddac2e94a3fae015f174f (commit 2026-11-21; release published 2026-11-21T20:08Z). Binary sha256 c1a09a5e6bf965780d9fb75ddc31b93fe1d4fde2150acde151acdbe46e67ca13 matches toolhive_0.67.1_checksums.txt. Engine go.starlark.net v0.0.0-20261021141710-4f4267fb140d (go.mod:90).",
+  "language": "Python subset (Starlark)",
+  "engine": "google/starlark-go (go.starlark.net), run in-process in the vMCP Go server on a fresh starlark.Thread per execution with only SetMaxExecutionSteps; parallel() runs child threads on goroutines",
+  "how_run": "thv vmcp serve --config vmcp-default.yaml (release binary, local, no Kubernetes, isolated HOME, update checks and usage metrics off) with one static streamable-http backend (the SPEC lookup MCP server on 127.0.0.1:42141, aggregated as probe_lookup) and anonymous incoming auth; the driver connects an MCP client to vMCP's /mcp on 127.0.0.1:42140 and calls the execute_tool_script virtual tool with {script}.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "display": "works (42 via r[\"text\"], 1 call)",
+      "detail": "probe_lookup(id=21) returned {\"text\": \"{\\\"id\\\":21,\\\"value\\\":42}\"}: the result is a dict whose only key is the backend's raw text, not the parsed object. r[\"value\"] fails with 'key \"value\" not in dict', and no json module is predeclared ('undefined: json', CAL.txt), so the probe extracted 42 by string splitting; print(v) printed 42 into 'Script logs:'. 1 host call, 234 ms. call_tool(\"probe_lookup\", id=21) works; call_tool(\"lookup\", ...) (the backend's original name) fails 'unknown tool'. Calls are synchronous.",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P1.txt, research/probes/toolhive-vmcp-codemode/out/CAL.txt"
+    },
+    "P2": {
+      "outcome": "works",
+      "display": "both, untruncated (200,000 chars)",
+      "detail": "Two content items: the return value as JSON text (\"RETURNED\") and 'Script logs:\\n' + all 200,000 As. No cap, no marker. A returned 2,000,000-char string also came back whole (2,000,002 chars). No output limit exists anywhere in pkg/script or the decorator.",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "display": "not-defined",
+      "detail": "urllib -> 'script.star:2:9: undefined: urllib'. load(\"net\", \"http\") -> 'load statement within a function' (the script is wrapped in def __main__()); the thread's Load hook would refuse anyway.",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "display": "not-defined",
+      "detail": "open(...) -> 'script.star:2:12: undefined: open'.",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "display": "not-defined",
+      "detail": "os -> 'undefined: os'. vMCP ran with PROBE_SECRET=s3cr3t. dir() of probe_lookup, call_tool and parallel is empty; predeclared names are only the tool builtins, call_tool and parallel plus the Starlark universe.",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "limited",
+      "display": "limited (op count, 100k steps, 4 ms)",
+      "detail": "SPEC code 'while True: pass' is rejected at compile time: 'this Starlark dialect does not support while loops'. Equivalent 'for i in range(10**12): pass' -> 'Starlark computation cancelled: too many steps' after 4-7 ms (stepLimit 100,000). Step evasion: builtin work is one step, so 's = \"x\"*10**8' then 2,700 s.count(\"xy\") (about 16k steps) was still running at the 120 s harness cap and kept burning vMCP CPU about 80 s after the client left (P6-after-cap-cpu.txt); a 2,000-call version returned success after 72.9 s (P6c), past the decorator's 1-minute defaultScriptTimeout, which never reaches the Starlark thread.",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P6.txt, research/probes/toolhive-vmcp-codemode/out/P6-after-cap-cpu.txt, research/probes/toolhive-vmcp-codemode/out/P6c.txt"
+    },
+    "P7": {
+      "outcome": "limited",
+      "display": "limited (op count, 2.9 GB RSS)",
+      "detail": "SPEC 'while' form rejected at compile time. 'for i in range(10**12): a.append(\"x\"*10**6)' stopped by 'too many steps' after 1.1 s, with vMCP RSS at 2,887 MB peak (about 2,700 1 MB strings), and RSS stayed at 2.6 GB afterwards. Another session's P1 started 300 ms in finished normally (580 ms), and a later execution returned 2 (P7-concurrent.txt, peak 2,713 MB). There is no memory limit: '[\"x\"*(1<<29)+str(i) for i in range(16)]' (about 35 steps) took vMCP to 4,384 MB in 2.7 s and the harness killed the gateway process, which drops every session (p7b/P7.txt). The only allocation guard is starlark-go's 1 GiB per-op cap ('repeat count 2147483648 too large').",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P7.txt, research/probes/toolhive-vmcp-codemode/out/P7-concurrent.txt, research/probes/toolhive-vmcp-codemode/out/p7b/P7.txt"
+    },
+    "P8": {
+      "outcome": "works",
+      "display": "fresh",
+      "detail": "Second execution: 'script.star:2:12: undefined: kept'. A new Executor and globals are built per call.",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P8.txt"
+    },
+    "P9": {
+      "outcome": "works",
+      "display": "parallel (234 ms)",
+      "detail": "parallel([lambda i=i: probe_lookup(id=i) for i in 1..5]) took 234 ms, 5 host calls; the plain comprehension took 1,135 ms (serial). 20 lambdas took 516 ms (two waves under the default parallelMaxConcurrency 10).",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P9.txt"
+    },
+    "P10": {
+      "outcome": "works",
+      "display": "message only, no line (runtime)",
+      "detail": "fail(\"probe-boom\") -> isError true, 'script execution failed: fail: probe-boom'. A fail on user line 3 gives the same text with no line; a KeyError gives 'key \"missing\" not in dict', also with no position (the EvalError backtrace is dropped). Compile-time errors keep a position but shifted by the wrapper: user line 1 col 8 is reported as script.star:2:12. A backend error (bad argument type) reaches the script and the model verbatim: 'MCP error -32602: Input validation error: ...'.",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "display": "works (median 0.95 ms over HTTP)",
+      "detail": "20 executions of 'return 1 + 1' over /mcp: median 0.95 ms, p90 1.94 ms. One-time MCP connect 48 ms; gateway boot to /health about 1.9 s (start.sh, including the backend wait).",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "display": "blocked",
+      "detail": "().__class__ -> 'tuple has no .__class__ field or method'; __import__ -> undefined; builtins expose no attributes (dir() empty, type builtin_function_or_method); recursion -> 'function f called recursively'.",
+      "evidence": "research/probes/toolhive-vmcp-codemode/out/P12.txt"
+    }
+  },
+  "hardened": {
+    "config": "vmcp-hardened.yaml codeMode = {enabled: true, stepLimit: 10000, parallelMaxConcurrency: 5, toolCallTimeout: 5s}. These three knobs are the only code-mode options (pkg/vmcp/config/config.go:1212-1238; docs/operator/crd-api.md:348-350; https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/config/config.go#L1212-L1238). stepLimit's documented minimum is 1, which rejects any useful script, so 10,000 (10x below the default, still enough for P1/P9) is used as the tight-but-usable setting. No memory, wall-clock, output or call-count option exists. File: research/probes/toolhive-vmcp-codemode/vmcp-hardened.yaml",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "display": "not-defined",
+        "detail": "Same as default: undefined: urllib; load refused.",
+        "evidence": "research/probes/toolhive-vmcp-codemode/out/hardened-P3.txt"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "display": "not-defined",
+        "detail": "undefined: open.",
+        "evidence": "research/probes/toolhive-vmcp-codemode/out/hardened-P4.txt"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "display": "not-defined",
+        "detail": "undefined: os; builtins have no attributes.",
+        "evidence": "research/probes/toolhive-vmcp-codemode/out/hardened-P5.txt"
+      },
+      "P6": {
+        "outcome": "limited",
+        "display": "limited (op count, 10k steps, 2 ms)",
+        "detail": "while rejected at compile time; for-range loop -> 'too many steps' after 2 ms. Builtin-heavy loops still run long: 100 MB string x count() stopped by steps only after 19.9 s (hardened-P6.txt), a 300 MB string after 56.8 s (hardened-P6h.txt), and a 1 GB string x 1,000 count() (about 7k steps) was still running at the 120 s cap (hardened-P6d.txt). So 'limited' holds only for loop-shaped code.",
+        "evidence": "research/probes/toolhive-vmcp-codemode/out/hardened-P6.txt, research/probes/toolhive-vmcp-codemode/out/hardened-P6h.txt, research/probes/toolhive-vmcp-codemode/out/hardened-P6d.txt"
+      },
+      "P7": {
+        "outcome": "limited",
+        "display": "limited (op count, 544 MB RSS)",
+        "detail": "for-range append loop -> 'too many steps' after 53 ms, peak vMCP RSS 544 MB; a concurrent session's P1 finished normally (hardened-P7-concurrent.txt). The 16 x 512 MiB comprehension (about 35 steps) again reached 4,367 MB in 1.4 s and the harness killed the gateway (p7b/hardened-P7.txt): no memory limit in the hardened config either.",
+        "evidence": "research/probes/toolhive-vmcp-codemode/out/hardened-P7.txt, research/probes/toolhive-vmcp-codemode/out/hardened-P7-concurrent.txt, research/probes/toolhive-vmcp-codemode/out/p7b/hardened-P7.txt"
+      },
+      "P9": {
+        "outcome": "works",
+        "display": "parallel (223 ms)",
+        "detail": "5 lambdas 223 ms, 5 host calls; serial comprehension 1,063 ms; 20 lambdas 928 ms (four waves under parallelMaxConcurrency 5).",
+        "evidence": "research/probes/toolhive-vmcp-codemode/out/hardened-P9.txt"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "display": "blocked",
+        "detail": "Same as default.",
+        "evidence": "research/probes/toolhive-vmcp-codemode/out/hardened-P12.txt"
+      }
+    }
+  },
+  "defaults": {
+    "time": "stepLimit 100,000 Starlark steps (codemode/config.go via script.DefaultStepLimit, script.go:16), counted only in the bytecode loop: builtin work is not charged and cancellation is not checked inside builtins. defaultScriptTimeout 1 minute (decorator.go:34) is a context deadline that reaches tool calls and parallel() only, never the Starlark thread (core.Execute takes no context), so it does not bound computation (P6c ran 72.9 s). toolCallTimeout 30 s per inner tool call.",
+    "memory": "None. google/starlark-go has no allocation budget, and vMCP sets none; only the engine's 1 GiB per-operation cap (eval.go:1143). Memory is bounded indirectly by the step budget times per-step allocation, which allowed 2.9 GB (default) and 4.4 GB+ in 35 steps (variant).",
+    "output": "None. Return value as JSON text plus a 'Script logs:' item with every print line; neither is capped or truncated (P2: 200,000 + 2,000,000 chars).",
+    "tool_calls": "No total call cap. parallel() concurrency 10 (defaultParallelMax, codemode/config.go:30), each child thread gets stepLimit/n steps; per-call timeout 30 s."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Every tool the caller may use (admission-filtered ListTools) becomes a predeclared Starlark builtin under its sanitized advertised name (prefix-aggregated, e.g. probe_lookup), plus call_tool(name, ...) and parallel(). Keyword args become the argument map; positional args become arg0, arg1, ... No schema, stub or type information is generated for the script.",
+      "evidence": "https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/internal/builtins/builtins.go#L33-L62, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/internal/builtins/tools.go#L24-L64, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/codemode/decorator.go#L290-L324"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "No on-demand discovery in code mode. execute_tool_script's description lists every callable tool name with its description cut to 80 characters, and all backend tools stay in tools/list with full schemas next to it (tools-list.json), so the prompt grows with the catalog. Scaling past 100 tools relies on the separate optimizer (find_tool/call_tool), which can index execute_tool_script (example yaml comment).",
+      "evidence": "https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/description.go#L18-L38, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/codemode/decorator.go#L166-L176, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/examples/operator/virtual-mcps/vmcp_codemode.yaml#L16-L18, research/probes/toolhive-vmcp-codemode/out/tools-list.json"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "In-process Go call: the builtin calls the bound closure, which wraps ctx with toolCallTimeout and re-enters inner.CallTool with the caller's identity, so Cedar admission runs per inner call by its real name; denied calls return a generic message. parallel() fans out through foreach.Concurrent with maxConcurrency.",
+      "evidence": "https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/codemode/decorator.go#L290-L324, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/internal/builtins/parallel.go#L24-L92"
+    },
+    {
+      "topic": "Tool result shape",
+      "finding": "The backend client always synthesizes StructuredContent {\"text\": ...} from text content when the backend sends none, and pkg/script's ParseToolResult prefers StructuredContent, so its JSON-text parsing fallback never runs under vMCP. A text-returning tool arrives in the script as {\"text\": \"<json string>\"}, and with no json module the script cannot parse it.",
+      "evidence": "https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/client/client.go#L2025-L2041, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/types.go#L549-L557, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/internal/conversions/result.go#L35-L71, research/probes/toolhive-vmcp-codemode/out/P1.txt"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Starlark with only tool builtins, call_tool and parallel predeclared; load() refused by the thread's Load hook; default FileOptions disable while loops and recursion is rejected by the interpreter. This holds (P3-P5, P12). Resource isolation is only SetMaxExecutionSteps: steps are charged per bytecode instruction (checkSteps), so one builtin call of any size costs one step, and there is no memory budget in google/starlark-go. It runs in the gateway process, so a memory blow-up takes down every session.",
+      "evidence": "https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/internal/core/execute.go#L28-L71, https://github.com/google/starlark-go/blob/4f4267fb140d1e8b91c9bce55cee2f809e8840dd/starlark/interp.go#L700-L720, https://github.com/google/starlark-go/blob/4f4267fb140d1e8b91c9bce55cee2f809e8840dd/starlark/eval.go#L78-L106, https://github.com/google/starlark-go/blob/4f4267fb140d1e8b91c9bce55cee2f809e8840dd/starlark/eval.go#L1143-L1158"
+    },
+    {
+      "topic": "Limits / timeout plumbing",
+      "finding": "The decorator creates execCtx with a 1-minute deadline and passes it to Execute, but executor.Execute hands only the script, globals and stepLimit to core.Execute; no thread.Cancel is wired to ctx.Done(). The deadline reaches tool calls and parallel() only.",
+      "evidence": "https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/codemode/decorator.go#L28-L34, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/codemode/decorator.go#L233-L240, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/executor.go#L27-L48, research/probes/toolhive-vmcp-codemode/out/P6c.txt"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Result is the script's top-level return value marshalled as JSON text, plus a second text item 'Script logs:\\n' joined from print() lines (parallel children's logs merged in order). No size cap.",
+      "evidence": "https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/executor.go#L69-L87, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/internal/core/execute.go#L73-L90"
+    },
+    {
+      "topic": "State",
+      "finding": "Stateless: a fresh script.Executor and globals per execute_tool_script call; data arguments are injected as top-level variables and may not shadow tools or builtins.",
+      "evidence": "https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/codemode/decorator.go#L110-L112, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/executor.go#L27-L40"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Engine errors are wrapped as 'script execution failed: <err>' and returned as an IsError result. Runtime EvalErrors keep only the message (no backtrace, no line); compile errors keep a position shifted by the def __main__() wrapper (+1 line, +4 columns). Backend tool errors pass through verbatim.",
+      "evidence": "https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/internal/core/execute.go#L58-L60, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/codemode/decorator.go#L241-L246, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/script/internal/conversions/result.go#L25-L33"
+    },
+    {
+      "topic": "Credentials and approvals",
+      "finding": "Backend credentials (outgoingAuth header injection, token exchange) are applied by the gateway's backend client; scripts only see tool results. Each inner call is admission-checked per identity, but execute_tool_script itself bypasses Cedar admission (the config flag is the grant). No approval or human-in-the-loop step.",
+      "evidence": "https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/codemode/decorator.go#L250-L266, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/vmcp/config/config.go#L395-L425"
+    },
+    {
+      "topic": "Maintenance",
+      "finding": "Apache-2.0, Stacklok; v0.67.1 released 2026-11-21, code mode added in 2025 (SPDX headers) and actively changed (#5845 reserved-name guard). Local mode needs no account; update checks and anonymous usage metrics are on by default and were disabled with TOOLHIVE_SKIP_UPDATE_CHECK / TOOLHIVE_USAGE_METRICS_ENABLED=false.",
+      "evidence": "https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/updates/client.go#L62, https://github.com/stacklok/toolhive/blob/2d33d6bea91715c3421ddac2e94a3fae015f174f/pkg/usagemetrics/collector.go#L22"
+    }
+  ],
+  "surprises": [
+    "The SPEC P6 and P7 code fails to compile: this Starlark dialect has no while loops, and the tool description does not tell the model so.",
+    "decorator.go says defaultScriptTimeout 'bounds the total wall-clock time of a single script execution', but the context never reaches the Starlark thread: a builtin-heavy script returned success after 72.9 s, and another was still running past 120 s and kept burning CPU after the client disconnected.",
+    "The CRD docs say stepLimit 'bounds runaway loops and computation', but steps are charged per bytecode instruction, so work and allocation inside builtins (string repeat, count, list comprehensions of huge strings) is nearly free: 35 steps allocated 4.4 GB and the gateway process was killed.",
+    "No memory limit and no output limit exist in any configuration, and scripts run inside the shared gateway process.",
+    "The example script (vmcp_codemode.yaml, and the exampleScript in the tool schema) uses r.get(\"vulns\") as if tool results were parsed objects. A backend that returns JSON text arrives as {\"text\": \"<json string>\"}, because client.go synthesizes StructuredContent before pkg/script's JSON fallback can run, and there is no json module to decode it.",
+    "The tool description says 'Use call_tool(\"name\", ...) to call any tool by its original name', but call_tool accepts only the aggregated (prefixed) name: call_tool(\"lookup\") -> unknown tool.",
+    "Runtime errors lose their line number, and compile errors report positions shifted by the hidden wrapper (+1 line, +4 columns).",
+    "thv vmcp serve in local static mode logs 'dynamic backend registry enabled for Kubernetes environment'. Harmless, but misleading."
+  ]
+}

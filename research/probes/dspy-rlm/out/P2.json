@@ -1,0 +1,7 @@
+{
+  "probe": "P2",
+  "outcome": "works",
+  "display": "return only (0 of 200,000 A)",
+  "detail": "The model saw '<repl_output>\\nRETURNED\\n</repl_output>': the last expression's value replaced stdout entirely, so none of the 200,000 printed A's came back and there is no marker (runner.js:499). Print-only output is capped at 10,000 with a marker (Pcap).",
+  "evidence": "research/probes/dspy-rlm/out/P2.txt"
+}

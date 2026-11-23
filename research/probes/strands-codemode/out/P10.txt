@@ -1,0 +1,31 @@
+probe: P10
+outcome: works
+display: works (message + line 2)
+detail: message survives: True; 'line 2' present: True; text: 'Execution error: Traceback (most recent call last): File "<python-input-0>", line 2, in <module> raise ValueError("probe-boom") ValueError: probe-boom'
+
+code:
+----
+x = 1
+raise ValueError("probe-boom")
+----
+
+setup_ms: 2245.7
+wall_s (whole child process): 4.42
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.105
+host lookup calls: 0
+
+=== run 0 (94.7 ms) ===
+ok: false
+stdout: 
+status: error
+error: Execution error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 2, in <module>
+    raise ValueError("probe-boom")
+ValueError: probe-boom
+
+=== child process log (tail) ===
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+

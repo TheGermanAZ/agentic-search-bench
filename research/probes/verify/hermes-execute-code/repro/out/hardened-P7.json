@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "limited",
+  "display": "limited (512 MB container OOM)",
+  "detail": "The container cgroup OOM-killed it after 1.97 s (docker inspect: OOMKilled=true, exit 137; out/hardened-docker-state-P7.txt). The model saw status error, output '', note 'Remote kernel protocol failure; kernel killed, state lost.' In hardened-P7next the kernel process was OOM-killed inside a container that stayed up; the host reported a 10 s timeout and the next cell printed 'next cell 2'. Run under mem-lock.sh.",
+  "evidence": "research/probes/repro/out/hardened-P7.txt"
+}

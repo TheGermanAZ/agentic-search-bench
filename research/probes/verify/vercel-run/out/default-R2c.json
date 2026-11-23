@@ -1,0 +1,68 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs default R2c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 696,
+  "peakTreeRssMb": 142,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "default",
+    "test": "R2c",
+    "notes": "run() (module default runner, shared)",
+    "data": {
+      "startMs": 23,
+      "ms": 543,
+      "ok": false,
+      "threw": "RunError: Host function \"host.rich\" output is not serializable at .fn: Cannot stringify a function\n    at <anonymous> (run.js:1:22)",
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 207,
+    "hostEvents": [],
+    "totalMs": 566
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:74480) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      151,
+      72
+    ],
+    [
+      237,
+      83
+    ],
+    [
+      307,
+      87
+    ],
+    [
+      388,
+      108
+    ],
+    [
+      448,
+      110
+    ],
+    [
+      514,
+      113
+    ],
+    [
+      592,
+      142
+    ],
+    [
+      696,
+      142
+    ]
+  ]
+}

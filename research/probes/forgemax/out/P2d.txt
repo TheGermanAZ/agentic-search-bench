@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { return "A".repeat(2000000); }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"sandbox execution failed: output exceeds maximum size of 1048576 bytes\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 16,
+  "hostCalls": 0
+}

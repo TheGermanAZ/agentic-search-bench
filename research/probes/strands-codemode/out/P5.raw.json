@@ -1,0 +1,25 @@
+{
+  "probe": "P5",
+  "config": "default",
+  "codes": [
+    "import os\nmsg = \"ENV \" + str(os.environ.get(\"PROBE_SECRET\"))\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 2, in <module>\n    msg = \"ENV \" + str(os.environ.get(\"PROBE_SECRET\"))\n                       ~~~~~~~~~~\nRuntimeError: 'os.environ' is not supported in this environment",
+      "ms": 144.0,
+      "started": 1795381202.000635
+    }
+  ],
+  "setup_ms": 1034.5,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.27,
+  "peak_tree_rss_gb": 0.109,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

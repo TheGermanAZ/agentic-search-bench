@@ -1,0 +1,7 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "display": "message, no line",
+  "detail": "message survives: True; 'line 2' present: False; text: \"Error calling tool 'execute': ValueError: probe-boom\"",
+  "evidence": "research/probes/fastmcp-codemode/out/P10.txt"
+}

@@ -1,0 +1,30 @@
+{
+  "probe": "P10b",
+  "code": "function inner() { throw new Error(\"probe-boom\") }\nconst x = 1;\ninner()",
+  "wallMs": 4,
+  "hostToolCalls": 0,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 14,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":false,\"error\":{\"kind\":\"ExecutionFailure\",\"message\":\"Uncaught: probe-boom\"},\"toolCalls\":[]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": false,
+          "error": {
+            "kind": "ExecutionFailure",
+            "message": "Uncaught: probe-boom"
+          },
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

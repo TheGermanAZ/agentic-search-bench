@@ -1,0 +1,26 @@
+probe: P1 (codex code-mode host, V8, hardened)
+host: codex-code-mode-host codex 0.169.0
+session/open cellExecutionLimits sent: {"maxYieldTimeMs": 1000, "maxHeapSizeBytes": 67108864}
+session/execute yield_time_ms=1000 max_output_tokens=1000
+handshake: {"type": "connection/ready", "selectedVersion": 1, "capabilities": ["bounded-output-v1", "delegate-capacity-4096", "session-cell-execution-resource-limits", "yield-observation"]}
+session/open reply: {"type": "operation/response", "id": 1, "result": {"status": "ok", "value": {"type": "session/ready", "sessionId": "s1"}}}
+wall_ms: 388.9
+peak_rss_mb: 23.0
+killed: None
+
+--- execution 0 ---
+source:
+const r = await tools.lookup({id: 21}); text(String(r.value));
+elapsed_ms: 284.1
+host_calls: 1
+initial response:
+{"type": "execute/initialResponse", "id": 2, "result": {"status": "ok", "value": {"Result": {"cell_id": "1", "content_items": [{"type": "input_text", "text": "42"}], "error_text": null, "result_buffered_for_ns": 0, "code_mode_host_duration_ns": 280715459}}}}
+total waits/terminates: 0
+
+--- after the probe ---
+host_alive_before: true
+host_alive_after: true
+host_returncode: null
+
+--- host stderr (tail) ---
+

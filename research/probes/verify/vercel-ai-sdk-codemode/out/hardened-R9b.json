@@ -1,0 +1,178 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs hardened R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1492,
+  "peakTreeRssMb": 211,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "hardened",
+    "test": "R9b",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 175,
+          "ms": 365,
+          "ok": false,
+          "threw": "InternalError: out of memory\n    at <anonymous> (code-mode.js:1:39)\n    at <anonymous> (code-mode.js:2:1)",
+          "callsStarted": 1
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 403,
+        "ms": 305,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1213,
+        "ms": 210,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 244,
+    "hostEvents": [],
+    "totalMs": 1423
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:33881) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      103,
+      51
+    ],
+    [
+      170,
+      63
+    ],
+    [
+      218,
+      68
+    ],
+    [
+      257,
+      80
+    ],
+    [
+      333,
+      102
+    ],
+    [
+      407,
+      116
+    ],
+    [
+      465,
+      143
+    ],
+    [
+      585,
+      164
+    ],
+    [
+      623,
+      207
+    ],
+    [
+      673,
+      208
+    ],
+    [
+      721,
+      208
+    ],
+    [
+      771,
+      208
+    ],
+    [
+      823,
+      208
+    ],
+    [
+      877,
+      208
+    ],
+    [
+      933,
+      208
+    ],
+    [
+      974,
+      208
+    ],
+    [
+      1018,
+      208
+    ],
+    [
+      1072,
+      208
+    ],
+    [
+      1134,
+      209
+    ],
+    [
+      1184,
+      209
+    ],
+    [
+      1233,
+      210
+    ],
+    [
+      1286,
+      210
+    ],
+    [
+      1334,
+      211
+    ],
+    [
+      1391,
+      211
+    ],
+    [
+      1433,
+      211
+    ],
+    [
+      1487,
+      211
+    ]
+  ]
+}

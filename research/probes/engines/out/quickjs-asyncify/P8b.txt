@@ -1,0 +1,5 @@
+console.log(typeof kept === "undefined" ? "gone" : kept)
+--- output
+gone
+---
+wall_ms=51 host_calls=0 peak_tree_rss_mb=158

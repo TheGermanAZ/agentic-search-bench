@@ -1,0 +1,46 @@
+{
+  "probe": "A-approval-automatic-mode",
+  "code": "return await tools.probe.gated({id: 5})",
+  "wallMs": 21,
+  "hostToolCalls": null,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 6,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"approval-required\",\"requestId\":\"apr_e47c6d8a-b6a3-458c-bd8b-77eb70d76fcc\",\"invocation\":{\"app\":\"app_4cdf69a7-593f-449b-98a8-8f577883e998\",\"owner\":\"local\",\"version\":\"dpl_8f2e3fd0-da2a-456f-b2cc-4424cff88a47\",\"deployment\":\"dpl_8f2e3fd0-da2a-456f-b2cc-4424cff88a47\",\"tool\":\"gated\",\"kind\":\"query\",\"input\":{\"id\":5},\"accounts\":{\"app\":{},\"user\":{}}},\"elicitation\":{\"mode\":\"form\",\"message\":\"Approve gated?\\n\\nArguments:\\n{\\n  \\\"id\\\": 5\\n}\",\"requestedSchema\":{\"type\":\"object\",\"properties\":{}}},\"expiresAt\":1795338359108}"
+        }
+      ],
+      "structuredContent": {
+        "status": "approval-required",
+        "requestId": "apr_e47c6d8a-b6a3-458c-bd8b-77eb70d76fcc",
+        "invocation": {
+          "app": "app_4cdf69a7-593f-449b-98a8-8f577883e998",
+          "owner": "local",
+          "version": "dpl_8f2e3fd0-da2a-456f-b2cc-4424cff88a47",
+          "deployment": "dpl_8f2e3fd0-da2a-456f-b2cc-4424cff88a47",
+          "tool": "gated",
+          "kind": "query",
+          "input": {
+            "id": 5
+          },
+          "accounts": {
+            "app": {},
+            "user": {}
+          }
+        },
+        "elicitation": {
+          "mode": "form",
+          "message": "Approve gated?\n\nArguments:\n{\n  \"id\": 5\n}",
+          "requestedSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "expiresAt": 1795338359108
+      }
+    }
+  }
+}

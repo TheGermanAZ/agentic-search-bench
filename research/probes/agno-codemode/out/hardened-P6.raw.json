@@ -1,0 +1,24 @@
+{
+  "probe": "P6",
+  "config": "hardened",
+  "codes": [
+    "while True:\n    pass"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "stderr:\n[cell interrupted: exceeded timeout of 10s]\n---------------------------------------------------------------------------\nKeyboardInterrupt                         Traceback (most recent call last)\nCell In[1], line 1\n----> 1 while True:\n      2     pass\n\nKeyboardInterrupt: ",
+      "error": "stderr:\n[cell interrupted: exceeded timeout of 10s]\n---------------------------------------------------------------------------\nKeyboardInterrupt                         Traceback (most recent call last)\nCell In[1], line 1\n----> 1 while True:\n      2     pass\n\nKeyboardInterrupt: ",
+      "ms": 10549.7,
+      "started": 1795383310.4120681
+    }
+  ],
+  "setup_ms": 0.1,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 10.79,
+  "peak_tree_rss_gb": 0.12,
+  "calls": [],
+  "child_log_tail": "WARNING CodeMode runs arbitrary Python and shell with the permissions of this process. It is not a sandbox: provide human supervision or run the agent in an isolated container.\n"
+}

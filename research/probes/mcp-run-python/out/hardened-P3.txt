@@ -1,0 +1,4 @@
+python urllib.request.urlopen: status=run-error return=None error='urllib.error.URLError: <urlopen error unknown url type: https>' output=[]
+js.fetch: status=run-error return=None error='pyodide.ffi.JsException: NotCapable: Requires net access to "example.com:443", run again with the --allow-net flag' output=[]
+pyodide.http.pyfetch: status=run-error return=None error='pyodide.http.AbortError: Requires net access to "example.com:443", run again with the --allow-net flag' output=[]
+Deno.connect example.com:443 via host runtime: status=run-error return=None error='pyodide.ffi.JsException: NotCapable: Requires net access to "example.com:443", run again with the --allow-net flag' output=[]

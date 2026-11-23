@@ -1,0 +1,5 @@
+--- code 1 ---
+rs = [Probe.lookup(id=i) for i in [1, 2, 3, 4, 5]]
+result = [r["value"] for r in rs]
+--- result 1 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "SandboxTimeoutError"}}, "ms": 4997.87, "hostCalls": 5, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 83}

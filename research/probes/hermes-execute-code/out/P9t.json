@@ -1,0 +1,7 @@
+{
+  "probe": "P9t",
+  "outcome": "works",
+  "display": "serial (1,502 ms, terminal)",
+  "detail": "Unpatched stand-in: five terminal('sleep 0.2') calls in a loop took 1,502 ms measured in the kernel.",
+  "evidence": "research/probes/hermes-execute-code/out/P9t.txt"
+}

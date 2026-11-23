@@ -1,0 +1,58 @@
+label: hardened-P4
+command: node probe.mjs P4 --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 166
+peak child RSS: 112.5 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P4",
+  "config": {
+    "limits": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxHostFunctionArgumentsBytes": 262144,
+      "maxHostFunctionOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8,
+      "maxContinuationBytes": 8388608
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "require is not defined",
+        "stack": "ReferenceError: require is not defined\n    at <anonymous> (run.js:1:8)",
+        "string": "ReferenceError: require is not defined"
+      },
+      "wallMs": 88.922375,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR require is not defined",
+    "ms": 89,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 134.1
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:70669) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

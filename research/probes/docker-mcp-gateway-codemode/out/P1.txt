@@ -1,0 +1,12 @@
+--- code 1 ---
+const r = await lookup({id: 21}); console.log(r.value)
+--- result 1 ---
+{"ms":21,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (92 chars):
+Error running script: SyntaxError: SyntaxError: (anonymous): Line 2:17 Unexpected identifier
+--- code 2 ---
+const r = JSON.parse(lookup({id: 21})); console.log(r.value); return String(r.value)
+--- result 2 ---
+{"ms":226,"hostCalls":1,"side":{"gatewayStdoutChars":3,"head":"42\n"},"ok":true,"isError":false}
+text (2 chars):
+42

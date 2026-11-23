@@ -1,0 +1,7 @@
+<--- Last few GCs --->
+
+[73643:0xb7080c000]    65006 ms: Scavenge 3799.3 (3897.1) -> 3763.9 (3905.6) MB, pooled: 0 MB, 5.29 / 0.00 ms  (average mu = 0.383, current mu = 0.372) task; 
+[73643:0xb7080c000]    65976 ms: Mark-Compact (reduce) 3777.0 (3907.9) -> 3565.5 (3736.9) MB, pooled: 0 MB, 18.83 / 0.00 ms  (+ 935.3 ms in 197 steps since start of marking, biggest step 6.5 ms, walltime since start of marking 970 ms) (average mu = 0.370,
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+

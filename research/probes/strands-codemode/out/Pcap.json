@@ -1,0 +1,7 @@
+{
+  "probe": "Pcap",
+  "outcome": "limited",
+  "display": "truncated (200,000 + marker)",
+  "detail": "print('B' * 300000) came back as 200,000 'B's plus '\\n[output truncated at 200000 characters]', status success.",
+  "evidence": "research/probes/strands-codemode/out/Pcap.txt"
+}

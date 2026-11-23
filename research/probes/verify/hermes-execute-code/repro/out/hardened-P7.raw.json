@@ -1,0 +1,28 @@
+{
+  "probe": "P7",
+  "config": "hardened",
+  "codes": [
+    "a = []\nwhile True:\n    a.append(\"x\" * 10**6)"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "\u23f0 Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+      "model_sees": "{\"status\": \"timeout\", \"output\": \"\u23f0 Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 10.57, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}",
+      "status": "timeout",
+      "tool_calls_made": 0,
+      "model_sees_len": 639,
+      "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\n\u23f0 Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+      "ms": 11190.5,
+      "started": 1795384510.639319
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 11.84,
+  "peak_tree_rss_gb": 0.18,
+  "calls": [],
+  "child_log_tail": ""
+}

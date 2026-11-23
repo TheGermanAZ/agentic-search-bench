@@ -1,0 +1,132 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs default R1c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1741,
+  "peakTreeRssMb": 185,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "default",
+    "test": "R1c",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 307,
+        "ms": 1088,
+        "ok": true,
+        "result": {
+          "value": "A done",
+          "stringChars": 6
+        },
+        "callsStarted": 2
+      },
+      "B": {
+        "label": "B(concurrent)",
+        "startMs": 596,
+        "ms": 255,
+        "ok": true,
+        "result": {
+          "value": [
+            "undefined",
+            "undefined"
+          ],
+          "stringChars": 18
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 516,
+    "hostEvents": [],
+    "totalMs": 1396
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:70046) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      204,
+      48
+    ],
+    [
+      272,
+      70
+    ],
+    [
+      327,
+      73
+    ],
+    [
+      387,
+      73
+    ],
+    [
+      444,
+      83
+    ],
+    [
+      505,
+      102
+    ],
+    [
+      566,
+      102
+    ],
+    [
+      649,
+      103
+    ],
+    [
+      728,
+      127
+    ],
+    [
+      765,
+      150
+    ],
+    [
+      864,
+      156
+    ],
+    [
+      961,
+      184
+    ],
+    [
+      1020,
+      185
+    ],
+    [
+      1115,
+      185
+    ],
+    [
+      1194,
+      185
+    ],
+    [
+      1266,
+      185
+    ],
+    [
+      1424,
+      185
+    ],
+    [
+      1536,
+      185
+    ],
+    [
+      1740,
+      0
+    ]
+  ]
+}

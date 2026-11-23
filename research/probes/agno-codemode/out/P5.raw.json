@@ -1,0 +1,23 @@
+{
+  "probe": "P5",
+  "config": "default",
+  "codes": [
+    "import os\nmsg = \"ENV \" + str(os.environ.get(\"PROBE_SECRET\"))\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "ENV s3cr3t\nOut[1]: 'ENV s3cr3t'",
+      "ms": 873.6,
+      "started": 1795382343.270968
+    }
+  ],
+  "setup_ms": 0.4,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.39,
+  "peak_tree_rss_gb": 0.121,
+  "calls": [],
+  "child_log_tail": "WARNING CodeMode runs arbitrary Python and shell with the permissions of this process. It is not a sandbox: provide human supervision or run the agent in an isolated container.\n"
+}

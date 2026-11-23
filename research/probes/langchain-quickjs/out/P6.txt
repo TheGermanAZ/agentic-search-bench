@@ -1,0 +1,20 @@
+{
+ "config": "default",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ]
+ },
+ "probe": "P6",
+ "result": [
+  {
+   "code": "while (true) {}",
+   "output": "<error type=\"Timeout\">interrupted</error>",
+   "turn_ms": 5210.4,
+   "eval_ms": 5202.3,
+   "host_calls": 0
+  }
+ ]
+}
+
+monitor: {"config": "default", "probe": "P6", "exit_code": 0, "wall_s": 5.75, "peak_rss_mb": 182.7, "first_rss_mb": 16.4, "killed": null, "stderr_tail": []}

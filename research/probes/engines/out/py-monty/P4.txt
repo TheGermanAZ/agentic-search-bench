@@ -1,0 +1,9 @@
+print(len(open("/etc/hosts").read()))
+--- output
+ERROR: Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    print(len(open("/etc/hosts").read()))
+              ~~~~~~~~~~~~~~~~~~
+PermissionError: Permission denied: '/etc/hosts'
+---
+wall_ms=2 host_calls=0 peak_tree_rss_mb=140

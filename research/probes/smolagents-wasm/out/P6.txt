@@ -1,0 +1,13 @@
+config: WasmExecutor(additional_imports=[])
+code:
+"while True:\n    pass"
+
+{
+  "probe": "P6",
+  "hardened": false,
+  "harness_wall_s": 120.1,
+  "peak_tree_rss_mib": 288,
+  "harness_stop": "120 s wall",
+  "raw": null,
+  "child_tail": "Failed to communicate with Deno server: HTTPConnectionPool(host='127.0.0.1', \nport=41986): Read timed out. (read timeout=60)\n"
+}

@@ -1,0 +1,43 @@
+✅ Loaded MCP config from: ~/p/agentic-search-bench/research/probes/codemode-unified-bun/out/mcp-config-envlog.json
+🔍 [CONVERTER] Processing server: probe
+🔍 [CONVERTER] Raw config.env keys: [ 'FAKE_API_KEY' ]
+🔍 [CONVERTER] Raw config.env values (first 20 chars): { FAKE_API_KEY: 'sk-fake-0123456789ab...' }
+🔍 [CONVERTER] Converted env keys: [ 'FAKE_API_KEY' ]
+🚀 Initializing MCP Manager...
+🔌 Initializing MCP Aggregator with 1 servers...
+🔗 Connecting to MCP server: probe
+
+🔍 [TOOL DISCOVERY] Server: probe
+📋 [TOOL DISCOVERY] Found 1 tools
+  ✨ [TOOL] Original: "lookup" → Namespace: "probe.lookup"
+     📝 Description: Look up a value by id. Waits 200 ms and returns { id, value: id * 2 }.
+     📥 Parameters: [id]
+🔄 Regenerating unified APIs...
+✅ Unified APIs regenerated
+✅ Connected to probe: 1 tools discovered
+📡 MCP Server connected: probe
+✅ MCP Aggregator initialized with 1 connections
+🔄 Regenerating unified APIs...
+✅ Unified APIs regenerated
+✅ MCP Manager initialized successfully
+🚀 Starting TypeScript code generation...
+   Output: ./generated/mcp.d.ts
+
+📡 Step 1: Schema Discovery
+🔍 Discovering schemas for 1 tools...
+✅ Successfully discovered 1 tool schemas
+
+🔧 Step 2: Type Generation Setup
+
+📝 Step 3: Declaration File Generation
+📝 Generating declaration file for 1 tools...
+   Servers: probe
+✅ Declaration file generated (822 bytes)
+
+💾 Step 4: Writing to Disk
+   ✅ Successfully wrote ./generated/mcp.d.ts
+
+✅ Code generation complete!
+   File: ./generated/mcp.d.ts
+   Size: 822 bytes
+   Tools: 1

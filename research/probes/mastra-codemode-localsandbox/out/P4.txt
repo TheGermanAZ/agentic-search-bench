@@ -1,0 +1,67 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 264,
+    "totalWallMs": 386,
+    "peakTreeRssMB": 151.2,
+    "stderrTail": ""
+  },
+  "backend": "localsandbox",
+  "probe": "P4",
+  "mode": "default",
+  "setupMs": 81.2,
+  "record": {
+    "require": {
+      "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\").slice(0, 60)",
+      "wallMs": 90.5,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "require is not defined",
+          "name": "ReferenceError"
+        }
+      },
+      "threw": null
+    },
+    "dynamicImport": {
+      "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\").slice(0, 60)",
+      "wallMs": 61.5,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "##\n# Host Database\n#\n# localhost is used to configure the lo",
+        "logs": []
+      },
+      "threw": null
+    },
+    "getBuiltinModule": {
+      "code": "return process.getBuiltinModule(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\").slice(0, 60)",
+      "wallMs": 61.6,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "##\n# Host Database\n#\n# localhost is used to configure the lo",
+        "logs": []
+      },
+      "threw": null
+    },
+    "denoReadTextFile": {
+      "code": "return await Deno.readTextFile(\"/etc/hosts\")",
+      "wallMs": 55.9,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "Deno is not defined",
+          "name": "ReferenceError"
+        }
+      },
+      "threw": null
+    }
+  }
+}

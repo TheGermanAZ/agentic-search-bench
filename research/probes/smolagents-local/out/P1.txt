@@ -1,0 +1,6 @@
+probe: P1
+code (python, run through LocalPythonExecutor):
+r = lookup(id=21)
+print(r['value'])
+host_calls_so_far: 1
+result: {'ok': True, 'output': 'None', 'logs': '42\n', 'is_final_answer': False, 'ms': 210.3}

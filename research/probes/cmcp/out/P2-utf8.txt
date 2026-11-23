@@ -1,0 +1,34 @@
+{
+  "probe": "P2-utf8-boundary",
+  "code": "return \"x\" + \"\\u20ac\".repeat(20000)",
+  "args_extra": {},
+  "wall_ms": 30002,
+  "host_calls": 0,
+  "isError": null,
+  "response_text": "{\"harnessTimeout\":true,\"ms\":30000}",
+  "response_text_length": 34,
+  "console_on_proxy_stderr": [],
+  "raw_flags": {
+    "harnessTimeout": true,
+    "transportClosed": false,
+    "rpcError": null
+  },
+  "proxy_exited": null,
+  "after": {
+    "probe": "P2-utf8-after",
+    "code": "return 'alive'",
+    "args_extra": {},
+    "wall_ms": 2,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "\"alive\"",
+    "response_text_length": 7,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  "stderr_tail": "es: ServerCapabilities { experimental: None, extensions: None, logging: None, completions: None, prompts: None, resources: None, tools: Some(ToolsCapability { list_changed: None }), tasks: None }, server_info: Implementation { name: \"lookup\", title: None, version: \"1.0.0\", description: None, icons: None, website_url: None }, instructions: None })\n\u001b[2m2026-11-22T19:44:42.191036Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mcmcp_core::client\u001b[0m\u001b[2m:\u001b[0m connected \u001b[3mserver\u001b[0m\u001b[2m=\u001b[0mlookup2 \u001b[3mtool_count\u001b[0m\u001b[2m=\u001b[0m1\n\u001b[2m2026-11-22T19:44:42.191402Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mcmcp\u001b[0m\u001b[2m:\u001b[0m starting MCP server on stdio (hot-reload enabled)\n\u001b[2m2026-11-22T19:44:42.192732Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mrmcp::handler::server\u001b[0m\u001b[2m:\u001b[0m client initialized\n\u001b[2m2026-11-22T19:44:42.192742Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[1mserve_inner\u001b[0m\u001b[2m:\u001b[0m \u001b[2mrmcp::service\u001b[0m\u001b[2m:\u001b[0m Service initialized as server \u001b[3mpeer_info\u001b[0m\u001b[2m=\u001b[0mSome(InitializeRequestParams { meta: None, protocol_version: ProtocolVersion(\"2025-03-26\"), capabilities: ClientCapabilities { experimental: None, extensions: None, roots: None, sampling: None, elicitation: None, tasks: None }, client_info: Implementation { name: \"asb-probe\", title: None, version: \"1\", description: None, icons: None, website_url: None } })\n\nthread 'tokio-runtime-worker' (7) panicked at src/lib.rs:154:19:\nend byte index 40000 is not a char boundary; it is inside '€' (bytes 39998..40001 of string)\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+}

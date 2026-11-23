@@ -1,0 +1,15 @@
+{
+  "probe": "P6",
+  "config": "default",
+  "codes": [
+    "while True:\n    pass"
+  ],
+  "runs": [],
+  "setup_ms": 303.0,
+  "killed": "harness time watchdog at 120.1 s",
+  "exit_code": -9,
+  "wall_s": 120.06,
+  "peak_tree_rss_gb": 0.18,
+  "calls": [],
+  "child_log_tail": "[11/22/26 14:57:11] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-yujfmzzn/generate              \n                             d (mcp dir:                                        \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-yujfmzzn/generate              \n                             d/mcp)                                             \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-yujfmzzn/generate              \n                             d/mcp/probe                                        \n"
+}

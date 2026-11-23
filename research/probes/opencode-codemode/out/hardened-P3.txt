@@ -1,0 +1,36 @@
+{
+  "mode": "hardened",
+  "probe": "P3",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 0,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "const r = await fetch(\"https://example.com\"); return { status: r.status, len: (await r.text()).length }",
+      "ms": 20.6,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "ReferenceError: Unknown identifier 'fetch'. (line 1, col 17)",
+          "location": {
+            "line": 1,
+            "column": 17
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "return typeof fetch",
+      "ms": 0.92,
+      "hostCalls": 0,
+      "result": {
+        "ok": true,
+        "value": "undefined",
+        "toolCalls": []
+      }
+    }
+  ]
+}

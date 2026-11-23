@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "no-limit-within-120s",
+  "display": "not stopped (caller freed at 30 s)",
+  "detail": "same as default P6: returned after 30.01 s with no error; SandboxConfig hardening fields are not read by this variant.",
+  "evidence": "research/probes/datalayer-codemode-jupyter/out/hardened-P6.txt"
+}

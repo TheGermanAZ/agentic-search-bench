@@ -1,0 +1,33 @@
+probe: P6 (hardened)
+binary: goose-codemode-hardened-probe
+GOOSE_DEFAULT_EXTENSION_TIMEOUT=10
+process wall_ms: 73.0
+peak_rss_mb: 7.4
+exit: 0
+killed: None
+
+{"exec": "config", "probe": "P6", "timeout_seconds": 10}
+
+--- execution 0 ---
+code:
+async function run() {
+while (true) {}
+}
+is_error: True
+elapsed_ms: 14.99
+host_calls: 0
+text returned to model:
+Error: RuntimeLimitError: reached the maximum number of iteration loops on this execution
+    at run (code_mode.js:1:22)
+    at <main> (code_mode.js:4:5)
+
+--- execution 1 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: False
+elapsed_ms: 0.41
+host_calls: 0
+text returned to model:
+Result: 2

@@ -1,0 +1,559 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs hardened R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 30289,
+  "peakTreeRssMb": 214,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "hardened",
+    "test": "R9e",
+    "notes": "one CodemodeSandbox({\"timeoutMs\":30000,\"memoryLimitBytes\":33554432}) shared",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 16,
+          "ms": 30001,
+          "ok": true,
+          "result": {
+            "value": {
+              "ok": false,
+              "error": {
+                "kind": "timeout",
+                "message": "Execution timed out after 30000 ms"
+              },
+              "output": [],
+              "calls": []
+            },
+            "stringChars": 41
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 18,
+          "ms": 30000,
+          "ok": true,
+          "result": {
+            "value": {
+              "ok": false,
+              "error": {
+                "kind": "timeout",
+                "message": "Execution timed out after 30000 ms"
+              },
+              "output": [],
+              "calls": []
+            },
+            "stringChars": 41
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 18,
+          "ms": 30000,
+          "ok": true,
+          "result": {
+            "value": {
+              "ok": false,
+              "error": {
+                "kind": "timeout",
+                "message": "Execution timed out after 30000 ms"
+              },
+              "output": [],
+              "calls": []
+            },
+            "stringChars": 41
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 18,
+          "ms": 30000,
+          "ok": true,
+          "result": {
+            "value": {
+              "ok": false,
+              "error": {
+                "kind": "timeout",
+                "message": "Execution timed out after 30000 ms"
+              },
+              "output": [],
+              "calls": []
+            },
+            "stringChars": 41
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 18,
+          "ms": 30000,
+          "ok": true,
+          "result": {
+            "value": {
+              "ok": false,
+              "error": {
+                "kind": "timeout",
+                "message": "Execution timed out after 30000 ms"
+              },
+              "output": [],
+              "calls": []
+            },
+            "stringChars": 41
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 18,
+          "ms": 30000,
+          "ok": true,
+          "result": {
+            "value": {
+              "ok": false,
+              "error": {
+                "kind": "timeout",
+                "message": "Execution timed out after 30000 ms"
+              },
+              "output": [],
+              "calls": []
+            },
+            "stringChars": 41
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 18,
+          "ms": 30000,
+          "ok": true,
+          "result": {
+            "value": {
+              "ok": false,
+              "error": {
+                "kind": "timeout",
+                "message": "Execution timed out after 30000 ms"
+              },
+              "output": [],
+              "calls": []
+            },
+            "stringChars": 41
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 18,
+          "ms": 30000,
+          "ok": true,
+          "result": {
+            "value": {
+              "ok": false,
+              "error": {
+                "kind": "timeout",
+                "message": "Execution timed out after 30000 ms"
+              },
+              "output": [],
+              "calls": []
+            },
+            "stringChars": 41
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 170,
+        "ms": 233,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 201.12525000000002
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 240,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 200.90466700000002
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 30018,
+        "ms": 235,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 200.8108749999992
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 20,
+    "hostEvents": [],
+    "totalMs": 30253
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      79,
+      100
+    ],
+    [
+      481,
+      209
+    ],
+    [
+      897,
+      209
+    ],
+    [
+      1300,
+      210
+    ],
+    [
+      1729,
+      210
+    ],
+    [
+      2147,
+      210
+    ],
+    [
+      2556,
+      210
+    ],
+    [
+      2961,
+      210
+    ],
+    [
+      3379,
+      210
+    ],
+    [
+      3777,
+      210
+    ],
+    [
+      4181,
+      210
+    ],
+    [
+      4590,
+      210
+    ],
+    [
+      5010,
+      210
+    ],
+    [
+      5418,
+      210
+    ],
+    [
+      5825,
+      210
+    ],
+    [
+      6231,
+      210
+    ],
+    [
+      6638,
+      210
+    ],
+    [
+      7047,
+      210
+    ],
+    [
+      7453,
+      210
+    ],
+    [
+      7863,
+      210
+    ],
+    [
+      8318,
+      210
+    ],
+    [
+      8713,
+      210
+    ],
+    [
+      9133,
+      210
+    ],
+    [
+      9540,
+      202
+    ],
+    [
+      9940,
+      202
+    ],
+    [
+      10349,
+      202
+    ],
+    [
+      10755,
+      202
+    ],
+    [
+      11161,
+      202
+    ],
+    [
+      11562,
+      202
+    ],
+    [
+      11980,
+      202
+    ],
+    [
+      12396,
+      202
+    ],
+    [
+      12807,
+      202
+    ],
+    [
+      13218,
+      202
+    ],
+    [
+      13704,
+      202
+    ],
+    [
+      14115,
+      202
+    ],
+    [
+      14523,
+      202
+    ],
+    [
+      14932,
+      202
+    ],
+    [
+      15350,
+      202
+    ],
+    [
+      15754,
+      202
+    ],
+    [
+      16156,
+      202
+    ],
+    [
+      16558,
+      202
+    ],
+    [
+      16967,
+      202
+    ],
+    [
+      17368,
+      202
+    ],
+    [
+      17773,
+      202
+    ],
+    [
+      18179,
+      202
+    ],
+    [
+      18594,
+      202
+    ],
+    [
+      19018,
+      203
+    ],
+    [
+      19430,
+      203
+    ],
+    [
+      19829,
+      203
+    ],
+    [
+      20239,
+      203
+    ],
+    [
+      20648,
+      203
+    ],
+    [
+      21054,
+      203
+    ],
+    [
+      21463,
+      203
+    ],
+    [
+      21865,
+      203
+    ],
+    [
+      22275,
+      203
+    ],
+    [
+      22684,
+      203
+    ],
+    [
+      23097,
+      203
+    ],
+    [
+      23510,
+      203
+    ],
+    [
+      23926,
+      203
+    ],
+    [
+      24318,
+      203
+    ],
+    [
+      24782,
+      101
+    ],
+    [
+      25184,
+      100
+    ],
+    [
+      25601,
+      100
+    ],
+    [
+      25993,
+      100
+    ],
+    [
+      26400,
+      100
+    ],
+    [
+      26815,
+      100
+    ],
+    [
+      27224,
+      100
+    ],
+    [
+      27622,
+      100
+    ],
+    [
+      28039,
+      100
+    ],
+    [
+      28439,
+      100
+    ],
+    [
+      28855,
+      100
+    ],
+    [
+      29266,
+      100
+    ],
+    [
+      29676,
+      100
+    ],
+    [
+      30070,
+      113
+    ]
+  ]
+}

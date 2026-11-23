@@ -1,0 +1,315 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py default R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3458,
+  "peakTreeRssMb": 106,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9d",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(defaults); new in-process Client per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 2443,
+          "ms": 202,
+          "ok": true,
+          "result": {
+            "is_error": false,
+            "text": ""
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 2594,
+        "ms": 299,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 2893,
+        "ms": 250,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 3143,
+        "ms": 229,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 123,
+    "totalMs": 3372
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      106,
+      26
+    ],
+    [
+      167,
+      34
+    ],
+    [
+      208,
+      39
+    ],
+    [
+      321,
+      43
+    ],
+    [
+      404,
+      44
+    ],
+    [
+      476,
+      45
+    ],
+    [
+      520,
+      46
+    ],
+    [
+      567,
+      47
+    ],
+    [
+      614,
+      49
+    ],
+    [
+      676,
+      53
+    ],
+    [
+      732,
+      54
+    ],
+    [
+      783,
+      54
+    ],
+    [
+      825,
+      55
+    ],
+    [
+      881,
+      56
+    ],
+    [
+      951,
+      56
+    ],
+    [
+      996,
+      56
+    ],
+    [
+      1054,
+      56
+    ],
+    [
+      1098,
+      56
+    ],
+    [
+      1153,
+      57
+    ],
+    [
+      1207,
+      58
+    ],
+    [
+      1248,
+      58
+    ],
+    [
+      1298,
+      58
+    ],
+    [
+      1414,
+      60
+    ],
+    [
+      1458,
+      60
+    ],
+    [
+      1508,
+      62
+    ],
+    [
+      1560,
+      62
+    ],
+    [
+      1656,
+      63
+    ],
+    [
+      1695,
+      65
+    ],
+    [
+      1747,
+      67
+    ],
+    [
+      1799,
+      70
+    ],
+    [
+      1867,
+      75
+    ],
+    [
+      1904,
+      75
+    ],
+    [
+      1970,
+      75
+    ],
+    [
+      2008,
+      76
+    ],
+    [
+      2063,
+      78
+    ],
+    [
+      2128,
+      81
+    ],
+    [
+      2179,
+      83
+    ],
+    [
+      2214,
+      84
+    ],
+    [
+      2269,
+      84
+    ],
+    [
+      2321,
+      86
+    ],
+    [
+      2376,
+      87
+    ],
+    [
+      2421,
+      87
+    ],
+    [
+      2488,
+      87
+    ],
+    [
+      2534,
+      90
+    ],
+    [
+      2581,
+      94
+    ],
+    [
+      2630,
+      94
+    ],
+    [
+      2680,
+      94
+    ],
+    [
+      2730,
+      96
+    ],
+    [
+      2801,
+      106
+    ],
+    [
+      2840,
+      106
+    ],
+    [
+      2938,
+      106
+    ],
+    [
+      2987,
+      96
+    ],
+    [
+      3031,
+      106
+    ],
+    [
+      3105,
+      106
+    ],
+    [
+      3156,
+      106
+    ],
+    [
+      3212,
+      106
+    ],
+    [
+      3253,
+      96
+    ],
+    [
+      3307,
+      106
+    ],
+    [
+      3352,
+      106
+    ],
+    [
+      3400,
+      106
+    ],
+    [
+      3457,
+      106
+    ]
+  ]
+}

@@ -1,0 +1,9 @@
+<--- Last few GCs --->
+
+[65649:0xbc480c000]    35274 ms: Mark-Compact 3910.0 (4188.2) -> 3865.9 (4193.9) MB, pooled: 8 MB, 1171.96 / 0.00 ms  (average mu = 0.122, current mu = 0.091) task; scavenge might not succeed
+[65649:0xbc480c000]    36216 ms: Mark-Compact 3925.7 (4201.7) -> 3882.1 (4208.2) MB, pooled: 8 MB, 908.08 / 0.00 ms  (average mu = 0.101, current mu = 0.036) task; scavenge might not succeed
+
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x102a0360c node::(anonymous namespace)::DefaultAbortHandler(char const*, char const*) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]

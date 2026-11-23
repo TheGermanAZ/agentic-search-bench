@@ -1,0 +1,32 @@
+{
+  "probe": "P8",
+  "config": "default",
+  "codes": [
+    "kept = 7",
+    "try:\n    msg = kept\nexcept NameError:\n    msg = \"gone\"\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "(no output)",
+      "status": "success",
+      "ms": 72.6,
+      "started": 1795381204.8853571
+    },
+    {
+      "ok": true,
+      "stdout": "gone",
+      "status": "success",
+      "ms": 57.5,
+      "started": 1795381204.959661
+    }
+  ],
+  "setup_ms": 1317.2,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.82,
+  "peak_tree_rss_gb": 0.104,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

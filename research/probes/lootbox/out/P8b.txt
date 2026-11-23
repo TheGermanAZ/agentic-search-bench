@@ -1,0 +1,21 @@
+code:
+(globalThis as any).kept = 7
+---
+// @ts-ignore
+console.log(typeof kept === "undefined" ? "gone" : kept)
+
+result:
+{
+  "first": {
+    "id": "9e637bf9-5ab2-4b9e-9843-fcf26a72a1c6",
+    "result": "",
+    "ms": 785,
+    "hostCalls": 0
+  },
+  "second": {
+    "id": "6fb9bbbb-9ea5-4cff-97d8-f9f652514ba6",
+    "result": "gone\n",
+    "ms": 784,
+    "hostCalls": 0
+  }
+}

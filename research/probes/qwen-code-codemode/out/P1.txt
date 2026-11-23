@@ -1,0 +1,34 @@
+# qwen-code-codemode P1 (default)
+--- exec 1 source ---
+const r = await tools.mcp__probe__lookup({id: 21}); text(JSON.parse(r.output).value)
+--- exec 1 result (568.24 ms from tool call issued to tool result received; host lookup calls 1) ---
+text (29 chars):
+[{"type":"text","text":"42"}]
+--- exec 2 source ---
+const r = await tools.mcp__probe__lookup({id: 21}); console.log(JSON.parse(r.output).value)
+--- exec 2 result (466.06 ms from tool call issued to tool result received; host lookup calls 1) ---
+text (103 chars):
+[{"type":"text","text":"Script error:\n'console' is not defined\n    at <anonymous> (exec.js:4:90)\n"}]
+--- summary ---
+{
+ "config": "default",
+ "exit": {
+  "code": 0,
+  "sig": null
+ },
+ "setupMsSpawnToFirstExec": 3117,
+ "totalHostCalls": 2,
+ "sideRequests": 0
+}
+--- cli stdout (json, first 3000 chars) ---
+[{"type":"system","subtype":"init","uuid":"a08a8aa2-b0bc-4f77-b474-61bac83bb5a3","session_id":"a08a8aa2-b0bc-4f77-b474-61bac83bb5a3","cwd":"~/p/agentic-search-bench/research/probes/qwen-code-codemode/work","tools":["exec","read_mcp_resource","read_file","zoom_image","grep_search","cron_list","cron_delete","autofix_pr","web_fetch","list_agents","task_stop","skill","search_memory","enter_worktree","exit_worktree","record_artifact","get_goal","update_goal","tool_call","tool_search","agent","glob","report_findings","cron_create","loop_wakeup","send_message","manage_memory","mcp__probe__lookup"],"mcp_servers":[{"name":"probe","status":"connected"}],"model":"mock-model","permission_mode":"auto","slash_commands":["advisor","agent-delegation","auth","autofix-pr","batch","batch-api","bug","clear","compress","compress-fast","config","context","coordinate","curator","dataviz","diff","docs","doctor","effort","export","extension-creator","extensions","goal","goal-draft","hooks","import-config","init","insight","language","loop","model","new-app","output-style","pr","qc-helper","review","simplify","stats","status","stuck","summary","tasks","update","workflow-authoring","workflow-creator","workflows","zvec-grep-install"],"qwen_code_version":"0.28.4","agents":["general-purpose","Explore","statusline-setup","review-agent","claude-code","codex"]},{"type":"assistant","uuid":"63c8cb86-8149-40d5-b0c5-e4d15939b5cf","session_id":"a08a8aa2-b0bc-4f77-b474-61bac83bb5a3","parent_tool_use_id":null,"message":{"id":"63c8cb86-8149-40d5-b0c5-e4d15939b5cf","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_1","name":"exec","input":{"source":"const r = await tools.mcp__probe__lookup({id: 21}); text(JSON.parse(r.output).value)"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"088de1d6-b7e2-4f0a-a10d-4149dada8409","session_id":"a08a8aa2-b0bc-4f77-b474-61bac83bb5a3","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_1","is_error":false,"content":"42"}]}},{"type":"assistant","uuid":"81b406ae-7135-435d-8f46-ae93a8cf82e2","session_id":"a08a8aa2-b0bc-4f77-b474-61bac83bb5a3","parent_tool_use_id":null,"message":{"id":"81b406ae-7135-435d-8f46-ae93a8cf82e2","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_2","name":"exec","input":{"source":"const r = await tools.mcp__probe__lookup({id: 21}); console.log(JSON.parse(r.output).value)"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"77fb2b1f-252c-4059-90e7-384ee69388e3","session_id":"a08a8aa2-b0bc-4f77-b474-61bac83bb5a3","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_2","is_error":true,"content":"Script error:\n'console' is not defined\n   
+--- cli stderr (first 3000 chars) ---
+Warning: Node.js 24.22.1 can cause high temporary memory usage during shell safety checks. Upgrade to Node.js 26.12.1. Qwen Code will continue normally. See https://github.com/QwenLM/qwen-code/issues/15165
+
+--- mock events ---
+{"t":3123.38,"kind":"exec-issued","n":1,"hostCallsSoFar":1}
+{"t":3691.62,"kind":"exec-result","n":1,"hostCallsSoFar":2,"textLen":29}
+{"t":3691.82,"kind":"exec-issued","n":2,"hostCallsSoFar":2}
+{"t":4157.88,"kind":"exec-result","n":2,"hostCallsSoFar":3,"textLen":103}
+{"t":4158.08,"kind":"final"}
+{"t":4290.18,"kind":"final"}

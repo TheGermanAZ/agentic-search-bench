@@ -1,0 +1,8 @@
+{
+  "probe": "P1",
+  "outcome": "works",
+  "detail": "printed '42', 1 host-side calls; error=None",
+  "display": "works (42, 1 host call)",
+  "host_calls": 1,
+  "config": "default"
+}

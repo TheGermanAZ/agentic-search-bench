@@ -1,0 +1,55 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 532,
+  "peakTreeRssMb": 51,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "R2a",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "startMs": 12,
+      "ms": 302,
+      "ok": true,
+      "result": {
+        "value": "[true,\"undefined\",\"undefined\",\"Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,Array,Object,Function,Iterator,parseInt,parseFloat,isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,eval…[660 chars]…Array,Uint8Array,Int16Array,Uint16Array,Int32Array,Uint32Array,BigInt64Array,BigUint64Array,Float16Array,Float32Array,Float64Array,DataView,Promise,WeakRef,FinalizationRegistry,console,__host,corpus\"]",
+        "stringChars": 660
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 68,
+    "hostEvents": [],
+    "totalMs": 315
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      155,
+      47
+    ],
+    [
+      269,
+      50
+    ],
+    [
+      337,
+      51
+    ],
+    [
+      531,
+      0
+    ]
+  ]
+}

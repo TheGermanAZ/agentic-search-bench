@@ -1,0 +1,69 @@
+{
+  "impl": "vercel-run",
+  "probe": "P6",
+  "config": {
+    "limits": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxHostFunctionArgumentsBytes": 262144,
+      "maxHostFunctionOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8,
+      "maxContinuationBytes": 8388608
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "while (true) {}"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 150,
+    "siblingEndMs": 501,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "RunCpuTimeoutError",
+        "code": "RUN_CPU_TIMEOUT",
+        "message": "JavaScript runtime exceeded its CPU time limit of 5000ms.",
+        "details": {
+          "cpuTimeoutMs": 5000
+        },
+        "stack": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+        "string": "RunCpuTimeoutError: JavaScript runtime exceeded its CPU time limit of 5000ms."
+      },
+      "wallMs": 5224.939333,
+      "hostCalls": 1
+    }
+  ],
+  "concurrentSiblingRun": {
+    "ok": true,
+    "status": "completed",
+    "value": 42,
+    "wallMs": 351.554334,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "ok": true,
+    "status": "completed",
+    "value": 42,
+    "wallMs": 211.74554199999966,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 150,
+    "siblingEndMs": 501,
+    "error": "RunCpuTimeoutError: RUN_CPU_TIMEOUT JavaScript runtime exceeded its CPU time limit of 5000ms.",
+    "ms": 5225,
+    "sibling": 42,
+    "after": 42
+  },
+  "hostRssAfterMB": 126.7
+}

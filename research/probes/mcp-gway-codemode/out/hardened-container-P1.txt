@@ -1,0 +1,6 @@
+--- code 1 ---
+r = Probe.lookup(id=21)
+print(r["value"])
+result = r["value"]
+--- result 1 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "SandboxTimeoutError"}}, "ms": 4108.0, "hostCalls": 1, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 83}

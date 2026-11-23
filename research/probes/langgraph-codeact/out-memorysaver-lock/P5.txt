@@ -1,0 +1,27 @@
+probe: P5
+outcome: blocked
+display: blocked
+detail: TypeError: Type is not msgpack serializable: module
+
+code:
+----
+import os
+msg = "ENV " + str(os.environ.get("PROBE_SECRET"))
+print(msg)
+msg
+----
+
+setup_ms: 3.6
+wall_s (whole child process): 0.38
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.068
+host lookup calls: 0
+
+=== run 0 (3.2 ms) ===
+ok: false
+error: TypeError: Type is not msgpack serializable: module
+raised: true
+
+=== child process log (tail) ===
+

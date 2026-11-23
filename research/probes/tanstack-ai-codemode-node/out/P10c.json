@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P10c",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 164.90316599999997,
+  "source": [
+    "return await external_failing({});"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "host-tool-boom internal detail db=postgres://user:pw@host",
+          "name": "Error",
+          "stack": "Error: host-tool-boom internal detail db=postgres://user:pw@host\n    at external_failing (<isolated-vm>:9:21)\n    at async <isolated-vm>:5:8\n    at async <isolated-vm>:4:26"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 92.47104200000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: host-tool-boom internal detail db=postgres://user:pw@host",
+    "ms": 92,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 82.5
+}

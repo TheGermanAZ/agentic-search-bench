@@ -1,0 +1,9 @@
+print(__import__("os").system("echo PWNED"))
+--- output
+ERROR: Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    print(__import__("os").system("echo PWNED"))
+          ~~~~~~~~~~~~~~~~
+NameError: name '__import__' is not defined
+---
+wall_ms=1 host_calls=0 peak_tree_rss_mb=145

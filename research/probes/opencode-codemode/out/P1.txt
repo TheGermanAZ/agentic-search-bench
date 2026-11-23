@@ -1,0 +1,25 @@
+{
+  "mode": "default",
+  "probe": "P1",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 1,
+  "hostPolluted": null,
+  "result": {
+    "code": "const r = await tools.lookup({id: 21}); console.log(r.value)",
+    "ms": 229.87,
+    "hostCalls": 1,
+    "result": {
+      "output": "Logs:\n42",
+      "toolCalls": [
+        {
+          "tool": "lookup",
+          "status": "completed",
+          "input": {
+            "id": 21
+          }
+        }
+      ],
+      "files": []
+    }
+  }
+}

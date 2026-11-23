@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P10c",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 14.699542000000008,
+  "source": [
+    "return await external_failing({});"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "host-tool-boom internal detail db=postgres://user:pw@host",
+          "name": "Error",
+          "stack": "Error: host-tool-boom internal detail db=postgres://user:pw@host\n    at external_failing (eval.js:6)\nHost: Error: host-tool-boom internal detail db=postgres://user:pw@host\n    at QuickJSContext.unwrapResult (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/quickjs-emscripten-core/dist/chunk-JTKJZQYV.mjs:4:24443)\n    at QuickJSIsolateContext.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/@tanstack/ai-isolate-quickjs/dist/esm/isolate-context.js:182:34)\n    at async Object.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:181:108)\n    at async once (file://~/p/agentic-search-bench/research/probes/tanstack-ai-codemode-quickjs/probe.mjs:110:15)\n    at async file://~/p/agentic-search-bench/research/probes/tanstack-ai-codemode-quickjs/probe.mjs:152:45"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 40.615707999999984,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: host-tool-boom internal detail db=postgres://user:pw@host",
+    "ms": 41,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 86.1
+}

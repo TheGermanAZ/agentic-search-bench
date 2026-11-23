@@ -1,0 +1,35 @@
+{
+  "probe": "P3",
+  "serverPid": 16365,
+  "code": "await fetch(\"https://example.com\")",
+  "wallMs": 37,
+  "hostToolCalls": 0,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":false,\"error\":{\"kind\":\"ExecutionFailure\",\"message\":\"Unknown identifier 'fetch'. (line 1, col 7)\",\"location\":{\"line\":1,\"column\":7}},\"toolCalls\":[]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": false,
+          "error": {
+            "kind": "ExecutionFailure",
+            "message": "Unknown identifier 'fetch'. (line 1, col 7)",
+            "location": {
+              "line": 1,
+              "column": 7
+            }
+          },
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

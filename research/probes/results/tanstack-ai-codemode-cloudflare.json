@@ -1,0 +1,55 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "name": "TanStack AI Code Mode, Cloudflare Workers driver (@tanstack/ai-isolate-cloudflare), local wrangler dev",
+  "source": "https://github.com/TanStack/ai (packages/ai-code-mode, packages/ai-isolate-cloudflare); npm @tanstack/ai-code-mode 1.1.2, @tanstack/ai-isolate-cloudflare 1.1.0",
+  "pinned": "TanStack/ai c695ada5091e7022bf13b235220645ceb65d43b0 (npm src folders identical); wrangler 4.166.0 with its bundled workerd; Node v24.22.1",
+  "language": "TS (stripped with sucrase)",
+  "engine": "The package's ready-made Worker under local `wrangler dev` (workerd). For each round it loads the wrapped program into a fresh V8 isolate with the Worker Loader binding (env.LOADER.load, globalOutbound null, env {}). Probed locally only; deployed Cloudflare (Workers Paid plan) would add Cloudflare's own CPU and memory limits, which were not tested.",
+  "how_run": "wrangler dev serves `export { default } from '@tanstack/ai-isolate-cloudflare/worker'` on 127.0.0.1:41010 with the package's wrangler.toml settings; the host runs createCodeModeTool({ driver: createCloudflareIsolateDriver({ workerUrl }), tools: [lookup, failing] }).execute({ typescriptCode }). No account or login.",
+  "probes": {
+    "P1": { "outcome": "works", "detail": "result 42, logs [\"42\"], 1 host call, 310 ms. The program ran twice: once to collect the tool call, once with the result (P1b shows logs [before, before, after]).", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P1.txt, P1b.txt", "display": "works (42, replayed)" },
+    "P2": { "outcome": "works", "detail": "result and logs both return; bare expression gives undefined. No cap: 200,000-char line whole, 4,000,000 chars of logs (P2c), a 2,000,000-char return whole (P2e).", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P2.txt, P2b.txt, P2c.txt, P2e.txt", "display": "logs + return, no cap" },
+    "P3": { "outcome": "blocked", "detail": "Error: This worker is not permitted to access the internet via global functions like fetch(). It must use capabilities (such as bindings in 'env') to talk to the outside world. (globalOutbound: null)", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P3.txt", "display": "blocked" },
+    "P4": { "outcome": "not-defined", "detail": "require is not defined; import(\"fs\") gives No such module \"fs\"; Deno is not defined", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P4.txt, P4b.txt, P4c.txt", "display": "not-defined" },
+    "P5": { "outcome": "not-defined", "detail": "process is not defined, although the outer Worker had PROBE_SECRET as a var; the loaded program gets env {}", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P5.txt, P5b.txt", "display": "not-defined" },
+    "P6": { "outcome": "no-limit-within-120s", "detail": "The request never returned; the harness killed the probe at 120 s. The Worker's timeout is a setTimeout raced against the loaded program, and the busy loop holds the same workerd thread, so the timer never fires. The driver's fetch has no client-side deadline. A second program sent at 100 ms also never completed.", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P6.txt, wrangler-P6.log", "display": "no-limit-within-120s (local)" },
+    "P7": { "outcome": "error", "detail": "workerd aborted: \"V8 fatal error; location = Reached heap limit; ... JavaScript heap out of memory\", signal 6. The program, a concurrent program and a program sent afterwards all failed with \"Worker returned 500: Error: Network connection lost.\" (about 17 s). The host Node process survived; the code-execution server did not.", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P7.txt, wrangler-P7.log", "display": "host crash (workerd, local)" },
+    "P8": { "outcome": "works", "detail": "fresh: gone", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P8.txt", "display": "fresh" },
+    "P9": { "outcome": "limited", "detail": "serial: 1,066 ms host wall for 5 calls. Promise.all collects all 5 calls in one round, but the host driver awaits each tool in a for loop. Guest Date.now() read 0 because the program is replayed. 12 dependent calls (P9c) fail with MaxRoundsExceeded after 10 host calls already ran.", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P9.txt, P9b.txt, P9c.txt", "display": "serial (1,066 ms)" },
+    "P10": { "outcome": "works", "detail": "success false, error probe-boom with stack in main.js; line numbers are shifted by the generated wrapper (user line 3 shows as main.js:49). Tool error messages reach the model verbatim (P10c).", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P10.txt, P10b.txt, P10c.txt", "display": "works (message, line +46)" },
+    "P11": { "outcome": "works", "detail": "median 6.63 ms, p90 8.4 ms over 20 executions (HTTP to local workerd plus a new isolate); first 46.3 ms. wrangler dev itself takes a few seconds to start. Load average 27 to 35.", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P11.txt", "display": "6.6 ms median (local)" },
+    "P12": { "outcome": "blocked", "detail": "`this` is undefined in the module (TypeError); the Function and AsyncFunction constructors throw EvalError: Code generation from strings disallowed for this context; no __ globals exposed", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/P12.txt, P12b.txt, P12c.txt, P12e.txt, P12f.txt", "display": "blocked" }
+  },
+  "hardened": {
+    "config": "createCodeModeTool({ driver, tools, timeout: 5000 }) (create-code-mode-tool.ts:96; the driver passes it to the Worker as request.timeout). memoryLimit is not used by this driver (docs/code-mode/code-mode-isolates.md:57). The driver's own options are workerUrl, authorization, timeout and maxToolRounds (default 10, already strict).",
+    "probes": {
+      "P3": { "outcome": "blocked", "detail": "same as default: not permitted to access the internet", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/hardened-P3.txt", "display": "blocked" },
+      "P4": { "outcome": "not-defined", "detail": "require is not defined; No such module \"fs\"", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/hardened-P4.txt, hardened-P4b.txt", "display": "not-defined" },
+      "P5": { "outcome": "not-defined", "detail": "process is not defined", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/hardened-P5.txt", "display": "not-defined" },
+      "P6": { "outcome": "no-limit-within-120s", "detail": "the 5,000 ms timeout did not fire either; killed at 120 s", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/hardened-P6.txt, wrangler-hardened-P6.log", "display": "no-limit-within-120s (local)" },
+      "P7": { "outcome": "error", "detail": "same workerd abort (V8 heap limit, signal 6); concurrent and later programs failed with Network connection lost", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/hardened-P7.txt, wrangler-hardened-P7.log", "display": "host crash (workerd, local)" },
+      "P9": { "outcome": "limited", "detail": "serial: 1,055 ms for 5 calls", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/hardened-P9.txt", "display": "serial (1,055 ms)" },
+      "P12": { "outcome": "blocked", "detail": "same as default", "evidence": "research/probes/tanstack-ai-codemode-cloudflare/out/hardened-P12.txt, hardened-P12b.txt, hardened-P12c.txt, hardened-P12e.txt, hardened-P12g.txt", "display": "blocked" }
+    }
+  },
+  "defaults": {
+    "time": "30,000 ms requested per round, enforced only by a setTimeout inside the Worker (ai-isolate-cloudflare/src/worker/index.ts:116-123), which a synchronous loop starves locally",
+    "memory": "None set by TanStack; local workerd crashed at V8's heap limit. Deployed Workers limits were not tested.",
+    "output": "No cap on logs or result",
+    "tool_calls": "maxToolRounds 10 per execution (isolate-driver.ts:119, :324); no per-call cap"
+  },
+  "source_notes": [
+    { "topic": "Bridge", "finding": "No live bridge. Each tool wrapper records the call and throws __ToolCallNeeded; the Worker returns need_tools; the host runs the calls and re-sends the whole program with all results so far, which replays from the start. Tool calls are keyed by sequence index (tc_0, tc_1, ...).", "evidence": "https://github.com/TanStack/ai/blob/c695ada5091e7022bf13b235220645ceb65d43b0/packages/ai-isolate-cloudflare/src/worker/wrap-code.ts#L86-L120 and #L126-L196; isolate-driver.ts#L119-L222" },
+    { "topic": "Parallelism", "finding": "The host executes one round's tool calls in a for loop with await, so calls the guest issued together still run one after another.", "evidence": "https://github.com/TanStack/ai/blob/c695ada5091e7022bf13b235220645ceb65d43b0/packages/ai-isolate-cloudflare/src/isolate-driver.ts#L199-L222" },
+    { "topic": "Isolation boundary", "finding": "Worker Loader isolate with globalOutbound null and env {}: no network, no bindings. The ready-made Worker answers CORS with Access-Control-Allow-Origin * and does not check the Authorization header; the docs warn about this.", "evidence": "https://github.com/TanStack/ai/blob/c695ada5091e7022bf13b235220645ceb65d43b0/packages/ai-isolate-cloudflare/src/worker/index.ts#L126-L132 and #L218; docs/code-mode/code-mode-isolates.md (WARNING under Cloudflare Workers driver)" },
+    { "topic": "Limits", "finding": "Timeout is a setTimeout race inside the Worker; there is no host-side timeout on the driver's fetch, so a starved Worker hangs the caller.", "evidence": "worker/index.ts#L116-L156; isolate-driver.ts#L138-L141 (fetch carries only the caller abort signal)" },
+    { "topic": "State", "finding": "Fresh isolate per round. Replay means guest code before a tool call runs once per round, and its console output is collected once per round (duplicated logs).", "evidence": "out/P1b.txt; isolate-driver.ts#L168 and #L190 (allLogs accumulation)" }
+  ],
+  "surprises": [
+    "Locally, the Worker's own timeout never fired for a busy loop, at 30 s or 5 s; the call hung until the harness killed it at 120 s, and it held up a second program too.",
+    "A memory-hungry program crashed the whole local workerd (V8 fatal heap OOM), failing a concurrent program and every later one.",
+    "Programs are replayed from the start after each tool round, so pre-call side effects inside the sandbox and console output repeat (P1b logged \"before\" twice).",
+    "Tool calls are serial on the host even when issued with Promise.all, and the default maxToolRounds of 10 caps dependent tool calls at 10 per execution; going over fails after the side effects already ran (P9c).",
+    "Not measured: deployed Cloudflare Workers enforce their own CPU and memory limits, so P6 and P7 may behave better in production. That needs a Workers Paid account."
+  ]
+}

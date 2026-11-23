@@ -1,0 +1,5 @@
+try { await corpus.read("y".repeat(2e8)) } catch (e) { console.log("caught: " + e.message) }
+--- output
+caught: corpus call arguments are too large
+---
+wall_ms=117 host_calls=0 max_arg_chars=0 out_chars=43 peak_host_rss_mb=529

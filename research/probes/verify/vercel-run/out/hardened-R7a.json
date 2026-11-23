@@ -1,0 +1,316 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs hardened R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 15173,
+  "peakTreeRssMb": 149,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "hardened",
+    "test": "R7a",
+    "notes": "createRunner({limits: HARDENED_LIMITS}) shared",
+    "data": {
+      "startMs": 30,
+      "ms": 15019,
+      "ok": false,
+      "threw": "RunTimeoutError: JavaScript runtime execution timed out after 15000ms.\n    at file://~/p/agentic-search-bench/research/impls/vercel-run/pkg/node_modules/run/dist/runtime/manager.js:578:20\n    at AsyncResource.runInAsyncScope (node:async_hooks:227:14)\n    at Timeout.<anonymous> (file://~/p/agentic-search-bench/research/impls/vercel-run/pkg/node_modules/run/dist/runtime/manager.js:384:23)\n    at listOnTimeout (node:internal/timers:685:17)\n    at process.processTimers (node:internal/timers:618:7)",
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 78,
+    "hostEvents": [],
+    "totalMs": 15050
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:95120) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      169,
+      66
+    ],
+    [
+      389,
+      136
+    ],
+    [
+      597,
+      136
+    ],
+    [
+      801,
+      136
+    ],
+    [
+      1000,
+      137
+    ],
+    [
+      1226,
+      138
+    ],
+    [
+      1436,
+      138
+    ],
+    [
+      1632,
+      138
+    ],
+    [
+      1832,
+      139
+    ],
+    [
+      2041,
+      139
+    ],
+    [
+      2252,
+      139
+    ],
+    [
+      2454,
+      139
+    ],
+    [
+      2744,
+      140
+    ],
+    [
+      2936,
+      140
+    ],
+    [
+      3199,
+      141
+    ],
+    [
+      3394,
+      141
+    ],
+    [
+      3604,
+      141
+    ],
+    [
+      3929,
+      141
+    ],
+    [
+      4160,
+      141
+    ],
+    [
+      4399,
+      141
+    ],
+    [
+      4630,
+      141
+    ],
+    [
+      4833,
+      142
+    ],
+    [
+      5042,
+      142
+    ],
+    [
+      5259,
+      142
+    ],
+    [
+      5456,
+      143
+    ],
+    [
+      5656,
+      143
+    ],
+    [
+      5900,
+      143
+    ],
+    [
+      6101,
+      144
+    ],
+    [
+      6303,
+      144
+    ],
+    [
+      6510,
+      144
+    ],
+    [
+      6738,
+      144
+    ],
+    [
+      6936,
+      144
+    ],
+    [
+      7131,
+      144
+    ],
+    [
+      7355,
+      144
+    ],
+    [
+      7578,
+      144
+    ],
+    [
+      7778,
+      144
+    ],
+    [
+      7983,
+      145
+    ],
+    [
+      8189,
+      145
+    ],
+    [
+      8402,
+      145
+    ],
+    [
+      8611,
+      146
+    ],
+    [
+      8821,
+      146
+    ],
+    [
+      9020,
+      147
+    ],
+    [
+      9221,
+      147
+    ],
+    [
+      9436,
+      148
+    ],
+    [
+      9630,
+      148
+    ],
+    [
+      9881,
+      148
+    ],
+    [
+      10071,
+      148
+    ],
+    [
+      10277,
+      148
+    ],
+    [
+      10490,
+      148
+    ],
+    [
+      10683,
+      148
+    ],
+    [
+      10890,
+      148
+    ],
+    [
+      11087,
+      148
+    ],
+    [
+      11292,
+      148
+    ],
+    [
+      11609,
+      148
+    ],
+    [
+      11804,
+      148
+    ],
+    [
+      12012,
+      148
+    ],
+    [
+      12226,
+      148
+    ],
+    [
+      12419,
+      148
+    ],
+    [
+      12701,
+      148
+    ],
+    [
+      12910,
+      148
+    ],
+    [
+      13150,
+      148
+    ],
+    [
+      13433,
+      148
+    ],
+    [
+      13637,
+      148
+    ],
+    [
+      13899,
+      148
+    ],
+    [
+      14096,
+      148
+    ],
+    [
+      14290,
+      148
+    ],
+    [
+      14493,
+      148
+    ],
+    [
+      14720,
+      149
+    ],
+    [
+      14935,
+      149
+    ],
+    [
+      15128,
+      149
+    ]
+  ]
+}

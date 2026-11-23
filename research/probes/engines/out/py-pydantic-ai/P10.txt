@@ -1,0 +1,9 @@
+raise ValueError("probe-boom")
+--- output
+ERROR: Runtime error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    raise ValueError("probe-boom")
+ValueError: probe-boom
+---
+wall_ms=19 host_calls=0 peak_tree_rss_mb=177

@@ -1,0 +1,24 @@
+{
+  "impl": "vercel-run",
+  "probe": "P9",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => host.lookup({id:i}))); const dt = Date.now()-t; console.log(dt); return dt;"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "status": "completed",
+      "value": 416,
+      "wallMs": 585.473208,
+      "hostCalls": 5
+    }
+  ],
+  "summary": {
+    "value": 416,
+    "ms": 585,
+    "hostCalls": 5
+  },
+  "hostRssAfterMB": 138.2
+}

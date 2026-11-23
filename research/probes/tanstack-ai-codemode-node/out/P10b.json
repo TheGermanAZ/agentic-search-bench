@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P10b",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 68.96995800000002,
+  "source": [
+    "const x = 1;\nconst y = 2;\nfunction inner() { throw new Error(\"probe-boom\"); }\ninner();"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "probe-boom",
+          "name": "Error",
+          "stack": "Error: probe-boom\n    at inner (<isolated-vm>:7:26)\n    at <isolated-vm>:8:1\n    at <isolated-vm>:9:7\n    at <isolated-vm>:14:3"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 42.92425000000003,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: probe-boom",
+    "ms": 43,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 82.4
+}

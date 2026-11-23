@@ -1,0 +1,6 @@
+const a = []; while (true) a.push(new Uint8Array(64 * 1024 * 1024).fill(1)); 
+--- output
+ERROR: InternalError: out of memory
+    at <anonymous> (line 1:62)
+---
+wall_ms=166 host_calls=0 max_arg_chars=0 out_chars=66 peak_host_rss_mb=285

@@ -1,0 +1,17 @@
+--- code 1 ---
+result = open("/etc/hosts").read()
+--- result 1 ---
+{"ms":5,"hostCalls":0,"ok":true,"isError":true}
+text (320 chars):
+Execution runtime error:
+
+code.star:1:10: undefined: open
+
+Hints:
+Variable 'open' is not defined.
+Note: Each executeToolCode call runs in a fresh scope — no variables persist between calls.
+Available server keys: probe
+Access tools using: server_name.tool_name(param="value")
+
+Environment:
+  Available server keys: probe

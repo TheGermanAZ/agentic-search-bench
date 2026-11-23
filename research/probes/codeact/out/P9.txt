@@ -1,0 +1,10 @@
+probe: P9
+code (python, run through PythonREPL.__call__):
+import time
+t = time.time()
+rs = [lookup(id=i) for i in [1, 2, 3, 4, 5]]
+print(int((time.time() - t) * 1000))
+print(sum(r['value'] for r in rs))
+host_calls_so_far: 5
+output: '1043\n30\n'
+host calls: 5

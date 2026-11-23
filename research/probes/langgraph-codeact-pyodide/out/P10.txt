@@ -1,0 +1,27 @@
+probe: P10
+outcome: works
+display: message, no line
+detail: message survives: True; 'line 2' present: False; text: 'Error during execution: probe-boom Error during execution: probe-boom'
+
+code:
+----
+x = 1
+raise ValueError("probe-boom")
+----
+
+setup_ms: 17.6
+wall_s (whole child process): 1.53
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.29
+host lookup calls: 0
+
+=== run 0 (1163.8 ms) ===
+ok: false
+stdout: Error during execution: probe-boom
+error: Error during execution: probe-boom
+context_keys: []
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

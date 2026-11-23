@@ -1,0 +1,7 @@
+{
+  "probe": "Pwrite",
+  "outcome": "works",
+  "display": "works (wrote a host file)",
+  "detail": "WROTE True",
+  "evidence": "research/probes/hermes-execute-code/out/Pwrite.txt"
+}

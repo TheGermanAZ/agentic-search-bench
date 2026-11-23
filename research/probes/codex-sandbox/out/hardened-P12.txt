@@ -1,0 +1,46 @@
+probe: P12 (hardened)
+codex: ~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex (codex-cli 0.169.0)
+CODEX_HOME: ~/p/agentic-search-bench/research/impls/codex-sandbox/codex-home-hardened (empty, config only from the flags below)
+flags: codex sandbox "-c" "shell_environment_policy.inherit=\"core\"" "-c" "shell_environment_policy.ignore_default_excludes=false" "-c" "permissions.hardened.filesystem={\":minimal\"=\"read\",\":workspace_roots\"=\"read\",\"/opt/homebrew/Cellar/python@3.15/3.15.0_1\"=\"read\",\"/etc/**\"=\"deny\",\"/private/etc/**\"=\"deny\"}" "-c" "permissions.hardened.network.enabled=false" "-P" "hardened" "-C" "~/p/agentic-search-bench/research/probes/codex-sandbox/work" -- <argv>
+
+--- python subclasses walk ---
+argv: ["/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/bin/python3.15", "-c", "names=[c.__name__ for c in ().__class__.__base__.__subclasses__()];print('_wrap_close' in names, 'Popen' in names);w=[c for c in ().__class__.__base__.__subclasses__() if c.__name__=='_wrap_close'][0];print('via _wrap_close:', w.__init__.__globals__['system']('echo PWNED-subclasses'))"]
+exit: 0  wall_ms: 91.7  peak_tree_rss_mb: 33.2  killed: None
+stdout:
+PWNED-subclasses
+True False
+via _wrap_close: 0
+
+stderr:
+
+
+--- python os.system ---
+argv: ["/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/bin/python3.15", "-c", "__import__(\"os\").system(\"echo PWNED\")"]
+exit: 0  wall_ms: 157.2  peak_tree_rss_mb: 37.1  killed: None
+stdout:
+PWNED
+
+stderr:
+
+
+--- python os.system write outside workspace ---
+argv: ["/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/bin/python3.15", "-c", "import os;print(\"exit\", os.system(\"echo PWNED > ~/p/agentic-search-bench/research/probes/codex-sandbox/out/hardened-P12-escape-write.txt\"))"]
+exit: 0  wall_ms: 159.0  peak_tree_rss_mb: 45.9  killed: None
+escape_file_exists_after: False
+stdout:
+exit 256
+
+stderr:
+sh: ~/p/agentic-search-bench/research/probes/codex-sandbox/out/hardened-P12-escape-write.txt: Operation not permitted
+
+
+--- shell write outside workspace ---
+argv: ["/bin/sh", "-c", "echo PWNED > ~/p/agentic-search-bench/research/probes/codex-sandbox/out/hardened-P12-escape-write.txt; echo exit=$?"]
+exit: 0  wall_ms: 121.2  peak_tree_rss_mb: 15.7  killed: None
+escape_file_exists_after: False
+stdout:
+exit=1
+
+stderr:
+/bin/sh: ~/p/agentic-search-bench/research/probes/codex-sandbox/out/hardened-P12-escape-write.txt: Operation not permitted
+

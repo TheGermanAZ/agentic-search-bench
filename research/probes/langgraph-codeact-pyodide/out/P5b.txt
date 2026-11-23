@@ -1,0 +1,27 @@
+probe: P5b
+outcome: blocked
+display: blocked (Deno NotCapable)
+detail: Error during execution: NotCapable: Requires env access to "PROBE_SECRET", run again with the --allow-env flag
+
+code:
+----
+import js
+print('ENV', js.Deno.env.get('PROBE_SECRET'))
+----
+
+setup_ms: 16.5
+wall_s (whole child process): 1.59
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.324
+host lookup calls: 0
+
+=== run 0 (1248.8 ms) ===
+ok: false
+stdout: Error during execution: NotCapable: Requires env access to "PROBE_SECRET", run again with the --allow-env flag
+error: Error during execution: NotCapable: Requires env access to "PROBE_SECRET", run again with the --allow-env flag
+context_keys: []
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

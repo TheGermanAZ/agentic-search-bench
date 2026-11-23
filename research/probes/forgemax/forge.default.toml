@@ -1,0 +1,5 @@
+[servers.host]
+command = "/opt/homebrew/bin/deno"
+args = ["run", "--no-config", "--node-modules-dir=none", "--allow-write=~/p/agentic-search-bench/research/probes/forgemax/out/calls.log", "--allow-env", "--allow-read", "~/p/agentic-search-bench/research/probes/forgemax/lookup-server.ts", "~/p/agentic-search-bench/research/probes/forgemax/out/calls.log"]
+transport = "stdio"
+env = { DENO_DIR = "~/p/agentic-search-bench/research/impls/forgemax/deno-dir" }

@@ -1,0 +1,27 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 367,
+    "totalWallMs": 542,
+    "peakTreeRssMB": 168.4,
+    "stderrTail": ""
+  },
+  "backend": "localsandbox",
+  "probe": "P1",
+  "mode": "default",
+  "setupMs": 125.9,
+  "record": {
+    "code": "const r = await external_lookup({id: 21}); console.log(r.value)",
+    "wallMs": 371.6,
+    "hostCalls": 1,
+    "out": {
+      "success": true,
+      "logs": [
+        "42"
+      ]
+    },
+    "threw": null
+  }
+}

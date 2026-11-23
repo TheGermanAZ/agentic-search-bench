@@ -1,0 +1,13 @@
+mode: default
+code:
+const m = await import("https://example.com/probe.js"); console.log(Object.keys(m))
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "dc865f24-d15c-4a17-b42b-42929e6b7966",
+  "success": false,
+  "output": "\n\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) TypeError: Requires import access to \"example.com:443\", run again with the --allow-import flag\nconst m = await import(\"https://example.com/probe.js\"); console.log(Object.keys(m))\n\u001b[0m\u001b[31m          ^\u001b[0m\n    at async \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/5cc83af8f5d977d9.ts\u001b[0m:\u001b[0m\u001b[33m35\u001b[0m:\u001b[0m\u001b[33m11\u001b[0m\n",
+  "ms": 19,
+  "hostCalls": 0
+}

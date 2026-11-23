@@ -1,0 +1,13 @@
+mode: hardened
+code:
+console.log(await Deno.readTextFile("/etc/hosts"))
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "b22644ca-a2e2-4c89-b99c-654b64fd710f",
+  "success": false,
+  "output": "\n\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag\nconsole.log(await Deno.readTextFile(\"/etc/hosts\"))\n\u001b[0m\u001b[31m                       ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mObject.readTextFile\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fs/30_fs.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m866\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m24\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/8c7c131c9c62e907.ts\u001b[0m:\u001b[0m\u001b[33m35\u001b[0m:\u001b[0m\u001b[33m24\u001b[0m\n",
+  "ms": 17,
+  "hostCalls": 0
+}

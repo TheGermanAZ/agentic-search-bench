@@ -1,0 +1,9 @@
+{"exec":"config","probe":"P6b-thread","timeout_seconds":10}
+{"code":"async function run() {\nreturn /^(a+)+$/.test(\"a\".repeat(40) + \"b\")\n}","elapsed_ms":11004.564417,"exec":0,"host_calls":0,"is_error":true,"probe":"P6b-thread","text":"Error: Execution timed out after 10 seconds"}
+{"cpu_seconds_used_in_5s_after_timeout":2.9000000000000012,"exec":"after-first","os_threads":16,"probe":"P6b-thread"}
+{"code":"async function run() {\nreturn /^(a+)+$/.test(\"a\".repeat(40) + \"b\")\n}","elapsed_ms":11004.26925,"exec":1,"host_calls":0,"is_error":true,"probe":"P6b-thread","text":"Error: Execution timed out after 10 seconds"}
+{"code":"async function run() {\nreturn /^(a+)+$/.test(\"a\".repeat(40) + \"b\")\n}","elapsed_ms":11004.121165999999,"exec":2,"host_calls":0,"is_error":true,"probe":"P6b-thread","text":"Error: Execution timed out after 10 seconds"}
+{"code":"async function run() {\nreturn /^(a+)+$/.test(\"a\".repeat(40) + \"b\")\n}","elapsed_ms":11004.106083,"exec":3,"host_calls":0,"is_error":true,"probe":"P6b-thread","text":"Error: Execution timed out after 10 seconds"}
+{"code":"async function run() {\nreturn /^(a+)+$/.test(\"a\".repeat(40) + \"b\")\n}","elapsed_ms":10001.273958,"exec":4,"host_calls":0,"is_error":true,"probe":"P6b-thread","text":"Error: Execution timed out after 10 seconds while waiting for a JavaScript worker"}
+{"cpu_seconds_used_in_3s":5.93,"exec":"after-batch","os_threads":19,"probe":"P6b-thread"}
+{"code":"async function run() {\nreturn 1+1\n}","elapsed_ms":10001.940917,"exec":5,"host_calls":0,"is_error":true,"probe":"P6b-thread","text":"Error: Execution timed out after 10 seconds while waiting for a JavaScript worker"}

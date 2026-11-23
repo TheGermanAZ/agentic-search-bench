@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "no-limit-within-120s",
+  "display": "no-limit-within-120s",
+  "detail": "harness time watchdog at 120.1 s; nothing stopped the loop",
+  "evidence": "research/probes/llamaindex-codeact/out/P6.txt"
+}

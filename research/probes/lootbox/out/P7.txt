@@ -1,0 +1,15 @@
+code:
+const a = []; while (true) a.push("x".repeat(1e6))
+
+result:
+{
+  "id": "4284a447-96e3-4e3b-965d-0fc578437b45",
+  "error": "\u001b[0m\u001b[32mDownload\u001b[0m http://localhost:41310/client.ts?v=1\n\u001b[0m\u001b[32mCheck\u001b[0m file:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/be7eeb047602676a.ts\n",
+  "ms": 6969,
+  "hostCalls": 0
+}
+
+baseline tree RSS bytes: 525107200
+peak tree RSS bytes: 4313645056
+harness killed the largest child 76903 at 4314 MB tree RSS, 6844 ms
+next execution after P7: {"id":"0e6af99f-9749-432a-96a4-160ee61c3294","result":"alive\n","ms":422,"hostCalls":0}

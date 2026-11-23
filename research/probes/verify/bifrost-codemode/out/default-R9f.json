@@ -1,0 +1,585 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/../_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/adapter.mjs default R9f",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 11395,
+  "peakTreeRssMb": 163,
+  "peakTreeFootprintMb": 87,
+  "watchKill": null,
+  "record": {
+    "impl": "bifrost-codemode",
+    "config": "default",
+    "test": "R9f",
+    "notes": "maximhq/bifrost:v2.6.0, data/config.json; gateway restarted for this test (10097 ms); new MCP client per execution; Starlark codes",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 10202,
+          "ms": 948,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 482,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:3:11: in <toplevel>\n  ... 109993 more frames ...\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\nError: stack overflow\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 482
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 10214,
+          "ms": 905,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 482,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:3:11: in <toplevel>\n  ... 109993 more frames ...\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\nError: stack overflow\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 482
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 10217,
+          "ms": 932,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 482,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:3:11: in <toplevel>\n  ... 109993 more frames ...\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\nError: stack overflow\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 482
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 10217,
+          "ms": 854,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 482,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:3:11: in <toplevel>\n  ... 109993 more frames ...\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\nError: stack overflow\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 482
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 10217,
+          "ms": 839,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 482,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:3:11: in <toplevel>\n  ... 109993 more frames ...\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\nError: stack overflow\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 482
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 10218,
+          "ms": 912,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 482,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:3:11: in <toplevel>\n  ... 109993 more frames ...\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\nError: stack overflow\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 482
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 10218,
+          "ms": 765,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 482,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:3:11: in <toplevel>\n  ... 109993 more frames ...\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\nError: stack overflow\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 482
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 10218,
+          "ms": 930,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 482,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:3:11: in <toplevel>\n  ... 109993 more frames ...\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\nError: stack overflow\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 482
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 10369,
+        "ms": 440,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 50,
+            "text": "Execution completed successfully.\nReturn value: 42"
+          },
+          "stringChars": 50
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 10818,
+        "ms": 255,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 50,
+            "text": "Execution completed successfully.\nReturn value: 42"
+          },
+          "stringChars": 50
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 11150,
+        "ms": 209,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 50,
+            "text": "Execution completed successfully.\nReturn value: 42"
+          },
+          "stringChars": 50
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "gatewayStartMs": 10097,
+      "containerBaselineMb": 303,
+      "containerPeakMb": 3384,
+      "containerLastMb": 3384,
+      "containerKilled": null,
+      "containerRssMsMb": [
+        [
+          58,
+          303
+        ],
+        [
+          557,
+          2038
+        ],
+        [
+          1027,
+          3384
+        ]
+      ]
+    },
+    "hostMaxEventLoopLagMs": 27,
+    "hostEvents": [],
+    "totalMs": 11359
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      77,
+      67,
+      25
+    ],
+    [
+      227,
+      76,
+      33
+    ],
+    [
+      381,
+      76,
+      33
+    ],
+    [
+      533,
+      76,
+      33
+    ],
+    [
+      682,
+      76,
+      33
+    ],
+    [
+      834,
+      76,
+      33
+    ],
+    [
+      988,
+      76,
+      33
+    ],
+    [
+      1140,
+      109,
+      33
+    ],
+    [
+      1296,
+      120,
+      46
+    ],
+    [
+      1446,
+      76,
+      46
+    ],
+    [
+      1599,
+      76,
+      33
+    ],
+    [
+      1757,
+      76,
+      33
+    ],
+    [
+      1902,
+      76,
+      33
+    ],
+    [
+      2055,
+      76,
+      32
+    ],
+    [
+      2208,
+      76,
+      33
+    ],
+    [
+      2360,
+      76,
+      33
+    ],
+    [
+      2517,
+      76,
+      33
+    ],
+    [
+      2669,
+      76,
+      32
+    ],
+    [
+      2821,
+      76,
+      33
+    ],
+    [
+      2974,
+      76,
+      33
+    ],
+    [
+      3126,
+      84,
+      33
+    ],
+    [
+      3279,
+      76,
+      33
+    ],
+    [
+      3463,
+      88,
+      33
+    ],
+    [
+      3586,
+      76,
+      32
+    ],
+    [
+      3739,
+      76,
+      33
+    ],
+    [
+      3889,
+      76,
+      33
+    ],
+    [
+      4042,
+      75,
+      33
+    ],
+    [
+      4199,
+      76,
+      33
+    ],
+    [
+      4348,
+      86,
+      33
+    ],
+    [
+      4499,
+      76,
+      32
+    ],
+    [
+      4653,
+      117,
+      33
+    ],
+    [
+      4807,
+      76,
+      33
+    ],
+    [
+      4959,
+      76,
+      33
+    ],
+    [
+      5112,
+      76,
+      33
+    ],
+    [
+      5260,
+      76,
+      33
+    ],
+    [
+      5413,
+      76,
+      33
+    ],
+    [
+      5566,
+      76,
+      32
+    ],
+    [
+      5719,
+      76,
+      33
+    ],
+    [
+      5871,
+      76,
+      33
+    ],
+    [
+      6023,
+      76,
+      33
+    ],
+    [
+      6178,
+      76,
+      33
+    ],
+    [
+      6330,
+      76,
+      33
+    ],
+    [
+      6481,
+      76,
+      32
+    ],
+    [
+      6633,
+      76,
+      33
+    ],
+    [
+      6785,
+      76,
+      33
+    ],
+    [
+      6938,
+      76,
+      33
+    ],
+    [
+      7091,
+      76,
+      33
+    ],
+    [
+      7244,
+      85,
+      33
+    ],
+    [
+      7397,
+      76,
+      33
+    ],
+    [
+      7549,
+      110,
+      33
+    ],
+    [
+      7702,
+      76,
+      33
+    ],
+    [
+      7854,
+      76,
+      33
+    ],
+    [
+      8009,
+      76,
+      33
+    ],
+    [
+      8161,
+      76,
+      32
+    ],
+    [
+      8310,
+      76,
+      33
+    ],
+    [
+      8466,
+      76,
+      33
+    ],
+    [
+      8619,
+      76,
+      33
+    ],
+    [
+      8772,
+      76,
+      33
+    ],
+    [
+      8925,
+      76,
+      33
+    ],
+    [
+      9077,
+      76,
+      32
+    ],
+    [
+      9228,
+      76,
+      33
+    ],
+    [
+      9382,
+      76,
+      33
+    ],
+    [
+      9536,
+      76,
+      33
+    ],
+    [
+      9688,
+      76,
+      32
+    ],
+    [
+      9842,
+      76,
+      33
+    ],
+    [
+      9992,
+      76,
+      33
+    ],
+    [
+      10147,
+      78,
+      35
+    ],
+    [
+      10301,
+      117,
+      60
+    ],
+    [
+      10590,
+      117,
+      73
+    ],
+    [
+      10716,
+      163,
+      74
+    ],
+    [
+      11033,
+      68,
+      75
+    ],
+    [
+      11194,
+      116,
+      75
+    ],
+    [
+      11345,
+      72,
+      75
+    ]
+  ]
+}

@@ -1,0 +1,41 @@
+
+<--- Last few GCs --->
+
+[16312:0xbd9884000]     9491 ms: Scavenge (during sweeping) 1392.5 (1396.2) -> 1392.3 (1398.0) MB, pooled: 0.0 MB, 6.13 / 0.00 ms (average mu = 0.113, current mu = 0.135) allocation failure; 
+[16312:0xbd9884000]    10421 ms: Incremental Mark-Compact (reduce) 1395.0 (1400.7) -> 1394.8 (1397.0) MB, pooled: 0.0 MB, 813.36 / 0.00 ms (+ 1.8 ms in 43 steps since start of marking, biggest step 0.1 ms, walltime since start of marking 817 ms) (average 
+
+
+#
+# Fatal JavaScript out of memory: Ineffective mark-compacts near heap limit
+#
+==== C stack trace ===============================
+
+    0   codex-code-mode-host                0x000000010641bd04 v8::base::debug::StackTrace::StackTrace() + 28
+    1   codex-code-mode-host                0x00000001057dcbc4 v8::platform::DefaultPlatform::GetStackTracePrinter() + 36
+    2   codex-code-mode-host                0x000000010642608c v8::base::FatalOOM(v8::base::OOMType, char const*) + 68
+    3   codex-code-mode-host                0x00000001063f41c0 v8::Utils::ReportApiFailure(char const*, char const*) + 0
+    4   codex-code-mode-host                0x00000001063f4120 v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) + 336
+    5   codex-code-mode-host                0x0000000106231a64 v8::internal::Heap::stack() + 0
+    6   codex-code-mode-host                0x000000010623169c v8::internal::Heap::OldGenerationConsumedBytes() const + 0
+    7   codex-code-mode-host                0x0000000106230868 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags, v8::base::StrongAlias<v8::internal::PerformHeapLimitCheckTag, bool>, v8::base::StrongAlias<v8::internal::PerformIneffectiveMarkCompactCheckTag, bool>) + 1040
+    8   codex-code-mode-host                0x00000001062b7de4 v8::internal::StackGuard::HandleInterrupts(v8::internal::StackGuard::InterruptLevel) + 80
+    9   codex-code-mode-host                0x0000000105e7898c v8::internal::Runtime_HandleNoHeapWritesInterrupts(int, unsigned long*, v8::internal::Isolate*) + 64
+    10  codex-code-mode-host                0x0000000104d0d20c simdutf__utf8_length_from_latin1 + 818648
+    11  ???                                 0x000000017000063c 0x0 + 6174017084
+    12  codex-code-mode-host                0x0000000104c9a290 simdutf__utf8_length_from_latin1 + 347740
+    13  codex-code-mode-host                0x0000000104c536a4 simdutf__utf8_length_from_latin1 + 57968
+    14  codex-code-mode-host                0x0000000104c5339c simdutf__utf8_length_from_latin1 + 57192
+    15  codex-code-mode-host                0x00000001062e7ae0 v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::DirectHandle<v8::internal::Object>, v8::internal::DirectHandle<v8::internal::Object>, v8::base::Vector<v8::internal::DirectHandle<v8::internal::Object> const>) + 3788
+    16  codex-code-mode-host                0x00000001062e8118 v8::internal::Execution::TryCallScript(v8::internal::Isolate*, v8::internal::DirectHandle<v8::internal::JSFunction>, v8::internal::DirectHandle<v8::internal::Object>, v8::internal::DirectHandle<v8::internal::FixedArray>) + 276
+    17  codex-code-mode-host                0x00000001062e8214 v8::internal::Execution::TryCall(v8::internal::Isolate*, v8::internal::DirectHandle<v8::internal::Object>, v8::internal::DirectHandle<v8::internal::Object>, v8::base::Vector<v8::internal::DirectHandle<v8::internal::Object> const>, v8::internal::Execution::MessageHandling, v8::internal::MaybeDirectHandle<v8::internal::Object>*) + 140
+    18  codex-code-mode-host                0x0000000105f83d08 v8::internal::SourceTextModule::ExecuteModule(v8::internal::Isolate*, v8::internal::DirectHandle<v8::internal::SourceTextModule>, v8::internal::MaybeDirectHandle<v8::internal::Object>*) + 188
+    19  codex-code-mode-host                0x0000000105f8354c v8::internal::SourceTextModule::InnerModuleEvaluation(v8::internal::Isolate*, v8::internal::Handle<v8::internal::SourceTextModule>, v8::internal::ZoneForwardList<v8::internal::Handle<v8::internal::SourceTextModule>>*, unsigned int*) + 1916
+    20  codex-code-mode-host                0x0000000105f82c60 v8::internal::SourceTextModule::Evaluate(v8::internal::Isolate*, v8::internal::Handle<v8::internal::SourceTextModule>) + 216
+    21  codex-code-mode-host                0x0000000105fb72e8 v8::internal::Module::Evaluate(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Module>) + 216
+    22  codex-code-mode-host                0x00000001063f6be0 v8::Module::Evaluate(v8::Local<v8::Context>) + 368
+    23  codex-code-mode-host                0x0000000104381f44 codex_code_mode_runtime::runtime::run_runtime::h7962c16beaa86e09 + 7936
+    24  codex-code-mode-host                0x000000010435459c std::sys::backtrace::__rust_begin_short_backtrace::h328071fe6bd93bfb + 328
+    25  codex-code-mode-host                0x00000001041bf6f4 std::sys::backtrace::__rust_begin_short_backtrace::hba92dac37d260b78 + 5728
+    26  codex-code-mode-host                0x0000000104aae21c _RNvNtNtNtNtCsg55jX0GwzBC_3std3sys12thread_local11destructors4list8register + 6616
+    27  libsystem_pthread.dylib             0x000000018acc5c58 _pthread_start + 136
+    28  libsystem_pthread.dylib             0x000000018acc0c1c thread_start + 8

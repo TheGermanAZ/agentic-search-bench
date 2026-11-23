@@ -1,0 +1,21 @@
+probe: P1 (hardened)
+binary: goose-codemode-hardened-probe
+GOOSE_DEFAULT_EXTENSION_TIMEOUT=10
+process wall_ms: 686.6
+peak_rss_mb: 7.6
+exit: 0
+killed: None
+
+{"exec": "config", "probe": "P1", "timeout_seconds": 10}
+
+--- execution 0 ---
+code:
+async function run() {
+const r = await tools.call("lookup", {id: 21}); console.log(r.value)
+}
+is_error: False
+elapsed_ms: 206.73
+host_calls: 1
+text returned to model:
+42
+

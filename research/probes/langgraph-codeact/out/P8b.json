@@ -1,0 +1,7 @@
+{
+  "probe": "P8b",
+  "outcome": "error",
+  "display": "error (def can't see tools)",
+  "detail": "Error during execution: NameError(\"name 'lookup' is not defined\") Error during execution: NameError(\"name 'lookup' is not defined\")",
+  "evidence": "research/probes/langgraph-codeact/out/P8b.txt"
+}

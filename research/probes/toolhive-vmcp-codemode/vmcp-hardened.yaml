@@ -1,0 +1,22 @@
+# hardened config for the toolhive-vmcp-codemode probe. One static backend: the SPEC lookup MCP server on 127.0.0.1:42141.
+name: "probe-vmcp"
+groupRef: "probe-group"
+backends:
+  - name: probe
+    url: http://127.0.0.1:42141/mcp
+    transport: streamable-http
+incomingAuth:
+  type: anonymous
+outgoingAuth:
+  source: inline
+  default:
+    type: unauthenticated
+aggregation:
+  conflictResolution: prefix
+  conflictResolutionConfig:
+    prefixFormat: "{workload}_"
+codeMode:
+  enabled: true
+  stepLimit: 10000             # 10x below the 100000 default; minimum allowed is 1 (+kubebuilder:validation:Minimum=1), which rejects any useful script
+  parallelMaxConcurrency: 5    # default 10
+  toolCallTimeout: 5s          # default 30s

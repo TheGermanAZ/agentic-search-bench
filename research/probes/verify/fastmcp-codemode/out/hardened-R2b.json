@@ -1,0 +1,82 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py hardened R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 640,
+  "peakTreeRssMb": 109,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R2b",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(hardened {'limits': {'max_feed_duration_secs': 10, 'max_memory': 50000000}, 'wall_clock_timeout_secs': 60}); new in-process Client per execution",
+    "data": {
+      "label": "",
+      "startMs": 508,
+      "ms": 83,
+      "ok": true,
+      "result": {
+        "is_error": false,
+        "text": "[\"Exception\",\"call_tool('failing') failed: Error calling tool 'failing': host-tool-boom internal detail db=postgres://user:pw@host\",\"Exception(\\\"call_tool('failing') failed: Error calling tool 'failing': host-tool-boom internal detail db=postgres://user:pw@host\\\")\"]"
+      },
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 32,
+    "totalMs": 591
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "         │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 5 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/probe │\n                    │ s/verify/_py/../fastmcp-codemode/adapter.py:40 in        │\n                    │ failing                                                  │\n                    │                                                          │\n                    │   37 │   @mcp.tool                                       │\n                    │   38 │   async def failing() -> dict:                    │\n                    │   39 │   │   \"\"\"Always fails.\"\"\"                         │\n                    │ ❱ 40 │   │   return await host[\"failing\"]()              │\n                    │   41 │                                                   │\n                    │   42 │   @mcp.tool                                       │\n                    │   43 │   async def rich() -> dict:                       │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/probe │\n                    │ s/verify/_py/rcore.py:38 in failing                      │\n                    │                                                          │\n                    │    35                                                    │\n                    │    36                                                    │\n                    │    37 async def failing():                               │\n                    │ ❱  38 │   raise RuntimeError(\"host-tool-boom internal de │\n                    │    39                                                    │\n                    │    40                                                    │\n                    │    41 async def rich():                                  │\n                    ╰──────────────────────────────────────────────────────────╯\n                    RuntimeError: host-tool-boom internal detail                \n                    db=postgres://user:pw@host                                  \n",
+  "rssSamplesMsMb": [
+    [
+      78,
+      33
+    ],
+    [
+      128,
+      42
+    ],
+    [
+      178,
+      48
+    ],
+    [
+      228,
+      55
+    ],
+    [
+      279,
+      57
+    ],
+    [
+      330,
+      62
+    ],
+    [
+      381,
+      67
+    ],
+    [
+      431,
+      77
+    ],
+    [
+      481,
+      82
+    ],
+    [
+      536,
+      86
+    ],
+    [
+      587,
+      96
+    ],
+    [
+      639,
+      109
+    ]
+  ]
+}

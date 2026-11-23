@@ -1,0 +1,7 @@
+{
+  "probe": "P5",
+  "outcome": "blocked",
+  "detail": "InterpreterError: Code execution failed at line 'import os' due to: InterpreterError: Import of os is not allowed. Authorized imports are: ['queue', 'stat', 'statistics', 'unicodedata', 'itertools', 'random', 're', 'collections', 'math', 'datetime', 'time']",
+  "wall_ms": 0.3,
+  "config": "LocalPythonExecutor(additional_authorized_imports=[], timeout_seconds=5)"
+}

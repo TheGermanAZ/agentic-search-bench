@@ -1,0 +1,178 @@
+{
+  "impl": "codex-sandbox",
+  "name": "OpenAI Codex CLI shell sandbox (macOS Seatbelt via `codex sandbox`)",
+  "source": "https://github.com/openai/codex (installed @openai/codex via bun)",
+  "pinned": "codex-cli 0.169.0; source tag rust-v0.169.0 = d32063f96c2dff1dc96af839b3952abb6acfeda4",
+  "language": "shell / python3 (any process)",
+  "engine": "/usr/bin/sandbox-exec with a generated Seatbelt (SBPL) profile; the command runs as a normal macOS process under it",
+  "how_run": "`codex sandbox [-c sandbox_mode=\"workspace-write\"] -- <argv>` from the native vendor binary, CODEX_HOME pointed at an empty folder so no user config applies; each probe ran in the default read-only mode and in workspace-write; no model call.",
+  "probes": {
+    "P1": {
+      "outcome": "not-applicable",
+      "detail": "No in-sandbox tool bridge: the sandbox runs one shell command with inherited stdio. Codex's real tool-calling code path is its separate code mode; see research/probes/codex-sandbox/out/codemode/codex-codemode.results.json.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/cli/src/debug_sandbox.rs#L205-L455"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "stdout came back whole: 200,001 chars (200,000 A's + newline), no truncation marker; the bare \"RETURNED\" expression is not printed by python -c, so only printed output reaches the caller. `codex sandbox` inherits stdio and caps nothing; the agent's exec path caps output separately (1 MiB raw, 10,000 tokens default to the model).",
+      "evidence": "research/probes/codex-sandbox/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "blocked",
+      "detail": "Both modes. python: URLError <urlopen error [Errno 8] nodename nor servname provided, or not known>; curl: (6) Could not resolve host: example.com. With network off no network rule is emitted, so deny-default blocks DNS and sockets.",
+      "evidence": "research/probes/codex-sandbox/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "Both modes read /etc/hosts (python open and head -c 200; output limited to the standard 200-char header on purpose). Default profiles grant full-disk read.",
+      "evidence": "research/probes/codex-sandbox/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "works",
+      "detail": "PROBE_SECRET=s3cr3t visible to python os.environ and sh in both modes. Default shell_environment_policy inherits all vars and skips the *KEY*/*SECRET*/*TOKEN* exclude list.",
+      "evidence": "research/probes/codex-sandbox/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "python `while True: pass` killed by the harness at 120 s (read-only mode); Seatbelt has no CPU or time rules and `codex sandbox` waits on the child without a timeout. The agent's exec path defaults to a 10 s timeout instead.",
+      "evidence": "research/probes/codex-sandbox/out/P6.txt"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "python appending 1e6-char strings: harness killed the process tree at 4,102 MB RSS after 18.5 s; no memory rule exists in the profile",
+      "evidence": "research/probes/codex-sandbox/out/P7.txt"
+    },
+    "P8": {
+      "outcome": "not-applicable",
+      "detail": "Each `codex sandbox` call is a new process; there is no execution session to persist state in. Files written to the workspace (workspace-write) persist, as on any disk.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/cli/src/debug_sandbox.rs#L205-L455"
+    },
+    "P9": {
+      "outcome": "not-applicable",
+      "detail": "No host tool bridge to call concurrently from inside the sandbox.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/cli/src/debug_sandbox.rs#L205-L455"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "exit 1; stderr carries the full traceback: 'Traceback (most recent call last):\\n  File \"<string>\", line 1, in <module>\\n    raise ValueError(\"probe-boom\")\\nValueError: probe-boom'",
+      "evidence": "research/probes/codex-sandbox/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "codex sandbox -- python3 -c 'print(2)': first 58.5 ms, then median 51.2 ms, p90 69.4 ms over 20 runs. Bare python3 without the sandbox: median 17.4 ms, so the codex binary, config load and sandbox-exec add about 34 ms (inferred by subtraction).",
+      "evidence": "research/probes/codex-sandbox/out/P11.txt and research/probes/codex-sandbox/out/P11-baseline-no-sandbox.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "Language-level access is unrestricted by design: os.system printed PWNED and ().__class__.__base__.__subclasses__() reached _wrap_close and its os globals (Popen absent because subprocess was not imported). But every child inherits the Seatbelt profile: os.system('echo PWNED > research/probes/codex-sandbox/out/P12-escape-write.txt') returned 256 with 'Operation not permitted' in both modes and the file was never created. The boundary is the OS sandbox, which held.",
+      "evidence": "research/probes/codex-sandbox/out/P12.txt"
+    }
+  },
+  "defaults": {
+    "time": "none in Seatbelt or `codex sandbox`; the agent's one-shot exec defaults to 10 s (DEFAULT_EXEC_COMMAND_TIMEOUT_MS)",
+    "memory": "none",
+    "output": "none in `codex sandbox` (inherited stdio); agent exec captures up to 1 MiB and returns 10,000 tokens by default to the model",
+    "tool_calls": "not applicable (no tool bridge)"
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "No tool API. The sandbox wraps one argv: SandboxManager.transform builds `/usr/bin/sandbox-exec -p <policy> -D... -- <argv>`.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/cli/src/debug_sandbox.rs#L405-L436, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/sandboxing/src/seatbelt.rs#L61, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/sandboxing/src/seatbelt.rs#L1048-L1057"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Not applicable to the sandbox. (Codex code mode has its own discovery; see the codex-codemode results.)",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/features/src/lib.rs#L150-L153"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "None. The child inherits stdin/stdout/stderr and `codex sandbox` waits for exit with no timeout.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/cli/src/debug_sandbox.rs#L520-L534, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/cli/src/debug_sandbox.rs#L438"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Seatbelt profile starting with (deny default), then allow process-exec/fork so children inherit the policy, allow-listed sysctls and mach services. Read access is full-disk `(allow file-read*)` for the default profiles; writes only to writable roots (none in read-only, cwd + temp dirs in workspace-write); network rules are added only when network is enabled, so the default emits none.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/sandboxing/src/seatbelt_base_policy.sbpl#L7-L13, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/sandboxing/src/seatbelt.rs#L926-L931, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/sandboxing/src/seatbelt.rs#L354-L366, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/sandboxing/src/seatbelt.rs#L989-L1036"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "`codex sandbox` passes stdio through. In the agent, one-shot exec caps raw output at DEFAULT_OUTPUT_BYTES_CAP (1 MiB) and unified exec returns at most 10,000 tokens by default.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/core/src/exec.rs#L80, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/core/src/unified_exec/mod.rs#L74-L76"
+    },
+    {
+      "topic": "Limits",
+      "finding": "No CPU, memory or process-count rules in the SBPL files or the generated sections. Time limits exist only in the agent: DEFAULT_EXEC_COMMAND_TIMEOUT_MS = 10,000.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/sandboxing/src/seatbelt_base_policy.sbpl#L1-L116, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/core/src/exec.rs#L62"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh process per command. `codex sandbox` with no flags uses legacy read-only mode unless the config uses permission profiles or the CLI passes sandbox_mode.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/cli/src/debug_sandbox.rs#L585-L626"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Whatever the process writes to stderr plus its exit code; Seatbelt denials surface as EPERM ('Operation not permitted') or, for network, as DNS resolution failures. --log-denials can print the denials.",
+      "evidence": "research/probes/codex-sandbox/out/P3.txt, research/probes/codex-sandbox/out/P12.txt"
+    },
+    {
+      "topic": "Other",
+      "finding": "Environment: shell_environment_policy defaults to inherit=All and ignore_default_excludes=true, so host secrets pass to sandboxed commands unless configured; only a fixed list of Codex-internal tokens is always scrubbed. CODEX_SANDBOX=seatbelt and CODEX_SANDBOX_NETWORK_DISABLED=1 are injected.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/config/src/shell_environment_policy.rs#L135-L136, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/protocol/src/shell_environment.rs#L14-L21, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/protocol/src/shell_environment.rs#L139-L143, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/cli/src/debug_sandbox.rs#L397-L404, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/cli/src/debug_sandbox.rs#L525-L527"
+    }
+  ],
+  "surprises": [
+    "Codex does have a code mode: codex-cli 0.169.0 ships codex-code-mode-host (V8) behind the `code_mode` feature flag (stage UnderDevelopment, off by default). Probed separately in research/probes/codex-sandbox/out/codemode/.",
+    "Secrets in the host environment reach sandboxed commands by default: the *KEY*/*SECRET*/*TOKEN* exclude list exists but ignore_default_excludes defaults to true (P5).",
+    "Read-only still means full-disk read: any file the user can read is readable inside the sandbox (P4).",
+    "Blocked network surfaces as 'Could not resolve host' / 'nodename nor servname provided', not a permission error, which can mislead a model into retrying (P3).",
+    "No time or memory limit at the sandbox layer; limits live in the agent's exec tool only (P6, P7)."
+  ],
+  "hardened": {
+    "config": "codex sandbox -c shell_environment_policy.inherit=\"core\" -c shell_environment_policy.ignore_default_excludes=false -c 'permissions.hardened.filesystem={\":minimal\"=\"read\",\":workspace_roots\"=\"read\",\"/opt/homebrew/Cellar/python@3.15/3.15.0_1\"=\"read\",\"/etc/**\"=\"deny\",\"/private/etc/**\"=\"deny\"}' -c permissions.hardened.network.enabled=false -P hardened -C research/probes/codex-sandbox/work -- <argv>, with CODEX_HOME at the empty research/impls/codex-sandbox/codex-home-hardened. Sources (research/impls/codex-sandbox/src/codex-rs (tag rust-v0.169.0)): env inherit modes all/core/none (protocol/src/config_types.rs:207-218; core keeps PATH, SHELL, TMPDIR, HOME, LANG, LC_*, LOGNAME, USER, protocol/src/shell_environment.rs:178-181), applied by codex sandbox at cli/src/debug_sandbox.rs:257; ignore_default_excludes defaults true (config/src/shell_environment_policy.rs:136); permission profiles with filesystem read/write/deny entries, special paths and network.enabled (config/src/permissions_toml.rs:113-119, 224-231, 330-348; core/src/config/permissions.rs:834-848); -P/--permission-profile and -C (cli/src/lib.rs:59-79). The python keg read grant is needed because :minimal does not cover Homebrew. A plain \"/etc\"=\"deny\" entry is silently overridden under :minimal (platform defaults allow /etc, sandboxing/src/seatbelt_read_only_platform_defaults.sbpl:94-95; path denies are only carved out of a matching readable root, sandboxing/src/seatbelt.rs:957), so the glob form is used (out/hardened-P4-variants.txt). No time, CPU or memory option exists: codex sandbox waits on the child with no timeout (cli/src/debug_sandbox.rs:438) and Seatbelt profiles carry no resource rules.",
+    "probes": {
+      "P3": {
+        "outcome": "blocked",
+        "detail": "python raw socket: socket.gaierror [Errno 8] nodename nor servname provided; urllib fails earlier (unknown url type https: Homebrew _ssl cannot load OpenSSL outside the readable roots); curl fails reading the denied /private/etc/ssl/openssl.cnf. Network is off: no network rule is emitted.",
+        "evidence": "research/probes/codex-sandbox/out/hardened-P3.txt",
+        "display": "blocked (DNS denied, network off)"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "python open and head -c 200 /etc/hosts: Operation not permitted; a repo file outside the workspace root (research/probes/SPEC.md) also denied. Without the /etc/** glob deny, /etc/hosts stays readable under :minimal, and a plain \"/etc\" path deny does not help (hardened-P4-variants.txt).",
+        "evidence": "research/probes/codex-sandbox/out/hardened-P4.txt and research/probes/codex-sandbox/out/hardened-P4-variants.txt",
+        "display": "blocked (/etc/** glob deny)"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "PROBE_SECRET absent in python (None) and sh ([]); child env is CODEX_SANDBOX, CODEX_SANDBOX_NETWORK_DISABLED, HOME, LANG, LOGNAME, PATH, SHELL, TMPDIR, USER",
+        "evidence": "research/probes/codex-sandbox/out/hardened-P5.txt",
+        "display": "blocked (env inherit=core)"
+      },
+      "P6": {
+        "outcome": "no-limit-within-120s",
+        "detail": "python `while True: pass` and sh `while :; do :; done` both killed by the harness at 120 s",
+        "evidence": "research/probes/codex-sandbox/out/hardened-P6.txt",
+        "display": "no-limit-within-120s"
+      },
+      "P7": {
+        "outcome": "no-limit-within-120s",
+        "detail": "python appending 1e6-char strings: harness kill at 4,380 MB tree RSS after 1.0 s; sh doubling a string: harness kill at 4,131 MB after 18.0 s; nothing in the sandbox stopped either",
+        "evidence": "research/probes/codex-sandbox/out/hardened-P7.txt",
+        "display": "no-limit-within-120s (4 GB kill)"
+      },
+      "P9": {
+        "outcome": "not-applicable",
+        "detail": "No host tool bridge: codex sandbox runs one argv with inherited stdio.",
+        "evidence": "research/probes/codex-sandbox/out/hardened-P9.txt",
+        "display": "not-applicable (no tool bridge)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "Language access is unrestricted (os.system printed PWNED, _wrap_close reached os.system) but every child keeps the Seatbelt profile: python os.system and sh writes to out/hardened-P12-escape-write.txt got 'Operation not permitted' and the file was never created",
+        "evidence": "research/probes/codex-sandbox/out/hardened-P12.txt",
+        "display": "blocked (os.system stays in Seatbelt)"
+      }
+    }
+  }
+}

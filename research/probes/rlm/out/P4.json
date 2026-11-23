@@ -1,0 +1,5 @@
+{
+  "probe": "P4",
+  "outcome": "works",
+  "detail": "read /etc/hosts: '## | # Host Database | # | # localhost is used to configure '"
+}

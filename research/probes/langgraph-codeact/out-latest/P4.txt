@@ -1,0 +1,32 @@
+probe: P4
+outcome: works
+display: works (read /etc/hosts)
+detail: HOSTS 450 [last line of /etc/hosts redacted]
+
+code:
+----
+data = open("/etc/hosts").read()
+msg = "HOSTS " + str(len(data)) + " " + data.strip().splitlines()[-1]
+print(msg)
+msg
+----
+
+setup_ms: 1.9
+wall_s (whole child process): 0.37
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.063
+host lookup calls: 0
+
+=== run 0 (2.5 ms) ===
+ok: true
+stdout: HOSTS 450 [last line of /etc/hosts redacted]
+
+error: null
+context_keys: ["data", "msg"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+~/p/agentic-search-bench/research/impls/langgraph-codeact/.venv/lib/python3.12/site-packages/langgraph/checkpoint/base/__init__.py:17: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects='messages' or allowed_objects='core') to suppress this warning.
+  from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+

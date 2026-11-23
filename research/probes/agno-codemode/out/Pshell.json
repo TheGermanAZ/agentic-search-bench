@@ -1,0 +1,7 @@
+{
+  "probe": "Pshell",
+  "outcome": "works",
+  "display": "works (!echo)",
+  "detail": "SHELL-42",
+  "evidence": "research/probes/agno-codemode/out/Pshell.txt"
+}

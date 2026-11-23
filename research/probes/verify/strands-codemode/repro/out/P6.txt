@@ -1,0 +1,28 @@
+probe: P6
+outcome: limited
+display: limited (60 s VM time)
+detail: stopped after 60.04 s: Execution error: TimeoutError: time limit exceeded: 60.000058375s > 60s
+
+code:
+----
+while True:
+    pass
+----
+
+setup_ms: 948.5
+wall_s (whole child process): 62.31
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.108
+host lookup calls: 0
+
+=== run 0 (60036.4 ms) ===
+ok: false
+stdout: 
+status: error
+error: Execution error:
+TimeoutError: time limit exceeded: 60.000058375s > 60s
+
+=== child process log (tail) ===
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+

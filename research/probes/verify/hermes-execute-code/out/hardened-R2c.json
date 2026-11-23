@@ -1,0 +1,262 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/hermes-execute-code/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../hermes-execute-code/adapter.py hardened R2c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2299,
+  "peakTreeRssMb": 188,
+  "peakTreeFootprintMb": 138,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R2c",
+    "impl": "hermes-execute-code",
+    "notes": "HERMES_HOME=home-hardened (docker, no network, 512 MB, 1 CPU, strict, timeout 10 s, 50 calls); one process, fresh task_id (container + kernel) per execution",
+    "data": {
+      "label": "",
+      "startMs": 470,
+      "ms": 1785,
+      "ok": true,
+      "result": {
+        "status": "success",
+        "output": "['dict', \"{'fn': '<function rich.<locals>.<lambda> at 0x113fe7e20>', 'd': 'datetime.datetime(1970, 1, 1, 0, 0)', 's': 'plain', 'st': '{1, 2}'}\"]\n",
+        "error": null,
+        "tool_calls_made": 1,
+        "model_sees_chars": 409,
+        "model_sees_head": "{\"status\": \"success\", \"output\": \"['dict', \\\"{'fn': '<function rich.<locals>.<lambda> at 0x113fe7e20>', 'd': 'datetime.datetime(1970, 1, 1, 0, 0)', 's': 'plain', 'st': '{1, 2}'}\\\"]\\n\", \"tool_calls_made\": 1, \"duration_seconds\": 1.11, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 145, \"stdout_bytes_total\": 145, \"stdout_bytes_omitted\": 0}"
+      },
+      "callsStarted": 0
+    },
+    "adapterStats": {
+      "tasks": 1
+    },
+    "hostMaxEventLoopLagMs": 9,
+    "totalMs": 2255
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      76,
+      31,
+      19
+    ],
+    [
+      127,
+      47,
+      19
+    ],
+    [
+      179,
+      55,
+      19
+    ],
+    [
+      229,
+      62,
+      43
+    ],
+    [
+      281,
+      74,
+      43
+    ],
+    [
+      335,
+      78,
+      61
+    ],
+    [
+      382,
+      86,
+      61
+    ],
+    [
+      435,
+      95,
+      61
+    ],
+    [
+      488,
+      117,
+      96
+    ],
+    [
+      535,
+      130,
+      96
+    ],
+    [
+      589,
+      138,
+      108
+    ],
+    [
+      640,
+      168,
+      108
+    ],
+    [
+      694,
+      169,
+      108
+    ],
+    [
+      746,
+      169,
+      121
+    ],
+    [
+      795,
+      169,
+      121
+    ],
+    [
+      847,
+      169,
+      121
+    ],
+    [
+      913,
+      169,
+      121
+    ],
+    [
+      958,
+      169,
+      121
+    ],
+    [
+      1007,
+      169,
+      122
+    ],
+    [
+      1053,
+      169,
+      122
+    ],
+    [
+      1104,
+      170,
+      122
+    ],
+    [
+      1156,
+      129,
+      122
+    ],
+    [
+      1207,
+      127,
+      122
+    ],
+    [
+      1258,
+      144,
+      122
+    ],
+    [
+      1310,
+      162,
+      122
+    ],
+    [
+      1360,
+      171,
+      122
+    ],
+    [
+      1416,
+      125,
+      123
+    ],
+    [
+      1463,
+      170,
+      123
+    ],
+    [
+      1515,
+      128,
+      123
+    ],
+    [
+      1567,
+      169,
+      123
+    ],
+    [
+      1617,
+      151,
+      123
+    ],
+    [
+      1669,
+      125,
+      123
+    ],
+    [
+      1720,
+      136,
+      123
+    ],
+    [
+      1771,
+      157,
+      109
+    ],
+    [
+      1821,
+      131,
+      109
+    ],
+    [
+      1874,
+      135,
+      109
+    ],
+    [
+      1927,
+      188,
+      124
+    ],
+    [
+      1978,
+      187,
+      124
+    ],
+    [
+      2030,
+      142,
+      125
+    ],
+    [
+      2087,
+      142,
+      125
+    ],
+    [
+      2132,
+      187,
+      125
+    ],
+    [
+      2186,
+      187,
+      138
+    ],
+    [
+      2242,
+      181,
+      138
+    ],
+    [
+      2289,
+      186,
+      125
+    ]
+  ]
+}

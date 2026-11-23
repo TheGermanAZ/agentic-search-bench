@@ -1,0 +1,78 @@
+GA = "https://github.com/Protocol-Lattice/go-agent/blob/ebf73f2b10e26b41266d49535c95303821c2590d"
+GU = "https://github.com/universal-tool-calling-protocol/go-utcp/blob/a0edb1984084857cb31f714009c4513451e9b07f"
+CM = f"{GU}/src/plugins/codemode/codemode.go"
+OR = f"{GU}/src/plugins/codemode/orchestrator.go"
+P = "research/probes/lattice-go-agent"
+F = f"{P}/out/fast.jsonl"
+
+IMPL = "lattice-go-agent"
+NAME = "Protocol-Lattice go-agent CodeMode (go-utcp codemode, Expr runtime)"
+SOURCE = "https://github.com/Protocol-Lattice/go-agent (runtime: github.com/universal-tool-calling-protocol/go-utcp src/plugins/codemode)"
+PINNED = "go-agent ebf73f2b10e26b41266d49535c95303821c2590d (2026-09-30); its go.mod pins go-utcp v1.12.3 (a0edb1984084857cb31f714009c4513451e9b07f); expr-lang/expr v1.17.8; built with go1.27.4 linux/arm64 in Docker"
+LANGUAGE = "Expr (expr-lang/expr v1.17)"
+ENGINE = ("expr-lang/expr, a Go expression language compiled and evaluated in the agent's own Go process (a goroutine per execution). "
+          "No loops, no statements, no I/O; the only object in scope is `codemode` with CallTool / CallToolStream / Get.")
+HOW_RUN = ("Go harness run in Docker (Go is not on the host): codemode.NewCodeModeUTCP(fakeClient, nil).Execute(ctx, CodeModeArgs{Code, Timeout: 20000}), "
+           "the call go-agent's CodeMode.CallTool makes after its LLM planning step (orchestrator.go:44). fakeClient implements UtcpClientInterface.CallTool for lookup.")
+
+
+def ev(f):
+    return f"{P}/out/{f}"
+
+
+OVERRIDES = {
+    "P1": {"outcome": "works", "detail": "`let r = codemode.CallTool(\"lookup\", {\"id\": 21}); r.value` returned 42 in 201 ms, 1 host-side call.", "display": "works (42, 1 host call)", "evidence": F},
+    "P2": {"outcome": "works", "detail": "Expr has no print: \"unknown name print (1:1)\". The value is the only output; `repeat(\"A\", 200000)` came back as one 200000-char string, uncapped. CodeModeResult.Stdout exists but is never set.",
+           "display": "no print; value 200,000 chars", "evidence": F},
+    "P3": {"outcome": "not-defined", "detail": "\"unknown name fetch (1:1)\"; `http.Get` gives \"unknown name http\". The language has no I/O.", "display": "not-defined", "evidence": F},
+    "P4": {"outcome": "not-defined", "detail": "\"unknown name readFile\" and \"unknown name os\".", "display": "not-defined", "evidence": F},
+    "P5": {"outcome": "not-defined", "detail": "\"unknown name env\" and \"unknown name os\".", "display": "not-defined", "evidence": F},
+    "P6": {"outcome": "limited",
+           "detail": "Expr has no while loop, so the SPEC form cannot be written. Large ranges die at once on the memory budget (out/P6.jsonl, P6b, P6c). Four nested reduce() over a reused 900-element array ran until Execute returned at 20.0 s with \"execution timed out after 20000ms\". The evaluation did not stop: 3 s later the goroutine was still alive and RSS had reached 491 MB, because the context is never passed to expr.Run.",
+           "display": "limited (20 s; goroutine runs on)", "evidence": ev("P6d.jsonl")},
+    "P7": {"outcome": "limited",
+           "detail": "map(1..100000, repeat(\"x\", 1e6)) failed in 0.3 ms with \"memory budget exceeded\"; nested maps likewise (P7b, P7c). This is Expr's DefaultMemoryBudget of 1e6 units, an allocation counter, not a byte limit: the P6 loop reached 506 MB RSS without tripping it.",
+           "display": "limited (Expr alloc budget)", "evidence": ev("P7.jsonl")},
+    "P8": {"outcome": "fresh", "detail": "Second execution: \"unknown name kept (1:1)\". Each Execute compiles a new program with a fresh env.", "display": "fresh", "evidence": F},
+    "P9": {"outcome": "works", "detail": "map([1..5], codemode.CallTool(\"lookup\", {\"id\": #})) took 1013 ms, 5 host calls. Expr evaluates sequentially and has no concurrency.", "display": "serial (1,013 ms)", "evidence": F},
+    "P10": {"outcome": "works", "detail": "Expr has no throw. A runtime error returns \"Expr runtime error: index out of range: 6 (array length is 2) (1:18)\" plus the source line and a caret. go-agent's tool handler wraps it as \"codemode expression produced an error: ...\".",
+            "display": "message + line:col (no throw)", "evidence": F},
+    "P11": {"outcome": "works", "detail": "Execute (compile + run) of `1 + 1`: median 0.026 ms, p90 0.034 ms over 20 runs. No setup beyond constructing the struct.", "display": "median 0.03 ms", "evidence": F},
+    "P12": {"outcome": "blocked", "detail": "`codemode.client` fails at compile time (\"has no field client\": unexported). `$env` shows only {codemode}. `type(codemode)` reveals the Go type name. No reflection, imports or host objects reachable; the reachable surface is CallTool on any registered UTCP tool, which is the design.",
+            "display": "blocked (no host surface)", "evidence": F},
+}
+
+HARDENED_CONFIG = None
+
+DEFAULTS = {
+    "time": "Execute defaults to 30000 ms (codemode.go:124); go-agent's CodeMode.CallTool passes 20000 (orchestrator.go:44); the generic tool handler defaults to 3000 (codemode.go:148). None stops the evaluating goroutine.",
+    "memory": "Expr DefaultMemoryBudget 1e6 allocation units (expr conf/config.go:15), not configurable through go-utcp or go-agent.",
+    "output": "Value only, uncapped. No print.",
+    "tool_calls": "None.",
+    "hardened": "null: go-agent hard-codes the 20 s timeout on its path and exposes no memory, budget or concurrency option, so no stricter configuration exists.",
+}
+
+SOURCE_NOTES = [
+    {"topic": "API shape", "finding": "No per-tool functions. One `codemode` object with CallTool(name, args), CallToolStream(name, args) and Get(value, key); the env passed to expr.Compile contains only that object.",
+     "evidence": f"{CM}#L77-L96 and #L127-L130"},
+    {"topic": "Discovery", "finding": "Host-side: go-agent ranks UTCP tool specs against the prompt (rankToolSpecs, candidate limit UTCP_CODEMODE_CANDIDATE_LIMIT, default 16) and gives only the candidates to a planner LLM, optionally behind the OpenRouter Jev decision layer that picks the exact tool. Generated code is validated to use only those tool names.",
+     "evidence": f"{OR}#L27-L49 , #L169 , #L208 , #L321 ; {GA}/README.md#L577-L627"},
+    {"topic": "Bridge", "finding": "Direct in-process Go call into UtcpClient.CallTool with the execution context; results come back as Go values.", "evidence": f"{CM}#L79-L82"},
+    {"topic": "Isolation boundary", "finding": "The boundary is the language: Expr cannot loop, import, or do I/O, and only `codemode` is in scope. There is no process or memory isolation. The README says to use CodeMode \"only in trusted environments\", and go-agent refuses codemode.run_code unless AllowUnsafeTools is set.",
+     "evidence": f"{GA}/README.md#L567-L575 ; {GA}/agent.go#L244-L248"},
+    {"topic": "Output channel", "finding": "CodeModeResult{Value, Stdout, Stderr}: Value on success, Stderr holds the error; Stdout is never written.", "evidence": f"{CM}#L20 and #L122-L141"},
+    {"topic": "Limits", "finding": "context.WithTimeout around a goroutine running expr.Run(program, env); on timeout Execute returns but the goroutine keeps evaluating because expr.Run never sees the context. Memory is only Expr's allocation budget.",
+     "evidence": f"{CM}#L122-L141"},
+    {"topic": "State", "finding": "Fresh: compile + run per call.", "evidence": f"{CM}#L130-L134"},
+    {"topic": "Errors", "finding": "Expr compile and runtime errors carry (line:col) and a caret excerpt, wrapped as \"Expr compilation failed\" / \"Expr runtime error\".", "evidence": f"{CM}#L130-L140"},
+    {"topic": "Anything else", "finding": "Not general-purpose code: the planner prompt forbids loops and statements, so code mode here is a typed expression pipeline over tool calls. The LLM-planning path needs a model key; the harness skipped it and called Execute directly.",
+     "evidence": f"{CM}#L31-L54"},
+]
+
+SURPRISES = [
+    "Code mode here is not a programming language: Expr has no loops, no print, no throw and no concurrency, so the SPEC's infinite loop, print and throw cannot be written as such.",
+    "The timeout returns control but never stops the work: the Expr goroutine kept running and growing (491 MB RSS) after Execute returned at 20 s.",
+    "Three different default timeouts on three paths: 30 s (Execute), 20 s (go-agent planner path), 3 s (generic tool handler).",
+    "The only memory guard is Expr's allocation counter, which a nested reduce bypassed while RSS reached about 500 MB.",
+    "Discovery is the most selective seen: deterministic ranking plus an optional external decision model choose candidate tools before the code-writing model sees any schemas.",
+]

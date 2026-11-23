@@ -1,0 +1,181 @@
+probe: P11
+outcome: works
+display: median 2.2 ms
+detail: 20 runs in one session: median 2.2 ms, p90 2.5 ms; one-time setup 3.6 ms; fresh session per run (open+run+close, n=5): median 3.2 ms
+
+code:
+----
+print(2)
+----
+
+setup_ms: 3.6
+wall_s (whole child process): 0.37
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.068
+host lookup calls: 0
+
+=== run 0 (3.3 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 1 (1.8 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 2 (2.2 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 3 (1.9 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 4 (2.6 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 5 (2.3 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 6 (1.8 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 7 (1.8 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 8 (1.7 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 9 (1.9 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 10 (1.9 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 11 (1.8 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 12 (1.9 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 13 (2.3 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 14 (2.3 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 15 (2.3 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 16 (2.3 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 17 (2.5 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 18 (2.3 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+=== run 19 (2.3 ms) ===
+ok: true
+stdout: 2
+
+error: null
+context_keys: []
+host_builtins_leak: false
+
+fresh session (open+run+close) ms: [3.8, 3.3, 3.2, 3.1, 3.1]
+
+=== child process log (tail) ===
+

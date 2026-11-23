@@ -1,0 +1,43 @@
+probe: Precur
+outcome: limited
+display: limited (RecursionError ~1000)
+detail: Unbounded recursion stopped with 'RecursionError: maximum recursion depth exceeded' after ~1000 frames, status error, host alive.
+
+code:
+----
+def f(n):
+    return f(n + 1)
+f(0)
+----
+
+setup_ms: 464.0
+wall_s (whole child process): 1.09
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.092
+host lookup calls: 0
+
+=== run 0 (25.2 ms) ===
+ok: false
+stdout: 
+status: error
+error: Execution error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 3, in <module>
+    f(0)
+    ~~~~
+  File "<python-input-0>", line 2, in f
+    return f(n + 1)
+           ~~~~~~~~
+  File "<python-input-0>", line 2, in f
+    return f(n + 1)
+           ~~~~~~~~
+  File "<python-input-0>", line 2, in f
+    return f(n + 1)
+           ~~~~~~~~
+  [Previous line repeated 997 more times]
+RecursionError: maximum recursion depth exceeded
+
+=== child process log (tail) ===
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+

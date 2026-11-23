@@ -1,0 +1,71 @@
+{
+  "mode": "default",
+  "probe": "P8",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 0,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "globalThis.kept = 7",
+      "ms": 27.63,
+      "hostCalls": 0,
+      "result": {
+        "output": "ReferenceError: Unknown identifier 'globalThis'. (line 1, col 1)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+      "ms": 2.08,
+      "hostCalls": 0,
+      "result": {
+        "output": "Logs:\ngone",
+        "toolCalls": [],
+        "files": []
+      }
+    },
+    {
+      "code": "var kept = 7",
+      "ms": 1.1,
+      "hostCalls": 0,
+      "result": {
+        "output": "null",
+        "toolCalls": [],
+        "files": []
+      }
+    },
+    {
+      "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+      "ms": 0.82,
+      "hostCalls": 0,
+      "result": {
+        "output": "Logs:\ngone",
+        "toolCalls": [],
+        "files": []
+      }
+    },
+    {
+      "code": "kept = 7",
+      "ms": 0.77,
+      "hostCalls": 0,
+      "result": {
+        "output": "ReferenceError: Unknown identifier 'kept'. (line 1, col 1)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+      "ms": 0.66,
+      "hostCalls": 0,
+      "result": {
+        "output": "Logs:\ngone",
+        "toolCalls": [],
+        "files": []
+      }
+    }
+  ]
+}

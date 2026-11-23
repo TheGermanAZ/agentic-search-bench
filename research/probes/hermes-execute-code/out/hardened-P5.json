@@ -1,0 +1,7 @@
+{
+  "probe": "P5",
+  "outcome": "blocked",
+  "display": "blocked (env empty)",
+  "detail": "os.environ has no PROBE_SECRET (printed None); host had it set",
+  "evidence": "research/probes/hermes-execute-code/out/hardened-P5.txt"
+}

@@ -1,0 +1,66 @@
+label: P6
+command: node probe.mjs P6
+child exit: code=0 signal=null
+child wall ms (process start to exit): 11019
+peak child RSS: 175.2 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P6",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "while (true) {}"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 325,
+    "siblingEndMs": 671,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "CodeModeCpuTimeoutError",
+        "code": "CODE_MODE_CPU_TIMEOUT",
+        "message": "Code mode execution exceeded its CPU time limit of 10000ms.",
+        "details": {
+          "cpuTimeoutMs": 10000
+        },
+        "stack": "G: JavaScript runtime exceeded its CPU time limit of 10000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+        "string": "CodeModeCpuTimeoutError: Code mode execution exceeded its CPU time limit of 10000ms."
+      },
+      "wallMs": 10470.686375,
+      "hostCalls": 1
+    }
+  ],
+  "concurrentSiblingRun": {
+    "ok": true,
+    "value": 42,
+    "wallMs": 345.68545900000004,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "ok": true,
+    "value": 42,
+    "wallMs": 212.13454099999944,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 325,
+    "siblingEndMs": 671,
+    "error": "CodeModeCpuTimeoutError: CODE_MODE_CPU_TIMEOUT Code mode execution exceeded its CPU time limit of 10000ms.",
+    "ms": 10471,
+    "sibling": 42,
+    "after": 42
+  },
+  "hostRssAfterMB": 105.4
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:79974) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

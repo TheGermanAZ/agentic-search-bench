@@ -1,0 +1,10 @@
+{
+  "setup_ms": 1541,
+  "result": {
+    "ok": true,
+    "output": "None",
+    "logs": "789 1\nPWNED\nc24b598075de\n0\nPWNED2\n0\nuid=0(root) gid=0(root) groups=0(root)\n\ndocker.sock False Users False\n",
+    "ms": 52.3
+  },
+  "wall_s": 2.0
+}

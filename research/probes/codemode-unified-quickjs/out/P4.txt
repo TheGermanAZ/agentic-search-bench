@@ -1,0 +1,83 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 503,
+    "totalWallMs": 728,
+    "peakTreeRssMB": 330.4,
+    "stderrTail": "pecific runtime\n   - runtime_health_check: Check if a runtime is operational and ready to execute code\n\n✅ Server ready and listening on stdio\n\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:45:49.511Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nimport(\"fs\")\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔄 Shutting down Code Mode MCP server...\n✅ MCP Manager shut down\n✅ Runtime quickjs shut down\n✅ Code Mode MCP server shut down complete\n🚀 Starting Code Mode Unified MCP Server...\n   Name: codemode-unified\n   Version: 0.1.0\n   Transport: stdio\n\n🔌 MCP Integration enabled via CODEMODE_ENABLE_MCP_INTEGRATION\n🔌 Initializing MCP Manager...\n   Connecting to 1 MCP server(s)\n✅ MCP Manager initialized - 1 tools available\n   Namespaces: probe\n🔧 Generating TypeScript declarations for MCP tools...\n✅ TypeScript declarations generated: ./generated/mcp.d.ts\n\nAvailable tools:\n   - execute_code: Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes wi...\n   - list_runtimes: List all available code execution runtimes with their capabilities and status\n   - get_runtime_capabilities: Get detailed capabilities and constraints for a specific runtime\n   - runtime_health_check: Check if a runtime is operational and ready to execute code\n\n✅ Server ready and listening on stdio\n\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:45:49.681Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\n[typeof require, typeof Deno, typeof Bun, typeof std, typeof os].join(\",\")\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔄 Shutting down Code Mode MCP server...\n🔄 Shutting down Code Mode MCP server...\n✅ MCP Manager shut down\n✅ MCP Manager shut down\n✅ Runtime quickjs shut down\n✅ Code Mode MCP server shut down complete\n✅ Code Mode MCP server shut down complete\n"
+  },
+  "runtime": "quickjs",
+  "probe": "P4",
+  "mode": "default",
+  "setupMs": 163.9,
+  "executeToolDescription": "Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes with different capabilities. When MCP integration is enabled, code has access to MCP tools via the global `mcp` object (e.g., mcp.automem.store_memory(), mcp[\"sequential-thinking\"].sequentialthinking()). For TypeScript type definitions and API documentation of available MCP tools, read the resource mcp://types/declarations before writing code.",
+  "transportErrors": [],
+  "record": {
+    "require": {
+      "code": "require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+      "wallMs": 15.7,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "type": "runtime",
+          "code": "RUNTIME",
+          "message": "ReferenceError: 'require' is not defined",
+          "stack": "Error: ReferenceError: 'require' is not defined\n    at file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/sandbox/quickjs-runtime.js:148:28\n    at new Promise (<anonymous>)\n    at QuickJSSandbox.executeWithTimeout (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/sandbox/quickjs-runtime.js:130:16)\n    at QuickJSSandbox.execute (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/sandbox/quickjs-runtime.js:33:39)\n    at async QuickJSRuntime.execute (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/runtime/quickjs-runtime.js:23:24)\n    at async file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:717:37",
+          "timestamp": "2026-11-22T19:45:49.335Z"
+        },
+        "metrics": {
+          "executionTime": 6,
+          "memoryUsed": 0
+        },
+        "runtime": "quickjs"
+      },
+      "threw": null,
+      "freshServer": true,
+      "mcpIntegration": true
+    },
+    "dynamicImport": {
+      "code": "import(\"fs\")",
+      "wallMs": 17,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": {},
+        "logs": [
+          "EXECUTION_STATE: {}"
+        ],
+        "metrics": {
+          "executionTime": 7,
+          "memoryUsed": 0
+        },
+        "runtime": "quickjs"
+      },
+      "threw": null,
+      "freshServer": true,
+      "mcpIntegration": true
+    },
+    "typeofs": {
+      "code": "[typeof require, typeof Deno, typeof Bun, typeof std, typeof os].join(\",\")",
+      "wallMs": 15.7,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "undefined,undefined,undefined,undefined,undefined",
+        "logs": [
+          "EXECUTION_STATE: {}"
+        ],
+        "metrics": {
+          "executionTime": 6,
+          "memoryUsed": 0
+        },
+        "runtime": "quickjs"
+      },
+      "threw": null,
+      "freshServer": true,
+      "mcpIntegration": true
+    }
+  }
+}

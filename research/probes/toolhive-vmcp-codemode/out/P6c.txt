@@ -1,0 +1,9 @@
+--- code 1 ---
+s = "x" * 100000000
+for i in range(2000):
+    s.count("xy")
+return "done after the 60 s script timeout?"
+--- result 1 ---
+{"ms":72891,"hostCalls":0,"ok":true,"isError":false}
+text (37 chars):
+"done after the 60 s script timeout?"

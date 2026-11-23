@@ -1,0 +1,148 @@
+{
+  "impl": "cmcp",
+  "name": "cmcp (Code Mode MCP proxy, Rust)",
+  "source": "https://github.com/assimelha/cmcp",
+  "pinned": "2bf2e58460634c6c8ae8a50cc177719efed99426 (crate code-mode-mcp 0.1.0; no GitHub releases exist). Cargo.lock: rquickjs 0.11.0, oxc 0.114.0, rmcp 0.16.",
+  "language": "TS (types stripped by oxc, run as JS)",
+  "engine": "QuickJS via rquickjs 0.11 (AsyncRuntime + AsyncContext::full), in-process in the Rust proxy. One runtime and one context per proxy state, reused for every search and execute call; 64 MB runtime memory limit.",
+  "how_run": "Built with `cargo build --release --locked` in rust:1-bookworm (container cmcp-build), then run inside Docker: `docker run -i --rm --name cmcp-probe-* -e PROBE_SECRET=s3cr3t node:24-bookworm-slim /opt/cmcp --config /work/state/config.toml serve` (linux/arm64 in Docker Desktop's VM, not the macOS host), with the lookup MCP server (lookup-server.mjs, registered twice as lookup and lookup2 via `cmcp add --transport stdio`) in the same container. P4 /etc/hosts and P5 env therefore refer to the container. run-probes.mjs drives the execute and search tools over MCP stdio, no LLM.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "Tool calls work (1 host call, ~205 ms) but return the raw MCP CallToolResult ({content:[{type:'text',text:'{\"id\":21,\"value\":42}'}]}), so the spec code's r.value is undefined, and console.log goes to the proxy's stderr, not the caller: the spec form returned null. `JSON.parse(r.content[0].text).value` returned 42.",
+      "evidence": "research/probes/cmcp/out/P1.txt",
+      "display": "works (raw MCP result; logs lost)"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "console output never reaches the caller (eprintln to proxy stderr). Only the return value comes back: the spec form (bare expression) gives null, `return \"RETURNED\"` gives \"RETURNED\". A returned 200,000-char string came back as 40,000 chars plus \"\\n\\n[truncated — 160002 chars omitted. Use your code to extract only the data you need, or increase max_length.]\". The model can pass max_length: 0 to get all 200,002 chars. A returned string with a multi-byte char across byte 40,000 panics the handler (lib.rs:154) and the request never gets a reply (out/P2-utf8.txt).",
+      "evidence": "research/probes/cmcp/out/P2.txt",
+      "display": "limited (return only, 40,000 + marker)"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "Error: fetch is not defined; XMLHttpRequest and WebSocket undefined.",
+      "evidence": "research/probes/cmcp/out/P3.txt",
+      "display": "not-defined"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "require is not defined; import('fs'), import('qjs:std'), import('std'), import('/etc/hosts') all fail with \"could not load module\" (no module loader installed); Deno not defined.",
+      "evidence": "research/probes/cmcp/out/P4.txt",
+      "display": "not-defined"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "process is not defined. Guest globals are the JS builtins plus __stderr and __call_tool. PROBE_SECRET was set in the cmcp process env (container).",
+      "evidence": "research/probes/cmcp/out/P5.txt",
+      "display": "not-defined"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "Harness timeout at 120,001 ms. No interrupt handler exists. ping still answered, but a second execute got no answer within 5 s: the engine state mutex is held, so the proxy's execute and search are wedged until restart. Container removed by the harness.",
+      "evidence": "research/probes/cmcp/out/P6.txt",
+      "display": "no-limit-within-120s (proxy wedged)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "Error: out of memory after 184 ms at the 64 MB QuickJS runtime limit; container cgroup memory 97 to 98 MB. The proxy survived and the next execution returned alive. Because the runtime is shared, memory held in a global by one execution is still held for later ones: after an execution kept ~64 MB in globalThis.hog, a later 5 MB allocation failed with out of memory (out/P7-hog.txt).",
+      "evidence": "research/probes/cmcp/out/P7.txt",
+      "display": "limited (64 MB, shared across runs)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "persists: the second execution returned 7. Prototype changes persist too: one execution replaced Array.prototype.map, and a later execution's [1,2,3].map returned the poisoned value; in the first full run it also made the following P9 return 0 ms with no tool calls, so P9 was rerun on a fresh proxy; that P9's console line \"poisoned by an earlier execution\" is in out/stderr-P2_P3_P4_P5_P8_P9_P10_P11_P12.txt.",
+      "evidence": "research/probes/cmcp/out/P8.txt",
+      "display": "persists (incl. prototype poisoning)"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "serial per upstream server: 5 Promise.all lookups to one server took 1,036 ms, 5 host calls. The JS bridge is async, but ClientPool holds a per-server mutex across each call. Four calls split across two servers took 408 ms (2 x 2 serial).",
+      "evidence": "research/probes/cmcp/out/P9.txt",
+      "display": "serial per server (1,036 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "isError text: \"execute error: JS promise rejected: Error: probe-boom\\n    at <anonymous> (eval_script:18:11)\". Message and stack survive; line numbers are offset by the injected per-server proxies (user line 1 -> 18, line 3 -> 20, with two servers). Syntax errors come back as \"TypeScript transpile error: parse error: Unexpected token\" with no position.",
+      "evidence": "research/probes/cmcp/out/P10.txt",
+      "display": "message + line (offset +17)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "median 0.33 ms, p90 0.57 ms per execute round trip over stdio (20 runs, persistent context, includes oxc transpile). One-time setup: docker run to initialize response 223 ms (proxy start plus spawning both upstream servers). Load average 39.5 during the run.",
+      "evidence": "research/probes/cmcp/out/P11.txt",
+      "display": "works (0.33 ms median)"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "Function constructor: typeof process is undefined; constructor(\"return process\")() -> process is not defined; sloppy this.process undefined; import('os') cannot load. The native __call_tool and __stderr globals are reachable: __call_tool can call any configured upstream tool by name, and __stderr writes arbitrary lines to the proxy's stderr (not the MCP channel).",
+      "evidence": "research/probes/cmcp/out/P12.txt",
+      "display": "blocked"
+    }
+  },
+  "hardened": null,
+  "defaults": {
+    "time": "None. No timeout or interrupt handler anywhere in src/ (grep for timeout/interrupt finds nothing). P6 ran past 120 s and wedged execute. No option exists to add one.",
+    "memory": "64 MB per proxy runtime, hard-coded (src/sandbox.rs:52), shared by all executions in that proxy process. No option to change it.",
+    "output": "Return value only, pretty-printed JSON truncated to 40,000 bytes with a marker (src/lib.rs:23, 150-160; src/server.rs:18). The per-call max_length argument is model-controlled; 0 disables truncation. console.* goes to proxy stderr only.",
+    "tool_calls": "No cap found.",
+    "hardened": "null: the CLI and config expose no time, memory, network or tool-call options (only --config, server definitions, and the per-call max_length, which the model controls). Checked src/main.rs Cli/Commands and src/config.rs."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Each upstream server becomes a global Proxy object (hyphens to underscores) whose properties are async functions calling __call_tool(server, tool, JSON). The full catalog is also injected as `tools`. TypeScript declarations are generated from each tool's JSON Schema, but they are only prepended to the agent's code before oxc strips them: they are never shown to the model and never type-checked (a string assigned to a number variable and a wrong parameter name both ran, out/setup-typecheck.txt).",
+      "evidence": "https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/sandbox.rs#L163-L187 ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/catalog.rs#L58-L97 ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/sandbox.rs#L361-L389 ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/transpile.rs#L11-L46"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On demand: the search tool runs model-written code over the catalog array (server, name, description, input_schema) inside the same QuickJS context, and returns its result truncated at 40k. Only two tools are in the prompt, so it scales past 100 tools.",
+      "evidence": "https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/sandbox.rs#L82-L111 ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/server.rs#L132-L153 ; out/setup.txt"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "rquickjs Async native function: the JS promise awaits a Rust future that calls rmcp call_tool. The future first locks a per-upstream tokio Mutex and holds it for the whole call, so calls to the same server serialize (P9) while calls to different servers overlap. Results are the raw MCP CallToolResult serialized to JSON, not unwrapped.",
+      "evidence": "https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/sandbox.rs#L122-L146 ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/client.rs#L133-L147 (lock at L144)"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "QuickJS in-process with only builtins plus two native functions; no module loader, no std/os modules. The README claims \"Sandboxed: code runs in a QuickJS engine with a 64 MB memory limit\"; the code matches for memory, files, env and network, but there is no time limit, and the single shared context means one execution can poison or starve later ones.",
+      "evidence": "https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/README.md#L26 ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/sandbox.rs#L50-L80 ; out/P4.txt, P8.txt, P7-hog.txt"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Only the JSON-stringified return value goes back. console.* is a shim that calls __stderr, which eprintln!s to the proxy's stderr, so logs never reach the model. Truncation slices the string at a byte index, which panics on a UTF-8 boundary.",
+      "evidence": "https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/sandbox.rs#L32-L63 ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/lib.rs#L150-L160 ; out/P2-utf8.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Memory: rt.set_memory_limit(64 MB) once per proxy state. Time: none. Output: 40,000 default, overridable per call. Tool calls: none.",
+      "evidence": "https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/sandbox.rs#L51-L52 ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/server.rs#L17-L36"
+    },
+    {
+      "topic": "State",
+      "finding": "Persistent. ProxyState holds one Sandbox (one AsyncRuntime/AsyncContext) until a config reload, and every search/execute takes the engine mutex and evaluates in that context, so globals and prototype changes persist and executions are serialized.",
+      "evidence": "https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/lib.rs#L42-L97 (mutex at L71, L84) ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/lib.rs#L135-L147"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Errors become an isError text: \"execute error: JS promise rejected: <message> + stack\" with eval_script line numbers offset by the injected setup; transpile errors drop the position.",
+      "evidence": "https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/sandbox.rs#L189-L196 ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/server.rs#L173-L175 ; out/P10.txt"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "Kept on the host side: `env:VAR` references in config are resolved by the proxy at connect time for HTTP auth headers and stdio child env, and the sandbox only gets server proxies. stdio upstreams inherit the proxy's whole environment (tokio Command default) plus configured vars.",
+      "evidence": "https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/client.rs#L55-L75 ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/client.rs#L108-L118 ; https://github.com/assimelha/cmcp/blob/2bf2e58460634c6c8ae8a50cc177719efed99426/src/client.rs#L201-L206"
+    }
+  ],
+  "surprises": [
+    "No execution time limit at all, and because executions share one context behind a mutex, one `while(true){}` wedges execute and search for the rest of the proxy's life (ping still answers).",
+    "console.log output never reaches the model: it is written to the proxy's stderr. The spec P1 and P2 forms return null to the caller.",
+    "Tool results are the raw MCP CallToolResult, so `(await server.tool()).field` is undefined for normal text-returning servers; the model must parse content[0].text itself. Nothing in the tool descriptions says so.",
+    "README says \"Type-safe: auto-generated TypeScript declarations\" (line 25). The declarations are never shown to the model and oxc strips types without checking, so a wrong parameter name or type mismatch runs without complaint.",
+    "State persists across executions in one shared QuickJS context. A prototype override in one execution changed [].map in a later one, and memory held in a global by one execution made a later 5 MB allocation fail.",
+    "Response truncation slices at a byte index (lib.rs:154). A result whose byte 40,000 falls inside a multi-byte character panics the handler; the MCP request is never answered (client waits forever), though the proxy keeps serving other requests.",
+    "Promise.all over one server is serial (1,036 ms for five 200 ms calls) because of a per-upstream mutex; the tool description is accurate that parallelism is across different servers.",
+    "No releases on GitHub; README asks for `cargo install --path .` and Rust 1.91+, while CLAUDE.md says Rust 1.85+."
+  ]
+}

@@ -1,0 +1,15 @@
+[servers.lookup2]
+transport = "stdio"
+command = "node"
+args = [
+    "/work/lookup-server.mjs",
+    "/work/state/calls.log",
+]
+
+[servers.lookup]
+transport = "stdio"
+command = "node"
+args = [
+    "/work/lookup-server.mjs",
+    "/work/state/calls.log",
+]

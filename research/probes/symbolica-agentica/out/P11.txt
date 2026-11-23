@@ -1,0 +1,8 @@
+probe=P11 mode=from_env AGENTICA_NO_SANDBOX=None PROBE_SECRET set in host: True
+one-time setup (Sandbox + SDKWorld + repl_init, incl. component load): 545 ms
+first execution: 0.9 ms
+20 executions in one session, ms: [0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.4, 0.4, 0.4]
+median 0.3 ms, p90 0.4 ms
+10 fresh sandboxes (new Sandbox + init + print(2) + close), ms: [9, 9, 9, 9, 10, 10, 10, 11, 11, 12]
+fresh median 10 ms, p90 11 ms
+[harness] exit=0 wall=1s container=symbolica-agentica-P11-47887

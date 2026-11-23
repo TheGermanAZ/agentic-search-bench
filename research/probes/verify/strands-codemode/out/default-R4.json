@@ -1,0 +1,110 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R4",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 905,
+  "peakTreeRssMb": 103,
+  "peakTreeFootprintMb": 77,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R4",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "label": "",
+      "startMs": 687,
+      "ms": 148,
+      "ok": true,
+      "result": {
+        "status": "success",
+        "text": "None"
+      },
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 12,
+    "totalMs": 835
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      100,
+      34,
+      0
+    ],
+    [
+      155,
+      45,
+      20
+    ],
+    [
+      212,
+      55,
+      20
+    ],
+    [
+      250,
+      57,
+      20
+    ],
+    [
+      315,
+      65,
+      42
+    ],
+    [
+      366,
+      67,
+      42
+    ],
+    [
+      422,
+      71,
+      42
+    ],
+    [
+      483,
+      76,
+      56
+    ],
+    [
+      566,
+      82,
+      56
+    ],
+    [
+      612,
+      86,
+      56
+    ],
+    [
+      663,
+      89,
+      68
+    ],
+    [
+      716,
+      92,
+      68
+    ],
+    [
+      749,
+      96,
+      68
+    ],
+    [
+      839,
+      103,
+      77
+    ],
+    [
+      904,
+      0,
+      77
+    ]
+  ]
+}

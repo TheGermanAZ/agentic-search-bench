@@ -1,0 +1,317 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py default R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 12645,
+  "peakTreeRssMb": 202,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R5",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich']}), new thread_id per execution",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 1581,
+        "ms": 7987,
+        "ok": true,
+        "result": "<error type=\"PTCCallBudgetExceeded\">PTC call budget exceeded (limit=256, attempted=257, function=tools.lookup)</error>",
+        "callsStarted": 256
+      },
+      "atReturn": {
+        "started": 256,
+        "done": 256
+      },
+      "after3s": {
+        "started": 256,
+        "done": 256
+      }
+    },
+    "hostMaxEventLoopLagMs": 64,
+    "totalMs": 12569
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      166,
+      29
+    ],
+    [
+      324,
+      44
+    ],
+    [
+      472,
+      51
+    ],
+    [
+      650,
+      58
+    ],
+    [
+      823,
+      62
+    ],
+    [
+      974,
+      68
+    ],
+    [
+      1133,
+      74
+    ],
+    [
+      1286,
+      79
+    ],
+    [
+      1431,
+      85
+    ],
+    [
+      1587,
+      89
+    ],
+    [
+      1773,
+      133
+    ],
+    [
+      1986,
+      167
+    ],
+    [
+      2179,
+      181
+    ],
+    [
+      2339,
+      182
+    ],
+    [
+      2493,
+      182
+    ],
+    [
+      2647,
+      182
+    ],
+    [
+      2794,
+      182
+    ],
+    [
+      2954,
+      182
+    ],
+    [
+      3109,
+      182
+    ],
+    [
+      3261,
+      182
+    ],
+    [
+      3452,
+      183
+    ],
+    [
+      3605,
+      183
+    ],
+    [
+      3747,
+      183
+    ],
+    [
+      3896,
+      183
+    ],
+    [
+      4042,
+      183
+    ],
+    [
+      4241,
+      183
+    ],
+    [
+      4399,
+      183
+    ],
+    [
+      4557,
+      183
+    ],
+    [
+      4704,
+      183
+    ],
+    [
+      4853,
+      184
+    ],
+    [
+      5090,
+      184
+    ],
+    [
+      5273,
+      184
+    ],
+    [
+      5426,
+      184
+    ],
+    [
+      5575,
+      184
+    ],
+    [
+      5745,
+      184
+    ],
+    [
+      5924,
+      184
+    ],
+    [
+      6093,
+      184
+    ],
+    [
+      6241,
+      184
+    ],
+    [
+      6449,
+      184
+    ],
+    [
+      6733,
+      185
+    ],
+    [
+      6925,
+      185
+    ],
+    [
+      7079,
+      185
+    ],
+    [
+      7234,
+      190
+    ],
+    [
+      7394,
+      190
+    ],
+    [
+      7546,
+      190
+    ],
+    [
+      7704,
+      190
+    ],
+    [
+      7891,
+      190
+    ],
+    [
+      8034,
+      190
+    ],
+    [
+      8299,
+      190
+    ],
+    [
+      8438,
+      190
+    ],
+    [
+      8625,
+      190
+    ],
+    [
+      8788,
+      190
+    ],
+    [
+      8984,
+      190
+    ],
+    [
+      9326,
+      190
+    ],
+    [
+      9488,
+      190
+    ],
+    [
+      9643,
+      190
+    ],
+    [
+      9807,
+      202
+    ],
+    [
+      9961,
+      202
+    ],
+    [
+      10109,
+      202
+    ],
+    [
+      10259,
+      202
+    ],
+    [
+      10407,
+      202
+    ],
+    [
+      10565,
+      202
+    ],
+    [
+      10973,
+      144
+    ],
+    [
+      11438,
+      143
+    ],
+    [
+      11887,
+      116
+    ],
+    [
+      12124,
+      116
+    ],
+    [
+      12286,
+      116
+    ],
+    [
+      12433,
+      116
+    ],
+    [
+      12595,
+      116
+    ]
+  ]
+}

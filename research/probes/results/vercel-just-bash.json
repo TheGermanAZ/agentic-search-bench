@@ -1,0 +1,187 @@
+{
+  "impl": "vercel-just-bash",
+  "name": "Vercel just-bash",
+  "source": "https://github.com/vercel-labs/just-bash (npm: just-bash)",
+  "pinned": "source ec5ab766551d479f2782b078b373d49ddc78bd26; ran npm just-bash@3.6.1 (same version as packages/just-bash/package.json at that commit)",
+  "language": "Bash (shell script); JS only when javascript is enabled (js-exec, QuickJS); Python off by default",
+  "engine": "Shell: a TypeScript AST interpreter running in the Node.js host realm, with no VM, worker, or process boundary. JS (js-exec): QuickJS compiled to WASM through the run package, with a 64 MiB guest memory cap. Python: CPython on WASM, disabled by default.",
+  "how_run": "new Bash(options) from the package root import { Bash } from \"just-bash\" (the same import bash-tool uses), then await bash.exec(script); host functions registered via customCommands (shell) and javascript.invokeTool (JS).",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed 42, 1 host call. JS variant (js-exec with invokeTool): js-exec + invokeTool printed 42, 1 host call, 352 ms.",
+      "evidence": "research/probes/vercel-just-bash/out/P1.txt (also research/probes/vercel-just-bash/out/P1js.txt)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "printed output only: 200000 A chars came back, the final RETURNED line came back via echo, exit 0. Shells have no expression return value, so there is no separate return channel. No truncation marker in 200010 chars.",
+      "evidence": "research/probes/vercel-just-bash/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "default sandbox: \"bash: curl: command not found\" (exit 127); curl is registered only when network is configured. With an allowlist of https://example.com only: exit 0, first bytes \"<!doctype html><html lang=en><head><meta\".",
+      "evidence": "research/probes/vercel-just-bash/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "cat /etc/hosts: \"cat: /etc/hosts: No such file or directory\" (exit 1); ls /etc shows only the virtual tree.",
+      "evidence": "research/probes/vercel-just-bash/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "echo \"[$PROBE_SECRET]\" printed \"[]\" with PROBE_SECRET=s3cr3t set on the host. host env not visible.",
+      "evidence": "research/probes/vercel-just-bash/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "stopped after 369 ms (driver wall 437 ms): \"bash: too many commands executed (>100000), increase executionLimits.maxCommandCount\" exit 126. Five separate runs: 377 to 388 ms in-sandbox. The count is the limiter, not the 60 min deadline. Raising only maxCommandCount stops on the loop cap at 745 ms. With both counters raised, the loop was still running at 120 s when the driver killed it (P6b).",
+      "evidence": "research/probes/vercel-just-bash/out/P6.txt (also research/probes/vercel-just-bash/out/P6-repeats.json)",
+      "display": "limited (command count)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "stopped after 62 ms, peak host RSS 348704 KB (worker maxRSS): \"bash: word expansion: string length limit exceeded (67108864 bytes)\" exit 126. Five separate runs: 56 to 62 ms, peak RSS 348784 to 349328 KB. The limiter is maxStringLength (64 MiB), reached before the 512 MiB live-bytes cap and the 4 GB driver kill.",
+      "evidence": "research/probes/vercel-just-bash/out/P7.txt (also research/probes/vercel-just-bash/out/P7-repeats.json)",
+      "display": "limited (string size)"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "variable: exec 2 printed \"gone\". Side effects: file written in exec 1 read back as \"persisted\"; cd in exec 1 gives pwd \"/home/user\" in exec 2.",
+      "evidence": "research/probes/vercel-just-bash/out/P8.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "1047 ms host-side for 5 lookups (each sleeps 200 ms), 5 host calls, max in flight 1, serial, stdout \"{\"id\":1,\"value\":2} | {\"id\":2,\"value\":4} | {\"id\":3,\"value\":6} | {\"id\":4,\"value\":8} | {\"id\":5,\"value\":10} | done\". JS variant (Promise.all over tools.lookup): js-exec Promise.all over 5 tools.lookup calls: in-guest Date.now() delta printed 1, host-side elapsed 1176 ms, 5 host calls, max in flight 1.",
+      "evidence": "research/probes/vercel-just-bash/out/P9.txt (also research/probes/vercel-just-bash/out/P9js.txt)",
+      "display": "serial"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "unknown command: exit 127, stderr \"bash: nosuchcmd_probe_xyz: command not found\". exit 7: exit 7, stderr \"\". syntax error: exit 2, stderr \"bash: syntax error: Parse error at 1:1: syntax error near unexpected token `)'\". The caller gets text and exit code. No stack trace. Host command throw (P10b): host command threw Error(\"probe-boom\"): exec resolved, exit 0, stderr \"boom: probe-boom\", stdout \"after-boom\". JS uncaught throw (P10js): js-exec uncaught throw: exit 1, stderr \"at <eval> (-c:1:16): probe-boom\". With console.log before the throw: stdout \"before\", stderr \"at <eval> (-c:1:39): probe-boom\".",
+      "evidence": "research/probes/vercel-just-bash/out/P10.txt (also research/probes/vercel-just-bash/out/P10b.txt, P10js.txt)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "one-time setup (import + new Bash) 27.03 ms. Same instance, exec \"echo 2\" x20: median 0.30 ms, p90 0.44 ms. New Bash per exec x20: median 0.61 ms, p90 0.85 ms. Five separate processes, same-instance median 0.299 to 0.327 ms, fresh-instance median 0.586 to 0.633 ms. Defense-in-depth ablation (5 alternating rounds, 2000 execs each): 0.1657 ms per exec on, 0.0334 ms off. Load average was 36 to 107 on 14 cores during these runs, so absolute times are inflated.",
+      "evidence": "research/probes/vercel-just-bash/out/P11.txt (also research/probes/vercel-just-bash/out/P11-repeats.json, ablate-defense.json, profile/top-self-time.txt)"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "no attempt reached the host runtime. Attempts: node -e 'console.log(process.pid)' -> exit 127 \"bash: node: command not found\"; js-exec 'console.log(process.pid)' -> exit 127 \"bash: js-exec: command not found\"; sh -c 'echo inner-sh' -> exit 0 \"inner-sh\"; bash -c 'echo inner-bash' -> exit 0 \"inner-bash\"; /bin/sh -c 'echo inner-bin-sh' -> exit 0 \"inner-bin-sh\"; eval 'echo inner-eval' -> exit 0 \"inner-eval\"; process -> exit 127 \"bash: process: command not found\"; require fs -> exit 127 \"bash: require: command not found\"; child_process -> exit 127 \"bash: child_process: command not found\"; python3 -c 'import os; os.system(\"echo PWNED\")' -> exit 127 \"bash: python3: command not available in browser environments\"; echo \"$$ $BASHPID\" -> exit 0 \"1 1\". JS variant (js-exec with javascript: true): no host value seen: exit 1 \"at <eval> (-c:1:31): Function constructor is not allowed\" | exit 0 \"{\"argv\":[\"-c\"],\"env\":{\"HOME\":\"/home/user\",\"PATH\":\"/usr/bin:/bin\",\"IFS\":\" \\t\\n\",\"OSTYPE\":\"l\" | exit 0 \"function object undefined\" | exit 1 \"at <eval> (-c:1:71): ENOENT: no such file or directory, stat '<path>'\" | exit 0 \"inner-child\".",
+      "evidence": "research/probes/vercel-just-bash/out/P12.txt (also research/probes/vercel-just-bash/out/P12js.txt)"
+    }
+  },
+  "defaults": {
+    "time": "normal profile maxExecutionTimeMs 3,600,000 ms (60 min) (limits.ts#L201); hardened 30 s. Loops stop sooner on maxCommandCount and maxLoopIterations (100,000 each). js-exec deadline maxJsTimeoutMs 30 s (limits.ts#L205).",
+    "memory": "maxStringLength 64 MiB (limits.ts#L208); maxLiveBytes 512 MiB (limits.ts#L189); in-memory filesystem maxFileSystemBytes 1 GiB (limits.ts#L191); js-exec guest 64 MiB (run-runtime.ts#L74). Host heap is not capped by just-bash.",
+    "output": "maxOutputSize 256 MiB, aggregate stdout plus stderr (limits.ts#L213). Over the limit the result keeps partial stdout, exit 126, and an error line. No truncation marker.",
+    "tool_calls": "maxCommandCount 100,000 per exec, shared across nested exec, charged per pipeline command (execution-scope.ts#L95-L96, pipeline-execution.ts#L97). No separate host tool counter for shell commands. js-exec bridge cap maxJsBridgeRequests 1,000,000 (limits.ts#L206)."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Shell host functions are plain commands. defineCommand(name, execute(args, ctx)) returns {name, trusted, execute} (no schema, no codegen; the host parses args itself), and the constructor registers each customCommands entry. JS side: a Proxy named tools turns tools.a.b(args) into invokeTool(\"a.b\", JSON), also without codegen. just-bash-executor createExecutor generates commands and invokeTool from inline or SDK tools (read, not run).",
+      "evidence": "https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/custom-commands.ts#L100-L106; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L549-L557; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/commands/js-exec/run-runtime.ts#L590-L603; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash-executor/src/create-executor.ts#L76-L118"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Everything is eager. Shell custom commands are registered at construction, so every name is known up front and nothing is searched or read on demand. The js-exec tools Proxy accepts any property path, so the guest cannot list tools at all. just-bash-executor lists every tool with sdk.tools.list() and exposes all of them as commands.",
+      "evidence": "https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L549-L557; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/commands/js-exec/run-runtime.ts#L590-L603; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash-executor/src/create-executor.ts#L127-L131"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "A shell host command is a direct async call in the same Node realm (custom-commands.ts#L199) and, when trusted, runs under runTrustedAsync (builtin-dispatch.ts#L1020-L1022). For JS, the guest calls host.invokeTool synchronously (run-runtime.ts#L601) and the host binding awaits the callback (run-runtime.ts#L1013-L1020). Guest code runs in QuickJS from the run package (run-runtime.ts#L3-L11). The child_process shim in js-exec calls back into the sandboxed shell (run-runtime.ts#L543-L558, #L974-L1005), not into Node.",
+      "evidence": "https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/custom-commands.ts#L199; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/interpreter/builtin-dispatch.ts#L1020-L1022; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/commands/js-exec/run-runtime.ts#L601; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/commands/js-exec/run-runtime.ts#L1013-L1020"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Shell: no separate engine. Bash.exec (Bash.ts#L631) runs a TypeScript AST interpreter in the host realm, with no VM, worker, or process boundary. JS: QuickJS-in-WASM via run. The README Security Model says \"All execution happens without VM isolation\" (README.md#L697), and the code matches that. THREAT_MODEL.md#L5 calls it \"a secure, sandboxed bash environment\", which the code does not back up as an OS-level boundary. Defense-in-depth is on by default (Bash.ts#L412) and patches globals on each execution (defense-in-depth-box.ts#L597). THREAT_MODEL.md#L164 says child_process is \"Not imported anywhere\", but cli/exec.ts#L25 imports spawnSync from node:child_process. That file is the host CLI, not the sandbox path, so the sandbox claim holds.",
+      "evidence": "https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L631; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/README.md#L697; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/THREAT_MODEL.md#L5; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/THREAT_MODEL.md#L164; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L412; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/security/defense-in-depth-box.ts#L597; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/cli/exec.ts#L25"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "The result is {stdout, stderr, exitCode, env}. Shell scripts have no return value, so the only output channel is stdout and stderr. Bash.ts, execution-scope.ts, control-flow.ts, and pipeline-execution.ts contain no truncation marker. Output above maxOutputSize throws ExecutionLimitError, and the caller gets the partial stdout with exit 126 (observed: 240 MB kept, no END line, P2b).",
+      "evidence": "https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/execution-scope.ts#L250-L253; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L963-L969; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L1023-L1029"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Normal profile (the default): maxCallDepth 100 (limits.ts#L166), maxCommandCount 100,000 (#L167), maxLoopIterations 100,000 (#L168), maxLiveBytes 512 MiB (#L189), maxExecutionTimeMs 3,600,000 (#L201), maxJsTimeoutMs 30 s (#L205), maxJsBridgeRequests 1e6 (#L206), maxStringLength 64 MiB (#L208), maxOutputSize 256 MiB (#L213). Hardened profile at limits.ts#L218-L262 (commands 10,000 at #L221, time 30 s at #L260). The profile defaults to normal in resolveLimits (limits.ts#L266-L268), and the Bash constructor passes executionLimitProfile through (Bash.ts#L354-L371).",
+      "evidence": "https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/limits.ts#L163-L215; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/limits.ts#L218-L262; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/limits.ts#L266-L275; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L354-L371"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh per exec. Each exec copies the instance env into a new Map (Bash.ts#L745-L747) and nothing writes that copy back; the instance state is assigned only in the constructor (Bash.ts#L418). The InMemoryFs is created once per instance (Bash.ts#L374) and shared across calls, as README.md#L25 says. Observed: variables and cwd reset, files persist (P8). No snapshot or serialization API was found in Bash.ts or sandbox/.",
+      "evidence": "https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L745-L747; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L418; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L374; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/README.md#L25"
+    },
+    {
+      "topic": "Errors",
+      "finding": "ExecutionLimitError becomes exit 126 with sanitized stderr and the partial stdout (Bash.ts#L963-L969, errors.ts#L201-L205). Other command errors become stderr text prefixed with the command name, and the script continues (builtin-dispatch.ts#L1030-L1041; observed \"boom: probe-boom\", P10b). Parse errors exit 2 with \"Parse error at 1:1\" (observed, P10). A host command throw does not reject exec. A JS uncaught throw gives \"at <eval> (-c:L:C): message\" and exit 1 (observed, P10js).",
+      "evidence": "https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L963-L969; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/interpreter/errors.ts#L201-L205; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/interpreter/builtin-dispatch.ts#L1030-L1041"
+    },
+    {
+      "topic": "Anything else",
+      "finding": "(a) '&' is parsed (parser.ts#L531-L535), but the interpreter never reads the background flag, and wait is a stub (builtin-dispatch.ts#L643-L645), so concurrent-looking code runs serially (P9). (b) The JS invokeTool bridge is synchronous, so Promise.all over tools is serial (run-runtime.ts#L601, P9js). (c) Network is off by default and allow-listed by URL prefix (network/types.ts#L56-L82). Header transforms inject credentials at the fetch boundary so the secret never enters the sandbox (README.md#L392). (d) Python is off by default (Bash.ts#L521-L525). (e) The executor onToolApproval gate applies only to SDK tools; inline tools skip it (create-executor.ts#L189-L190). (f) The package requires Node >=20.19 (packages/just-bash/package.json#L15).",
+      "evidence": "https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/parser/parser.ts#L531-L535; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/interpreter/builtin-dispatch.ts#L643-L645; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/network/types.ts#L56-L82; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash-executor/src/create-executor.ts#L189-L190; https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/package.json#L15"
+    }
+  ],
+  "surprises": [
+    "The default time limit is 60 minutes (https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/limits.ts#L201), not 30 seconds. The README Execution Protection example uses 30 s under the hardened profile, and a reader would expect a time limit by default. In practice an infinite shell loop stops in about 0.4 s on the 100,000 command cap (P6). With both counters raised, the loop ran past 120 s (P6b).",
+    "'&' is parsed but never runs concurrently, and wait is a no-op (https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/parser/parser.ts#L531-L535, https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/interpreter/builtin-dispatch.ts#L643-L645). Five 200 ms lookups took about 1 s with max in flight 1 (P9). Nothing in the output says the background jobs ran in the foreground.",
+    "The JS tool bridge is synchronous (https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/commands/js-exec/run-runtime.ts#L601), so Promise.all over tools.lookup runs one call at a time (P9js, max in flight 1). In-guest Date.now() printed 1 ms while the host measured 1176 ms, so guest timers mislead about elapsed time.",
+    "A failing host command does not fail the script. 'boom; echo after-boom' resolves with exit 0 and the error only on stderr. 'boom' alone exits 1 (P10b).",
+    "The README calls defense-in-depth 'Secondary', but it is on by default (https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L412) and costs most of the per-exec time: 0.160 ms per exec with it on and 0.033 ms off, 5 alternating rounds (out/ablate-defense.json). applyPatches, applyPatch, restorePatches, and protectReversibleIntrinsics take about 21% of self time in the CPU profile (out/profile/top-self-time.txt).",
+    "The output limit does not truncate. 240 MB of stdout came back with exit 126 and the final END line missing, and the only signal is the stderr error (P2b, https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/Bash.ts#L963-L969).",
+    "https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/THREAT_MODEL.md#L5 says 'secure, sandboxed bash environment', while https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/README.md#L697 says 'All execution happens without VM isolation'. The code matches the README. The threat model also says child_process is 'Not imported anywhere' (https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/THREAT_MODEL.md#L164), but https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/cli/exec.ts#L25 imports it in the host CLI.",
+    "The just-bash-executor README calls onToolApproval a 'pre-invocation gate' (https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash-executor/README.md#L224), but inline tools bypass it (https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash-executor/src/create-executor.ts#L189-L190). Source only; the executor was not run.",
+    "python3 with python disabled on Node says 'command not available in browser environments' and tells the user to use the Node.js bundle (https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/interpreter/builtin-dispatch.ts#L818-L824, https://github.com/vercel-labs/just-bash/blob/ec5ab766551d479f2782b078b373d49ddc78bd26/packages/just-bash/src/commands/browser-excluded.ts#L17). That message is wrong for a Node host.",
+    "Inside js-exec, process.env is the virtual environment (HOME, PATH, ...), and require('child_process').execSync runs in the sandboxed shell (P12js). Both are the designed behavior, but a reader may expect them to reach Node."
+  ],
+  "hardened": {
+    "config": "new Bash({ executionLimitProfile: \"hardened\" }), the project's own preset (packages/just-bash/src/limits.ts:218-261, selected via BashOptions.executionLimitProfile at src/Bash.ts:155, documented in README.md:661-682): maxCommandCount 10,000 (:221), maxLoopIterations 10,000 (:222), maxJsTimeoutMs 10 s (:228), maxStringLength 10 MiB (:232), maxOutputSize 10 MiB (:236), maxLiveBytes 64 MiB (:250), maxFileSystemBytes 128 MiB (:252), maxExecutionTimeMs 30 s (:260). No network or fetch option, so network is off and curl/wget are not registered (src/Bash.ts:175-179, README.md:342). python off (default), default InMemoryFs, defenseInDepth on (default). No other public knob tightens these probes. The js-exec rows add javascript: { invokeTool } (src/Bash.ts:115-142). Its 64 MiB guest heap is a fixed constant (src/commands/js-exec/run-runtime.ts:74), not an option. Each cell uses the shell form, the language bash-tool exposes and the form of the default row. Each detail also gives the js-exec run of the literal SPEC JS code under the same profile (out/hardened-P<n>js.json).",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "curl and wget: \"command not found\" (exit 127). js-exec fetch(\"https://example.com\"): exit 1, \"Network access not configured. Enable network in Bash options.\"",
+        "evidence": "research/probes/vercel-just-bash/out/hardened-P3.json (also research/probes/vercel-just-bash/out/hardened-P3js.json)",
+        "display": "not-defined (no curl)"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "cat /etc/hosts: \"No such file or directory\" (exit 1). js-exec require(\"fs\").readFileSync(\"/etc/hosts\"): exit 1, \"ENOENT: no such file or directory\". Only the in-memory filesystem is visible.",
+        "evidence": "research/probes/vercel-just-bash/out/hardened-P4.json (also research/probes/vercel-just-bash/out/hardened-P4js.json)",
+        "display": "blocked (virtual fs)"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "echo \"[$PROBE_SECRET]\" printed \"[]\", printenv exit 1, with PROBE_SECRET=s3cr3t on the host. js-exec process.env.PROBE_SECRET printed \"[undefined]\" (virtual env).",
+        "evidence": "research/probes/vercel-just-bash/out/hardened-P5.json (also research/probes/vercel-just-bash/out/hardened-P5js.json)",
+        "display": "blocked (empty)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "Shell while true stopped after 190 ms: \"too many commands executed (>10000)\" exit 126. js-exec while (true) {} stopped after 1019 ms with exit 124 and \"Execution timeout: exceeded 10000ms limit\". That stop is not the 10 s timer: run@2.1.3 interrupts after 10,000 interrupt-handler calls (r>1e4 in run/dist/runtime/worker-source.js), and the normal profile (30 s) stops at 906 ms with the same message (hardened-P6jsNormal.json). The 30 s maxExecutionTimeMs deadline is real: with both shell counters raised it stopped the loop at 30,007 ms (hardened-P6deadline.json).",
+        "evidence": "research/probes/vercel-just-bash/out/hardened-P6.json (also research/probes/vercel-just-bash/out/hardened-P6js.json, hardened-P6jsNormal.json, hardened-P6deadline.json)",
+        "display": "limited (command count, 0.19 s)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "Shell string doubling stopped after 78 ms: \"string length limit exceeded (10485760 bytes)\" exit 126, worker maxRSS 119 MB. js-exec literal SPEC code: \"out of memory\" at the 64 MiB QuickJS heap after 1038 ms, exit 1, maxRSS 240 MB. In both, a second Bash session running at the same time finished correctly, and a trivial exec on the same and on a fresh instance printed 2.",
+        "evidence": "research/probes/vercel-just-bash/out/hardened-P7.json (also research/probes/vercel-just-bash/out/hardened-P7js.json)",
+        "display": "limited (10 MiB string cap)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "lookup 1 & ... & lookup 5 & wait: 1150 ms, 5 host calls, max in flight 1 (serial). js-exec Promise.all over tools.lookup: 1373 ms host-side, max in flight 1, guest Date.now() delta printed 1.",
+        "evidence": "research/probes/vercel-just-bash/out/hardened-P9.json (also research/probes/vercel-just-bash/out/hardened-P9js.json)",
+        "display": "serial (1,150 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "No attempt reached the host. Shell: node and js-exec \"command not found\" (127), python3 not available, sh/bash/eval run inside the same interpreter, echo $$ $BASHPID printed \"1 1\". js-exec: Function constructor \"is not allowed\", process is the virtual object with pid undefined, child_process.execSync runs in the sandboxed shell.",
+        "evidence": "research/probes/vercel-just-bash/out/hardened-P12.json (also research/probes/vercel-just-bash/out/hardened-P12js.json)",
+        "display": "blocked"
+      }
+    }
+  }
+}

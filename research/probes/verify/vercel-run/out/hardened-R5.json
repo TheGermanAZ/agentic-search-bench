@@ -1,0 +1,294 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs hardened R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3515,
+  "peakTreeRssMb": 167,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "hardened",
+    "test": "R5",
+    "notes": "createRunner({limits: HARDENED_LIMITS}) shared",
+    "data": {
+      "r": {
+        "startMs": 31,
+        "ms": 417,
+        "ok": false,
+        "threw": "RunBridgeLimitError: JavaScript runtime exceeded the 8 in-flight bridge request limit.\n    at handleHostFunctionRequest (file://~/p/agentic-search-bench/research/impls/vercel-run/pkg/node_modules/run/dist/runtime/manager.js:791:9)\n    at async runInBackground (file://~/p/agentic-search-bench/research/impls/vercel-run/pkg/node_modules/run/dist/runtime/manager.js:93:3)",
+        "callsStarted": 8
+      },
+      "atReturn": {
+        "started": 8,
+        "done": 0
+      },
+      "after3s": {
+        "started": 8,
+        "done": 8
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 74,
+    "hostEvents": [],
+    "totalMs": 3452
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:79444) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      106,
+      52
+    ],
+    [
+      152,
+      85
+    ],
+    [
+      206,
+      106
+    ],
+    [
+      243,
+      115
+    ],
+    [
+      307,
+      150
+    ],
+    [
+      358,
+      151
+    ],
+    [
+      403,
+      153
+    ],
+    [
+      484,
+      155
+    ],
+    [
+      560,
+      167
+    ],
+    [
+      601,
+      142
+    ],
+    [
+      670,
+      142
+    ],
+    [
+      723,
+      142
+    ],
+    [
+      770,
+      142
+    ],
+    [
+      819,
+      142
+    ],
+    [
+      879,
+      142
+    ],
+    [
+      938,
+      142
+    ],
+    [
+      984,
+      142
+    ],
+    [
+      1030,
+      142
+    ],
+    [
+      1073,
+      142
+    ],
+    [
+      1174,
+      142
+    ],
+    [
+      1228,
+      142
+    ],
+    [
+      1268,
+      142
+    ],
+    [
+      1313,
+      142
+    ],
+    [
+      1385,
+      142
+    ],
+    [
+      1425,
+      142
+    ],
+    [
+      1485,
+      142
+    ],
+    [
+      1534,
+      142
+    ],
+    [
+      1593,
+      142
+    ],
+    [
+      1642,
+      142
+    ],
+    [
+      1714,
+      142
+    ],
+    [
+      1760,
+      142
+    ],
+    [
+      1802,
+      142
+    ],
+    [
+      1860,
+      142
+    ],
+    [
+      1901,
+      142
+    ],
+    [
+      1963,
+      142
+    ],
+    [
+      2007,
+      142
+    ],
+    [
+      2066,
+      142
+    ],
+    [
+      2111,
+      142
+    ],
+    [
+      2172,
+      142
+    ],
+    [
+      2209,
+      142
+    ],
+    [
+      2271,
+      142
+    ],
+    [
+      2343,
+      142
+    ],
+    [
+      2490,
+      142
+    ],
+    [
+      2546,
+      142
+    ],
+    [
+      2587,
+      142
+    ],
+    [
+      2654,
+      142
+    ],
+    [
+      2714,
+      142
+    ],
+    [
+      2762,
+      142
+    ],
+    [
+      2806,
+      142
+    ],
+    [
+      2868,
+      142
+    ],
+    [
+      2922,
+      142
+    ],
+    [
+      2977,
+      142
+    ],
+    [
+      3052,
+      142
+    ],
+    [
+      3111,
+      142
+    ],
+    [
+      3160,
+      142
+    ],
+    [
+      3196,
+      142
+    ],
+    [
+      3246,
+      142
+    ],
+    [
+      3299,
+      142
+    ],
+    [
+      3354,
+      142
+    ],
+    [
+      3406,
+      142
+    ],
+    [
+      3460,
+      142
+    ],
+    [
+      3514,
+      142
+    ]
+  ]
+}

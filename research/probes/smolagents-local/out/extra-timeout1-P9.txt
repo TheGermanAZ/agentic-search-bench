@@ -1,0 +1,11 @@
+config: LocalPythonExecutor(additional_authorized_imports=[], timeout_seconds=1)
+probe: P9
+code (python, run through LocalPythonExecutor):
+import time
+t = time.time()
+rs = [lookup(id=i) for i in [1, 2, 3, 4, 5]]
+print(int((time.time() - t) * 1000))
+print(sum(r['value'] for r in rs))
+host_calls_so_far: 5
+result: {'ok': False, 'error_type': 'ExecutionTimeoutError', 'error': 'Code execution exceeded the maximum execution time of 1 seconds', 'ms': 1023.5}
+host calls: 5

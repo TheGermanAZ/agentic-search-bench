@@ -1,0 +1,289 @@
+{
+  "mode": "hardened",
+  "probe": "P12",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 2,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "return this.constructor.constructor(\"return process\")()",
+      "ms": 19.78,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "TypeError: Cannot read properties of undefined (reading 'constructor'). (line 1, col 8)",
+          "location": {
+            "line": 1,
+            "column": 8
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "return (function(){return this})().process",
+      "ms": 1.01,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "TypeError: Cannot read properties of undefined (reading 'process'). (line 1, col 8)",
+          "location": {
+            "line": 1,
+            "column": 8
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "return [].constructor.constructor(\"return process\")()",
+      "ms": 0.65,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 8)",
+          "location": {
+            "line": 1,
+            "column": 8
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "return Function(\"return process\")()",
+      "ms": 0.51,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 8)",
+          "location": {
+            "line": 1,
+            "column": 8
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "return eval(\"process\")",
+      "ms": 0.53,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "ReferenceError: Unknown identifier 'eval'. (line 1, col 8)",
+          "location": {
+            "line": 1,
+            "column": 8
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "return typeof globalThis + \":\" + Object.keys(globalThis).join(\",\")",
+      "ms": 0.55,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "ReferenceError: Unknown identifier 'globalThis'. (line 1, col 46)",
+          "location": {
+            "line": 1,
+            "column": 46
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "return tools.lookup.constructor(\"return process\")()",
+      "ms": 1.62,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "TypeError: tools.lookup.constructor(...) is not a function. (line 1, col 8)",
+          "location": {
+            "line": 1,
+            "column": 8
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "return console.log.constructor(\"return process\")()",
+      "ms": 0.48,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 8)",
+          "location": {
+            "line": 1,
+            "column": 8
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "const p = tools.lookup({id:1}); return p.constructor.constructor(\"return process\")()",
+      "ms": 1.38,
+      "hostCalls": 1,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 40)",
+          "location": {
+            "line": 1,
+            "column": 40
+          }
+        },
+        "toolCalls": [
+          {
+            "name": "lookup"
+          }
+        ]
+      }
+    },
+    {
+      "code": "const o = await tools.lookup({id:1}); return o.constructor.constructor(\"return process\")()",
+      "ms": 201.83,
+      "hostCalls": 1,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 46)",
+          "location": {
+            "line": 1,
+            "column": 46
+          }
+        },
+        "toolCalls": [
+          {
+            "name": "lookup"
+          }
+        ]
+      }
+    },
+    {
+      "code": "return Object.getPrototypeOf(tools).constructor.constructor(\"return process\")()",
+      "ms": 0.95,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "TypeError: Object.getPrototypeOf cannot convert a namespace reference to an object. (line 1, col 8)",
+          "location": {
+            "line": 1,
+            "column": 8
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "const cp = require(\"child_process\"); return cp.execSync(\"echo PWNED\").toString()",
+      "ms": 0.61,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "Error: Cannot import \"child_process\": it isn't available here, where packages and files can't be loaded. Use the provided globals. (line 1, col 12)",
+          "location": {
+            "line": 1,
+            "column": 12
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "({}).__proto__.polluted = \"yes\"; return ({}).polluted",
+      "ms": 0.61,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "TypeError: Cannot read properties of undefined (reading 'polluted'). (line 1, col 1)",
+          "location": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "const r = await fetch(\"https://example.com\"); return r.text.constructor(\"return process\")()",
+      "ms": 0.49,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "ReferenceError: Unknown identifier 'fetch'. (line 1, col 17)",
+          "location": {
+            "line": 1,
+            "column": 17
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "const r = await fetch(\"https://example.com\"); return r.constructor.constructor(\"return process\")()",
+      "ms": 0.44,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "ReferenceError: Unknown identifier 'fetch'. (line 1, col 17)",
+          "location": {
+            "line": 1,
+            "column": 17
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "const r = await fetch(\"https://example.com\"); return [typeof r.body, Object.keys(r), typeof r.headers.constructor]",
+      "ms": 0.46,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "ReferenceError: Unknown identifier 'fetch'. (line 1, col 17)",
+          "location": {
+            "line": 1,
+            "column": 17
+          }
+        },
+        "toolCalls": []
+      }
+    }
+  ]
+}

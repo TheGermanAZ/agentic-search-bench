@@ -1,0 +1,13 @@
+mode: default
+code:
+const r = await main.lookup({id: 21}); console.log(r.value)
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "0ad5fb9b-6338-45ea-9f5d-7d80e9b16d52",
+  "success": true,
+  "output": "42\n\n\n",
+  "ms": 234,
+  "hostCalls": 1
+}

@@ -1,0 +1,61 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs hardened R8b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 422,
+  "peakTreeRssMb": 124,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "hardened",
+    "test": "R8b",
+    "notes": "one CodemodeSandbox({\"timeoutMs\":30000,\"memoryLimitBytes\":33554432}) shared",
+    "data": {
+      "startMs": 22,
+      "ms": 183,
+      "ok": true,
+      "result": {
+        "value": {
+          "ok": false,
+          "error": {
+            "kind": "script",
+            "name": "InternalError",
+            "message": "out of memory",
+            "stack": "InternalError: out of memory"
+          },
+          "output": [],
+          "calls": []
+        },
+        "stringChars": 60
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 5,
+    "hostEvents": [],
+    "totalMs": 205
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      149,
+      53
+    ],
+    [
+      233,
+      106
+    ],
+    [
+      421,
+      124
+    ]
+  ]
+}

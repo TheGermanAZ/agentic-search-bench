@@ -1,0 +1,30 @@
+{
+  "probe": "L-async-recursion",
+  "code": "async function f(n) { return await f(n + 1) } await f(0)",
+  "wallMs": 79,
+  "hostToolCalls": 0,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":false,\"error\":{\"kind\":\"ExecutionFailure\",\"message\":\"Execution exceeded the maximum nesting depth.\"},\"toolCalls\":[]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": false,
+          "error": {
+            "kind": "ExecutionFailure",
+            "message": "Execution exceeded the maximum nesting depth."
+          },
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

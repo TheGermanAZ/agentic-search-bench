@@ -1,0 +1,299 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs hardened R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 5786,
+  "peakTreeRssMb": 169,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "hardened",
+    "test": "R9d",
+    "notes": "createRunner({limits: HARDENED_LIMITS}) shared",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 60,
+          "ms": 5419,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 356,
+        "ms": 343,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": 42
+          },
+          "stringChars": 9
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1000,
+        "ms": 225,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": 42
+          },
+          "stringChars": 9
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 5479,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": 42
+          },
+          "stringChars": 9
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 192,
+    "hostEvents": [],
+    "totalMs": 5691
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:53358) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      122,
+      51
+    ],
+    [
+      228,
+      64
+    ],
+    [
+      332,
+      99
+    ],
+    [
+      451,
+      136
+    ],
+    [
+      551,
+      153
+    ],
+    [
+      683,
+      154
+    ],
+    [
+      777,
+      154
+    ],
+    [
+      873,
+      155
+    ],
+    [
+      972,
+      155
+    ],
+    [
+      1092,
+      155
+    ],
+    [
+      1217,
+      156
+    ],
+    [
+      1331,
+      156
+    ],
+    [
+      1420,
+      156
+    ],
+    [
+      1524,
+      156
+    ],
+    [
+      1657,
+      156
+    ],
+    [
+      1751,
+      156
+    ],
+    [
+      1856,
+      156
+    ],
+    [
+      1959,
+      156
+    ],
+    [
+      2066,
+      156
+    ],
+    [
+      2166,
+      156
+    ],
+    [
+      2272,
+      156
+    ],
+    [
+      2383,
+      156
+    ],
+    [
+      2508,
+      156
+    ],
+    [
+      2602,
+      156
+    ],
+    [
+      2710,
+      156
+    ],
+    [
+      2792,
+      156
+    ],
+    [
+      2903,
+      156
+    ],
+    [
+      3009,
+      156
+    ],
+    [
+      3105,
+      156
+    ],
+    [
+      3217,
+      156
+    ],
+    [
+      3304,
+      156
+    ],
+    [
+      3435,
+      156
+    ],
+    [
+      3588,
+      156
+    ],
+    [
+      3691,
+      156
+    ],
+    [
+      3804,
+      156
+    ],
+    [
+      3900,
+      156
+    ],
+    [
+      3997,
+      156
+    ],
+    [
+      4111,
+      156
+    ],
+    [
+      4219,
+      156
+    ],
+    [
+      4304,
+      156
+    ],
+    [
+      4459,
+      156
+    ],
+    [
+      4563,
+      156
+    ],
+    [
+      4652,
+      156
+    ],
+    [
+      4756,
+      156
+    ],
+    [
+      4871,
+      156
+    ],
+    [
+      4971,
+      156
+    ],
+    [
+      5073,
+      156
+    ],
+    [
+      5171,
+      156
+    ],
+    [
+      5286,
+      156
+    ],
+    [
+      5380,
+      157
+    ],
+    [
+      5478,
+      169
+    ],
+    [
+      5581,
+      150
+    ],
+    [
+      5686,
+      150
+    ],
+    [
+      5784,
+      150
+    ]
+  ]
+}

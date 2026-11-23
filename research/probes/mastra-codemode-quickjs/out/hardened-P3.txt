@@ -1,0 +1,29 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 26,
+    "totalWallMs": 266,
+    "peakTreeRssMB": 138,
+    "stderrTail": ""
+  },
+  "backend": "quickjs",
+  "probe": "P3",
+  "mode": "hardened",
+  "setupMs": 201.1,
+  "record": {
+    "code": "const r = await fetch(\"https://example.com\"); return { status: r.status, bytes: (await r.text()).length }",
+    "wallMs": 19.4,
+    "hostCalls": 0,
+    "out": {
+      "success": false,
+      "logs": [],
+      "error": {
+        "message": "'fetch' is not defined",
+        "name": "ReferenceError"
+      }
+    },
+    "threw": null
+  }
+}

@@ -1,0 +1,79 @@
+probe: P6b-thread (hardened)
+binary: goose-codemode-hardened-probe
+GOOSE_DEFAULT_EXTENSION_TIMEOUT=10
+process wall_ms: 40123.1
+peak_rss_mb: 8.4
+exit: 0
+killed: None
+
+{"exec": "config", "probe": "P6b-thread", "timeout_seconds": 10}
+
+--- execution 0 ---
+code:
+async function run() {
+return /^(a+)+$/.test("a".repeat(40) + "b")
+}
+is_error: True
+elapsed_ms: 11004.56
+host_calls: 0
+text returned to model:
+Error: Execution timed out after 10 seconds
+
+{"cpu_seconds_used_in_5s_after_timeout": 2.9000000000000012, "exec": "after-first", "os_threads": 16, "probe": "P6b-thread"}
+
+--- execution 1 ---
+code:
+async function run() {
+return /^(a+)+$/.test("a".repeat(40) + "b")
+}
+is_error: True
+elapsed_ms: 11004.27
+host_calls: 0
+text returned to model:
+Error: Execution timed out after 10 seconds
+
+--- execution 2 ---
+code:
+async function run() {
+return /^(a+)+$/.test("a".repeat(40) + "b")
+}
+is_error: True
+elapsed_ms: 11004.12
+host_calls: 0
+text returned to model:
+Error: Execution timed out after 10 seconds
+
+--- execution 3 ---
+code:
+async function run() {
+return /^(a+)+$/.test("a".repeat(40) + "b")
+}
+is_error: True
+elapsed_ms: 11004.11
+host_calls: 0
+text returned to model:
+Error: Execution timed out after 10 seconds
+
+--- execution 4 ---
+code:
+async function run() {
+return /^(a+)+$/.test("a".repeat(40) + "b")
+}
+is_error: True
+elapsed_ms: 10001.27
+host_calls: 0
+text returned to model:
+Error: Execution timed out after 10 seconds while waiting for a JavaScript worker
+
+{"cpu_seconds_used_in_3s": 5.93, "exec": "after-batch", "os_threads": 19, "probe": "P6b-thread"}
+
+--- execution 5 ---
+code:
+async function run() {
+return 1+1
+}
+is_error: True
+elapsed_ms: 10001.94
+host_calls: 0
+text returned to model:
+Error: Execution timed out after 10 seconds while waiting for a JavaScript worker

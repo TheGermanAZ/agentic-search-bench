@@ -1,0 +1,24 @@
+{
+  "impl": "vercel-run",
+  "probe": "P1",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "const r = await host.lookup({id: 21}); console.log(r.value); return r.value;"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "status": "completed",
+      "value": 42,
+      "wallMs": 321.50037499999996,
+      "hostCalls": 1
+    }
+  ],
+  "summary": {
+    "value": 42,
+    "ms": 322,
+    "hostCalls": 1
+  },
+  "hostRssAfterMB": 142.1
+}

@@ -1,0 +1,1 @@
+{"guard": {"reason": "killed-at-4GB", "exitCode": 137, "peakRssKB": 5085216, "wallS": 0}}

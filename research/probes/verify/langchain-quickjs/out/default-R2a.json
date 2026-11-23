@@ -1,0 +1,239 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py default R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3622,
+  "peakTreeRssMb": 178,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R2a",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich']}), new thread_id per execution",
+    "data": {
+      "label": "",
+      "startMs": 2498,
+      "ms": 973,
+      "ok": true,
+      "result": "<error type=\"ReferenceError\">chr is not defined\n    at &lt;eval&gt; (eval_script:18:46)\n</error>",
+      "callsStarted": 1
+    },
+    "hostMaxEventLoopLagMs": 50,
+    "totalMs": 3471
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      261,
+      35
+    ],
+    [
+      320,
+      44
+    ],
+    [
+      410,
+      44
+    ],
+    [
+      468,
+      44
+    ],
+    [
+      520,
+      44
+    ],
+    [
+      636,
+      47
+    ],
+    [
+      739,
+      49
+    ],
+    [
+      820,
+      53
+    ],
+    [
+      889,
+      57
+    ],
+    [
+      944,
+      58
+    ],
+    [
+      989,
+      58
+    ],
+    [
+      1068,
+      58
+    ],
+    [
+      1114,
+      58
+    ],
+    [
+      1202,
+      58
+    ],
+    [
+      1275,
+      60
+    ],
+    [
+      1355,
+      62
+    ],
+    [
+      1422,
+      62
+    ],
+    [
+      1479,
+      64
+    ],
+    [
+      1559,
+      69
+    ],
+    [
+      1602,
+      72
+    ],
+    [
+      1648,
+      72
+    ],
+    [
+      1724,
+      72
+    ],
+    [
+      1777,
+      72
+    ],
+    [
+      1828,
+      75
+    ],
+    [
+      1904,
+      77
+    ],
+    [
+      1952,
+      79
+    ],
+    [
+      2005,
+      79
+    ],
+    [
+      2087,
+      79
+    ],
+    [
+      2145,
+      80
+    ],
+    [
+      2194,
+      82
+    ],
+    [
+      2250,
+      83
+    ],
+    [
+      2299,
+      85
+    ],
+    [
+      2362,
+      85
+    ],
+    [
+      2433,
+      85
+    ],
+    [
+      2500,
+      89
+    ],
+    [
+      2550,
+      89
+    ],
+    [
+      2619,
+      90
+    ],
+    [
+      2741,
+      91
+    ],
+    [
+      2796,
+      139
+    ],
+    [
+      2841,
+      141
+    ],
+    [
+      2909,
+      145
+    ],
+    [
+      2979,
+      158
+    ],
+    [
+      3045,
+      160
+    ],
+    [
+      3135,
+      164
+    ],
+    [
+      3209,
+      167
+    ],
+    [
+      3290,
+      171
+    ],
+    [
+      3339,
+      172
+    ],
+    [
+      3390,
+      174
+    ],
+    [
+      3430,
+      178
+    ],
+    [
+      3520,
+      178
+    ],
+    [
+      3569,
+      178
+    ],
+    [
+      3621,
+      0
+    ]
+  ]
+}

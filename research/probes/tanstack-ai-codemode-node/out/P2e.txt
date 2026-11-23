@@ -1,0 +1,53 @@
+label: P2e
+command: node probe.mjs P2e
+child exit: code=0 signal=null
+child wall ms (process start to exit): 513
+peak child RSS: 87.6 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P2e",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 134.87150000000003,
+  "source": [
+    "return \"A\".repeat(2000000);"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": {
+          "stringLength": 2000000,
+          "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 39.05458300000004,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": {
+        "stringLength": 2000000,
+        "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 39,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 87.7
+}
+--- child stdout ---
+
+--- child stderr ---
+

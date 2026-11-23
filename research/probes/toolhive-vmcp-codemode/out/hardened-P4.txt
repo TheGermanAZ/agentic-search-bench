@@ -1,0 +1,6 @@
+--- code 1 ---
+return open("/etc/hosts").read()
+--- result 1 ---
+{"ms":2,"hostCalls":0,"ok":true,"isError":true}
+text (58 chars):
+script execution failed: script.star:2:12: undefined: open

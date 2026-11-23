@@ -1,0 +1,471 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs default R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 110332,
+  "peakTreeRssMb": 209,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "default",
+    "test": "R9e",
+    "notes": "one CodemodeSandbox({}) shared",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "ok": false,
+          "threw": "NO-RETURN within 110000 ms"
+        },
+        {
+          "label": "aggressor1",
+          "ok": false,
+          "threw": "NO-RETURN within 110000 ms"
+        },
+        {
+          "label": "aggressor2",
+          "ok": false,
+          "threw": "NO-RETURN within 110000 ms"
+        },
+        {
+          "label": "aggressor3",
+          "ok": false,
+          "threw": "NO-RETURN within 110000 ms"
+        },
+        {
+          "label": "aggressor4",
+          "ok": false,
+          "threw": "NO-RETURN within 110000 ms"
+        },
+        {
+          "label": "aggressor5",
+          "ok": false,
+          "threw": "NO-RETURN within 110000 ms"
+        },
+        {
+          "label": "aggressor6",
+          "ok": false,
+          "threw": "NO-RETURN within 110000 ms"
+        },
+        {
+          "label": "aggressor7",
+          "ok": false,
+          "threw": "NO-RETURN within 110000 ms"
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 165,
+        "ms": 247,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 201.72554200000002
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1000,
+        "ms": 237,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 200.121167
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 110015,
+        "ms": 254,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 200.9507910000102
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 65,
+    "hostEvents": [],
+    "totalMs": 110269
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      140,
+      140
+    ],
+    [
+      1455,
+      205
+    ],
+    [
+      2816,
+      205
+    ],
+    [
+      4201,
+      205
+    ],
+    [
+      5730,
+      141
+    ],
+    [
+      7377,
+      140
+    ],
+    [
+      8732,
+      140
+    ],
+    [
+      10073,
+      136
+    ],
+    [
+      11445,
+      136
+    ],
+    [
+      12792,
+      136
+    ],
+    [
+      14123,
+      136
+    ],
+    [
+      15483,
+      136
+    ],
+    [
+      17088,
+      136
+    ],
+    [
+      19083,
+      136
+    ],
+    [
+      20719,
+      136
+    ],
+    [
+      22143,
+      136
+    ],
+    [
+      23517,
+      136
+    ],
+    [
+      24867,
+      136
+    ],
+    [
+      26186,
+      136
+    ],
+    [
+      27630,
+      136
+    ],
+    [
+      29018,
+      136
+    ],
+    [
+      30348,
+      136
+    ],
+    [
+      31673,
+      136
+    ],
+    [
+      33025,
+      136
+    ],
+    [
+      34354,
+      136
+    ],
+    [
+      35676,
+      136
+    ],
+    [
+      37007,
+      136
+    ],
+    [
+      38343,
+      136
+    ],
+    [
+      39665,
+      136
+    ],
+    [
+      40988,
+      137
+    ],
+    [
+      42333,
+      137
+    ],
+    [
+      43667,
+      137
+    ],
+    [
+      45003,
+      137
+    ],
+    [
+      46394,
+      105
+    ],
+    [
+      47763,
+      58
+    ],
+    [
+      49084,
+      57
+    ],
+    [
+      50453,
+      57
+    ],
+    [
+      52269,
+      56
+    ],
+    [
+      53584,
+      56
+    ],
+    [
+      54903,
+      56
+    ],
+    [
+      56239,
+      56
+    ],
+    [
+      57582,
+      56
+    ],
+    [
+      59006,
+      56
+    ],
+    [
+      60617,
+      56
+    ],
+    [
+      62020,
+      56
+    ],
+    [
+      63437,
+      56
+    ],
+    [
+      64761,
+      56
+    ],
+    [
+      66085,
+      56
+    ],
+    [
+      67411,
+      56
+    ],
+    [
+      68808,
+      56
+    ],
+    [
+      70267,
+      56
+    ],
+    [
+      71623,
+      56
+    ],
+    [
+      72983,
+      56
+    ],
+    [
+      74431,
+      56
+    ],
+    [
+      75801,
+      56
+    ],
+    [
+      77195,
+      56
+    ],
+    [
+      78564,
+      56
+    ],
+    [
+      79893,
+      57
+    ],
+    [
+      81227,
+      57
+    ],
+    [
+      82566,
+      57
+    ],
+    [
+      83930,
+      57
+    ],
+    [
+      85276,
+      57
+    ],
+    [
+      86600,
+      57
+    ],
+    [
+      87923,
+      57
+    ],
+    [
+      89250,
+      57
+    ],
+    [
+      90586,
+      57
+    ],
+    [
+      91909,
+      57
+    ],
+    [
+      93238,
+      57
+    ],
+    [
+      94562,
+      57
+    ],
+    [
+      95900,
+      57
+    ],
+    [
+      97225,
+      57
+    ],
+    [
+      98577,
+      57
+    ],
+    [
+      99893,
+      57
+    ],
+    [
+      101217,
+      57
+    ],
+    [
+      102544,
+      57
+    ],
+    [
+      103872,
+      57
+    ],
+    [
+      105235,
+      57
+    ],
+    [
+      106614,
+      57
+    ],
+    [
+      107954,
+      57
+    ],
+    [
+      109305,
+      57
+    ]
+  ]
+}

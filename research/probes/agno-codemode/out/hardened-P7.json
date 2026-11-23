@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "limited",
+  "display": "time-limited (10 s) at 4.0 GB",
+  "detail": "No memory limit: the 10 s timeout interrupted the loop after 10.8 s at 3.97 GB peak tree RSS (KeyboardInterrupt traceback returned). Run under mem-lock.sh.",
+  "evidence": "research/probes/agno-codemode/out/hardened-P7.txt"
+}

@@ -1,0 +1,144 @@
+{
+  "probe": "P11",
+  "config": "default",
+  "codes": [
+    "print(2)"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 817.2,
+      "started": 1795382348.579606
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 27.2,
+      "started": 1795382349.397527
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 32.4,
+      "started": 1795382349.42512
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 22.6,
+      "started": 1795382349.457974
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 19.5,
+      "started": 1795382349.480834
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 15.7,
+      "started": 1795382349.50078
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 10.0,
+      "started": 1795382349.516736
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 11.5,
+      "started": 1795382349.527061
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 19.2,
+      "started": 1795382349.538767
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 15.3,
+      "started": 1795382349.5582678
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 15.2,
+      "started": 1795382349.57406
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 27.4,
+      "started": 1795382349.5895739
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 15.3,
+      "started": 1795382349.61741
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 17.1,
+      "started": 1795382349.633035
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 25.5,
+      "started": 1795382349.6506119
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 14.8,
+      "started": 1795382349.676596
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 14.1,
+      "started": 1795382349.6918
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 17.2,
+      "started": 1795382349.706393
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 14.4,
+      "started": 1795382349.724038
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "ms": 18.5,
+      "started": 1795382349.739176
+    }
+  ],
+  "setup_ms": 1.7,
+  "fresh_session_ms": [
+    784.5,
+    701.8,
+    683.0,
+    902.7,
+    811.2
+  ],
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 5.58,
+  "peak_tree_rss_gb": 0.407,
+  "calls": [],
+  "child_log_tail": "WARNING CodeMode runs arbitrary Python and shell with the permissions of this process. It is not a sandbox: provide human supervision or run the agent in an isolated container.\n"
+}

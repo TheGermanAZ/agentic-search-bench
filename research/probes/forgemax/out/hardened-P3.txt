@@ -1,0 +1,18 @@
+mode: hardened
+code:
+async () => { const r = await fetch("https://example.com"); return r.status; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"fetch is not defined\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 17,
+  "hostCalls": 0
+}

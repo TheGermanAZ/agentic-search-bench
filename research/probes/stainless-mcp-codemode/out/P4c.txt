@@ -1,0 +1,21 @@
+mode: default
+code:
+async function run(client) {
+  const spec = "node:fs";
+  const fs: any = await import(spec);
+  return fs.readdirSync(".").slice(0, 20);
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[\"LICENSE\",\"README.md\",\"auth.d.mts\",\"auth.d.mts.map\",\"auth.d.ts\",\"auth.d.ts.map\",\"auth.js\",\"auth.js.map\",\"auth.mjs\",\"auth.mjs.map\",\"code-runner.d.mts\",\"code-runner.d.mts.map\",\"code-runner.d.ts\",\"code-runner.d.ts.map\",\"code-runner.js\",\"code-runner.js.map\",\"code-runner.mjs\",\"code-runner.mjs.map\",\"code-tool-paths.cjs\",\"code-tool-paths.cjs.map\"]"
+      }
+    ]
+  },
+  "ms": 398,
+  "hostCalls": 0
+}

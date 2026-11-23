@@ -1,0 +1,18 @@
+mode: hardened
+code:
+async () => { const t = Date.now(); const r = await forge.parallel([1,2,3,4,5].map(i => () => forge.callTool("host", "lookup", {id: i}))); return { ms: Date.now() - t, errors: r.errors }; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"ms\": 1016,\n  \"errors\": []\n}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 1021,
+  "hostCalls": 5
+}

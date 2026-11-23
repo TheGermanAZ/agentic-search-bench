@@ -1,0 +1,43 @@
+{
+  "probe": "L-globals",
+  "code": "return [typeof setTimeout, typeof setInterval, typeof queueMicrotask, typeof globalThis, typeof Function, typeof eval, typeof WebAssembly, typeof SharedArrayBuffer, typeof Atomics, typeof Proxy, typeof Reflect, typeof Buffer, typeof crypto, typeof structuredClone, typeof Date.now]",
+  "wallMs": 34,
+  "hostToolCalls": 0,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":true,\"value\":[\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"function\"],\"toolCalls\":[]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": true,
+          "value": [
+            "undefined",
+            "undefined",
+            "undefined",
+            "undefined",
+            "undefined",
+            "undefined",
+            "undefined",
+            "undefined",
+            "undefined",
+            "undefined",
+            "undefined",
+            "undefined",
+            "undefined",
+            "undefined",
+            "function"
+          ],
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

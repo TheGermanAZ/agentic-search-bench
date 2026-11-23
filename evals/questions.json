@@ -1,0 +1,473 @@
+[
+  {
+    "id": "agg-01",
+    "kind": "aggregate",
+    "answerType": "count",
+    "answer": "6",
+    "gold": [],
+    "question": "How many messages did Davis, Angelic (angelic.davis@enron.com) send to dana.davis@enron.com during 2001-10-01 to 2001-11-01 (end exclusive)? Count each unique message once."
+  },
+  {
+    "id": "agg-02",
+    "kind": "aggregate",
+    "answerType": "count",
+    "answer": "6",
+    "gold": [],
+    "question": "How many messages did James D Steffes (james.steffes@enron.com) send to karen.denne@enron.com during 2001-02-01 to 2001-03-01 (end exclusive)? Count each unique message once."
+  },
+  {
+    "id": "agg-03",
+    "kind": "aggregate",
+    "answerType": "count",
+    "answer": "12",
+    "gold": [],
+    "question": "How many messages did Outlook Migration Team (outlook.team@enron.com) send to sandra.brawner@enron.com during 2001-05-01 to 2001-06-01 (end exclusive)? Count each unique message once."
+  },
+  {
+    "id": "agg-04",
+    "kind": "aggregate",
+    "answerType": "count",
+    "answer": "7",
+    "gold": [],
+    "question": "How many messages did McClure, Zakiyyah (zakiyyah.mcclure@enron.com) send to chris.abel@enron.com during 2001-10-01 to 2001-11-01 (end exclusive)? Count each unique message once."
+  },
+  {
+    "id": "agg-05",
+    "kind": "aggregate",
+    "answerType": "email",
+    "answer": "vkaminski@aol.com",
+    "gold": [],
+    "note": "173 vs 54",
+    "question": "In 2001-04 (UTC), which address did Vince J Kaminski (vince.kaminski@enron.com) send the most messages to? Count unique messages, To and Cc both count."
+  },
+  {
+    "id": "agg-06",
+    "kind": "aggregate",
+    "answerType": "email",
+    "answer": "dan.hyvl@enron.com",
+    "gold": [],
+    "note": "13 vs 8",
+    "question": "In 2001-03 (UTC), which address did Kim Ward (kim.ward@enron.com) send the most messages to? Count unique messages, To and Cc both count."
+  },
+  {
+    "id": "agg-07",
+    "kind": "aggregate",
+    "answerType": "email",
+    "answer": "richard.shapiro@enron.com",
+    "gold": [],
+    "note": "45 vs 41",
+    "question": "In 2001-08 (UTC), which address did Steffes, James D. (d..steffes@enron.com) send the most messages to? Count unique messages, To and Cc both count."
+  },
+  {
+    "id": "agg-08",
+    "kind": "aggregate",
+    "answerType": "email",
+    "answer": "bullets@enron.com",
+    "gold": [],
+    "note": "6 vs 1",
+    "question": "In 2001-02 (UTC), which address did Hyatt, Kevin (kevin.hyatt@enron.com) send the most messages to? Count unique messages, To and Cc both count."
+  },
+  {
+    "id": "agg-09",
+    "kind": "aggregate",
+    "answerType": "email",
+    "answer": "jeff.dasovich@enron.com",
+    "gold": [],
+    "note": "8 vs 5",
+    "question": "In the 7 days before 2001-06-05 (from 2001-05-29 up to but not including 2001-06-05, UTC), who sent the most messages to Richard B Sanders (richard.sanders@enron.com)? Count unique messages, To and Cc both count."
+  },
+  {
+    "id": "agg-10",
+    "kind": "aggregate",
+    "answerType": "email",
+    "answer": "jeffery.fawcett@enron.com",
+    "gold": [],
+    "note": "5 vs 2",
+    "question": "In the 7 days before 2001-04-19 (from 2001-04-12 up to but not including 2001-04-19, UTC), who sent the most messages to Susan M Scott (susan.scott@enron.com)? Count unique messages, To and Cc both count."
+  },
+  {
+    "id": "agg-11",
+    "kind": "aggregate",
+    "answerType": "email",
+    "answer": "jeff.dasovich@enron.com",
+    "gold": [],
+    "note": "16 vs 8",
+    "question": "In the 7 days before 2001-06-07 (from 2001-05-31 up to but not including 2001-06-07, UTC), who sent the most messages to Karen Denne (karen.denne@enron.com)? Count unique messages, To and Cc both count."
+  },
+  {
+    "id": "agg-12",
+    "kind": "aggregate",
+    "answerType": "email",
+    "answer": "tana.jones@enron.com",
+    "gold": [],
+    "note": "17 vs 4",
+    "question": "In the 7 days before 2000-11-14 (from 2000-11-07 up to but not including 2000-11-14, UTC), who sent the most messages to Leslie Hansen (leslie.hansen@enron.com)? Count unique messages, To and Cc both count."
+  },
+  {
+    "id": "agg-13",
+    "kind": "aggregate",
+    "answerType": "date",
+    "answer": "2001-09-05",
+    "gold": [],
+    "note": "23 vs 19",
+    "question": "On which UTC date in 2001-09 did eSource@ENRON (40enron@enron.com) send the most messages? Answer as YYYY-MM-DD."
+  },
+  {
+    "id": "agg-14",
+    "kind": "aggregate",
+    "answerType": "date",
+    "answer": "2002-01-04",
+    "gold": [],
+    "note": "22 vs 16",
+    "question": "On which UTC date in 2002-01 did Richey, Cooper (cooper.richey@enron.com) send the most messages? Answer as YYYY-MM-DD."
+  },
+  {
+    "id": "agg-15",
+    "kind": "aggregate",
+    "answerType": "date",
+    "answer": "2001-04-25",
+    "gold": [],
+    "note": "47 vs 37",
+    "question": "On which UTC date in 2001-04 did Vince J Kaminski (vince.kaminski@enron.com) send the most messages? Answer as YYYY-MM-DD."
+  },
+  {
+    "id": "ide-16",
+    "kind": "identifier",
+    "answerType": "message",
+    "answer": "bryant.frihart@enron.com",
+    "gold": [
+      "Ef817f5aac97c"
+    ],
+    "question": "One message in the corpus mentions the phone number 703-227-8777. Which message is it, and who sent it?"
+  },
+  {
+    "id": "ide-17",
+    "kind": "identifier",
+    "answerType": "message",
+    "answer": "ann.smith@enron.com",
+    "gold": [
+      "Ec4389b37bf35"
+    ],
+    "question": "One message in the corpus mentions the phone number 402-398-7091. Which message is it, and who sent it?"
+  },
+  {
+    "id": "ide-18",
+    "kind": "identifier",
+    "answerType": "message",
+    "answer": "aaron.klemm@enron.com",
+    "gold": [
+      "Ed73c0c6ea580"
+    ],
+    "question": "One message in the corpus mentions the phone number 805-667-4653. Which message is it, and who sent it?"
+  },
+  {
+    "id": "ide-19",
+    "kind": "identifier",
+    "answerType": "message",
+    "answer": "jbreeden@psp.com",
+    "gold": [
+      "E5f5a3656a0c8"
+    ],
+    "question": "One message in the corpus mentions the phone number 713-494-7786. Which message is it, and who sent it?"
+  },
+  {
+    "id": "ide-20",
+    "kind": "identifier",
+    "answerType": "message",
+    "answer": "benjamin.rogers@enron.com",
+    "gold": [
+      "Ed7100b3442d7"
+    ],
+    "question": "One message in the corpus mentions the phone number 713-502-1920. Which message is it, and who sent it?"
+  },
+  {
+    "id": "ide-21",
+    "kind": "identifier",
+    "answerType": "message",
+    "answer": "shonnie.daniel@enron.com",
+    "gold": [
+      "E849db9ba75d4"
+    ],
+    "question": "One message in the corpus mentions the phone number 303-450-8402. Which message is it, and who sent it?"
+  },
+  {
+    "id": "ide-22",
+    "kind": "identifier",
+    "answerType": "message",
+    "answer": "marketing@nymex.com",
+    "gold": [
+      "E2083b9620d07"
+    ],
+    "question": "One message in the corpus mentions the reference ORE-7509. Which message is it, and who sent it?"
+  },
+  {
+    "id": "ide-23",
+    "kind": "identifier",
+    "answerType": "message",
+    "answer": "marketing@nymex.com",
+    "gold": [
+      "E101f257d59a0"
+    ],
+    "question": "One message in the corpus mentions the reference VAC-6101. Which message is it, and who sent it?"
+  },
+  {
+    "id": "ide-24",
+    "kind": "identifier",
+    "answerType": "message",
+    "answer": "marketing@nymex.com",
+    "gold": [
+      "E421039f1a7ae"
+    ],
+    "question": "One message in the corpus mentions the reference DANC-6039. Which message is it, and who sent it?"
+  },
+  {
+    "id": "ide-25",
+    "kind": "identifier",
+    "answerType": "message",
+    "answer": "robin.barbe@enron.com",
+    "gold": [
+      "E2093dccd9417"
+    ],
+    "question": "One message in the corpus mentions the reference EB-2934. Which message is it, and who sent it?"
+  },
+  {
+    "id": "sem-26",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "Tana Jones, who noted that Cowlitz PUD would likely be governmental or quasi-governmental and that the usual sample form lacks governmental provisions; she also asked whether credit had been requested from the Credit group.",
+    "gold": [
+      "E051d97e25abb"
+    ],
+    "question": "In July 2000, which Enron lawyer questioned whether the standard sample ISDA form was suitable for a Washington public utility district, since it lacked provisions for government-type counterparties?"
+  },
+  {
+    "id": "sem-27",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "The air/water lines (plumbing) of the spa.",
+    "gold": [
+      "Eeb636e330aa6"
+    ],
+    "question": "In spring 2001, Daren Farmer wrote asking how to get rid of a mildew-like odor in the hot tub he'd just bought with a new house, even though the pH and bromine were correct. What part of the spa did he suspect might be the source after already scrubbing the cover?"
+  },
+  {
+    "id": "sem-28",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "Anne Love of Talisman Energy (writing to Carol St. Clair on 06/29/2000, forwarded in early July 2000).",
+    "gold": [
+      "E8e1f5f0edfa0"
+    ],
+    "question": "In mid-2000, which Talisman Energy contact told Enron's lawyer that the revised online trading agreement would be attached to a letter agreement and also needed a reference in the Password Agreement?"
+  },
+  {
+    "id": "sem-29",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "He asked that the calendars be printed out and delivered to him rather than sent by e-mail.",
+    "gold": [
+      "Eb2fecb358427"
+    ],
+    "question": "In May 2000, what did Mark Taylor ask to be done differently with future SWAP Group calendars instead of receiving them electronically?"
+  },
+  {
+    "id": "sem-30",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "It would be a lawsuit only, seeking no injunctive relief.",
+    "gold": [
+      "E46c288c54114"
+    ],
+    "question": "In an October 2000 reply to her outside lawyer, what type of relief did Michelle Cash say the planned petition over the Williams matter would seek?"
+  },
+  {
+    "id": "sem-31",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "Madras",
+    "gold": [
+      "E220c3d020168"
+    ],
+    "question": "In a January 2002 email, Sue said she spoke to the recipient's mother on the day the recipient got to a certain Indian city. Which city was it?"
+  },
+  {
+    "id": "sem-32",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "Allegheny promised to execute the ISDA the following week (the week after April 5, 2001).",
+    "gold": [
+      "Ead18772b695e"
+    ],
+    "question": "In an April 2001 email, when did Sara Shackleton say Allegheny had promised to sign the ISDA master agreement, following a call with them that morning?"
+  },
+  {
+    "id": "sem-33",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "The 25th day following the service month.",
+    "gold": [
+      "E1215864c7b0d"
+    ],
+    "question": "In a June 2001 email about the Constellation transaction agreement, what payment due date did Stacy Dickson propose for the Demand Charge if the seller's invoice was late because the buyer failed to timely provide ANR information?"
+  },
+  {
+    "id": "sem-34",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "She thought the Central Bank revisions would not affect the matrix except for transactions entered into by entities that are subject to the Central Bank regulations.",
+    "gold": [
+      "Ef8fab23122b9"
+    ],
+    "question": "In March 2000, what did Sara Shackleton say she now believed the pending Central Bank revisions would affect in the Brazil financial trading matrix she wanted to finalize?"
+  },
+  {
+    "id": "sem-35",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "5:00 (he wrote that he had a court at 500).",
+    "gold": [
+      "Eaebaa505efa3"
+    ],
+    "question": "In June 2001, what time did Grant Cox say he had a court reserved when replying to Elizabeth Sager about their meeting?"
+  },
+  {
+    "id": "sem-36",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "Mark Palmer was the signatory for Enron Corp., and Ken Price (who had since left) was the signatory for ERI.",
+    "gold": [
+      "E735da6912998"
+    ],
+    "question": "In December 2000, who did Britt Davis say was the Enron Corp. signatory on the unexecuted draft Master Consulting Services Agreement with Event Resources Inc., and who signed for ERI?"
+  },
+  {
+    "id": "sem-37",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "$250 (the utility refused to sell out of state for less than $250, reducing market liquidity)",
+    "gold": [
+      "E7dbe758a3d66"
+    ],
+    "question": "In a November 2000 message to Jeff Dasovich and others, what minimum price did Mary Hain say the Los Angeles municipal water and power utility demanded before selling power to buyers outside California?"
+  },
+  {
+    "id": "sem-38",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "The Power merchant agreement",
+    "gold": [
+      "E730ca20539ec"
+    ],
+    "question": "In January 2001, Bob Shults sent Tana Jones a revised letter of intent for Amerex and asked her to check it against another existing contract and get a person to approve it. Which existing agreement was she to compare it with?"
+  },
+  {
+    "id": "sem-39",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "It only included rows with a date value after 7/1/2001 (July 1, 2001).",
+    "gold": [
+      "E6c8606dccd39"
+    ],
+    "question": "In the SQL query Phillip Platter sent in August 2001 to compare day-ahead West spot prices with real-time and ISO prices, what earliest-date cutoff did it apply to limit the results?"
+  },
+  {
+    "id": "sem-40",
+    "kind": "semantic",
+    "answerType": "message",
+    "answer": "PG&E would ask the California ISO to cut the wholesale power price cap to $100/MWh from $250/MWh.",
+    "gold": [
+      "E749c5ad6368b"
+    ],
+    "question": "In an October 2000 news item forwarded by Jeff Dasovich, what lower wholesale price ceiling per megawatt-hour did PG&E say it would ask California's grid operator to adopt, and what was the ceiling it would replace?"
+  },
+  {
+    "kind": "aggregate",
+    "answerType": "count",
+    "answer": "14",
+    "gold": [],
+    "note": "29 messages",
+    "question": "How many distinct sender addresses sent at least one message during 2001-11-01 up to but not including 2001-12-01, UTC that contain the text \"Raptor\" (case-insensitive, anywhere in the message including headers)?",
+    "id": "hrd-01"
+  },
+  {
+    "kind": "aggregate",
+    "answerType": "count",
+    "answer": "46",
+    "gold": [],
+    "note": "86 messages",
+    "question": "How many distinct sender addresses sent at least one message during 2001-11-01 up to but not including 2001-12-01, UTC that contain the text \"LJM\" (case-insensitive, anywhere in the message including headers)?",
+    "id": "hrd-02"
+  },
+  {
+    "kind": "aggregate",
+    "answerType": "count",
+    "answer": "10",
+    "gold": [],
+    "note": "38 messages",
+    "question": "How many distinct sender addresses sent at least one message during 2001-08-01 up to but not including 2001-09-01, UTC that contain the text \"Dabhol\" (case-insensitive, anywhere in the message including headers)?",
+    "id": "hrd-03"
+  },
+  {
+    "kind": "aggregate",
+    "answerType": "email",
+    "answer": "enron.announcements@enron.com",
+    "gold": [],
+    "note": "7 vs 5",
+    "question": "During 2000-12-01 up to but not including 2001-01-01, UTC, which sender address sent the most messages that contain the text \"Azurix\" (case-insensitive, anywhere in the message including headers)? Count unique messages.",
+    "id": "hrd-04"
+  },
+  {
+    "kind": "aggregate",
+    "answerType": "email",
+    "answer": "enerfaxenergy@modernmediaohio.com",
+    "gold": [],
+    "note": "6 vs 2",
+    "question": "During 2001-06-01 up to but not including 2001-07-01, UTC, which sender address sent the most messages that contain the text \"Blockbuster\" (case-insensitive, anywhere in the message including headers)? Count unique messages.",
+    "id": "hrd-05"
+  },
+  {
+    "kind": "aggregate",
+    "answerType": "email",
+    "answer": "m..schmidt@enron.com",
+    "gold": [],
+    "note": "11 vs 9",
+    "question": "During 2001-10-01 up to but not including 2001-11-01, UTC, which sender address sent the most messages that contain the text \"Whitewing\" (case-insensitive, anywhere in the message including headers)? Count unique messages.",
+    "id": "hrd-06"
+  },
+  {
+    "kind": "aggregate",
+    "answerType": "date",
+    "answer": "2000-05-23",
+    "gold": [],
+    "note": "14 vs 10",
+    "question": "On which UTC date during 2000-05-01 up to but not including 2000-06-01, UTC were the most messages sent that contain the text \"Dynegy\" (case-insensitive, anywhere in the message including headers)? Answer as YYYY-MM-DD.",
+    "id": "hrd-07"
+  },
+  {
+    "kind": "aggregate",
+    "answerType": "date",
+    "answer": "2001-03-08",
+    "gold": [],
+    "note": "27 vs 10",
+    "question": "On which UTC date during 2001-03-01 up to but not including 2001-04-01, UTC were the most messages sent that contain the text \"Northern Natural\" (case-insensitive, anywhere in the message including headers)? Answer as YYYY-MM-DD.",
+    "id": "hrd-08"
+  },
+  {
+    "kind": "aggregate",
+    "answerType": "count",
+    "answer": "2",
+    "gold": [],
+    "note": "sender bryant.frihart@enron.com, 2001-08",
+    "question": "Find the message that mentions 703-227-8777. How many messages in total did its sender send during that same UTC calendar month?",
+    "id": "hrd-09"
+  },
+  {
+    "kind": "aggregate",
+    "answerType": "count",
+    "answer": "4",
+    "gold": [],
+    "note": "sender ann.smith@enron.com, 2001-10",
+    "question": "Find the message that mentions 402-398-7091. How many messages in total did its sender send during that same UTC calendar month?",
+    "id": "hrd-10"
+  }
+]

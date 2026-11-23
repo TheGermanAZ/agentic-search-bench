@@ -1,0 +1,39 @@
+probe: P9
+outcome: works
+display: serial (1,014 ms)
+detail: 5 host calls spanning 1014 ms host-side (first start to last end); execution wall 1017.6 ms; output '30'
+
+code:
+----
+tot = 0
+for i in [1, 2, 3, 4, 5]:
+    x = lookup(i)
+    tot += x["value"]
+print(tot)
+tot
+----
+
+setup_ms: 2.0
+wall_s (whole child process): 1.36
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.07
+host lookup calls: 5
+  call id=1 start=1795377262.795 end=1795377262.995 pid=34631
+  call id=2 start=1795377262.995 end=1795377263.200 pid=34631
+  call id=3 start=1795377263.200 end=1795377263.401 pid=34631
+  call id=4 start=1795377263.401 end=1795377263.603 pid=34631
+  call id=5 start=1795377263.604 end=1795377263.809 pid=34631
+
+=== run 0 (1017.6 ms) ===
+ok: true
+stdout: 30
+
+error: null
+context_keys: ["i", "tot", "x"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+~/p/agentic-search-bench/research/impls/langgraph-codeact/.venv/lib/python3.12/site-packages/langgraph/checkpoint/base/__init__.py:17: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects='messages' or allowed_objects='core') to suppress this warning.
+  from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+

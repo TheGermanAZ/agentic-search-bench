@@ -1,0 +1,183 @@
+{
+  "impl": "cloudflare-codemode",
+  "name": "Cloudflare Code Mode (@cloudflare/codemode, Agents SDK)",
+  "source": "https://github.com/cloudflare/agents/tree/main/packages/codemode (npm @cloudflare/codemode)",
+  "pinned": "@cloudflare/codemode@0.5.6 from npm; source read at cloudflare/agents 56f5d5cc635df14d36a6a08b8e5a56113f08fb33 (package.json version 0.5.6); run on wrangler 4.166.0 / workerd 2026-11-19, local only, no Cloudflare account",
+  "language": "JS",
+  "engine": "V8 isolate created per execution by the Worker Loader binding (env.LOADER.load), inside local workerd under `wrangler dev`",
+  "how_run": "A host Worker calls createCodeTool({ tools, executor: new DynamicWorkerExecutor({ loader: env.LOADER }) }).execute({ code }) from @cloudflare/codemode/ai, the same entry point an AI SDK agent uses; raw DynamicWorkerExecutor.execute() results recorded alongside.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "code `const r = await codemode.lookup({id: 21}); console.log(r.value)` (tools live under the `codemode` namespace). Tool output {logs:['42']}, 1 host call, 214 ms wall including the 200 ms tool wait.",
+      "evidence": "research/probes/cloudflare-codemode/out/P1.json"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "Both came back: result 'RETURNED' and logs with all 200,000 chars of the print. No truncation and no marker on the createCodeTool / DynamicWorkerExecutor path; the AI SDK tool output is a 200,033-char JSON object.",
+      "evidence": "research/probes/cloudflare-codemode/out/P2.json"
+    },
+    "P3": {
+      "outcome": "blocked",
+      "detail": "fetch throws: 'This worker is not permitted to access the internet via global functions like fetch(). It must use capabilities (such as bindings in 'env') to talk to the outside world.' Model sees it prefixed with 'Code execution failed: '. Caused by globalOutbound: null.",
+      "evidence": "research/probes/cloudflare-codemode/out/P3.json"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "require: 'require is not defined'; import('node:fs') and import('fs'): 'No such module \"node:fs\".'; Deno: 'Deno is not defined'. The sandbox compat date is pinned to 2025-06-01, before node:fs exists in workerd.",
+      "evidence": "research/probes/cloudflare-codemode/out/P4.json"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "PROBE_SECRET=s3cr3t set in the OS env of wrangler and as a host Worker var (host Worker reads 's3cr3t'). In the sandbox `process` exists (workerd Node polyfill) but process.env is {} and PROBE_SECRET is undefined; no global `env`.",
+      "evidence": "research/probes/cloudflare-codemode/out/P5.json"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "`while (true) {}` was not stopped; harness aborted at 120,006 ms. The 60 s timeout is a Promise.race inside the sandbox and never gets to run. The whole local runtime stopped answering (/noop failed afterwards). Supplementary async hang `await new Promise(() => {})` was stopped at 60,007 ms with 'Code execution failed: Execution timed out'.",
+      "evidence": "research/probes/cloudflare-codemode/out/P6.json, research/probes/cloudflare-codemode/out/P6b_asyncHang.json, research/probes/cloudflare-codemode/out/wrangler-P6.log",
+      "display": "no-limit-within-120s (in-guest timer)"
+    },
+    "P7": {
+      "outcome": "error",
+      "detail": "Stopped after ~18 s by V8's heap limit ('V8 fatal error; location = Reached heap limit', Mark-Compact at ~1,397 MB). This aborted the whole workerd process (signal #6), host Worker included: the caller got HTTP 500 'Network connection lost.' and no ExecuteResult; wrangler restarted the runtime. Peak workerd RSS 1,642,960 KB.",
+      "evidence": "research/probes/cloudflare-codemode/out/P7.json, research/probes/cloudflare-codemode/out/wrangler-P7.log",
+      "display": "host crash (workerd, ~1.4 GB)"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "execution 2 printed 'gone'. Each execute() calls loader.load() for a new Worker.",
+      "evidence": "research/probes/cloudflare-codemode/out/P8.json",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "205 ms measured inside the sandbox for 5 Promise.all lookups, 5 host calls: parallel.",
+      "evidence": "research/probes/cloudflare-codemode/out/P9.json",
+      "display": "parallel (205 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "Model-facing tool throws 'Code execution failed: probe-boom'; raw executor returns {error:'probe-boom', logs:[]}. Message survives; no stack, no line number (only err.message is kept).",
+      "evidence": "research/probes/cloudflare-codemode/out/P10.json"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "20 fresh executions of `1+1` timed in the host Worker: median 1 ms, p90 2 ms (workerd Date.now, 1 ms resolution). Client HTTP round trip: median 3.4 ms vs 1.3 ms for a no-op route. One-time setup: wrangler dev ready in 938 ms; first execution of a session about 14 ms over its 200 ms tool wait.",
+      "evidence": "research/probes/cloudflare-codemode/out/P11.json, research/probes/cloudflare-codemode/out/setup.json"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "this.constructor.constructor('return process')(): 'Code generation from strings disallowed for this context' (`this` is the CodeExecutor WorkerEntrypoint). (function(){return this})().process: \"Cannot read properties of undefined (reading 'process')\". The ambient `process` global is workerd's polyfill (platform 'linux' on a macOS host, env {}, no cwd()), not the host.",
+      "evidence": "research/probes/cloudflare-codemode/out/P12.json, research/probes/cloudflare-codemode/out/P12x_thisContext.json"
+    }
+  },
+  "defaults": {
+    "time": "60,000 ms (DEFAULT_DYNAMIC_WORKER_EXECUTION_TIMEOUT_MS), enforced only by a Promise.race inside the sandbox, so it stops async waits but not synchronous loops. No cpuMs or other limits are passed to the Worker Loader; locally nothing stopped `while(true){}` in 120 s.",
+    "memory": "None set by codemode. Locally the workerd V8 heap limit (~1.4 GB) killed the whole runtime process. Production Dynamic Worker limits not observed (no account).",
+    "output": "No cap on the createCodeTool / DynamicWorkerExecutor path (200,000-char print returned whole). The newer createCodemodeRuntime tool caps logs and results at 6,000 tokens = 24,000 chars with '--- TRUNCATED ---'; the codeMcpServer/openApiMcpServer wrappers cap at 24,000 chars.",
+    "tool_calls": "No count cap. Calls still pending when an execution settles are answered with a 'late' error by ExecutionGate."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Tools become methods on a namespace object (`codemode` by default, one per ToolProvider). generateTypes converts each tool's Zod / Standard / JSON Schema input (and optional output schema) to JSON Schema and then to TypeScript `type XInput`, `type XOutput`, plus `declare const codemode: { x: (input: XInput) => Promise<XOutput> }` with JSDoc from descriptions. It is pasted into the tool description through the {{types}} placeholder. Without an output schema the output type is `unknown` (see out/tool-description.txt).",
+      "evidence": "packages/codemode/src/tool-types.ts:221-285 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/tool-types.ts#L221-L285); packages/codemode/src/tool.ts:98-121 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/tool.ts#L98-L121); packages/codemode/src/shared.ts:10-19 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/shared.ts#L10-L19)"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Legacy createCodeTool puts every tool's types in the one tool description upfront. The newer createCodemodeRuntime path exposes `codemode.search(query)` / `codemode.describe(path)` inside the sandbox; search is weighted keyword token matching over connector method paths and descriptions (path 12, method 10, connector 8, description 5), top 50, with no embeddings.",
+      "evidence": "packages/codemode/src/tool.ts:94-114 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/tool.ts#L94-L114); packages/codemode/src/connectors/search.ts:11-18 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/connectors/search.ts#L11-L18); packages/codemode/src/connectors/search.ts:163-206 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/connectors/search.ts#L163-L206); packages/codemode/src/proxy-tool.ts:1-20 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/proxy-tool.ts#L1-L20)"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Workers RPC. The host builds one ToolDispatcher (an RpcTarget) per namespace and passes them as arguments to the sandbox entrypoint's evaluate(__dispatchers, __connectors). Inside the sandbox a Proxy per namespace turns `ns.tool(args)` into `__dispatchers.ns.call(name, JSON)`; results come back as JSON with a base64 tag for binary. Connectors use direct RPC callTool instead.",
+      "evidence": "packages/codemode/src/executor.ts:235-257 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L235-L257); packages/codemode/src/executor.ts:434-450 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L434-L450); packages/codemode/src/executor.ts:601-604 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L601-L604)"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Each execute() calls env.LOADER.load() for a new Worker with compatibilityDate '2025-06-01', nodejs_compat, globalOutbound null by default, and env only when bindings are passed. README claims network is blocked at the runtime level; probes P3, P4, P5, P12 match. The model's code is spliced into the WorkerEntrypoint's evaluate() method body, so `this`, `__dispatchers`, `__logs` and the console override are in its scope (probe P12x).",
+      "evidence": "packages/codemode/src/executor.ts:573-583 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L573-L583); packages/codemode/src/executor.ts:484-516 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L484-L516); packages/codemode/README.md:481-493 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/README.md#L481-L493)"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "console.log/warn/error are replaced to push into __logs; evaluate returns {result, logs}. runCode returns {result, logs} on success and on error throws 'Code execution failed: <msg>' followed by '\\n\\nConsole output:\\n' and the logs. No truncation on this path; the runtime path's toModelOutput truncates logs with truncateResult (6,000 tokens x 4 chars).",
+      "evidence": "packages/codemode/src/executor.ts:489-512 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L489-L512); packages/codemode/src/run-code.ts:16-31 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/run-code.ts#L16-L31); packages/codemode/src/proxy-tool.ts:789-801 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/proxy-tool.ts#L789-L801); packages/codemode/src/truncate.ts:19-21 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/truncate.ts#L19-L21)"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Only the 60 s Promise.race timeout. load() gets no CPU, memory or subrequest limits. No tool-call cap.",
+      "evidence": "packages/codemode/src/executor.ts:261 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L261); packages/codemode/src/executor.ts:498-508 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L498-L508); packages/codemode/src/executor.ts:573-583 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L573-L583)"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh Worker per execution (load(), not get(id)), so no state between runs. The runtime path adds durability through a Durable Object facet: a tool-call log replayed after approvals, at most 50 executions kept, 1,000,000-byte cap per logged value, saved 'snippets' the model can rerun.",
+      "evidence": "packages/codemode/src/executor.ts:569-583 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L569-L583); packages/codemode/src/runtime.ts:144-156 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/runtime.ts#L144-L156); packages/codemode/src/proxy-tool.ts:1-20 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/proxy-tool.ts#L1-L20)"
+    },
+    {
+      "topic": "Errors",
+      "finding": "The sandbox catch returns err.message only (stack and line dropped). A tool throwing on the host is returned as {error: message} and re-thrown in the sandbox as new Error(message). runCode prefixes 'Code execution failed: '.",
+      "evidence": "packages/codemode/src/executor.ts:509-512 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L509-L512); packages/codemode/src/executor.ts:242-256 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/executor.ts#L242-L256); packages/codemode/src/run-code.ts:22-27 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/run-code.ts#L22-L27)"
+    },
+    {
+      "topic": "Approvals, credentials, async",
+      "finding": "createCodeTool silently drops tools with needsApproval (documented limitation); the runtime path pauses instead for requiresApproval connector methods and resumes by replay. Credentials stay host-side because tools execute on the host. Code is normalized with acorn (fences stripped, last expression returned), and async/Promise.all work.",
+      "evidence": "packages/codemode/src/resolve.ts:16-31 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/resolve.ts#L16-L31); packages/codemode/README.md:718-723 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/README.md#L718-L723); packages/codemode/src/normalize.ts:14-81 (https://github.com/cloudflare/agents/blob/56f5d5cc635df14d36a6a08b8e5a56113f08fb33/packages/codemode/src/normalize.ts#L14-L81)"
+    }
+  ],
+  "surprises": [
+    "DynamicWorkerExecutor's documented 60 s timeout is a Promise.race inside the sandbox. The README warns that sync loops cannot be preempted only for the browser iframe executor (README.md:567, 721), but the Worker executor has the same limitation and passes no CPU limit to the Worker Loader (executor.ts:498-508, 573-583). Locally `while(true){}` ran past 120 s and froze the whole dev runtime.",
+    "A memory blow-up in the sandbox killed the entire local workerd process, host Worker included. The caller got HTTP 500 'Network connection lost' rather than an execution error. Production isolation may differ; not verified without an account.",
+    "createCodeTool returns console logs uncapped (all 200,000 chars), while the newer runtime tool and the MCP wrappers in the same package cap at 24,000 chars.",
+    "The sandbox compatibility date is hard-coded to 2025-06-01 (executor.ts:574), whatever the host Worker's date is.",
+    "Model code runs as the body of the sandbox WorkerEntrypoint method. `this` is the CodeExecutor instance with ctx.waitUntil, and harness internals (__dispatchers, __logs) are reachable. This grants no extra capability beyond the tools.",
+    "Tool discovery in the newer runtime is plain weighted keyword matching (connectors/search.ts), not embeddings."
+  ],
+  "hardened": {
+    "config": "new DynamicWorkerExecutor({ loader: env.LOADER, timeout: 10000, globalOutbound: null, modules: {}, bindings: {} }) passed to createCodeTool, the only public limit options (packages/codemode/src/executor.ts:263-290, README.md:551-558). timeout 10000 ms is our choice for the free numeric knob (default 60000, executor.ts:261); globalOutbound null, no modules and no bindings are already the defaults and the strictest values. No memory, CPU or output option exists: createCodeTool takes only tools/executor/description (src/shared.ts:21-28) and the load() call passes no Worker Loader `limits` (executor.ts:573-583), although the Worker Loader API has limits.cpuMs/subRequests (agents/agent-think/worker-configuration.d.ts:4097-4112). The wrangler worker_loaders binding accepts only `binding` (wrangler config-schema.json:1664-1680) and the workerd workerLoader config only `id` (workerd.capnp:793-806). Run on local wrangler 4.166.0 dev (port 41800), config echoed in every out/hardened-*.json.",
+    "probes": {
+      "P3": {
+        "outcome": "blocked",
+        "detail": "Same as default: fetch throws 'This worker is not permitted to access the internet via global functions like fetch()...' (model sees 'Code execution failed: ' prefix). globalOutbound null.",
+        "evidence": "research/probes/cloudflare-codemode/out/hardened-P3.json",
+        "display": "blocked"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "detail": "require: 'require is not defined'; import('node:fs') and import('fs'): 'No such module \"node:fs\".'; Deno: 'Deno is not defined'.",
+        "evidence": "research/probes/cloudflare-codemode/out/hardened-P4.json",
+        "display": "not-defined"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "Host Worker sees PROBE_SECRET='s3cr3t'; in the sandbox process.env is {} (PROBE_SECRET undefined) and there is no global env.",
+        "evidence": "research/probes/cloudflare-codemode/out/hardened-P5.json",
+        "display": "blocked"
+      },
+      "P6": {
+        "outcome": "no-limit-within-120s",
+        "detail": "while(true){} ran until the harness stop at 120,004 ms even with timeout 10000: the timeout is a Promise.race setTimeout inside the sandbox (executor.ts:505) that a sync loop never yields to. The whole local runtime stopped answering (/noop failed for 70 s after). The option itself works for async code: await new Promise(()=>{}) stopped at 10,007 ms with 'Execution timed out' (hardened-P6b_asyncHang.json). Supplementary, not counted: wrapping env.LOADER to add limits {cpuMs: 1000} also did not stop the loop within 30 s locally (hardened-P6_loaderLimits.json).",
+        "evidence": "research/probes/cloudflare-codemode/out/hardened-P6.json",
+        "display": "no-limit-within-120s"
+      },
+      "P7": {
+        "outcome": "error",
+        "detail": "No memory option exists. The push loop hit V8 'Reached heap limit' (Mark-Compact at ~1,397 MB) after 37 s; signal #6 aborted the whole workerd process, host Worker included. Caller got HTTP 500 'Network connection lost.' and no ExecuteResult. A bystander execution started 0.5 s earlier (a 5 s sleep) was lost with the same 500 at 37.8 s. Wrangler restarted the runtime; a trivial 1+1 afterwards worked in a new workerd process. Peak workerd RSS 1,616,912 KB.",
+        "evidence": "research/probes/cloudflare-codemode/out/hardened-P7.json",
+        "display": "host crash"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "5 Promise.all lookups took 226 ms (tool) and 228 ms (raw) inside the sandbox, 5 host calls each: parallel.",
+        "evidence": "research/probes/cloudflare-codemode/out/hardened-P9.json",
+        "display": "parallel (226 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "this.constructor.constructor('return process')(): 'Code generation from strings disallowed for this context'. (function(){return this})().process: \"Cannot read properties of undefined (reading 'process')\". Ambient process is workerd's polyfill (platform 'linux', env {}, no cwd), not the host.",
+        "evidence": "research/probes/cloudflare-codemode/out/hardened-P12.json",
+        "display": "blocked"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { return manifest.servers.map(s => ({ name: s.name, categories: Object.keys(s.categories) })); }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[\n  {\n    \"name\": \"host\",\n    \"categories\": [\n      \"general\"\n    ]\n  }\n]"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 51,
+  "hostCalls": 0
+}

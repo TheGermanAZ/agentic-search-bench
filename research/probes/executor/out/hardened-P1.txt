@@ -1,0 +1,37 @@
+{
+  "probe": "P1",
+  "serverPid": 16365,
+  "code": "const r = await tools.probe.lookup({id: 21}); console.log(r.value)",
+  "wallMs": 558,
+  "hostToolCalls": 1,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":true,\"value\":null,\"logs\":[\"42\"],\"toolCalls\":[{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":264}]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": true,
+          "value": null,
+          "logs": [
+            "42"
+          ],
+          "toolCalls": [
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 264
+            }
+          ]
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

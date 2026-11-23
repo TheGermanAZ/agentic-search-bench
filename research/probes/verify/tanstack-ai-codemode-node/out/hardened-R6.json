@@ -1,0 +1,259 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../tanstack-ai-codemode-node/adapter.mjs hardened R6",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 5495,
+  "peakTreeRssMb": 80,
+  "watchKill": null,
+  "record": {
+    "impl": "tanstack-ai-codemode-node",
+    "config": "hardened",
+    "test": "R6",
+    "notes": "one createCodeModeTool({driver: node}) shared; execute({typescriptCode}) as chat() calls it",
+    "data": {
+      "startMs": 224,
+      "ms": 5223,
+      "ok": true,
+      "result": {
+        "value": {
+          "success": false,
+          "error": {
+            "message": "Script execution timed out.",
+            "name": "Error",
+            "stack": "Error: Script execution timed out.\n    at <isolated-vm>:5:33\n    at (<isolated-vm boundary>)\n    at execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:35:73)"
+          },
+          "logs": []
+        },
+        "stringChars": 308
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 209,
+    "hostEvents": [],
+    "totalMs": 5447
+  },
+  "childStdoutOtherChars": 619,
+  "childStdoutHead": "{\n  timestamp: \u001b[33m1795382775152\u001b[39m,\n  durationMs: \u001b[33m5219\u001b[39m,\n  phase: \u001b[32m'execute'\u001b[39m,\n  success: \u001b[33mfalse\u001b[39m,\n  logCount: \u001b[33m0\u001b[39m,\n  error: {\n    name: \u001b[32m'Error'\u001b[39m,\n    message: \u001b[32m'Script execution timed out.'\u001b[39m,\n    stack: \u001b[32m'Error: Script execution timed out.\\n'\u001b[39m +\n      \u001b[32m'    at <isolated-vm>:5:33\\n'\u001b[39m +\n      \u001b[32m'    at (<isolated-vm boundary>)\\n'\u001b[39m +\n      \u001b[32m'    at execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:35:73)'\u001b[39m\n  }\n}\n",
+  "childStderrTail": "❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed\n",
+  "rssSamplesMsMb": [
+    [
+      88,
+      51
+    ],
+    [
+      193,
+      68
+    ],
+    [
+      292,
+      77
+    ],
+    [
+      391,
+      80
+    ],
+    [
+      497,
+      80
+    ],
+    [
+      598,
+      80
+    ],
+    [
+      698,
+      80
+    ],
+    [
+      800,
+      80
+    ],
+    [
+      900,
+      80
+    ],
+    [
+      1005,
+      80
+    ],
+    [
+      1107,
+      80
+    ],
+    [
+      1205,
+      80
+    ],
+    [
+      1312,
+      80
+    ],
+    [
+      1410,
+      80
+    ],
+    [
+      1520,
+      80
+    ],
+    [
+      1622,
+      80
+    ],
+    [
+      1721,
+      80
+    ],
+    [
+      1823,
+      80
+    ],
+    [
+      1970,
+      80
+    ],
+    [
+      2056,
+      80
+    ],
+    [
+      2153,
+      80
+    ],
+    [
+      2262,
+      80
+    ],
+    [
+      2359,
+      80
+    ],
+    [
+      2461,
+      80
+    ],
+    [
+      2560,
+      80
+    ],
+    [
+      2676,
+      80
+    ],
+    [
+      2772,
+      80
+    ],
+    [
+      2869,
+      80
+    ],
+    [
+      2970,
+      80
+    ],
+    [
+      3071,
+      80
+    ],
+    [
+      3175,
+      80
+    ],
+    [
+      3277,
+      80
+    ],
+    [
+      3379,
+      80
+    ],
+    [
+      3480,
+      80
+    ],
+    [
+      3588,
+      80
+    ],
+    [
+      3685,
+      80
+    ],
+    [
+      3787,
+      80
+    ],
+    [
+      3888,
+      80
+    ],
+    [
+      3992,
+      80
+    ],
+    [
+      4094,
+      80
+    ],
+    [
+      4196,
+      80
+    ],
+    [
+      4295,
+      80
+    ],
+    [
+      4432,
+      80
+    ],
+    [
+      4512,
+      80
+    ],
+    [
+      4614,
+      80
+    ],
+    [
+      4720,
+      80
+    ],
+    [
+      4815,
+      80
+    ],
+    [
+      4920,
+      80
+    ],
+    [
+      5020,
+      80
+    ],
+    [
+      5122,
+      80
+    ],
+    [
+      5222,
+      80
+    ],
+    [
+      5324,
+      80
+    ],
+    [
+      5425,
+      80
+    ]
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py hardened R9a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 10741,
+  "peakTreeRssMb": 122,
+  "peakTreeFootprintMb": 86,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9a",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller={'allowed_tools': ['lookup', 'failing', 'rich'], 'timeout': 10.0}; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 480,
+          "ms": 10009,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error: timed out after 10 seconds."
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 632,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 216,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 10489,
+        "ms": 213,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 21,
+    "totalMs": 10702
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      77,
+      33,
+      17
+    ],
+    [
+      227,
+      56,
+      38
+    ],
+    [
+      382,
+      75,
+      53
+    ],
+    [
+      534,
+      96,
+      68
+    ],
+    [
+      688,
+      110,
+      82
+    ],
+    [
+      839,
+      122,
+      86
+    ],
+    [
+      1014,
+      110,
+      82
+    ],
+    [
+      1154,
+      122,
+      83
+    ],
+    [
+      1305,
+      110,
+      86
+    ],
+    [
+      1459,
+      110,
+      83
+    ],
+    [
+      1616,
+      110,
+      83
+    ],
+    [
+      1767,
+      110,
+      83
+    ],
+    [
+      1923,
+      110,
+      83
+    ],
+    [
+      2082,
+      110,
+      83
+    ],
+    [
+      2234,
+      110,
+      83
+    ],
+    [
+      2390,
+      110,
+      83
+    ],
+    [
+      2543,
+      110,
+      83
+    ],
+    [
+      2700,
+      110,
+      83
+    ],
+    [
+      2852,
+      110,
+      83
+    ],
+    [
+      3008,
+      110,
+      83
+    ],
+    [
+      3163,
+      110,
+      83
+    ],
+    [
+      3315,
+      110,
+      83
+    ],
+    [
+      3470,
+      110,
+      83
+    ],
+    [
+      3622,
+      110,
+      83
+    ],
+    [
+      3777,
+      110,
+      83
+    ],
+    [
+      3935,
+      110,
+      83
+    ],
+    [
+      4090,
+      110,
+      83
+    ],
+    [
+      4247,
+      110,
+      83
+    ],
+    [
+      4392,
+      110,
+      83
+    ],
+    [
+      4546,
+      110,
+      83
+    ],
+    [
+      4700,
+      110,
+      83
+    ],
+    [
+      4855,
+      110,
+      83
+    ],
+    [
+      5009,
+      110,
+      83
+    ],
+    [
+      5232,
+      110,
+      83
+    ],
+    [
+      5375,
+      110,
+      83
+    ],
+    [
+      5524,
+      110,
+      83
+    ],
+    [
+      5684,
+      110,
+      83
+    ],
+    [
+      5835,
+      110,
+      83
+    ],
+    [
+      5993,
+      110,
+      83
+    ],
+    [
+      6147,
+      110,
+      83
+    ],
+    [
+      6299,
+      110,
+      83
+    ],
+    [
+      6455,
+      110,
+      83
+    ],
+    [
+      6605,
+      110,
+      83
+    ],
+    [
+      6765,
+      110,
+      83
+    ],
+    [
+      6920,
+      110,
+      83
+    ],
+    [
+      7076,
+      110,
+      83
+    ],
+    [
+      7231,
+      110,
+      83
+    ],
+    [
+      7390,
+      110,
+      83
+    ],
+    [
+      7554,
+      110,
+      83
+    ],
+    [
+      7697,
+      110,
+      83
+    ],
+    [
+      7853,
+      110,
+      83
+    ],
+    [
+      8003,
+      110,
+      83
+    ],
+    [
+      8157,
+      110,
+      83
+    ],
+    [
+      8312,
+      110,
+      83
+    ],
+    [
+      8468,
+      110,
+      83
+    ],
+    [
+      8637,
+      110,
+      83
+    ],
+    [
+      8779,
+      110,
+      83
+    ],
+    [
+      8931,
+      110,
+      83
+    ],
+    [
+      9086,
+      110,
+      83
+    ],
+    [
+      9244,
+      110,
+      83
+    ],
+    [
+      9398,
+      110,
+      83
+    ],
+    [
+      9552,
+      110,
+      83
+    ],
+    [
+      9706,
+      110,
+      83
+    ],
+    [
+      9862,
+      110,
+      83
+    ],
+    [
+      10015,
+      110,
+      83
+    ],
+    [
+      10182,
+      110,
+      83
+    ],
+    [
+      10328,
+      110,
+      83
+    ],
+    [
+      10477,
+      110,
+      83
+    ],
+    [
+      10637,
+      111,
+      83
+    ]
+  ]
+}

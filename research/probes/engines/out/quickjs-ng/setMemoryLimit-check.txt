@@ -1,0 +1,3 @@
+ng result caught InternalError: out of memory after 2141 MB
+ng ms 5248 rss MB 1407 usage: 
+QuickJS-ng memory usage -- 0.12.1 version, 32-bit, Little Endian, malloc limit: 67108864 |  |   malloc_usable_size unavailable

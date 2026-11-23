@@ -1,0 +1,200 @@
+{
+  "impl": "codemode-unified-bun",
+  "name": "CodeMode Unified, Bun runtime",
+  "source": "https://github.com/danieliser/codemode-unified",
+  "pinned": "6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93 (2025-10-01)",
+  "language": "JS/TS",
+  "engine": "A `bun run` subprocess per pass (Bun 1.4.4, JavaScriptCore), with the server's full environment and no permission flags",
+  "how_run": "MCP stdio server dist/mcp-server.js (CODEMODE_ENABLE_MCP_INTEGRATION=true, MCP_CONFIG_PATH naming a stdio MCP server that serves `lookup`), tool execute_code {code, runtime: 'bun'}",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "spec code printed an empty line (r.value is undefined); 1 host call. r.parsed.value returned 42",
+      "evidence": "research/probes/codemode-unified-bun/out/P1.txt",
+      "display": "works (r.value empty; r.parsed)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "full 200,000-char line in logs, no marker; the bare final expression is not returned, `return` works",
+      "evidence": "research/probes/codemode-unified-bun/out/P2.txt",
+      "display": "works (200,000 chars, no cap)"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "status 200, 577 bytes",
+      "evidence": "research/probes/codemode-unified-bun/out/P3.txt",
+      "display": "works (example.com 200)"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "require('fs'), import('fs') and Bun.file all read /etc/hosts",
+      "evidence": "research/probes/codemode-unified-bun/out/P4.txt",
+      "display": "works (/etc/hosts read)"
+    },
+    "P5": {
+      "outcome": "works",
+      "detail": "process.env.PROBE_SECRET returned s3cr3t: the bun child inherits the server's whole env",
+      "evidence": "research/probes/codemode-unified-bun/out/P5.txt",
+      "display": "works (s3cr3t)"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "'Bun execution timeout' after 30,021 ms (SIGTERM to the bun process)",
+      "evidence": "research/probes/codemode-unified-bun/out/P6.txt",
+      "display": "limited (30 s)"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "no memory limit; process tree passed 4 GB host RSS 0.85 s after start and the harness killed it",
+      "evidence": "research/probes/codemode-unified-bun/out/P7.txt",
+      "display": "no cap (4 GB kill at 0.9 s)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "second run returned gone (new process per pass)",
+      "evidence": "research/probes/codemode-unified-bun/out/P8.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "5 host calls, 269 ms wall: the server resolves logged calls with Promise.all. The in-code timer printed 0 ms because pass 2 reads baked-in results",
+      "evidence": "research/probes/codemode-unified-bun/out/P9.txt",
+      "display": "parallel (269 ms, replayed)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "'Bun exited with code 1: EXECUTION_ERROR: probe-boom' plus a stack at bun-exec-<id>.ts:30:11; user line 1 shows as line 30, line 3 as 32",
+      "evidence": "research/probes/codemode-unified-bun/out/P10.txt",
+      "display": "message + temp-file line (+29)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "median 18.7 ms, p90 28.5 ms; first run 52 ms; server setup 280 ms. `1+1` returns no value: auto-return is skipped once the injected proxy contains 'return '",
+      "evidence": "research/probes/codemode-unified-bun/out/P11.txt",
+      "display": "18.7 ms median"
+    },
+    "P12": {
+      "outcome": "escaped",
+      "detail": "child_process.execSync and Bun.spawnSync printed PWNED and the host user name; the spec one-liners fail only because `this` is undefined in the wrapper",
+      "evidence": "research/probes/codemode-unified-bun/out/P12.txt",
+      "display": "escaped (child_process, Bun.spawn)"
+    }
+  },
+  "hardened": {
+    "config": "execute_code argument timeout: 5000, the only limit the MCP entry point exposes (https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L548-L551, #L879)",
+    "probes": {
+      "P3": {
+        "outcome": "works",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-bun/out/hardened-P3.txt",
+        "display": "works (example.com 200)"
+      },
+      "P4": {
+        "outcome": "works",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-bun/out/hardened-P4.txt",
+        "display": "works (/etc/hosts read)"
+      },
+      "P5": {
+        "outcome": "works",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-bun/out/hardened-P5.txt",
+        "display": "works (s3cr3t)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "'Bun execution timeout' after 5,025 ms",
+        "evidence": "research/probes/codemode-unified-bun/out/hardened-P6.txt",
+        "display": "limited (5 s)"
+      },
+      "P7": {
+        "outcome": "no-limit-within-120s",
+        "detail": "passed 4 GB host RSS 1.0 s after start, before the 5 s timeout; harness kill",
+        "evidence": "research/probes/codemode-unified-bun/out/hardened-P7.txt",
+        "display": "no cap (4 GB kill at 1.0 s)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "5 host calls",
+        "evidence": "research/probes/codemode-unified-bun/out/hardened-P9.txt",
+        "display": "parallel (278 ms, replayed)"
+      },
+      "P12": {
+        "outcome": "escaped",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-bun/out/hardened-P12.txt",
+        "display": "escaped (child_process, Bun.spawn)"
+      }
+    }
+  },
+  "defaults": {
+    "time": "30 s per pass (execute_code timeout), then SIGTERM",
+    "memory": "none",
+    "output": "no cap",
+    "tool_calls": "no cap"
+  },
+  "source_notes": [
+    {
+      "topic": "Isolation boundary",
+      "finding": "Writes the wrapped program to $TMPDIR/bun-exec-<id>.ts and spawns bun with no env option, so the child inherits the server's whole environment, and with no permission model. capabilities() still reports hasNativeIsolation: true.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/runtime/bun-runtime.ts#L68-L78; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/runtime/bun-runtime.ts#L292; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/runtime/bun-runtime.ts#L158"
+    },
+    {
+      "topic": "Credentials (measured)",
+      "finding": "Program code read MCP_CONFIG_PATH from env and then the config file itself, which holds every downstream MCP server's command and env.",
+      "evidence": "research/probes/codemode-unified-bun/out/P14_credentials.txt"
+    },
+    {
+      "topic": "Runtime path",
+      "finding": "Uses $HOME/.bun/bin/bun whenever HOME is set, without checking that it exists; the 'bun' PATH fallback is unreachable.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/runtime/bun-runtime.ts#L38-L41"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Not a live bridge but a two-pass replay. Pass 1 runs the whole program with every mcp.* call returning a placeholder string and logging '__MCP_CALL__' JSON; the server then runs all logged calls with Promise.all, bakes the results into the source as literals, and runs the whole program a second time. Arguments that depend on an earlier tool result are computed from the placeholder, and every side effect happens twice (P13).",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L903-L918; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L946-L1021; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L1111-L1134; research/probes/codemode-unified-bun/out/P13_twoPass.txt"
+    },
+    {
+      "topic": "API shape",
+      "finding": "A generated `const mcp = { <server>: { <tool>: async (args) => __mcpCall('<server>.<tool>', args) } }` proxy is prepended to the program. Results come back wrapped as {content, text, parsed, isError, helpers}, so `r.value` is undefined and the value sits at r.parsed.value (P1).",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L403-L466; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L974-L1007"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On-demand mode (the default) tells the model to read the resource mcp://types/declarations, but reading it always fails: loadTypeScriptDeclarations calls require() inside an ES module. The model gets no tool names. auto-include mode (CODEMODE_TYPE_EXPOSURE) lists every tool in the description instead.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L35; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L327-L340; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L513-L529; research/probes/codemode-unified-bun/out/P15_discovery.txt"
+    },
+    {
+      "topic": "Setup",
+      "finding": "Tool access is off unless CODEMODE_ENABLE_MCP_INTEGRATION=true, which the README does not mention. execute_code defaults to runtime 'quickjs', although the README recommends Bun.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L1359; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L879"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "Tools run in the MCP server process, but on startup it prints the first 20 characters of every downstream MCP server env value with console.log, which goes to stdout, the MCP protocol channel.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L281; research/probes/codemode-unified-bun/out/envlog-stdout.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "execute_code takes a timeout (default 30 s) and nothing else; getRuntime builds every runtime with only {type}, so the memoryLimit, Deno permission and E2B apiKey fields in RuntimeConfig cannot be set through the MCP server. No output cap, no tool-call cap.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L502-L508; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L879; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L945"
+    },
+    {
+      "topic": "HTTP mode",
+      "finding": "The HTTP backend's /execute ignores the `runtime` field shown in the README curl example; its sandbox manager only wraps QuickJS.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/server.ts#L109-L128; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/sandbox/index.ts#L9-L19"
+    },
+    {
+      "topic": "Maintenance",
+      "finding": "27 commits, last on 2025-10-01, single author; package.json says MIT but the repo has no LICENSE file; not published to npm. The README badge says 'Production Ready'.",
+      "evidence": "git log at 6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93; npm view @danieliser/codemode-unified -> 404"
+    }
+  ],
+  "surprises": [
+    "Tool calls are replayed, not bridged: the program runs twice, and a call whose arguments depend on an earlier result gets the placeholder's value (lookup(a.parsed.value) was called with id -1 and returned {id: -1, value: -2}).",
+    "A file-append side effect in a program with one tool call happened twice.",
+    "The model is told to read mcp://types/declarations, which always errors, so in the default mode it cannot learn the tool names.",
+    "README says 'Sandboxed execution with memory/CPU limits' and 'Network access controls'; the Bun runtime has neither, and reads host files, env and runs shell commands.",
+    "Default runtime is quickjs, not the recommended Bun."
+  ]
+}

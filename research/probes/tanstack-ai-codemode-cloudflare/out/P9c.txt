@@ -1,0 +1,57 @@
+label: P9c
+command: node probe.mjs P9c
+child exit: code=0 signal=null
+child wall ms (process start to exit): 2377
+peak child RSS: 121.3 MB (ps every 50 ms)
+peak server (pid 76929) RSS: 77.4 MB; alive after probe: yes
+child stdout length: 279 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P9c",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.30895799999999,
+  "source": [
+    "let s = 0; for (let i = 0; i < 12; i++) s += (await external_lookup({id: i})).value; return s;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Exceeded maximum tool callback rounds (10)",
+          "name": "MaxRoundsExceeded"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 2193.790333,
+      "hostCalls": 10
+    }
+  ],
+  "summary": {
+    "out": "MaxRoundsExceeded: Exceeded maximum tool callback rounds (10)",
+    "ms": 2194,
+    "hostCalls": 10
+  },
+  "hostRssAfterMB": 121.3
+}
+--- child stdout ---
+{
+  timestamp: [33m1795376388284[39m,
+  durationMs: [33m2192[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'MaxRoundsExceeded'[39m,
+    message: [32m'Exceeded maximum tool callback rounds (10)'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

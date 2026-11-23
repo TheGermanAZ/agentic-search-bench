@@ -1,0 +1,12 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "detail": "per execution (each one a fresh process): median 58.0 ms, p90 97.3 ms. Same-session runs median 58.0 / p90 97.3 ms; new session + run median 10760.9 / p90 11103.3 ms; one-time setup 606.3 ms",
+  "display": "median 58.0 ms",
+  "median_ms": 58.0,
+  "p90_ms": 97.3,
+  "setup_ms": 606.3,
+  "same_session_median_ms": 58.0,
+  "new_session_median_ms": 10760.9,
+  "config": "default"
+}

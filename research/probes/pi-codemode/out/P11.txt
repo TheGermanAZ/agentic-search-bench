@@ -1,0 +1,39 @@
+{
+  "impl": "pi-codemode",
+  "config": "default",
+  "probe": "P11",
+  "options": {},
+  "hostCalls": 0,
+  "results": [
+    {
+      "firstExecutionIncludingWasmCompileMs": 52.18,
+      "timesMs": [
+        26.51,
+        26.5,
+        25.41,
+        24.93,
+        25.98,
+        24.7,
+        24.8,
+        25.54,
+        27.56,
+        26.04,
+        23.97,
+        25.39,
+        24.49,
+        24.04,
+        23.27,
+        24.52,
+        24.4,
+        25.54,
+        26.45,
+        25.98
+      ],
+      "medianMs": 25.4,
+      "p90Ms": 26.5
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P11"], "exit_code": 0, "wall_ms": 624, "peak_tree_rss_mb": 108.6, "watch_kill": null}

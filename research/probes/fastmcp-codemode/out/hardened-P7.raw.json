@@ -1,0 +1,25 @@
+{
+  "probe": "P7",
+  "config": "hardened",
+  "codes": [
+    "a = []\nwhile True:\n    a.append(\"x\" * 10**6)"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "structured": null,
+      "stdout": "",
+      "error": "Error calling tool 'execute': MemoryError: memory limit exceeded: 50044922 bytes > 50000000 bytes",
+      "ms": 35.1,
+      "started": 1795379072.687496
+    }
+  ],
+  "setup_ms": 23.3,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.62,
+  "peak_tree_rss_gb": 0.091,
+  "calls": [],
+  "child_log_tail": "[11/22/26 15:24:32] Error calling tool 'execute'                                \n                    \u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Traceback (most recent call last) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/server/server.py:1673 in call_tool                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/tools/base.py:555 in _run                           \u2502\n                    \u2502                                                          \u2502\n                    \u2502                 ... 8 frames hidden ...                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:275 in run     \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:309 in         \u2502\n                    \u2502 _run_monty                                               \u2502\n                    \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n                    MontyRuntimeError: MemoryError: memory limit exceeded:      \n                    50044922 bytes > 50000000 bytes                             \n"
+}

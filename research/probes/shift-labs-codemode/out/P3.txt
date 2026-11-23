@@ -1,0 +1,17 @@
+{
+  "literalFetch": {
+    "code": "const r = await fetch(\"https://example.com\"); return r.status",
+    "ms": 1,
+    "hostCalls": 0,
+    "result": null,
+    "error": "Error: fetch is disabled in codemode sandbox\n    at fetch ([worker eval]:360:29)\n    at eval (eval at __run ([worker eval]:502:16), <anonymous>:4:17)\n    at eval (eval at __run ([worker eval]:502:16), <anonymous>:5:3)\n    at __run ([worker eval]:506:21)\n    at MessagePort.__hostMessageHandler ([worker eval]:532:10)\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:869:20)\n    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)",
+    "logs": []
+  },
+  "globalThisFetch": {
+    "code": "const r = await globalThis.fetch(\"https://example.com\"); return r.status",
+    "ms": 133,
+    "hostCalls": 0,
+    "result": 200,
+    "logs": []
+  }
+}

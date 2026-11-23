@@ -1,0 +1,7 @@
+{
+  "probe": "P4",
+  "outcome": "blocked",
+  "display": "blocked (virtual FS, Errno 44)",
+  "detail": "Error during execution: [Errno 44] No such file or directory: '/etc/hosts'",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/hardened-P4.txt"
+}

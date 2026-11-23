@@ -1,0 +1,11 @@
+code:
+// @ts-ignore
+console.log(String(this.constructor.constructor("return process")()))
+
+result:
+{
+  "id": "5075f7d6-4c3a-45e3-ba77-dde6db5d595c",
+  "error": "\u001b[0m\u001b[32mDownload\u001b[0m http://localhost:41310/client.ts?v=1\n\u001b[0m\u001b[32mCheck\u001b[0m file:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/998747ebb36e6042.ts\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'constructor')\nconsole.log(String(this.constructor.constructor(\"return process\")()))\n\u001b[0m\u001b[31m                        ^\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/998747ebb36e6042.ts\u001b[0m:\u001b[0m\u001b[33m5\u001b[0m:\u001b[0m\u001b[33m25\u001b[0m\n",
+  "ms": 938,
+  "hostCalls": 0
+}

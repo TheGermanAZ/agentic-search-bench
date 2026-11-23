@@ -1,0 +1,37 @@
+config: CodeMode()
+code: null
+outcome: works
+detail: fresh agent run with one run_code(1+1): median 16.5 ms, p90 29.0 ms (n=20); first run incl. imports and pool spawn 498 ms; 20 run_code calls in one run 115 ms total
+
+raw:
+{
+  "runs_ms": [
+    16.0,
+    15.0,
+    15.0,
+    18.0,
+    15.0,
+    15.0,
+    27.0,
+    29.0,
+    17.0,
+    16.0,
+    62.0,
+    21.0,
+    18.0,
+    17.0,
+    40.0,
+    16.0,
+    17.0,
+    16.0,
+    16.0,
+    15.0
+  ],
+  "first": [
+    {
+      "kind": "ToolReturnPart",
+      "content": 2
+    }
+  ],
+  "warm_total_s": 0.115
+}

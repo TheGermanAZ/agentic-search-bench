@@ -1,0 +1,29 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 25890,
+    "totalWallMs": 26057,
+    "peakTreeRssMB": 3547.5,
+    "stderrTail": ""
+  },
+  "backend": "localsandbox",
+  "probe": "P7",
+  "mode": "default",
+  "setupMs": 127.2,
+  "record": {
+    "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+    "wallMs": 25853.1,
+    "hostCalls": 0,
+    "out": {
+      "success": false,
+      "logs": [],
+      "error": {
+        "message": "Program exited without returning a result",
+        "name": "NoResultError"
+      }
+    },
+    "threw": null
+  }
+}

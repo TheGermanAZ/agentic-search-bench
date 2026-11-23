@@ -1,0 +1,19 @@
+mode: default
+code:
+async function run(client) {
+  return (globalThis as any).Deno.env.get("PROBE_SECRET");
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "s3cr3t"
+      }
+    ]
+  },
+  "ms": 579,
+  "hostCalls": 0
+}

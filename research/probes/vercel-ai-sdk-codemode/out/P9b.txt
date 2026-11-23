@@ -1,0 +1,47 @@
+label: P9b
+command: node probe.mjs P9b
+child exit: code=0 signal=null
+child wall ms (process start to exit): 193
+peak child RSS: 130.4 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P9b",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "const r = await Promise.all(Array.from({length: 40}, (_, i) => tools.lookup({id: i}))); return r.length;"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "CodeModeBridgeLimitError",
+        "code": "CODE_MODE_BRIDGE_LIMIT",
+        "message": "JavaScript runtime exceeded the 32 in-flight bridge request limit.",
+        "details": {
+          "invocationId": "run-1",
+          "maxInFlightBridgeRequests": 32
+        },
+        "stack": "RunBridgeLimitError: JavaScript runtime exceeded the 32 in-flight bridge request limit.\n    at handleHostFunctionRequest (file://~/p/agentic-search-bench/research/impls/vercel-ai-sdk-codemode/pkg/node_modules/run/dist/runtime/manager.js:791:9)\n    at async runInBackground (file://~/p/agentic-search-bench/research/impls/vercel-ai-sdk-codemode/pkg/node_modules/run/dist/runtime/manager.js:93:3)",
+        "string": "CodeModeBridgeLimitError: JavaScript runtime exceeded the 32 in-flight bridge request limit."
+      },
+      "wallMs": 88.49345800000002,
+      "hostCalls": 32
+    }
+  ],
+  "summary": {
+    "error": "CodeModeBridgeLimitError: CODE_MODE_BRIDGE_LIMIT JavaScript runtime exceeded the 32 in-flight bridge request limit.",
+    "ms": 88,
+    "hostCalls": 32
+  },
+  "hostRssAfterMB": 152.1
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:83638) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

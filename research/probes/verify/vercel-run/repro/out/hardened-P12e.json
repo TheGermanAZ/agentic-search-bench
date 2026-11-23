@@ -1,0 +1,44 @@
+{
+  "impl": "vercel-run",
+  "probe": "P12e",
+  "config": {
+    "limits": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxHostFunctionArgumentsBytes": 262144,
+      "maxHostFunctionOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8,
+      "maxContinuationBytes": 8388608
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "return String(Object.getPrototypeOf(async function(){}).constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "TypeError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "Function constructor is not allowed",
+        "stack": "TypeError: Function constructor is not allowed\n    at <anonymous> (run.js:1:57)",
+        "string": "TypeError: Function constructor is not allowed"
+      },
+      "wallMs": 167.143625,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "TypeError: RUN_USER_SOURCE_ERROR Function constructor is not allowed",
+    "ms": 167,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 146
+}

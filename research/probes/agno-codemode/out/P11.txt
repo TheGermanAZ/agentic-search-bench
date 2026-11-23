@@ -1,0 +1,102 @@
+probe: P11
+outcome: works
+display: works (17.1 ms median)
+detail: 20 runs in one session: median 17.1 ms, p90 27.4 ms; one-time setup 1.7 ms; fresh session per run (open+run+close, n=5): median 784.5 ms
+
+code:
+----
+print(2)
+----
+
+setup_ms: 1.7
+wall_s (whole child process): 5.58
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.407
+host lookup calls: 0
+
+=== run 0 (817.2 ms) ===
+ok: true
+stdout: 2
+
+=== run 1 (27.2 ms) ===
+ok: true
+stdout: 2
+
+=== run 2 (32.4 ms) ===
+ok: true
+stdout: 2
+
+=== run 3 (22.6 ms) ===
+ok: true
+stdout: 2
+
+=== run 4 (19.5 ms) ===
+ok: true
+stdout: 2
+
+=== run 5 (15.7 ms) ===
+ok: true
+stdout: 2
+
+=== run 6 (10.0 ms) ===
+ok: true
+stdout: 2
+
+=== run 7 (11.5 ms) ===
+ok: true
+stdout: 2
+
+=== run 8 (19.2 ms) ===
+ok: true
+stdout: 2
+
+=== run 9 (15.3 ms) ===
+ok: true
+stdout: 2
+
+=== run 10 (15.2 ms) ===
+ok: true
+stdout: 2
+
+=== run 11 (27.4 ms) ===
+ok: true
+stdout: 2
+
+=== run 12 (15.3 ms) ===
+ok: true
+stdout: 2
+
+=== run 13 (17.1 ms) ===
+ok: true
+stdout: 2
+
+=== run 14 (25.5 ms) ===
+ok: true
+stdout: 2
+
+=== run 15 (14.8 ms) ===
+ok: true
+stdout: 2
+
+=== run 16 (14.1 ms) ===
+ok: true
+stdout: 2
+
+=== run 17 (17.2 ms) ===
+ok: true
+stdout: 2
+
+=== run 18 (14.4 ms) ===
+ok: true
+stdout: 2
+
+=== run 19 (18.5 ms) ===
+ok: true
+stdout: 2
+
+fresh session (open+run+close) ms: [784.5, 701.8, 683.0, 902.7, 811.2]
+
+=== child process log (tail) ===
+WARNING CodeMode runs arbitrary Python and shell with the permissions of this process. It is not a sandbox: provide human supervision or run the agent in an isolated container.
+

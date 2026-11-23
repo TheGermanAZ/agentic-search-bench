@@ -1,0 +1,192 @@
+{
+  "impl": "symbolica-agentica",
+  "name": "Symbolica Agentica SDK (Warp RPC + sandboxed Python REPL)",
+  "source": "https://docs.symbolica.ai/concepts/how-it-works ; https://github.com/symbolica-ai/agentica-server ; https://github.com/symbolica-ai/agentica-python-sdk (PyPI symbolica-agentica 0.4.1)",
+  "pinned": "agentica-server 8db268f44ef8d09bd706b49e72e329348bb4b8b3, agentica-python-sdk 1e64ecda69b6456530c9aabff476923893f41fe8, agentica-internal e5c1774 (all last committed 2026-02-13); not built or run",
+  "language": "Python",
+  "engine": "CPython 3.12 compiled to WASI (componentize-py), run by a Rust wasmtime host (PyO3) inside the agentica-server process",
+  "how_run": "agentica-server's wasm Sandbox (CPython 3.12 for WASI under a Rust wasmtime host), built from the pinned clones in a rust:1-bookworm Docker image (research/probes/symbolica-agentica/docker/Dockerfile) and driven directly by probe.py with fixed code, one fresh container per probe; no model and no Symbolica key. Built and probed by a wave-3 worker; P7 and the results file finished by the coordinator.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "display": "works (42, 1 call)",
+      "detail": "printed 42, 1 host lookup call, 212 ms",
+      "evidence": "research/probes/symbolica-agentica/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "works",
+      "display": "truncated (10,000 head + tail + marker)",
+      "detail": "both came back: printed output cut to the first 10,000 and last ~486 chars with the marker \"[ ... 190012 chars (2 lines) truncated - maximum REPL output exceeded, inspect smaller slices ]\", plus the return value RETURNED",
+      "evidence": "research/probes/symbolica-agentica/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "blocked",
+      "display": "blocked (PermissionError)",
+      "detail": "urllib and a raw socket connect both fail: PermissionError [Errno 2] Permission denied",
+      "evidence": "research/probes/symbolica-agentica/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "display": "blocked (no preopened dirs)",
+      "detail": "open('/etc/hosts') -> FileNotFoundError [Errno 44]; os.listdir('/') also fails",
+      "evidence": "research/probes/symbolica-agentica/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "display": "blocked (empty env)",
+      "detail": "os.environ.get('PROBE_SECRET') -> None; os.environ is {}",
+      "evidence": "research/probes/symbolica-agentica/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "display": "no-limit-within-120s (spins after close)",
+      "detail": "while True: pass still running at 120.3 s; after aclose() the guest kept burning 5.1 CPU-seconds in 5 s on a host thread. A sibling session in the same process still answered during and after.",
+      "evidence": "research/probes/symbolica-agentica/out/P6.txt"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "display": "no-limit-within-120s (4.18 GB in 1.0 s)",
+      "detail": "host RSS passed the 4 GiB kill at 1.0 s; no memory limiter",
+      "evidence": "research/probes/symbolica-agentica/out/P7.txt"
+    },
+    "P8": {
+      "outcome": "persists",
+      "display": "persists",
+      "detail": "second execution printed 7 in the same session",
+      "evidence": "research/probes/symbolica-agentica/out/P8.txt"
+    },
+    "P9": {
+      "outcome": "works",
+      "display": "parallel (207 ms)",
+      "detail": "asyncio.gather of 5 lookups: 207 ms, 5 host calls",
+      "evidence": "research/probes/symbolica-agentica/out/P9.txt"
+    },
+    "P10": {
+      "outcome": "works",
+      "display": "works (exception + line)",
+      "detail": "the raised exception crosses to the caller as a typed exception with its traceback text",
+      "evidence": "research/probes/symbolica-agentica/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "display": "works (0.3 ms in session; 10 ms fresh)",
+      "detail": "20 executions in one session: median 0.3 ms, p90 0.4 ms; a fresh sandbox (new + init + print + close): median 10 ms; one-time setup 545 ms",
+      "evidence": "research/probes/symbolica-agentica/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "display": "blocked (no os.system in WASI)",
+      "detail": "subclasses list reachable (541, incl. _wrap_close and Popen) but os.system is absent in the WASI build (KeyError 'system'); bridge-object probing raised decode errors only",
+      "evidence": "research/probes/symbolica-agentica/out/P12.txt"
+    }
+  },
+  "hardened": {
+    "config": "mode='wasm' forced explicitly (probe.py --mode wasm), which ignores AGENTICA_NO_SANDBOX; no time, fuel, epoch or memory option exists to set (wasmtime host sets none)",
+    "probes": {
+      "P3": {
+        "outcome": "blocked",
+        "display": "blocked (PermissionError)",
+        "detail": "urllib and a raw socket connect both fail: PermissionError [Errno 2] Permission denied",
+        "evidence": "research/probes/symbolica-agentica/out/hardened-P3.txt"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "display": "blocked (no preopened dirs)",
+        "detail": "open('/etc/hosts') -> FileNotFoundError [Errno 44]; os.listdir('/') also fails",
+        "evidence": "research/probes/symbolica-agentica/out/hardened-P4.txt"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "display": "blocked (empty env)",
+        "detail": "os.environ.get('PROBE_SECRET') -> None; os.environ is {}",
+        "evidence": "research/probes/symbolica-agentica/out/hardened-P5.txt"
+      },
+      "P6": {
+        "outcome": "no-limit-within-120s",
+        "display": "no-limit-within-120s (spins after close)",
+        "detail": "while True: pass still running at 120.3 s; after aclose() the guest kept burning 5.1 CPU-seconds in 5 s on a host thread. A sibling session in the same process still answered during and after.",
+        "evidence": "research/probes/symbolica-agentica/out/hardened-P6.txt"
+      },
+      "P7": {
+        "outcome": "no-limit-within-120s",
+        "display": "no-limit-within-120s (4.19 GB in 1.6 s)",
+        "detail": "host RSS passed the 4 GiB kill at 1.6 s",
+        "evidence": "research/probes/symbolica-agentica/out/hardened-P7.txt"
+      },
+      "P9": {
+        "outcome": "works",
+        "display": "parallel (206 ms)",
+        "detail": "asyncio.gather of 5 lookups: 207 ms, 5 host calls",
+        "evidence": "research/probes/symbolica-agentica/out/hardened-P9.txt"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "display": "blocked (no os.system in WASI)",
+        "detail": "subclasses list reachable (541, incl. _wrap_close and Popen) but os.system is absent in the WASI build (KeyError 'system'); bridge-object probing raised decode errors only",
+        "evidence": "research/probes/symbolica-agentica/out/hardened-P12.txt"
+      }
+    }
+  },
+  "defaults": {
+    "time": "none",
+    "memory": "none",
+    "output": "Value reprs truncated to 80 lines x 1000 chars with a \"[truncated, N ...]\" marker (guest/common.py:64-92).",
+    "tool_calls": "Not determined from source.",
+    "hardened": "null: not run, and no stricter sandbox option was found beyond the default Wasm mode.",
+    "hardened_reason": "no limit options exist; only forcing wasm mode"
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Functions and objects passed in scope appear in the sandbox as stubs/proxies (\"Warp\"); return values are proxies by reference, not serialized. Async host functions appear as functions returning Future[T].",
+      "evidence": "research/probes/symbolica-agentica/out/docs-how-it-works.md lines 19-24 and 137"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "All upfront: the request to the model includes signatures and docstrings of every function and type in scope.",
+      "evidence": "research/probes/symbolica-agentica/out/docs-how-it-works.md (\"What Happens Behind the Scenes\", step 1)"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "RPC over two host imports into the Wasm component, send-bytes and recv-bytes (plus recv-ready, write-log); messages are msgspec-encoded Warp frames relayed to the SDK process, where the real functions run.",
+      "evidence": "https://github.com/symbolica-ai/agentica-server/blob/8db268f44ef8d09bd706b49e72e329348bb4b8b3/src/sandbox/host/src/lib.rs#L193-L203 ; https://github.com/symbolica-ai/agentica-server/blob/8db268f44ef8d09bd706b49e72e329348bb4b8b3/src/sandbox/host/sandbox.py#L170-L200"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "wasmtime component with a default WasiCtxBuilder: no preopened dirs, no env, no inherited network; stdio inherited only in debug mode. The server can instead run guest code in-process when AGENTICA_NO_SANDBOX=1 (choose_mode).",
+      "evidence": "https://github.com/symbolica-ai/agentica-server/blob/8db268f44ef8d09bd706b49e72e329348bb4b8b3/src/sandbox/host/src/lib.rs#L210-L218 ; https://github.com/symbolica-ai/agentica-server/blob/8db268f44ef8d09bd706b49e72e329348bb4b8b3/src/sandbox/host/sandbox.py#L145-L151 and #L765-L773"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "REPL summary: output text, stdout, stderr/traceback, and the eval value; reprs truncated to 80 lines and 1000 chars per line with a visible marker.",
+      "evidence": "https://github.com/symbolica-ai/agentica-server/blob/8db268f44ef8d09bd706b49e72e329348bb4b8b3/src/sandbox/host/sandbox.py#L681-L693 ; https://github.com/symbolica-ai/agentica-server/blob/8db268f44ef8d09bd706b49e72e329348bb4b8b3/src/sandbox/guest/common.py#L64-L92"
+    },
+    {
+      "topic": "Limits",
+      "finding": "No fuel, no epoch interruption, no memory limiter in the wasmtime setup. A loop in guest code would run until the session is closed.",
+      "evidence": "https://github.com/symbolica-ai/agentica-server/blob/8db268f44ef8d09bd706b49e72e329348bb4b8b3/src/sandbox/host/src/lib.rs#L189-L227"
+    },
+    {
+      "topic": "State",
+      "finding": "Persistent REPL for the life of an agent; docs show multi-step sessions.",
+      "evidence": "research/probes/symbolica-agentica/out/docs-how-it-works.md (\"sandboxed REPL environment\")"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Traceback string returned as stderr of the REPL summary.",
+      "evidence": "https://github.com/symbolica-ai/agentica-server/blob/8db268f44ef8d09bd706b49e72e329348bb4b8b3/src/sandbox/host/sandbox.py#L681-L693"
+    },
+    {
+      "topic": "Anything else",
+      "finding": "Hosted use needs AGENTICA_API_KEY; local use points the SDK at a self-run server via S_M_BASE_URL=http://localhost:2345 and needs an inference key (OpenRouter by default) for the server, not for the sandbox. Credentials of in-scope functions stay in the SDK process because calls are proxied.",
+      "evidence": "https://github.com/symbolica-ai/agentica-python-sdk/blob/1e64ecda69b6456530c9aabff476923893f41fe8/src/agentica/__main__.py#L496-L538 ; https://github.com/symbolica-ai/agentica-server/blob/8db268f44ef8d09bd706b49e72e329348bb4b8b3/README.md"
+    }
+  ],
+  "surprises": [
+    "The sandbox is fully open source and runs without a Symbolica key, but no prebuilt server exists: running it means building CPython for WASI, wasi-sdk, msgspec and a Rust wasmtime extension from source.",
+    "An environment variable, AGENTICA_NO_SANDBOX=1, silently switches the server to running agent code in-process with no Wasm sandbox (sandbox.py:765-773).",
+    "The wasmtime host sets no fuel, epoch deadline or memory limiter, so time and memory are unbounded inside the sandbox by design of the shown code (not measured).",
+    "With AGENTICA_NO_SANDBOX=1 the same probes read /etc/hosts, read the secret and ran os.system twice (out/nosandbox-*.txt): the switch silently turns the sandbox off.",
+    "Closing a sandbox does not stop a guest busy loop: it keeps spinning on a host thread (P6)."
+  ]
+}

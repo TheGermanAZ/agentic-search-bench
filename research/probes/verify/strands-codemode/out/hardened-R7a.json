@@ -1,0 +1,85 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py hardened R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 549,
+  "peakTreeRssMb": 95,
+  "peakTreeFootprintMb": 72,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R7a",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller={'allowed_tools': ['lookup', 'failing', 'rich'], 'timeout': 10.0}; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "label": "",
+      "startMs": 489,
+      "ms": 14,
+      "ok": true,
+      "result": {
+        "status": "error",
+        "text": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 2, in <module>\n    await asyncio.sleep(100000)\nAttributeError: module 'asyncio' has no attribute 'sleep'"
+      },
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 0,
+    "totalMs": 503
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      84,
+      32,
+      0
+    ],
+    [
+      132,
+      43,
+      20
+    ],
+    [
+      199,
+      52,
+      20
+    ],
+    [
+      238,
+      57,
+      42
+    ],
+    [
+      286,
+      65,
+      42
+    ],
+    [
+      342,
+      70,
+      42
+    ],
+    [
+      384,
+      76,
+      58
+    ],
+    [
+      440,
+      82,
+      58
+    ],
+    [
+      501,
+      90,
+      58
+    ],
+    [
+      539,
+      95,
+      72
+    ]
+  ]
+}

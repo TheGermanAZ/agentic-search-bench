@@ -1,0 +1,7 @@
+{
+  "probe": "P2",
+  "outcome": "works",
+  "display": "full (200,000 A)",
+  "detail": "RETURNED came back: False (in nowhere); 200000 of 200000 A's came back; marker found: None; stdout chars 200001; error ''",
+  "evidence": "research/probes/langgraph-codeact/out/P2.txt"
+}

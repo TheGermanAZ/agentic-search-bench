@@ -1,0 +1,591 @@
+engine=node hardened=false config={"enabled":true,"executor":"node"} setupMs=1
+--- code 1 ---
+1+1
+--- result 1 ---
+{"ms":235.55,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 2 ---
+1+1
+--- result 2 ---
+{"ms":365.56,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 3 ---
+1+1
+--- result 3 ---
+{"ms":331.67,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 4 ---
+1+1
+--- result 4 ---
+{"ms":217.64,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 5 ---
+1+1
+--- result 5 ---
+{"ms":219.26,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 6 ---
+1+1
+--- result 6 ---
+{"ms":280.1,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 7 ---
+1+1
+--- result 7 ---
+{"ms":193.15,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 8 ---
+1+1
+--- result 8 ---
+{"ms":222.66,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 9 ---
+1+1
+--- result 9 ---
+{"ms":225.2,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 10 ---
+1+1
+--- result 10 ---
+{"ms":170.46,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 11 ---
+1+1
+--- result 11 ---
+{"ms":245.9,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 12 ---
+1+1
+--- result 12 ---
+{"ms":311.21,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 13 ---
+1+1
+--- result 13 ---
+{"ms":325.92,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 14 ---
+1+1
+--- result 14 ---
+{"ms":202.35,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 15 ---
+1+1
+--- result 15 ---
+{"ms":358.39,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 16 ---
+1+1
+--- result 16 ---
+{"ms":289.08,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 17 ---
+1+1
+--- result 17 ---
+{"ms":227.09,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 18 ---
+1+1
+--- result 18 ---
+{"ms":489.58,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 19 ---
+1+1
+--- result 19 ---
+{"ms":351.39,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 20 ---
+1+1
+--- result 20 ---
+{"ms":260.06,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 21 ---
+1+1
+--- result 21 ---
+{"ms":240.1,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- summary ---
+{"setupMsCreateTools":1,"firstExecMs":235.55,"medianMs":252.98000000000002,"p90Ms":358.39}

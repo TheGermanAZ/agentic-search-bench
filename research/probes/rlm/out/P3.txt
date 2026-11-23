@@ -1,0 +1,8 @@
+probe: P3
+code (python, run through LocalREPL.execute_code):
+import urllib.request
+print(urllib.request.urlopen("https://example.com").status)
+host_calls_so_far: 0
+stdout: '200\n'
+stderr: ''
+error: None

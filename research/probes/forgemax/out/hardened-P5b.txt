@@ -1,0 +1,18 @@
+mode: hardened
+code:
+async () => { const p = globalThis["pro" + "cess"]; return p ? p["e" + "nv"].PROBE_SECRET : "no process"; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"banned pattern detected: `globalThis[...] computed access is banned in the sandbox` — the sandbox has no filesystem, network, or module access. Use forge.callTool() or forge.server() to interact with external services.\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 1,
+  "hostCalls": 0
+}

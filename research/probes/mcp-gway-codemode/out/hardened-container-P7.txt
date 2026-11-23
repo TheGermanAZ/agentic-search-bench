@@ -1,0 +1,10 @@
+--- code 1 ---
+def f():
+    a = []
+    for i in range(2147483647):
+        a.append("x" * 1000000)
+    return len(a)
+result = f()
+--- result 1 ---
+{"ok": false, "error": "RemoteDisconnected: Remote end closed connection without response", "ms": 4798.85, "peakFootprintMB": 253, "hostCalls": 0, "gatewayAlive": "false exit=137 oom=true", "concurrentP1": {"ok": false, "error": "RemoteDisconnected: Remote end closed connection without response", "ms": 3796.2, "hostCalls": 0, "gatewayAlive": "false exit=137 oom=true"}, "concurrentP1StartedAtS": 1, "footprintAfterMB": 0}
+running=false exit=137 oom=true finished=2026-11-22T21:18:37.298138111Z

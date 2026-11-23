@@ -1,0 +1,53 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "name": "TanStack AI Code Mode, QuickJS Bun driver (@tanstack/ai-isolate-quickjs-bun)",
+  "source": "https://github.com/TanStack/ai (packages/ai-code-mode, packages/ai-isolate-quickjs-bun); npm @tanstack/ai-code-mode 1.1.2, @tanstack/ai-isolate-quickjs-bun 1.1.0",
+  "pinned": "TanStack/ai c695ada5091e7022bf13b235220645ceb65d43b0 (npm src folders identical); quickjs-bun 0.1.2 (https://github.com/superpowerdotcom/quickjs-bun, vendored QuickJS C sources); Bun 1.4.4",
+  "language": "TS (stripped with sucrase)",
+  "engine": "Native QuickJS, compiled from the vendored C sources once per process by Bun's built-in TinyCC and called through bun:ffi; a new JSRuntime with its own heap and stack limits per execution, on the host's main thread",
+  "how_run": "Under bun: createCodeModeTool({ driver: createQuickJSBunIsolateDriver(), tools: [lookup, failing] }).execute({ typescriptCode }); guest code calls external_lookup({id}).",
+  "probes": {
+    "P1": { "outcome": "works", "detail": "result 42, logs [\"42\"], 1 host call, 384 ms (the first execution in a process also pays about 1.1 to 1.5 s to compile QuickJS)", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P1.txt", "display": "works (42, 1 call)" },
+    "P2": { "outcome": "limited", "detail": "result and logs both return; bare expression gives undefined (needs return). A 200,000-char line comes back whole; across 20 such lines (P2c) the logs stop at 1,000,000 chars and end with a \"[log output truncated]\" entry. The returned value has no cap (2,000,000 chars came back, P2e).", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P2.txt, P2b.txt, P2c.txt, P2e.txt", "display": "logs capped (1M + marker)" },
+    "P3": { "outcome": "not-defined", "detail": "ReferenceError: 'fetch' is not defined", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P3.txt", "display": "not-defined" },
+    "P4": { "outcome": "not-defined", "detail": "'require' is not defined; import(\"fs\") could not load module 'fs'; 'Deno' is not defined", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P4.txt, P4b.txt, P4c.txt", "display": "not-defined" },
+    "P5": { "outcome": "not-defined", "detail": "'process' is not defined", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P5.txt, P5b.txt", "display": "not-defined" },
+    "P6": { "outcome": "limited", "detail": "TimeoutError: Code execution timed out after 30000ms (30,144 ms). Runs on the host's main thread, so the host was blocked: a second program scheduled at 100 ms started at 30,145 ms.", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P6.txt", "display": "limited (30 s), blocks host" },
+    "P7": { "outcome": "limited", "detail": "MemoryLimitError: Code execution exceeded memory limit after 627 ms; peak host RSS 200 MB (128 MB runtime limit). Host blocked during the run (sibling started at 628 ms); the process and later programs were fine.", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P7.txt", "display": "limited (128 MB)" },
+    "P8": { "outcome": "works", "detail": "fresh: gone", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P8.txt", "display": "fresh" },
+    "P9": { "outcome": "works", "detail": "parallel: 203 ms guest-measured, 377 ms host wall, 5 host calls; 40 calls in 434 ms (P9b)", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P9.txt, P9b.txt", "display": "parallel (203 ms)" },
+    "P10": { "outcome": "works", "detail": "success false, error { name: Error, message: probe-boom, stack }. Stack frames use <code-mode> line:col shifted by the 4-line wrapper (user line 3 shows as 7:35). No host stack. Tool error messages reach the model verbatim (P10c).", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P10.txt, P10b.txt, P10c.txt", "display": "works (message, line +4)" },
+    "P11": { "outcome": "works", "detail": "median 0.80 ms, p90 1.21 ms over 20 executions; first execution in this process 144.8 ms; driver setup 3 ms. Load average 27 to 35.", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P11.txt", "display": "0.8 ms median" },
+    "P12": { "outcome": "blocked", "detail": "Function constructor throws 'process' is not defined; sloppy this.process undefined; AsyncFunction constructor builds only guest functions; no __ host globals are exposed (P12f returned {})", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/P12.txt, P12b.txt, P12c.txt, P12e.txt, P12f.txt, P12g.txt", "display": "blocked" }
+  },
+  "hardened": {
+    "config": "createQuickJSBunIsolateDriver({ maxToolCalls: 100 }) with createCodeModeTool({ driver, tools, timeout: 5000, memoryLimit: 32 }) (docs/code-mode/code-mode-isolates.md:158-169; create-code-mode-tool.ts:96-97)",
+    "probes": {
+      "P3": { "outcome": "not-defined", "detail": "'fetch' is not defined", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/hardened-P3.txt", "display": "not-defined" },
+      "P4": { "outcome": "not-defined", "detail": "'require' is not defined; import(\"fs\") could not load module", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/hardened-P4.txt, hardened-P4b.txt", "display": "not-defined" },
+      "P5": { "outcome": "not-defined", "detail": "'process' is not defined", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/hardened-P5.txt", "display": "not-defined" },
+      "P6": { "outcome": "limited", "detail": "TimeoutError after 5,128 ms; host blocked until then (sibling start 5,128 ms)", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/hardened-P6.txt", "display": "limited (5 s), blocks host" },
+      "P7": { "outcome": "limited", "detail": "MemoryLimitError after 273 ms; peak host RSS 104 MB (32 MB runtime limit); later programs fine", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/hardened-P7.txt", "display": "limited (32 MB)" },
+      "P9": { "outcome": "works", "detail": "parallel: 203 ms, 5 host calls", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/hardened-P9.txt", "display": "parallel (203 ms)" },
+      "P12": { "outcome": "blocked", "detail": "same as default", "evidence": "research/probes/tanstack-ai-codemode-quickjs-bun/out/hardened-P12.txt, hardened-P12b.txt, hardened-P12c.txt, hardened-P12e.txt, hardened-P12g.txt", "display": "blocked" }
+    }
+  },
+  "defaults": {
+    "time": "30,000 ms per execution: QuickJS interrupt for synchronous code plus a deadline loop for async continuations (ai-isolate-quickjs-bun/src/isolate-context.ts:245-291)",
+    "memory": "128 MB per JSRuntime, 512 KiB stack (ai-isolate-quickjs-bun/src/isolate-driver.ts:234-238)",
+    "output": "logs capped at 10,000 entries or 1,000,000 chars, then one \"[log output truncated]\" entry (isolate-context.ts:51-55, :420-430); result not capped",
+    "tool_calls": "maxToolCalls 1000 per execution; the guest gets a catchable error past it (isolate-context.ts:58, :487-492)"
+  },
+  "source_notes": [
+    { "topic": "API shape and discovery", "finding": "Same Code Mode layer as the other TanStack drivers: external_<name> functions, TypeScript stubs from JSON Schema in the system prompt, and lazy tools behind discover_tools.", "evidence": "https://github.com/TanStack/ai/blob/c695ada5091e7022bf13b235220645ceb65d43b0/packages/ai-code-mode/src/create-system-prompt.ts#L28-L83; create-discovery-tool.ts#L55-L108" },
+    { "topic": "Bridge", "finding": "Each tool call creates a guest promise (vm.newPromise), runs the host binding asynchronously, and resolves the promise when it settles; the execution loop pumps pending jobs until the program settles or the deadline passes. Calls overlap, so P9 is parallel.", "evidence": "https://github.com/TanStack/ai/blob/c695ada5091e7022bf13b235220645ceb65d43b0/packages/ai-isolate-quickjs-bun/src/isolate-context.ts#L480-L535" },
+    { "topic": "Isolation boundary", "finding": "Native QuickJS in the Bun process via FFI, on the main thread. A QuickJS memory-safety bug would be a native bug in the host process, with no WASM boundary in between. The engine is compiled at runtime with TinyCC from C sources shipped in the npm package.", "evidence": "quickjs-bun 0.1.2 src/ffi.ts:438-454 (npm, cc({ source: quickJSSources }))" },
+    { "topic": "Limits", "finding": "The only driver here with output and call-count caps, and the memory limit holds (P7 at 200 MB RSS, 104 MB hardened).", "evidence": "https://github.com/TanStack/ai/blob/c695ada5091e7022bf13b235220645ceb65d43b0/packages/ai-isolate-quickjs-bun/src/isolate-context.ts#L51-L58" },
+    { "topic": "Errors", "finding": "Guest stacks use the <code-mode> file name; no host stack is appended, unlike the QuickJS WASM driver.", "evidence": "out/P10b.txt" }
+  ],
+  "surprises": [
+    "Guest CPU loops block the whole Bun process for the full timeout (P6: 30 s), although docs call it the fastest sandbox for Bun.",
+    "Native QuickJS is compiled at first use with TinyCC from C source shipped in node_modules, which adds about 1.1 to 1.5 s to the first execution in each process.",
+    "This driver caps logs and tool calls, while the Node and QuickJS WASM drivers in the same project cap neither."
+  ]
+}

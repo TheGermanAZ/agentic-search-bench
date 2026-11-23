@@ -1,0 +1,31 @@
+# qwen-code-codemode P7 (default)
+--- exec 1 source ---
+const a = []; while (true) a.push("x".repeat(1e6))
+--- exec 1 result (8493.16 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (156 chars):
+[{"type":"text","text":"Script error:\nout of memory\n    at <anonymous> (exec.js:4:82)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]
+--- summary ---
+{
+ "config": "default",
+ "exit": {
+  "code": 0,
+  "sig": null
+ },
+ "setupMsSpawnToFirstExec": 1303,
+ "totalHostCalls": 0,
+ "peakRssMB": {
+  "totalMB": 2181,
+  "hostMB": 1903
+ },
+ "sideRequests": 0
+}
+--- cli stdout (json, first 3000 chars) ---
+[{"type":"system","subtype":"init","uuid":"4377a953-308a-4298-a2f8-4ce6fad2b2dd","session_id":"4377a953-308a-4298-a2f8-4ce6fad2b2dd","cwd":"~/p/agentic-search-bench/research/probes/qwen-code-codemode/work","tools":["exec","read_mcp_resource","read_file","zoom_image","grep_search","cron_list","cron_delete","autofix_pr","web_fetch","list_agents","task_stop","skill","search_memory","enter_worktree","exit_worktree","record_artifact","get_goal","update_goal","tool_call","tool_search","agent","glob","report_findings","cron_create","loop_wakeup","send_message","manage_memory","mcp__probe__lookup"],"mcp_servers":[{"name":"probe","status":"connected"}],"model":"mock-model","permission_mode":"auto","slash_commands":["advisor","agent-delegation","auth","autofix-pr","batch","batch-api","bug","clear","compress","compress-fast","config","context","coordinate","curator","dataviz","diff","docs","doctor","effort","export","extension-creator","extensions","goal","goal-draft","hooks","import-config","init","insight","language","loop","model","new-app","output-style","pr","qc-helper","review","simplify","stats","status","stuck","summary","tasks","update","workflow-authoring","workflow-creator","workflows","zvec-grep-install"],"qwen_code_version":"0.28.4","agents":["general-purpose","Explore","statusline-setup","review-agent","claude-code","codex"]},{"type":"assistant","uuid":"7566c30a-1503-43c5-af24-f4733f2d0a9a","session_id":"4377a953-308a-4298-a2f8-4ce6fad2b2dd","parent_tool_use_id":null,"message":{"id":"7566c30a-1503-43c5-af24-f4733f2d0a9a","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_1","name":"exec","input":{"source":"const a = []; while (true) a.push(\"x\".repeat(1e6))"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"192d3a38-5263-4aec-ae61-9cfb167ce634","session_id":"4377a953-308a-4298-a2f8-4ce6fad2b2dd","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_1","is_error":true,"content":"Script error:\nout of memory\n    at <anonymous> (exec.js:4:82)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]}},{"type":"assistant","uuid":"81f53a56-1caf-473f-92a5-61121dfc94eb","session_id":"4377a953-308a-4298-a2f8-4ce6fad2b2dd","parent_tool_use_id":null,"message":{"id":"81f53a56-1caf-473f-92a5-61121dfc94eb","type":"message","role":"assistant","model":"mock-model","content":[{"type":"text","text":"done"}],"stop_reason":null,"usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"result","subtype":"success","uuid":"5df13667-4006-4341-9c21-76bc3135d3b6","session_id":"4377a953-308a-4298-a2f8-4ce6fad2b2dd","is_error":false,"duration_ms":8664,"duration_api_ms":300,"num_turns":2,"result":"done","usage":{"input_tokens":2,"output_tokens":2,"cache_read_input_tokens":0,"total_tokens":4},"permission_denials":
+--- cli stderr (first 3000 chars) ---
+Warning: Node.js 24.22.1 can cause high temporary memory usage during shell safety checks. Upgrade to Node.js 26.12.1. Qwen Code will continue normally. See https://github.com/QwenLM/qwen-code/issues/15165
+
+--- mock events ---
+{"t":1308.8,"kind":"exec-issued","n":1,"hostCallsSoFar":577}
+{"t":9801.96,"kind":"exec-result","n":1,"hostCallsSoFar":577,"textLen":156}
+{"t":9802.11,"kind":"final"}
+{"t":9894.15,"kind":"final"}

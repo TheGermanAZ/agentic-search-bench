@@ -1,0 +1,35 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P9",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.545833999999985,
+  "source": [
+    "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => external_lookup({id:i}))); const dt = Date.now()-t; console.log(dt); return dt;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": 0,
+        "logCount": 1,
+        "logChars": 1,
+        "logs": [
+          "0"
+        ]
+      },
+      "wallMs": 1066.2720000000002,
+      "hostCalls": 5
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": 0,
+      "logCount": 1,
+      "logChars": 1
+    },
+    "ms": 1066,
+    "hostCalls": 5
+  },
+  "hostRssAfterMB": 91.7
+}

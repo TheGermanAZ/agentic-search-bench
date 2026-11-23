@@ -1,0 +1,29 @@
+config: {"port": 41940, "image_name": "smolagents-docker-jupyter-kernel", "container_run_kwargs": {"name": "smolagents-docker-h-p7", "mem_limit": "512m", "cpu_quota": 50000, "pids_limit": 100, "security_opt": ["no-new-privileges"], "cap_drop": ["ALL"]}}
+code:
+a = []
+while True:
+    a.append("x" * 10**6)
+
+{
+  "probe": "P7",
+  "hardened": true,
+  "harness_wall_s": 120.3,
+  "peak_container_mem_mib": 512,
+  "harness_stop": "120 s wall",
+  "inspect_at_stop": "true 0",
+  "raw": {
+    "setup_ms": 2661,
+    "result": {
+      "ok": false,
+      "error": "WebSocketConnectionClosedException: Connection to remote host was lost.",
+      "ms": 117282.7
+    },
+    "after": {
+      "ok": false,
+      "error": "WebSocketConnectionClosedException: Connection to remote host was lost.",
+      "ms": 1.1
+    },
+    "wall_s": 120.07
+  },
+  "child_tail": "Code execution failed: Connection to remote host was lost.\nError during cleanup: 409 Client Error for \nhttp+docker://localhost/v1.56/containers/105ee6d238a864e2ea4bdfa13c384b7c683ec0b\nbc2885bd2821e6f9233bb5325?v=False&link=False&force=False: Conflict (\"removal of \ncontainer 105ee6d238a864e2ea4bdfa13c384b7c683ec0bbc2885bd2821e6f9233bb5325 is \nalready in progress\")\n"
+}

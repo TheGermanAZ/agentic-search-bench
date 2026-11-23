@@ -1,0 +1,18 @@
+mode: hardened
+code:
+async () => { for (let i = 0; i < 3; i++) console.log("\0\0\0d" + (JSON.stringify({type: "ToolCallRequest", request_id: 900000 + i, server: "host", tool: "lookup", args: {id: 7}})).padEnd(99, " ")); return "guest made no forge.callTool calls"; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"sandbox execution failed: failed to send tool result: Broken pipe (os error 32)\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 408,
+  "hostCalls": 2
+}

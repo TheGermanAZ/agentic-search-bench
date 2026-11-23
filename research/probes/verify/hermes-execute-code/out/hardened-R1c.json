@@ -1,0 +1,404 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/hermes-execute-code/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../hermes-execute-code/adapter.py hardened R1c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3561,
+  "peakTreeRssMb": 261,
+  "peakTreeFootprintMb": 152,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R1c",
+    "impl": "hermes-execute-code",
+    "notes": "HERMES_HOME=home-hardened (docker, no network, 512 MB, 1 CPU, strict, timeout 10 s, 50 calls); one process, fresh task_id (container + kernel) per execution",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 499,
+        "ms": 3011,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "A done\n",
+          "error": null,
+          "tool_calls_made": 2,
+          "model_sees_chars": 265,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"A done\\n\", \"tool_calls_made\": 2, \"duration_seconds\": 2.26, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 7, \"stdout_bytes_total\": 7, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 2
+      },
+      "B": {
+        "label": "B(concurrent)",
+        "startMs": 600,
+        "ms": 1343,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "gone\n",
+          "error": null,
+          "tool_calls_made": 0,
+          "model_sees_chars": 263,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"gone\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 0.61, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 5, \"stdout_bytes_total\": 5, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 0
+      }
+    },
+    "adapterStats": {
+      "tasks": 2
+    },
+    "hostMaxEventLoopLagMs": 19,
+    "totalMs": 3510
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      77,
+      31,
+      19
+    ],
+    [
+      127,
+      45,
+      19
+    ],
+    [
+      181,
+      53,
+      19
+    ],
+    [
+      229,
+      59,
+      43
+    ],
+    [
+      282,
+      70,
+      43
+    ],
+    [
+      331,
+      75,
+      61
+    ],
+    [
+      380,
+      81,
+      61
+    ],
+    [
+      433,
+      90,
+      61
+    ],
+    [
+      484,
+      112,
+      79
+    ],
+    [
+      537,
+      120,
+      79
+    ],
+    [
+      589,
+      123,
+      79
+    ],
+    [
+      639,
+      168,
+      121
+    ],
+    [
+      695,
+      169,
+      121
+    ],
+    [
+      745,
+      214,
+      135
+    ],
+    [
+      794,
+      214,
+      135
+    ],
+    [
+      846,
+      214,
+      135
+    ],
+    [
+      894,
+      214,
+      135
+    ],
+    [
+      949,
+      214,
+      135
+    ],
+    [
+      1003,
+      189,
+      135
+    ],
+    [
+      1050,
+      214,
+      135
+    ],
+    [
+      1098,
+      214,
+      135
+    ],
+    [
+      1150,
+      209,
+      135
+    ],
+    [
+      1202,
+      215,
+      135
+    ],
+    [
+      1254,
+      215,
+      135
+    ],
+    [
+      1307,
+      214,
+      135
+    ],
+    [
+      1356,
+      214,
+      135
+    ],
+    [
+      1409,
+      215,
+      135
+    ],
+    [
+      1465,
+      210,
+      135
+    ],
+    [
+      1510,
+      163,
+      136
+    ],
+    [
+      1561,
+      197,
+      136
+    ],
+    [
+      1612,
+      215,
+      136
+    ],
+    [
+      1663,
+      214,
+      136
+    ],
+    [
+      1714,
+      214,
+      136
+    ],
+    [
+      1764,
+      261,
+      122
+    ],
+    [
+      1838,
+      215,
+      122
+    ],
+    [
+      1865,
+      135,
+      122
+    ],
+    [
+      1917,
+      215,
+      113
+    ],
+    [
+      1967,
+      255,
+      113
+    ],
+    [
+      2015,
+      156,
+      112
+    ],
+    [
+      2069,
+      178,
+      112
+    ],
+    [
+      2121,
+      185,
+      112
+    ],
+    [
+      2173,
+      141,
+      137
+    ],
+    [
+      2223,
+      141,
+      137
+    ],
+    [
+      2275,
+      141,
+      125
+    ],
+    [
+      2326,
+      141,
+      125
+    ],
+    [
+      2376,
+      220,
+      125
+    ],
+    [
+      2427,
+      186,
+      152
+    ],
+    [
+      2479,
+      141,
+      152
+    ],
+    [
+      2530,
+      141,
+      125
+    ],
+    [
+      2582,
+      187,
+      125
+    ],
+    [
+      2633,
+      187,
+      125
+    ],
+    [
+      2689,
+      141,
+      138
+    ],
+    [
+      2738,
+      141,
+      138
+    ],
+    [
+      2789,
+      141,
+      125
+    ],
+    [
+      2837,
+      141,
+      125
+    ],
+    [
+      2891,
+      187,
+      125
+    ],
+    [
+      2943,
+      232,
+      138
+    ],
+    [
+      2995,
+      141,
+      138
+    ],
+    [
+      3047,
+      141,
+      125
+    ],
+    [
+      3097,
+      142,
+      125
+    ],
+    [
+      3151,
+      141,
+      125
+    ],
+    [
+      3203,
+      141,
+      125
+    ],
+    [
+      3252,
+      187,
+      125
+    ],
+    [
+      3303,
+      141,
+      138
+    ],
+    [
+      3354,
+      141,
+      138
+    ],
+    [
+      3405,
+      187,
+      138
+    ],
+    [
+      3457,
+      141,
+      138
+    ],
+    [
+      3509,
+      175,
+      138
+    ],
+    [
+      3557,
+      186,
+      138
+    ]
+  ]
+}

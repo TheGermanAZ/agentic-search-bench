@@ -1,0 +1,352 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs default R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 12371,
+  "peakTreeRssMb": 151,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "default",
+    "test": "R7b",
+    "notes": "run() (module default runner, shared)",
+    "data": {
+      "r": {
+        "startMs": 41,
+        "ms": 10350,
+        "ok": false,
+        "threw": "G: JavaScript runtime exceeded its CPU time limit of 10000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+        "callsStarted": 0
+      },
+      "atReturn": {
+        "started": 0,
+        "done": 0
+      },
+      "after1500ms": {
+        "started": 1,
+        "done": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 11893,
+        "ms": 369,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": 42
+          },
+          "stringChars": 9
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 117,
+    "hostEvents": [],
+    "totalMs": 12262
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:94411) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      101,
+      47
+    ],
+    [
+      266,
+      104
+    ],
+    [
+      424,
+      137
+    ],
+    [
+      593,
+      137
+    ],
+    [
+      1031,
+      137
+    ],
+    [
+      1265,
+      137
+    ],
+    [
+      1426,
+      137
+    ],
+    [
+      1603,
+      137
+    ],
+    [
+      1789,
+      137
+    ],
+    [
+      1927,
+      138
+    ],
+    [
+      2090,
+      138
+    ],
+    [
+      2250,
+      138
+    ],
+    [
+      2411,
+      138
+    ],
+    [
+      2595,
+      138
+    ],
+    [
+      2753,
+      138
+    ],
+    [
+      2898,
+      139
+    ],
+    [
+      3071,
+      139
+    ],
+    [
+      3216,
+      139
+    ],
+    [
+      3412,
+      139
+    ],
+    [
+      3673,
+      139
+    ],
+    [
+      3886,
+      139
+    ],
+    [
+      4037,
+      139
+    ],
+    [
+      4189,
+      139
+    ],
+    [
+      4342,
+      139
+    ],
+    [
+      4508,
+      139
+    ],
+    [
+      4652,
+      139
+    ],
+    [
+      4812,
+      139
+    ],
+    [
+      4972,
+      139
+    ],
+    [
+      5117,
+      139
+    ],
+    [
+      5276,
+      139
+    ],
+    [
+      5458,
+      139
+    ],
+    [
+      5610,
+      139
+    ],
+    [
+      5777,
+      139
+    ],
+    [
+      5932,
+      139
+    ],
+    [
+      6082,
+      139
+    ],
+    [
+      6230,
+      139
+    ],
+    [
+      6412,
+      139
+    ],
+    [
+      6588,
+      139
+    ],
+    [
+      6757,
+      139
+    ],
+    [
+      6929,
+      139
+    ],
+    [
+      7073,
+      139
+    ],
+    [
+      7222,
+      139
+    ],
+    [
+      7378,
+      139
+    ],
+    [
+      7547,
+      139
+    ],
+    [
+      7693,
+      139
+    ],
+    [
+      7847,
+      139
+    ],
+    [
+      8007,
+      139
+    ],
+    [
+      8160,
+      139
+    ],
+    [
+      8308,
+      139
+    ],
+    [
+      8456,
+      139
+    ],
+    [
+      8613,
+      139
+    ],
+    [
+      8787,
+      139
+    ],
+    [
+      8936,
+      139
+    ],
+    [
+      9152,
+      139
+    ],
+    [
+      9297,
+      139
+    ],
+    [
+      9457,
+      139
+    ],
+    [
+      9670,
+      139
+    ],
+    [
+      9855,
+      139
+    ],
+    [
+      10004,
+      139
+    ],
+    [
+      10174,
+      139
+    ],
+    [
+      10314,
+      139
+    ],
+    [
+      10482,
+      131
+    ],
+    [
+      10640,
+      131
+    ],
+    [
+      10800,
+      131
+    ],
+    [
+      10947,
+      131
+    ],
+    [
+      11171,
+      131
+    ],
+    [
+      11348,
+      131
+    ],
+    [
+      11565,
+      131
+    ],
+    [
+      11714,
+      131
+    ],
+    [
+      11877,
+      131
+    ],
+    [
+      12033,
+      138
+    ],
+    [
+      12184,
+      151
+    ],
+    [
+      12369,
+      0
+    ]
+  ]
+}

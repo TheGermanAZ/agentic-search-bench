@@ -1,0 +1,110 @@
+{
+  "impl": "anthropic-mcp-codeexec",
+  "name": "Anthropic \"Code execution with MCP\" (engineering pattern)",
+  "source": "https://www.anthropic.com/engineering/code-execution-with-mcp",
+  "pinned": "post dated 2025-11-04, fetched 2026-11-22 (pattern, no code release)",
+  "language": "TypeScript (as prescribed in the post's examples)",
+  "engine": "Unspecified. The post prescribes \"a secure execution environment with appropriate sandboxing, resource limits, and monitoring\" without naming one.",
+  "how_run": "Not runnable: a pattern. Prescribes generated wrapper files ./servers/<server>/<tool>.ts that call callMCPTool, imported by agent-written code.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "Prescribed: \"export async function getDocument(input: GetDocumentInput): Promise<GetDocumentResponse> { return callMCPTool<GetDocumentResponse>('google_drive__get_document', input); }\"",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "Prescribed: \"the agent only sees what you explicitly log or return\". Both console.log output and return values reach the model. No truncation rule is prescribed; the example self-limits with console.log(pendingOrders.slice(0, 5)).",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    "P3": {
+      "outcome": "not-applicable",
+      "detail": "Pattern does not prescribe network policy; it only requires \"appropriate sandboxing\".",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "Prescribed: the agent needs filesystem access. Discovery is \"listing the ./servers/ directory ... then reading the specific tool files\", and state uses \"await fs.writeFile('./workspace/leads.csv', csvData)\". Scope beyond the workspace is not prescribed.",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp",
+      "display": "workspace files (docs)"
+    },
+    "P5": {
+      "outcome": "not-applicable",
+      "detail": "Pattern does not discuss environment variables or credentials inside the sandbox.",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    "P6": {
+      "outcome": "not-applicable",
+      "detail": "\"resource limits\" are required, no values given.",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    "P7": {
+      "outcome": "not-applicable",
+      "detail": "\"resource limits\" are required, no values given.",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "Prescribed through files, not interpreter state: \"Code execution with filesystem access allows agents to maintain state across operations\"; \"Later execution picks up where it left off\". Agents may also save reusable functions under ./skills/.",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp",
+      "display": "persists (docs)"
+    },
+    "P9": {
+      "outcome": "not-applicable",
+      "detail": "Parallel calls are not discussed; examples await calls sequentially.",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    "P10": {
+      "outcome": "not-applicable",
+      "detail": "Only \"Loops, conditionals, and error handling can be done with familiar code patterns\". No error format prescribed.",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    "P11": {
+      "outcome": "not-applicable",
+      "detail": "No startup cost given.",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    "P12": {
+      "outcome": "not-applicable",
+      "detail": "No engine named, so no escape surface to assess.",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    }
+  },
+  "defaults": {
+    "time": "not prescribed",
+    "memory": "not prescribed",
+    "output": "what code logs or returns",
+    "tool_calls": "not prescribed"
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "One generated TypeScript file per MCP tool under ./servers/<server>/, each wrapping callMCPTool.",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Progressive disclosure by filesystem browsing, or a search_tools tool with a detail level (name only; name and description; full definition with schemas). Headline: \"This reduces the token usage from 150,000 tokens to 2,000 tokens\u2014a time and cost saving of 98.7%.\"",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "callMCPTool from inside the execution environment to the MCP client; transport not specified.",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    {
+      "topic": "Notable (privacy)",
+      "finding": "\"The MCP client intercepts the data and tokenizes PII before it reaches the model\"; values are untokenized when passed to another MCP call, so real values flow between tools \"but never through the model\".",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    },
+    {
+      "topic": "Notable (cost)",
+      "finding": "\"Running agent-generated code requires a secure execution environment with appropriate sandboxing, resource limits, and monitoring. These infrastructure requirements add operational overhead and security considerations that direct tool calls avoid.\"",
+      "evidence": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+    }
+  ],
+  "surprises": [
+    "The pattern needs a writable filesystem (tool discovery by directory listing, state in ./workspace, skills in ./skills), which is in tension with the no-filesystem sandboxes (OpenAI PTC, Cloudflare isolates) usually cited as the safe reference.",
+    "Anthropic's own hosted PTC does not implement this pattern: it is Python, presents opted-in tools upfront rather than as files, and forbids MCP connector tools from programmatic calls."
+  ]
+}

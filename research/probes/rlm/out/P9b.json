@@ -1,0 +1,5 @@
+{
+  "probe": "P9b",
+  "outcome": "works",
+  "detail": "extra: parallel via concurrent.futures: 210 ms, 5 host calls, sum 30"
+}

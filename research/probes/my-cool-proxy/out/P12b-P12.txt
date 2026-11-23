@@ -1,0 +1,65 @@
+--- code 1 ---
+local r = probe.lookup({id = 1}):await()
+local o = r.__proto__
+result(type(o) .. " " .. tostring(o))
+--- result 1 ---
+{"ms":205,"hostCalls":1,"side":{"proxyLogBytes":261505},"ok":true,"isError":false}
+text (63 chars):
+Script executed successfully.
+
+Result:
+userdata [object Object]
+--- code 2 ---
+local r = probe.lookup({id = 1}):await()
+local o = r.__proto__
+result(type(o.constructor) .. " " .. type(o.__lookupGetter__))
+--- result 2 ---
+{"ms":205,"hostCalls":1,"side":{"proxyLogBytes":261682},"ok":true,"isError":false}
+text (56 chars):
+Script executed successfully.
+
+Result:
+function function
+--- code 3 ---
+local r = probe.lookup({id = 1}):await()
+local O = r.constructor
+local keys = O.keys(r)
+result(type(keys))
+--- result 3 ---
+{"ms":205,"hostCalls":1,"side":{"proxyLogBytes":263504},"ok":true,"isError":true}
+text (128 chars):
+Script execution failed:
+[string "local r = probe.lookup({id = 1}):await()..."]:3: attempt to index a function value (local 'O')
+--- code 4 ---
+local r = probe.lookup({id = 1}):await()
+local O = r.constructor
+local ok, e = pcall(function() return O("x") end)
+result(tostring(ok) .. " " .. type(e))
+--- result 4 ---
+{"ms":205,"hostCalls":1,"side":{"proxyLogBytes":263709},"ok":true,"isError":false}
+text (52 chars):
+Script executed successfully.
+
+Result:
+true userdata
+--- code 5 ---
+local r = probe.lookup({id = 1}):await()
+local ok, e = pcall(function() return r.constructor.constructor end)
+result(tostring(ok) .. " " .. tostring(e))
+--- result 5 ---
+{"ms":206,"hostCalls":1,"side":{"proxyLogBytes":263913},"ok":true,"isError":false}
+text (158 chars):
+Script executed successfully.
+
+Result:
+false [string "local r = probe.lookup({id = 1}):await()..."]:2: attempt to index a function value (field 'constructor')
+--- code 6 ---
+local f = load(string.dump(function() return 1 end))
+result(tostring(f and f()))
+--- result 6 ---
+{"ms":3,"hostCalls":0,"side":{"proxyLogBytes":264045},"ok":true,"isError":false}
+text (40 chars):
+Script executed successfully.
+
+Result:
+1

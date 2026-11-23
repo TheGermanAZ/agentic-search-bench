@@ -1,0 +1,11 @@
+{
+  "file": "P5.ts",
+  "exitCode": 0,
+  "signal": null,
+  "killedByHarness": null,
+  "wallMs": 332,
+  "hostCalls": 0,
+  "stdoutChars": 22,
+  "stdout": "PROBE_SECRET = s3cr3t\n",
+  "stderr": ""
+}

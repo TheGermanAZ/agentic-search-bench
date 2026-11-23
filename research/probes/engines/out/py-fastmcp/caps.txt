@@ -1,0 +1,4 @@
+"return \"A\" * 200000"
+  chars back: 8060; tail: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n[value truncated: 192000 more chars. Return or print less.]"
+"try:\n    raise ValueError(\"B\" * 200000)\nexcept Exception as e:\n    return str(e)"
+  chars back: 8060; tail: "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\n[value truncated: 192000 more chars. Return or print less.]"

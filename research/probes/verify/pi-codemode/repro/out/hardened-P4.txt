@@ -1,0 +1,60 @@
+{
+  "impl": "pi-codemode",
+  "config": "hardened",
+  "probe": "P4",
+  "options": {
+    "timeoutMs": 30000,
+    "memoryLimitBytes": 33554432
+  },
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+      "ms": 97,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "script",
+        "name": "ReferenceError",
+        "message": "require is not defined",
+        "stack": "ReferenceError: require is not defined\n    at <anonymous> (codemode.js:1:36)"
+      }
+    },
+    {
+      "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\")",
+      "ms": 39,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "script",
+        "name": "ReferenceError",
+        "message": "could not load module 'fs'",
+        "stack": "ReferenceError: could not load module 'fs'"
+      }
+    },
+    {
+      "code": "return await Deno.readTextFile(\"/etc/hosts\")",
+      "ms": 43,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "script",
+        "name": "ReferenceError",
+        "message": "Deno is not defined",
+        "stack": "ReferenceError: Deno is not defined\n    at <anonymous> (codemode.js:1:42)"
+      }
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "hardened", "P4"], "exit_code": 0, "wall_ms": 308, "peak_tree_rss_mb": 109.0, "watch_kill": null}

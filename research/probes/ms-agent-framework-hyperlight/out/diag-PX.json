@@ -1,0 +1,7 @@
+{
+  "probe": "PX",
+  "outcome": "works",
+  "detail": "P2-sizes: ok=True out='after-crash' err=None | P4-canary: ok=False out='' err=Execution error | details=FileNotFoundError: [Errno 44] No such file or directory: '~/p/agentic-search-bench/research/probes/ms-agent-framework | P4-listdir: ok=False out='' err=Execution error | details=FileNotFoundError: [Errno 44] No such file or directory: '/'\n | P5-environ: ok=True out='{}' err=None | P9-asyncio: ok=False out='' err=Execution error | details=ModuleNotFoundError: No module named 'asyncio'\n | P9-threads: ok=False out='' err=Execution error | details=ModuleNotFoundError: No module named 'threading'\n | P10-trace: ok=False out='' err=Execution error | details=ValueError: probe-boom\n | P12-sys: ok=True out='wasi 3.14.0 (0e13686:0e13686, Feb 12 2026, 21:31:17) [Clang 21.1.4-wasi-sdk (https://github.com/llvm/llvm-project 222fc1' err=None | P12-socket: ok=False out='' err=Execution error | details=ModuleNotFoundError: No module named 'socket'\n | P8-files: ok=True out='gone' err=None",
+  "display": "extras",
+  "config": "default"
+}

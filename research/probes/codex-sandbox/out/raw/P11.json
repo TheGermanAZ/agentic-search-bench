@@ -1,0 +1,338 @@
+[
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 58.5,
+  "peak_tree_rss_mb": 2.3,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 69.4,
+  "peak_tree_rss_mb": 12.0,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 44.6,
+  "peak_tree_rss_mb": 2.3,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 51.2,
+  "peak_tree_rss_mb": 2.4,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 51.7,
+  "peak_tree_rss_mb": 8.1,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 51.1,
+  "peak_tree_rss_mb": 2.3,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 45.7,
+  "peak_tree_rss_mb": 2.0,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 50.9,
+  "peak_tree_rss_mb": 2.3,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 52.4,
+  "peak_tree_rss_mb": 1.7,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 102.0,
+  "peak_tree_rss_mb": 2.1,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 56.1,
+  "peak_tree_rss_mb": 2.4,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 46.6,
+  "peak_tree_rss_mb": 2.1,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 94.5,
+  "peak_tree_rss_mb": 2.5,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 51.5,
+  "peak_tree_rss_mb": 2.3,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 51.3,
+  "peak_tree_rss_mb": 2.3,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 47.9,
+  "peak_tree_rss_mb": 2.0,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 53.3,
+  "peak_tree_rss_mb": 21.9,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 44.8,
+  "peak_tree_rss_mb": 1.9,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 46.3,
+  "peak_tree_rss_mb": 2.4,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 50.8,
+  "peak_tree_rss_mb": 2.5,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "print(2)"
+  ],
+  "exit": 0,
+  "wall_ms": 46.2,
+  "peak_tree_rss_mb": 2.1,
+  "killed": null,
+  "stdout_len": 2,
+  "stdout": "2\n",
+  "stderr": "",
+  "label": "python print(2)"
+ }
+]

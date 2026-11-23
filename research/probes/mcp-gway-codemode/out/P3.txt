@@ -1,0 +1,14 @@
+--- code 1 ---
+r = urllib.request.urlopen("https://example.com")
+result = r
+--- result 1 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "StarlarkError"}}, "ms": 10.13, "hostCalls": 0, "gatewayAlive": true, "rssAfterMB": 75}
+--- code 2 ---
+load("net", "http")
+result = http.get("https://example.com")
+--- result 2 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "StarlarkError"}}, "ms": 7.39, "hostCalls": 0, "gatewayAlive": true, "rssAfterMB": 75}
+--- code 3 ---
+result = fetch("https://example.com")
+--- result 3 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "StarlarkError"}}, "ms": 5.67, "hostCalls": 0, "gatewayAlive": true, "rssAfterMB": 75}

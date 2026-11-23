@@ -1,0 +1,347 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/../_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/adapter.mjs hardened R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 8831,
+  "peakTreeRssMb": 166,
+  "peakTreeFootprintMb": 68,
+  "watchKill": null,
+  "record": {
+    "impl": "bifrost-codemode",
+    "config": "hardened",
+    "test": "R2b",
+    "notes": "maximhq/bifrost:v2.6.0, data-hardened/config.json; gateway restarted for this test (8636 ms); new MCP client per execution; Starlark codes",
+    "data": {
+      "startMs": 8750,
+      "ms": 37,
+      "ok": true,
+      "result": {
+        "value": {
+          "isError": false,
+          "textChars": 301,
+          "text": "Print output:\n[TOOL] probe.failing returned an error: host-tool-boom internal detail db=postgres://user:pw@host\n\nExecution completed, but 1 nested tool call failed.\nReturn value: [\n  \"struct\",\n  \"tool_error(error = \\\"host-tool-boom internal detail db=postgres://user:pw@host\\\")\",\n  [\n    \"error\"\n  ]\n]"
+        },
+        "stringChars": 301
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "gatewayStartMs": 8636,
+      "containerBaselineMb": 295,
+      "containerPeakMb": 295,
+      "containerLastMb": 295,
+      "containerKilled": null,
+      "containerRssMsMb": [
+        [
+          66,
+          295
+        ]
+      ]
+    },
+    "hostMaxEventLoopLagMs": 29,
+    "hostEvents": [],
+    "totalMs": 8787
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      77,
+      67,
+      24
+    ],
+    [
+      228,
+      121,
+      46
+    ],
+    [
+      381,
+      76,
+      33
+    ],
+    [
+      531,
+      76,
+      33
+    ],
+    [
+      683,
+      76,
+      33
+    ],
+    [
+      834,
+      76,
+      34
+    ],
+    [
+      986,
+      76,
+      34
+    ],
+    [
+      1138,
+      76,
+      34
+    ],
+    [
+      1292,
+      76,
+      34
+    ],
+    [
+      1446,
+      76,
+      34
+    ],
+    [
+      1598,
+      76,
+      34
+    ],
+    [
+      1750,
+      76,
+      34
+    ],
+    [
+      1912,
+      76,
+      34
+    ],
+    [
+      2058,
+      76,
+      34
+    ],
+    [
+      2219,
+      81,
+      34
+    ],
+    [
+      2366,
+      76,
+      33
+    ],
+    [
+      2514,
+      76,
+      33
+    ],
+    [
+      2666,
+      76,
+      34
+    ],
+    [
+      2819,
+      76,
+      33
+    ],
+    [
+      2972,
+      76,
+      34
+    ],
+    [
+      3125,
+      76,
+      34
+    ],
+    [
+      3274,
+      76,
+      34
+    ],
+    [
+      3430,
+      76,
+      34
+    ],
+    [
+      3582,
+      76,
+      34
+    ],
+    [
+      3735,
+      76,
+      34
+    ],
+    [
+      3888,
+      76,
+      34
+    ],
+    [
+      4041,
+      76,
+      34
+    ],
+    [
+      4192,
+      76,
+      34
+    ],
+    [
+      4345,
+      76,
+      34
+    ],
+    [
+      4498,
+      76,
+      34
+    ],
+    [
+      4651,
+      76,
+      34
+    ],
+    [
+      4804,
+      76,
+      33
+    ],
+    [
+      4957,
+      76,
+      33
+    ],
+    [
+      5109,
+      76,
+      34
+    ],
+    [
+      5260,
+      76,
+      34
+    ],
+    [
+      5414,
+      76,
+      34
+    ],
+    [
+      5565,
+      76,
+      34
+    ],
+    [
+      5718,
+      76,
+      34
+    ],
+    [
+      5873,
+      76,
+      34
+    ],
+    [
+      6025,
+      76,
+      34
+    ],
+    [
+      6177,
+      76,
+      34
+    ],
+    [
+      6332,
+      76,
+      33
+    ],
+    [
+      6485,
+      76,
+      34
+    ],
+    [
+      6637,
+      76,
+      33
+    ],
+    [
+      6791,
+      76,
+      34
+    ],
+    [
+      6942,
+      76,
+      34
+    ],
+    [
+      7096,
+      76,
+      34
+    ],
+    [
+      7246,
+      76,
+      34
+    ],
+    [
+      7410,
+      76,
+      34
+    ],
+    [
+      7566,
+      76,
+      34
+    ],
+    [
+      7700,
+      76,
+      34
+    ],
+    [
+      7854,
+      76,
+      34
+    ],
+    [
+      8008,
+      76,
+      34
+    ],
+    [
+      8161,
+      76,
+      34
+    ],
+    [
+      8313,
+      76,
+      34
+    ],
+    [
+      8465,
+      76,
+      33
+    ],
+    [
+      8618,
+      78,
+      35
+    ],
+    [
+      8769,
+      166,
+      34
+    ]
+  ]
+}

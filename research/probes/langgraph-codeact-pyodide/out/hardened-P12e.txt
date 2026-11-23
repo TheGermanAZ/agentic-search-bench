@@ -1,0 +1,27 @@
+probe: hardened-P12e
+outcome: works
+display: reaches Deno global (no perms)
+detail: DENO 2.9.8 57210
+
+code:
+----
+import js
+print('DENO', js.Deno.version.deno, js.Deno.pid)
+----
+
+setup_ms: 15.3
+wall_s (whole child process): 1.5
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.321
+host lookup calls: 0
+
+=== run 0 (1136.0 ms) ===
+ok: true
+stdout: DENO 2.9.8 57210
+error: null
+context_keys: ["js"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

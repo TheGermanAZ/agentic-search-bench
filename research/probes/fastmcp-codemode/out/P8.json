@@ -1,0 +1,7 @@
+{
+  "probe": "P8",
+  "outcome": "works",
+  "display": "fresh",
+  "detail": "execution 2: 'gone'",
+  "evidence": "research/probes/fastmcp-codemode/out/P8.txt"
+}

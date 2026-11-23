@@ -1,0 +1,6 @@
+while True:
+    pass
+--- output
+ERROR: TimeoutError: feed time limit exceeded: 60.000400792s > 60s
+---
+wall_ms=60002 host_calls=0 peak_tree_rss_mb=173

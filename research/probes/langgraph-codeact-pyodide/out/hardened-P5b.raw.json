@@ -1,0 +1,26 @@
+{
+  "probe": "P5b",
+  "config": "hardened",
+  "codes": [
+    "import js\nprint('ENV', js.Deno.env.get('PROBE_SECRET'))"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: NotCapable: Requires env access to \"PROBE_SECRET\", run again with the --allow-env flag",
+      "error": "Error during execution: NotCapable: Requires env access to \"PROBE_SECRET\", run again with the --allow-env flag",
+      "context_keys": [],
+      "host_builtins_leak": false,
+      "ms": 1114.1,
+      "started": 1795377631.3670552
+    }
+  ],
+  "setup_ms": 15.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.5,
+  "peak_tree_rss_gb": 0.291,
+  "calls": [],
+  "child_log_tail": ""
+}

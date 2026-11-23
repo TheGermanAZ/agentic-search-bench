@@ -1,0 +1,30 @@
+{
+  "probe": "P6long",
+  "code": "let n = 0; while (true) { n++ }",
+  "wallMs": 300010,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":false,\"error\":{\"kind\":\"TimeoutExceeded\",\"message\":\"Execution timed out after 300000ms; earlier tool calls may have completed.\"},\"toolCalls\":[]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": false,
+          "error": {
+            "kind": "TimeoutExceeded",
+            "message": "Execution timed out after 300000ms; earlier tool calls may have completed."
+          },
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  },
+  "serverCpuPercent3sAfter": 1.3
+}

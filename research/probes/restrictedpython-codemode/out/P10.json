@@ -1,0 +1,7 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "detail": "returned: \"Execution error: name 'ValueError' is not defined\"; message survives: False; line number survives: False",
+  "display": "no message, no line",
+  "config": "default"
+}

@@ -1,0 +1,59 @@
+probe: P6
+outcome: no-limit-within-120s
+display: not stopped (caller freed at 30 s)
+detail: execute returned after 30.01 s with execution_ok=True, no output and no error, but the kernel kept running the loop: P6b shows the next execution in the same session hung until the harness stopped it at 120 s, and the kernel process sat at 100% CPU.
+
+code:
+----
+while True:
+    pass
+----
+
+setup_ms: 2528.6
+wall_s (whole child process): 33.69
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.379
+host lookup calls: 0
+
+=== run 0 (30008.5 ms) ===
+ok: true
+stdout: 
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== child process log (tail) ===
+[11/22/26 15:09:39] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-ulflzf6              
+                             l/generated (mcp dir:                              
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-ulflzf6              
+                             l/generated/mcp)                                   
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-ulflzf6              
+                             l/generated/mcp/probe                              
+                    INFO     Starting Jupyter server       jupyter_server.py:262
+                             subprocess on 127.0.0.1:41520                      
+                             (workdir=/var/folders/tg/x0gc                      
+                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      
+                             dl-jupyter-server-ulflzf6l/wo                      
+                             rkspace)                                           
+[11/22/26 15:09:40] INFO     No existing kernels found,    jupyter_server.py:412
+                             will create a new one                              
+[11/22/26 15:09:41] INFO     Starting the kernel client…           client.py:412
+                    INFO     KernelHttpManager created a new      manager.py:258
+                             kernel: {'id':                                     
+                             '0d07590e-55c4-4508-9546-fbca16383dc               
+                             0', 'name': 'python3',                             
+                             'last_activity':                                   
+                             '2026-11-22T20:09:41.043685Z',                     
+                             'execution_state': 'starting',                     
+                             'connections': 0}                                  
+                    INFO     Websocket connected                 _logging.py:104
+[11/22/26 15:10:12] INFO     Stopping the kernel client…           client.py:433
+

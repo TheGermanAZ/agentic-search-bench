@@ -1,0 +1,7 @@
+probe P7 hardened=True
+code:
+a = []
+while True:
+    a.append("x" * 10**6)
+
+watchdog: harness stopped it at 4.37 GB RSS after 0.9 s

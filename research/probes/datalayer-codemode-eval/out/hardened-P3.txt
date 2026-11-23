@@ -1,0 +1,143 @@
+probe: hardened-P3
+outcome: blocked
+display: blocked (raw _socket bypasses)
+detail: RuntimeError: Network access is disabled by sandbox policy Traceback (most recent call last): File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py", line 283, in run_code compiled = compile(code, "<sandbox>", "eval") ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File "<sandbox>", line 1 import urllib.re...
+
+code:
+----
+import urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10)
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+import ssl, urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10, context=ssl._create_unverified_context())
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+
+setup_ms: 315.6
+wall_s (whole child process): 1.0
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.165
+host lookup calls: 0
+
+=== run 0 (19.5 ms) ===
+ok: false
+stdout: 
+stderr: 
+result: null
+error: RuntimeError: Network access is disabled by sandbox policy
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py", line 283, in run_code
+    compiled = compile(code, "<sandbox>", "eval")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<sandbox>", line 1
+    import urllib.request
+    ^^^^^^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py", line 304, in run_code
+    exec(compile(parsed, "<sandbox>", "exec"), namespace)
+  File "<sandbox>", line 2, in <module>
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py", line 515, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py", line 532, in _open
+    result = self._call_chain(self.handle_open, protocol, pro
+...[7737 chars; harness elided the middle of this evidence file only]...
+de_chunked=encode_chunked)
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py", line 1093, in _send_output
+    self.send(msg)
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py", line 1037, in send
+    self.connect()
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py", line 1472, in connect
+    super().connect()
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py", line 1003, in connect
+    self.sock = self._create_connection(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py", line 436, in _guarded_create_connection
+    return _blocked()
+           ^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py", line 431, in _blocked
+    raise RuntimeError("Network access is disabled by sandbox policy")
+RuntimeError: Network access is disabled by sandbox policy
+
+interrupted: false
+
+=== run 1 (2.7 ms) ===
+ok: false
+stdout: 
+stderr: 
+result: null
+error: RuntimeError: Network access is disabled by sandbox policy
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py", line 283, in run_code
+    compiled = compile(code, "<sandbox>", "eval")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<sandbox>", line 1
+    import ssl, urllib.request
+    ^^^^^^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py", line 304, in run_code
+    exec(compile(parsed, "<sandbox>", "exec"), namespace)
+  File "<sandbox>", line 2, in <module>
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py", line 515, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py", line 532, in _open
+    result = self._call_chain(self.handle_open, protocol
+...[7742 chars; harness elided the middle of this evidence file only]...
+de_chunked=encode_chunked)
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py", line 1093, in _send_output
+    self.send(msg)
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py", line 1037, in send
+    self.connect()
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py", line 1472, in connect
+    super().connect()
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py", line 1003, in connect
+    self.sock = self._create_connection(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py", line 436, in _guarded_create_connection
+    return _blocked()
+           ^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py", line 431, in _blocked
+    raise RuntimeError("Network access is disabled by sandbox policy")
+RuntimeError: Network access is disabled by sandbox policy
+
+interrupted: false
+
+=== child process log (tail) ===
+[11/22/26 15:11:03] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-oun63nuq/generate              
+                             d (mcp dir:                                        
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-oun63nuq/generate              
+                             d/mcp)                                             
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-oun63nuq/generate              
+                             d/mcp/probe                                        
+

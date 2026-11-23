@@ -1,0 +1,7 @@
+{
+  "probe": "P8within",
+  "outcome": "works",
+  "display": "persists",
+  "detail": "Second iteration of the same forward printed 7.",
+  "evidence": "research/probes/dspy-rlm/out/P8within.txt"
+}

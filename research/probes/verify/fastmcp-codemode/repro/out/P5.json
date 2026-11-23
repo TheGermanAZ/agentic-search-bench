@@ -1,0 +1,7 @@
+{
+  "probe": "P5",
+  "outcome": "blocked",
+  "display": "blocked",
+  "detail": "Error calling tool 'execute': RuntimeError: 'os.environ' is not supported in this environment",
+  "evidence": "research/probes/repro/out/P5.txt"
+}

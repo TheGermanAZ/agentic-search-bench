@@ -1,0 +1,189 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R8a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2441,
+  "peakTreeRssMb": 169,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R8a",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "label": "",
+      "startMs": 1649,
+      "ms": 533,
+      "ok": true,
+      "result": [
+        "Runtime error:\n[stdout before error]\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[10486097 chars]…\n[/stdout before error]\nMemoryError: memory limit exceeded: 10493952 bytes > 10485760 bytes\n\nThe sandbox ran out of memory and the session was reset. Re-run any imports, recreate any state you need, and use less memory: process smaller batches, avoid large intermediate values, and print less output."
+      ],
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 199,
+    "totalMs": 2344
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      98,
+      25
+    ],
+    [
+      146,
+      33
+    ],
+    [
+      198,
+      34
+    ],
+    [
+      254,
+      34
+    ],
+    [
+      362,
+      37
+    ],
+    [
+      451,
+      41
+    ],
+    [
+      506,
+      46
+    ],
+    [
+      604,
+      50
+    ],
+    [
+      677,
+      52
+    ],
+    [
+      713,
+      52
+    ],
+    [
+      818,
+      52
+    ],
+    [
+      864,
+      55
+    ],
+    [
+      918,
+      56
+    ],
+    [
+      968,
+      56
+    ],
+    [
+      1018,
+      57
+    ],
+    [
+      1071,
+      59
+    ],
+    [
+      1123,
+      61
+    ],
+    [
+      1173,
+      63
+    ],
+    [
+      1214,
+      63
+    ],
+    [
+      1278,
+      63
+    ],
+    [
+      1327,
+      63
+    ],
+    [
+      1386,
+      65
+    ],
+    [
+      1429,
+      67
+    ],
+    [
+      1513,
+      67
+    ],
+    [
+      1561,
+      67
+    ],
+    [
+      1617,
+      70
+    ],
+    [
+      1702,
+      74
+    ],
+    [
+      1748,
+      76
+    ],
+    [
+      1815,
+      86
+    ],
+    [
+      1866,
+      136
+    ],
+    [
+      1908,
+      159
+    ],
+    [
+      1960,
+      169
+    ],
+    [
+      2005,
+      169
+    ],
+    [
+      2133,
+      169
+    ],
+    [
+      2209,
+      121
+    ],
+    [
+      2275,
+      121
+    ],
+    [
+      2330,
+      121
+    ],
+    [
+      2376,
+      121
+    ],
+    [
+      2439,
+      121
+    ]
+  ]
+}

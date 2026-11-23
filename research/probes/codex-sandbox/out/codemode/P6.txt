@@ -1,0 +1,26 @@
+probe: P6 (codex code-mode host, V8)
+host: codex-code-mode-host codex 0.169.0
+handshake: {"type": "connection/ready", "selectedVersion": 1, "capabilities": ["bounded-output-v1", "delegate-capacity-4096", "session-cell-execution-resource-limits", "yield-observation"]}
+session/open: {"type": "operation/response", "id": 1, "result": {"status": "ok", "value": {"type": "session/ready", "sessionId": "s1"}}}
+setup_ms (spawn + handshake): 53.28
+wall_ms: 120065.7
+peak_rss_mb: 26.8
+killed: killed by harness at 120s (no-limit-within-120s)
+
+--- execution 0 ---
+source:
+while (true) {}
+elapsed_ms: 11006.76
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 2, "result": {"status": "ok", "value": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 11006416667}}}}
+wait at t=22064ms: {"type": "operation/response", "id": 3, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 11003118834}}}}}}
+wait at t=33067ms: {"type": "operation/response", "id": 4, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 11003077958}}}}}}
+wait at t=44070ms: {"type": "operation/response", "id": 5, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 11003077416}}}}}}
+wait at t=55075ms: {"type": "operation/response", "id": 6, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 11001948958}}}}}}
+wait at t=66085ms: {"type": "operation/response", "id": 7, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 11002536584}}}}}}
+wait at t=77093ms: {"type": "operation/response", "id": 8, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 11003597250}}}}}}
+wait at t=88100ms: {"type": "operation/response", "id": 9, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 11003032667}}}}}}
+wait at t=99107ms: {"type": "operation/response", "id": 10, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 11004199041}}}}}}
+wait at t=110111ms: {"type": "operation/response", "id": 11, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 11002616833}}}}}}
+wait at t=120066ms: null

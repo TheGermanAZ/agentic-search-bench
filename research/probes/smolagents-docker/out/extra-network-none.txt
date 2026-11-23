@@ -1,0 +1,2 @@
+config: HARDENED_KW + {'network_mode': 'none'}
+SETUP FAILED: RuntimeError Failed to initialize Jupyter kernel: HTTPConnectionPool(host='127.0.0.1', port=41973): Max retries exceeded with url: /api/kernels?token=P9iZy4twEduWPJ473h4-Pw (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=41973): Failed to establish a new connection: [Errno 61] Connection refused"))

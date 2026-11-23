@@ -1,0 +1,9 @@
+--- code 1 ---
+def f():
+    for i in range(2147483647):
+        for j in range(2147483647):
+            pass
+f()
+--- result 1 ---
+{"ok": false, "error": "TimeoutError: timed out", "ms": 120002.46, "peakFootprintMB": 56, "hostCalls": 0, "gatewayAlive": true, "concurrentP1": {"ok": false, "error": "TimeoutError: timed out", "ms": 120001.41, "hostCalls": 0, "gatewayAlive": true}, "concurrentP1StartedAtS": 5, "footprintAfterMB": 56}
+health: no response in 5 s

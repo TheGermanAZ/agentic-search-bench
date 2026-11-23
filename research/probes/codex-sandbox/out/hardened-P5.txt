@@ -1,0 +1,23 @@
+probe: P5 (hardened)
+codex: ~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex (codex-cli 0.169.0)
+CODEX_HOME: ~/p/agentic-search-bench/research/impls/codex-sandbox/codex-home-hardened (empty, config only from the flags below)
+flags: codex sandbox "-c" "shell_environment_policy.inherit=\"core\"" "-c" "shell_environment_policy.ignore_default_excludes=false" "-c" "permissions.hardened.filesystem={\":minimal\"=\"read\",\":workspace_roots\"=\"read\",\"/opt/homebrew/Cellar/python@3.15/3.15.0_1\"=\"read\",\"/etc/**\"=\"deny\",\"/private/etc/**\"=\"deny\"}" "-c" "permissions.hardened.network.enabled=false" "-P" "hardened" "-C" "~/p/agentic-search-bench/research/probes/codex-sandbox/work" -- <argv>
+
+--- python os.environ ---
+argv: ["/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/bin/python3.15", "-c", "import os;print(os.environ.get(\"PROBE_SECRET\"));print(sorted(os.environ))"]
+exit: 0  wall_ms: 95.6  peak_tree_rss_mb: 7.1  killed: None
+stdout:
+None
+['CODEX_SANDBOX', 'CODEX_SANDBOX_NETWORK_DISABLED', 'HOME', 'LANG', 'LOGNAME', 'PATH', 'SHELL', 'TMPDIR', 'USER', '__CF_USER_TEXT_ENCODING']
+
+stderr:
+
+
+--- shell echo ---
+argv: ["/bin/sh", "-c", "echo \"[$PROBE_SECRET]\"; env | cut -d= -f1 | sort | tr \"\\n\" \" \""]
+exit: 0  wall_ms: 50.3  peak_tree_rss_mb: 5.2  killed: None
+stdout:
+[]
+CODEX_SANDBOX CODEX_SANDBOX_NETWORK_DISABLED HOME LANG LOGNAME PATH PWD SHELL SHLVL TMPDIR USER _ 
+stderr:
+

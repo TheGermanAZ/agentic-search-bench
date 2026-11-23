@@ -1,0 +1,12 @@
+--- code 1 ---
+const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => lookup({id:i}))); console.log(Date.now()-t)
+--- result 1 ---
+{"ms":2,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (112 chars):
+Error running script: SyntaxError: SyntaxError: (anonymous): Line 2:29 Unexpected identifier (and 3 more errors)
+--- code 2 ---
+const t = Date.now(); const rs = Promise.all([1,2,3,4,5].map(i => lookup({id:i}))); return String(Date.now()-t)
+--- result 2 ---
+{"ms":1024,"hostCalls":5,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (4 chars):
+1018

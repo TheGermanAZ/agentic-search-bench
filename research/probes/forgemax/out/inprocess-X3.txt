@@ -1,0 +1,18 @@
+mode: inprocess
+code:
+async () => { console.log("hello from console.log"); return "after log"; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "\"after log\""
+      }
+    ],
+    "isError": false
+  },
+  "ms": 5,
+  "hostCalls": 0
+}

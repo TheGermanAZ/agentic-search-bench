@@ -1,0 +1,16 @@
+--- code 1 ---
+for i in range(1000000000000):
+    pass
+--- result 1 ---
+{"ms":2,"hostCalls":0,"ok":true,"isError":true}
+text (71 chars):
+script execution failed: Starlark computation cancelled: too many steps
+--- code 2 ---
+s = "x" * 300000000
+for i in range(1000):
+    s.count("xy")
+return "done"
+--- result 2 ---
+{"ms":56756,"hostCalls":0,"ok":true,"isError":true}
+text (71 chars):
+script execution failed: Starlark computation cancelled: too many steps

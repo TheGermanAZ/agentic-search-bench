@@ -1,0 +1,9 @@
+{
+  "probe": "P9",
+  "config": "default",
+  "outcome": "works",
+  "detail": "208 ms for five 200 ms lookups (parallel); 5 host-side calls",
+  "display": "parallel (208 ms)",
+  "peak_child_rss_mb": 93,
+  "wall_s": 0.6
+}

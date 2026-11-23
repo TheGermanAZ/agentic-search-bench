@@ -1,0 +1,8 @@
+{
+  "P11": {
+    "id": "P11",
+    "outcome": "works",
+    "detail": "fresh server per run (deno start + Pyodide load + eval): median 2809 ms, p90 2957 ms (n=20); warm eval in one server: median 0.78 ms, p90 0.92 ms (n=20); first enter (deno dep prepare + server start) 1808 ms; total 63 s",
+    "error": null
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "probe": "X-tool-cap",
+  "outcome": "limited",
+  "detail": "100 host calls; model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 2, in <module>\\n    r = await asyncio.gather(*[lookup(id=i) for i in range(101)])\\n                               ~~~~~~~~~~~~\\nRuntimeError: Code mode allows 100 nested tool calls per `run_code` call and this snippet asked for more. Call fewer tools, for example by filtering the inputs first, or split the work across several `run_code` calls.\\n\\n100 nested tool calls started before execution stopped:\\n- lookup({\\'id\\': 0}) did not finish, so it may have applied a partial change\\n- lookup({\\'id\\': 1}) did not finish, so it may have applied a partial change\\n- lookup({\\'id\\': 2}) did not finish, so it may have applied a partial change\\n- lookup({\\'id\\': 3}) did not finish, so it may have applied a partial change\\n- lookup({\\'id\\': 4}) did not finish, so it may have applied a partial change\\n- lookup({\\'id\\': 5}) did not finish, so'",
+  "config": "CodeMode()",
+  "peak_tree_rss_mib": 98,
+  "harness_wall_s": 0.52
+}

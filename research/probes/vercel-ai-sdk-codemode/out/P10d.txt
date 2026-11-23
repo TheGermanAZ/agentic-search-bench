@@ -1,0 +1,43 @@
+label: P10d
+command: node probe.mjs P10d
+child exit: code=0 signal=null
+child wall ms (process start to exit): 372
+peak child RSS: 156.9 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P10d",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return await tools.lookup({id: \"not-a-number\"});"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "value": {
+        "id": "not-a-number",
+        "value": null
+      },
+      "wallMs": 279.680708,
+      "hostCalls": 1
+    }
+  ],
+  "summary": {
+    "value": {
+      "id": "not-a-number",
+      "value": null
+    },
+    "ms": 280,
+    "hostCalls": 1
+  },
+  "hostRssAfterMB": 157
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:83893) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

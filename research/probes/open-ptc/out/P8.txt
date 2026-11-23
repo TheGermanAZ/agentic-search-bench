@@ -1,0 +1,25 @@
+mode: default
+code:
+globalThis.kept = 7
+---
+console.log(typeof kept === "undefined" ? "gone" : kept)
+
+result:
+{
+  "first": {
+    "type": "execution_result",
+    "executionId": "95019255-ba10-4000-8fe3-b3f8af44cf52",
+    "success": true,
+    "output": "\n\n",
+    "ms": 15,
+    "hostCalls": 0
+  },
+  "second": {
+    "type": "execution_result",
+    "executionId": "73ef28b8-39b1-4b47-891b-5db0e0b9f06b",
+    "success": true,
+    "output": "gone\n\n\n",
+    "ms": 16,
+    "hostCalls": 0
+  }
+}

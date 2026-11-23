@@ -1,0 +1,53 @@
+{
+  "mode": "default",
+  "probe": "P9",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 5,
+  "hostPolluted": null,
+  "result": {
+    "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.lookup({id:i}))); console.log(Date.now()-t)",
+    "ms": 232.9,
+    "hostCalls": 5,
+    "result": {
+      "output": "Logs:\n207",
+      "toolCalls": [
+        {
+          "tool": "lookup",
+          "status": "completed",
+          "input": {
+            "id": 1
+          }
+        },
+        {
+          "tool": "lookup",
+          "status": "completed",
+          "input": {
+            "id": 2
+          }
+        },
+        {
+          "tool": "lookup",
+          "status": "completed",
+          "input": {
+            "id": 3
+          }
+        },
+        {
+          "tool": "lookup",
+          "status": "completed",
+          "input": {
+            "id": 4
+          }
+        },
+        {
+          "tool": "lookup",
+          "status": "completed",
+          "input": {
+            "id": 5
+          }
+        }
+      ],
+      "files": []
+    }
+  }
+}

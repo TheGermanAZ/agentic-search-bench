@@ -1,0 +1,15 @@
+mode: default
+code:
+async function run(client) {
+  while (true) {}
+}
+
+result:
+{
+  "response": {
+    "clientError": "McpError: MCP error -32000: Connection closed"
+  },
+  "ms": 120036,
+  "hostCalls": 0,
+  "killed": "harness stopped at 120000 ms and killed worker pids 83743"
+}

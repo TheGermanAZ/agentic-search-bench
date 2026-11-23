@@ -1,0 +1,8 @@
+try:
+    return sorted(globals())
+except Exception as e:
+    return type(e).__name__ + ": " + str(e)
+--- output
+NameError: name 'globals' is not defined
+---
+wall_ms=16 host_calls=0 peak_tree_rss_mb=194

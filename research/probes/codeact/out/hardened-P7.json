@@ -1,0 +1,11 @@
+{
+  "probe": "P7",
+  "container": "codeact-hardened-P7",
+  "startup_s": 1.2,
+  "elapsed_s": 1.04,
+  "output": "<harness: TypeError: the JSON object must be str, bytes or bytearray, not NoneType>",
+  "after": null,
+  "mem_peak_mib": 4234,
+  "harness_killed_at_4gib": true,
+  "config": "JupyterGatewayDocker RESOURCE_CONSTRAINTS={'mem_limit': '8g', 'nano_cpus': 2e9}, JupyterKernel.execute timeout=60"
+}

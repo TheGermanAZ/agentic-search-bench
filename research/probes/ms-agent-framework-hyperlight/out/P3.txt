@@ -1,0 +1,8 @@
+probe P3 hardened=False
+code:
+import urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=20)
+print("STATUS", r.status)
+
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 361.7}
+stdout (0 chars): ''

@@ -1,0 +1,45 @@
+label: P9b
+command: node probe.mjs P9b
+child exit: code=0 signal=null
+child wall ms (process start to exit): 8432
+peak child RSS: 82.6 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P9b",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 50.902375000000006,
+  "source": [
+    "const r = await Promise.all(Array.from({length: 40}, (_, i) => external_lookup({id: i}))); return r.length;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": 40,
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 8159.128207999999,
+      "hostCalls": 40
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": 40,
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 8159,
+    "hostCalls": 40
+  },
+  "hostRssAfterMB": 68.3
+}
+--- child stdout ---
+
+--- child stderr ---
+

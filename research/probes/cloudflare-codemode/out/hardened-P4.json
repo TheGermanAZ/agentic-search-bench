@@ -1,0 +1,147 @@
+{
+  "config": {
+    "executorOptions": {
+      "loader": "env.LOADER",
+      "timeout": 10000,
+      "globalOutbound": null,
+      "modules": {},
+      "bindings": {}
+    }
+  },
+  "require": {
+    "tool": {
+      "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+      "mode": "tool",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 13,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": false,
+          "thrown": "Code execution failed: require is not defined"
+        },
+        "hostCalls": 0,
+        "hostMs": 6
+      }
+    },
+    "raw": {
+      "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+      "mode": "raw",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 12,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "error": "require is not defined",
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 4
+      }
+    }
+  },
+  "importNodeFs": {
+    "tool": {
+      "code": "const fs = await import(\"node:fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\")",
+      "mode": "tool",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 11,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": false,
+          "thrown": "Code execution failed: No such module \"node:fs\"."
+        },
+        "hostCalls": 0,
+        "hostMs": 4
+      }
+    },
+    "raw": {
+      "code": "const fs = await import(\"node:fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\")",
+      "mode": "raw",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 14,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "error": "No such module \"node:fs\".",
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 3
+      }
+    }
+  },
+  "importFs": {
+    "tool": {
+      "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\")",
+      "mode": "tool",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 10,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": false,
+          "thrown": "Code execution failed: No such module \"node:fs\"."
+        },
+        "hostCalls": 0,
+        "hostMs": 5
+      }
+    },
+    "raw": {
+      "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\")",
+      "mode": "raw",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 21,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "error": "No such module \"node:fs\".",
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 5
+      }
+    }
+  },
+  "deno": {
+    "tool": {
+      "code": "return await Deno.readTextFile(\"/etc/hosts\")",
+      "mode": "tool",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 17,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": false,
+          "thrown": "Code execution failed: Deno is not defined"
+        },
+        "hostCalls": 0,
+        "hostMs": 3
+      }
+    },
+    "raw": {
+      "code": "return await Deno.readTextFile(\"/etc/hosts\")",
+      "mode": "raw",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 15,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "error": "Deno is not defined",
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    }
+  }
+}

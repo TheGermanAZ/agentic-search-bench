@@ -1,0 +1,31 @@
+{
+  "worker": {
+    "exitCode": 0,
+    "signal": null,
+    "killed": null,
+    "wallMs": 437,
+    "peakRssKb": 168672
+  },
+  "parsed": {
+    "probe": "P1js",
+    "host": {
+      "node": "v24.22.1",
+      "pid": 82326
+    },
+    "runs": [
+      {
+        "label": "js-exec -c 'const r = await tools.lookup({id: 21}); console.log(r.value)'",
+        "script": "js-exec -c 'const r = await tools.lookup({id: 21}); console.log(r.value)'",
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": "",
+        "ms": 352,
+        "stdoutLength": 3,
+        "hostCalls": 1
+      }
+    ],
+    "hostCalls": 1,
+    "peakRssKb": 168784,
+    "maxInFlight": 1
+  }
+}

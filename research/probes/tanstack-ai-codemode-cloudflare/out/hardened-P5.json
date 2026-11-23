@@ -1,0 +1,38 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P5",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 2.4572499999999877,
+  "source": [
+    "return process.env.PROBE_SECRET;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "process is not defined",
+          "name": "ReferenceError",
+          "stack": "ReferenceError: process is not defined\n    at main.js:47:11\n    at main.js:48:11\n    at Object.fetch (main.js:78:7)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 42.750834,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: process is not defined",
+    "ms": 43,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 89
+}

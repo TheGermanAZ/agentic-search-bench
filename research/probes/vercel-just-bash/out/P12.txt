@@ -1,0 +1,106 @@
+probe: P12
+worker exit: 0 signal: null killed: null
+wall ms: 103
+peak host RSS KB: 0
+
+script: node -e 'console.log(process.pid)'
+exit: 127
+stdout (0 chars):
+
+stderr:
+bash: node: command not found
+
+ms: 29, host lookup calls so far: 0
+
+script: js-exec 'console.log(process.pid)'
+exit: 127
+stdout (0 chars):
+
+stderr:
+bash: js-exec: command not found
+
+ms: 1, host lookup calls so far: 0
+
+script: sh -c 'echo inner-sh'
+exit: 0
+stdout (9 chars):
+inner-sh
+
+stderr:
+
+ms: 3, host lookup calls so far: 0
+
+script: bash -c 'echo inner-bash'
+exit: 0
+stdout (11 chars):
+inner-bash
+
+stderr:
+
+ms: 1, host lookup calls so far: 0
+
+script: /bin/sh -c 'echo inner-bin-sh'
+exit: 0
+stdout (13 chars):
+inner-bin-sh
+
+stderr:
+
+ms: 1, host lookup calls so far: 0
+
+script: eval 'echo inner-eval'
+exit: 0
+stdout (11 chars):
+inner-eval
+
+stderr:
+
+ms: 1, host lookup calls so far: 0
+
+script: process
+exit: 127
+stdout (0 chars):
+
+stderr:
+bash: process: command not found
+
+ms: 0, host lookup calls so far: 0
+
+script: require fs
+exit: 127
+stdout (0 chars):
+
+stderr:
+bash: require: command not found
+
+ms: 0, host lookup calls so far: 0
+
+script: child_process
+exit: 127
+stdout (0 chars):
+
+stderr:
+bash: child_process: command not found
+
+ms: 0, host lookup calls so far: 0
+
+script: python3 -c 'import os; os.system("echo PWNED")'
+exit: 127
+stdout (0 chars):
+
+stderr:
+bash: python3: command not available in browser environments. Exclude 'python3' from your commands or use the Node.js bundle.
+
+ms: 0, host lookup calls so far: 0
+
+script: echo "$$ $BASHPID"
+exit: 0
+stdout (4 chars):
+1 1
+
+stderr:
+
+ms: 1, host lookup calls so far: 0
+
+outcome: blocked
+detail: no attempt reached the host runtime. Attempts: node -e 'console.log(process.pid)' -> exit 127 "bash: node: command not found"; js-exec 'console.log(process.pid)' -> exit 127 "bash: js-exec: command not found"; sh -c 'echo inner-sh' -> exit 0 "inner-sh"; bash -c 'echo inner-bash' -> exit 0 "inner-bash"; /bin/sh -c 'echo inner-bin-sh' -> exit 0 "inner-bin-sh"; eval 'echo inner-eval' -> exit 0 "inner-eval"; process -> exit 127 "bash: process: command not found"; require fs -> exit 127 "bash: require: command not found"; child_process -> exit 127 "bash: child_process: command not found"; python3 -c 'import os; os.system("echo PWNED")' -> exit 127 "bash: python3: command not available in browser environments"; echo "$$ $BASHPID" -> exit 0 "1 1"

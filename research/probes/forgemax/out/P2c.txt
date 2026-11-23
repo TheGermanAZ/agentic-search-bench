@@ -1,0 +1,11 @@
+mode: default
+code:
+async () => { return "A".repeat(200000); }
+
+result:
+{
+  "ms": 14,
+  "responseChars": 99870,
+  "aCount": 99699,
+  "head": "{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"_truncated\\\":true,\\\"_data_is_fragment\\\":true,\\\"_original_chars\\\":200002,\\\"_shown_chars\\\":99700,\\\"data\\\":\\\"\\\\\\\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+}

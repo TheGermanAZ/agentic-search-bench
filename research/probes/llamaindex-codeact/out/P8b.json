@@ -1,0 +1,7 @@
+{
+  "probe": "P8b",
+  "outcome": "error",
+  "display": "error (def can't see tools)",
+  "detail": "Error: NameError: name 'lookup' is not defined Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 107, in execute exec(exec_code, self.globals, self.locals) File \"<string>\", line 4, in <module> File \"<string>\", line 2, in helper NameError: name 'lookup' is not defined During handling of the above exception, another exception occurred: Traceback (most recent call last): File \"~/p/agentic-search-b...",
+  "evidence": "research/probes/llamaindex-codeact/out/P8b.txt"
+}

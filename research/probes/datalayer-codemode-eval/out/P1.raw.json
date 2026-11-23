@@ -1,0 +1,15 @@
+{
+  "probe": "P1",
+  "config": "default",
+  "codes": [
+    "from generated.mcp.probe import lookup\nr = await lookup({\"id\": 21})\nmsg = r[\"value\"]\nprint(msg)\nmsg"
+  ],
+  "runs": [],
+  "setup_ms": 320.8,
+  "killed": "harness time watchdog at 120.0 s",
+  "exit_code": -9,
+  "wall_s": 120.01,
+  "peak_tree_rss_gb": 0.179,
+  "calls": [],
+  "child_log_tail": "[11/22/26 14:53:10] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-cl3kv4tj/generate              \n                             d (mcp dir:                                        \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-cl3kv4tj/generate              \n                             d/mcp)                                             \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-cl3kv4tj/generate              \n                             d/mcp/probe                                        \n"
+}

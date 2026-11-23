@@ -1,0 +1,27 @@
+probe: hardened-P6
+outcome: limited
+display: limited (30 s)
+detail: stopped after 30.02 s: Error during execution: Execution timed out after 30 seconds
+
+code:
+----
+while True:
+    pass
+----
+
+setup_ms: 14.6
+wall_s (whole child process): 30.28
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.36
+host lookup calls: 0
+
+=== run 0 (30020.5 ms) ===
+ok: false
+stdout: Error during execution: Execution timed out after 30 seconds
+error: Error during execution: Execution timed out after 30 seconds
+context_keys: []
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

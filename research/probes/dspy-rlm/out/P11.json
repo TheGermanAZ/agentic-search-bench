@@ -1,0 +1,7 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "display": "works (467 ms per RLM call)",
+  "detail": "20 fresh RLM forwards (new Deno + Pyodide each, plus DummyLM and the SUBMIT turn): median 466.9 ms, p90 528.7 ms. p11_breakdown.txt, taken under heavier machine load: 1,258 ms per 1-iteration forward and ~69 ms per extra iteration in a warm interpreter.",
+  "evidence": "research/probes/dspy-rlm/out/P11.txt"
+}

@@ -1,0 +1,16 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "detail": "same env, execute_code time: {'median_ms': 0.03, 'p90_ms': 0.04, 'n': 20}; wall: {'median_ms': 0.0, 'p90_ms': 0.0, 'n': 20}. fresh env per run, execute_code time: {'median_ms': 0.03, 'p90_ms': 0.04, 'n': 20}; wall: {'median_ms': 0.0, 'p90_ms': 0.0, 'n': 20}. one-time setup (LocalREPL construct): median 0.07 ms",
+  "same_env_exec": {
+    "median_ms": 0.03,
+    "p90_ms": 0.04,
+    "n": 20
+  },
+  "fresh_env_exec": {
+    "median_ms": 0.03,
+    "p90_ms": 0.04,
+    "n": 20
+  },
+  "setup_ms_median": 0.07
+}

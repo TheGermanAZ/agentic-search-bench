@@ -1,0 +1,66 @@
+[
+  {
+    "probe": "P10",
+    "code": "throw new Error(\"probe-boom\")",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: probe-boom\n    at <anonymous> (eval_script:18:11)\n    at <eval> (eval_script:18:32)\n",
+    "response_text_length": 127,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P10-multiline",
+    "code": "const a = 1;\nconst b = 2;\nthrow new Error(\"probe-boom on line 3\")",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: probe-boom on line 3\n    at <anonymous> (eval_script:20:12)\n    at <eval> (eval_script:20:43)\n",
+    "response_text_length": 137,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P10-syntax",
+    "code": "const = ;",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: TypeScript transpile error: parse error: Unexpected token",
+    "response_text_length": 72,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P10-tool-error",
+    "code": "return await nosuch.tool({})",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "execute error: JS promise rejected: Error: nosuch is not defined\n    at <anonymous> (eval_script:9:21)\n    at <eval> (eval_script:18:31)\n",
+    "response_text_length": 137,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  }
+]

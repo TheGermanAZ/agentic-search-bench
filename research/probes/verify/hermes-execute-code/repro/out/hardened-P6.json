@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "display": "limited (10 s; kernel killed)",
+  "detail": "stopped after 11.43 s: Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh. \u23f0 Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+  "evidence": "research/probes/repro/out/hardened-P6.txt"
+}

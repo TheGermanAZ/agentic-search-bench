@@ -1,0 +1,535 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 60709,
+  "peakTreeRssMb": 1554,
+  "peakTreeFootprintMb": 1388,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "R9e",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 2,
+          "ms": 60016,
+          "ok": true,
+          "result": {
+            "value": "ERROR: interrupted\n    at <eval> (eval.js:1:1)",
+            "stringChars": 46
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 2,
+          "ms": 60017,
+          "ok": true,
+          "result": {
+            "value": "ERROR: interrupted\n    at <eval> (eval.js:1:1)",
+            "stringChars": 46
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 2,
+          "ms": 60018,
+          "ok": true,
+          "result": {
+            "value": "ERROR: interrupted\n    at <eval> (eval.js:1:1)",
+            "stringChars": 46
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 2,
+          "ms": 60017,
+          "ok": true,
+          "result": {
+            "value": "ERROR: interrupted\n    at <eval> (eval.js:1:1)",
+            "stringChars": 46
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 2,
+          "ms": 60018,
+          "ok": true,
+          "result": {
+            "value": "ERROR: interrupted\n    at <eval> (eval.js:1:1)",
+            "stringChars": 46
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 2,
+          "ms": 60018,
+          "ok": true,
+          "result": {
+            "value": "ERROR: interrupted\n    at <eval> (eval.js:1:1)",
+            "stringChars": 46
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 2,
+          "ms": 60021,
+          "ok": true,
+          "result": {
+            "value": "ERROR: interrupted\n    at <eval> (eval.js:1:1)",
+            "stringChars": 46
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 2,
+          "ms": 60019,
+          "ok": true,
+          "result": {
+            "value": "ERROR: interrupted\n    at <eval> (eval.js:1:1)",
+            "stringChars": 46
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 153,
+        "ms": 60086,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 60240,
+        "ms": 211,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 60451,
+        "ms": 210,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 41,
+    "hostEvents": [],
+    "totalMs": 60661
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      78,
+      111,
+      77
+    ],
+    [
+      914,
+      974,
+      532
+    ],
+    [
+      1664,
+      1012,
+      458
+    ],
+    [
+      2459,
+      1169,
+      470
+    ],
+    [
+      3402,
+      1443,
+      713
+    ],
+    [
+      4280,
+      1487,
+      756
+    ],
+    [
+      5120,
+      1488,
+      758
+    ],
+    [
+      5949,
+      1491,
+      761
+    ],
+    [
+      6723,
+      1493,
+      763
+    ],
+    [
+      7498,
+      1495,
+      765
+    ],
+    [
+      8298,
+      1497,
+      767
+    ],
+    [
+      9136,
+      1499,
+      770
+    ],
+    [
+      9898,
+      1501,
+      771
+    ],
+    [
+      10658,
+      1507,
+      771
+    ],
+    [
+      11432,
+      1514,
+      779
+    ],
+    [
+      12210,
+      1522,
+      787
+    ],
+    [
+      12987,
+      1525,
+      789
+    ],
+    [
+      13778,
+      1528,
+      793
+    ],
+    [
+      14546,
+      1531,
+      795
+    ],
+    [
+      15361,
+      1533,
+      797
+    ],
+    [
+      16167,
+      1533,
+      797
+    ],
+    [
+      16931,
+      1533,
+      797
+    ],
+    [
+      17731,
+      1533,
+      797
+    ],
+    [
+      18513,
+      1533,
+      797
+    ],
+    [
+      19326,
+      1533,
+      798
+    ],
+    [
+      20089,
+      1539,
+      802
+    ],
+    [
+      20865,
+      1550,
+      814
+    ],
+    [
+      21658,
+      1553,
+      818
+    ],
+    [
+      22412,
+      1554,
+      818
+    ],
+    [
+      23301,
+      1554,
+      818
+    ],
+    [
+      24084,
+      1554,
+      819
+    ],
+    [
+      24943,
+      1529,
+      871
+    ],
+    [
+      25728,
+      1386,
+      1101
+    ],
+    [
+      26503,
+      1283,
+      1324
+    ],
+    [
+      27298,
+      1283,
+      1325
+    ],
+    [
+      28064,
+      1283,
+      1325
+    ],
+    [
+      28882,
+      1283,
+      1325
+    ],
+    [
+      29670,
+      1284,
+      1325
+    ],
+    [
+      30454,
+      1284,
+      1326
+    ],
+    [
+      31252,
+      1284,
+      1326
+    ],
+    [
+      32067,
+      1068,
+      1372
+    ],
+    [
+      32950,
+      1068,
+      1372
+    ],
+    [
+      33838,
+      1055,
+      1372
+    ],
+    [
+      34621,
+      1055,
+      1372
+    ],
+    [
+      35410,
+      1055,
+      1373
+    ],
+    [
+      36267,
+      1046,
+      1375
+    ],
+    [
+      37048,
+      1046,
+      1375
+    ],
+    [
+      37838,
+      1047,
+      1376
+    ],
+    [
+      38661,
+      1047,
+      1376
+    ],
+    [
+      39424,
+      1047,
+      1376
+    ],
+    [
+      40242,
+      1048,
+      1376
+    ],
+    [
+      41028,
+      1048,
+      1376
+    ],
+    [
+      41900,
+      1045,
+      1376
+    ],
+    [
+      42670,
+      1045,
+      1376
+    ],
+    [
+      43451,
+      1045,
+      1376
+    ],
+    [
+      44227,
+      1045,
+      1376
+    ],
+    [
+      45135,
+      1045,
+      1376
+    ],
+    [
+      45954,
+      1050,
+      1379
+    ],
+    [
+      46767,
+      1056,
+      1385
+    ],
+    [
+      47584,
+      1056,
+      1385
+    ],
+    [
+      48381,
+      1056,
+      1385
+    ],
+    [
+      49136,
+      1056,
+      1385
+    ],
+    [
+      49936,
+      1056,
+      1385
+    ],
+    [
+      50781,
+      1056,
+      1385
+    ],
+    [
+      51584,
+      1057,
+      1385
+    ],
+    [
+      52415,
+      1057,
+      1386
+    ],
+    [
+      53283,
+      1057,
+      1386
+    ],
+    [
+      54124,
+      1058,
+      1386
+    ],
+    [
+      54963,
+      1058,
+      1386
+    ],
+    [
+      55811,
+      1058,
+      1386
+    ],
+    [
+      56598,
+      1058,
+      1386
+    ],
+    [
+      57375,
+      1058,
+      1386
+    ],
+    [
+      58155,
+      1058,
+      1386
+    ],
+    [
+      58936,
+      1058,
+      1386
+    ],
+    [
+      59767,
+      1058,
+      1386
+    ],
+    [
+      60531,
+      1078,
+      1090
+    ]
+  ]
+}

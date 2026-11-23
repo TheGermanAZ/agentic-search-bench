@@ -1,0 +1,189 @@
+{
+  "impl": "mastra-codemode-quickjs",
+  "name": "Mastra Code Mode, QuickJS transport",
+  "source": "npm @mastra/core 1.85.0 (createCodeMode from @mastra/core/tools); repo https://github.com/mastra-ai/mastra; npm @mastra/quickjs 0.1.5",
+  "language": "TS (types stripped before running)",
+  "pinned": "@mastra/core 1.85.0 + @mastra/quickjs 0.1.5 (quickjs-emscripten 0.31.0); source read at aa82a4a7858c637f654be24391ff306dcb568c00",
+  "engine": "QuickJS compiled to WASM (quickjs-emscripten sync build), in the host Node process; new runtime and context per run",
+  "how_run": "createCodeMode({ tools: { lookup } }, new QuickJsCodeModeTransport()).tool.execute({ code }, {}), the same tool object an Agent gets",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed 42 in logs, 1 host call, 220 ms",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P1.txt",
+      "display": "works (42, 1 call)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "logs[] carried the full 200,000-char line, no marker. Spec form returns no result (bare last expression is not returned); with `return` the result is RETURNED",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P2.txt",
+      "display": "works (200,000 chars, no cap)"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "ReferenceError: 'fetch' is not defined",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P3.txt",
+      "display": "not-defined"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "'require' is not defined; import(\"fs\") -> could not load module 'fs'; 'process' and 'Deno' not defined",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P4.txt",
+      "display": "not-defined"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "ReferenceError: 'process' is not defined (host had PROBE_SECRET=s3cr3t)",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P5.txt",
+      "display": "not-defined"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "TimeoutError 'Code Mode execution timed out after 30000ms' at 30,015 ms. The loop runs synchronously on the host thread: a 100 ms host timer fired 0 of 50 times during a 5 s run (hardened-P6x)",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P6.txt; research/probes/mastra-codemode-quickjs/out/hardened-P6x.txt",
+      "display": "limited (30 s; blocks host)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "InternalError 'out of memory' after 5.4 to 6.8 s; host survived and the next execution made a tool call (42). Host RSS still climbed to 1.2 to 1.6 GB and did not come back down",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P7.txt",
+      "display": "limited (128 MB heap)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "second execution printed gone",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P8.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "in-code elapsed 204 ms, 5 host calls, 221 ms wall",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P9.txt",
+      "display": "parallel (204 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "error {message: 'probe-boom', name: 'Error'}; no stack or line, also for the three-line case",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P10.txt",
+      "display": "message only (no line)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "median 0.7 ms, p90 0.9 ms over 20 runs; first execution 18 ms (loads WASM); setup 179 ms",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P11.txt",
+      "display": "0.7 ms median"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "Function constructor: 'process' is not defined; sloppy this.process undefined; host canary undefined; only external_lookup among matching globals",
+      "evidence": "research/probes/mastra-codemode-quickjs/out/P12.txt",
+      "display": "blocked"
+    }
+  },
+  "hardened": {
+    "config": "createCodeMode({ tools, timeout: 5000 }, new QuickJsCodeModeTransport({ memoryLimitMb: 32 })); options at https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/types.ts#L32-L33 and https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/quickjs/src/transport.ts#L66-L89",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "'fetch' is not defined",
+        "evidence": "research/probes/mastra-codemode-quickjs/out/hardened-P3.txt",
+        "display": "not-defined"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "detail": "require/process/Deno not defined; import('fs') could not load module",
+        "evidence": "research/probes/mastra-codemode-quickjs/out/hardened-P4.txt",
+        "display": "not-defined"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "detail": "'process' is not defined",
+        "evidence": "research/probes/mastra-codemode-quickjs/out/hardened-P5.txt",
+        "display": "not-defined"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "TimeoutError after 5,012 ms; host event loop blocked the whole time (0 of 50 timer ticks)",
+        "evidence": "research/probes/mastra-codemode-quickjs/out/hardened-P6.txt; research/probes/mastra-codemode-quickjs/out/hardened-P6x.txt",
+        "display": "limited (5 s; blocks host)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "'out of memory' after 12.5 s; host survived and made a tool call; host RSS 142 -> 785 MB over two runs",
+        "evidence": "research/probes/mastra-codemode-quickjs/out/hardened-P7.txt",
+        "display": "limited (32 MB heap)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "5 host calls in parallel",
+        "evidence": "research/probes/mastra-codemode-quickjs/out/hardened-P9.txt",
+        "display": "parallel (203 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "same as default",
+        "evidence": "research/probes/mastra-codemode-quickjs/out/hardened-P12.txt",
+        "display": "blocked"
+      }
+    }
+  },
+  "defaults": {
+    "time": "30 s (createCodeMode default)",
+    "memory": "128 MB QuickJS heap, 256 KB stack",
+    "output": "no cap on logs or result",
+    "tool_calls": "no cap"
+  },
+  "source_notes": [
+    {
+      "topic": "Bridge",
+      "finding": "Uses the synchronous QuickJS build on purpose: each external_* call hands the guest a deferred promise and returns at once, and the host pumps the guest job queue when the dispatch settles, so Promise.all overlaps calls. The authors note the asyncify build cannot suspend twice.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/quickjs/src/transport.ts#L29-L41; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/quickjs/src/transport.ts#L325-L347"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "New QuickJS runtime and context per run, memory and stack limits set, bridge functions deleted from globalThis after bootstrap, console frozen. The guest sees only external_* closures.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/quickjs/src/transport.ts#L229-L232; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/quickjs/src/transport.ts#L359-L401"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Time is enforced by an interrupt handler comparing Date.now() to the deadline, plus a host timer for time spent awaiting. The interrupt only fires between guest operations on the host thread, so the host event loop is blocked until then (P6x).",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/quickjs/src/transport.ts#L289-L305"
+    },
+    {
+      "topic": "API shape",
+      "finding": "Each Mastra tool's input and output schema goes zod -> JSON Schema -> a TypeScript string, and becomes one `declare function external_<id>(input): Promise<output>` line with the tool description as a doc comment.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/stub-generator.ts#L164-L186"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Everything upfront: createCodeModeInstructions joins a fixed usage contract and every stub into one instructions string for the system prompt. No search or lazy loading; the docs scope tools by making several createCodeMode instances instead.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/stub-generator.ts#L189-L213"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "Tools run on the host: each external_* call re-enters the real Mastra tool's execute with the outer tool's requestContext, mastra instance and workspace, and an allow-list rejects tool ids that were not exposed. Credentials the tool uses stay on the host side of the bridge.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/code-mode.ts#L102-L119"
+    },
+    {
+      "topic": "Defaults",
+      "finding": "Timeout defaults to 30 s for every backend (DEFAULT_TIMEOUT). The tool id defaults to execute_typescript.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/code-mode.ts#L20-L21"
+    },
+    {
+      "topic": "Errors",
+      "finding": "The result type declares error.line, but no transport ever sets it: the stdio runner, the isolated-vm envelope and the QuickJS envelope all copy only message and name. The model never sees a line number or stack.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/types.ts#L50-L54; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/runner.ts#L153-L157; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/isolated-vm/src/transport.ts#L266-L270; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/quickjs/src/transport.ts#L425-L429"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Both console output (logs[], one entry per call, in order) and the program's `return` value come back. Nothing truncates either; a bare final expression is not returned because the program is wrapped in an async function body.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/transport.ts#L76-L80; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/runner.ts#L38-L40"
+    }
+  ],
+  "surprises": [
+    "A runaway loop blocks the whole host Node event loop until the timeout (0 of 50 timer ticks in 5 s): on a server, every other request stalls for up to 30 s. The docs describe QuickJS only as slower than the other transports.",
+    "memoryLimitMb caps the QuickJS heap, but host RSS rose to 1.2 to 1.6 GB under the 128 MB default and to 785 MB under 32 MB, and stayed there: the shared WASM module's memory does not shrink.",
+    "error.line is in the result type but never filled, so the model gets no line numbers.",
+    "The docs page gives no default for config.timeout; the code default is 30 s (types.ts:32)."
+  ]
+}

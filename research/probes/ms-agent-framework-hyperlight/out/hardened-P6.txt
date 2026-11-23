@@ -1,0 +1,6 @@
+probe P6 hardened=True
+code:
+while True:
+    pass
+{"ok": false, "result": null, "error": "Execution error | details=Code execution exceeded its time limit.", "ms": 10004.6}
+stdout (0 chars): ''

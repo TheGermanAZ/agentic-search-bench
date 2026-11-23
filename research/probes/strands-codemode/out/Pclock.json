@@ -1,0 +1,7 @@
+{
+  "probe": "Pclock",
+  "outcome": "not-defined",
+  "display": "not-defined (no time module)",
+  "detail": "import time -> ModuleNotFoundError: No module named 'time'.",
+  "evidence": "research/probes/strands-codemode/out/Pclock.txt"
+}

@@ -1,0 +1,21 @@
+probe: P9
+worker exit: 0 signal: null killed: null
+wall ms: 1117
+peak host RSS KB: 83344
+
+script: lookup 1 & lookup 2 & lookup 3 & lookup 4 & lookup 5 & wait; echo done
+exit: 0
+stdout (101 chars):
+{"id":1,"value":2}
+{"id":2,"value":4}
+{"id":3,"value":6}
+{"id":4,"value":8}
+{"id":5,"value":10}
+done
+
+stderr:
+
+ms: 1047, host lookup calls so far: 5
+
+outcome: works
+detail: 1047 ms host-side for 5 lookups (each sleeps 200 ms), 5 host calls, max in flight 1, serial, stdout "{"id":1,"value":2} | {"id":2,"value":4} | {"id":3,"value":6} | {"id":4,"value":8} | {"id":5,"value":10} | done"

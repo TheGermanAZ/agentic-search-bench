@@ -1,0 +1,287 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py hardened R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 12948,
+  "peakTreeRssMb": 106,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R7b",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(hardened {'limits': {'max_feed_duration_secs': 10, 'max_memory': 50000000}, 'wall_clock_timeout_secs': 60}); new in-process Client per execution",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 839,
+        "ms": 10272,
+        "ok": true,
+        "result": {
+          "is_error": true,
+          "text": "Error calling tool 'execute': TimeoutError: feed time limit exceeded: 10.00003271s > 10s"
+        },
+        "callsStarted": 5
+      },
+      "atReturn": {
+        "started": 5,
+        "done": 5
+      },
+      "after1500ms": {
+        "started": 6,
+        "done": 6
+      },
+      "after": {
+        "label": "after",
+        "startMs": 12611,
+        "ms": 237,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 234,
+    "totalMs": 12848
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[11/22/26 16:30:27] Error calling tool 'execute'                                \n                    ╭─────────── Traceback (most recent call last) ────────────╮\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/server/server.py:1673 in call_tool                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 8 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:309 in         │\n                    │ _run_monty                                               │\n                    ╰──────────────────────────────────────────────────────────╯\n                    MontyRuntimeError: TimeoutError: feed time limit exceeded:  \n                    10.00003271s > 10s                                          \n",
+  "rssSamplesMsMb": [
+    [
+      79,
+      20
+    ],
+    [
+      236,
+      44
+    ],
+    [
+      383,
+      54
+    ],
+    [
+      534,
+      64
+    ],
+    [
+      690,
+      77
+    ],
+    [
+      841,
+      83
+    ],
+    [
+      1015,
+      106
+    ],
+    [
+      1167,
+      106
+    ],
+    [
+      1324,
+      106
+    ],
+    [
+      1457,
+      106
+    ],
+    [
+      1611,
+      106
+    ],
+    [
+      1758,
+      106
+    ],
+    [
+      1910,
+      106
+    ],
+    [
+      2061,
+      106
+    ],
+    [
+      2212,
+      106
+    ],
+    [
+      2366,
+      106
+    ],
+    [
+      2517,
+      106
+    ],
+    [
+      2671,
+      106
+    ],
+    [
+      2824,
+      106
+    ],
+    [
+      2978,
+      106
+    ],
+    [
+      3131,
+      106
+    ],
+    [
+      3285,
+      106
+    ],
+    [
+      3441,
+      106
+    ],
+    [
+      3594,
+      106
+    ],
+    [
+      3744,
+      106
+    ],
+    [
+      3899,
+      106
+    ],
+    [
+      4050,
+      106
+    ],
+    [
+      4202,
+      106
+    ],
+    [
+      4511,
+      103
+    ],
+    [
+      5030,
+      93
+    ],
+    [
+      5386,
+      93
+    ],
+    [
+      5854,
+      93
+    ],
+    [
+      6124,
+      93
+    ],
+    [
+      6394,
+      93
+    ],
+    [
+      6666,
+      93
+    ],
+    [
+      7010,
+      93
+    ],
+    [
+      7289,
+      93
+    ],
+    [
+      7661,
+      93
+    ],
+    [
+      8144,
+      93
+    ],
+    [
+      8479,
+      93
+    ],
+    [
+      8757,
+      93
+    ],
+    [
+      9002,
+      93
+    ],
+    [
+      9246,
+      93
+    ],
+    [
+      9504,
+      93
+    ],
+    [
+      9733,
+      93
+    ],
+    [
+      9960,
+      93
+    ],
+    [
+      10201,
+      93
+    ],
+    [
+      10412,
+      93
+    ],
+    [
+      10652,
+      93
+    ],
+    [
+      10871,
+      93
+    ],
+    [
+      11094,
+      86
+    ],
+    [
+      11307,
+      91
+    ],
+    [
+      11518,
+      91
+    ],
+    [
+      11833,
+      90
+    ],
+    [
+      12154,
+      90
+    ],
+    [
+      12423,
+      90
+    ],
+    [
+      12684,
+      90
+    ],
+    [
+      12945,
+      101
+    ]
+  ]
+}

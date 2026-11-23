@@ -1,0 +1,28 @@
+{
+  "probe": "Pwrite",
+  "config": "hardened",
+  "codes": [
+    "import os\np = os.path.join('~/p/agentic-search-bench/research/probes/hermes-execute-code/out', 'hermes-write-probe.txt')\nopen(p, 'w').write('x')\nmsg = 'WROTE ' + str(os.path.exists(p))\nos.remove(p)\nprint(msg)"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "\n--- stderr ---\nTraceback (most recent call last):\n  File \"/tmp/hermes_rkernel_33770c24b66c/kernel_runner.py\", line 68, in run_cell\n    exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<cell>\", line 3, in <module>\nFileNotFoundError: [Errno 2] No such file or directory: '~/p/agentic-search-bench/research/probes/hermes-execute-code/out/hermes-write-probe.txt'\n",
+      "model_sees": "{\"status\": \"error\", \"output\": \"\\n--- stderr ---\\nTraceback (most recent call last):\\n  File \\\"/tmp/hermes_rkernel_33770c24b66c/kernel_runner.py\\\", line 68, in run_cell\\n    exec(compile(request[\\\"code\\\"], \\\"<cell>\\\", \\\"exec\\\"), GLOBALS)\\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"<cell>\\\", line 3, in <module>\\nFileNotFoundError: [Errno 2] No such file or directory: '~/p/agentic-search-bench/research/probes/hermes-execute-code/out/hermes-write-probe.txt'\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 1.06, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 456, \"stdout_bytes_total\": 456, \"stdout_bytes_omitted\": 0, \"error\": \"FileNotFoundError: [Errno 2] No such file or directory: '~/p/agentic-search-bench/research/probes/hermes-execute-code/out/hermes-write-probe.txt'\"}",
+      "status": "error",
+      "tool_calls_made": 0,
+      "model_sees_len": 908,
+      "error": "FileNotFoundError: [Errno 2] No such file or directory: '~/p/agentic-search-bench/research/probes/hermes-execute-code/out/hermes-write-probe.txt'\n\n--- stderr ---\nTraceback (most recent call last):\n  File \"/tmp/hermes_rkernel_33770c24b66c/kernel_runner.py\", line 68, in run_cell\n    exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<cell>\", line 3, in <module>\nFileNotFoundError: [Errno 2] No such file or directory: '~/p/agentic-search-bench/research/probes/hermes-execute-code/out/hermes-write-probe.txt'\n",
+      "ms": 1695.7,
+      "started": 1795383133.241044
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.25,
+  "peak_tree_rss_gb": 0.168,
+  "calls": [],
+  "child_log_tail": ""
+}

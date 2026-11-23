@@ -1,0 +1,45 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 276,
+    "totalWallMs": 405,
+    "peakTreeRssMB": 143.9,
+    "stderrTail": ""
+  },
+  "backend": "localsandbox",
+  "probe": "P5",
+  "mode": "default",
+  "setupMs": 87.4,
+  "record": {
+    "hostEnvHasSecret": "s3cr3t",
+    "spec": {
+      "code": "return process.env.PROBE_SECRET",
+      "wallMs": 112.2,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "logs": []
+      },
+      "threw": null
+    },
+    "envKeys": {
+      "code": "return Object.keys(process.env)",
+      "wallMs": 101.2,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": [
+          "PATH",
+          "PWD",
+          "SHLVL",
+          "_",
+          "__CF_USER_TEXT_ENCODING"
+        ],
+        "logs": []
+      },
+      "threw": null
+    }
+  }
+}

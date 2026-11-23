@@ -1,0 +1,8 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "detail": "stopped after 60.2 s: exit_code=124: \nTimeout",
+  "display": "limited (60 s)",
+  "wall_s": 60.2,
+  "config": "default"
+}

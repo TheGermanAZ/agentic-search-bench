@@ -1,0 +1,19 @@
+--- code 1 ---
+kept = 7
+result("set")
+--- result 1 ---
+{"ms":3,"hostCalls":0,"side":{"proxyLogBytes":202037},"ok":true,"isError":false}
+text (42 chars):
+Script executed successfully.
+
+Result:
+set
+--- code 2 ---
+result(kept == nil and "gone" or kept)
+--- result 2 ---
+{"ms":2,"hostCalls":0,"side":{"proxyLogBytes":202127},"ok":true,"isError":false}
+text (43 chars):
+Script executed successfully.
+
+Result:
+gone

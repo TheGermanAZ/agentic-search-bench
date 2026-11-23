@@ -1,0 +1,23 @@
+--- code 1 ---
+while True:
+    pass
+--- result 1 ---
+{"ms":4,"hostCalls":0,"ok":true,"isError":true}
+text (92 chars):
+script execution failed: script.star:2:5: this Starlark dialect does not support while loops
+--- code 2 ---
+for i in range(1000000000000):
+    pass
+--- result 2 ---
+{"ms":2,"hostCalls":0,"ok":true,"isError":true}
+text (71 chars):
+script execution failed: Starlark computation cancelled: too many steps
+--- code 3 ---
+s = "x" * 100000000
+for i in range(2700):
+    s.count("xy")
+return "done"
+--- result 3 ---
+{"ms":19909,"hostCalls":0,"ok":true,"isError":true}
+text (71 chars):
+script execution failed: Starlark computation cancelled: too many steps

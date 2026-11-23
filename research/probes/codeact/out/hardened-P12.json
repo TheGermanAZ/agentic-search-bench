@@ -1,0 +1,61 @@
+{
+  "probe": "P12",
+  "attempts": [
+    {
+      "probe": "P12",
+      "container": "codeact-hardened-P12-0",
+      "startup_s": 1.2,
+      "elapsed_s": 0.01,
+      "output": "995 1\n",
+      "after": null,
+      "mem_peak_mib": 0,
+      "harness_killed_at_4gib": false,
+      "code": "subs = ().__class__.__base__.__subclasses__()\nwc = [c for c in subs if c.__name__ == '_wrap_close']\nprint(len(subs), len(wc))"
+    },
+    {
+      "probe": "P12",
+      "container": "codeact-hardened-P12-1",
+      "startup_s": 1.5,
+      "elapsed_s": 60.01,
+      "output": "[Execution timed out (60 seconds).]",
+      "after": null,
+      "mem_peak_mib": 0,
+      "harness_killed_at_4gib": false,
+      "code": "print(__import__('os').system('echo PWNED'))"
+    },
+    {
+      "probe": "P12",
+      "container": "codeact-hardened-P12-2",
+      "startup_s": 1.6,
+      "elapsed_s": 60.01,
+      "output": "[Execution timed out (60 seconds).]",
+      "after": null,
+      "mem_peak_mib": 0,
+      "harness_killed_at_4gib": false,
+      "code": "wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']\nprint(wc[0].__init__.__globals__['system']('echo PWNED2'))"
+    },
+    {
+      "probe": "P12",
+      "container": "codeact-hardened-P12-3",
+      "startup_s": 1.6,
+      "elapsed_s": 60.01,
+      "output": "[Execution timed out (60 seconds).]",
+      "after": null,
+      "mem_peak_mib": 0,
+      "harness_killed_at_4gib": false,
+      "code": "import subprocess\nprint(subprocess.run(['sh', '-c', 'echo PWNED; hostname; id'], capture_output=True, text=True).stdout)"
+    },
+    {
+      "probe": "P12",
+      "container": "codeact-hardened-P12-4",
+      "startup_s": 1.3,
+      "elapsed_s": 0.0,
+      "output": "False False a96bf9c51a40\n",
+      "after": null,
+      "mem_peak_mib": 0,
+      "harness_killed_at_4gib": false,
+      "code": "import os\nprint(os.path.exists('/var/run/docker.sock'), os.path.exists('/Users'), os.uname().nodename)"
+    }
+  ],
+  "config": "JupyterGatewayDocker RESOURCE_CONSTRAINTS={'mem_limit': '8g', 'nano_cpus': 2e9}, JupyterKernel.execute timeout=60"
+}

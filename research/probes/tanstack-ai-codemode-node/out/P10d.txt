@@ -1,0 +1,61 @@
+label: P10d
+command: node probe.mjs P10d
+child exit: code=0 signal=null
+child wall ms (process start to exit): 471
+peak child RSS: 79.9 MB (ps every 50 ms)
+child stdout length: 642 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P10d",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 143.594666,
+  "source": [
+    "return await external_lookup({id: \"not-a-number\"});"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string",
+          "name": "Error",
+          "stack": "Error: Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string\n    at external_lookup (<isolated-vm>:9:21)\n    at async <isolated-vm>:5:8\n    at async <isolated-vm>:4:26"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 62.600333000000035,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string",
+    "ms": 63,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 82.4
+}
+--- child stdout ---
+{
+  timestamp: [33m1795376238029[39m,
+  durationMs: [33m58[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'Error'[39m,
+    message: [32m'Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string'[39m,
+    stack: [32m'Error: Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string\n'[39m +
+      [32m'    at external_lookup (<isolated-vm>:9:21)\n'[39m +
+      [32m'    at async <isolated-vm>:5:8\n'[39m +
+      [32m'    at async <isolated-vm>:4:26'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

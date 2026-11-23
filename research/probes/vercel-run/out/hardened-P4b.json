@@ -1,0 +1,44 @@
+{
+  "impl": "vercel-run",
+  "probe": "P4b",
+  "config": {
+    "limits": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxHostFunctionArgumentsBytes": 262144,
+      "maxHostFunctionOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8,
+      "maxContinuationBytes": 8388608
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "could not load module 'fs'",
+        "stack": "ReferenceError: could not load module 'fs'",
+        "string": "ReferenceError: could not load module 'fs'"
+      },
+      "wallMs": 88.05545900000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR could not load module 'fs'",
+    "ms": 88,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 137
+}

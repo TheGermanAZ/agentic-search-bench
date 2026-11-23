@@ -1,0 +1,34 @@
+[
+  {
+    "probe": "ts-type-error-not-checked",
+    "code": "const x: number = \"not a number\"; const r = await lookup.lookup({ idd: \"wrong\" } as any); return { x, typeofX: typeof x }",
+    "args_extra": {},
+    "wall_ms": 205,
+    "host_calls": 1,
+    "isError": false,
+    "response_text": "{\n  \"typeofX\": \"string\",\n  \"x\": \"not a number\"\n}",
+    "response_text_length": 48,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "ts-wrong-param-not-checked",
+    "code": "const r = await lookup.lookup({ nope: 1 }); return r",
+    "args_extra": {},
+    "wall_ms": 205,
+    "host_calls": 1,
+    "isError": false,
+    "response_text": "{\n  \"content\": [\n    {\n      \"text\": \"{\\\"id\\\":null,\\\"value\\\":null}\",\n      \"type\": \"text\"\n    }\n  ]\n}",
+    "response_text_length": 101,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  }
+]

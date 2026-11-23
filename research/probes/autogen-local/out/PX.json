@@ -1,0 +1,7 @@
+{
+  "probe": "PX",
+  "outcome": "works",
+  "detail": "P9-loop: ok=True out='LOOKUP_CALL\\nLOOKUP_CALL\\nLOOKUP_CALL\\nLOOKUP_CALL\\nLOOKUP_CALL\\n1010' err=None | P4-canary: ok=True out='host-canary-7f3a' err=None | P4-workdir: ok=True out=\"/private/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/autogen-local-n6s37a78 ['functions.py', 'tmp_code_5ea34411091ad\" err=None | P8-files: ok=True out='7' err=None | P6-orphan: ok=False out='Timeout' err=exit_code=124: \nTimeout | P12-whoami: ok=True out='501 macOS-26.5.2-arm64-arm-64bit' err=None | shell-block: ok=True out='shell-ok\\nDarwin' err=None",
+  "display": "extras",
+  "config": "default"
+}

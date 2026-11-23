@@ -1,0 +1,227 @@
+{
+  "mode": "default",
+  "probe": "P12",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 2,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "return this.constructor.constructor(\"return process\")()",
+      "ms": 20.5,
+      "hostCalls": 0,
+      "result": {
+        "output": "TypeError: Cannot read properties of undefined (reading 'constructor'). (line 1, col 8)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return (function(){return this})().process",
+      "ms": 1.16,
+      "hostCalls": 0,
+      "result": {
+        "output": "TypeError: Cannot read properties of undefined (reading 'process'). (line 1, col 8)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return [].constructor.constructor(\"return process\")()",
+      "ms": 0.8,
+      "hostCalls": 0,
+      "result": {
+        "output": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 8)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return Function(\"return process\")()",
+      "ms": 0.83,
+      "hostCalls": 0,
+      "result": {
+        "output": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 8)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return eval(\"process\")",
+      "ms": 0.67,
+      "hostCalls": 0,
+      "result": {
+        "output": "ReferenceError: Unknown identifier 'eval'. (line 1, col 8)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return typeof globalThis + \":\" + Object.keys(globalThis).join(\",\")",
+      "ms": 0.67,
+      "hostCalls": 0,
+      "result": {
+        "output": "ReferenceError: Unknown identifier 'globalThis'. (line 1, col 46)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return tools.lookup.constructor(\"return process\")()",
+      "ms": 1.61,
+      "hostCalls": 0,
+      "result": {
+        "output": "TypeError: tools.lookup.constructor(...) is not a function. (line 1, col 8)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return console.log.constructor(\"return process\")()",
+      "ms": 0.66,
+      "hostCalls": 0,
+      "result": {
+        "output": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 8)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "const p = tools.lookup({id:1}); return p.constructor.constructor(\"return process\")()",
+      "ms": 3.33,
+      "hostCalls": 1,
+      "result": {
+        "output": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 40)",
+        "toolCalls": [
+          {
+            "tool": "lookup",
+            "status": "error",
+            "input": {
+              "id": 1
+            }
+          }
+        ],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "const o = await tools.lookup({id:1}); return o.constructor.constructor(\"return process\")()",
+      "ms": 202.78,
+      "hostCalls": 1,
+      "result": {
+        "output": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 46)",
+        "toolCalls": [
+          {
+            "tool": "lookup",
+            "status": "completed",
+            "input": {
+              "id": 1
+            }
+          }
+        ],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return Object.getPrototypeOf(tools).constructor.constructor(\"return process\")()",
+      "ms": 0.91,
+      "hostCalls": 0,
+      "result": {
+        "output": "TypeError: Object.getPrototypeOf cannot convert a namespace reference to an object. (line 1, col 8)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "const cp = require(\"child_process\"); return cp.execSync(\"echo PWNED\").toString()",
+      "ms": 0.6,
+      "hostCalls": 0,
+      "result": {
+        "output": "Error: Cannot import \"child_process\": it isn't available here, where packages and files can't be loaded. Use the provided globals. (line 1, col 12)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "({}).__proto__.polluted = \"yes\"; return ({}).polluted",
+      "ms": 0.59,
+      "hostCalls": 0,
+      "result": {
+        "output": "TypeError: Cannot read properties of undefined (reading 'polluted'). (line 1, col 1)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "const r = await fetch(\"https://example.com\"); return r.text.constructor(\"return process\")()",
+      "ms": 49.29,
+      "hostCalls": 0,
+      "result": {
+        "output": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 54)",
+        "toolCalls": [
+          {
+            "tool": "fetch",
+            "status": "completed",
+            "input": {
+              "method": "GET",
+              "url": "https://example.com"
+            }
+          }
+        ],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "const r = await fetch(\"https://example.com\"); return r.constructor.constructor(\"return process\")()",
+      "ms": 16.86,
+      "hostCalls": 0,
+      "result": {
+        "output": "TypeError: The Function constructor is not supported; write the function inline. (line 1, col 54)",
+        "toolCalls": [
+          {
+            "tool": "fetch",
+            "status": "completed",
+            "input": {
+              "method": "GET",
+              "url": "https://example.com"
+            }
+          }
+        ],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "const r = await fetch(\"https://example.com\"); return [typeof r.body, Object.keys(r), typeof r.headers.constructor]",
+      "ms": 16.61,
+      "hostCalls": 0,
+      "result": {
+        "output": "[\"object\",[\"url\",\"status\",\"statusText\",\"ok\",\"headers\",\"redirected\",\"body\",\"text\",\"json\",\"bytes\",\"arrayBuffer\"],\"function\"]",
+        "toolCalls": [
+          {
+            "tool": "fetch",
+            "status": "completed",
+            "input": {
+              "method": "GET",
+              "url": "https://example.com"
+            }
+          }
+        ],
+        "files": []
+      }
+    }
+  ]
+}

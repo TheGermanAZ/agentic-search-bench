@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "works",
+  "display": "works (example.com 200)",
+  "detail": "spec form failed with 'URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)> \\x1b[31m--------------------------------------------------------...'; same URL with an unverified SSL context printed HTTP 200, so the socket reached the network",
+  "evidence": "research/probes/datalayer-codemode-jupyter/out/hardened-P3.txt"
+}

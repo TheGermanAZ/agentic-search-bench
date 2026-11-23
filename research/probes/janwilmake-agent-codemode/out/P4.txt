@@ -1,0 +1,11 @@
+{
+  "file": "P4.ts",
+  "exitCode": 0,
+  "signal": null,
+  "killedByHarness": null,
+  "wallMs": 309,
+  "hostCalls": 0,
+  "stdoutChars": 58,
+  "stdout": "16 lines read from /etc/hosts\ndynamic import ok: function\n",
+  "stderr": ""
+}

@@ -1,0 +1,7 @@
+{
+  "probe": "P8",
+  "outcome": "fresh",
+  "detail": "second execution printed \"Execution error: name 'kept' is not defined\"",
+  "display": "fresh",
+  "config": "default"
+}

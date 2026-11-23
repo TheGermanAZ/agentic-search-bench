@@ -1,0 +1,2 @@
+mask_error_details=False: ["call_tool('failing') failed: Error calling tool 'failing': host-tool-boom internal detail db=postgres://user:pw@host"]
+mask_error_details=True: ["call_tool('failing') failed: Error calling tool 'failing'"]

@@ -1,0 +1,32 @@
+{
+  "probe": "P1",
+  "config": "default",
+  "codes": [
+    "r = await call_tool(\"lookup\", {\"id\": 21})\nmsg = r[\"value\"]\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "result": "42",
+      "structured": null,
+      "stdout": "",
+      "ms": 262.6,
+      "started": 1795379009.944196
+    }
+  ],
+  "setup_ms": 42.5,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.25,
+  "peak_tree_rss_gb": 0.106,
+  "calls": [
+    {
+      "id": 21,
+      "start": 1795379009.998026,
+      "end": 1795379010.199172,
+      "pid": 8320
+    }
+  ],
+  "child_log_tail": "42\n"
+}

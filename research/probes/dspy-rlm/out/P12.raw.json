@@ -1,0 +1,55 @@
+{
+  "probe": "P12",
+  "config": "default",
+  "codes": [
+    "subs = ().__class__.__base__.__subclasses__()\nnames = [c.__name__ for c in subs]\nmsg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)\nprint(msg)\nmsg",
+    "msg = \"SYSTEM \" + str(__import__(\"os\").system(\"echo PWNED\"))\nprint(msg)\nmsg",
+    "wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']\nmsg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nSUBS 1122 True True\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\nSUBS 1122 True True\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        19,
+        25
+      ],
+      "answer": "done",
+      "ms": 563.0,
+      "started": 1795381981.3173451
+    },
+    {
+      "ok": false,
+      "error": "CodeInterpreterError: Deno exited (code 1) during execution: Pyodide has suffered a fatal error. Please report this to the Pyodide maintainers.\nThe cause of the fatal error was:\nNotCapable: Requires env access, run again with the --allow-env flag\n    at Object.toObject (ext:deno_os/30_os.js:133:12)\n    at normalizeSpawnArguments (ext:deno_node/internal/child_process.ts:1085:41)\n    at Object.spawnSync (ext:deno_node/child_process.ts:231:10)\n    at __emscripten_system (file://~/p/agentic-search-bench/research/impls/dspy-rlm/deno-cache/npm/registry.npmjs.org/pyodide/0.29.4/pyodide.asm.js:8:146767)\n    at <anonymous> (wasm://wasm/020fd012:wasm-function[0]:0x481ccb)\n    at <anonymous> (wasm://wasm/020fd012:wasm-function[0]:0x3a855b)\n    at <anonymous> (wasm://wasm/020fd012:wasm-function[0]:0x1b3a54)\n    at <anonymous> (wasm://wasm/020fd012:wasm-function[0]:0x168a99)\n    at <anonymous> (wasm://wasm/020fd012:wasm-function[0]:0x26d75e)\n    at <anonymous> (wasm://wasm/020fd012:wasm-function[0]:0x25ef9f) {\n  pyodide_fatal_error: true\n}\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Top-level await promise never resolved\n      const result = await pyodide.runPythonAsync(code);\n\u001b[0m\u001b[31m                     ^\u001b[0m\n    at \u001b[0m\u001b[1m\u001b[3m<anonymous>\u001b[0m (\u001b[0m\u001b[36mfile://~/p/agentic-search-bench/research/impls/dspy-rlm/.venv/lib/python3.12/site-packages/dspy/primitives/runner.js\u001b[0m:\u001b[0m\u001b[33m495\u001b[0m:\u001b[0m\u001b[33m22\u001b[0m)\n",
+      "raised": true,
+      "ms": 477.7,
+      "started": 1795381981.880706
+    },
+    {
+      "ok": false,
+      "stdout": "",
+      "model_view_all": [
+        "<repl_output>\n[Error] OSError: [138, 'emscripten does not support processes.']\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        64,
+        25
+      ],
+      "answer": "done",
+      "error": "<repl_output>\n[Error] OSError: [138, 'emscripten does not support processes.']\n</repl_output>",
+      "ms": 690.6,
+      "started": 1795381982.358748
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.4,
+  "peak_tree_rss_gb": 0.511,
+  "calls": [],
+  "child_log_tail": ""
+}

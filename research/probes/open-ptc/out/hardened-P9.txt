@@ -1,0 +1,13 @@
+mode: hardened
+code:
+const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => main.lookup({id:i}))); console.log(Date.now()-t)
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "9bc04350-a6af-47b6-a6dd-a4d91c53e8a0",
+  "success": true,
+  "output": "211\n\n\n",
+  "ms": 226,
+  "hostCalls": 5
+}

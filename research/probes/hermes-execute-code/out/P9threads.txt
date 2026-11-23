@@ -1,0 +1,37 @@
+probe: P9threads
+outcome: works
+display: serial (1,025 ms, 5 threads)
+detail: 5 host calls spanning 1025 ms host-side (first start to last end); execution wall 1226.7 ms; output '30'
+
+code:
+----
+from hermes_tools import lookup
+from concurrent.futures import ThreadPoolExecutor
+with ThreadPoolExecutor(5) as ex:
+    rs = list(ex.map(lambda i: lookup(id=i), [1, 2, 3, 4, 5]))
+print(sum(r['value'] for r in rs))
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 2.02
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.165
+host lookup calls: 5
+  call id=1 start=1795382857.766 end=1795382857.971 pid=22718
+  call id=2 start=1795382857.972 end=1795382858.173 pid=22718
+  call id=3 start=1795382858.174 end=1795382858.379 pid=22718
+  call id=4 start=1795382858.382 end=1795382858.587 pid=22718
+  call id=5 start=1795382858.588 end=1795382858.791 pid=22718
+
+=== run 0 (1226.7 ms) ===
+ok: true
+stdout: 30
+
+model_sees: {"status": "success", "output": "30\n", "exit_code": 0, "tool_calls_made": 5, "duration_seconds": 1.22, "kernel": {"mode": "session", "reused": false, "execution_count": 1, "state_reset": false}, "stdout_truncated": false, "stdout_bytes_captured": 3, "stdout_bytes_total": 3, "stdout_bytes_omitted": 0}
+status: success
+tool_calls_made: 5
+model_sees_len: 302
+
+=== child process log (tail) ===
+

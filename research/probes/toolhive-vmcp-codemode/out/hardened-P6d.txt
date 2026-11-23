@@ -1,0 +1,8 @@
+--- code 1 ---
+s = "x" * 1000000000
+for i in range(1000):
+    s.count("xy")
+return "done"
+--- result 1 ---
+{"ms":120001,"hostCalls":0,"ok":false,"error":"harness cap 120000 ms"}
+note: after the 120 s harness cap the driver's reset() killed this harness's vMCP PID and restarted it (start.sh), which ended the still-running script.

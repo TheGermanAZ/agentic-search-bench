@@ -1,0 +1,27 @@
+{
+  "probe": "P5",
+  "config": "hardened",
+  "codes": [
+    "import os\nmsg = \"ENV \" + str(os.environ.get(\"PROBE_SECRET\"))\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "ENV None\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"ENV None\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 0.61, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 9, \"stdout_bytes_total\": 9, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 0,
+      "model_sees_len": 267,
+      "ms": 1381.8,
+      "started": 1795384470.809067
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.06,
+  "peak_tree_rss_gb": 0.168,
+  "calls": [],
+  "child_log_tail": ""
+}

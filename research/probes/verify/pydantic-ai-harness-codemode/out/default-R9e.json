@@ -1,0 +1,421 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 31596,
+  "peakTreeRssMb": 255,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9e",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1064,
+          "ms": 30140,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTimeoutError: feed time limit exceeded: 30.000598042s > 30s\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+          ],
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 1073,
+          "ms": 30175,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTimeoutError: feed time limit exceeded: 30.007079834s > 30s\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+          ],
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 1073,
+          "ms": 30142,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTimeoutError: feed time limit exceeded: 30.004464167s > 30s\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+          ],
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 1073,
+          "ms": 30146,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTimeoutError: feed time limit exceeded: 30.000307791s > 30s\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+          ],
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 1073,
+          "ms": 30137,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTimeoutError: feed time limit exceeded: 30.001606458s > 30s\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+          ],
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 1073,
+          "ms": 30153,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTimeoutError: feed time limit exceeded: 30.014376916s > 30s\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+          ],
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 1074,
+          "ms": 30141,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTimeoutError: feed time limit exceeded: 30.000050542s > 30s\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+          ],
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 1074,
+          "ms": 30152,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTimeoutError: feed time limit exceeded: 30.00016525s > 30s\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+          ],
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1235,
+        "ms": 298,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1533,
+        "ms": 288,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 31249,
+        "ms": 260,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 22,
+    "totalMs": 31509
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      117,
+      30
+    ],
+    [
+      543,
+      56
+    ],
+    [
+      1075,
+      70
+    ],
+    [
+      1653,
+      226
+    ],
+    [
+      2113,
+      226
+    ],
+    [
+      2522,
+      226
+    ],
+    [
+      2944,
+      226
+    ],
+    [
+      3363,
+      226
+    ],
+    [
+      3789,
+      226
+    ],
+    [
+      4211,
+      226
+    ],
+    [
+      4607,
+      226
+    ],
+    [
+      5045,
+      226
+    ],
+    [
+      5451,
+      226
+    ],
+    [
+      5846,
+      226
+    ],
+    [
+      6256,
+      226
+    ],
+    [
+      6671,
+      226
+    ],
+    [
+      7079,
+      226
+    ],
+    [
+      7505,
+      226
+    ],
+    [
+      7924,
+      226
+    ],
+    [
+      8333,
+      226
+    ],
+    [
+      8743,
+      226
+    ],
+    [
+      9142,
+      226
+    ],
+    [
+      9552,
+      226
+    ],
+    [
+      9957,
+      226
+    ],
+    [
+      10357,
+      226
+    ],
+    [
+      10772,
+      226
+    ],
+    [
+      11164,
+      226
+    ],
+    [
+      11585,
+      226
+    ],
+    [
+      12020,
+      226
+    ],
+    [
+      12551,
+      226
+    ],
+    [
+      12982,
+      226
+    ],
+    [
+      13419,
+      226
+    ],
+    [
+      13839,
+      226
+    ],
+    [
+      14291,
+      226
+    ],
+    [
+      14737,
+      225
+    ],
+    [
+      15163,
+      219
+    ],
+    [
+      15572,
+      219
+    ],
+    [
+      15991,
+      187
+    ],
+    [
+      16388,
+      187
+    ],
+    [
+      16794,
+      187
+    ],
+    [
+      17209,
+      187
+    ],
+    [
+      17624,
+      187
+    ],
+    [
+      18036,
+      187
+    ],
+    [
+      18529,
+      187
+    ],
+    [
+      18949,
+      187
+    ],
+    [
+      19495,
+      182
+    ],
+    [
+      19978,
+      180
+    ],
+    [
+      20644,
+      180
+    ],
+    [
+      21117,
+      180
+    ],
+    [
+      21590,
+      180
+    ],
+    [
+      22108,
+      180
+    ],
+    [
+      22660,
+      180
+    ],
+    [
+      23071,
+      180
+    ],
+    [
+      23531,
+      180
+    ],
+    [
+      24004,
+      180
+    ],
+    [
+      24506,
+      180
+    ],
+    [
+      24904,
+      180
+    ],
+    [
+      25327,
+      180
+    ],
+    [
+      25815,
+      180
+    ],
+    [
+      26242,
+      180
+    ],
+    [
+      26645,
+      180
+    ],
+    [
+      27063,
+      180
+    ],
+    [
+      27475,
+      180
+    ],
+    [
+      27900,
+      180
+    ],
+    [
+      28330,
+      180
+    ],
+    [
+      28757,
+      180
+    ],
+    [
+      29172,
+      180
+    ],
+    [
+      29664,
+      180
+    ],
+    [
+      30078,
+      180
+    ],
+    [
+      30606,
+      180
+    ],
+    [
+      31128,
+      176
+    ]
+  ]
+}

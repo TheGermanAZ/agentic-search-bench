@@ -1,0 +1,140 @@
+probe: P3
+outcome: works
+display: works (example.com 200)
+detail: The SPEC form failed only on certificate verification (SSLCertVerificationError with the uv-managed Python's CA store); the same URL with an unverified SSL context printed HTTP 200.
+
+code:
+----
+import urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10)
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+import ssl, urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10, context=ssl._create_unverified_context())
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+
+setup_ms: 0.2
+wall_s (whole child process): 3.2
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.146
+host lookup calls: 0
+
+=== run 0 (2399.4 ms) ===
+ok: false
+stdout: ---------------------------------------------------------------------------
+SSLCertVerificationError                  Traceback (most recent call last)
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py:1344, in AbstractHTTPHandler.do_open(self, http_class, req, **http_conn_args)
+   1343 try:
+-> 1344     h.request(req.get_method(), req.selector, req.data, headers,
+   1345               encode_chunked=req.has_header('Transfer-encoding'))
+   1346 except OSError as err: # timeout error
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1338, in HTTPConnection.request(self, method, url, body, headers, encode_chunked)
+   1337 """Send a complete request to the server."""
+-> 1338 self._send_request(method, url, body, headers, encode_chunked)
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1384, in HTTPConnection._send_request(self, method, url, body, headers, encode_chunked)
+   1383     body = _encode(body, 'body')
+-> 1384 self.endheaders(body, encode_chunked=encode_chunked)
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1333, in HTTPConnection.endheaders(self, message_body, encode_chunked)
+   1332     raise CannotSendHeader()
+-> 1333 self._send_output(message_body, encode_chunked=encode_chunked)
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1093, 
+...[6522 chars; harness elided the middle of this evidence file only]...
+or._open(self, req, data)
+    529     return result
+    531 protocol = req.type
+--> 532 result = self._call_chain(self.handle_open, protocol, protocol +
+    533                           '_open', req)
+    534 if result:
+    535     return result
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py:492, in OpenerDirector._call_chain(self, chain, kind, meth_name, *args)
+    490 for handler in handlers:
+    491     func = getattr(handler, meth_name)
+--> 492     result = func(*args)
+    493     if result is not None:
+    494         return result
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py:1392, in HTTPSHandler.https_open(self, req)
+   1391 def https_open(self, req):
+-> 1392     return self.do_open(http.client.HTTPSConnection, req,
+   1393                         context=self._context)
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py:1347, in AbstractHTTPHandler.do_open(self, http_class, req, **http_conn_args)
+   1344         h.request(req.get_method(), req.selector, req.data, headers,
+   1345                   encode_chunked=req.has_header('Transfer-encoding'))
+   1346     except OSError as err: # timeout error
+-> 1347         raise URLError(err)
+   1348     r = h.getresponse()
+   1349 except:
+
+URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>
+error: ---------------------------------------------------------------------------
+SSLCertVerificationError                  Traceback (most recent call last)
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py:1344, in AbstractHTTPHandler.do_open(self, http_class, req, **http_conn_args)
+   1343 try:
+-> 1344     h.request(req.get_method(), req.selector, req.data, headers,
+   1345               encode_chunked=req.has_header('Transfer-encoding'))
+   1346 except OSError as err: # timeout error
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1338, in HTTPConnection.request(self, method, url, body, headers, encode_chunked)
+   1337 """Send a complete request to the server."""
+-> 1338 self._send_request(method, url, body, headers, encode_chunked)
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1384, in HTTPConnection._send_request(self, method, url, body, headers, encode_chunked)
+   1383     body = _encode(body, 'body')
+-> 1384 self.endheaders(body, encode_chunked=encode_chunked)
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1333, in HTTPConnection.endheaders(self, message_body, encode_chunked)
+   1332     raise CannotSendHeader()
+-> 1333 self._send_output(message_body, encode_chunked=encode_chunked)
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/http/client.py:1093, 
+...[6522 chars; harness elided the middle of this evidence file only]...
+or._open(self, req, data)
+    529     return result
+    531 protocol = req.type
+--> 532 result = self._call_chain(self.handle_open, protocol, protocol +
+    533                           '_open', req)
+    534 if result:
+    535     return result
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py:492, in OpenerDirector._call_chain(self, chain, kind, meth_name, *args)
+    490 for handler in handlers:
+    491     func = getattr(handler, meth_name)
+--> 492     result = func(*args)
+    493     if result is not None:
+    494         return result
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py:1392, in HTTPSHandler.https_open(self, req)
+   1391 def https_open(self, req):
+-> 1392     return self.do_open(http.client.HTTPSConnection, req,
+   1393                         context=self._context)
+
+File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/urllib/request.py:1347, in AbstractHTTPHandler.do_open(self, http_class, req, **http_conn_args)
+   1344         h.request(req.get_method(), req.selector, req.data, headers,
+   1345                   encode_chunked=req.has_header('Transfer-encoding'))
+   1346     except OSError as err: # timeout error
+-> 1347         raise URLError(err)
+   1348     r = h.getresponse()
+   1349 except:
+
+URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>
+
+=== run 1 (162.8 ms) ===
+ok: true
+stdout: HTTP 200
+Out[2]: 'HTTP 200'
+
+=== child process log (tail) ===
+WARNING CodeMode runs arbitrary Python and shell with the permissions of this process. It is not a sandbox: provide human supervision or run the agent in an isolated container.
+

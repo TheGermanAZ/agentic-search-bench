@@ -1,0 +1,32 @@
+{
+ "config": "hardened",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ],
+  "timeout": 1.0,
+  "memory_limit": 16777216,
+  "max_ptc_calls": 8,
+  "mode": "call",
+  "subagents": false
+ },
+ "probe": "P8",
+ "result": [
+  {
+   "code": "globalThis.kept = 7",
+   "output": "<result>7</result>",
+   "turn_ms": 170.9,
+   "eval_ms": 163.9,
+   "host_calls": 0
+  },
+  {
+   "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+   "output": "<stdout>\ngone\n</stdout>\n<result>null</result>",
+   "turn_ms": 7.5,
+   "eval_ms": 3.3,
+   "host_calls": 0
+  }
+ ]
+}
+
+monitor: {"config": "hardened", "probe": "P8", "exit_code": 0, "wall_s": 0.76, "peak_rss_mb": 181.5, "first_rss_mb": 15.9, "killed": null, "stderr_tail": []}

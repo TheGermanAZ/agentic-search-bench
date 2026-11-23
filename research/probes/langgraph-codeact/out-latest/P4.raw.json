@@ -1,0 +1,23 @@
+{
+  "probe": "P4",
+  "config": "default",
+  "codes": [
+    "data = open(\"/etc/hosts\").read()\nmsg = \"HOSTS \" + str(len(data)) + \" \" + data.strip().splitlines()[-1]\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "HOSTS 450 [last line of /etc/hosts redacted]\n",
+      "error": null,
+      "context_keys": [
+        "data",
+        "msg"
+      ],
+      "host_builtins_leak": false,
+      "ms": 2.5,
+      "started": 1795377261.664706
+    }
+  ],
+  "setup_ms": 1.9,
+  "done": true
+}

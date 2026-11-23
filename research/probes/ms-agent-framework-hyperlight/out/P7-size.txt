@@ -1,0 +1,6 @@
+   8 x 1 MB strings: ok=True stdout='8' error='None'
+  10 x 1 MB strings: invoke raised RuntimeError: Code execution failed.
+  12 x 1 MB strings: invoke raised RuntimeError: Code execution failed.
+  14 x 1 MB strings: invoke raised RuntimeError: Code execution failed.
+  16 x 1 MB strings: invoke raised RuntimeError: Code execution failed.
+  32 x 1 MB strings: invoke raised RuntimeError: Code execution failed.

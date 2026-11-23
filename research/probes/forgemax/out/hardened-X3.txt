@@ -1,0 +1,18 @@
+mode: hardened
+code:
+async () => { console.log("hello from console.log"); return "after log"; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"sandbox execution failed: IPC read error: IPC message too large: 1751477356 bytes (limit: 68157440 bytes)\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 516,
+  "hostCalls": 0
+}

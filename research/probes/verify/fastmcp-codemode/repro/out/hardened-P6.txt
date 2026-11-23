@@ -1,0 +1,49 @@
+probe: hardened-P6
+outcome: limited
+display: limited (10.1 s)
+detail: stopped after 10.10 s: Error calling tool 'execute': TimeoutError: feed time limit exceeded: 10.004330917s > 10s
+
+code:
+----
+while True:
+    pass
+----
+
+setup_ms: 71.1
+wall_s (whole child process): 11.91
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.103
+host lookup calls: 0
+
+=== run 0 (10099.1 ms) ===
+ok: false
+structured: null
+stdout: 
+error: Error calling tool 'execute': TimeoutError: feed time limit exceeded: 10.004330917s > 10s
+
+=== child process log (tail) ===
+[11/22/26 16:03:51] Error calling tool 'execute'                                
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/server/server.py:1673 in call_tool                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/tools/base.py:555 in _run                           │
+                    │                                                          │
+                    │                 ... 8 frames hidden ...                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:309 in         │
+                    │ _run_monty                                               │
+                    ╰──────────────────────────────────────────────────────────╯
+                    MontyRuntimeError: TimeoutError: feed time limit exceeded:  
+                    10.004330917s > 10s                                         
+

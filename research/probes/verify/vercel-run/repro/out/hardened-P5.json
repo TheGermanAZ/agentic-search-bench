@@ -1,0 +1,44 @@
+{
+  "impl": "vercel-run",
+  "probe": "P5",
+  "config": {
+    "limits": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxHostFunctionArgumentsBytes": 262144,
+      "maxHostFunctionOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8,
+      "maxContinuationBytes": 8388608
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "return process.env.PROBE_SECRET;"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "process is not defined",
+        "stack": "ReferenceError: process is not defined\n    at <anonymous> (run.js:1:8)",
+        "string": "ReferenceError: process is not defined"
+      },
+      "wallMs": 197.898834,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR process is not defined",
+    "ms": 198,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 138.3
+}

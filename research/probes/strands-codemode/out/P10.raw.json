@@ -1,0 +1,25 @@
+{
+  "probe": "P10",
+  "config": "default",
+  "codes": [
+    "x = 1\nraise ValueError(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 2, in <module>\n    raise ValueError(\"probe-boom\")\nValueError: probe-boom",
+      "ms": 94.7,
+      "started": 1795381212.5995362
+    }
+  ],
+  "setup_ms": 2245.7,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 4.42,
+  "peak_tree_rss_gb": 0.105,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

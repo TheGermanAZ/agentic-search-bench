@@ -1,0 +1,18 @@
+--- code 1 ---
+return String(this.constructor.constructor("return process")())
+--- result 1 ---
+{"ms":3,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (89 chars):
+Error running script: ReferenceError: process is not defined at anonymous (<eval>:3:8(5))
+--- code 2 ---
+return String((function(){return this})().process)
+--- result 2 ---
+{"ms":9,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (9 chars):
+undefined
+--- code 3 ---
+return Object.getOwnPropertyNames(globalThis).filter(k => !/^[A-Z]/.test(k)).join(",")
+--- result 3 ---
+{"ms":6,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (149 chars):
+eval,globalThis,undefined,isNaN,parseInt,parseFloat,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,console,lookup

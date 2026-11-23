@@ -1,0 +1,5 @@
+SNAP1 type FunctionSnapshot function lookup args ()
+SNAP1 dump bytes 2351
+SNAP2 restored type FunctionSnapshot function lookup
+SNAP2 resumed -> MontyComplete None
+SNAP2 output value 43

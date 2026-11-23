@@ -1,0 +1,5 @@
+console.log(this.constructor.constructor("return typeof process")())
+--- output
+undefined
+---
+wall_ms=53 host_calls=0 peak_tree_rss_mb=124

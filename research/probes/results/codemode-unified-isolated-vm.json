@@ -1,0 +1,141 @@
+{
+  "impl": "codemode-unified-isolated-vm",
+  "name": "CodeMode Unified, isolated-vm runtime",
+  "source": "https://github.com/danieliser/codemode-unified",
+  "pinned": "6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93 (2025-10-01)",
+  "language": "JS/TS",
+  "engine": "none: the adapter is a stub",
+  "how_run": "MCP stdio server dist/mcp-server.js (CODEMODE_ENABLE_MCP_INTEGRATION=true, MCP_CONFIG_PATH naming a stdio MCP server that serves `lookup`), tool execute_code {code, runtime: 'isolated-vm'}",
+  "probes": {
+    "P1": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P1.txt",
+      "display": "not implemented (stub)"
+    },
+    "P2": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P2.txt",
+      "display": "not implemented (stub)"
+    },
+    "P3": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P3.txt",
+      "display": "not implemented (stub)"
+    },
+    "P4": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P4.txt",
+      "display": "not implemented (stub)"
+    },
+    "P5": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P5.txt",
+      "display": "not implemented (stub)"
+    },
+    "P6": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P6.txt",
+      "display": "not implemented (stub)"
+    },
+    "P7": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P7.txt",
+      "display": "not implemented (stub)"
+    },
+    "P8": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P8.txt",
+      "display": "not implemented (stub)"
+    },
+    "P9": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P9.txt",
+      "display": "not implemented (stub)"
+    },
+    "P10": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P10.txt",
+      "display": "not implemented (stub)"
+    },
+    "P11": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P11.txt",
+      "display": "not implemented (stub)"
+    },
+    "P12": {
+      "outcome": "not-applicable",
+      "detail": "every execute_code call returned the error 'isolated-vm runtime not yet implemented'; the runtime is a stub",
+      "evidence": "research/probes/codemode-unified-isolated-vm/out/P12.txt",
+      "display": "not implemented (stub)"
+    }
+  },
+  "hardened": null,
+  "defaults": {
+    "time": "n/a",
+    "memory": "n/a",
+    "output": "n/a",
+    "tool_calls": "n/a",
+    "note": "hardened is null: the runtime does not exist"
+  },
+  "source_notes": [
+    {
+      "topic": "Not implemented",
+      "finding": "The isolated-vm adapter is a TODO stub: execute() throws 'isolated-vm runtime not yet implemented'. isolated-vm is not even a dependency in package.json.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/runtime/isolated-vm-runtime.ts#L22-L32; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/package.json"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Not a live bridge but a two-pass replay. Pass 1 runs the whole program with every mcp.* call returning a placeholder string and logging '__MCP_CALL__' JSON; the server then runs all logged calls with Promise.all, bakes the results into the source as literals, and runs the whole program a second time. Arguments that depend on an earlier tool result are computed from the placeholder, and every side effect happens twice (P13).",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L903-L918; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L946-L1021; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L1111-L1134; research/probes/codemode-unified-bun/out/P13_twoPass.txt"
+    },
+    {
+      "topic": "API shape",
+      "finding": "A generated `const mcp = { <server>: { <tool>: async (args) => __mcpCall('<server>.<tool>', args) } }` proxy is prepended to the program. Results come back wrapped as {content, text, parsed, isError, helpers}, so `r.value` is undefined and the value sits at r.parsed.value (P1).",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L403-L466; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L974-L1007"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On-demand mode (the default) tells the model to read the resource mcp://types/declarations, but reading it always fails: loadTypeScriptDeclarations calls require() inside an ES module. The model gets no tool names. auto-include mode (CODEMODE_TYPE_EXPOSURE) lists every tool in the description instead.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L35; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L327-L340; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L513-L529; research/probes/codemode-unified-bun/out/P15_discovery.txt"
+    },
+    {
+      "topic": "Setup",
+      "finding": "Tool access is off unless CODEMODE_ENABLE_MCP_INTEGRATION=true, which the README does not mention. execute_code defaults to runtime 'quickjs', although the README recommends Bun.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L1359; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L879"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "Tools run in the MCP server process, but on startup it prints the first 20 characters of every downstream MCP server env value with console.log, which goes to stdout, the MCP protocol channel.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L281; research/probes/codemode-unified-bun/out/envlog-stdout.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "execute_code takes a timeout (default 30 s) and nothing else; getRuntime builds every runtime with only {type}, so the memoryLimit, Deno permission and E2B apiKey fields in RuntimeConfig cannot be set through the MCP server. No output cap, no tool-call cap.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L502-L508; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L879; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L945"
+    },
+    {
+      "topic": "HTTP mode",
+      "finding": "The HTTP backend's /execute ignores the `runtime` field shown in the README curl example; its sandbox manager only wraps QuickJS.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/server.ts#L109-L128; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/sandbox/index.ts#L9-L19"
+    },
+    {
+      "topic": "Maintenance",
+      "finding": "27 commits, last on 2025-10-01, single author; package.json says MIT but the repo has no LICENSE file; not published to npm. The README badge says 'Production Ready'.",
+      "evidence": "git log at 6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93; npm view @danieliser/codemode-unified -> 404"
+    }
+  ],
+  "surprises": [
+    "README lists isolated-vm among the supported runtimes with startup figures, but the adapter is a stub."
+  ]
+}

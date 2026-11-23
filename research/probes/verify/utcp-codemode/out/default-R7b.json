@@ -1,0 +1,380 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R7b",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 34993,
+  "peakTreeRssMb": 60,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 34943,
+    "rssMb": 55
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R7b",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "r": {
+        "startMs": 44,
+        "ms": 30007,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": null,
+            "logs": [
+              "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+            ]
+          },
+          "stringChars": 69
+        },
+        "callsStarted": 5
+      },
+      "atReturn": {
+        "started": 5,
+        "done": 5
+      },
+      "after1500ms": {
+        "started": 6,
+        "done": 6
+      },
+      "after": {
+        "label": "after",
+        "startMs": 31553,
+        "ms": 208,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 26,
+    "hostEvents": [],
+    "totalMs": 31761
+  },
+  "childStdoutOtherChars": 1239,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      133,
+      50
+    ],
+    [
+      536,
+      57
+    ],
+    [
+      962,
+      57
+    ],
+    [
+      1365,
+      60
+    ],
+    [
+      1766,
+      60
+    ],
+    [
+      2186,
+      60
+    ],
+    [
+      2608,
+      60
+    ],
+    [
+      3060,
+      60
+    ],
+    [
+      3500,
+      60
+    ],
+    [
+      3914,
+      60
+    ],
+    [
+      4568,
+      60
+    ],
+    [
+      5119,
+      60
+    ],
+    [
+      5557,
+      60
+    ],
+    [
+      6031,
+      60
+    ],
+    [
+      6444,
+      60
+    ],
+    [
+      6952,
+      60
+    ],
+    [
+      7463,
+      60
+    ],
+    [
+      7915,
+      60
+    ],
+    [
+      8377,
+      60
+    ],
+    [
+      8847,
+      60
+    ],
+    [
+      9283,
+      60
+    ],
+    [
+      9728,
+      60
+    ],
+    [
+      10222,
+      60
+    ],
+    [
+      10663,
+      60
+    ],
+    [
+      11061,
+      60
+    ],
+    [
+      11462,
+      60
+    ],
+    [
+      11862,
+      60
+    ],
+    [
+      12318,
+      60
+    ],
+    [
+      12744,
+      60
+    ],
+    [
+      13197,
+      60
+    ],
+    [
+      13661,
+      60
+    ],
+    [
+      14077,
+      60
+    ],
+    [
+      14525,
+      60
+    ],
+    [
+      14955,
+      60
+    ],
+    [
+      15461,
+      60
+    ],
+    [
+      15928,
+      60
+    ],
+    [
+      16394,
+      60
+    ],
+    [
+      16822,
+      60
+    ],
+    [
+      17247,
+      60
+    ],
+    [
+      17852,
+      53
+    ],
+    [
+      18357,
+      53
+    ],
+    [
+      18751,
+      53
+    ],
+    [
+      19165,
+      53
+    ],
+    [
+      19589,
+      53
+    ],
+    [
+      19993,
+      53
+    ],
+    [
+      20433,
+      53
+    ],
+    [
+      20942,
+      53
+    ],
+    [
+      21415,
+      53
+    ],
+    [
+      21835,
+      53
+    ],
+    [
+      22268,
+      53
+    ],
+    [
+      22680,
+      53
+    ],
+    [
+      23089,
+      53
+    ],
+    [
+      23517,
+      53
+    ],
+    [
+      24000,
+      53
+    ],
+    [
+      24432,
+      53
+    ],
+    [
+      24920,
+      53
+    ],
+    [
+      25345,
+      53
+    ],
+    [
+      25771,
+      53
+    ],
+    [
+      26218,
+      53
+    ],
+    [
+      26649,
+      53
+    ],
+    [
+      27071,
+      53
+    ],
+    [
+      27477,
+      53
+    ],
+    [
+      27945,
+      53
+    ],
+    [
+      28430,
+      53
+    ],
+    [
+      28819,
+      53
+    ],
+    [
+      29277,
+      53
+    ],
+    [
+      29687,
+      53
+    ],
+    [
+      30231,
+      54
+    ],
+    [
+      30694,
+      54
+    ],
+    [
+      31163,
+      54
+    ],
+    [
+      31911,
+      55
+    ],
+    [
+      32343,
+      55
+    ],
+    [
+      32812,
+      55
+    ],
+    [
+      33280,
+      55
+    ],
+    [
+      33733,
+      55
+    ],
+    [
+      34182,
+      55
+    ],
+    [
+      34992,
+      0
+    ]
+  ]
+}

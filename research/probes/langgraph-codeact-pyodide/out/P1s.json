@@ -1,0 +1,7 @@
+{
+  "probe": "P1s",
+  "outcome": "works",
+  "display": "works (42, runs in sandbox, 0 host)",
+  "detail": "42 in printed stdout: True; 42 in returned value: False; output '42'; host lookup calls: 0",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P1s.txt"
+}

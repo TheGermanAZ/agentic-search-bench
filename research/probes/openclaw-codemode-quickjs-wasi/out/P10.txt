@@ -1,0 +1,66 @@
+engine=quickjs hardened=false config={"enabled":true,"executor":"quickjs"} setupMs=1
+--- code 1 ---
+throw new Error("probe-boom")
+--- result 1 ---
+{"ms":4.43,"hostCalls":0,"ok":true,"waits":0}
+content text (388 chars):
+{"status":"failed","code":"internal_error","failurePhase":"guest","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"3baf9413a10824bdc24a1ff1","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"error":"Error: probe-boom\n    at <anonymous> (openclaw-code-mode:user.js:1:11)\n"}
+details (469 chars):
+{
+ "status": "failed",
+ "code": "internal_error",
+ "failurePhase": "guest",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "3baf9413a10824bdc24a1ff1",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "Error: probe-boom\n    at <anonymous> (openclaw-code-mode:user.js:1:11)\n"
+}
+--- code 2 ---
+const x = 1;
+const y = 2;
+function inner() { throw new Error("probe-boom"); }
+inner();
+--- result 2 ---
+{"ms":6.47,"hostCalls":0,"ok":true,"waits":0}
+content text (435 chars):
+{"status":"failed","code":"internal_error","failurePhase":"guest","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"3baf9413a10824bdc24a1ff1","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"error":"Error: probe-boom\n    at inner (openclaw-code-mode:user.js:3:30)\n    at <anonymous> (openclaw-code-mode:user.js:4:1)\n"}
+details (516 chars):
+{
+ "status": "failed",
+ "code": "internal_error",
+ "failurePhase": "guest",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "3baf9413a10824bdc24a1ff1",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "Error: probe-boom\n    at inner (openclaw-code-mode:user.js:3:30)\n    at <anonymous> (openclaw-code-mode:user.js:4:1)\n"
+}

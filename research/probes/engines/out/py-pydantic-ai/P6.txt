@@ -1,0 +1,9 @@
+while True:
+    pass
+--- output
+ERROR: Runtime error:
+TimeoutError: feed time limit exceeded: 60.000031375s > 60s
+
+The code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call.
+---
+wall_ms=60013 host_calls=0 peak_tree_rss_mb=224

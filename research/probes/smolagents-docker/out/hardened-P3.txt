@@ -1,0 +1,22 @@
+config: {"port": 41940, "image_name": "smolagents-docker-jupyter-kernel", "container_run_kwargs": {"name": "smolagents-docker-h-p3", "mem_limit": "512m", "cpu_quota": 50000, "pids_limit": 100, "security_opt": ["no-new-privileges"], "cap_drop": ["ALL"]}}
+code:
+import urllib.request
+print(urllib.request.urlopen("https://example.com").status)
+
+{
+  "probe": "P3",
+  "hardened": true,
+  "harness_wall_s": 3.5,
+  "peak_container_mem_mib": 0,
+  "raw": {
+    "setup_ms": 2721,
+    "result": {
+      "ok": true,
+      "output": "None",
+      "logs": "200\n",
+      "ms": 69.7
+    },
+    "wall_s": 3.23
+  },
+  "child_tail": ""
+}

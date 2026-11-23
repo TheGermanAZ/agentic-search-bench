@@ -1,0 +1,13 @@
+code:
+a = []
+while True:
+    a.append("x" * 10**6)
+
+{
+  "probe": "P7",
+  "harness_wall_s": 4.7,
+  "peak_container_mem_mib": 4808,
+  "harness_stop": "4 GiB container memory",
+  "raw": null,
+  "child_tail": ""
+}

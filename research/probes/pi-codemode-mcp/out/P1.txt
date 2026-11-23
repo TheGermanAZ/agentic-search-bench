@@ -1,0 +1,24 @@
+{
+  "impl": "pi-codemode-mcp",
+  "config": "default",
+  "probe": "P1",
+  "options": {},
+  "warmupExecIncludingServerSpawnMs": 530.48,
+  "hostCalls": 1,
+  "hostCallLog": [
+    "1795376245211 21"
+  ],
+  "results": [
+    {
+      "code": "const r = await call(\"host\", \"lookup\", {id: 21}); console.log(r.structuredContent.value)",
+      "ms": 215,
+      "hostCalls": 1,
+      "isError": false,
+      "textChars": 122,
+      "text": "{\n  \"logs\": [\n    {\n      \"level\": \"log\",\n      \"message\": \"42\",\n      \"timestamp\": \"2026-11-22T19:37:25.414Z\"\n    }\n  ]\n}"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P1"], "exit_code": 0, "wall_ms": 1556, "peak_tree_rss_mb": 190.2, "watch_kill": null}

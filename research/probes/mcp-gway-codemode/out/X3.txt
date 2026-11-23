@@ -1,0 +1,6 @@
+--- code 1 ---
+callManyTool 5 x Probe.lookup
+--- result 1 ---
+{"ok": true, "ms": 411.83, "hostCalls": 5}
+text (789 chars):
+{"jsonrpc": "2.0", "id": 30, "result": {"content": [{"type": "text", "text": "{\"result\": [{\"id\": null, \"server\": \"Probe\", \"tool\": \"lookup\", \"ok\": true, \"result\": {\"id\": 1, \"value\": 2}}, {\"id\": null, \"server\": \"Probe\", \"tool\": \"lookup\", \"ok\": true, \"result\": {\"id\": 2, \"value\": 4}}, {\"id\": null, \"server\": \"Probe\", \"tool\": \"lookup\", \"ok\": true, \"result\": {\"id\": 3, \"value\": 6}}, {\"id\": null, \"server\": \"Probe\", \"tool\": \"lookup\", \"ok\": true, \"result\": {\"id\": 4, \"value\": 8}}, {\"id\": null, \"server\": \"Probe\", \"tool\": \"lookup\", \"ok\": true, \"result\": {\"id\": 5, \"value\": 10}}], \"logs\": [], \"calls\": [], \"usage\": {\"call_count\": 0, \"ms\": 406, \"limit_bytes\": 262144, \"truncated\": false}}"}]}}

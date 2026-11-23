@@ -1,0 +1,6 @@
+console.log(this.constructor.constructor("return typeof process")())
+--- output
+ERROR: TypeError: Function constructor is not allowed
+    at <anonymous> (line 1:30)
+---
+wall_ms=4 host_calls=0 peak_tree_rss_mb=172

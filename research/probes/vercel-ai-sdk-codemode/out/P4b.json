@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P4b",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "could not load module 'fs'",
+        "stack": "ReferenceError: could not load module 'fs'",
+        "string": "ReferenceError: could not load module 'fs'"
+      },
+      "wallMs": 78.50991700000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR could not load module 'fs'",
+    "ms": 79,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 147.1
+}

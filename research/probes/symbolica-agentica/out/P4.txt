@@ -1,0 +1,18 @@
+probe=P4 mode=from_env AGENTICA_NO_SANDBOX=None PROBE_SECRET set in host: True
+sandbox mode: wasm
+--- exec 1 (3 ms)
+output repr (first 600): 'Traceback (most recent call last):\n  <repl> line 1\n    open("/etc/hosts").read()\nFileNotFoundError: [Errno 44] No such file or directory: \'/etc/hosts\'\n\n'
+len(output): 152
+out_str: None
+exception_name: builtins.FileNotFoundError
+traceback_str: 'Traceback (most recent call last):\n  <repl> line 1\n    open("/etc/hosts").read()\nFileNotFoundError: [Errno 44] No such file or directory: \'/etc/hosts\'\n'
+has_result: False
+--- exec 2 (3 ms)
+output repr (first 600): 'Traceback (most recent call last):\n  <repl> line 2\n    os.listdir("/")\nFileNotFoundError: [Errno 44] No such file or directory: \'/\'\n\n'
+len(output): 133
+out_str: None
+exception_name: builtins.FileNotFoundError
+traceback_str: 'Traceback (most recent call last):\n  <repl> line 2\n    os.listdir("/")\nFileNotFoundError: [Errno 44] No such file or directory: \'/\'\n'
+has_result: False
+host lookup calls: 0
+[harness] exit=0 wall=7s container=symbolica-agentica-P4-25286

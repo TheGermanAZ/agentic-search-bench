@@ -1,0 +1,24 @@
+code:
+r = lookup(id=21)
+print(r['value'])
+
+{
+  "probe": "P1",
+  "harness_wall_s": 10.1,
+  "peak_container_mem_mib": 0,
+  "raw": {
+    "host_callable": {
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/workspace/_exec.py\", line 103, in <module>\n    exec(code, combined, combined)\n  File \"<string>\", line 1, in <module>\nNameError: name 'lookup' is not defined\n",
+      "ms": 114.1
+    },
+    "host_calls": 0,
+    "code_string": {
+      "stdout": "42\n",
+      "stderr": "",
+      "ms": 340.0
+    },
+    "wall_s": 9.78
+  },
+  "child_tail": "{\"host_callable\": {\"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\n  File \\\"/workspace/_exec.py\\\", line 103, in <module>\\n    exec(code, combined, combined)\\n  File \\\"<string>\\\", line 1, in <module>\\nNameError: name 'lookup' is not defined\\n\", \"ms\": 114.1}, \"host_calls\": 0, \"code_string\": {\"stdout\": \"42\\n\", \"stderr\": \"\", \"ms\": 340.0}, \"wall_s\": 9.78}\n"
+}

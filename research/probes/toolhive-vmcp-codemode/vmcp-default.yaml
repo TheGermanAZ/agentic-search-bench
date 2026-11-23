@@ -1,0 +1,19 @@
+# default config for the toolhive-vmcp-codemode probe. One static backend: the SPEC lookup MCP server on 127.0.0.1:42141.
+name: "probe-vmcp"
+groupRef: "probe-group"
+backends:
+  - name: probe
+    url: http://127.0.0.1:42141/mcp
+    transport: streamable-http
+incomingAuth:
+  type: anonymous
+outgoingAuth:
+  source: inline
+  default:
+    type: unauthenticated
+aggregation:
+  conflictResolution: prefix
+  conflictResolutionConfig:
+    prefixFormat: "{workload}_"
+codeMode:
+  enabled: true

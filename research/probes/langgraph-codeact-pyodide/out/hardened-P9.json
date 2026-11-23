@@ -1,0 +1,7 @@
+{
+  "probe": "P9",
+  "outcome": "error",
+  "display": "error (tool source lacks its imports)",
+  "detail": "0 host calls; Error during execution: name 'time' is not defined Error during execution: name 'time' is not defined",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/hardened-P9.txt"
+}

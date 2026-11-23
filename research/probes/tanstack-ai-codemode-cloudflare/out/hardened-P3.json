@@ -1,0 +1,38 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P3",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 2.11129200000002,
+  "source": [
+    "const r = await fetch(\"https://example.com\"); return r.status;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "This worker is not permitted to access the internet via global functions like fetch(). It must use capabilities (such as bindings in 'env') to talk to the outside world.",
+          "name": "Error",
+          "stack": "Error: This worker is not permitted to access the internet via global functions like fetch(). It must use capabilities (such as bindings in 'env') to talk to the outside world.\n    at main.js:47:27\n    at main.js:48:11\n    at Object.fetch (main.js:78:7)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 39.046666999999985,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: This worker is not permitted to access the internet via global functions like fetch(). It must use capabilities (such as bindings in 'env') to talk to the outside world.",
+    "ms": 39,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 89
+}

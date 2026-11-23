@@ -1,0 +1,10 @@
+{
+  "probe": "P12",
+  "config": {
+    "kernel_mode": "subprocess",
+    "cell_timeout": 30
+  },
+  "peak_tree_rss_mib": 104,
+  "wall_s": 1.23,
+  "child": "{\"r\": {\"ok\": true, \"stdout\": \"810 1\\nPWNED\\n0\\nPWNED2\\n0\\n\", \"stderr\": \"\", \"s\": 0.06}, \"host_calls\": 0, \"extra\": \"\"}"
+}

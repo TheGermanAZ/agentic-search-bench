@@ -1,0 +1,60 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P2c",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 2.638583000000004,
+  "source": [
+    "for (let i = 0; i < 20; i++) console.log(\"A\".repeat(200000)); return \"RETURNED\";"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "RETURNED",
+        "logCount": 6,
+        "logChars": 1000022,
+        "logs": [
+          {
+            "stringLength": 200000,
+            "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "stringLength": 200000,
+            "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "stringLength": 200000,
+            "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "stringLength": 200000,
+            "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "stringLength": 200000,
+            "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          "[log output truncated]"
+        ]
+      },
+      "wallMs": 166.101417,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "RETURNED",
+      "logCount": 6,
+      "logChars": 1000022
+    },
+    "ms": 166,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 47.2
+}

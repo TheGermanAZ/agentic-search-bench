@@ -1,0 +1,4 @@
+code='print("hello from sandbox")\n"RET1"' -> is_error=False content=['RET1']
+code='print("A" * 200000)\n"RET2"' -> is_error=False content=['RET2']
+code='"RET3"' -> is_error=False content=['RET3']
+print() lines from the sandbox appear on the stdio server's stderr (2>&1 count above), not in the tool result and not on the JSON-RPC stdout channel.

@@ -1,0 +1,10 @@
+code:
+while (true) {}
+
+result:
+{
+  "id": "dc9d2b30-74b2-48a9-a195-07385caecd25",
+  "error": "\u001b[0m\u001b[32mDownload\u001b[0m http://localhost:41310/client.ts?v=1\n\u001b[0m\u001b[32mCheck\u001b[0m file:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/9857bdcbb48ba6d.ts\n",
+  "ms": 10073,
+  "hostCalls": 0
+}

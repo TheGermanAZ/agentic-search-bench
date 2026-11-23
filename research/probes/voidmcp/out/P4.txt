@@ -1,0 +1,114 @@
+[
+  {
+    "probe": "P4-require",
+    "config": "defaults",
+    "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+    "wall_ms": 8,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "{\"error\":\"ReferenceError: require is not defined\",\"duration_ms\":0}",
+    "response_text_length": 66,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P4-import-fs",
+    "config": "defaults",
+    "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\")",
+    "wall_ms": 7,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "{\"error\":\"ReferenceError: could not load module filename 'fs'\",\"duration_ms\":0}",
+    "response_text_length": 79,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P4-Deno",
+    "config": "defaults",
+    "code": "return await Deno.readTextFile(\"/etc/hosts\")",
+    "wall_ms": 6,
+    "host_calls": 0,
+    "isError": true,
+    "response_text": "{\"error\":\"ReferenceError: Deno is not defined\",\"duration_ms\":0}",
+    "response_text_length": 63,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P4-qjs-std-loadFile",
+    "config": "defaults",
+    "code": "const std = await import(\"qjs:std\"); return std.loadFile(\"/etc/hosts\")",
+    "wall_ms": 6,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":null,\"duration_ms\":0}",
+    "response_text_length": 31,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P4-qjs-std-open",
+    "config": "defaults",
+    "code": "const std = await import(\"qjs:std\"); const e = {}; const f = std.open(\"/etc/hosts\", \"r\", e); return f ? f.readAsString() : (\"open failed errno \" + e.errno)",
+    "wall_ms": 6,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":\"open failed errno 44\",\"duration_ms\":0}",
+    "response_text_length": 49,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P4-qjs-os-readdir-root",
+    "config": "defaults",
+    "code": "const os = await import(\"qjs:os\"); return {root: os.readdir(\"/\"), parent: os.readdir(\"/..\"), cwd: os.getcwd()}",
+    "wall_ms": 7,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":{\"root\":[[\".\",\"..\"],0],\"parent\":[[],63],\"cwd\":[\"/\",0]},\"duration_ms\":0}",
+    "response_text_length": 81,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P4-qjs-std-write-sandbox-root",
+    "config": "defaults",
+    "code": "const std = await import(\"qjs:std\"); const f = std.open(\"/probe-written.txt\", \"w\"); f.puts(\"written-by-guest \" + Date.now()); f.close(); const os = await import(\"qjs:os\"); return os.readdir(\"/\")",
+    "wall_ms": 7,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":[[\".\",\"..\",\"probe-written.txt\"],0],\"duration_ms\":1}",
+    "response_text_length": 61,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  },
+  {
+    "probe": "P4-qjs-std-open-dotdot",
+    "config": "defaults",
+    "code": "const std = await import(\"qjs:std\"); const e = {}; const f = std.open(\"../../../../../../etc/hosts\", \"r\", e); return f ? f.readAsString() : (\"open failed errno \" + e.errno)",
+    "wall_ms": 6,
+    "host_calls": 0,
+    "isError": null,
+    "response_text": "{\"result\":\"open failed errno 63\",\"duration_ms\":0}",
+    "response_text_length": 49,
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false
+    }
+  }
+]

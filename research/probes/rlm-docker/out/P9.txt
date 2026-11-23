@@ -1,0 +1,24 @@
+code:
+import time, concurrent.futures
+t = time.time()
+rs = [lookup(id=i) for i in [1, 2, 3, 4, 5]]
+print('loop', int((time.time() - t) * 1000))
+t = time.time()
+with concurrent.futures.ThreadPoolExecutor(5) as ex:
+    rs = list(ex.map(lambda i: lookup(id=i), [1, 2, 3, 4, 5]))
+print('threads', int((time.time() - t) * 1000), sum(r['value'] for r in rs))
+
+{
+  "probe": "P9",
+  "harness_wall_s": 5.0,
+  "peak_container_mem_mib": 0,
+  "raw": {
+    "result": {
+      "stdout": "loop 1022\nthreads 207 30\n",
+      "stderr": "",
+      "ms": 1344.0
+    },
+    "wall_s": 4.56
+  },
+  "child_tail": "{\"result\": {\"stdout\": \"loop 1022\\nthreads 207 30\\n\", \"stderr\": \"\", \"ms\": 1344.0}, \"wall_s\": 4.56}\n"
+}

@@ -1,0 +1,58 @@
+label: P4b
+command: bun probe.mjs P4b
+child exit: code=0 signal=null
+child wall ms (process start to exit): 258
+peak child RSS: 57.3 MB (ps every 50 ms)
+child stdout length: 565 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P4b",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 4.932625000000002,
+  "source": [
+    "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "could not load module 'fs'",
+          "name": "ReferenceError",
+          "stack": ""
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 168.570583,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: could not load module 'fs'",
+    "ms": 169,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 44.9
+}
+--- child stdout ---
+{
+  [0mtimestamp[2m:[0m [0m[33m1795376528190[0m[0m[2m,[0m
+  [0mdurationMs[2m:[0m [0m[33m166[0m[0m[2m,[0m
+  [0mphase[2m:[0m [0m[32m[0m[32m"execute"[0m[0m[0m[2m,[0m
+  [0msuccess[2m:[0m [0m[33mfalse[0m[0m[2m,[0m
+  [0mlogCount[2m:[0m [0m[33m0[0m[0m[2m,[0m
+  [0merror[2m:[0m {
+    [0mname[2m:[0m [0m[32m[0m[32m"ReferenceError"[0m[0m[0m[2m,[0m
+    [0mmessage[2m:[0m [0m[32m[0m[32m"could not load module 'fs'"[0m[0m[0m[2m,[0m
+    [0mstack[2m:[0m [0m[32m""[0m[0m[2m,[0m
+  }[0m[2m,[0m
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

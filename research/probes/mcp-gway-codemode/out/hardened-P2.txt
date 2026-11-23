@@ -1,0 +1,27 @@
+--- code 1 ---
+print("A" * 200000)
+"RETURNED"
+--- result 1 ---
+{"ok": true, "isError": false, "ms": 5.07, "hostCalls": 0, "gatewayAlive": true, "footprintAfterMB": 55}
+text (170 chars):
+{"result": "RETURNED", "logs": ["…[earlier log output dropped at 65536 bytes]"], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 1024, "truncated": true}}
+--- code 2 ---
+print("A" * 200000)
+result = "RETURNED"
+--- result 2 ---
+{"ok": true, "isError": false, "ms": 5.4, "hostCalls": 0, "gatewayAlive": true, "footprintAfterMB": 55}
+text (170 chars):
+{"result": "RETURNED", "logs": ["…[earlier log output dropped at 65536 bytes]"], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 1024, "truncated": true}}
+--- code 3 ---
+result = "B" * 200000
+--- result 3 ---
+{"ok": true, "isError": false, "ms": 5.27, "hostCalls": 0, "gatewayAlive": true, "footprintAfterMB": 56}
+text (997 chars):
+{"result": "\"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB…[truncated 199234 bytes — narrow the query, page the results, or read a slice (readToolFile startLine/endLine)]", "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 1024, "truncated": true}}
+--- code 4 ---
+print("A" * 60000)
+result = "RETURNED"
+--- result 4 ---
+{"ok": true, "isError": false, "ms": 4.34, "hostCalls": 0, "gatewayAlive": true, "footprintAfterMB": 56}
+text (281 chars):
+{"result": "\"RETURNED\"…[truncated 0 bytes — narrow the query, page the results, or read a slice (readToolFile startLine/endLine)]", "logs": ["…[1 log lines dropped with oversized result]"], "calls": [], "usage": {"call_count": 0, "ms": 1, "limit_bytes": 1024, "truncated": true}}

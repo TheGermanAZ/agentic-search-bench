@@ -1,0 +1,14 @@
+probe hardened-P5
+code:
+try { console.log("ENV=" + process.env.PROBE_SECRET) }
+catch (e) { console.log("process:", String(e)); const P = this.constructor.constructor("return process")();
+console.log("ENV=" + P.env.PROBE_SECRET) }
+{"ok":true,"error":null,"ms":1.1}
+stdout (58 chars): "process: ReferenceError: process is not defined\nENV=s3cr3t"
+
+
+child exit=0 signal=null killedBy=null wall=0.4s peakRSS=87MB
+stderr tail:
+[11/22/26 14:50:54] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+

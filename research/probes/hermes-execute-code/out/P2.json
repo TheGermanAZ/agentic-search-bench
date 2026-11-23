@@ -1,0 +1,7 @@
+{
+  "probe": "P2",
+  "outcome": "limited",
+  "display": "truncated (50,000 + marker; print only)",
+  "detail": "stdout only (RETURNED, the last expression, is not returned): 50,000 of 200,000 A's as head 20,000 + tail 30,000 around '... [OUTPUT TRUNCATED - 150,001 bytes omitted out of 200,001 total] ...'; the full text was spilled to $HERMES_HOME/cache/exec/stdout-<digest>.txt and the path returned in 'warning'.",
+  "evidence": "research/probes/hermes-execute-code/out/P2.txt"
+}

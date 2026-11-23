@@ -1,0 +1,8 @@
+config: get_environment('ipython', {'kernel_mode': 'subprocess', 'cell_timeout': 30})
+code:
+import urllib.request
+print(urllib.request.urlopen("https://example.com").status)
+result: {'ok': True, 'stdout': '200\n', 'stderr': '', 's': 0.26}
+host-side lookup calls: 0
+host pid: 23037
+wall: 0.74 s

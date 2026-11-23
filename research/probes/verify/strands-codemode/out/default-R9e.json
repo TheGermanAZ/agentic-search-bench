@@ -1,0 +1,524 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 61736,
+  "peakTreeRssMb": 203,
+  "peakTreeFootprintMb": 112,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9e",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1068,
+          "ms": 60075,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error:\nTimeoutError: time limit exceeded: 60.00003s > 60s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 1090,
+          "ms": 60165,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error:\nTimeoutError: time limit exceeded: 60.009885167s > 60s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 1149,
+          "ms": 60214,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error:\nTimeoutError: time limit exceeded: 60.000057917s > 60s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 1329,
+          "ms": 60035,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error:\nTimeoutError: time limit exceeded: 60.000065125s > 60s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 1333,
+          "ms": 60076,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error:\nTimeoutError: time limit exceeded: 60.000067417s > 60s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 1338,
+          "ms": 60072,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error:\nTimeoutError: time limit exceeded: 60.000069542s > 60s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 1348,
+          "ms": 60071,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error:\nTimeoutError: time limit exceeded: 60.000057083s > 60s"
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 1398,
+          "ms": 60044,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error:\nTimeoutError: time limit exceeded: 60.000073625s > 60s"
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1420,
+        "ms": 295,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1728,
+        "ms": 271,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 61442,
+        "ms": 215,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 332,
+    "totalMs": 61657
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      161,
+      30,
+      0
+    ],
+    [
+      1082,
+      87,
+      68
+    ],
+    [
+      2137,
+      191,
+      109
+    ],
+    [
+      3008,
+      191,
+      109
+    ],
+    [
+      4055,
+      191,
+      109
+    ],
+    [
+      5094,
+      191,
+      109
+    ],
+    [
+      6005,
+      191,
+      109
+    ],
+    [
+      7007,
+      191,
+      109
+    ],
+    [
+      8224,
+      191,
+      109
+    ],
+    [
+      9219,
+      191,
+      109
+    ],
+    [
+      10117,
+      191,
+      109
+    ],
+    [
+      11179,
+      191,
+      109
+    ],
+    [
+      12189,
+      191,
+      109
+    ],
+    [
+      13068,
+      191,
+      109
+    ],
+    [
+      13831,
+      191,
+      109
+    ],
+    [
+      14833,
+      191,
+      109
+    ],
+    [
+      15588,
+      191,
+      109
+    ],
+    [
+      16333,
+      191,
+      109
+    ],
+    [
+      17058,
+      191,
+      109
+    ],
+    [
+      17909,
+      191,
+      109
+    ],
+    [
+      18662,
+      191,
+      109
+    ],
+    [
+      19408,
+      191,
+      109
+    ],
+    [
+      20191,
+      191,
+      109
+    ],
+    [
+      21030,
+      191,
+      109
+    ],
+    [
+      21730,
+      191,
+      109
+    ],
+    [
+      22642,
+      191,
+      109
+    ],
+    [
+      23645,
+      191,
+      109
+    ],
+    [
+      24465,
+      191,
+      109
+    ],
+    [
+      25215,
+      191,
+      109
+    ],
+    [
+      26069,
+      191,
+      109
+    ],
+    [
+      26766,
+      191,
+      109
+    ],
+    [
+      27685,
+      191,
+      109
+    ],
+    [
+      28418,
+      191,
+      109
+    ],
+    [
+      29066,
+      191,
+      109
+    ],
+    [
+      29856,
+      191,
+      109
+    ],
+    [
+      30538,
+      166,
+      109
+    ],
+    [
+      31279,
+      166,
+      109
+    ],
+    [
+      31934,
+      166,
+      109
+    ],
+    [
+      32714,
+      166,
+      109
+    ],
+    [
+      33609,
+      137,
+      109
+    ],
+    [
+      34339,
+      137,
+      109
+    ],
+    [
+      35123,
+      137,
+      109
+    ],
+    [
+      35946,
+      137,
+      109
+    ],
+    [
+      36646,
+      137,
+      109
+    ],
+    [
+      37453,
+      137,
+      109
+    ],
+    [
+      38175,
+      137,
+      109
+    ],
+    [
+      39022,
+      137,
+      109
+    ],
+    [
+      39938,
+      137,
+      109
+    ],
+    [
+      40749,
+      137,
+      109
+    ],
+    [
+      41435,
+      137,
+      109
+    ],
+    [
+      42101,
+      137,
+      109
+    ],
+    [
+      42821,
+      137,
+      109
+    ],
+    [
+      43559,
+      137,
+      109
+    ],
+    [
+      44310,
+      137,
+      109
+    ],
+    [
+      45042,
+      137,
+      109
+    ],
+    [
+      45816,
+      137,
+      109
+    ],
+    [
+      46606,
+      137,
+      109
+    ],
+    [
+      47420,
+      137,
+      109
+    ],
+    [
+      48100,
+      137,
+      109
+    ],
+    [
+      48904,
+      137,
+      109
+    ],
+    [
+      49708,
+      137,
+      109
+    ],
+    [
+      50457,
+      137,
+      109
+    ],
+    [
+      51192,
+      137,
+      109
+    ],
+    [
+      51927,
+      137,
+      109
+    ],
+    [
+      52777,
+      137,
+      109
+    ],
+    [
+      53549,
+      137,
+      109
+    ],
+    [
+      54368,
+      137,
+      109
+    ],
+    [
+      55337,
+      137,
+      109
+    ],
+    [
+      56330,
+      137,
+      109
+    ],
+    [
+      57049,
+      137,
+      109
+    ],
+    [
+      57974,
+      137,
+      109
+    ],
+    [
+      58833,
+      137,
+      109
+    ],
+    [
+      59610,
+      137,
+      109
+    ],
+    [
+      60324,
+      137,
+      109
+    ],
+    [
+      61107,
+      137,
+      109
+    ]
+  ]
+}

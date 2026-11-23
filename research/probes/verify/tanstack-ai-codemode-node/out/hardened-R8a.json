@@ -1,0 +1,61 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../tanstack-ai-codemode-node/adapter.mjs hardened R8a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 246,
+  "peakTreeRssMb": 120,
+  "watchKill": null,
+  "record": {
+    "impl": "tanstack-ai-codemode-node",
+    "config": "hardened",
+    "test": "R8a",
+    "notes": "one createCodeModeTool({driver: node}) shared; execute({typescriptCode}) as chat() calls it",
+    "data": {
+      "startMs": 191,
+      "ms": 14,
+      "ok": true,
+      "result": {
+        "value": {
+          "success": true,
+          "result": "done",
+          "logs": [
+            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[20971520 chars]…xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          ]
+        },
+        "stringChars": 20971524
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 175,
+    "hostEvents": [],
+    "totalMs": 205
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      85,
+      56
+    ],
+    [
+      135,
+      64
+    ],
+    [
+      182,
+      72
+    ],
+    [
+      237,
+      120
+    ]
+  ]
+}

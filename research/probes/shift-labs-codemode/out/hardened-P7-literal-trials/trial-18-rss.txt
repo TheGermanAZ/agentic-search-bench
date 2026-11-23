@@ -1,0 +1,8 @@
+{
+  "mode": "hardened",
+  "childExit": 0,
+  "signal": null,
+  "killedByHarness": null,
+  "wallMs": 657,
+  "peakTreeRssMb": 127
+}

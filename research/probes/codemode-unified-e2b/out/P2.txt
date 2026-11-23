@@ -1,0 +1,41 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 4,
+    "totalWallMs": 183,
+    "peakTreeRssMB": 121.3,
+    "stderrTail": "🚀 Starting Code Mode Unified MCP Server...\n   Name: codemode-unified\n   Version: 0.1.0\n   Transport: stdio\n\n🔌 MCP Integration enabled via CODEMODE_ENABLE_MCP_INTEGRATION\n🔌 Initializing MCP Manager...\n   Connecting to 1 MCP server(s)\n✅ MCP Manager initialized - 1 tools available\n   Namespaces: probe\n🔧 Generating TypeScript declarations for MCP tools...\n✅ TypeScript declarations generated: ./generated/mcp.d.ts\n\nAvailable tools:\n   - execute_code: Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes wi...\n   - list_runtimes: List all available code execution runtimes with their capabilities and status\n   - get_runtime_capabilities: Get detailed capabilities and constraints for a specific runtime\n   - runtime_health_check: Check if a runtime is operational and ready to execute code\n\n✅ Server ready and listening on stdio\n\n🔄 Shutting down Code Mode MCP server...\n✅ MCP Manager shut down\n✅ Code Mode MCP server shut down complete\n"
+  },
+  "runtime": "e2b",
+  "probe": "P2",
+  "mode": "default",
+  "setupMs": 138.9,
+  "executeToolDescription": "Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes with different capabilities. When MCP integration is enabled, code has access to MCP tools via the global `mcp` object (e.g., mcp.automem.store_memory(), mcp[\"sequential-thinking\"].sequentialthinking()). For TypeScript type definitions and API documentation of available MCP tools, read the resource mcp://types/declarations before writing code.",
+  "transportErrors": [],
+  "record": {
+    "literalSpecForm": {
+      "code": "console.log(\"A\".repeat(200000)); \"RETURNED\"",
+      "wallMs": 0.9,
+      "hostCalls": 0,
+      "out": {
+        "error": "E2B runtime requires apiKey in config",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:34.419Z"
+      },
+      "threw": null
+    },
+    "returnForm": {
+      "code": "console.log(\"A\".repeat(200000)); return \"RETURNED\"",
+      "wallMs": 0.2,
+      "hostCalls": 0,
+      "out": {
+        "error": "E2B runtime requires apiKey in config",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:34.419Z"
+      },
+      "threw": null
+    }
+  }
+}

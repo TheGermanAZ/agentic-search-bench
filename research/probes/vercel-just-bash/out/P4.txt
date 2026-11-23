@@ -1,0 +1,25 @@
+probe: P4
+worker exit: 0 signal: null killed: null
+wall ms: 104
+peak host RSS KB: 0
+
+script: cat /etc/hosts
+exit: 1
+stdout (0 chars):
+
+stderr:
+cat: /etc/hosts: No such file or directory
+
+ms: 33, host lookup calls so far: 0
+
+script: ls /etc | head -5
+exit: 0
+stdout (0 chars):
+
+stderr:
+ls: /etc: No such file or directory
+
+ms: 4, host lookup calls so far: 0
+
+outcome: blocked
+detail: cat /etc/hosts: "cat: /etc/hosts: No such file or directory" (exit 1); ls /etc shows only the virtual tree.

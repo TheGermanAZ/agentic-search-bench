@@ -1,0 +1,51 @@
+probe: hardened-P5
+outcome: blocked
+display: blocked
+detail: Error calling tool 'execute': RuntimeError: 'os.environ' is not supported in this environment
+
+code:
+----
+import os
+msg = "ENV " + str(os.environ.get("PROBE_SECRET"))
+print(msg)
+msg
+----
+
+setup_ms: 117.0
+wall_s (whole child process): 2.98
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.088
+host lookup calls: 0
+
+=== run 0 (91.6 ms) ===
+ok: false
+structured: null
+stdout: 
+error: Error calling tool 'execute': RuntimeError: 'os.environ' is not supported in this environment
+
+=== child process log (tail) ===
+[11/22/26 16:03:39] Error calling tool 'execute'                                
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/server/server.py:1673 in call_tool                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/tools/base.py:555 in _run                           │
+                    │                                                          │
+                    │                 ... 8 frames hidden ...                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:309 in         │
+                    │ _run_monty                                               │
+                    ╰──────────────────────────────────────────────────────────╯
+                    MontyRuntimeError: RuntimeError: 'os.environ' is not        
+                    supported in this environment                               
+

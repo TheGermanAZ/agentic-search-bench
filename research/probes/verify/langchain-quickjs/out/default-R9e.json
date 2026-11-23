@@ -1,0 +1,395 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py default R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 8286,
+  "peakTreeRssMb": 206,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9e",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich']}), new thread_id per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 2139,
+          "ms": 5713,
+          "ok": true,
+          "result": "<error type=\"Timeout\">interrupted</error>",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 2173,
+          "ms": 5745,
+          "ok": true,
+          "result": "<error type=\"Timeout\">interrupted</error>",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 2178,
+          "ms": 5739,
+          "ok": true,
+          "result": "<error type=\"Timeout\">interrupted</error>",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 2182,
+          "ms": 5683,
+          "ok": true,
+          "result": "<error type=\"Timeout\">interrupted</error>",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 2183,
+          "ms": 5691,
+          "ok": true,
+          "result": "<error type=\"Timeout\">interrupted</error>",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 2184,
+          "ms": 5718,
+          "ok": true,
+          "result": "<error type=\"Timeout\">interrupted</error>",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 2184,
+          "ms": 5734,
+          "ok": true,
+          "result": "<error type=\"Timeout\">interrupted</error>",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 2185,
+          "ms": 5752,
+          "ok": true,
+          "result": "<error type=\"Timeout\">interrupted</error>",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 2293,
+        "ms": 808,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 3102,
+        "ms": 280,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 7937,
+        "ms": 250,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 85,
+    "totalMs": 8187
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      119,
+      27
+    ],
+    [
+      289,
+      42
+    ],
+    [
+      478,
+      49
+    ],
+    [
+      582,
+      52
+    ],
+    [
+      685,
+      55
+    ],
+    [
+      785,
+      58
+    ],
+    [
+      924,
+      60
+    ],
+    [
+      1044,
+      62
+    ],
+    [
+      1153,
+      65
+    ],
+    [
+      1251,
+      65
+    ],
+    [
+      1373,
+      69
+    ],
+    [
+      1468,
+      69
+    ],
+    [
+      1579,
+      73
+    ],
+    [
+      1686,
+      77
+    ],
+    [
+      1832,
+      84
+    ],
+    [
+      1955,
+      85
+    ],
+    [
+      2048,
+      85
+    ],
+    [
+      2151,
+      88
+    ],
+    [
+      2342,
+      91
+    ],
+    [
+      2522,
+      148
+    ],
+    [
+      2674,
+      170
+    ],
+    [
+      2868,
+      184
+    ],
+    [
+      2976,
+      185
+    ],
+    [
+      3103,
+      185
+    ],
+    [
+      3232,
+      187
+    ],
+    [
+      3343,
+      188
+    ],
+    [
+      3469,
+      188
+    ],
+    [
+      3558,
+      189
+    ],
+    [
+      3660,
+      189
+    ],
+    [
+      3798,
+      189
+    ],
+    [
+      3908,
+      189
+    ],
+    [
+      4102,
+      189
+    ],
+    [
+      4204,
+      189
+    ],
+    [
+      4323,
+      189
+    ],
+    [
+      4421,
+      189
+    ],
+    [
+      4541,
+      189
+    ],
+    [
+      4634,
+      189
+    ],
+    [
+      4743,
+      189
+    ],
+    [
+      4843,
+      189
+    ],
+    [
+      4938,
+      189
+    ],
+    [
+      5055,
+      189
+    ],
+    [
+      5176,
+      189
+    ],
+    [
+      5273,
+      189
+    ],
+    [
+      5365,
+      189
+    ],
+    [
+      5478,
+      189
+    ],
+    [
+      5565,
+      189
+    ],
+    [
+      5674,
+      189
+    ],
+    [
+      5786,
+      189
+    ],
+    [
+      5923,
+      187
+    ],
+    [
+      6016,
+      187
+    ],
+    [
+      6117,
+      187
+    ],
+    [
+      6244,
+      187
+    ],
+    [
+      6343,
+      187
+    ],
+    [
+      6440,
+      187
+    ],
+    [
+      6569,
+      187
+    ],
+    [
+      6658,
+      187
+    ],
+    [
+      6769,
+      187
+    ],
+    [
+      6872,
+      187
+    ],
+    [
+      7067,
+      187
+    ],
+    [
+      7168,
+      187
+    ],
+    [
+      7275,
+      187
+    ],
+    [
+      7364,
+      187
+    ],
+    [
+      7469,
+      187
+    ],
+    [
+      7627,
+      187
+    ],
+    [
+      7731,
+      187
+    ],
+    [
+      7828,
+      187
+    ],
+    [
+      7932,
+      186
+    ],
+    [
+      8031,
+      199
+    ],
+    [
+      8131,
+      203
+    ],
+    [
+      8240,
+      203
+    ]
+  ]
+}

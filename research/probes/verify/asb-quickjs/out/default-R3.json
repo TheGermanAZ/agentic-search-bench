@@ -1,0 +1,72 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default R3",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 130,
+  "peakTreeRssMb": 162,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "R3",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "A": {
+        "label": "recursion",
+        "startMs": 2,
+        "ms": 16,
+        "ok": true,
+        "result": {
+          "value": "ERROR: the sandbox stopped this program (memory or time limit, or an engine fault): Maximum call stack size exceeded.",
+          "stringChars": 117
+        },
+        "callsStarted": 0
+      },
+      "deep": {
+        "label": "deep-return",
+        "startMs": 18,
+        "ms": 86,
+        "ok": true,
+        "result": {
+          "value": "ERROR: the sandbox stopped this program (memory or time limit, or an engine fault): Maximum call stack size exceeded.",
+          "stringChars": 117
+        },
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 104,
+        "ms": 9,
+        "ok": true,
+        "result": {
+          "value": "\"alive\"",
+          "stringChars": 7
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 2,
+    "hostEvents": [],
+    "totalMs": 113
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      78,
+      113
+    ],
+    [
+      129,
+      162
+    ]
+  ]
+}

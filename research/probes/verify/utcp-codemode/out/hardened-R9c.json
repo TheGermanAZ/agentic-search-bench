@@ -1,0 +1,64 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs hardened R9c",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 586,
+  "peakTreeRssMb": 4192,
+  "watchKill": {
+    "reason": "rss>4GB",
+    "atMs": 497,
+    "rssMb": 4192
+  },
+  "record": null,
+  "childStdoutOtherChars": 569,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      76,
+      140
+    ],
+    [
+      122,
+      640
+    ],
+    [
+      176,
+      1180
+    ],
+    [
+      226,
+      1690
+    ],
+    [
+      277,
+      2214
+    ],
+    [
+      328,
+      2735
+    ],
+    [
+      380,
+      3245
+    ],
+    [
+      429,
+      3727
+    ],
+    [
+      497,
+      4192
+    ],
+    [
+      532,
+      0
+    ],
+    [
+      586,
+      0
+    ]
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "cmd": "python3 probe_core.py run ../../../../impls/strands-codemode/.venv/bin/python default P7",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 771,
+  "peakTreeRssMb": 326,
+  "peakTreeFootprintMb": 294,
+  "watchKill": null,
+  "record": null,
+  "childStdoutOtherChars": 68,
+  "childStdoutHead": "{\"tag\": \"P7\", \"outcome\": \"limited\", \"display\": \"limited (256 MiB)\"}\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      82,
+      42,
+      22
+    ],
+    [
+      135,
+      56,
+      22
+    ],
+    [
+      189,
+      72,
+      22
+    ],
+    [
+      233,
+      76,
+      51
+    ],
+    [
+      284,
+      81,
+      51
+    ],
+    [
+      334,
+      88,
+      51
+    ],
+    [
+      389,
+      94,
+      65
+    ],
+    [
+      445,
+      103,
+      65
+    ],
+    [
+      498,
+      108,
+      82
+    ],
+    [
+      553,
+      114,
+      82
+    ],
+    [
+      604,
+      122,
+      82
+    ],
+    [
+      682,
+      326,
+      82
+    ],
+    [
+      740,
+      22,
+      294
+    ],
+    [
+      770,
+      21,
+      294
+    ]
+  ]
+}

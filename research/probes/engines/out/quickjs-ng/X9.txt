@@ -1,0 +1,5 @@
+await new Promise(() => {}); console.log('never')
+--- output
+ERROR: the program is waiting on a promise that nothing will settle
+---
+wall_ms=57 host_calls=0 max_arg_chars=0 out_chars=67 peak_host_rss_mb=478

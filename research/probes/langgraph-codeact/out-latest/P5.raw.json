@@ -1,0 +1,18 @@
+{
+  "probe": "P5",
+  "config": "default",
+  "codes": [
+    "import os\nmsg = \"ENV \" + str(os.environ.get(\"PROBE_SECRET\"))\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": "TypeError: Type is not msgpack serializable: module",
+      "raised": true,
+      "ms": 2.9,
+      "started": 1795377262.0325649
+    }
+  ],
+  "setup_ms": 2.1,
+  "done": true
+}

@@ -1,0 +1,288 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs default R6",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 10816,
+  "peakTreeRssMb": 147,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "default",
+    "test": "R6",
+    "notes": "run() (module default runner, shared)",
+    "data": {
+      "startMs": 55,
+      "ms": 10621,
+      "ok": false,
+      "threw": "G: JavaScript runtime exceeded its CPU time limit of 10000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 203,
+    "hostEvents": [],
+    "totalMs": 10676
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:7510) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      119,
+      49
+    ],
+    [
+      265,
+      86
+    ],
+    [
+      473,
+      116
+    ],
+    [
+      716,
+      142
+    ],
+    [
+      916,
+      142
+    ],
+    [
+      1090,
+      142
+    ],
+    [
+      1247,
+      142
+    ],
+    [
+      1406,
+      142
+    ],
+    [
+      1723,
+      143
+    ],
+    [
+      1876,
+      143
+    ],
+    [
+      2045,
+      143
+    ],
+    [
+      2214,
+      143
+    ],
+    [
+      2367,
+      143
+    ],
+    [
+      2560,
+      143
+    ],
+    [
+      2732,
+      144
+    ],
+    [
+      2889,
+      144
+    ],
+    [
+      3036,
+      144
+    ],
+    [
+      3318,
+      144
+    ],
+    [
+      3588,
+      144
+    ],
+    [
+      3730,
+      144
+    ],
+    [
+      3881,
+      144
+    ],
+    [
+      4044,
+      144
+    ],
+    [
+      4192,
+      144
+    ],
+    [
+      4355,
+      144
+    ],
+    [
+      4505,
+      144
+    ],
+    [
+      4668,
+      144
+    ],
+    [
+      4825,
+      144
+    ],
+    [
+      4966,
+      144
+    ],
+    [
+      5124,
+      144
+    ],
+    [
+      5283,
+      144
+    ],
+    [
+      5426,
+      144
+    ],
+    [
+      5587,
+      144
+    ],
+    [
+      5748,
+      144
+    ],
+    [
+      5907,
+      144
+    ],
+    [
+      6108,
+      144
+    ],
+    [
+      6295,
+      144
+    ],
+    [
+      6461,
+      144
+    ],
+    [
+      6606,
+      144
+    ],
+    [
+      6847,
+      144
+    ],
+    [
+      7030,
+      144
+    ],
+    [
+      7186,
+      144
+    ],
+    [
+      7339,
+      144
+    ],
+    [
+      7494,
+      144
+    ],
+    [
+      7663,
+      144
+    ],
+    [
+      7807,
+      144
+    ],
+    [
+      7960,
+      144
+    ],
+    [
+      8126,
+      144
+    ],
+    [
+      8270,
+      144
+    ],
+    [
+      8430,
+      144
+    ],
+    [
+      8618,
+      145
+    ],
+    [
+      8769,
+      145
+    ],
+    [
+      8919,
+      145
+    ],
+    [
+      9118,
+      145
+    ],
+    [
+      9263,
+      145
+    ],
+    [
+      9422,
+      145
+    ],
+    [
+      9572,
+      145
+    ],
+    [
+      9739,
+      145
+    ],
+    [
+      9900,
+      145
+    ],
+    [
+      10049,
+      145
+    ],
+    [
+      10193,
+      145
+    ],
+    [
+      10348,
+      145
+    ],
+    [
+      10578,
+      145
+    ],
+    [
+      10738,
+      141
+    ]
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P9",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 2.190584000000001,
+  "source": [
+    "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => external_lookup({id:i}))); const dt = Date.now()-t; console.log(dt); return dt;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": 0,
+        "logCount": 1,
+        "logChars": 1,
+        "logs": [
+          "0"
+        ]
+      },
+      "wallMs": 1055.2071250000001,
+      "hostCalls": 5
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": 0,
+      "logCount": 1,
+      "logChars": 1
+    },
+    "ms": 1055,
+    "hostCalls": 5
+  },
+  "hostRssAfterMB": 90
+}

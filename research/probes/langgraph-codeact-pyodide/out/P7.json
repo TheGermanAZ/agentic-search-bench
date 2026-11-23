@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "limited",
+  "display": "limited (wasm32 ceiling, 3.6 GB)",
+  "detail": "stopped after 1.74 s, peak tree RSS 3.607 GB: Error during execution:",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P7.txt"
+}

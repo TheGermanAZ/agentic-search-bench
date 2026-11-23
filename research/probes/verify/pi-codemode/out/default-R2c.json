@@ -1,0 +1,86 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs default R2c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 533,
+  "peakTreeRssMb": 112,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "default",
+    "test": "R2c",
+    "notes": "one CodemodeSandbox({}) shared",
+    "data": {
+      "startMs": 19,
+      "ms": 235,
+      "ok": true,
+      "result": {
+        "value": {
+          "ok": true,
+          "value": {
+            "keys": [
+              "d",
+              "m",
+              "s"
+            ],
+            "fn": "undefined",
+            "call": "threw not a function",
+            "d": "string",
+            "ds": "1970-01-01T00:00:00.000Z",
+            "m": "object",
+            "ms": "{}"
+          },
+          "output": [],
+          "calls": [
+            {
+              "name": "rich",
+              "status": "ok",
+              "durationMs": 1.909749999999974
+            }
+          ],
+          "storeWrites": {
+            "set": {},
+            "delete": []
+          }
+        },
+        "stringChars": 76
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 18,
+    "hostEvents": [],
+    "totalMs": 255
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      148,
+      53
+    ],
+    [
+      219,
+      54
+    ],
+    [
+      278,
+      75
+    ],
+    [
+      451,
+      112
+    ],
+    [
+      532,
+      0
+    ]
+  ]
+}

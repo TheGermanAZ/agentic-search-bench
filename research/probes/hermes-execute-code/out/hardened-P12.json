@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "blocked",
+  "display": "blocked (os.system ran in container)",
+  "detail": "All three ran inside the container (subclasses walk, os.system -> 0, _wrap_close popen -> PWNED2), which has no host mounts, no network and all capabilities dropped; nothing reached the host.",
+  "evidence": "research/probes/hermes-execute-code/out/hardened-P12.txt"
+}

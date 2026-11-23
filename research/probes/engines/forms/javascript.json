@@ -1,0 +1,19 @@
+{
+ "P1": "const r = await corpus.read(21); console.log(r.value)",
+ "P2": "console.log(\"A\".repeat(200000)); \"RETURNED\"",
+ "P3": "const r = await fetch(\"https://example.com\"); console.log(r.status)",
+ "P4": "console.log(require(\"fs\").readFileSync(\"/etc/hosts\", \"utf8\").length)",
+ "P5": "console.log(typeof process === \"undefined\" ? \"no process\" : process.env.PROBE_SECRET)",
+ "P6": "while (true) {}",
+ "P7": "const a = []; while (true) a.push(\"x\".repeat(1e6) + a.length)",
+ "P8a": "globalThis.kept = 7; console.log(\"set\")",
+ "P8b": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+ "P9": "const t = Date.now(); const rs = await Promise.all([1,2,3,4,5].map(i => corpus.read(i))); console.log(Date.now() - t, rs.map(r => r.value).join(\",\"))",
+ "P10": "throw new Error(\"probe-boom\")",
+ "P11": "console.log(1 + 1)",
+ "P12a": "console.log(this.constructor.constructor(\"return typeof process\")())",
+ "P12b": "console.log((function(){ return typeof this.process })())",
+ "P12c": "try { console.log(String(Object.keys(globalThis))) } catch (e) { console.log(\"err \" + e) }",
+ "E1": "try { await corpus.search(\"x\") } catch (e) { console.log(\"caught: \" + e.message) }",
+ "FLOOD": "while (true) console.log(\"x\".repeat(1000))"
+}

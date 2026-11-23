@@ -1,0 +1,95 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 751,
+  "peakTreeRssMb": 99,
+  "peakTreeFootprintMb": 77,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R2b",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "label": "",
+      "startMs": 664,
+      "ms": 23,
+      "ok": true,
+      "result": {
+        "status": "success",
+        "text": "['RuntimeError', \"Tool 'failing' error: Error: RuntimeError - host-tool-boom internal detail db=postgres://user:pw@host\", 'RuntimeError(\"Tool \\'failing\\' error: Error: RuntimeError - host-tool-boom internal detail db=postgres://user:pw@host\")']"
+      },
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 0,
+    "totalMs": 687
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      87,
+      31,
+      0
+    ],
+    [
+      142,
+      41,
+      17
+    ],
+    [
+      186,
+      51,
+      17
+    ],
+    [
+      248,
+      57,
+      41
+    ],
+    [
+      290,
+      61,
+      41
+    ],
+    [
+      433,
+      70,
+      41
+    ],
+    [
+      471,
+      71,
+      54
+    ],
+    [
+      521,
+      77,
+      54
+    ],
+    [
+      599,
+      82,
+      63
+    ],
+    [
+      669,
+      90,
+      63
+    ],
+    [
+      717,
+      94,
+      63
+    ],
+    [
+      749,
+      99,
+      77
+    ]
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "impl": "agno-codemode",
+  "name": "Agno CodeMode toolkit (persistent IPython kernel)",
+  "source": "https://github.com/agno-agi/agno (libs/agno/agno/tools/code/); PyPI agno[code]",
+  "pinned": "agno 3.2.1 from PyPI with the [code] extra = agno-agi/agno tag v3.2.1 = 2e9a4521003da1cae559d8049a1c73306fc68004 (clone at research/impls/agno-codemode/src; diff -r against the installed package differs only in three non-Python files). Runtime: ipykernel and jupyter_client from the extra, CPython 3.12.",
+  "language": "Python (full CPython)",
+  "engine": "An ipykernel subprocess per session_id launched by jupyter_client with the host's own python and the host environment, talking ZeroMQ over localhost TCP. No sandbox: the module docstring says so.",
+  "how_run": "CodeMode(tools=[lookup]) with lookup an async function; each execution awaits CodeMode.aexecute(RunContext(run_id, session_id), code), the model-facing method an Agent dispatches for the `execute` tool; ToolResult.content is what the model sees. AGNO_TELEMETRY=false before import. No LLM.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "42 in printed stdout: True; 42 in returned value: False; output '42 Out[1]: 42'; host lookup calls: 1",
+      "evidence": "research/probes/agno-codemode/out/P1.txt",
+      "display": "works (42, 1 call)"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "65,535 of 200,000 A's, then '[... 134465 chars omitted; output capped at 65536 ...]', then Out[1]: 'RETURNED': both print and value came back.",
+      "evidence": "research/probes/agno-codemode/out/P2.txt",
+      "display": "truncated (65,535 + marker; both)"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "The SPEC form failed only on certificate verification (SSLCertVerificationError with the uv-managed Python's CA store); the same URL with an unverified SSL context printed HTTP 200.",
+      "evidence": "research/probes/agno-codemode/out/P3.txt",
+      "display": "works (example.com 200)"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "HOSTS 450 chars, mentions localhost: True Out[1]: 'HOSTS 450 chars, mentions localhost: True'",
+      "evidence": "research/probes/agno-codemode/out/P4.txt",
+      "display": "works (read /etc/hosts)"
+    },
+    "P5": {
+      "outcome": "works",
+      "detail": "sandbox printed 's3cr3t'; host PROBE_SECRET was set",
+      "evidence": "research/probes/agno-codemode/out/P5.txt",
+      "display": "works (s3cr3t)"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "Harness stopped it at 120 s; the default timeout is 300 s. Side check out/p6_default_check.txt: interrupted at 300.1 s ('[cell interrupted: exceeded timeout of 300s]', KeyboardInterrupt), next cell printed 2.",
+      "evidence": "research/probes/agno-codemode/out/P6.txt",
+      "display": "no-limit-within-120s (300 s default)"
+    },
+    "P7": {
+      "outcome": "error",
+      "detail": "No memory limit. After 39.3 s at 3.86 GB peak tree RSS the kernel died from outside (no Agno limit fired; stderr tail only shows the TCP warning). aexecute raised KernelDiedError: 'The kernel ... died while executing the cell. A fresh kernel will start on the next execute; previous state is gone.' The host process survived. Run under mem-lock.sh.",
+      "evidence": "research/probes/agno-codemode/out/P7.txt",
+      "display": "no limit (kernel died at 3.9 GB)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "execution 2 printed '7 Out[2]: 7'",
+      "evidence": "research/probes/agno-codemode/out/P8.txt",
+      "display": "persists"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "5 host calls spanning 229 ms host-side (first start to last end); execution wall 966.2 ms; output '30 Out[1]: 30'",
+      "evidence": "research/probes/agno-codemode/out/P9.txt",
+      "display": "parallel (229 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "message survives: True; 'line 2' present: True; text: '--------------------------------------------------------------------------- ValueError Traceback (most recent call last) Cell In[1], line 2 1 x = 1 ----> 2 raise ValueError(\"probe-boom\") ValueError: probe-boom --------------------------------------------------------------------------- ValueError Traceback (most recent call last) Cell In[1], line 2 1 x = 1 ----> 2 raise ValueError(\"probe-boom\") ValueError: probe-boom'",
+      "evidence": "research/probes/agno-codemode/out/P10.txt",
+      "display": "works (message + line 2)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "20 runs in one session: median 17.1 ms, p90 27.4 ms; one-time setup 1.7 ms; fresh session per run (open+run+close, n=5): median 784.5 ms",
+      "evidence": "research/probes/agno-codemode/out/P11.txt",
+      "display": "works (17.1 ms median)"
+    },
+    "P12": {
+      "outcome": "escaped",
+      "detail": "P12a subclasses walk: ran; \"SUBS 801 True True Out[1]: 'SUBS 801 True True'\" | P12b __import__('os').system: ran; \"PWNED SYSTEM 0 Out[2]: 'SYSTEM 0'\" | P12c _wrap_close globals popen: ran; \"WRAP PWNED2 Out[3]: 'WRAP PWNED2\\\\n'\"",
+      "evidence": "research/probes/agno-codemode/out/P12.txt",
+      "display": "escaped (os.system, popen)"
+    },
+    "Pcap": {
+      "outcome": "limited",
+      "detail": "print('B' * 100000): 65,535 B's and '[... 34465 chars omitted; output capped at 65536 ...]'.",
+      "evidence": "research/probes/agno-codemode/out/Pcap.txt",
+      "display": "truncated (65,535 + marker)"
+    },
+    "Pshell": {
+      "outcome": "works",
+      "detail": "SHELL-42",
+      "evidence": "research/probes/agno-codemode/out/Pshell.txt",
+      "display": "works (!echo)"
+    },
+    "Pwrite": {
+      "outcome": "works",
+      "detail": "WROTE True",
+      "evidence": "research/probes/agno-codemode/out/Pwrite.txt",
+      "display": "works (wrote a host file)"
+    }
+  },
+  "defaults": {
+    "time": "timeout=300 s per cell, enforced by a kernel interrupt (KeyboardInterrupt) plus a 1 s grace (research/impls/agno-codemode/src/libs/agno/agno/tools/code/code_mode.py:248 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/code_mode.py#L248); research/impls/agno-codemode/src/libs/agno/agno/tools/code/kernel.py:628-650 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/kernel.py#L628-L650)). P6 hit the harness's 120 s stop first; out/p6_default_check.txt shows the default firing at 300.1 s with the session usable after. A cell that catches the interrupt is not stopped: the call returns 'aborted' and the kernel keeps running (out/swallow_check.txt).",
+    "memory": "None: no memory option anywhere in CodeMode or KernelSession. P7 grew to 3.86 GB in 39 s, then the kernel died from outside (no Agno message beyond KernelDiedError, raised to the caller).",
+    "output": "max_output_chars=65,536 per stream, head+tail with '[... N chars omitted; output capped at 65536 ...]' (research/impls/agno-codemode/src/libs/agno/agno/tools/code/code_mode.py:241 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/code_mode.py#L241); research/impls/agno-codemode/src/libs/agno/agno/tools/code/kernel.py:140-151 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/kernel.py#L140-L151)). stdout, stderr, the last expression's repr and the traceback all return.",
+    "tool_calls": "No call-count cap of its own; Agent tool_call_limit counts a whole execute cell as one call (bridge.py:26-28). max_result_bytes=1,000,000 per bridged result (code_mode.py:242)."
+  },
+  "hardened": {
+    "config": "CodeMode(tools=[lookup], timeout=10, allow_shell=False, allow_restart=False, snapshot=False, on_busy_kernel='restart'), the strictest documented constructor options (research/impls/agno-codemode/src/libs/agno/agno/tools/code/code_mode.py:233-257 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/code_mode.py#L233-L257)). There is no memory, network, filesystem or env-scrubbing option: env= is laid over os.environ, never replacing it (research/impls/agno-codemode/src/libs/agno/agno/tools/code/kernel.py:283-286 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/kernel.py#L283-L286); research/impls/agno-codemode/src/libs/agno/agno/tools/code/kernel.py:391-392 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/kernel.py#L391-L392)), and allow_shell=False only rejects cells that start with %%bash (research/impls/agno-codemode/src/libs/agno/agno/tools/code/code_mode.py:710-711 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/code_mode.py#L710-L711); research/impls/agno-codemode/src/libs/agno/agno/tools/code/kernel.py:416-418 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/kernel.py#L416-L418)).",
+    "probes": {
+      "P3": {
+        "outcome": "works",
+        "detail": "spec form failed with '--------------------------------------------------------------------------- SSLCertVerificationError Traceback (most recent call last) File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/...'; same URL with an unverified SSL context printed HTTP 200, so the socket reached the network",
+        "evidence": "research/probes/agno-codemode/out/hardened-P3.txt",
+        "display": "works (example.com 200)"
+      },
+      "P4": {
+        "outcome": "works",
+        "detail": "HOSTS 450 chars, mentions localhost: True Out[1]: 'HOSTS 450 chars, mentions localhost: True'",
+        "evidence": "research/probes/agno-codemode/out/hardened-P4.txt",
+        "display": "works (read /etc/hosts)"
+      },
+      "P5": {
+        "outcome": "works",
+        "detail": "sandbox printed 's3cr3t'; host PROBE_SECRET was set",
+        "evidence": "research/probes/agno-codemode/out/hardened-P5.txt",
+        "display": "works (s3cr3t; env= cannot scrub)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "stopped after 10.55 s: stderr: [cell interrupted: exceeded timeout of 10s] --------------------------------------------------------------------------- KeyboardInterrupt Traceback (most recent call last) Cell In[1], line 1 ----> 1 while True: 2 pass KeyboardInterrupt:",
+        "evidence": "research/probes/agno-codemode/out/hardened-P6.txt",
+        "display": "limited (10 s interrupt)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "No memory limit: the 10 s timeout interrupted the loop after 10.8 s at 3.97 GB peak tree RSS (KeyboardInterrupt traceback returned). Run under mem-lock.sh.",
+        "evidence": "research/probes/agno-codemode/out/hardened-P7.txt",
+        "display": "time-limited (10 s) at 4.0 GB"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "5 host calls spanning 202 ms host-side (first start to last end); execution wall 723.3 ms; output '30 Out[1]: 30'",
+        "evidence": "research/probes/agno-codemode/out/hardened-P9.txt",
+        "display": "parallel (202 ms)"
+      },
+      "P12": {
+        "outcome": "escaped",
+        "detail": "P12a subclasses walk: ran; \"SUBS 802 True True Out[1]: 'SUBS 802 True True'\" | P12b __import__('os').system: ran; \"PWNED SYSTEM 0 Out[2]: 'SYSTEM 0'\" | P12c _wrap_close globals popen: ran; \"WRAP PWNED2 Out[3]: 'WRAP PWNED2\\\\n'\"",
+        "evidence": "research/probes/agno-codemode/out/hardened-P12.txt",
+        "display": "escaped (os.system, popen)"
+      },
+      "Pshell": {
+        "outcome": "works",
+        "detail": "SHELL-42",
+        "evidence": "research/probes/agno-codemode/out/hardened-Pshell.txt",
+        "display": "works (!echo despite allow_shell=False)"
+      }
+    }
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Injected tools become awaitable handles in the kernel namespace: a toolkit binds under its name minus '_tools', a plain callable under its own name. Binding is done by a bootstrap the host runs in the kernel; each kernel-side stub JSON-encodes its arguments and sends a comm message.",
+      "evidence": "research/impls/agno-codemode/src/libs/agno/agno/tools/code/bridge.py:1-30 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/bridge.py#L1-L30); libs/agno/agno/tools/code/naming.py:54-82"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On demand: injected tools are removed from the model's tool schema and only their handle names go into the CodeMode instructions; the model calls help(handle) in the kernel to read signatures. That keeps schemas out of the prompt and scales past 100 tools (names only).",
+      "evidence": "research/impls/agno-codemode/src/libs/agno/agno/tools/code/code_mode.py:136-143 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/code_mode.py#L136-L143); research/impls/agno-codemode/src/cookbook/code/02_tools_in_code/README.md"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Kernel stub -> comm message on iopub -> the host's ToolBridge runs the tool's real FunctionCall (hooks, caching apply) under the cell's RunContext -> reply on the control channel (shell would deadlock while the cell runs). Async handles let asyncio.gather run calls concurrently (P9 229 ms). Tools that need confirmation or user input are refused inside the kernel.",
+      "evidence": "research/impls/agno-codemode/src/libs/agno/agno/tools/code/bridge.py:1-30 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/bridge.py#L1-L30); research/impls/agno-codemode/src/libs/agno/agno/tools/code/bridge.py:795-805 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/bridge.py#L795-L805); research/probes/agno-codemode/out/P9.txt"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "None, by design and stated: 'CodeMode executes arbitrary Python and shell with the permissions of the process running the agent. It is not a sandbox'. Every call logs the same warning. Probes agree: network, /etc/hosts, PROBE_SECRET, file writes, `!` shell and os.system all work, also in the hardened config.",
+      "evidence": "research/impls/agno-codemode/src/libs/agno/agno/tools/code/code_mode.py:1-12 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/code_mode.py#L1-L12); research/impls/agno-codemode/src/libs/agno/agno/tools/code/code_mode.py:98-104 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/code_mode.py#L98-L104); research/probes/agno-codemode/out/P12.txt; research/probes/agno-codemode/out/hardened-P12.txt; research/probes/agno-codemode/out/Pwrite.txt"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "The model gets stdout, stderr, the last expression's repr (Out[n]) and any traceback, each capped at 65,536 chars with a visible omitted-chars marker.",
+      "evidence": "research/impls/agno-codemode/src/libs/agno/agno/tools/code/kernel.py:140-151 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/kernel.py#L140-L151); research/probes/agno-codemode/out/P2.txt; research/probes/agno-codemode/out/Pcap.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Only a per-cell timeout, enforced by interrupting the kernel. If the interrupt does not land within interrupt_grace=1 s the call returns 'aborted' and the kernel keeps running; with on_busy_kernel='wait' (default) the next cell fails with KernelBusyError, with 'restart' the next cell restarts the kernel. No memory, CPU or tool-count limit.",
+      "evidence": "research/impls/agno-codemode/src/libs/agno/agno/tools/code/kernel.py:628-650 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/kernel.py#L628-L650); research/impls/agno-codemode/src/libs/agno/agno/tools/code/kernel.py:262 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/kernel.py#L262); research/impls/agno-codemode/src/libs/agno/agno/tools/code/code_mode.py:245-246 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/code_mode.py#L245-L246); research/probes/agno-codemode/out/swallow_check.txt; research/probes/agno-codemode/out/swallow_check_hardened_restart.txt"
+    },
+    {
+      "topic": "State",
+      "finding": "One kernel per session_id, persistent across calls and runs in the same process (P8 persists); idle kernels evicted after idle_ttl=1800 s. With an fs=FileSystem, state is snapshotted as dill pickles and restored on resume, which the docstring notes is itself code execution.",
+      "evidence": "research/impls/agno-codemode/src/libs/agno/agno/tools/code/code_mode.py:211-229 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/code_mode.py#L211-L229); research/impls/agno-codemode/src/libs/agno/agno/tools/code/code_mode.py:1-12 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/code_mode.py#L1-L12); research/probes/agno-codemode/out/P8.txt"
+    },
+    {
+      "topic": "Errors",
+      "finding": "The IPython traceback is returned as text with 'Cell In[1], line 2' and the message (P10). A dead kernel raises KernelDiedError out of execute instead of returning text.",
+      "evidence": "research/probes/agno-codemode/out/P10.txt; research/probes/agno-codemode/out/P7.txt; research/impls/agno-codemode/src/libs/agno/agno/tools/code/kernel.py:655-662 (https://github.com/agno-agi/agno/blob/2e9a4521003da1cae559d8049a1c73306fc68004/libs/agno/agno/tools/code/kernel.py#L655-L662)"
+    },
+    {
+      "topic": "Other",
+      "finding": "Kernels run over TCP on 127.0.0.1 with random ports chosen by jupyter_client (stderr: 'Kernel is running over TCP without encryption'); messages are HMAC-signed with the connection key. CodeMode exposes no port or transport option, so this probe could not keep them inside its assigned 42000-42099 range. Telemetry to os-api.agno.com is on unless AGNO_TELEMETRY=false.",
+      "evidence": "research/probes/agno-codemode/out/P7.log; libs/agno/agno/agent/_init.py:62-66; libs/agno/agno/api/settings.py:57"
+    }
+  ],
+  "surprises": [
+    "The time limit can be dodged: a cell that catches BaseException around its loop ignores the timeout's KeyboardInterrupt; execute returns '[cell aborted: the kernel did not respond to the interrupt in time and may still be running ...]' after 11.6 s while the kernel keeps one core at 100% (out/swallow_check.txt). With the default on_busy_kernel='wait' the next cell fails with KernelBusyError; with 'restart' the next cell kills it (out/swallow_check_hardened_restart.txt). Without a next cell it spins until idle eviction or process exit.",
+    "allow_shell=False reads like 'no shell' but only rejects cells that begin with %%bash and removes the bash cell magic; `!echo` (hardened-Pshell: SHELL-42), os.system and subprocess still run. The source comment is candid ('Footgun reducer, not a boundary', kernel.py:416-418); the parameter name and the instruction text are not.",
+    "env= cannot scrub the environment: it is merged over os.environ (kernel.py:391-392), so there is no option that hides host secrets from the kernel (hardened-P5: s3cr3t).",
+    "No memory limit: P7 reached 3.86 GB in 39 s before the kernel died from outside, and hardened P7 reached 3.97 GB in the 10 s before the timeout interrupted it. A death surfaces as an exception, not text for the model.",
+    "Kernels listen on random localhost TCP ports, unencrypted (HMAC-signed), outside any port range a host might assign."
+  ]
+}

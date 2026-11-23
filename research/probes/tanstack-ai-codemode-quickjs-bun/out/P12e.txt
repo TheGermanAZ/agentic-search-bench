@@ -1,0 +1,45 @@
+label: P12e
+command: bun probe.mjs P12e
+child exit: code=0 signal=null
+child wall ms (process start to exit): 270
+peak child RSS: 57.2 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P12e",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 6.288083999999998,
+  "source": [
+    "return String(Object.getPrototypeOf(async function(){}).constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "[object Promise]",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 182.85625,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "[object Promise]",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 183,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 44.2
+}
+--- child stdout ---
+
+--- child stderr ---
+

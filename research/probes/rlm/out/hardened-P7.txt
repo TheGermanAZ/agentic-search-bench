@@ -1,0 +1,8 @@
+config: {'kernel_mode': 'subprocess', 'cell_timeout': 30}
+code:
+a = []
+while True:
+    a.append("x" * 10**6)
+harness kill: 4 GiB tree RSS after 32.1 s, peak tree RSS 4262688 KiB
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.

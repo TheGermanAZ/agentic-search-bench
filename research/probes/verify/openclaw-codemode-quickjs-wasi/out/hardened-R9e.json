@@ -1,0 +1,561 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs hardened R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 6454,
+  "peakTreeRssMb": 472,
+  "peakTreeFootprintMb": 455,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "hardened",
+    "test": "R9e",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\",\"timeoutMs\":5000,\"memoryLimitBytes\":16777216,\"maxOutputBytes\":8192,\"maxSnapshotBytes\":1048576,\"maxPendingToolCalls\":8,\"snapshotTtlSeconds\":60}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 723,
+          "ms": 5192,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"61a69acbf21db955d4650a82\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 726,
+          "ms": 5190,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"6a961a4798f25c333a4399c1\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 726,
+          "ms": 5190,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"98eca68f28dd1dc88f7c7fdc\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 727,
+          "ms": 5184,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"7b36c20f64ccbb7f7670952f\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 727,
+          "ms": 5192,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 332,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"host\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"c8fc810baddef4f9a8b82e3d\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 371
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 727,
+          "ms": 5193,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 332,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"host\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"5db858b03df504a77887bead\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 371
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 727,
+          "ms": 5194,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 332,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"host\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"76823589eec4aa7a94adb275\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 371
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 728,
+          "ms": 5193,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 332,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"host\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"fe2f7d9702b684207bc61abb\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 371
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 878,
+        "ms": 5044,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "failed",
+            "code": "timeout",
+            "waits": 0,
+            "error": "code mode timeout exceeded",
+            "output": [],
+            "textChars": 332,
+            "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"host\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"e5774e6449d68142afa717e9\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+          },
+          "stringChars": 371
+        },
+        "callsStarted": 0
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 5923,
+        "ms": 216,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"fd139fe59b4d2ab6bc649375\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 6139,
+        "ms": 220,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"64f63a5ec6b29592cf5e3e8b\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 838,
+    "hostEvents": [],
+    "totalMs": 6359
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "-d8d4-46e3-be11-198ff7ff3559 workerId=code-mode-quickjs:4 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_b7dd49a3-f906-464a-9ec6-54096ba31d48 workerId=code-mode-quickjs:1 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-2 sessionKey=agent:main:verify-2 runId=verify-run-2 toolCallId=verify-2 codeModeRunId=cm_78af1e02-9e9b-42ac-9994-c31498bdf260 workerId=code-mode-quickjs:2 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-3 sessionKey=agent:main:verify-3 runId=verify-run-3 toolCallId=verify-3 codeModeRunId=cm_e29f20a7-574c-40f0-83ca-feca8a963286 workerId=code-mode-quickjs:3 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-5 sessionKey=agent:main:verify-5 runId=verify-run-5 toolCallId=verify-5 codeModeRunId=cm_3ebcbaaf-f11a-4193-b10a-cf4a8c3b3f71 workerId=code-mode-quickjs:4 failurePhase=host bridgeDispatchStarted=false errorCategory=Error failureKind=timeout\n[agents/code-mode] Code Mode execution failed sessionId=verify-6 sessionKey=agent:main:verify-6 runId=verify-run-6 toolCallId=verify-6 codeModeRunId=cm_ee27ab96-7722-4cb0-b3e4-72765d72c672 workerId=code-mode-quickjs:1 failurePhase=host bridgeDispatchStarted=false errorCategory=Error failureKind=timeout\n[agents/code-mode] Code Mode execution failed sessionId=verify-7 sessionKey=agent:main:verify-7 runId=verify-run-7 toolCallId=verify-7 codeModeRunId=cm_8a560a44-6140-44c3-a009-b89401220d5d workerId=code-mode-quickjs:2 failurePhase=host bridgeDispatchStarted=false errorCategory=Error failureKind=timeout\n[agents/code-mode] Code Mode execution failed sessionId=verify-8 sessionKey=agent:main:verify-8 runId=verify-run-8 toolCallId=verify-8 codeModeRunId=cm_476b7d09-7295-4862-a4f7-0909e8678f12 workerId=code-mode-quickjs:3 failurePhase=host bridgeDispatchStarted=false errorCategory=Error failureKind=timeout\n[agents/code-mode] Code Mode execution failed sessionId=verify-9 sessionKey=agent:main:verify-9 runId=verify-run-9 toolCallId=verify-9 codeModeRunId=cm_73aeeeeb-2ed0-4ddd-bfec-602aef25e92d workerId=code-mode-quickjs:4 failurePhase=host bridgeDispatchStarted=false errorCategory=Error failureKind=timeout\n",
+  "rssSamplesMsMb": [
+    [
+      81,
+      62,
+      19
+    ],
+    [
+      183,
+      98,
+      19
+    ],
+    [
+      283,
+      124,
+      63
+    ],
+    [
+      383,
+      148,
+      100
+    ],
+    [
+      487,
+      176,
+      142
+    ],
+    [
+      593,
+      208,
+      182
+    ],
+    [
+      699,
+      236,
+      182
+    ],
+    [
+      807,
+      254,
+      211
+    ],
+    [
+      933,
+      312,
+      247
+    ],
+    [
+      1026,
+      400,
+      364
+    ],
+    [
+      1117,
+      462,
+      364
+    ],
+    [
+      1227,
+      462,
+      449
+    ],
+    [
+      1340,
+      462,
+      449
+    ],
+    [
+      1440,
+      462,
+      449
+    ],
+    [
+      1540,
+      462,
+      449
+    ],
+    [
+      1648,
+      462,
+      449
+    ],
+    [
+      1745,
+      462,
+      449
+    ],
+    [
+      1872,
+      462,
+      449
+    ],
+    [
+      1952,
+      463,
+      449
+    ],
+    [
+      2103,
+      463,
+      449
+    ],
+    [
+      2189,
+      463,
+      449
+    ],
+    [
+      2300,
+      463,
+      450
+    ],
+    [
+      2405,
+      463,
+      450
+    ],
+    [
+      2495,
+      463,
+      450
+    ],
+    [
+      2608,
+      463,
+      450
+    ],
+    [
+      2713,
+      463,
+      450
+    ],
+    [
+      2817,
+      463,
+      450
+    ],
+    [
+      2929,
+      463,
+      450
+    ],
+    [
+      3014,
+      463,
+      450
+    ],
+    [
+      3149,
+      463,
+      450
+    ],
+    [
+      3241,
+      463,
+      450
+    ],
+    [
+      3328,
+      463,
+      450
+    ],
+    [
+      3428,
+      463,
+      450
+    ],
+    [
+      3538,
+      463,
+      450
+    ],
+    [
+      3692,
+      463,
+      450
+    ],
+    [
+      3782,
+      463,
+      450
+    ],
+    [
+      3899,
+      463,
+      450
+    ],
+    [
+      3977,
+      463,
+      450
+    ],
+    [
+      4075,
+      463,
+      450
+    ],
+    [
+      4192,
+      463,
+      450
+    ],
+    [
+      4293,
+      463,
+      450
+    ],
+    [
+      4388,
+      463,
+      450
+    ],
+    [
+      4498,
+      463,
+      450
+    ],
+    [
+      4599,
+      463,
+      450
+    ],
+    [
+      4725,
+      463,
+      450
+    ],
+    [
+      4808,
+      463,
+      450
+    ],
+    [
+      4922,
+      463,
+      450
+    ],
+    [
+      5022,
+      463,
+      450
+    ],
+    [
+      5118,
+      463,
+      450
+    ],
+    [
+      5249,
+      463,
+      450
+    ],
+    [
+      5332,
+      463,
+      450
+    ],
+    [
+      5440,
+      463,
+      450
+    ],
+    [
+      5546,
+      463,
+      450
+    ],
+    [
+      5661,
+      463,
+      450
+    ],
+    [
+      5789,
+      463,
+      450
+    ],
+    [
+      5891,
+      463,
+      450
+    ],
+    [
+      5979,
+      472,
+      450
+    ],
+    [
+      6083,
+      472,
+      454
+    ],
+    [
+      6185,
+      472,
+      454
+    ],
+    [
+      6290,
+      472,
+      455
+    ],
+    [
+      6397,
+      472,
+      455
+    ]
+  ]
+}

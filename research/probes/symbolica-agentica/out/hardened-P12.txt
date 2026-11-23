@@ -1,0 +1,53 @@
+probe=P12 mode=wasm AGENTICA_NO_SANDBOX=None PROBE_SECRET set in host: True
+sandbox mode: wasm
+--- exec 1 (10 ms)
+output repr (first 600): "541 ['_wrap_close', 'Popen']\n"
+len(output): 29
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 2 (3 ms)
+output repr (first 600): 'Traceback (most recent call last):\n  <repl> line 2\n    print(w[0].__init__.__globals__["system"]("echo PWNED") if w else "no _wrap_close")\nKeyError: \'system\'\n\n'
+len(output): 159
+out_str: None
+exception_name: builtins.KeyError
+traceback_str: 'Traceback (most recent call last):\n  <repl> line 2\n    print(w[0].__init__.__globals__["system"]("echo PWNED") if w else "no _wrap_close")\nKeyError: \'system\'\n'
+has_result: False
+--- exec 3 (8 ms)
+output repr (first 600): 'Traceback (most recent call last):\n  <repl> line 1\n    print(__import__("os").system("echo PWNED"))\nAttributeError: module \'os\' has no attribute \'system\'\n\n'
+len(output): 155
+out_str: None
+exception_name: builtins.AttributeError
+traceback_str: 'Traceback (most recent call last):\n  <repl> line 1\n    print(__import__("os").system("echo PWNED"))\nAttributeError: module \'os\' has no attribute \'system\'\n'
+has_result: False
+--- exec 4 (3 ms)
+output repr (first 600): 'Traceback (most recent call last):\n  <repl> line 2\n    print(subprocess.run(["echo", "PWNED"], capture_output=True))\n  File "/python/subprocess.py", line 548, in run\n  File "/python/subprocess.py", line 818, in __init__\nOSError: [Errno 58] wasi does not support processes.\n\n'
+len(output): 274
+out_str: None
+exception_name: builtins.OSError
+traceback_str: 'Traceback (most recent call last):\n  <repl> line 2\n    print(subprocess.run(["echo", "PWNED"], capture_output=True))\n  File "/python/subprocess.py", line 548, in run\n  File "/python/subprocess.py", line 818, in __init__\nOSError: [Errno 58] wasi does not support processes.\n'
+has_result: False
+--- exec 5 (4 ms)
+output repr (first 600): '<class \'function\'> (<class \'function\'>, <class \'object\'>)\n{\'__builtins__\': {\'__name__\': \'builtins\', \'__doc__\': "Built-in functions, types, exceptions, and other objects.\\n\\nThis module provides direct access to all \'built-in\'\\nidentifiers of Python; for example, builtins.len is\\nthe full name for the built-in function len().\\n\\nThis module is not normally accessed explicitly by most\\napplications, but can be useful in modules that provide\\nobjects with the same name as a built-in value, but in\\nwhich the built-in of that name is also needed.", \'__package__\': \'\', \'__loader__\': <class \'_frozen_i'
+len(output): 7053
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 6 (2 ms)
+output repr (first 600): '<code object lookup at 0x17a4740, file "/probe/probe.py", line 28>\n(<cell at 0x198a7b8: function object at 0x123f5c8>, <cell at 0x1873e78: ResourceHandle object at 0x128b668>, <cell at 0x1647be8: ABCMeta object at 0x11a6ab8>)\n'
+len(output): 226
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 7 (7 ms)
+output repr (first 600): "Traceback (most recent call last):\n  <repl> line 1\n    import sys, platform\nModuleNotFoundError: No module named 'platform'\n\n"
+len(output): 125
+out_str: None
+exception_name: builtins.ModuleNotFoundError
+traceback_str: "Traceback (most recent call last):\n  <repl> line 1\n    import sys, platform\nModuleNotFoundError: No module named 'platform'\n"
+has_result: False
+host lookup calls: 0
+[harness] exit=0 wall=5s container=symbolica-agentica-hardened-P12-51882

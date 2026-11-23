@@ -1,0 +1,21 @@
+🚀 Starting Code Mode Unified MCP Server...
+   Name: codemode-unified
+   Version: 0.1.0
+   Transport: stdio
+
+🔌 MCP Integration enabled via CODEMODE_ENABLE_MCP_INTEGRATION
+🔌 Initializing MCP Manager...
+   Connecting to 1 MCP server(s)
+✅ MCP Manager initialized - 1 tools available
+   Namespaces: probe
+🔧 Generating TypeScript declarations for MCP tools...
+✅ TypeScript declarations generated: ./generated/mcp.d.ts
+
+Available tools:
+   - execute_code: Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes wi...
+   - list_runtimes: List all available code execution runtimes with their capabilities and status
+   - get_runtime_capabilities: Get detailed capabilities and constraints for a specific runtime
+   - runtime_health_check: Check if a runtime is operational and ready to execute code
+
+✅ Server ready and listening on stdio
+

@@ -1,0 +1,12 @@
+  6.4%  restorePatches chunks/chunk-CBM6J4AL.js:6
+  6.4%  y chunks/chunk-CBM6J4AL.js:6
+  5.4%  protectReversibleIntrinsics chunks/chunk-CBM6J4AL.js:6
+  5.0%  applyPatches chunks/chunk-CBM6J4AL.js:6
+  4.6%  (program) :0
+  4.5%  (garbage collector) :0
+  4.5%  applyPatch chunks/chunk-CBM6J4AL.js:6
+  4.3%  i chunks/chunk-CBM6J4AL.js:6
+  3.9%  vm bundle/index.js:711
+  2.6%  _ chunks/chunk-CBM6J4AL.js:2
+  2.1%  activate chunks/chunk-CBM6J4AL.js:6
+  2.0%  get bundle/index.js:767

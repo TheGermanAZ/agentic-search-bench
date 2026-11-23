@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { const f = (function(){}).constructor; return String(f); }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "\"undefined\""
+      }
+    ],
+    "isError": false
+  },
+  "ms": 15,
+  "hostCalls": 0
+}

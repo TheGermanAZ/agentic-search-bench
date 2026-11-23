@@ -1,0 +1,93 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs default R1",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 793,
+  "peakTreeRssMb": 137,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "default",
+    "test": "R1",
+    "notes": "run() (module default runner, shared)",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 59,
+        "ms": 537,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": "set"
+          },
+          "stringChars": 12
+        },
+        "callsStarted": 0
+      },
+      "B": {
+        "label": "B",
+        "startMs": 596,
+        "ms": 43,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": [
+              "undefined",
+              "undefined",
+              "undefined",
+              "{\"a\":1}",
+              false
+            ]
+          },
+          "stringChars": 43
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 103,
+    "hostEvents": [],
+    "totalMs": 639
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:68311) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      152,
+      45
+    ],
+    [
+      294,
+      86
+    ],
+    [
+      367,
+      116
+    ],
+    [
+      435,
+      117
+    ],
+    [
+      558,
+      118
+    ],
+    [
+      643,
+      135
+    ],
+    [
+      768,
+      137
+    ]
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "probe": "P12",
+  "config": "hardened",
+  "outcome": "escaped",
+  "detail": "P12a this.constructor.constructor(\"return process\")(): object 30999 | ran ; host marker written: true | P12b (function(){return this})().process: undefined ",
+  "display": "escaped (constructor chain)",
+  "peak_child_rss_mb": 88,
+  "wall_s": 0.6
+}

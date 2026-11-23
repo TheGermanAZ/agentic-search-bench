@@ -1,0 +1,430 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R9c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 12989,
+  "peakTreeRssMb": 381,
+  "peakTreeFootprintMb": 360,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R9c",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 714,
+          "ms": 12028,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode worker timeout exceeded",
+              "output": [],
+              "textChars": 339,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"host\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"0fc1f31cef07c09040205d25\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode worker timeout exceeded\"}"
+            },
+            "stringChars": 385
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 868,
+        "ms": 330,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"ed58d5264b4c26e7647d547b\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1200,
+        "ms": 206,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"e6d2426e6a6e81aace72a3e4\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 12742,
+        "ms": 205,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"960b3c7e00ab25d03406cb6b\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 813,
+    "hostEvents": [],
+    "totalMs": 12948
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_c9c7ac63-f6ab-4c48-b515-4ddf3b06e109 workerId=code-mode-quickjs:1 failurePhase=host bridgeDispatchStarted=false errorCategory=Error failureKind=timeout\n",
+  "rssSamplesMsMb": [
+    [
+      86,
+      65,
+      0
+    ],
+    [
+      286,
+      124,
+      64
+    ],
+    [
+      494,
+      176,
+      143
+    ],
+    [
+      697,
+      240,
+      182
+    ],
+    [
+      902,
+      291,
+      248
+    ],
+    [
+      1105,
+      380,
+      323
+    ],
+    [
+      1315,
+      380,
+      359
+    ],
+    [
+      1519,
+      380,
+      360
+    ],
+    [
+      1728,
+      380,
+      360
+    ],
+    [
+      1936,
+      380,
+      360
+    ],
+    [
+      2138,
+      380,
+      360
+    ],
+    [
+      2347,
+      380,
+      360
+    ],
+    [
+      2548,
+      380,
+      360
+    ],
+    [
+      2752,
+      380,
+      360
+    ],
+    [
+      2956,
+      380,
+      360
+    ],
+    [
+      3185,
+      380,
+      360
+    ],
+    [
+      3379,
+      380,
+      360
+    ],
+    [
+      3587,
+      380,
+      360
+    ],
+    [
+      3794,
+      380,
+      360
+    ],
+    [
+      3998,
+      380,
+      360
+    ],
+    [
+      4203,
+      380,
+      360
+    ],
+    [
+      4407,
+      380,
+      360
+    ],
+    [
+      4611,
+      380,
+      360
+    ],
+    [
+      4820,
+      380,
+      360
+    ],
+    [
+      5027,
+      380,
+      360
+    ],
+    [
+      5235,
+      380,
+      360
+    ],
+    [
+      5441,
+      380,
+      360
+    ],
+    [
+      5646,
+      380,
+      360
+    ],
+    [
+      5855,
+      380,
+      360
+    ],
+    [
+      6057,
+      380,
+      360
+    ],
+    [
+      6263,
+      380,
+      360
+    ],
+    [
+      6467,
+      380,
+      360
+    ],
+    [
+      6673,
+      380,
+      360
+    ],
+    [
+      6884,
+      380,
+      360
+    ],
+    [
+      7090,
+      380,
+      360
+    ],
+    [
+      7299,
+      380,
+      360
+    ],
+    [
+      7502,
+      380,
+      360
+    ],
+    [
+      7708,
+      380,
+      360
+    ],
+    [
+      7916,
+      380,
+      360
+    ],
+    [
+      8123,
+      380,
+      360
+    ],
+    [
+      8327,
+      380,
+      360
+    ],
+    [
+      8535,
+      380,
+      360
+    ],
+    [
+      8744,
+      380,
+      360
+    ],
+    [
+      8951,
+      380,
+      360
+    ],
+    [
+      9155,
+      380,
+      360
+    ],
+    [
+      9362,
+      380,
+      360
+    ],
+    [
+      9570,
+      380,
+      360
+    ],
+    [
+      9776,
+      380,
+      360
+    ],
+    [
+      9980,
+      380,
+      360
+    ],
+    [
+      10188,
+      380,
+      360
+    ],
+    [
+      10391,
+      380,
+      360
+    ],
+    [
+      10596,
+      380,
+      360
+    ],
+    [
+      10813,
+      380,
+      360
+    ],
+    [
+      11009,
+      380,
+      360
+    ],
+    [
+      11213,
+      380,
+      360
+    ],
+    [
+      11420,
+      380,
+      360
+    ],
+    [
+      11627,
+      380,
+      360
+    ],
+    [
+      11838,
+      381,
+      360
+    ],
+    [
+      12041,
+      381,
+      360
+    ],
+    [
+      12248,
+      381,
+      360
+    ],
+    [
+      12457,
+      381,
+      360
+    ],
+    [
+      12660,
+      381,
+      360
+    ],
+    [
+      12866,
+      380,
+      353
+    ]
+  ]
+}

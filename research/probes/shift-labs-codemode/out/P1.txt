@@ -1,0 +1,8 @@
+{
+  "code": "const r = await host.lookup({id: 21}); console.log(r.value)",
+  "ms": 585,
+  "hostCalls": 1,
+  "logs": [
+    "[log] 42"
+  ]
+}

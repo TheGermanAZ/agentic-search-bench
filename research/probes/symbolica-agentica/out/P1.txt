@@ -1,0 +1,11 @@
+probe=P1 mode=from_env AGENTICA_NO_SANDBOX=None PROBE_SECRET set in host: True
+sandbox mode: wasm
+--- exec 1 (212 ms)
+output repr (first 600): '42\n'
+len(output): 3
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+host lookup calls: 1
+[harness] exit=0 wall=4s container=symbolica-agentica-P1-24341

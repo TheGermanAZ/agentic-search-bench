@@ -1,0 +1,46 @@
+{
+  "config": {
+    "executorOptions": {
+      "loader": "env.LOADER",
+      "timeout": 10000,
+      "globalOutbound": null,
+      "modules": {},
+      "bindings": {}
+    }
+  },
+  "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+  "mode": "tool",
+  "path": "/run",
+  "httpStatus": 500,
+  "wallMs": 37326,
+  "peakRssKb": 1616912,
+  "body": "Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/cloudflare-codemode/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)",
+  "bystanderStartedHalfSecondBefore": {
+    "code": "await new Promise((r) => setTimeout(r, 5000)); return \"bystander-ok\"",
+    "mode": "tool",
+    "path": "/run",
+    "httpStatus": 500,
+    "wallMs": 37830,
+    "body": "Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/cloudflare-codemode/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)"
+  },
+  "serverAliveAfter": true,
+  "recoveryWaitMs": 363,
+  "trivialExecutionAfter": {
+    "code": "1+1",
+    "mode": "tool",
+    "path": "/run",
+    "httpStatus": 200,
+    "wallMs": 19,
+    "body": {
+      "mode": "tool",
+      "res": {
+        "ok": true,
+        "output": {
+          "result": 2
+        }
+      },
+      "hostCalls": 0,
+      "hostMs": 10
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "worker": {
+    "exitCode": 0,
+    "signal": null,
+    "killed": null,
+    "wallMs": 104,
+    "peakRssKb": 0
+  },
+  "parsed": {
+    "probe": "P4",
+    "host": {
+      "node": "v24.22.1",
+      "pid": 62089
+    },
+    "runs": [
+      {
+        "label": "cat /etc/hosts",
+        "script": "cat /etc/hosts",
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "cat: /etc/hosts: No such file or directory\n",
+        "ms": 33,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "ls /etc | head -5",
+        "script": "ls /etc | head -5",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "ls: /etc: No such file or directory\n",
+        "ms": 4,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 83104,
+    "maxInFlight": 0
+  }
+}

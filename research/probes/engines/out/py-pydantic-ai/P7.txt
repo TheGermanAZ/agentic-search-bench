@@ -1,0 +1,14 @@
+a = []
+while True:
+    a.append("x" * 10**6 + str(len(a)))
+--- output
+ERROR: Runtime error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 3, in <module>
+    a.append("x" * 10**6 + str(len(a)))
+             ~~~~~~~~~~~~~~~~~~~~~~~~~
+MemoryError: memory limit exceeded: 536986914 bytes > 536870912 bytes
+
+The sandbox ran out of memory and the session was reset. Re-run any imports, recreate any state you need, and use less memory: process smaller batches, avoid large intermediate values, and print less output.
+---
+wall_ms=67 host_calls=0 peak_tree_rss_mb=204

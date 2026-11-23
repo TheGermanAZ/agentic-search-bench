@@ -1,0 +1,7 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "display": "works (message, no line)",
+  "detail": "message survives: True; 'line 2' present: False; text: \"<repl_output> [Error] ValueError: ['probe-boom'] </repl_output>\"",
+  "evidence": "research/probes/dspy-rlm/out/P10.txt"
+}

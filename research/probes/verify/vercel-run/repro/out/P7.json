@@ -1,0 +1,51 @@
+{
+  "impl": "vercel-run",
+  "probe": "P7",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "const a = []; while (true) a.push(\"x\".repeat(1e6));"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 187,
+    "siblingEndMs": 495,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "InternalError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "out of memory",
+        "stack": "InternalError: out of memory\n    at <anonymous> (run.js:1:39)",
+        "string": "InternalError: out of memory"
+      },
+      "wallMs": 1256.850542,
+      "hostCalls": 1
+    }
+  ],
+  "concurrentSiblingRun": {
+    "ok": true,
+    "status": "completed",
+    "value": 42,
+    "wallMs": 308.0785,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "ok": true,
+    "status": "completed",
+    "value": 42,
+    "wallMs": 223.956958,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 187,
+    "siblingEndMs": 495,
+    "error": "InternalError: RUN_USER_SOURCE_ERROR out of memory",
+    "ms": 1257,
+    "sibling": 42,
+    "after": 42
+  },
+  "hostRssAfterMB": 231.2
+}

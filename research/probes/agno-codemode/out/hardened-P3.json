@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "works",
+  "display": "works (example.com 200)",
+  "detail": "spec form failed with '--------------------------------------------------------------------------- SSLCertVerificationError Traceback (most recent call last) File ~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/...'; same URL with an unverified SSL context printed HTTP 200, so the socket reached the network",
+  "evidence": "research/probes/agno-codemode/out/hardened-P3.txt"
+}

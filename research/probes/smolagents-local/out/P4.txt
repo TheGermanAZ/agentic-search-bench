@@ -1,0 +1,5 @@
+probe: P4
+code (python, run through LocalPythonExecutor):
+open("/etc/hosts").read()
+host_calls_so_far: 0
+result: {'ok': False, 'error_type': 'InterpreterError', 'error': 'Code execution failed at line \'open("/etc/hosts").read()\' due to: InterpreterError: Forbidden function evaluation: \'open\' is not among the explicitly allowed tools or defined/imported in the preceding code', 'ms': 0.2}

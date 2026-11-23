@@ -1,0 +1,39 @@
+label: P1
+command: node probe.mjs P1
+child exit: code=0 signal=null
+child wall ms (process start to exit): 473
+peak child RSS: 162.5 MB (ps every 50 ms)
+child stdout length: 3 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P1",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "const r = await tools.lookup({id: 21}); console.log(r.value); return r.value;"
+  ],
+  "toolDescriptionSeenByModel": "Execute code-mode TypeScript in an isolated sandbox.\n\nPut the full program in `js`; top-level `await`/`return` work. Return a JSON-serializable result.\nCall host tools only as async `tools.name(input)`; await each or use `Promise.all` for independent calls.\nUse exact names/types below. `JSON.parse`/`JSON.stringify` are available.\nFetch: `fetch` is not available.\n\nTools:\n```ts\ndeclare const tools: {\n  /** Look up a value by id. Waits 200 ms and returns { id, value: id * 2 }. */\n  lookup: (input: { id: number; }) => Promise<{ id: number; value: number; }>;\n  /** Always throws a host-side error that carries a secret-looking message. */\n  failing: (input: {}) => Promise<unknown>;\n};\n```\n\nTool call examples:\n```ts\nconst [lookup, failing] = await Promise.all([\n  tools.lookup({\"id\":1}),\n  tools.failing({}),\n]);\nreturn {\n  lookup: { id: lookup.id },\n  failing: failing,\n};\n```",
+  "runs": [
+    {
+      "ok": true,
+      "value": 42,
+      "wallMs": 323.363917,
+      "hostCalls": 1
+    }
+  ],
+  "summary": {
+    "value": 42,
+    "ms": 323,
+    "hostCalls": 1
+  },
+  "hostRssAfterMB": 162.7
+}
+--- child stdout ---
+42
+
+--- child stderr ---
+(node:81834) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

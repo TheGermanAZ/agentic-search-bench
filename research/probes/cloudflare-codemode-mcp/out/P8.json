@@ -1,0 +1,42 @@
+{
+  "execute": [
+    {
+      "tool": "execute",
+      "code": "async () => { globalThis.kept = 7; return 7 }",
+      "ms": 4,
+      "hostCalls": 0,
+      "isError": false,
+      "text": "7",
+      "rpcError": null
+    },
+    {
+      "tool": "execute",
+      "code": "async () => typeof kept === \"undefined\" ? \"gone\" : kept",
+      "ms": 3,
+      "hostCalls": 0,
+      "isError": false,
+      "text": "gone",
+      "rpcError": null
+    }
+  ],
+  "search": [
+    {
+      "tool": "search",
+      "code": "async () => { globalThis.kept = 7; return 7 }",
+      "ms": 115,
+      "hostCalls": 0,
+      "isError": false,
+      "text": "7",
+      "rpcError": null
+    },
+    {
+      "tool": "search",
+      "code": "async () => typeof kept === \"undefined\" ? \"gone\" : kept",
+      "ms": 122,
+      "hostCalls": 0,
+      "isError": false,
+      "text": "gone",
+      "rpcError": null
+    }
+  ]
+}

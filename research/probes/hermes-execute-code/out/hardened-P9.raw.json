@@ -1,0 +1,58 @@
+{
+  "probe": "P9",
+  "config": "hardened",
+  "codes": [
+    "from hermes_tools import lookup\ntot = 0\nfor i in [1, 2, 3, 4, 5]:\n    x = lookup(id=i)\n    tot += x[\"value\"]\nprint(tot)\ntot"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "30\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"30\\n\", \"tool_calls_made\": 5, \"duration_seconds\": 6.95, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 5,
+      "model_sees_len": 261,
+      "ms": 9405.2,
+      "started": 1795383118.7056231
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 11.05,
+  "peak_tree_rss_gb": 0.219,
+  "calls": [
+    {
+      "id": 1,
+      "start": 1795383123.194332,
+      "end": 1795383123.3976178,
+      "pid": 31358
+    },
+    {
+      "id": 2,
+      "start": 1795383124.2696772,
+      "end": 1795383124.473004,
+      "pid": 31358
+    },
+    {
+      "id": 3,
+      "start": 1795383125.50365,
+      "end": 1795383125.708666,
+      "pid": 31358
+    },
+    {
+      "id": 4,
+      "start": 1795383126.8020968,
+      "end": 1795383127.007126,
+      "pid": 31358
+    },
+    {
+      "id": 5,
+      "start": 1795383127.418559,
+      "end": 1795383127.6235788,
+      "pid": 31358
+    }
+  ],
+  "child_log_tail": ""
+}

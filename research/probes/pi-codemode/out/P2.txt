@@ -1,0 +1,43 @@
+{
+  "impl": "pi-codemode",
+  "config": "default",
+  "probe": "P2",
+  "options": {},
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "console.log(\"A\".repeat(200000)); \"RETURNED\"",
+      "ms": 62,
+      "hostCalls": 0,
+      "ok": true,
+      "output": [
+        {
+          "type": "text",
+          "text": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...[200000 chars]",
+          "console": true
+        }
+      ],
+      "outputTextChars": 200000,
+      "calls": []
+    },
+    {
+      "code": "console.log(\"A\".repeat(200000)); return \"RETURNED\"",
+      "ms": 34,
+      "hostCalls": 0,
+      "ok": true,
+      "output": [
+        {
+          "type": "text",
+          "text": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...[200000 chars]",
+          "console": true
+        }
+      ],
+      "outputTextChars": 200000,
+      "calls": [],
+      "value": "RETURNED"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P2"], "exit_code": 0, "wall_ms": 197, "peak_tree_rss_mb": 105.7, "watch_kill": null}

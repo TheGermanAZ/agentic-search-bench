@@ -1,0 +1,37 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P1b",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.455584000000016,
+  "source": [
+    "console.log(\"before\"); const r = await external_lookup({id: 21}); console.log(\"after\"); return r.value;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": 42,
+        "logCount": 3,
+        "logChars": 17,
+        "logs": [
+          "before",
+          "before",
+          "after"
+        ]
+      },
+      "wallMs": 280.763709,
+      "hostCalls": 1
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": 42,
+      "logCount": 3,
+      "logChars": 17
+    },
+    "ms": 281,
+    "hostCalls": 1
+  },
+  "hostRssAfterMB": 91.9
+}

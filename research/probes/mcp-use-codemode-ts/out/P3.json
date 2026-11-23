@@ -1,0 +1,9 @@
+{
+  "probe": "P3",
+  "config": "default",
+  "outcome": "works",
+  "detail": "fetch: ReferenceError: fetch is not defined\nSTATUS 200",
+  "display": "works (via escaped process)",
+  "peak_child_rss_mb": 91,
+  "wall_s": 0.4
+}

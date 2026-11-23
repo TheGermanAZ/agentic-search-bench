@@ -1,0 +1,41 @@
+{
+  "impl": "pi-codemode",
+  "config": "hardened",
+  "probe": "P6b",
+  "options": {
+    "timeoutMs": 30000,
+    "memoryLimitBytes": 33554432
+  },
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "while (true) await null",
+      "ms": 30004,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "timeout",
+        "message": "Execution timed out after 30000 ms"
+      }
+    },
+    {
+      "code": "await null; while (true) {}",
+      "ms": 30002,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "timeout",
+        "message": "Execution timed out after 30000 ms"
+      }
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "hardened", "P6b"], "exit_code": 0, "wall_ms": 60102, "peak_tree_rss_mb": 111.5, "watch_kill": null}

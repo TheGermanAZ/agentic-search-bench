@@ -1,0 +1,6 @@
+const a = []; while (true) a.push("x".repeat(1e6) + a.length)
+--- output
+ERROR: InternalError: out of memory
+    at <anonymous> (line 1:39)
+---
+wall_ms=1273 host_calls=0 peak_tree_rss_mb=600

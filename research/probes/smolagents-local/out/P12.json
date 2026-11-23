@@ -1,0 +1,5 @@
+{
+  "probe": "P12",
+  "outcome": "blocked",
+  "detail": "P12a spec: subclasses walk: InterpreterError: Code execution failed at line 'subs = ().__class__.__base__.__subclasses__()' due to: InterpreterError: Forbidden access to dunder attribute: __base__ | P12b spec: __import__ os system: InterpreterError: Code execution failed at line '__import__(\"os\").system(\"echo PWNED\")' due to: InterpreterError: Forbidden function evaluation: '__import__' is not among the explicitly allowed tools or defined/imported in the preceding code | P12c extra: collections._sys.modules os: InterpreterError: Code execution failed at line 'r = collections._sys.modules[\"os\"].system(\"echo PWNED\")' due to: InterpreterError: Forbidden access to module: sys | P12d extra: queue.threading._os: InterpreterError: Code execution failed at line 'r = queue.threading._os.system(\"echo PWNED\")' due to: InterpreterError: Forbidden access to module: threading"
+}

@@ -1,0 +1,29 @@
+config: CodeMode(**{'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})
+code: "import asyncio\nr = await asyncio.gather(*[lookup(id=i) for i in [1, 2, 3, 4, 5]])\n[x['value'] for x in r]"
+outcome: works
+detail: 5 lookups spanned 204 ms on the host (first start to last end; about 200 parallel, 1000 serial); model saw '[2, 4, 6, 8, 10]' (ToolReturnPart); 5 host calls; agent-run wall 0.36 s
+
+raw:
+{
+  "instructions": "<pyai:context id=\"toolset:code_mode:catalog\">\nThe following functions are available inside the sandbox. These functions are already defined in the sandbox; call them by name without redefining or importing them. All parameters are keyword-only. All tool functions are async: invoke them with `await`, e.g. `await tool_name(arg=value)`. Calling without `await` returns an unresolved future, not the value.\n\nTo run calls concurrently, first `import asyncio`, then use `await asyncio.gather(...)` with positional awaitables. Monty does not support `asyncio.gather` keyword arguments or other task creation and wait APIs.\n\n```python\nasync def lookup(*, id: int) -> dict[str, Any]:\n    \"\"\"Waits 200 ms, then returns {id, value: id * 2}.\"\"\"\n    ...\n```\n</pyai:context>\nA later <pyai:context> element with the same id replaces the earlier one and stays in effect until replaced again.",
+  "tools": [
+    [
+      "run_code",
+      "Write and run Python code in a sandboxed environment.\n\nThe sandbox uses Monty, a subset of Python. Key restrictions:\n- **No third-party libraries**: only the standard library modules listed below can be used\n- **Importable standard library modules**: `sys`, `typing`, `asyncio`, `math`, `json`, `re`, `unicodedata`, `datetime`, `time`, `random`, `os`, `pathlib`, `collections`, `itertools`, `functools`, `dataclasses`, `copy`, `base64`, `binascii`, `bisect`, `csv`, `decimal`, `fnmatch`, `hashlib`, `os.path`, `tomllib`, `annotationlib`. These must be imported before use, just like in regular Python.\n- **No filesystem, environment, or clock**: `pathlib.Path` I/O, `os.getenv`/`os.environ`, `datetime.datetime.now()`, `datetime.date.today()`, and `time.time()` are unavailable here (no filesystem mount or OS handler is configured). `os` and `pathlib` import successfully, but their I/O operations are not supported in this configuration. `time.sleep` and `asyncio.sleep` really wait.\n- **No `import *`**: wildcard imports are not supported\n\nState is preserved between calls (REPL-style). Set `restart: true` to reset state.\n\nThe last expression's value is automatically captured as the return value -- you do **not** need to `print()` it. End the snippet with the value to return as a bare expression. A final assignment stores the value but does not return it. A final expression that evaluates to `None` is treated as no result. Without a non-`None` final expression or print output, `run_code` returns `{}`. For example:\n\n```python\nresult = some_expression\nresult\n```\n\nAvoid `print()` for return values as it produces Python string representations, not structured data. Use `print()` only for supplementary logging or debug output.\n\nReturns a non-`None` last expression's value directly when nothing is printed. With `print()` output and no non-`None` final expression, returns `{\"output\": \"<printed text>\"}`. With `print()` output and a plain, non-`None` final expression, returns `{\"output\": \"<printed text>\", \"result\": <last expression>}`. With `print()` output and a multimodal final expression, returns a list with the printed text followed by the native content."
+    ]
+  ],
+  "results": [
+    {
+      "kind": "ToolReturnPart",
+      "content": [
+        2,
+        4,
+        6,
+        8,
+        10
+      ]
+    }
+  ],
+  "wall_s": 0.361,
+  "agent_error": null
+}

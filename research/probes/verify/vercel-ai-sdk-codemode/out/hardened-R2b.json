@@ -1,0 +1,99 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs hardened R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 840,
+  "peakTreeRssMb": 151,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "hardened",
+    "test": "R2b",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "startMs": 217,
+      "ms": 424,
+      "ok": true,
+      "result": {
+        "value": {
+          "type": "object",
+          "name": "RunError",
+          "msg": "Host tool failed.",
+          "stack": "    at apply (run-setup.js:438:33)\n    at <anonymous> (run.js:3:257)\n    at <anonymous> (run.js:4:26)\n    at <anonymous> (run.js:5:1)\n    at <eval> (run.js:6:1)\n",
+          "own": [
+            "message",
+            "name",
+            "code",
+            "stack"
+          ],
+          "esc": "threw Function constructor is not allowed"
+        },
+        "stringChars": 253
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 352,
+    "hostEvents": [],
+    "totalMs": 641
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:24755) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      115,
+      54
+    ],
+    [
+      165,
+      62
+    ],
+    [
+      225,
+      65
+    ],
+    [
+      283,
+      74
+    ],
+    [
+      336,
+      91
+    ],
+    [
+      381,
+      103
+    ],
+    [
+      467,
+      103
+    ],
+    [
+      563,
+      123
+    ],
+    [
+      608,
+      133
+    ],
+    [
+      726,
+      141
+    ],
+    [
+      768,
+      151
+    ],
+    [
+      838,
+      0
+    ]
+  ]
+}

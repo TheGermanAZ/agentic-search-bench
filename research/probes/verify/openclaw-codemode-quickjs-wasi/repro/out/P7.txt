@@ -1,0 +1,88 @@
+engine=quickjs hardened=false warmHost=false config={"enabled":true,"executor":"quickjs"} setupMs=1
+--- code 1 ---
+const a = []; while (true) a.push("x".repeat(1e6));
+--- result 1 ---
+{"ms":634.71,"hostCalls":0,"peakRssMB":437,"ok":true,"waits":0}
+content text (398 chars):
+{"status":"failed","code":"internal_error","failurePhase":"guest","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"53301dfa6165ce6b27fd59ad","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"error":"InternalError: out of memory\n    at <anonymous> (openclaw-code-mode:user.js:1:39)\n"}
+details (479 chars):
+{
+ "status": "failed",
+ "code": "internal_error",
+ "failurePhase": "guest",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "53301dfa6165ce6b27fd59ad",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "InternalError: out of memory\n    at <anonymous> (openclaw-code-mode:user.js:1:39)\n"
+}
+--- code 2 ---
+(concurrent, started at +100 ms) return 42;
+--- result 2 ---
+{"ms":200.8,"hostCalls":0,"ok":true,"waits":0,"finishedAfterMs":201}
+content text (240 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"53301dfa6165ce6b27fd59ad","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"value":42}
+details (312 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "53301dfa6165ce6b27fd59ad",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": 42
+}
+--- code 3 ---
+return 42; (after)
+--- result 3 ---
+{"ms":8.73,"hostCalls":0,"ok":true,"waits":0}
+content text (240 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"53301dfa6165ce6b27fd59ad","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"value":42}
+details (312 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "53301dfa6165ce6b27fd59ad",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": 42
+}

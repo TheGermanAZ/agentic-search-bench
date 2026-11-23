@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "display": "limited (10.1 s)",
+  "detail": "stopped after 10.10 s: Error calling tool 'execute': TimeoutError: feed time limit exceeded: 10.004330917s > 10s",
+  "evidence": "research/probes/repro/out/hardened-P6.txt"
+}

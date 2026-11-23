@@ -1,0 +1,5 @@
+const r = await fetch("https://example.com"); console.log(r.status)
+--- output
+ERROR: ReferenceError: fetch is not defined
+---
+wall_ms=53 host_calls=0 peak_tree_rss_mb=121

@@ -1,0 +1,8 @@
+{
+  "probe": "X-print-cap",
+  "outcome": "limited",
+  "detail": "model saw 10486097 chars (ToolReturnPart), 10485760 'A's; text without the As: 'Runtime error:\\n[stdout before error]\\n\\n[/stdout before error]\\nMemoryError: memory limit exceeded: 10493952 bytes > 10485760 bytes\\n\\nThe sandbox ran out of memory and the session was reset. Re-run any imports, recreate any state you need, and use less memory: process smaller batches, avoid large intermediate values, and print less output.'",
+  "config": "CodeMode()",
+  "peak_tree_rss_mib": 160,
+  "harness_wall_s": 0.82
+}

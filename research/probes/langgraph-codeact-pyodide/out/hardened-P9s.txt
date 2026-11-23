@@ -1,0 +1,31 @@
+probe: hardened-P9s
+outcome: works
+display: serial (~975 ms, in sandbox)
+detail: printed 30 in 2,109.1 ms, same as default P9s
+
+code:
+----
+tot = 0
+for i in [1, 2, 3, 4, 5]:
+    x = lookup(i)
+    tot += x["value"]
+print(tot)
+tot
+----
+
+setup_ms: 20.2
+wall_s (whole child process): 2.48
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.325
+host lookup calls: 0
+
+=== run 0 (2109.1 ms) ===
+ok: true
+stdout: 30
+error: null
+context_keys: ["i", "tot", "x"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

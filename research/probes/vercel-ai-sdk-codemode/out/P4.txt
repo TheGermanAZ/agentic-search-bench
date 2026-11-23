@@ -1,0 +1,43 @@
+label: P4
+command: node probe.mjs P4
+child exit: code=0 signal=null
+child wall ms (process start to exit): 197
+peak child RSS: 129.2 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P4",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "require is not defined",
+        "stack": "ReferenceError: require is not defined\n    at <anonymous> (code-mode.js:1:8)\n    at <anonymous> (code-mode.js:2:1)",
+        "string": "ReferenceError: require is not defined"
+      },
+      "wallMs": 83.110291,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR require is not defined",
+    "ms": 83,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 150.5
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:83153) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

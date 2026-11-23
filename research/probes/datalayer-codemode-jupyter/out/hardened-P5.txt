@@ -1,0 +1,60 @@
+probe: hardened-P5
+outcome: works
+display: works (s3cr3t)
+detail: sandbox printed 's3cr3t'; host PROBE_SECRET was set
+
+code:
+----
+import os
+msg = "ENV " + str(os.environ.get("PROBE_SECRET"))
+print(msg)
+msg
+----
+
+setup_ms: 2584.4
+wall_s (whole child process): 3.7
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.377
+host lookup calls: 0
+
+=== run 0 (11.8 ms) ===
+ok: true
+stdout: ENV s3cr3t
+stderr: 
+result: 'ENV s3cr3t'
+error: null
+interrupted: false
+
+=== child process log (tail) ===
+[11/22/26 15:11:10] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-8ffcnsz              
+                             v/generated (mcp dir:                              
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-8ffcnsz              
+                             v/generated/mcp)                                   
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-8ffcnsz              
+                             v/generated/mcp/probe                              
+                    INFO     Starting Jupyter server       jupyter_server.py:262
+                             subprocess on 127.0.0.1:41520                      
+                             (workdir=/var/folders/tg/x0gc                      
+                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      
+                             code-sandbox-x2k0u3ws)                             
+[11/22/26 15:11:11] INFO     No existing kernels found,    jupyter_server.py:412
+                             will create a new one                              
+                    INFO     Starting the kernel client…           client.py:412
+                    INFO     KernelHttpManager created a new      manager.py:258
+                             kernel: {'id':                                     
+                             'ef283ce4-25f2-48b4-bdc9-ba672f5f3bd               
+                             1', 'name': 'python3',                             
+                             'last_activity':                                   
+                             '2026-11-22T20:11:11.784852Z',                     
+                             'execution_state': 'starting',                     
+                             'connections': 0}                                  
+                    INFO     Websocket connected                 _logging.py:104
+[11/22/26 15:11:13] INFO     Stopping the kernel client…           client.py:433
+

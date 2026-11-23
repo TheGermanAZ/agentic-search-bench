@@ -1,0 +1,72 @@
+{
+  "mode": "default",
+  "probe": "P4",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 0,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+      "ms": 24.42,
+      "hostCalls": 0,
+      "result": {
+        "output": "Error: Cannot import \"fs\": it isn't available here, where packages and files can't be loaded. Use the provided globals. (line 1, col 8)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\")",
+      "ms": 1.52,
+      "hostCalls": 0,
+      "result": {
+        "output": "Error: Cannot import \"fs\": it isn't available here, where packages and files can't be loaded. Use the provided globals. (line 1, col 18)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return await Deno.readTextFile(\"/etc/hosts\")",
+      "ms": 0.83,
+      "hostCalls": 0,
+      "result": {
+        "output": "ReferenceError: Unknown identifier 'Deno'. (line 1, col 14)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return await (await fetch(\"file:///etc/hosts\")).text()",
+      "ms": 2.89,
+      "hostCalls": 0,
+      "result": {
+        "output": "Error: fetch cannot be used for filesystem access.",
+        "toolCalls": [
+          {
+            "tool": "fetch",
+            "status": "error",
+            "input": {
+              "method": "GET",
+              "url": "file:///etc/hosts"
+            }
+          }
+        ],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return [typeof require, typeof Bun, typeof Deno, typeof path, typeof fs]",
+      "ms": 1.3,
+      "hostCalls": 0,
+      "result": {
+        "output": "[\"function\",\"undefined\",\"undefined\",\"undefined\",\"undefined\"]",
+        "toolCalls": [],
+        "files": []
+      }
+    }
+  ]
+}

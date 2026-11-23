@@ -1,0 +1,25 @@
+{
+ "config": "hardened",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ],
+  "timeout": 1.0,
+  "memory_limit": 16777216,
+  "max_ptc_calls": 8,
+  "mode": "call",
+  "subagents": false
+ },
+ "probe": "P6",
+ "result": [
+  {
+   "code": "while (true) {}",
+   "output": "<error type=\"Timeout\">interrupted</error>",
+   "turn_ms": 1171.3,
+   "eval_ms": 1164.0,
+   "host_calls": 0
+  }
+ ]
+}
+
+monitor: {"config": "hardened", "probe": "P6", "exit_code": 0, "wall_s": 1.76, "peak_rss_mb": 183.9, "first_rss_mb": 16.3, "killed": null, "stderr_tail": []}

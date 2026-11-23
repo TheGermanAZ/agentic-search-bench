@@ -1,0 +1,12 @@
+{
+  "probe": "P7 memory",
+  "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+  "wallMs": 2144.776041,
+  "baselineRssMB": 54.6,
+  "peakHostRssMB": 209.4,
+  "result": null,
+  "logs": [
+    "[ERROR] Code execution failed: Isolate was disposed during execution due to memory limit"
+  ],
+  "threw": null
+}

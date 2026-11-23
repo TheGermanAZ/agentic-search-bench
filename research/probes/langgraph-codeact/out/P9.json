@@ -1,0 +1,7 @@
+{
+  "probe": "P9",
+  "outcome": "works",
+  "display": "serial (1,020 ms)",
+  "detail": "5 host calls spanning 1020 ms host-side (first start to last end); execution wall 1023.9 ms; output '30'",
+  "evidence": "research/probes/langgraph-codeact/out/P9.txt"
+}

@@ -1,0 +1,61 @@
+--- P2-result-var: the project convention: the agent reads only `result`
+code:
+print("A" * 200000)
+result = "RETURNED"
+{"ok": true, "result": "RETURNED", "error": null, "ms": 1.1}
+stdout (0 chars): ''
+
+--- P10-io-ValueError: ValueError is missing from the sandbox builtins; io.UnsupportedOperation subclasses ValueError
+code:
+import io
+x = 1
+raise io.UnsupportedOperation("probe-boom")
+{"ok": false, "result": null, "error": "Execution error: probe-boom", "ms": 0.1}
+stdout (0 chars): ''
+
+--- P10-zero-division: a runtime error the guest can raise without names
+code:
+x = 1
+y = x / 0
+{"ok": false, "result": null, "error": "Execution error: division by zero", "ms": 0.1}
+stdout (0 chars): ''
+
+--- P4-open-only: SPEC form alone
+code:
+result = open("/etc/hosts").read()
+{"ok": false, "result": null, "error": "Execution error: name 'open' is not defined", "ms": 0.1}
+stdout (0 chars): ''
+
+--- P9-threads: parallel via threads, since import is unrestricted
+code:
+import time
+from concurrent.futures import ThreadPoolExecutor
+t = time.time()
+with ThreadPoolExecutor(5) as p:
+    rs = list(p.map(lambda i: tools.lookup(id=i), [1, 2, 3, 4, 5]))
+result = int((time.time() - t) * 1000)
+{"ok": true, "result": 209, "error": null, "ms": 213.0}
+stdout (0 chars): ''
+
+--- P12-sys-modules: host module table reachable
+code:
+import sys
+result = sorted(k for k in sys.modules if k in ('os', 'subprocess', 'socket'))
+{"ok": true, "result": ["os", "socket", "subprocess"], "error": null, "ms": 1.0}
+stdout (0 chars): ''
+
+--- P12-host-frames: RestrictedPython rejects _-prefixed attributes at compile time
+code:
+import sys
+f = sys._getframe(1)
+result = type(f).__name__
+{"ok": false, "result": null, "error": "Execution error: ('Line 2: \"_getframe\" is an invalid attribute name because it starts with \"_\".', 'Line 3: \"__name__\" is an invalid attribute name because it starts with \"_\".')", "ms": 0.3}
+stdout (0 chars): ''
+
+--- P12-host-tools-dict: gc gives every live host object
+code:
+import gc
+result = len(gc.get_objects()) > 0
+{"ok": true, "result": true, "error": null, "ms": 2.2}
+stdout (0 chars): ''
+

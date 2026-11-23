@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P3",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 60.277625,
+  "source": [
+    "const r = await fetch(\"https://example.com\"); return r.status;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "fetch is not defined",
+          "name": "ReferenceError",
+          "stack": "ReferenceError: fetch is not defined\n    at <isolated-vm>:5:11\n    at <isolated-vm>:6:7\n    at <isolated-vm>:11:3"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 22.727792000000022,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: fetch is not defined",
+    "ms": 23,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 81.6
+}

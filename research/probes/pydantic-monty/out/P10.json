@@ -1,0 +1,1 @@
+{"id": "P10", "outcome": "works", "detail": "caller got MontyRuntimeError with str 'ValueError: probe-boom'; display() and traceback in out/P10.txt", "error": null}

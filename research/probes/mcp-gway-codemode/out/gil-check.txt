@@ -1,0 +1,3 @@
+main thread never finished within 30 s; killed pid 12737 (GIL held)
+control (pure-Python busy thread): main-thread ticks in 3 s: 159; wall 3.0 s
+starlark-pyo3 2026.1.3

@@ -1,0 +1,3 @@
+CODE: while True: pass
+OUTCOME: no-limit-within-120s
+no limit fired; stopped by harness at 120 s wall

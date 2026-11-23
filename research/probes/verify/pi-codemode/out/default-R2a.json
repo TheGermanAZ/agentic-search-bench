@@ -1,0 +1,75 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs default R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 527,
+  "peakTreeRssMb": 108,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "default",
+    "test": "R2a",
+    "notes": "one CodemodeSandbox({}) shared",
+    "data": {
+      "startMs": 20,
+      "ms": 358,
+      "ok": true,
+      "result": {
+        "value": {
+          "ok": true,
+          "value": [
+            true,
+            "undefined",
+            "undefined",
+            "Object,Function,Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,SuppressedError,Iterator,Array,parseInt,parseFloat,isNaN,isFinite,queueMicrotask,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,eval…[759 chars]…t64Array,Float16Array,Float32Array,Float64Array,DataView,Promise,AsyncDisposableStack,WeakRef,FinalizationRegistry,DOMException,btoa,atob,performance,store,load,tools,ALL_TOOLS,console,text,image,exit"
+          ],
+          "output": [],
+          "calls": [
+            {
+              "name": "lookup",
+              "status": "ok",
+              "durationMs": 220.71354199999996
+            }
+          ],
+          "storeWrites": {
+            "set": {},
+            "delete": []
+          }
+        },
+        "stringChars": 785
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 16,
+    "hostEvents": [],
+    "totalMs": 378
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      233,
+      64
+    ],
+    [
+      324,
+      108
+    ],
+    [
+      405,
+      107
+    ],
+    [
+      519,
+      107
+    ]
+  ]
+}

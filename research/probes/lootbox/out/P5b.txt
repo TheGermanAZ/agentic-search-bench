@@ -1,0 +1,10 @@
+code:
+console.log(Deno.env.get("PROBE_SECRET"))
+
+result:
+{
+  "id": "5459f7dd-547c-4b3a-b18a-c5f42cf3040a",
+  "error": "\u001b[0m\u001b[32mDownload\u001b[0m http://localhost:41310/client.ts?v=1\n\u001b[0m\u001b[32mCheck\u001b[0m file:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/f65d1f764b9a888e.ts\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) NotCapable: Requires env access to \"PROBE_SECRET\", run again with the --allow-env flag\nconsole.log(Deno.env.get(\"PROBE_SECRET\"))\n\u001b[0m\u001b[31m                     ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mObject.getEnv [as get]\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_os/30_os.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m123\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m10\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/f65d1f764b9a888e.ts\u001b[0m:\u001b[0m\u001b[33m4\u001b[0m:\u001b[0m\u001b[33m22\u001b[0m\n",
+  "ms": 1192,
+  "hostCalls": 0
+}

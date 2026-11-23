@@ -1,0 +1,158 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py hardened R8a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2825,
+  "peakTreeRssMb": 122,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R8a",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(hardened {'limits': {'max_feed_duration_secs': 10, 'max_memory': 50000000}, 'wall_clock_timeout_secs': 60}); new in-process Client per execution",
+    "data": {
+      "label": "",
+      "startMs": 1358,
+      "ms": 1104,
+      "ok": true,
+      "result": {
+        "is_error": false,
+        "text": "done"
+      },
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 1,
+    "totalMs": 2462
+  },
+  "childStdoutOtherChars": 2655361,
+  "childStdoutHead": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      154,
+      19
+    ],
+    [
+      256,
+      22
+    ],
+    [
+      331,
+      27
+    ],
+    [
+      402,
+      30
+    ],
+    [
+      479,
+      38
+    ],
+    [
+      559,
+      41
+    ],
+    [
+      625,
+      47
+    ],
+    [
+      696,
+      49
+    ],
+    [
+      766,
+      51
+    ],
+    [
+      824,
+      52
+    ],
+    [
+      906,
+      54
+    ],
+    [
+      981,
+      60
+    ],
+    [
+      1083,
+      62
+    ],
+    [
+      1152,
+      64
+    ],
+    [
+      1242,
+      67
+    ],
+    [
+      1338,
+      73
+    ],
+    [
+      1413,
+      75
+    ],
+    [
+      1493,
+      76
+    ],
+    [
+      1616,
+      79
+    ],
+    [
+      1695,
+      86
+    ],
+    [
+      1766,
+      122
+    ],
+    [
+      1857,
+      122
+    ],
+    [
+      1972,
+      122
+    ],
+    [
+      2085,
+      122
+    ],
+    [
+      2176,
+      108
+    ],
+    [
+      2279,
+      109
+    ],
+    [
+      2390,
+      111
+    ],
+    [
+      2508,
+      113
+    ],
+    [
+      2602,
+      115
+    ],
+    [
+      2719,
+      117
+    ],
+    [
+      2821,
+      92
+    ]
+  ]
+}

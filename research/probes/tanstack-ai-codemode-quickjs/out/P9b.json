@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P9b",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 24.72637500000002,
+  "source": [
+    "const r = await Promise.all(Array.from({length: 40}, (_, i) => external_lookup({id: i}))); return r.length;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": 40,
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 241.808833,
+      "hostCalls": 40
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": 40,
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 242,
+    "hostCalls": 40
+  },
+  "hostRssAfterMB": 99.8
+}

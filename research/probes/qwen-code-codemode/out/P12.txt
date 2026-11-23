@@ -1,0 +1,62 @@
+# qwen-code-codemode P12 (default)
+--- exec 1 source ---
+text(String(this.constructor.constructor("return process")()))
+--- exec 1 result (273.26 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (199 chars):
+[{"type":"text","text":"Script error:\n'process' is not defined\n    at anonymous (<input>:3:8)\n    at <anonymous> (exec.js:4:96)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]
+--- exec 2 source ---
+text(String((function(){ return this })().process))
+--- exec 2 result (237.86 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (36 chars):
+[{"type":"text","text":"undefined"}]
+--- exec 3 source ---
+text(String(tools.mcp__probe__lookup.constructor.constructor("return typeof process + ',' + typeof require + ',' + typeof globalThis.__callTool")()))
+--- exec 3 result (205.81 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (56 chars):
+[{"type":"text","text":"undefined,undefined,undefined"}]
+--- exec 4 source ---
+text(String(setTimeout.constructor.constructor("return typeof process")()))
+--- exec 4 result (238.56 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (36 chars):
+[{"type":"text","text":"undefined"}]
+--- exec 5 source ---
+text(String(typeof eval) + "," + eval("typeof process"))
+--- exec 5 result (284.91 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (45 chars):
+[{"type":"text","text":"function,undefined"}]
+--- exec 6 source ---
+text(JSON.stringify([typeof WebAssembly, typeof Atomics, typeof SharedArrayBuffer, typeof __callTool, typeof __appendText, typeof std, typeof os]))
+--- exec 6 result (185.43 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (126 chars):
+[{"type":"text","text":"[\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\",\"undefined\"]"}]
+--- summary ---
+{
+ "config": "default",
+ "exit": {
+  "code": 0,
+  "sig": null
+ },
+ "setupMsSpawnToFirstExec": 1321,
+ "totalHostCalls": 0,
+ "sideRequests": 0
+}
+--- cli stdout (json, first 3000 chars) ---
+[{"type":"system","subtype":"init","uuid":"d0443044-be86-412c-afc3-4c8597fb7cb8","session_id":"d0443044-be86-412c-afc3-4c8597fb7cb8","cwd":"~/p/agentic-search-bench/research/probes/qwen-code-codemode/work","tools":["exec","read_mcp_resource","read_file","zoom_image","grep_search","cron_list","cron_delete","autofix_pr","web_fetch","list_agents","task_stop","skill","search_memory","enter_worktree","exit_worktree","record_artifact","get_goal","update_goal","tool_call","tool_search","agent","glob","report_findings","cron_create","loop_wakeup","send_message","manage_memory","mcp__probe__lookup"],"mcp_servers":[{"name":"probe","status":"connected"}],"model":"mock-model","permission_mode":"auto","slash_commands":["advisor","agent-delegation","auth","autofix-pr","batch","batch-api","bug","clear","compress","compress-fast","config","context","coordinate","curator","dataviz","diff","docs","doctor","effort","export","extension-creator","extensions","goal","goal-draft","hooks","import-config","init","insight","language","loop","model","new-app","output-style","pr","qc-helper","review","simplify","stats","status","stuck","summary","tasks","update","workflow-authoring","workflow-creator","workflows","zvec-grep-install"],"qwen_code_version":"0.28.4","agents":["general-purpose","Explore","statusline-setup","review-agent","claude-code","codex"]},{"type":"assistant","uuid":"c03d9a00-0062-4583-84f1-5a24085c712b","session_id":"d0443044-be86-412c-afc3-4c8597fb7cb8","parent_tool_use_id":null,"message":{"id":"c03d9a00-0062-4583-84f1-5a24085c712b","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_1","name":"exec","input":{"source":"text(String(this.constructor.constructor(\"return process\")()))"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"6a4a50af-53ba-4573-ad15-adfb06862ba9","session_id":"d0443044-be86-412c-afc3-4c8597fb7cb8","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_1","is_error":true,"content":"Script error:\n'process' is not defined\n    at anonymous (<input>:3:8)\n    at <anonymous> (exec.js:4:96)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]}},{"type":"assistant","uuid":"409ca3d9-e1c1-4169-b481-8aee1a325d2b","session_id":"d0443044-be86-412c-afc3-4c8597fb7cb8","parent_tool_use_id":null,"message":{"id":"409ca3d9-e1c1-4169-b481-8aee1a325d2b","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_2","name":"exec","input":{"source":"text(String((function(){ return this })().process))"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"8669bb1e-27b9-4889-a507-afbb36bb5fcd","session_id":"d0443044-be86-412c-afc3-4c8597fb7cb8","parent_tool_use_id":null,"message":{"role":"user","content":[{"type"
+--- cli stderr (first 3000 chars) ---
+Warning: Node.js 24.22.1 can cause high temporary memory usage during shell safety checks. Upgrade to Node.js 26.12.1. Qwen Code will continue normally. See https://github.com/QwenLM/qwen-code/issues/15165
+
+--- mock events ---
+{"t":1328.12,"kind":"exec-issued","n":1,"hostCallsSoFar":8}
+{"t":1601.38,"kind":"exec-result","n":1,"hostCallsSoFar":8,"textLen":199}
+{"t":1601.57,"kind":"exec-issued","n":2,"hostCallsSoFar":8}
+{"t":1839.43,"kind":"exec-result","n":2,"hostCallsSoFar":8,"textLen":36}
+{"t":1839.52,"kind":"exec-issued","n":3,"hostCallsSoFar":8}
+{"t":2045.33,"kind":"exec-result","n":3,"hostCallsSoFar":8,"textLen":56}
+{"t":2045.45,"kind":"exec-issued","n":4,"hostCallsSoFar":8}
+{"t":2284.01,"kind":"exec-result","n":4,"hostCallsSoFar":8,"textLen":36}
+{"t":2284.13,"kind":"exec-issued","n":5,"hostCallsSoFar":8}
+{"t":2569.04,"kind":"exec-result","n":5,"hostCallsSoFar":8,"textLen":45}
+{"t":2569.15,"kind":"exec-issued","n":6,"hostCallsSoFar":8}
+{"t":2754.58,"kind":"exec-result","n":6,"hostCallsSoFar":8,"textLen":126}
+{"t":2754.67,"kind":"final"}
+{"t":2818.83,"kind":"final"}

@@ -1,0 +1,37 @@
+{
+  "tool": {
+    "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => codemode.lookup({id:i}))); console.log(Date.now()-t)",
+    "mode": "tool",
+    "httpStatus": 200,
+    "wallMs": 210,
+    "body": {
+      "mode": "tool",
+      "res": {
+        "ok": true,
+        "output": {
+          "logs": [
+            "205"
+          ]
+        }
+      },
+      "hostCalls": 5,
+      "hostMs": 207
+    }
+  },
+  "raw": {
+    "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => codemode.lookup({id:i}))); console.log(Date.now()-t)",
+    "mode": "raw",
+    "httpStatus": 200,
+    "wallMs": 209,
+    "body": {
+      "mode": "raw",
+      "res": {
+        "logs": [
+          "205"
+        ]
+      },
+      "hostCalls": 5,
+      "hostMs": 207
+    }
+  }
+}

@@ -1,0 +1,9 @@
+--- code 1 ---
+def f():
+    a = []
+    for i in range(2147483647):
+        a.append("x" * 1000000)
+    return len(a)
+result = f()
+--- result 1 ---
+{"ok": false, "error": "TimeoutError: timed out", "ms": 120003.04, "peakRssMB": 2814, "hostCalls": 0, "gatewayAlive": true, "concurrentP1": {"ok": false, "error": "TimeoutError: timed out", "ms": 120012.47, "hostCalls": 0, "gatewayAlive": true}, "concurrentP1StartedAtS": 1, "rssAfterMB": 1445}

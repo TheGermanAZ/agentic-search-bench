@@ -1,0 +1,25 @@
+{
+  "probe": "P4",
+  "config": "hardened",
+  "codes": [
+    "data = open(\"/etc/hosts\").read()\nmsg = \"HOSTS \" + str(len(data)) + \" chars, mentions localhost: \" + str(\"localhost\" in data)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 1, in <module>\n    data = open(\"/etc/hosts\").read()\n           ~~~~~~~~~~~~~~~~~~\nPermissionError: Permission denied: '/etc/hosts'",
+      "ms": 8.5,
+      "started": 1795384488.83524
+    }
+  ],
+  "setup_ms": 247.8,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.53,
+  "peak_tree_rss_gb": 0.081,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

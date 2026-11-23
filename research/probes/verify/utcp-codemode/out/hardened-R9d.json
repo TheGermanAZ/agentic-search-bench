@@ -1,0 +1,407 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs hardened R9d",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 13554,
+  "peakTreeRssMb": 58,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 13420,
+    "rssMb": 53
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "hardened",
+    "test": "R9d",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, 10000, 64)",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 69,
+          "ms": 10033,
+          "ok": true,
+          "result": {
+            "value": {
+              "result": null,
+              "logs": [
+                "[ERROR] Code execution failed: Script execution timeout after 10000ms"
+              ]
+            },
+            "stringChars": 69
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 220,
+        "ms": 208,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 209,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 10103,
+        "ms": 207,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 50,
+    "hostEvents": [],
+    "totalMs": 10310
+  },
+  "childStdoutOtherChars": 837,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      189,
+      50
+    ],
+    [
+      476,
+      58
+    ],
+    [
+      761,
+      58
+    ],
+    [
+      935,
+      58
+    ],
+    [
+      1151,
+      58
+    ],
+    [
+      1325,
+      56
+    ],
+    [
+      1494,
+      52
+    ],
+    [
+      1676,
+      52
+    ],
+    [
+      1810,
+      52
+    ],
+    [
+      2011,
+      52
+    ],
+    [
+      2199,
+      52
+    ],
+    [
+      2346,
+      52
+    ],
+    [
+      2501,
+      52
+    ],
+    [
+      2663,
+      52
+    ],
+    [
+      2837,
+      52
+    ],
+    [
+      3030,
+      52
+    ],
+    [
+      3187,
+      52
+    ],
+    [
+      3300,
+      52
+    ],
+    [
+      3459,
+      52
+    ],
+    [
+      3646,
+      52
+    ],
+    [
+      3794,
+      52
+    ],
+    [
+      4026,
+      52
+    ],
+    [
+      4190,
+      52
+    ],
+    [
+      4373,
+      52
+    ],
+    [
+      4505,
+      52
+    ],
+    [
+      4671,
+      52
+    ],
+    [
+      4788,
+      52
+    ],
+    [
+      4928,
+      52
+    ],
+    [
+      5065,
+      52
+    ],
+    [
+      5199,
+      52
+    ],
+    [
+      5367,
+      52
+    ],
+    [
+      5537,
+      52
+    ],
+    [
+      5693,
+      52
+    ],
+    [
+      5819,
+      52
+    ],
+    [
+      5969,
+      52
+    ],
+    [
+      6164,
+      52
+    ],
+    [
+      6349,
+      52
+    ],
+    [
+      6526,
+      52
+    ],
+    [
+      6689,
+      52
+    ],
+    [
+      6851,
+      52
+    ],
+    [
+      6996,
+      52
+    ],
+    [
+      7188,
+      52
+    ],
+    [
+      7345,
+      52
+    ],
+    [
+      7496,
+      52
+    ],
+    [
+      7655,
+      52
+    ],
+    [
+      7830,
+      52
+    ],
+    [
+      8031,
+      52
+    ],
+    [
+      8134,
+      52
+    ],
+    [
+      8283,
+      52
+    ],
+    [
+      8399,
+      52
+    ],
+    [
+      8539,
+      52
+    ],
+    [
+      8725,
+      52
+    ],
+    [
+      8900,
+      53
+    ],
+    [
+      9059,
+      53
+    ],
+    [
+      9237,
+      53
+    ],
+    [
+      9387,
+      52
+    ],
+    [
+      9597,
+      52
+    ],
+    [
+      9762,
+      52
+    ],
+    [
+      9974,
+      52
+    ],
+    [
+      10194,
+      52
+    ],
+    [
+      10394,
+      53
+    ],
+    [
+      10581,
+      53
+    ],
+    [
+      10781,
+      53
+    ],
+    [
+      10979,
+      53
+    ],
+    [
+      11149,
+      53
+    ],
+    [
+      11385,
+      53
+    ],
+    [
+      11578,
+      53
+    ],
+    [
+      11740,
+      53
+    ],
+    [
+      11912,
+      53
+    ],
+    [
+      12074,
+      53
+    ],
+    [
+      12219,
+      53
+    ],
+    [
+      12357,
+      53
+    ],
+    [
+      12497,
+      53
+    ],
+    [
+      12664,
+      53
+    ],
+    [
+      12863,
+      53
+    ],
+    [
+      12989,
+      53
+    ],
+    [
+      13171,
+      53
+    ],
+    [
+      13420,
+      53
+    ]
+  ]
+}

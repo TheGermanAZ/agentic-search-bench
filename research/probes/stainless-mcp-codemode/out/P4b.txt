@@ -1,0 +1,22 @@
+mode: default
+code:
+async function run(client) {
+  const spec = "node:fs";
+  const fs: any = await import(spec);
+  return fs.readFileSync("/etc/hosts", "utf8");
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag"
+      }
+    ],
+    "isError": true
+  },
+  "ms": 416,
+  "hostCalls": 0
+}

@@ -1,0 +1,591 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/../_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/adapter.mjs default R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 11792,
+  "peakTreeRssMb": 150,
+  "peakTreeFootprintMb": 76,
+  "watchKill": null,
+  "record": {
+    "impl": "bifrost-codemode",
+    "config": "default",
+    "test": "R9e",
+    "notes": "maximhq/bifrost:v2.6.0, data/config.json; gateway restarted for this test (10765 ms); new MCP client per execution; Starlark codes",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 10907,
+          "ms": 94,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 363,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:1:1: in <toplevel>\nError: code mode resource limit: too many steps\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 363
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 10930,
+          "ms": 76,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 363,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:1:1: in <toplevel>\nError: code mode resource limit: too many steps\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 363
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 10934,
+          "ms": 73,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 363,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:1:1: in <toplevel>\nError: code mode resource limit: too many steps\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 363
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 10934,
+          "ms": 74,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 363,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:1:1: in <toplevel>\nError: code mode resource limit: too many steps\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 363
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 10934,
+          "ms": 71,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 363,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:1:1: in <toplevel>\nError: code mode resource limit: too many steps\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 363
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 10935,
+          "ms": 77,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 363,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:1:1: in <toplevel>\nError: code mode resource limit: too many steps\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 363
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 10935,
+          "ms": 72,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 363,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:1:1: in <toplevel>\nError: code mode resource limit: too many steps\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 363
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 10935,
+          "ms": 68,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 363,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:1:1: in <toplevel>\nError: code mode resource limit: too many steps\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 363
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 11085,
+        "ms": 218,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 50,
+            "text": "Execution completed successfully.\nReturn value: 42"
+          },
+          "stringChars": 50
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 11306,
+        "ms": 230,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 50,
+            "text": "Execution completed successfully.\nReturn value: 42"
+          },
+          "stringChars": 50
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 11536,
+        "ms": 218,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 50,
+            "text": "Execution completed successfully.\nReturn value: 42"
+          },
+          "stringChars": 50
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "gatewayStartMs": 10765,
+      "containerBaselineMb": 241,
+      "containerPeakMb": 247,
+      "containerLastMb": 247,
+      "containerKilled": null,
+      "containerRssMsMb": [
+        [
+          92,
+          241
+        ],
+        [
+          572,
+          247
+        ]
+      ]
+    },
+    "hostMaxEventLoopLagMs": 29,
+    "hostEvents": [],
+    "totalMs": 11754
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      78,
+      68,
+      23
+    ],
+    [
+      227,
+      120,
+      46
+    ],
+    [
+      385,
+      120,
+      46
+    ],
+    [
+      539,
+      76,
+      46
+    ],
+    [
+      691,
+      76,
+      34
+    ],
+    [
+      845,
+      76,
+      34
+    ],
+    [
+      1001,
+      76,
+      34
+    ],
+    [
+      1155,
+      76,
+      34
+    ],
+    [
+      1312,
+      76,
+      34
+    ],
+    [
+      1468,
+      76,
+      34
+    ],
+    [
+      1622,
+      76,
+      33
+    ],
+    [
+      1776,
+      76,
+      34
+    ],
+    [
+      1934,
+      76,
+      33
+    ],
+    [
+      2093,
+      76,
+      34
+    ],
+    [
+      2247,
+      76,
+      34
+    ],
+    [
+      2402,
+      76,
+      34
+    ],
+    [
+      2559,
+      76,
+      34
+    ],
+    [
+      2714,
+      76,
+      34
+    ],
+    [
+      2867,
+      76,
+      34
+    ],
+    [
+      3029,
+      76,
+      34
+    ],
+    [
+      3175,
+      76,
+      34
+    ],
+    [
+      3341,
+      76,
+      34
+    ],
+    [
+      3522,
+      76,
+      34
+    ],
+    [
+      3661,
+      76,
+      34
+    ],
+    [
+      3818,
+      76,
+      34
+    ],
+    [
+      3985,
+      76,
+      34
+    ],
+    [
+      4125,
+      76,
+      34
+    ],
+    [
+      4291,
+      76,
+      34
+    ],
+    [
+      4447,
+      76,
+      34
+    ],
+    [
+      4618,
+      76,
+      34
+    ],
+    [
+      4764,
+      76,
+      34
+    ],
+    [
+      4927,
+      76,
+      34
+    ],
+    [
+      5053,
+      76,
+      34
+    ],
+    [
+      5221,
+      76,
+      34
+    ],
+    [
+      5387,
+      76,
+      34
+    ],
+    [
+      5534,
+      75,
+      34
+    ],
+    [
+      5676,
+      76,
+      34
+    ],
+    [
+      5842,
+      86,
+      34
+    ],
+    [
+      5982,
+      76,
+      34
+    ],
+    [
+      6138,
+      75,
+      34
+    ],
+    [
+      6295,
+      76,
+      34
+    ],
+    [
+      6453,
+      76,
+      34
+    ],
+    [
+      6622,
+      76,
+      34
+    ],
+    [
+      6767,
+      76,
+      34
+    ],
+    [
+      6913,
+      76,
+      34
+    ],
+    [
+      7063,
+      76,
+      34
+    ],
+    [
+      7226,
+      76,
+      34
+    ],
+    [
+      7461,
+      76,
+      33
+    ],
+    [
+      7586,
+      76,
+      34
+    ],
+    [
+      7751,
+      76,
+      33
+    ],
+    [
+      7903,
+      86,
+      34
+    ],
+    [
+      8055,
+      76,
+      34
+    ],
+    [
+      8217,
+      76,
+      33
+    ],
+    [
+      8415,
+      76,
+      34
+    ],
+    [
+      8543,
+      76,
+      33
+    ],
+    [
+      8724,
+      76,
+      34
+    ],
+    [
+      8863,
+      76,
+      33
+    ],
+    [
+      9019,
+      76,
+      34
+    ],
+    [
+      9173,
+      76,
+      33
+    ],
+    [
+      9331,
+      76,
+      34
+    ],
+    [
+      9522,
+      76,
+      33
+    ],
+    [
+      9699,
+      76,
+      34
+    ],
+    [
+      9839,
+      76,
+      34
+    ],
+    [
+      10001,
+      76,
+      33
+    ],
+    [
+      10154,
+      76,
+      34
+    ],
+    [
+      10304,
+      77,
+      34
+    ],
+    [
+      10468,
+      77,
+      34
+    ],
+    [
+      10646,
+      77,
+      34
+    ],
+    [
+      10772,
+      79,
+      34
+    ],
+    [
+      10952,
+      76,
+      35
+    ],
+    [
+      11119,
+      118,
+      74
+    ],
+    [
+      11279,
+      119,
+      76
+    ],
+    [
+      11430,
+      120,
+      76
+    ],
+    [
+      11602,
+      120,
+      76
+    ],
+    [
+      11740,
+      120,
+      76
+    ]
+  ]
+}

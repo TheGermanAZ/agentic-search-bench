@@ -1,0 +1,35 @@
+probe: hardened-P9
+outcome: works
+display: parallel (202 ms)
+detail: 5 host calls spanning 202 ms host-side (first start to last end); execution wall 217.4 ms; output '30'
+
+code:
+----
+import asyncio
+rs = await asyncio.gather(call_tool("lookup", {"id": 1}), call_tool("lookup", {"id": 2}), call_tool("lookup", {"id": 3}), call_tool("lookup", {"id": 4}), call_tool("lookup", {"id": 5}))
+msg = sum(x["value"] for x in rs)
+print(msg)
+msg
+----
+
+setup_ms: 24.4
+wall_s (whole child process): 0.75
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.105
+host lookup calls: 5
+  call id=1 start=1795379071.315 end=1795379071.515 pid=10983
+  call id=2 start=1795379071.315 end=1795379071.516 pid=10983
+  call id=3 start=1795379071.315 end=1795379071.516 pid=10983
+  call id=4 start=1795379071.315 end=1795379071.516 pid=10983
+  call id=5 start=1795379071.315 end=1795379071.516 pid=10983
+
+=== run 0 (217.4 ms) ===
+ok: true
+result: 30
+structured: null
+stdout: 
+
+=== child process log (tail) ===
+30
+

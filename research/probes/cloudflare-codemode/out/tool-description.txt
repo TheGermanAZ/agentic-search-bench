@@ -1,0 +1,20 @@
+Execute code to achieve a goal.
+
+Available:
+type LookupInput = {
+    id: number;
+}
+type LookupOutput = unknown
+
+declare const codemode: {
+	/**
+	 * Look up a value by id
+	 */
+	lookup: (input: LookupInput) => Promise<LookupOutput>;
+}
+
+Write an async arrow function in JavaScript that returns the result.
+Do NOT use TypeScript syntax — no type annotations, interfaces, or generics.
+Do NOT define named functions then call them — just write the arrow function body directly.
+
+Example: async () => { const r = await codemode.searchWeb({ query: "test" }); return r; }

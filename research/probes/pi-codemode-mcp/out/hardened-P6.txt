@@ -1,0 +1,24 @@
+{
+  "impl": "pi-codemode-mcp",
+  "config": "hardened",
+  "probe": "P6",
+  "options": {
+    "timeoutMs": 1000
+  },
+  "warmupExecIncludingServerSpawnMs": 551.11,
+  "hostCalls": 0,
+  "hostCallLog": [],
+  "results": [
+    {
+      "code": "while (true) {}",
+      "ms": 1002,
+      "hostCalls": 0,
+      "isError": true,
+      "textChars": 943,
+      "text": "{\n  \"ok\": false,\n  \"error\": {\n    \"name\": \"Error\",\n    \"message\": \"Script execution timed out after 1000ms\",\n    \"stack\": \"Error: Script execution timed out after 1000ms\\n    at Script.runInContext (node:vm:149:12)\\n    at JavaScriptSandboxRuntime.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/sandbox-runtime.ts:84:18)\\n    at Object.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/index.ts:356:45)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\\n    at async run (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:40:15)\\n    at async Object.P6 (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:59:19)\\n    at async file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:92:17\"\n  },\n  \"logs\": []\n}"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "hardened", "P6"], "exit_code": 0, "wall_ms": 2413, "peak_tree_rss_mb": 185.8, "watch_kill": null}

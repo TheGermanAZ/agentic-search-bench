@@ -1,0 +1,22 @@
+probe: P2
+binary: goose-codemode-probe
+process wall_ms: 64.7
+peak_rss_mb: 4.8
+exit: 0
+killed: None
+
+--- execution 0 ---
+code:
+async function run() {
+console.log("A".repeat(200000)); return "RETURNED";
+}
+is_error: True
+elapsed_ms: 1.54
+host_calls: 0
+returned chars: 153
+count of 'A' chars returned: 0
+contains RETURNED: False
+text returned to model:
+Error: RuntimeLimitError: reached the maximum number of iteration loops on this execution
+    at run (code_mode.js:2:23)
+    at <main> (code_mode.js:4:5)

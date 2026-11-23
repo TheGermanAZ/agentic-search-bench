@@ -1,0 +1,4 @@
+--- code 1 ---
+while (true) {}
+--- result 1 ---
+{"ms":120003,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":false,"error":"harness cap 120000 ms"}

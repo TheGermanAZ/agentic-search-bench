@@ -1,0 +1,8 @@
+--- code 1 ---
+local a = {}
+while true do table.insert(a, string.rep("x", 1000000)) end
+--- result 1 ---
+{"ms":6655,"hostCalls":0,"peakRssMB":2178,"side":{"proxyLogBytes":3709},"ok":true,"isError":true}
+text (42 chars):
+Script execution failed:
+not enough memory

@@ -1,0 +1,7 @@
+config: get_environment('ipython', {'kernel_mode': 'subprocess', 'cell_timeout': 30})
+code:
+print(open("/etc/hosts").read()[:60])
+result: {'ok': True, 'stdout': '##\n# Host Database\n#\n# localhost is used to configure the lo\n', 'stderr': '', 's': 0.02}
+host-side lookup calls: 0
+host pid: 23935
+wall: 0.48 s

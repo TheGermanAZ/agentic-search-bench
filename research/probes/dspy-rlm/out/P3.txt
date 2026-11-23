@@ -1,0 +1,39 @@
+probe: P3
+outcome: blocked
+display: blocked (Deno --allow-net off)
+detail: Both SPEC forms killed the interpreter: 'CodeInterpreterError: Deno exited (code 0) during execution: (last sandbox diagnostic: Unhandled async error: PythonError)', raised out of rlm(). Wrapped in try/except (P3try): urllib -> URLError <urlopen error [Errno 23] Host is unreachable>; pyodide.http.pyfetch -> 'Requires net access to "example.com:443", run again with the --allow-net flag'; js.fetch -> NotCapable (P12jsTry).
+
+code:
+----
+import urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10)
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+import ssl, urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10, context=ssl._create_unverified_context())
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 1.14
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.471
+host lookup calls: 0
+
+=== run 0 (419.7 ms) ===
+ok: false
+error: CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)
+raised: true
+
+=== run 1 (360.0 ms) ===
+ok: false
+error: CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)
+raised: true
+
+=== child process log (tail) ===
+

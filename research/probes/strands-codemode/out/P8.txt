@@ -1,0 +1,37 @@
+probe: P8
+outcome: works
+display: fresh
+detail: execution 2: 'gone'
+
+code:
+----
+kept = 7
+----
+try:
+    msg = kept
+except NameError:
+    msg = "gone"
+print(msg)
+msg
+----
+
+setup_ms: 1317.2
+wall_s (whole child process): 2.82
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.104
+host lookup calls: 0
+
+=== run 0 (72.6 ms) ===
+ok: true
+stdout: (no output)
+status: success
+
+=== run 1 (57.5 ms) ===
+ok: true
+stdout: gone
+status: success
+
+=== child process log (tail) ===
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+

@@ -1,0 +1,125 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1011,
+  "peakTreeRssMb": 110,
+  "peakTreeFootprintMb": 82,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R2a",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "label": "",
+      "startMs": 664,
+      "ms": 276,
+      "ok": true,
+      "result": {
+        "status": "success",
+        "text": "['dict', \"threw NameError: name 'eval' is not defined\", \"threw NameError: name 'eval' is not defined\", \"threw NameError: name 'eval' is not defined\"]"
+      },
+      "callsStarted": 1
+    },
+    "hostMaxEventLoopLagMs": 5,
+    "totalMs": 940
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      93,
+      33,
+      0
+    ],
+    [
+      178,
+      42,
+      17
+    ],
+    [
+      231,
+      50,
+      17
+    ],
+    [
+      257,
+      55,
+      17
+    ],
+    [
+      312,
+      61,
+      41
+    ],
+    [
+      365,
+      66,
+      41
+    ],
+    [
+      422,
+      69,
+      41
+    ],
+    [
+      471,
+      73,
+      52
+    ],
+    [
+      539,
+      78,
+      52
+    ],
+    [
+      606,
+      86,
+      64
+    ],
+    [
+      638,
+      90,
+      64
+    ],
+    [
+      694,
+      94,
+      64
+    ],
+    [
+      739,
+      97,
+      76
+    ],
+    [
+      797,
+      110,
+      76
+    ],
+    [
+      835,
+      110,
+      76
+    ],
+    [
+      894,
+      110,
+      82
+    ],
+    [
+      961,
+      110,
+      82
+    ],
+    [
+      1010,
+      0,
+      82
+    ]
+  ]
+}

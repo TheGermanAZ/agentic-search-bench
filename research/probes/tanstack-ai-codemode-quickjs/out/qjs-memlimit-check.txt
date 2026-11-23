@@ -1,0 +1,3 @@
+mem-lock: waited 8s
+context.runtime.setMemoryLimit {"pushed":2141,"err":"InternalError: out of memory"} rssMB 2114
+newRuntime({memoryLimit}) {"pushed":2141,"err":"InternalError: out of memory"} rssMB 2116

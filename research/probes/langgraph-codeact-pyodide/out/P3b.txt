@@ -1,0 +1,29 @@
+probe: P3b
+outcome: works
+display: works (example.com 200)
+detail: printed HTTP 200 from https://example.com
+
+code:
+----
+import js
+from pyodide.ffi import run_sync
+r = run_sync(js.fetch('https://example.com'))
+print('HTTP', r.status)
+----
+
+setup_ms: 19.9
+wall_s (whole child process): 1.5
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.29
+host lookup calls: 0
+
+=== run 0 (1179.3 ms) ===
+ok: true
+stdout: HTTP 200
+error: null
+context_keys: ["js", "r", "run_sync"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

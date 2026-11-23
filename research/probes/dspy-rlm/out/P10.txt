@@ -1,0 +1,30 @@
+probe: P10
+outcome: works
+display: works (message, no line)
+detail: message survives: True; 'line 2' present: False; text: "<repl_output> [Error] ValueError: ['probe-boom'] </repl_output>"
+
+code:
+----
+x = 1
+raise ValueError("probe-boom")
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 0.93
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.46
+host lookup calls: 0
+
+=== run 0 (477.7 ms) ===
+ok: false
+stdout: 
+model_view_all: ["<repl_output>\n[Error] ValueError: ['probe-boom']\n</repl_output>"]
+raw_outputs_untruncated_len: [34, 25]
+answer: done
+error: <repl_output>
+[Error] ValueError: ['probe-boom']
+</repl_output>
+
+=== child process log (tail) ===
+

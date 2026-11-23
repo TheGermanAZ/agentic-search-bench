@@ -1,0 +1,46 @@
+{
+ "config": "hardened",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ],
+  "timeout": 1.0,
+  "memory_limit": 16777216,
+  "max_ptc_calls": 8,
+  "mode": "call",
+  "subagents": false
+ },
+ "probe": "P12",
+ "result": [
+  {
+   "code": "this.constructor.constructor(\"return process\")()",
+   "output": "<error type=\"ReferenceError\">process is not defined\n    at anonymous (&lt;input&gt;:1:1)\n    at &lt;eval&gt; (eval_script:1:17)\n</error>",
+   "turn_ms": 451.9,
+   "eval_ms": 393.4,
+   "host_calls": 0
+  },
+  {
+   "code": "(function(){return this})().process",
+   "output": "<error type=\"TypeError\">cannot read property 'process' of undefined\n    at &lt;eval&gt; (eval_script:3:1)\n</error>",
+   "turn_ms": 46.2,
+   "eval_ms": 18.5,
+   "host_calls": 0
+  },
+  {
+   "code": "const out = {};\ntry { out[\"ctorProcess\"] = String(typeof this.constructor.constructor(\"return process\")()); } catch (e) { out[\"ctorProcess\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"sloppyThisProcess\"] = String(typeof (function(){return this})().process); } catch (e) { out[\"sloppyThisProcess\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"fnTypeofProcess\"] = String(Function(\"return typeof process\")()); } catch (e) { out[\"fnTypeofProcess\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"std\"] = String(typeof std); } catch (e) { out[\"std\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"os\"] = String(typeof os); } catch (e) { out[\"os\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"Deno\"] = String(typeof Deno); } catch (e) { out[\"Deno\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"Bun\"] = String(typeof Bun); } catch (e) { out[\"Bun\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"hostFns\"] = String(Object.getOwnPropertyNames(globalThis).filter(n => n.startsWith('__') || n === 'tools' || n === 'task' || n === 'console').join(',')); } catch (e) { out[\"hostFns\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"globals\"] = String(Object.getOwnPropertyNames(globalThis).length); } catch (e) { out[\"globals\"] = 'THREW ' + e.name + ': ' + e.message; }\nJSON.stringify(out, null, 1)",
+   "output": "<result>{\n \"ctorProcess\": \"THREW ReferenceError: process is not defined\",\n \"sloppyThisProcess\": \"THREW TypeError: cannot read property 'process' of undefined\",\n \"fnTypeofProcess\": \"undefined\",\n \"std\": \"undefined\",\n \"os\": \"undefined\",\n \"Deno\": \"undefined\",\n \"Bun\": \"undefined\",\n \"hostFns\": \"__console_log,__console_warn,__console_error,console,__tools_names,__tools_call,__lc_fs,tools\",\n \"globals\": \"78\"\n}</result>",
+   "turn_ms": 30.9,
+   "eval_ms": 8.2,
+   "host_calls": 0
+  },
+  {
+   "code": "await __tools_call(\"lookup\", {id: 1}).then(r => JSON.stringify(r))",
+   "output": "<result>{\"id\":1,\"value\":2}</result>",
+   "turn_ms": 333.1,
+   "eval_ms": 306.0,
+   "host_calls": 1
+  }
+ ]
+}
+
+monitor: {"config": "hardened", "probe": "P12", "exit_code": 0, "wall_s": 2.83, "peak_rss_mb": 181.5, "first_rss_mb": 23.0, "killed": null, "stderr_tail": []}

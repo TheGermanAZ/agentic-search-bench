@@ -1,0 +1,28 @@
+node_modules
+data/
+.cache/
+runs/raw/
+*.log
+decisions.local.tsv
+research/impls/
+
+# Probe scratch state: sandbox home folders, local databases, caches
+research/probes/**/home/
+research/probes/**/data-hardened/
+research/probes/**/.wrangler/
+__pycache__/
+.venv/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.env
+.env*
+# Probe outputs over 5 MB (floods kept as evidence locally)
+research/probes/verify/tanstack-ai-codemode-node/out/hardened-R9c.json
+research/probes/pydantic-ai-harness-codemode/out/X-print-cap.txt
+
+# Private working log (mentions the job search)
+decisions.tsv

@@ -1,0 +1,39 @@
+probe: hardened-P9
+outcome: works
+display: serial (4,429 ms, file RPC)
+detail: 5 host calls spanning 4429 ms host-side (first start to last end); execution wall 9405.2 ms; output '30'
+
+code:
+----
+from hermes_tools import lookup
+tot = 0
+for i in [1, 2, 3, 4, 5]:
+    x = lookup(id=i)
+    tot += x["value"]
+print(tot)
+tot
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 11.05
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.219
+host lookup calls: 5
+  call id=1 start=1795383123.194 end=1795383123.398 pid=31358
+  call id=2 start=1795383124.270 end=1795383124.473 pid=31358
+  call id=3 start=1795383125.504 end=1795383125.709 pid=31358
+  call id=4 start=1795383126.802 end=1795383127.007 pid=31358
+  call id=5 start=1795383127.419 end=1795383127.624 pid=31358
+
+=== run 0 (9405.2 ms) ===
+ok: true
+stdout: 30
+
+model_sees: {"status": "success", "output": "30\n", "tool_calls_made": 5, "duration_seconds": 6.95, "kernel": {"reused": false, "remote": true, "execution_count": 1}, "stdout_truncated": false, "stdout_bytes_captured": 3, "stdout_bytes_total": 3, "stdout_bytes_omitted": 0}
+status: success
+tool_calls_made: 5
+model_sees_len: 261
+
+=== child process log (tail) ===
+

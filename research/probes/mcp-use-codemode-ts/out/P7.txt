@@ -1,0 +1,7 @@
+probe P7
+
+child exit=null signal=SIGKILL killedBy=harness: 4.07 GB RSS after 6.8 s wall=6.9s peakRSS=4167MB
+stderr tail:
+[11/22/26 14:50:46] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+

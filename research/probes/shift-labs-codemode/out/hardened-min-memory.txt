@@ -1,0 +1,66 @@
+[
+  {
+    "mb": 8,
+    "runs": [
+      "Memory limit exceeded (8MB)",
+      "Memory limit exceeded (8MB)",
+      "Memory limit exceeded (8MB)"
+    ]
+  },
+  {
+    "mb": 10,
+    "runs": [
+      "Memory limit exceeded (10MB)",
+      "Memory limit exceeded (10MB)",
+      "Memory limit exceeded (10MB)"
+    ]
+  },
+  {
+    "mb": 12,
+    "runs": [
+      "ok",
+      "ok",
+      "ok"
+    ]
+  },
+  {
+    "mb": 14,
+    "runs": [
+      "ok",
+      "ok",
+      "ok"
+    ]
+  },
+  {
+    "mb": 16,
+    "runs": [
+      "ok",
+      "ok",
+      "ok"
+    ]
+  },
+  {
+    "mb": 20,
+    "runs": [
+      "ok",
+      "ok",
+      "ok"
+    ]
+  },
+  {
+    "mb": 24,
+    "runs": [
+      "ok",
+      "ok",
+      "ok"
+    ]
+  },
+  {
+    "mb": 32,
+    "runs": [
+      "ok",
+      "ok",
+      "ok"
+    ]
+  }
+]

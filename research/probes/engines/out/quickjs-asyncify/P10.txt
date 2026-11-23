@@ -1,0 +1,6 @@
+throw new Error("probe-boom")
+--- output
+ERROR: probe-boom
+    at <eval> (eval.js:1:16)
+---
+wall_ms=49 host_calls=0 peak_tree_rss_mb=159

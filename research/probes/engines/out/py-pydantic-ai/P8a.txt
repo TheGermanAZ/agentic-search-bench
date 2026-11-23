@@ -1,0 +1,6 @@
+kept = 7
+print("set")
+--- output
+set
+---
+wall_ms=18 host_calls=0 peak_tree_rss_mb=176

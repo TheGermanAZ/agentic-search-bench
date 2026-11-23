@@ -1,0 +1,16 @@
+--- code 1 ---
+rs = [Probe.lookup(id=i) for i in [1, 2, 3, 4, 5]]
+result = [r["value"] for r in rs]
+# executeTool arguments.timeout = 0.5
+--- result 1 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "SandboxTimeoutError"}}, "ms": 1152.82, "hostCalls": 5, "gatewayAlive": true}
+--- code 2 ---
+rs = [Probe.lookup(id=i) for i in [1, 2, 3, 4, 5]]
+result = [r["value"] for r in rs]
+# executeTool arguments.timeout = 600
+--- result 2 ---
+{"ok": true, "isError": false, "ms": 1278.15, "hostCalls": 5, "gatewayAlive": true}
+text (648 chars):
+{"result": [2, 4, 6, 8, 10], "logs": [], "calls": [{"i": 1, "server": "Probe", "tool": "lookup", "ms": 442, "status": "ok", "bytes": 21, "reused": false}, {"i": 2, "server": "Probe", "tool": "lookup", "ms": 203, "status": "ok", "bytes": 21, "reused": true}, {"i": 3, "server": "Probe", "tool": "lookup", "ms": 202, "status": "ok", "bytes": 21, "reused": true}, {"i": 4, "server": "Probe", "tool": "lookup", "ms": 203, "status": "ok", "bytes": 21, "reused": true}, {"i": 5, "server": "Probe", "tool": "lookup", "ms": 202, "status": "ok", "bytes": 22, "reused": true}], "usage": {"call_count": 5, "ms": 1270, "limit_bytes": 1024, "truncated": false}}
+--- summary ---
+{"note": "same script twice: per-call timeout 0.5 s, then 600 s chosen by the caller"}

@@ -1,0 +1,333 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py default R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 8407,
+  "peakTreeRssMb": 181,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R7b",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich']}), new thread_id per execution",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 980,
+        "ms": 5545,
+        "ok": true,
+        "result": "<error type=\"Timeout\">interrupted</error>",
+        "callsStarted": 0
+      },
+      "atReturn": {
+        "started": 0,
+        "done": 0
+      },
+      "after1500ms": {
+        "started": 1,
+        "done": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 8028,
+        "ms": 248,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 117,
+    "totalMs": 8276
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\nFailed to create QuickJS snapshot for slot_id=qjs_49764687db704bf797ea466f968373a9\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/impls/langchain-quickjs/.venv/lib/python3.12/site-packages/langchain_quickjs/middleware.py\", line 820, in aafter_agent\n    payload = await slot.acreate_snapshot()\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/impls/langchain-quickjs/.venv/lib/python3.12/site-packages/langchain_quickjs/_repl.py\", line 737, in acreate_snapshot\n    return await self._worker.run_async(self._acreate_snapshot())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/impls/langchain-quickjs/.venv/lib/python3.12/site-packages/langchain_quickjs/_repl.py\", line 742, in _acreate_snapshot\n    payload = self._context.create_snapshot().to_bytes()\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/impls/langchain-quickjs/.venv/lib/python3.12/site-packages/quickjs_rs/context.py\", line 327, in create_snapshot\n    self._assert_snapshot_quiescent()\n  File \"~/p/agentic-search-bench/research/impls/langchain-quickjs/.venv/lib/python3.12/site-packages/quickjs_rs/context.py\", line 186, in _assert_snapshot_quiescent\n    raise QuickJSError(\"cannot snapshot while async host tasks are pending\")\nquickjs_rs.errors.QuickJSError: cannot snapshot while async host tasks are pending\n",
+  "rssSamplesMsMb": [
+    [
+      122,
+      26
+    ],
+    [
+      211,
+      40
+    ],
+    [
+      330,
+      54
+    ],
+    [
+      419,
+      58
+    ],
+    [
+      516,
+      61
+    ],
+    [
+      621,
+      69
+    ],
+    [
+      738,
+      71
+    ],
+    [
+      843,
+      78
+    ],
+    [
+      943,
+      84
+    ],
+    [
+      1049,
+      86
+    ],
+    [
+      1225,
+      138
+    ],
+    [
+      1368,
+      157
+    ],
+    [
+      1548,
+      173
+    ],
+    [
+      1671,
+      181
+    ],
+    [
+      1764,
+      181
+    ],
+    [
+      1880,
+      181
+    ],
+    [
+      1991,
+      181
+    ],
+    [
+      2087,
+      181
+    ],
+    [
+      2184,
+      181
+    ],
+    [
+      2282,
+      181
+    ],
+    [
+      2436,
+      181
+    ],
+    [
+      2563,
+      181
+    ],
+    [
+      2673,
+      181
+    ],
+    [
+      2822,
+      181
+    ],
+    [
+      2938,
+      181
+    ],
+    [
+      3191,
+      181
+    ],
+    [
+      3451,
+      92
+    ],
+    [
+      3740,
+      92
+    ],
+    [
+      3901,
+      92
+    ],
+    [
+      4018,
+      92
+    ],
+    [
+      4215,
+      92
+    ],
+    [
+      4311,
+      92
+    ],
+    [
+      4424,
+      92
+    ],
+    [
+      4515,
+      92
+    ],
+    [
+      4618,
+      92
+    ],
+    [
+      4731,
+      92
+    ],
+    [
+      4826,
+      92
+    ],
+    [
+      4936,
+      92
+    ],
+    [
+      5090,
+      92
+    ],
+    [
+      5190,
+      92
+    ],
+    [
+      5288,
+      92
+    ],
+    [
+      5393,
+      92
+    ],
+    [
+      5488,
+      92
+    ],
+    [
+      5596,
+      92
+    ],
+    [
+      5694,
+      92
+    ],
+    [
+      5785,
+      92
+    ],
+    [
+      5925,
+      92
+    ],
+    [
+      6038,
+      92
+    ],
+    [
+      6126,
+      92
+    ],
+    [
+      6234,
+      92
+    ],
+    [
+      6341,
+      92
+    ],
+    [
+      6432,
+      92
+    ],
+    [
+      6546,
+      92
+    ],
+    [
+      6639,
+      107
+    ],
+    [
+      6752,
+      107
+    ],
+    [
+      6853,
+      107
+    ],
+    [
+      6956,
+      107
+    ],
+    [
+      7056,
+      107
+    ],
+    [
+      7158,
+      107
+    ],
+    [
+      7265,
+      107
+    ],
+    [
+      7371,
+      107
+    ],
+    [
+      7483,
+      107
+    ],
+    [
+      7592,
+      107
+    ],
+    [
+      7686,
+      107
+    ],
+    [
+      7785,
+      107
+    ],
+    [
+      7888,
+      107
+    ],
+    [
+      8007,
+      107
+    ],
+    [
+      8105,
+      107
+    ],
+    [
+      8191,
+      110
+    ],
+    [
+      8301,
+      110
+    ],
+    [
+      8406,
+      0
+    ]
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "host_callable": {
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/workspace/_exec.py\", line 103, in <module>\n    exec(code, combined, combined)\n  File \"<string>\", line 1, in <module>\nNameError: name 'lookup' is not defined\n",
+    "ms": 114.1
+  },
+  "host_calls": 0,
+  "code_string": {
+    "stdout": "42\n",
+    "stderr": "",
+    "ms": 340.0
+  },
+  "wall_s": 9.78
+}

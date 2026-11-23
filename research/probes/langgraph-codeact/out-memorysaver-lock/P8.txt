@@ -1,0 +1,41 @@
+probe: P8
+outcome: works
+display: persists
+detail: execution 2 printed '7'
+
+code:
+----
+kept = 7
+----
+try:
+    msg = kept
+except NameError:
+    msg = "gone"
+print(msg)
+msg
+----
+
+setup_ms: 3.5
+wall_s (whole child process): 0.38
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.068
+host lookup calls: 0
+
+=== run 0 (3.1 ms) ===
+ok: true
+stdout: <code ran, no output printed to stdout>
+error: null
+context_keys: ["kept"]
+host_builtins_leak: false
+
+=== run 1 (1.8 ms) ===
+ok: true
+stdout: 7
+
+error: null
+context_keys: ["kept", "msg"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

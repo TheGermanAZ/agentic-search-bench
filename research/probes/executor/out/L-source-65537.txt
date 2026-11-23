@@ -1,0 +1,13 @@
+{
+  "probe": "L-source-65537",
+  "codeChars": 65537,
+  "wallMs": 2,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 7,
+    "error": {
+      "code": -32602,
+      "message": "Invalid parameters for tool 'execute': Expected a value with a length of at most 65536\n  at [\"code\"]"
+    }
+  }
+}

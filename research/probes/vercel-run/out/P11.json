@@ -1,0 +1,47 @@
+{
+  "impl": "vercel-run",
+  "probe": "P11",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return 1+1;"
+  ],
+  "firstExecutionMs": 88.024625,
+  "first": {
+    "ok": true,
+    "status": "completed",
+    "value": 2,
+    "wallMs": 87.982708,
+    "hostCalls": 0
+  },
+  "timesMs": [
+    5.07,
+    5.06,
+    4.98,
+    3.92,
+    3.79,
+    3.42,
+    3.68,
+    3.44,
+    3.55,
+    4.32,
+    4.29,
+    5.05,
+    3.18,
+    2.97,
+    3.19,
+    3.03,
+    3.19,
+    3.19,
+    3.24,
+    3.1
+  ],
+  "medianMs": 3.5,
+  "p90Ms": 5.05,
+  "summary": {
+    "median": 3.5,
+    "p90": 5.05,
+    "first": 88
+  },
+  "hostRssAfterMB": 155.4
+}

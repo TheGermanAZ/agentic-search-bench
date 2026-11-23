@@ -1,0 +1,6 @@
+{
+  "probe": "P6b",
+  "outcome": "limited",
+  "detail": "returned after 35.01 s with ExecutionTimeoutError: Code execution exceeded the maximum execution time of 30 seconds",
+  "wall_s": 35.01
+}

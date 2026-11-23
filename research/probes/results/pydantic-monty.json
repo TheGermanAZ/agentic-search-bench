@@ -1,0 +1,177 @@
+{
+  "impl": "pydantic-monty",
+  "name": "Pydantic Monty",
+  "source": "https://github.com/pydantic/monty (PyPI: pydantic-monty)",
+  "pinned": "pydantic-monty 1.6.0 (PyPI); monty tag v1.6.0 = 3f89dcbf82071896efb5e3ded507db4191e8d829 (repo main is 5f4a3dfc, v1.7.0-beta.1, not run)",
+  "language": "Python",
+  "engine": "Monty, a Rust bytecode interpreter (Ruff parser). Each checkout runs in a `monty` worker subprocess started with an empty environment.",
+  "how_run": "pydantic_monty.Monty() pool, pool.checkout(), session.feed_run(code, external_lookup={'lookup': fn}); AsyncMonty for P9.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed 42, 1 host call (sync external_lookup), feed incl. worker spawn about 260 ms",
+      "evidence": "research/probes/pydantic-monty/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "return value 'RETURNED' and 200000 'A' chars (200001 with newline) both came back; prints arrive only via print_callback in 25 chunks; no truncation marker",
+      "evidence": "research/probes/pydantic-monty/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "ModuleNotFoundError: No module named 'urllib' (and 'socket'). No network path exists in the sandbox.",
+      "evidence": "research/probes/pydantic-monty/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "PermissionError: Permission denied: '/etc/hosts' for open() and pathlib",
+      "evidence": "research/probes/pydantic-monty/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "RuntimeError: 'os.environ' is not supported in this environment (os.getenv same). Host PROBE_SECRET=s3cr3t was set; not seen.",
+      "evidence": "research/probes/pydantic-monty/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "while True: pass ran until the harness stopped it at 120 s wall",
+      "evidence": "research/probes/pydantic-monty/out/P6.txt"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "No Monty limit fired. Harness killed the process tree at 4 GiB in 5 of 5 repeats (out/P7_repeats.txt), after 0.6 to 12.5 s, sampled peaks 4.25 to 5.63 GiB. One earlier full-suite run ended with MontyCrashedError (SIGKILL at a 3.2 GB sampled peak after 29.9 s) while another probe process ran on the same machine; not reproduced in 5 repeats, so it is recorded as external pressure, not a Monty outcome.",
+      "evidence": "research/probes/pydantic-monty/out/P7.txt"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "kept = 7 is visible to the next feed_run in the same checkout; a new checkout raises NameError (fresh)",
+      "evidence": "research/probes/pydantic-monty/out/P8.txt",
+      "display": "persists"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "AsyncMonty, asyncio.gather over 5 async lookups: sandbox elapsed 203 to 204 ms (serial would be about 1000), 5 host calls, return [2,4,6,8,10]",
+      "evidence": "research/probes/pydantic-monty/out/P9.txt",
+      "display": "parallel"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "caller gets MontyRuntimeError, str 'ValueError: probe-boom'; display() keeps the traceback with line 1",
+      "evidence": "research/probes/pydantic-monty/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "3 runs; only the last one asserted results (the other two were unasserted). Fresh checkout+feed median 0.05 to 0.14 ms (p90 0.06 to 5.9 ms, n=20 each). One feed inside one checkout median 0.033 to 0.055 ms. One-time pool setup 1.4 to 3.7 ms. The article's 0.004 ms is 8 to 35 times lower than these medians.",
+      "evidence": "research/probes/pydantic-monty/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "__class__ access raises AttributeError on a tuple, __import__ is NameError; extra probes __mro__ and __globals__ raise AttributeError. No host object reached.",
+      "evidence": "research/probes/pydantic-monty/out/P12.txt"
+    }
+  },
+  "defaults": {
+    "time": "none (ResourceLimits.max_feed_duration None, resource.rs:219). CodeMode integration applies 30 s per snippet when resource_limits is None.",
+    "memory": "none (max_memory None, resource.rs:221). CodeMode integration applies 256 MiB when resource_limits is None.",
+    "output": "no cap observed in the Monty API (200000-char print arrives whole). CodeMode only bounds its list of started nested calls.",
+    "tool_calls": "max_suspensions 1000 per session (resource.rs:212, 224); recursion depth 1000 (resource.rs:203, 223)"
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Host functions are passed per feed as external_lookup (callables become host functions). Type-check stubs are separate (type_check_stubs, or ExternalModule stubs). No schema-driven generator at this layer; CodeMode builds stubs from each tool's JSON schema.",
+      "evidence": "https://github.com/pydantic/monty/blob/3f89dcbf82071896efb5e3ded507db4191e8d829/crates/monty-python/python/pydantic_monty/_monty.pyi#L834-L840 ; research/impls/pydantic-monty/.venv-pai/lib/python3.14/site-packages/pydantic_ai_harness/code_mode/_toolset.py:1709"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Monty itself exposes nothing to a model. CodeMode puts every eligible tool behind one run_code tool, so the model sees one tool and writes stubs-typed Python calls to the rest.",
+      "evidence": "research/impls/pydantic-monty/.venv-pai/lib/python3.14/site-packages/pydantic_ai_harness/.agents/skills/pydantic-ai-harness/references/CODE-MODE.md:1-30"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "The sandbox runs in a subprocess reached over stdin and stdout pipes. A host call pauses the worker and returns a FunctionSnapshot. The host runs the function and calls resume. The snapshot can be dumped to about 2.2 KB and resumed in a new pool (snapshot_check.py).",
+      "evidence": "https://github.com/pydantic/monty/blob/3f89dcbf82071896efb5e3ded507db4191e8d829/crates/monty-pool/src/worker.rs#L135-L141 ; https://github.com/pydantic/monty/blob/3f89dcbf82071896efb5e3ded507db4191e8d829/crates/monty-python/python/pydantic_monty/_monty.pyi#L1577"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "The worker is a separate process started with env_clear, so the in-process claim in the article does not hold for v1.6. Unmounted filesystem access returns Permission denied, and os.environ and os.getenv raise not-supported. Host-side reality matches the probes (P3 to P5).",
+      "evidence": "https://github.com/pydantic/monty/blob/3f89dcbf82071896efb5e3ded507db4191e8d829/crates/monty-pool/src/worker.rs#L135-L138 ; https://github.com/pydantic/monty/blob/3f89dcbf82071896efb5e3ded507db4191e8d829/crates/monty-types/src/os.rs#L474 ; https://github.com/pydantic/monty/blob/3f89dcbf82071896efb5e3ded507db4191e8d829/crates/monty-types/src/os.rs#L479 ; research/probes/pydantic-monty/out/claims.txt (ARCH)"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "print() streams to print_callback. The return value is the last expression. Errors come back as MontyRuntimeError with frames. No truncation in the Monty API.",
+      "evidence": "research/probes/pydantic-monty/out/P2.txt ; research/probes/pydantic-monty/out/P10.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Library defaults are no time and no memory limit, with recursion and suspension caps. When configured, limits fire: max_feed_duration_secs=0.5 raised TimeoutError after 0.54 s, max_memory=50 MB raised MemoryError.",
+      "evidence": "https://github.com/pydantic/monty/blob/3f89dcbf82071896efb5e3ded507db4191e8d829/crates/monty-types/src/resource.rs#L216-L225 ; research/probes/pydantic-monty/out/claims.txt"
+    },
+    {
+      "topic": "State",
+      "finding": "Session state persists across feeds in one checkout (REPL). A new checkout is fresh. Sessions dump with session.dump(), and mid-run state with FunctionSnapshot.dump().",
+      "evidence": "https://github.com/pydantic/monty/blob/3f89dcbf82071896efb5e3ded507db4191e8d829/crates/monty-python/python/pydantic_monty/_monty.pyi#L1028 ; research/probes/pydantic-monty/out/P8.txt"
+    },
+    {
+      "topic": "Pydantic AI wiring",
+      "finding": "The article's CodeExecutionToolset is not in pydantic-ai-slim 2.71.0. The shipped integration is pydantic_ai_harness CodeMode (0.71.0). It drives Monty through checkout plus feed_start and resume, and sets a 30 s and 256 MiB default.",
+      "evidence": "research/impls/pydantic-monty/.venv-pai/lib/python3.14/site-packages/pydantic_ai_harness/_monty_exec.py:195-226 ; research/impls/pydantic-monty/.venv-pai/lib/python3.14/site-packages/pydantic_ai_harness/code_mode/_toolset.py:373-374"
+    }
+  ],
+  "surprises": [
+    "Article hello-world (Monty(code, inputs=..., external_functions=...)) raises TypeError on 1.6.0: Monty.__new__() takes 0 positional arguments. The API is now a pool with checkout and feed_run (out/claims.txt).",
+    "Article says Monty starts in microseconds because it is embedded in the parent process. v1.6 runs every checkout in a monty subprocess (verified with pgrep). Measured warm feed 33 to 59 us, fresh checkout 0.05 to 0.14 ms median, against the article's 0.004 ms.",
+    "Article says the default is strict resource limits. The library default is none for time and memory (P6 never stops; P7 passes 4 GiB in 5 of 5 repeats). Limits only apply when configured or in the CodeMode integration.",
+    "Access claims hold: no filesystem, network, or env by default (P3 to P5), and P12 reaches no host object.",
+    "Snapshot dump is about 2.2 KB for a tiny state, which fits the article's single-digit-KB claim. Round trip across two pools works (out/snapshot.txt).",
+    "The article's CodeExecutionToolset does not exist in the pinned pydantic-ai-slim 2.71.0; use pydantic-ai-harness CodeMode instead.",
+    "Repo main (5f4a3dfc, v1.7.0-beta.1) is newer than the PyPI 1.6.0 the probes ran; pinned to the v1.6.0 tag. Source reading and the installed wheel match."
+  ],
+  "hardened": {
+    "config": "pool.checkout(limits={'max_memory': 10_000_000, 'max_feed_duration_secs': 1.0, 'max_recursion_depth': 100}), the example in docs/resource-limits.md:11-15 at v1.6.0 (https://github.com/pydantic/monty/blob/3f89dcbf82071896efb5e3ded507db4191e8d829/docs/resource-limits.md#L11-L15); keys defined in pydantic_monty/__init__.py ResourceLimits (max_feed_duration_secs, max_memory). No network option exists because the sandbox has no network module; file access already needs a host os handler. Harness: research/probes/pydantic-monty/hardened.py",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "urllib: MontyRuntimeError: ModuleNotFoundError: No module named 'urllib'; socket: MontyRuntimeError: ModuleNotFoundError: No module named 'socket'",
+        "evidence": "research/probes/pydantic-monty/out/hardened-P3.txt",
+        "display": "not-defined (no urllib/socket)"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "open: PermissionError: Permission denied: '/etc/hosts'; pathlib: PermissionError: Permission denied: '/etc/hosts'",
+        "evidence": "research/probes/pydantic-monty/out/hardened-P4.txt",
+        "display": "blocked (PermissionError)"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "os.environ.get: RuntimeError: 'os.environ' is not supported in this environment; os.getenv: RuntimeError: 'os.getenv' is not supported in this environment (host env PROBE_SECRET=s3cr3t was set)",
+        "evidence": "research/probes/pydantic-monty/out/hardened-P5.txt",
+        "display": "blocked (os.environ unsupported)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "MontyRuntimeError: TimeoutError: feed time limit exceeded: 1.000896458s > 1s after 1.02 s wall (pool spawn included)",
+        "evidence": "research/probes/pydantic-monty/out/hardened-P6.txt",
+        "display": "limited (1 s feed limit)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "MontyRuntimeError: MemoryError: memory limit exceeded: 10044037 bytes > 10000000 bytes after 0.03 s; host process alive afterwards, new session returned 2",
+        "evidence": "research/probes/pydantic-monty/out/hardened-P7.txt",
+        "display": "limited (10 MB max_memory)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "sandbox elapsed 203 ms, 5 host call(s), return [2, 4, 6, 8, 10], host wall 212 ms; suspended time does not count toward max_feed_duration_secs",
+        "evidence": "research/probes/pydantic-monty/out/hardened-P9.txt",
+        "display": "parallel (203 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "subclasses: MontyRuntimeError: AttributeError: 'tuple' object has no attribute '__class__' | import os system: MontyRuntimeError: NameError: name '__import__' is not defined | extra: type mro: MontyRuntimeError: AttributeError: type object 'tuple' has no attribute '__mro__' | extra: function globals: MontyRuntimeError: AttributeError: 'function' object has no attribute '__globals__'",
+        "evidence": "research/probes/pydantic-monty/out/hardened-P12.txt",
+        "display": "blocked"
+      }
+    }
+  }
+}

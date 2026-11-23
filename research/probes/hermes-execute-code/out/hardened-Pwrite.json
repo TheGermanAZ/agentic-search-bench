@@ -1,0 +1,7 @@
+{
+  "probe": "Pwrite",
+  "outcome": "blocked",
+  "display": "blocked (host path absent)",
+  "detail": "--- stderr --- Traceback (most recent call last): File \"/tmp/hermes_rkernel_33770c24b66c/kernel_runner.py\", line 68, in run_cell exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS) ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"<cell>\", line 3, in <module> FileNotFoundError: [Errno 2] No such file or directory: '~/p/agentic-search-bench/research/probes/hermes-execute-code/out/hermes-write-probe.txt' FileNotFoundError: [Errno 2] No such file or directory: '...",
+  "evidence": "research/probes/hermes-execute-code/out/hardened-Pwrite.txt"
+}

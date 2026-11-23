@@ -1,0 +1,21 @@
+config: WasmExecutor(additional_imports=[])
+code:
+"import os\nprint(os.environ.get(\"PROBE_SECRET\"))"
+
+{
+  "probe": "P5",
+  "hardened": false,
+  "harness_wall_s": 2.4,
+  "peak_tree_rss_mib": 283,
+  "raw": {
+    "setup_ms": 2073,
+    "result": {
+      "ok": true,
+      "output": "None",
+      "logs": "None\n",
+      "ms": 2.5
+    },
+    "wall_s": 2.09
+  },
+  "child_tail": ""
+}

@@ -1,0 +1,20 @@
+mode: hardened
+code:
+async function run(client) {
+  const a: string[] = [];
+  while (true) a.push("x".repeat(1e6));
+}
+
+result:
+{
+  "response": {
+    "clientError": "McpError: MCP error -32000: Connection closed"
+  },
+  "ms": 5363,
+  "hostCalls": 0
+}
+
+baseline tree RSS bytes: 122142720
+peak tree RSS bytes: 4382703616
+harness killed 33904 at 4383 MB tree RSS after 5213 ms
+next execution after P7: {"response":{"clientError":"Error: Not connected"},"ms":0,"hostCalls":0}

@@ -1,0 +1,167 @@
+{
+  "impl": "llamaindex-codeact",
+  "name": "LlamaIndex CodeActAgent with the docs' SimpleCodeExecutor",
+  "source": "PyPI llama-index-core (repo https://github.com/run-llama/llama_index); example https://developers.llamaindex.ai/python/examples/agent/code_act_agent/ (notebook docs/examples/agent/code_act_agent.ipynb)",
+  "pinned": "llama-index-core 0.14.26 (tag v0.14.26 = 3aaab93a2e823b9637ce3c6f0611e5e18a4a7a5b; installed codeact_agent.py identical), notebook at 847acaa6d4471ebb1b1ea6f7e7b94001ef787ef3, llama-index-workflows 2.26.1",
+  "language": "Python",
+  "engine": "CPython exec(code, globals, locals) in the host process, on a thread-pool thread: CodeActAgent wraps the sync code_execute_fn in a FunctionTool, whose acall runs it with loop.run_in_executor.",
+  "how_run": "Notebook cells 5, 6 and 8 as shipped (SimpleCodeExecutor copied verbatim; locals={'lookup': lookup}, globals with __builtins__ and numpy; CodeActAgent(code_execute_fn=code_executor.execute, llm=..., tools=[lookup]); Context(agent)), driven by agent.run(..., ctx=ctx) with a scripted CustomLLM that replies with <execute>code</execute> and then 'done'. What comes back is ToolCallResult.tool_output.content, which the agent hands the model.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "42 in printed stdout: True; 42 in returned value: False; output '42 42'; host lookup calls: 1",
+      "evidence": "research/probes/llamaindex-codeact/out/P1.txt",
+      "display": "works (42, 1 call)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "RETURNED came back: True (in stdout); 200000 of 200000 A's came back; marker found: None; stdout chars 200011; error ''",
+      "evidence": "research/probes/llamaindex-codeact/out/P2.txt",
+      "display": "full (200,000 A + RETURNED)"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "spec form failed with 'Error: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)> Traceback (most recent call last): File \"/Users/theger...'; same URL with an unverified SSL context printed HTTP 200, so the socket reached the network",
+      "evidence": "research/probes/llamaindex-codeact/out/P3.txt",
+      "display": "works (example.com 200)"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "HOSTS 450 chars, mentions localhost: True HOSTS 450 chars, mentions localhost: True",
+      "evidence": "research/probes/llamaindex-codeact/out/P4.txt",
+      "display": "works (read /etc/hosts)"
+    },
+    "P5": {
+      "outcome": "works",
+      "detail": "sandbox printed 's3cr3t'; host PROBE_SECRET was set",
+      "evidence": "research/probes/llamaindex-codeact/out/P5.txt",
+      "display": "works (s3cr3t)"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "harness time watchdog at 120.1 s; nothing stopped the loop",
+      "evidence": "research/probes/llamaindex-codeact/out/P6.txt",
+      "display": "no-limit-within-120s"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "harness RSS watchdog at 4.24 GB after 1.7 s; peak tree RSS 4.24 GB; no error from the sandbox",
+      "evidence": "research/probes/llamaindex-codeact/out/P7.txt",
+      "display": "no limit (killed at 4.2 GB)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "execution 2 printed '7 7'",
+      "evidence": "research/probes/llamaindex-codeact/out/P8.txt",
+      "display": "persists"
+    },
+    "P8b": {
+      "outcome": "error",
+      "detail": "Error: NameError: name 'lookup' is not defined Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 107, in execute exec(exec_code, self.globals, self.locals) File \"<string>\", line 4, in <module> File \"<string>\", line 2, in helper NameError: name 'lookup' is not defined During handling of the above exception, another exception occurred: Traceback (most recent call last): File \"~/p/agentic-search-b...",
+      "evidence": "research/probes/llamaindex-codeact/out/P8b.txt",
+      "display": "error (def can't see tools)"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "5 host calls spanning 1019 ms host-side (first start to last end); execution wall 1085.5 ms; output '30 30'",
+      "evidence": "research/probes/llamaindex-codeact/out/P9.txt",
+      "display": "serial (1,019 ms)"
+    },
+    "P9b": {
+      "outcome": "works",
+      "detail": "5 host calls spanning 213 ms host-side (first start to last end); execution wall 298.8 ms; output '30'",
+      "evidence": "research/probes/llamaindex-codeact/out/P9b.txt",
+      "display": "parallel via threads (213 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "message survives: True; 'line 2' present: True; text: 'Error: ValueError: probe-boom Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 111, in execute exec(code, self.globals, self.locals) File \"<string>\", line 2, in <module> ValueError: probe-boom During handling of the above exception, another exception occurred: Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 114, in execute exec(code, self.globals, self.locals) File \"<string>\", line 2, in <module> ValueError: probe-boom Er...'",
+      "evidence": "research/probes/llamaindex-codeact/out/P10.txt",
+      "display": "message + line"
+    },
+    "P10b": {
+      "outcome": "works",
+      "detail": "Error: ValueError: after-call Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 111, in execute exec(code, self.globals, self.locals) File \"<string>\", line 2, in <module> ValueError: after-call During handling of the above exception, another exception occurred: Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/llamaindex-codeact/adapter.py\", line 114, in execute ...",
+      "evidence": "research/probes/llamaindex-codeact/out/P10b.txt",
+      "display": "code ran twice (2 host calls)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "20 runs in one session: median 6.3 ms, p90 8.2 ms; one-time setup 8.5 ms; fresh session per run (open+run+close, n=5): median 6.3 ms",
+      "evidence": "research/probes/llamaindex-codeact/out/P11.txt",
+      "display": "median 6.3 ms"
+    },
+    "P12": {
+      "outcome": "escaped",
+      "detail": "P12a subclasses walk: ran; 'SUBS 1108 True True SUBS 1108 True True' | P12b __import__('os').system: ran; 'SYSTEM 0 SYSTEM 0' | P12c _wrap_close globals popen: ran; 'WRAP PWNED2 WRAP PWNED2'",
+      "evidence": "research/probes/llamaindex-codeact/out/P12.txt",
+      "display": "escaped (os.system)"
+    }
+  },
+  "defaults": {
+    "time": "None: neither SimpleCodeExecutor nor CodeActAgent sets one, and BaseWorkflowAgent's workflow timeout defaults to None (base_agent.py:169). P6 ran 120 s until the harness stopped it; the loop runs on an executor thread that cannot be cancelled.",
+    "memory": "None (P7 reached 4.2 GB in 1.7 s; harness kill).",
+    "output": "Captured stdout, then stderr, then str(last expression) appended after a blank line, all as one string (P2: 200,000 A's plus RETURNED). No truncation in the executor or in handle_tool_call_results.",
+    "tool_calls": "No cap.",
+    "hardened": "No hardened run: SimpleCodeExecutor takes only locals and globals, and CodeActAgent.__init__ exposes no timeout or sandbox option (BaseWorkflowAgent's workflow timeout is not passed through, and would not stop the executor thread anyway). The docs only advise 'docker or external services'."
+  },
+  "hardened": null,
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Tools reach the code only because the user puts the same functions into the executor's locals dict; CodeActAgent's tools list is used for the prompt only (_get_tool_fns returns real_fn callables to describe). Code calls lookup(21) as a plain function.",
+      "evidence": "https://github.com/run-llama/llama_index/blob/3aaab93a2e823b9637ce3c6f0611e5e18a4a7a5b/llama-index-core/llama_index/core/agent/workflow/codeact_agent.py#L125-L149; https://github.com/run-llama/llama_index/blob/847acaa6d4471ebb1b1ea6f7e7b94001ef787ef3/docs/examples/agent/code_act_agent.ipynb (cell 6)"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Upfront: every tool's signature and docstring goes into DEFAULT_CODE_ACT_PROMPT via {tool_descriptions}; a tool_retriever can pre-filter tools per step, but there is no search tool the model calls.",
+      "evidence": "https://github.com/run-llama/llama_index/blob/3aaab93a2e823b9637ce3c6f0611e5e18a4a7a5b/llama-index-core/llama_index/core/agent/workflow/codeact_agent.py#L25-L58; #L171-L197; #L279-L283"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "None: the tool is a host function called directly by exec'd code in the same process (P1, 1 host call). Credentials a tool holds share the process with model-written code.",
+      "evidence": "https://github.com/run-llama/llama_index/blob/3aaab93a2e823b9637ce3c6f0611e5e18a4a7a5b/llama-index-core/llama_index/core/agent/workflow/codeact_agent.py#L98-L101; research/probes/llamaindex-codeact/out/P1.txt"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "None, and the docs say so: 'This example includes code that will execute arbitrary code. This is dangerous, and proper sandboxing should be used in production environments', and the class docstring says 'not safe for production use'. globals gets the real __builtins__ (P3, P4, P5, P12 all reach the host).",
+      "evidence": "https://github.com/run-llama/llama_index/blob/847acaa6d4471ebb1b1ea6f7e7b94001ef787ef3/docs/examples/agent/code_act_agent.ipynb (cells 0, 4, 5)"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "handle_tool_call_results appends 'Result of executing the code given:' plus the full string as a user message; no limit anywhere.",
+      "evidence": "https://github.com/run-llama/llama_index/blob/3aaab93a2e823b9637ce3c6f0611e5e18a4a7a5b/llama-index-core/llama_index/core/agent/workflow/codeact_agent.py#L352-L382"
+    },
+    {
+      "topic": "State",
+      "finding": "Persistent: the executor's locals dict lives as long as the SimpleCodeExecutor (P8 printed 7). Because exec gets separate globals and locals dicts, top-level names land in locals and functions defined in the code cannot see them, tools included (P8b: NameError: name 'lookup' is not defined).",
+      "evidence": "https://github.com/run-llama/llama_index/blob/847acaa6d4471ebb1b1ea6f7e7b94001ef787ef3/docs/examples/agent/code_act_agent.ipynb (cell 5); research/probes/llamaindex-codeact/out/P8b.txt"
+    },
+    {
+      "topic": "Errors",
+      "finding": "The executor returns 'Error: <Type>: <msg>' plus traceback.format_exc(), so message and '<string>' line numbers survive (P10), along with host file paths. A bare `except:` around the first exec re-runs the whole code after any exception, so the traceback shows the error twice and every side effect before the error happens twice: one lookup call then a raise produced 2 host calls (P10b).",
+      "evidence": "https://github.com/run-llama/llama_index/blob/847acaa6d4471ebb1b1ea6f7e7b94001ef787ef3/docs/examples/agent/code_act_agent.ipynb (cell 5, the `except:` branch); research/probes/llamaindex-codeact/out/P10.txt; research/probes/llamaindex-codeact/out/P10b.txt"
+    },
+    {
+      "topic": "Parallelism",
+      "finding": "Tools are sync and the executor has no async path, so a loop is serial (P9, 1,019 ms). Threads are allowed: ThreadPoolExecutor.map ran five lookups in 213 ms (P9b).",
+      "evidence": "research/probes/llamaindex-codeact/out/P9.txt; research/probes/llamaindex-codeact/out/P9b.txt"
+    },
+    {
+      "topic": "Async and blocking",
+      "finding": "A sync code_execute_fn runs via FunctionTool's sync_to_async, i.e. loop.run_in_executor, so the agent's event loop stays responsive while code runs, but a runaway loop keeps a thread pool worker forever.",
+      "evidence": "https://github.com/run-llama/llama_index/blob/3aaab93a2e823b9637ce3c6f0611e5e18a4a7a5b/llama-index-core/llama_index/core/tools/function_tool.py#L47-L55"
+    },
+    {
+      "topic": "Maintenance",
+      "finding": "MIT, repo pushed 2026-11-20. CodeActAgent is in llama-index-core; the executor exists only in the docs notebook.",
+      "evidence": "gh api repos/run-llama/llama_index: pushed_at 2026-11-20, license MIT"
+    }
+  ],
+  "surprises": [
+    "The documented executor runs code twice whenever it raises: the bare `except:` meant for parse failures catches runtime errors too and calls exec(code) again (P10b: 2 host calls for 1 lookup).",
+    "Functions written by the model cannot call the tools or each other's top-level names (P8b), because the executor passes separate globals and locals dicts to exec.",
+    "The docs' install line installs llama-index-llms-ollama while the code imports llama_index.llms.openai.",
+    "The executor's type hint says it returns Tuple[bool, str, Any] and its docstring says a dict; it returns a str."
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/hermes-execute-code/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../hermes-execute-code/adapter.py hardened R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2774,
+  "peakTreeRssMb": 225,
+  "peakTreeFootprintMb": 138,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R2a",
+    "impl": "hermes-execute-code",
+    "notes": "HERMES_HOME=home-hardened (docker, no network, 512 MB, 1 CPU, strict, timeout 10 s, 50 calls); one process, fresh task_id (container + kernel) per execution",
+    "data": {
+      "label": "",
+      "startMs": 499,
+      "ms": 2228,
+      "ok": true,
+      "result": {
+        "status": "success",
+        "output": "['dict', \"(<class 'dict'>, <class 'object'>)\", '<built-in method __subclasses__ of type object at 0xffffb6b81250>', \"[<class 'type'>, <class 'async_generator'>, <class 'bytearray_iterator'>, <class 'bytearray'>, <class 'bytes_iterator'>, <class 'bytes'>, <class 'builtin_function_or_method'>, <class 'callable_iterato\"]\n",
+        "error": null,
+        "tool_calls_made": 1,
+        "model_sees_chars": 586,
+        "model_sees_head": "{\"status\": \"success\", \"output\": \"['dict', \\\"(<class 'dict'>, <class 'object'>)\\\", '<built-in method __subclasses__ of type object at 0xffffb6b81250>', \\\"[<class 'type'>, <class 'async_generator'>, <class 'bytearray_iterator'>, <class 'bytearray'>, <class 'bytes_iterator'>, <class 'bytes'>, <class 'builtin_function_or_method'>, <class 'callable_iterato\\\"]\\n\", \"tool_calls_made\": 1, \"duration_seconds\": 1.61, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 320, \"stdout_bytes_total\": 320, \"stdout_bytes_omitted\": 0}"
+      },
+      "callsStarted": 1
+    },
+    "adapterStats": {
+      "tasks": 1
+    },
+    "hostMaxEventLoopLagMs": 18,
+    "totalMs": 2727
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      76,
+      31,
+      18
+    ],
+    [
+      127,
+      47,
+      18
+    ],
+    [
+      180,
+      55,
+      18
+    ],
+    [
+      229,
+      61,
+      43
+    ],
+    [
+      283,
+      73,
+      43
+    ],
+    [
+      335,
+      75,
+      43
+    ],
+    [
+      385,
+      82,
+      61
+    ],
+    [
+      441,
+      90,
+      61
+    ],
+    [
+      491,
+      112,
+      80
+    ],
+    [
+      544,
+      122,
+      80
+    ],
+    [
+      592,
+      125,
+      80
+    ],
+    [
+      644,
+      168,
+      108
+    ],
+    [
+      694,
+      169,
+      108
+    ],
+    [
+      748,
+      169,
+      122
+    ],
+    [
+      799,
+      169,
+      122
+    ],
+    [
+      851,
+      169,
+      122
+    ],
+    [
+      901,
+      169,
+      122
+    ],
+    [
+      955,
+      169,
+      122
+    ],
+    [
+      1005,
+      169,
+      109
+    ],
+    [
+      1057,
+      170,
+      109
+    ],
+    [
+      1107,
+      170,
+      122
+    ],
+    [
+      1157,
+      170,
+      122
+    ],
+    [
+      1210,
+      170,
+      122
+    ],
+    [
+      1261,
+      125,
+      109
+    ],
+    [
+      1313,
+      129,
+      109
+    ],
+    [
+      1364,
+      146,
+      109
+    ],
+    [
+      1415,
+      157,
+      109
+    ],
+    [
+      1465,
+      164,
+      109
+    ],
+    [
+      1517,
+      170,
+      123
+    ],
+    [
+      1568,
+      215,
+      123
+    ],
+    [
+      1617,
+      170,
+      123
+    ],
+    [
+      1668,
+      125,
+      123
+    ],
+    [
+      1721,
+      171,
+      123
+    ],
+    [
+      1772,
+      170,
+      123
+    ],
+    [
+      1823,
+      132,
+      123
+    ],
+    [
+      1875,
+      136,
+      118
+    ],
+    [
+      1928,
+      141,
+      118
+    ],
+    [
+      1981,
+      141,
+      118
+    ],
+    [
+      2031,
+      141,
+      124
+    ],
+    [
+      2083,
+      141,
+      124
+    ],
+    [
+      2136,
+      187,
+      138
+    ],
+    [
+      2190,
+      186,
+      138
+    ],
+    [
+      2241,
+      141,
+      138
+    ],
+    [
+      2294,
+      141,
+      124
+    ],
+    [
+      2366,
+      170,
+      124
+    ],
+    [
+      2400,
+      186,
+      124
+    ],
+    [
+      2446,
+      141,
+      137
+    ],
+    [
+      2499,
+      141,
+      137
+    ],
+    [
+      2548,
+      186,
+      124
+    ],
+    [
+      2599,
+      141,
+      124
+    ],
+    [
+      2649,
+      141,
+      124
+    ],
+    [
+      2702,
+      225,
+      124
+    ],
+    [
+      2757,
+      165,
+      124
+    ]
+  ]
+}

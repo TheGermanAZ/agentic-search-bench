@@ -1,0 +1,186 @@
+{
+  "impl": "codeact",
+  "name": "CodeAct (Wang et al., ICML 2024): mint PythonREPL, the agent environment's executor",
+  "source": "https://github.com/xingyaoww/code-act (also ships a Jupyter-gateway chat engine under scripts/chat/code_execution/, not probed)",
+  "pinned": "commit d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8 (default branch HEAD; last push 2024-05-23); ipython 9.18.1 (resolved; repo leaves it unpinned)",
+  "language": "Python",
+  "engine": "IPython InteractiveShell.run_cell() in the host process, with stdout captured through IPython.utils.io.capture_output. Not isolated.",
+  "how_run": "PythonREPL(user_ns={'lookup': fn}) then repl(code) for each probe. This matches GeneralEnv.__init__ (general_env.py:66-70) and handle_tool_call (general_env.py:143). The default timeout is 30 s.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed '42', 1 host call",
+      "evidence": "research/probes/codeact/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "returned 2022 chars (2000 A's); truncation marker: True; 'RETURNED' in returned text: False (the last expression's Out line is after the cut)",
+      "evidence": "research/probes/codeact/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "printed HTTP status '200' from https://example.com",
+      "evidence": "research/probes/codeact/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "read /etc/hosts: '## | # Host Database | # | # localhost is used to configure '",
+      "evidence": "research/probes/codeact/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "works",
+      "detail": "sandbox printed 's3cr3t'; host PROBE_SECRET is set",
+      "evidence": "research/probes/codeact/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "returned after 30.03 s with the repo's message: '---------------------------------------------------------------------------\\nTimeoutError                              Traceback (most recent call last)\\nCell In[1], line 1\\n----> 1 while True:\\n      2     pass\\n\\nFile <hidden_filepath>:~/p/agentic-search-bench/research/impls/codeact/repo/, in PythonREPL.time_limit.<locals>.signal_handler(signum, frame)\\n     30 def signal_handler(signum, frame):\\n---> 31     raise TimeoutError(f\"Timed out after {seconds} seconds.\")\\n\\nTimeoutError: Timed out after 30 seconds.'",
+      "evidence": "research/probes/codeact/out/P6.txt",
+      "display": "limited (30 s alarm)"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "harness stopped the process at 4.14 GB peak RSS after 0.3 s",
+      "evidence": "research/probes/codeact/out/P7.txt"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "execution 2 printed '7'; shell user_ns['kept'] = 7",
+      "evidence": "research/probes/codeact/out/P8.txt",
+      "display": "persists"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "serial: 1043 ms for 5 lookups, 5 host calls, sum 30",
+      "evidence": "research/probes/codeact/out/P9.txt",
+      "display": "serial (1,043 ms); threads 210 ms"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "returned as text, not raised: message True; traceback True; line number True. Text: '--\\nValueError                                Traceback (most recent call last)\\nCell In[1], line 1\\n----> 1 raise ValueError(\"probe-boom\")\\n\\nValueError: probe-boom'",
+      "evidence": "research/probes/codeact/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "same PythonREPL: {'median_ms': 0.1, 'p90_ms': 0.2, 'n': 20}; fresh PythonREPL per run (includes InteractiveShell reset): {'median_ms': 0.25, 'p90_ms': 0.3, 'n': 20}; runs whose output was not '2': 0; one-time construct: median 3.55 ms",
+      "evidence": "research/probes/codeact/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "escaped",
+      "detail": "P12a spec: subclasses walk: ran; output '438' | P12b spec: __import__ os system: escaped; os.system exit status printed as '0' | P12c spec: os._wrap_close globals -> system: escaped; os.system exit status printed as '0'",
+      "evidence": "research/probes/codeact/out/P12.txt"
+    },
+    "P9b": {
+      "outcome": "works",
+      "detail": "extra: parallel via concurrent.futures: 210 ms, 5 host calls, sum 30 (extra beyond SPEC)",
+      "evidence": "research/probes/codeact/out/P9b.txt"
+    }
+  },
+  "defaults": {
+    "time": "30 s, via SIGALRM (python_tool.py:21, 28-38). Observed P6: returned after 30.03 s with a TimeoutError traceback.",
+    "memory": "None found. P7 stopped by the harness at 4.14 GB peak RSS after 0.3 s, before the 30 s alarm.",
+    "output": "2000 chars of captured stdout, then '...\\n[Output Truncated]' (python_tool.py:72-73). The return value is not separate: it appears only as IPython's Out line in stdout, so the cut can remove it.",
+    "tool_calls": "None. lookup is an ordinary function in user_ns, and the executor counts nothing."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "GeneralEnv builds user_ns = {tool.name: tool.__call__} for every Tool in its tool set, then adds task.user_ns. Each tool is a plain Python callable in the IPython namespace. There is no generated stub and no schema-to-code step.",
+      "evidence": "https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/envs/general_env.py#L66-L70"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "The model sees every tool up front. get_toolset_description() writes each tool's signature and description into the prompt as 'Tool function available (already imported in <execute> environment)'. The env passes it into the prompt templates.",
+      "evidence": "https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/tools/__init__.py#L8-L18; https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/envs/general_env.py#L122, #L287"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "No bridge. A tool call is a direct Python call in the same process, inside the IPython shell (P1, P9 with 5 host calls).",
+      "evidence": "https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/envs/general_env.py#L138-L152 (handle_tool_call calls self.python_repl(env_input))"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "None in the executor. PythonREPL is commented 'This PythonREPL is not used by the environment; It is THE ENVIRONMENT' and has no restriction on imports, builtins or files. The NOT_USED signature shows the class is not a tool. The repo's only sandbox language is in mint/utils/exec.py, which is the human-eval correctness harness, and it tells users to sandbox it. The containerized engine is in the chat demo, not the agent environment.",
+      "evidence": "https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/tools/python_tool.py#L10-L16; https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/utils/exec.py#L52-L57; https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/README.md (containerized engine, chat UI); https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/scripts/chat/code_execution/jupyter.py#L239 (JupyterGatewayDocker)"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "__call__ returns only the captured stdout. An empty output becomes '[Executed Successfully with No Output]'. The traceback path is redacted by regex. The expression value of the last line appears only as an Out line in stdout, so the 2000-char cut can remove it (P2).",
+      "evidence": "https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/tools/python_tool.py#L49-L75 (__call__), #L59-L60 (empty output), #L66-L71 (path redaction), #L72-L73 (truncation)"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Time: timeout=30 by default, enforced by SIGALRM inside time_limit. The shell turns the TimeoutError into text, so the caller gets a string back and no exception (P6). Memory: none. Tool calls: none. The SIGALRM handler needs the main thread (a signal.signal rule), which is inferred from the Python signal docs and not probed.",
+      "evidence": "https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/tools/python_tool.py#L18-L38 (signature, default timeout 30, time_limit)"
+    },
+    {
+      "topic": "State",
+      "finding": "Persistent for one PythonREPL. reset() calls InteractiveShell.clear_instance() and makes a new shell from a copy of user_ns. GeneralEnv creates one PythonREPL in __init__ (general_env.py:68). The reset() method I read (general_env.py:274-300) does not call python_repl.reset(), so a new episode on the same env object may keep variables. That is inferred from the lines read, not probed (P8 persists in one object).",
+      "evidence": "https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/tools/python_tool.py#L40-L47 (reset); https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/envs/general_env.py#L68 (creation); #L274-L300 (reset, no python_repl call)"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Exceptions are not raised to the caller. IPython prints a traceback into captured stdout, and the path is redacted. The message and the 'Cell In[1], line N' line both survive (P10). The outer try in handle_tool_call only catches errors from parse_action and the call itself.",
+      "evidence": "https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/tools/python_tool.py#L49-L75; https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/envs/general_env.py#L138-L152"
+    },
+    {
+      "topic": "Approvals, credentials, PII",
+      "finding": "None in the code. Anything in the host environment is readable (P5), and a shell command runs with the host's privileges (P12). The repo has no credential handling in this path.",
+      "evidence": "https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/mint/tools/python_tool.py (whole file)"
+    }
+  ],
+  "surprises": [
+    "The 2000-char cut removes the last expression, which is where the return value shows up. A probe that relies on a final-expression result can lose it silently (P2).",
+    "The README describes a containerized code execution engine, and that is true for the chat demo. The agent environment that the paper's evaluations use runs PythonREPL in the host process with no container (python_tool.py#L10-L16, general_env.py#L68).",
+    "The 30 s limit does work as documented: P6 returned at 30.03 s. It is a SIGALRM inside the shell, so a blocking C call would not be interrupted (not probed).",
+    "The memory allocation loop reached 4.14 GB in 0.3 s, which was faster than the 30 s alarm. No memory limit exists below the process's own limits.",
+    "The repo's last push was 2024-05-23, so the executor is pinned to an older IPython-era design. The unpinned ipython resolved to 9.18.1."
+  ],
+  "hardened": {
+    "config": "The repo's containerized code execution engine: JupyterGatewayDocker(name=...) with RESOURCE_CONSTRAINTS {'mem_limit': '8g', 'nano_cpus': 2_000_000_000} (scripts/chat/code_execution/jupyter.py:239-245) and JupyterKernel.execute(code, timeout=60) (scripts/chat/code_execution/jupyter.py:136, 209-213), the same calls api.py:66-90 makes per conversation, documented in README.md:144-150 (https://github.com/xingyaoww/code-act/blob/d607f56c9cfe9e8632ebaf65dcaf2b4b7fe1c6f8/scripts/chat/code_execution/jupyter.py#L239-L245). Image docker.io/xingyaoww/codeact-executor:latest (amd64 only, 7.45 GB compressed, run under emulation). No network option. Harness pins the host port to 41910 and names containers codeact-hardened-<probe>; research/probes/codeact/hardened.py. The in-process PythonREPL's only stricter knob is a lower timeout (python_tool.py:21), which does not change isolation.",
+    "probes": {
+      "P3": {
+        "outcome": "works",
+        "detail": "printed 200 from https://example.com; JupyterGatewayDocker passes no network option, so the container has the default bridge network",
+        "evidence": "research/probes/codeact/out/hardened-P3.txt",
+        "display": "works (example.com 200)"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "open('/etc/hosts') read the container's own hosts file (127.0.0.1 localhost ... 192.168.215.4 <container id>), not the host's; no host path is mounted",
+        "evidence": "research/probes/codeact/out/hardened-P4.txt",
+        "display": "blocked (container /etc/hosts only)"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "printed None: the container is started without the host environment",
+        "evidence": "research/probes/codeact/out/hardened-P5.txt",
+        "display": "blocked (None)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "JupyterKernel.execute returned \"[Execution timed out (60 seconds).]\" after 60.0 s and sent a kernel interrupt; the next cell in the same kernel returned \"[Code executed successfully with no output]\" instead of \"2\" (output lost after the interrupt)",
+        "evidence": "research/probes/codeact/out/hardened-P6.txt",
+        "display": "limited (60 s execute timeout)"
+      },
+      "P7": {
+        "outcome": "no-limit-within-120s",
+        "detail": "harness killed the container at 4,234 MiB cgroup memory after 1.0 s; the configured mem_limit is 8g (jupyter.py:242), above the SPEC 4 GB kill, so it never fired",
+        "evidence": "research/probes/codeact/out/hardened-P7.txt",
+        "display": "no-limit-within-120s (8 GB cap)"
+      },
+      "P9": {
+        "outcome": "not-applicable",
+        "detail": "the engine has no host-tool bridge; tools are code strings run inside the kernel (jupyter.py:73-81). lookup defined in the kernel: loop 1,016 ms, 5 threads 204 ms, 0 host calls",
+        "evidence": "research/probes/codeact/out/hardened-P9.txt",
+        "display": "n/a (no host bridge; threads 204 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "subclass walk ran (995 classes, 1 _wrap_close). os.system, _wrap_close.__init__.__globals__['system'] and subprocess.run each hung until the 60 s timeout in fresh containers (process spawn inside the kernel hangs under amd64 emulation on this arm64 Mac; the same os.system works with plain python in the image). No docker.sock, no /Users mount: any spawned process would be inside the container",
+        "evidence": "research/probes/codeact/out/hardened-P12.txt",
+        "display": "blocked (container; spawns hang)"
+      }
+    }
+  }
+}

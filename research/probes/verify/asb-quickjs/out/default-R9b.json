@@ -1,0 +1,248 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1794,
+  "peakTreeRssMb": 550,
+  "peakTreeFootprintMb": 484,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "R9b",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 3,
+          "ms": 1558,
+          "ok": true,
+          "result": {
+            "value": "ERROR: out of memory\n    at <eval> (eval.js:1:45)",
+            "stringChars": 49
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 153,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1561,
+        "ms": 218,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 3,
+    "hostEvents": [],
+    "totalMs": 1779
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      75,
+      64,
+      42
+    ],
+    [
+      126,
+      81,
+      42
+    ],
+    [
+      182,
+      98,
+      42
+    ],
+    [
+      230,
+      119,
+      87
+    ],
+    [
+      281,
+      135,
+      87
+    ],
+    [
+      334,
+      152,
+      125
+    ],
+    [
+      383,
+      167,
+      125
+    ],
+    [
+      437,
+      186,
+      125
+    ],
+    [
+      486,
+      203,
+      164
+    ],
+    [
+      540,
+      220,
+      164
+    ],
+    [
+      590,
+      237,
+      164
+    ],
+    [
+      642,
+      253,
+      202
+    ],
+    [
+      694,
+      269,
+      202
+    ],
+    [
+      748,
+      281,
+      243
+    ],
+    [
+      797,
+      298,
+      243
+    ],
+    [
+      854,
+      315,
+      243
+    ],
+    [
+      902,
+      330,
+      280
+    ],
+    [
+      963,
+      349,
+      280
+    ],
+    [
+      1004,
+      363,
+      321
+    ],
+    [
+      1055,
+      382,
+      321
+    ],
+    [
+      1110,
+      400,
+      321
+    ],
+    [
+      1157,
+      416,
+      365
+    ],
+    [
+      1211,
+      434,
+      365
+    ],
+    [
+      1263,
+      450,
+      405
+    ],
+    [
+      1314,
+      468,
+      405
+    ],
+    [
+      1368,
+      484,
+      442
+    ],
+    [
+      1418,
+      500,
+      442
+    ],
+    [
+      1470,
+      516,
+      442
+    ],
+    [
+      1523,
+      534,
+      484
+    ],
+    [
+      1573,
+      550,
+      484
+    ],
+    [
+      1623,
+      66,
+      28
+    ],
+    [
+      1674,
+      66,
+      28
+    ],
+    [
+      1731,
+      66,
+      28
+    ],
+    [
+      1793,
+      66,
+      25
+    ]
+  ]
+}

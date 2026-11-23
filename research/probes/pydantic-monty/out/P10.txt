@@ -1,0 +1,10 @@
+CODE: raise ValueError("probe-boom")
+TYPE: MontyRuntimeError
+STR: 'ValueError: probe-boom'
+DISPLAY:
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    raise ValueError("probe-boom")
+ValueError: probe-boom
+TRACEBACK_ATTR:
+[Frame(filename='<python-input-0>', line=1, column=7, function_name='<module>')]

@@ -1,0 +1,26 @@
+{
+  "probe": "P4",
+  "config": "hardened",
+  "codes": [
+    "data = open(\"/etc/hosts\").read()\nmsg = \"HOSTS \" + str(len(data)) + \" \" + data.strip().splitlines()[-1]\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: [Errno 44] No such file or directory: '/etc/hosts'",
+      "error": "Error during execution: [Errno 44] No such file or directory: '/etc/hosts'",
+      "context_keys": [],
+      "host_builtins_leak": false,
+      "ms": 1168.1,
+      "started": 1795377628.348683
+    }
+  ],
+  "setup_ms": 15.5,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.52,
+  "peak_tree_rss_gb": 0.29,
+  "calls": [],
+  "child_log_tail": ""
+}

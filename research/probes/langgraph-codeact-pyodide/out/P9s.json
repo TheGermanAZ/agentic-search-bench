@@ -1,0 +1,7 @@
+{
+  "probe": "P9s",
+  "outcome": "works",
+  "display": "serial (~975 ms, in sandbox)",
+  "detail": "printed 30; 0 host calls because the tool runs inside Pyodide; execution took 2,110.7 ms against a 1,135 ms median empty execution (P11), so the five 200 ms sleeps ran one after another",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P9s.txt"
+}

@@ -1,0 +1,8 @@
+try:
+    return len(open("/etc/hosts").read())
+except Exception as e:
+    return type(e).__name__ + ": " + str(e)
+--- output
+PermissionError: Permission denied: '/etc/hosts'
+---
+wall_ms=17 host_calls=0 peak_tree_rss_mb=187

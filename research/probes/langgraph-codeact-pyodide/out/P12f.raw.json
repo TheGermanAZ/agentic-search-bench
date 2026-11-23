@@ -1,0 +1,26 @@
+{
+  "probe": "P12f",
+  "config": "default",
+  "codes": [
+    "import js\nprint('READ', js.Deno.readTextFileSync('/etc/hosts')[:40])"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag",
+      "error": "Error during execution: NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag",
+      "context_keys": [],
+      "host_builtins_leak": false,
+      "ms": 1172.0,
+      "started": 1795377460.814226
+    }
+  ],
+  "setup_ms": 15.4,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.58,
+  "peak_tree_rss_gb": 0.321,
+  "calls": [],
+  "child_log_tail": ""
+}

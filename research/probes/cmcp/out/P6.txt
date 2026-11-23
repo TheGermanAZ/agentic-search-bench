@@ -1,0 +1,23 @@
+{
+  "probe": "P6",
+  "code": "while (true) {}",
+  "args_extra": {},
+  "wall_ms": 120001,
+  "host_calls": 0,
+  "isError": null,
+  "response_text": "{\"harnessTimeout\":true,\"ms\":120000}",
+  "response_text_length": 35,
+  "console_on_proxy_stderr": [],
+  "raw_flags": {
+    "harnessTimeout": true,
+    "transportClosed": false,
+    "rpcError": null
+  },
+  "wall_ms_until_stopped_or_harness_kill": 120002,
+  "ping_after": {
+    "jsonrpc": "2.0",
+    "id": 4,
+    "result": {}
+  },
+  "second_execute_after": "no answer within 5 s (proxy wedged)"
+}

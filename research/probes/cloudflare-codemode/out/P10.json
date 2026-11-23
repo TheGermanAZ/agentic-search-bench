@@ -1,0 +1,32 @@
+{
+  "tool": {
+    "code": "throw new Error(\"probe-boom\")",
+    "mode": "tool",
+    "httpStatus": 200,
+    "wallMs": 4,
+    "body": {
+      "mode": "tool",
+      "res": {
+        "ok": false,
+        "thrown": "Code execution failed: probe-boom"
+      },
+      "hostCalls": 0,
+      "hostMs": 2
+    }
+  },
+  "raw": {
+    "code": "throw new Error(\"probe-boom\")",
+    "mode": "raw",
+    "httpStatus": 200,
+    "wallMs": 3,
+    "body": {
+      "mode": "raw",
+      "res": {
+        "error": "probe-boom",
+        "logs": []
+      },
+      "hostCalls": 0,
+      "hostMs": 1
+    }
+  }
+}

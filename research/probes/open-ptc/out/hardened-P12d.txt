@@ -1,0 +1,13 @@
+mode: hardened
+code:
+const o = new Deno.Command("echo", {args:["PWNED"]}).outputSync(); console.log(new TextDecoder().decode(o.stdout))
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "d04551ca-3e60-4c35-9aee-e2dba6adb845",
+  "success": false,
+  "output": "\n\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) NotCapable: Requires run access to \"echo\", run again with the --allow-run flag\nconst o = new Deno.Command(\"echo\", {args:[\"PWNED\"]}).outputSync(); console.log(new TextDecoder().decode(o.stdout))\n\u001b[0m\u001b[31m                                                     ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mspawnSyncInner\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_process/40_process.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m768\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m18\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mCommand.outputSync\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_process/40_process.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m813\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m12\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/123822d89a660c85.ts\u001b[0m:\u001b[0m\u001b[33m35\u001b[0m:\u001b[0m\u001b[33m54\u001b[0m\n",
+  "ms": 16,
+  "hostCalls": 0
+}

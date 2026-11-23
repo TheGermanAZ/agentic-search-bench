@@ -1,0 +1,10 @@
+code:
+const r = await fetch("https://example.com"); console.log(r.status, (await r.text()).length)
+
+result:
+{
+  "id": "2fea374e-3923-49e7-a4d0-1261157a3a52",
+  "result": "200 577\n",
+  "ms": 1364,
+  "hostCalls": 0
+}

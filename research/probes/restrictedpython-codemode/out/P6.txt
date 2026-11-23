@@ -1,0 +1,6 @@
+probe P6 hardened=False
+code:
+while True:
+    pass
+
+watchdog: still running after 120.0 s, harness stopped it

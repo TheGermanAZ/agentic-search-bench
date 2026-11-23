@@ -1,0 +1,10 @@
+ARCH host pid 46586 child pids ['72211'] names: 72211 ~/p/agentic-search-bench/research/impls/pydantic-monty/.venv/bin/monty
+ARCH host process is the interpreter running feed_run: no
+ARTICLE API Monty(code, inputs=, external_functions=) -> TypeError Monty.__new__() takes 0 positional arguments but 1 was given
+LATENCY warm feed '1+1' n=200 median 59.3 us p90 75.5 us
+LATENCY warm feed with def n=50 median 60.8 us p90 78.0 us
+LIMIT max_feed_duration_secs=0.5 -> MontyRuntimeError TimeoutError: feed time limit exceeded: 500.775375ms > 500ms after 0.54 s
+LIMIT max_memory=50MB -> MontyRuntimeError MemoryError: memory limit exceeded: 50045893 bytes > 50000000 bytes
+LIMIT default-style recursion via max_recursion_depth=50 -> MontyRuntimeError RecursionError: maximum recursion depth exceeded
+SNAPSHOT first feed_start returned FunctionSnapshot
+SNAPSHOT dump size bytes 2216

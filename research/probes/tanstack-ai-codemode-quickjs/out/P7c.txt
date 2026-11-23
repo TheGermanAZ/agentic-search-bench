@@ -1,0 +1,51 @@
+label: P7c
+command: node probe.mjs P7c
+child exit: code=0 signal=null
+child wall ms (process start to exit): 2250
+peak child RSS: 1608.1 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P7c",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 5.214749999999995,
+  "source": [
+    "const a = []; try { while (true) a.push(new Array(1e5).fill(1)); } catch (e) { return { pushed: a.length, err: String(e) }; }"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": {
+          "pushed": 1935,
+          "err": "InternalError: out of memory"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 2094.25825,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": {
+        "pushed": 1935,
+        "err": "InternalError: out of memory"
+      },
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 2094,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 1608.4
+}
+--- child stdout ---
+
+--- child stderr ---
+

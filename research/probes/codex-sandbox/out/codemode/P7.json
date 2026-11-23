@@ -1,0 +1,38 @@
+{
+ "probe": "P7",
+ "host": "~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex-code-mode-host",
+ "hello": {
+  "type": "connection/ready",
+  "selectedVersion": 1,
+  "capabilities": [
+   "bounded-output-v1",
+   "delegate-capacity-4096",
+   "session-cell-execution-resource-limits",
+   "yield-observation"
+  ]
+ },
+ "session_open": {
+  "type": "operation/response",
+  "id": 1,
+  "result": {
+   "status": "ok",
+   "value": {
+    "type": "session/ready",
+    "sessionId": "s1"
+   }
+  }
+ },
+ "setup_ms": 61.5,
+ "wall_ms": 9255.0,
+ "peak_rss_mb": 1491.9,
+ "killed": null,
+ "records": [
+  {
+   "source": "const a = []; while (true) a.push(\"x\".repeat(1e6) + a.length);",
+   "elapsed_ms": 9191.43,
+   "host_calls": 0,
+   "response": null,
+   "waits": []
+  }
+ ]
+}

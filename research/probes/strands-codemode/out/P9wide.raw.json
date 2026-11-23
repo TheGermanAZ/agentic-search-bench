@@ -1,0 +1,97 @@
+{
+  "probe": "P9wide",
+  "config": "default",
+  "codes": [
+    "import asyncio\nrs = await asyncio.gather(*[lookup(id=i) for i in range(12)])\nprint(sum(x['value'] for x in rs))"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "132",
+      "status": "success",
+      "ms": 461.7,
+      "started": 1795381219.813277
+    }
+  ],
+  "setup_ms": 650.7,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.93,
+  "peak_tree_rss_gb": 0.107,
+  "calls": [
+    {
+      "id": 0,
+      "start": 1795381219.838193,
+      "end": 1795381220.040139,
+      "pid": 54643
+    },
+    {
+      "id": 1,
+      "start": 1795381219.8384798,
+      "end": 1795381220.041142,
+      "pid": 54643
+    },
+    {
+      "id": 2,
+      "start": 1795381219.839913,
+      "end": 1795381220.041707,
+      "pid": 54643
+    },
+    {
+      "id": 3,
+      "start": 1795381219.840079,
+      "end": 1795381220.041902,
+      "pid": 54643
+    },
+    {
+      "id": 4,
+      "start": 1795381219.841869,
+      "end": 1795381220.042201,
+      "pid": 54643
+    },
+    {
+      "id": 5,
+      "start": 1795381219.842544,
+      "end": 1795381220.052552,
+      "pid": 54643
+    },
+    {
+      "id": 6,
+      "start": 1795381219.842877,
+      "end": 1795381220.053731,
+      "pid": 54643
+    },
+    {
+      "id": 7,
+      "start": 1795381219.842963,
+      "end": 1795381220.0543842,
+      "pid": 54643
+    },
+    {
+      "id": 8,
+      "start": 1795381219.8433049,
+      "end": 1795381220.054581,
+      "pid": 54643
+    },
+    {
+      "id": 9,
+      "start": 1795381219.843371,
+      "end": 1795381220.054833,
+      "pid": 54643
+    },
+    {
+      "id": 10,
+      "start": 1795381220.0415459,
+      "end": 1795381220.244027,
+      "pid": 54643
+    },
+    {
+      "id": 11,
+      "start": 1795381220.041686,
+      "end": 1795381220.2445,
+      "pid": 54643
+    }
+  ],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P10",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "throw new Error(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "Error",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "probe-boom",
+        "stack": "Error: probe-boom\n    at <anonymous> (code-mode.js:1:11)\n    at <anonymous> (code-mode.js:2:1)",
+        "string": "Error: probe-boom"
+      },
+      "wallMs": 79.62637500000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "Error: RUN_USER_SOURCE_ERROR probe-boom",
+    "ms": 80,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 149.1
+}

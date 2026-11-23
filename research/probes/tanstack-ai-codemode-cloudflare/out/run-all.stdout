@@ -1,0 +1,49 @@
+wrangler pid 76560 workerd pid 76929 ready after 4 polls
+P1: exit=0/null wall=714ms peakRSS=90MB serverPeak=75MB  {"out":{"result":42,"logCount":1,"logChars":2},"ms":310,"hostCalls":1}
+P1b: exit=0/null wall=531ms peakRSS=118MB serverPeak=75MB  {"out":{"result":42,"logCount":3,"logChars":17},"ms":281,"hostCalls":1}
+P2: exit=0/null wall=291ms peakRSS=91MB serverPeak=75MB  {"out":{"logCount":1,"logChars":200000},"ms":84,"hostCalls":0}
+P2b: exit=0/null wall=295ms peakRSS=90MB serverPeak=75MB  {"out":{"result":"RETURNED","logCount":1,"logChars":200000},"ms":59,"hostCalls":0}
+P2c: exit=0/null wall=365ms peakRSS=95MB serverPeak=75MB  {"out":{"result":"RETURNED","logCount":20,"logChars":4000000},"ms":140,"hostCalls":0}
+P2d: exit=0/null wall=288ms peakRSS=82MB serverPeak=76MB  {"out":{"result":{"stringLength":200000,"head":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","tail":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"logCount":0,"logChars":0},"ms":57,"hostCalls":0}
+P2e: exit=0/null wall=357ms peakRSS=89MB serverPeak=76MB  {"out":{"result":{"stringLength":2000000,"head":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","tail":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"logCount":0,"logChars":0},"ms":107,"hostCalls":0}
+P3: exit=0/null wall=299ms peakRSS=89MB serverPeak=76MB  {"out":"Error: This worker is not permitted to access the internet via global functions like fetch(). It must use capabilities (such as bindings in 'env') to talk to the outside world.","ms":76,"hostCalls":0}
+P4: exit=0/null wall=296ms peakRSS=89MB serverPeak=76MB  {"out":"ReferenceError: require is not defined","ms":63,"hostCalls":0}
+P4b: exit=0/null wall=288ms peakRSS=78MB serverPeak=76MB  {"out":"Error: No such module \"fs\".","ms":53,"hostCalls":0}
+P4c: exit=0/null wall=300ms peakRSS=82MB serverPeak=76MB  {"out":"ReferenceError: Deno is not defined","ms":61,"hostCalls":0}
+P5: exit=0/null wall=252ms peakRSS=90MB serverPeak=76MB  {"out":"ReferenceError: process is not defined","ms":55,"hostCalls":0}
+P5b: exit=0/null wall=286ms peakRSS=78MB serverPeak=77MB  {"out":{"result":"undefined|Object,Function,Array,Number,parseFloat,parseInt,Infinity,NaN,undefined,Boolean,String,Symbol,Date,Promise,RegExp,Error,AggregateError,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,SuppressedError,globalThis,JSON,Math,Intl,ArrayBuffer,Atomics,Uint8Array,Int8Array,Uint16Array,Int16Array,Uint32Array,Int32Array,BigUint64Array,BigInt64Array,Uint8ClampedArray,Float32Array,Float64Array,Float16Array,DataView,Map,BigInt,Set,Iterator,WeakMap,WeakSet,Proxy,Reflect,FinalizationRegistry,WeakRef,DisposableStack,AsyncDisposableStack,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,eval,isFinite,isNaN,console,navigator,origin,Cloudflare,performance,scheduler,caches,crypto,self,SharedArrayBuffer,WebAssembly,ServiceWorkerGlobalScope","logCount":0,"logChars":0},"ms":57,"hostCalls":0}
+P8: exit=0/null wall=312ms peakRSS=110MB serverPeak=77MB  {"out":{"result":"gone","logCount":0,"logChars":0},"ms":19,"hostCalls":0}
+P9: exit=0/null wall=1316ms peakRSS=112MB serverPeak=77MB  {"out":{"result":0,"logCount":1,"logChars":1},"ms":1066,"hostCalls":5}
+P9b: exit=0/null wall=8275ms peakRSS=90MB serverPeak=77MB  {"out":{"result":40,"logCount":0,"logChars":0},"ms":8091,"hostCalls":40}
+P9c: exit=0/null wall=2377ms peakRSS=121MB serverPeak=77MB  {"out":"MaxRoundsExceeded: Exceeded maximum tool callback rounds (10)","ms":2194,"hostCalls":10}
+P10: exit=0/null wall=237ms peakRSS=89MB serverPeak=78MB  {"out":"Error: probe-boom","ms":44,"hostCalls":0}
+P10b: exit=0/null wall=204ms peakRSS=82MB serverPeak=78MB  {"out":"Error: probe-boom","ms":49,"hostCalls":0}
+P10c: exit=0/null wall=248ms peakRSS=93MB serverPeak=78MB  {"out":"Error: host-tool-boom internal detail db=postgres://user:pw@host","ms":61,"hostCalls":0}
+P10d: exit=0/null wall=246ms peakRSS=111MB serverPeak=78MB  {"out":"Error: Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string","ms":50,"hostCalls":0}
+P11: exit=0/null wall=400ms peakRSS=120MB serverPeak=80MB  {"median":6.63,"p90":8.4,"first":46.3,"driverSetup":2.4,"firstResult":{"result":2,"logCount":0,"logChars":0}}
+P12: exit=0/null wall=213ms peakRSS=78MB serverPeak=80MB  {"out":"TypeError: Cannot read properties of undefined (reading 'constructor')","ms":45,"hostCalls":0}
+P12b: exit=0/null wall=200ms peakRSS=78MB serverPeak=80MB  {"out":"TypeError: Cannot read properties of undefined (reading 'process')","ms":42,"hostCalls":0}
+P12c: exit=0/null wall=198ms peakRSS=78MB serverPeak=80MB  {"out":"EvalError: Code generation from strings disallowed for this context","ms":40,"hostCalls":0}
+P12d: exit=0/null wall=200ms peakRSS=81MB serverPeak=80MB  {"out":{"result":"undefined|function|function","logCount":0,"logChars":0},"ms":44,"hostCalls":0}
+P12e: exit=0/null wall=198ms peakRSS=84MB serverPeak=80MB  {"out":"EvalError: Code generation from strings disallowed for this context","ms":46,"hostCalls":0}
+P12f: exit=0/null wall=217ms peakRSS=90MB serverPeak=81MB  {"out":{"result":{},"logCount":0,"logChars":0},"ms":47,"hostCalls":0}
+P12g: exit=0/null wall=215ms peakRSS=76MB serverPeak=81MB  {"out":{"result":{"deref":"deref threw: Cannot read properties of undefined (reading 'deref')","ctor":"ctor threw: Cannot read properties of undefined (reading 'constructor')"},"logCount":0,"logChars":0},"ms":43,"hostCalls":0}
+hardened-P3: exit=0/null wall=197ms peakRSS=79MB serverPeak=81MB  {"out":"Error: This worker is not permitted to access the internet via global functions like fetch(). It must use capabilities (such as bindings in 'env') to talk to the outside world.","ms":39,"hostCalls":0}
+hardened-P4: exit=0/null wall=208ms peakRSS=79MB serverPeak=81MB  {"out":"ReferenceError: require is not defined","ms":47,"hostCalls":0}
+hardened-P4b: exit=0/null wall=206ms peakRSS=77MB serverPeak=81MB  {"out":"Error: No such module \"fs\".","ms":43,"hostCalls":0}
+hardened-P5: exit=0/null wall=215ms peakRSS=78MB serverPeak=81MB  {"out":"ReferenceError: process is not defined","ms":43,"hostCalls":0}
+hardened-P9: exit=0/null wall=1237ms peakRSS=116MB serverPeak=81MB  {"out":{"result":0,"logCount":1,"logChars":1},"ms":1055,"hostCalls":5}
+hardened-P12: exit=0/null wall=185ms peakRSS=85MB serverPeak=81MB  {"out":"TypeError: Cannot read properties of undefined (reading 'constructor')","ms":38,"hostCalls":0}
+hardened-P12b: exit=0/null wall=184ms peakRSS=85MB serverPeak=81MB  {"out":"TypeError: Cannot read properties of undefined (reading 'process')","ms":41,"hostCalls":0}
+hardened-P12c: exit=0/null wall=180ms peakRSS=85MB serverPeak=81MB  {"out":"EvalError: Code generation from strings disallowed for this context","ms":38,"hostCalls":0}
+hardened-P12e: exit=0/null wall=200ms peakRSS=79MB serverPeak=81MB  {"out":"EvalError: Code generation from strings disallowed for this context","ms":42,"hostCalls":0}
+hardened-P12g: exit=0/null wall=222ms peakRSS=75MB serverPeak=81MB  {"out":{"result":{"deref":"deref threw: Cannot read properties of undefined (reading 'deref')","ctor":"ctor threw: Cannot read properties of undefined (reading 'constructor')"},"logCount":0,"logChars":0},"ms":44,"hostCalls":0}
+wrangler pid 91728 workerd pid 91852 ready after 4 polls
+P6: exit=null/SIGKILL wall=120009ms peakRSS=89MB serverPeak=73MB no-limit-within-120s NO RECORD
+wrangler pid 7565 workerd pid 8331 ready after 3 polls
+hardened-P6: exit=null/SIGKILL wall=120013ms peakRSS=89MB serverPeak=74MB no-limit-within-120s NO RECORD
+wrangler pid 21448 workerd pid 21564 ready after 3 polls
+P7: exit=0/null wall=17120ms peakRSS=88MB serverPeak=74MB  {"siblingStartMs":103,"siblingEndMs":16940,"main":"WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)","ms":16939,"sibling":"WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)","siblingMs":16837,"after":"WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)"}
+wrangler pid 33742 workerd pid 34182 ready after 3 polls
+mem-lock: waited 14s
+hardened-P7: exit=0/null wall=15982ms peakRSS=88MB serverPeak=74MB  {"siblingStartMs":103,"siblingEndMs":15819,"main":"WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)","ms":15818,"sibling":"WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)","siblingMs":15716,"after":"WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)"}

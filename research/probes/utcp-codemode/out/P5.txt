@@ -1,0 +1,10 @@
+{
+  "probe": "P5 env secrets",
+  "hostEnvSet": "s3cr3t",
+  "code": "process.env.PROBE_SECRET",
+  "result": null,
+  "logs": [
+    "[ERROR] Code execution failed: ReferenceError: process is not defined\n    at <isolated-vm>:5:15\n    at <isolated-vm>:6:15\n    at <isolated-vm>:11:11"
+  ],
+  "threw": null
+}

@@ -1,0 +1,25 @@
+{
+ "config": "hardened",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ],
+  "timeout": 1.0,
+  "memory_limit": 16777216,
+  "max_ptc_calls": 8,
+  "mode": "call",
+  "subagents": false
+ },
+ "probe": "P9",
+ "result": [
+  {
+   "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.lookup({id:i}))); console.log(Date.now()-t)",
+   "output": "<stdout>\n206\n</stdout>\n<result>null</result>",
+   "turn_ms": 377.3,
+   "eval_ms": 369.6,
+   "host_calls": 5
+  }
+ ]
+}
+
+monitor: {"config": "hardened", "probe": "P9", "exit_code": 0, "wall_s": 0.95, "peak_rss_mb": 183.3, "first_rss_mb": 15.9, "killed": null, "stderr_tail": []}

@@ -1,0 +1,41 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P12b",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    },
+    "driver": {
+      "maxToolCalls": 100
+    }
+  },
+  "runtime": "bun 1.4.4",
+  "setupMs": 3.4932500000000033,
+  "source": [
+    "return String((function(){return this})().process);"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "undefined",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 157.294708,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "undefined",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 157,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 44.3
+}

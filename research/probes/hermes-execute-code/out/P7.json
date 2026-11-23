@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "error",
+  "display": "no limit (kernel died at 3.3 GB)",
+  "detail": "No memory limit on the local backend. After 32.4 s at 3.32 GB peak tree RSS the kernel died from outside; the model saw status error, 'The session kernel died while running the cell.' The host process survived. Run under mem-lock.sh.",
+  "evidence": "research/probes/hermes-execute-code/out/P7.txt"
+}

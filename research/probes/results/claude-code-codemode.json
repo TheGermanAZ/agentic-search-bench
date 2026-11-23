@@ -1,0 +1,186 @@
+{
+  "impl": "claude-code-codemode",
+  "name": "Claude Code Code Mode (experimental REPL tool)",
+  "source": "https://code.claude.com/docs/en/code-mode (closed source; native build of the claude CLI)",
+  "pinned": "Claude Code 2.1.325 (native build, from the session banner and the stream init event); model claude-haiku-5-5; docs fetched 2026-11-22 (research/probes/claude-code-codemode/out/docs/)",
+  "language": "JavaScript",
+  "engine": "A Bun node:vm context inside the Claude Code process itself (JavaScriptCore), created with codeGeneration {strings: false, wasm: false}, import and require rejected, and a hardening pass (src/utils/vmHardening.ts per the binary's strings). One persistent context per session. Tool calls (shell, Read, Edit, MCP) leave the context through host bindings and run as ordinary Claude Code tool calls.",
+  "how_run": "A model was the typist. Code Mode refuses -p in 2.1.325 (\"for now it only works in the interactive terminal\"), so research/probes/claude-code-codemode/driver.py starts an interactive claude --model haiku in tmux with CLAUDE_CODE_EXPERIMENTAL_CODE_MODE=1 for that invocation only, --setting-sources '' --settings <file> --mcp-config mcp.json --strict-mcp-config --permission-mode default --allowedTools REPL mcp__lookup__lookup, pastes a prompt asking Haiku to run the probe's exact code through the REPL tool, and reads the session transcript JSONL that Claude Code writes. Every probe record checks that the code the REPL ran (toolUseResult.code) equals the probe code. Where Haiku refused to type a probe (P6, P7, P12, hardened P5b), a PreToolUse hook passed in the same --settings file replaced the model's 1+1 with the probe code through updatedInput, and the model was told so; those steps are marked typist \"hook\".",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "tools[\"mcp__lookup__lookup\"]({id: 21}) returned {\"id\":21,\"value\":42}; 1 host call in the MCP server's log. console.log(r.value) did not reach the model: \"[console.log wrote 1 line to the console ring, not to this output — use self.log(...) ...]\". The MCP tool is reached as tools.mcp__lookup__lookup, found with searchTools(\"lookup\") (out/P0.json). Model typed it.",
+      "evidence": "research/probes/claude-code-codemode/out/P1.json ; research/probes/claude-code-codemode/out/P0.json",
+      "display": "works (42, 1 call)"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "log(\"A\".repeat(200000)); \"RETURNED\": the model got 30,097 chars: 18,000 A's, \"... [170000 chars elided] ...\", 12,000 A's, then <result>RETURNED</result>. The full 200,000 stayed in toolUseResult.stdout on the host. console.* never reaches the model (ring buffer).",
+      "evidence": "research/probes/claude-code-codemode/out/P2.json",
+      "display": "truncated (30,000 + marker)"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "\"ReferenceError: fetch is not defined\". tools.WebFetch was not exposed either (\"tools.WebFetch is not a function\", out/P3b.json). Network is still reachable through the shell global $ (curl), which is an ordinary Bash tool call under permission rules and the optional sandbox.",
+      "evidence": "research/probes/claude-code-codemode/out/P3.json ; research/probes/claude-code-codemode/out/P3b.json",
+      "display": "not-defined (no fetch)"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "require(\"fs\"): \"Error: Module loading (require) is not available in REPL — the vm context is sealed. Use the tool globals instead: await Read(...)...\". The file() global reads through the Read tool: file(\"/etc/hosts\").text() raised Claude Code's permission prompt for Read({\"file_path\":\"/etc/hosts\"}) (outside the working directory); the harness declined it. In auto or bypassPermissions mode that read would run.",
+      "evidence": "research/probes/claude-code-codemode/out/P4.json ; research/probes/claude-code-codemode/out/P4b.json",
+      "display": "blocked (require); file() asks"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "\"ReferenceError: process is not defined\". $`printenv PROBE_SECRET` raised the Bash permission prompt in default mode (declined by the harness); wave 1 showed the shell inherits Claude Code's environment, including PROBE_SECRET, when allowed.",
+      "evidence": "research/probes/claude-code-codemode/out/P5.json ; research/probes/claude-code-codemode/out/P5b.json",
+      "display": "not-defined (shell asks)"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "while (true) {} was stopped by a step budget about 0.55 s after the call: \"RangeError: REPL: a turn ran 300000000 steps, its budget (a step is one pass through a loop or one call of a function), and was stopped.\" A loop that awaits (while (true) { await sleep(1) }) is not caught by the step budget; it stopped at \"REPL execution timed out after 30000ms of script time (inner tool calls excluded). Script may still be running\" (out/P6b.json). A follow-up showed it really stopped: a tick counter did not move over 2 s and running() was empty (out/P6c.json). Haiku refused to type while(true){}; the hook ran it.",
+      "evidence": "research/probes/claude-code-codemode/out/P6.json ; research/probes/claude-code-codemode/out/P6b.json ; research/probes/claude-code-codemode/out/P6c.json",
+      "display": "limited (300M-step budget; 30 s)"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "No memory limit. The code runs in the Claude Code process, whose process tree went from 374 MB to 4.54 GB within about 2 s; the harness killed Claude Code at the 4 GB rule, so the whole session died, not just the script. Haiku refused to type it; the hook ran it (the pending-code file was consumed). Nothing reached the transcript because the process died first.",
+      "evidence": "research/probes/claude-code-codemode/out/P7.json",
+      "display": "no limit (Claude Code 4.5 GB, killed)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "persists. globalThis.kept = 7 returned 7, and the next REPL call returned 7. The tool description says the context is persistent across calls but not across a restart, resume or fork.",
+      "evidence": "research/probes/claude-code-codemode/out/P8.json",
+      "display": "persists"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "Promise.all of 5 lookups took 215 ms inside the script; the MCP server logged all 5 calls starting in the same millisecond. Parallel.",
+      "evidence": "research/probes/claude-code-codemode/out/P9.json",
+      "display": "parallel (215 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "\"Error: probe-boom\" followed by \"Thrown at (statements quoted from the script as it ran, which is reformatted): in <anonymous>: throw new Error(\\\"probe-boom\\\"); The script threw partway through: statements before the failing one ran. No tool call had completed.\" The message and the failing statement survive; no line number or stack.",
+      "evidence": "research/probes/claude-code-codemode/out/P10.json",
+      "display": "message + failing statement"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "20 REPL calls of 1+1: median 6.5 ms, p90 12 ms, measured as the gap between the tool_use and tool_result transcript timestamps (host-side; model time excluded). With the injection hook installed the same measure was 33 ms median, so a PreToolUse hook process adds about 26 ms per call (out/p11-with-hook/P11.json). Session start not measured.",
+      "evidence": "research/probes/claude-code-codemode/out/nohook-P11.json",
+      "display": "6.5 ms median"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "All 8 attempts blocked. this.constructor.constructor(\"return process\")() and the same through log, file, $ and a searchTools result: \"EvalError: Code generation from strings disallowed for this context\" with the hint \"eval and the Function constructors are off in this context by design\". (function(){return this})().process returned undefined. tools.constructor is undefined and Object.getPrototypeOf(tools) is null. Haiku refused to type every escape attempt; the hook ran them.",
+      "evidence": "research/probes/claude-code-codemode/out/P12.json",
+      "display": "blocked"
+    }
+  },
+  "hardened": {
+    "config": "research/probes/claude-code-codemode/settings-hardened.json via --settings: sandbox {enabled, failIfUnavailable, autoAllowBashIfSandboxed, allowUnsandboxedCommands: false, network {allowedDomains: [], strictAllowlist: true}, credentials.envVars [{name: PROBE_SECRET, mode: deny}]} plus permissions.deny [\"WebFetch\", \"Read(//etc/**)\"] (https://code.claude.com/docs/en/sandboxing, https://code.claude.com/docs/en/permissions). The docs say the sandbox covers only shell commands: \"The JavaScript itself and its file, web, and MCP tool calls run outside the sandbox.\" No setting limits the REPL's time or memory.",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "Same: \"ReferenceError: fetch is not defined\"; tools.WebFetch not a function.",
+        "evidence": "research/probes/claude-code-codemode/out/hardened-P3.json ; research/probes/claude-code-codemode/out/hardened-P3b.json",
+        "display": "not-defined (no fetch)"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "require: sealed context. file(\"/etc/hosts\").text() now failed with no prompt: \"Error: /etc/hosts: File is in a directory that is denied by your permission settings.\"",
+        "evidence": "research/probes/claude-code-codemode/out/hardened-P4.json ; research/probes/claude-code-codemode/out/hardened-P4b.json",
+        "display": "blocked (deny rule)"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "detail": "process is not defined. $`printenv PROBE_SECRET` ran in the sandbox without a prompt and returned \"[exit 1]\": the credentials rule removed the variable (hook-typed after Haiku refused).",
+        "evidence": "research/probes/claude-code-codemode/out/hardened-P5.json ; research/probes/claude-code-codemode/out/hardened-P5b.json",
+        "display": "not-defined (shell env denied)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "Same 300,000,000-step budget stop.",
+        "evidence": "research/probes/claude-code-codemode/out/hardened-P6.json",
+        "display": "limited (300M-step budget)"
+      },
+      "P7": {
+        "outcome": "no-limit-within-120s",
+        "detail": "Same: Claude Code's process tree went from 387 MB to 4.68 GB and the harness killed it. The sandbox settings do not touch the REPL.",
+        "evidence": "research/probes/claude-code-codemode/out/hardened-P7.json",
+        "display": "no limit (Claude Code 4.7 GB, killed)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "218 ms for 5 parallel lookups, 5 host calls.",
+        "evidence": "research/probes/claude-code-codemode/out/hardened-P9.json",
+        "display": "parallel (218 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "Attempt 1 gave the same EvalError. Attempts 2-8 did not run: after seeing the hook swap in an escape, Haiku refused even the 1+1 call. The settings above do not change the VM, so the default run's 8 blocked attempts stand.",
+        "evidence": "research/probes/claude-code-codemode/out/hardened-P12.json",
+        "display": "blocked (1 of 8 run)"
+      }
+    }
+  },
+  "defaults": {
+    "time": "Per synchronous turn: a 300,000,000-step budget (about 0.5 s for an empty loop). Per script: 30,000 ms of script time excluding inner tool calls, observed in default permission mode. The docs say code \"stops after ten minutes\" and the tool description says 600000 ms; neither matched the 30 s stop observed. Shell commands have their own 600,000 ms default timeout.",
+    "memory": "None. The VM shares the Claude Code process heap (P7).",
+    "output": "Each part of the result (the return value, the self.log output) is cut to about 30,000 characters, head and tail kept, with \"... [N chars elided] ...\" (P2; the tool description says the same). console.* goes to a ring buffer read with console.tail().",
+    "tool_calls": "A per-script call cap exists (binary string \"this script has made N calls, its cap. The call was not made, and no later call of this script will be answered\"); its value was not measured. Every inner call goes through permission rules and PreToolUse hooks under its usual tool name."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Built-in tools are TypeScript-declared globals and members of tools (tools.Agent, Read, Glob, Edit...), plus helpers $ (shell), edit, write, file, sleep, preview, log, running, searchTools, describeTool. MCP tools are not declared up front; they are reachable as tools[\"mcp__<server>__<tool>\"] after discovery.",
+      "evidence": "research/probes/claude-code-codemode/out/repl-declarations.md (the declarations block as Haiku quoted it from its tool definition; model-transcribed, not a primary source) ; out/P0.json"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "MCP tools are found on demand from inside code with searchTools(query) and describeTool(name); P0 returned [{name: 'mcp__lookup__lookup', about: ..., input: '{ id: number }'}]. Built-in tool signatures are in the prompt. This scales past 100 MCP tools without putting every schema in the prompt.",
+      "evidence": "research/probes/claude-code-codemode/out/P0.json ; out/repl-declarations.md lines 133-151"
+    },
+    {
+      "topic": "Bridge and isolation boundary",
+      "finding": "Bun node:vm contexts with codeGeneration {strings: false, wasm: false} and import rejection inside the Claude Code process; the binary names src/utils/vmHardening.ts. The JS cannot reach process, require, fetch or eval (P3, P4, P5, P12), but by design it can call every tool the session has, including the shell, and the docs say these calls \"run outside the sandbox\". The boundary is the permission system plus the optional shell sandbox, not the VM. Memory is shared with Claude Code (P7).",
+      "evidence": "research/probes/claude-code-codemode/out/binary-strings-excerpt.txt ; https://code.claude.com/docs/en/code-mode#limit-shell-commands-with-the-sandbox"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "The model gets <repl-output> with <log> (self.log lines), <result> (the last expression) or <error>, plus a tools-used line. toolUseResult keeps {code, result, stdout, stderr, toolsUsed, error} whole on the host, and PostToolUse hooks can redact it before the model reads it.",
+      "evidence": "research/probes/claude-code-codemode/out/P1.json ; https://code.claude.com/docs/en/code-mode#check-code-output-with-a-hook"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Step budget 300,000,000 per turn, enforced by an injected step counter with a wall-clock check; script time 30 s excluding tool calls; a per-script tool-call cap; output about 30,000 chars per part. No memory cap.",
+      "evidence": "research/probes/claude-code-codemode/out/P6.json ; out/P6b.json ; out/binary-strings-excerpt.txt"
+    },
+    {
+      "topic": "State",
+      "finding": "One persistent context per session: variables survive across REPL calls (P8), but not across restart, resume or fork. Scripts that run past about 30 s detach in auto mode and keep sharing variables; in ask modes each REPL call waits for its script.",
+      "evidence": "research/probes/claude-code-codemode/out/P8.json ; out/repl-tool-description.md"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Errors come back with the message, the failing statement quoted from a reformatted copy of the script, and a note on which tool calls had completed. No line numbers.",
+      "evidence": "research/probes/claude-code-codemode/out/P10.json"
+    },
+    {
+      "topic": "Credentials, approvals, availability",
+      "finding": "Credentials stay with Claude Code; the VM has no env access, but the shell it can call inherits Claude Code's environment unless sandbox.credentials denies a variable (hardened P5b). Each inner call meets deny/ask rules and hooks; in auto mode a classifier reviews the code once, not each call. Code Mode needs an interactive terminal, a Claude subscription or Console account and a 5.5-family model, and asks for a one-time confirmation saved in ~/.claude.json.",
+      "evidence": "https://code.claude.com/docs/en/code-mode#permission-checks ; https://code.claude.com/docs/en/code-mode#requirements ; out/binary-strings-excerpt.txt (entrypoint reason)"
+    }
+  ],
+  "surprises": [
+    "Code Mode cannot run under claude -p in 2.1.325: the init event lists no REPL tool, and an interactive session launched from inside another Claude Code session also refused (\"for now it only works in the interactive terminal\") until the parent's CLAUDE_CODE_ENTRYPOINT and related variables were unset. Wave 1's note that it needs an interactive terminal is right.",
+    "The docs say waiting code \"stops after ten minutes\" and the tool description says 600000 ms, but in default (ask) mode an awaiting loop stopped at 30,000 ms of script time, with a message saying the script \"may still be running\"; a follow-up showed it had stopped.",
+    "There is no memory limit, and the VM lives inside the Claude Code process: one script allocating in a loop took Claude Code to 4.5 GB in about 2 s. A real session would lose the whole agent, not just the script.",
+    "Haiku, the typist, refused to type the escape probes, the infinite loop and the memory bomb even when told this was the owner's boundary test, and after seeing the hook swap one in it refused the 1+1 calls too. Model refusal is a real layer in Claude Code, but it is not the sandbox, and the hook bypass shows a user's own hook can run any code through REPL.",
+    "console.log output never reaches the model; only log/self.log does. Code written for other code modes that prints with console.log returns nothing visible here.",
+    "Turning Code Mode on for this test wrote a one-time confirmation to ~/.claude.json and trusted the probe's work folder (both written by Claude Code's own first-run dialogs, answered by the harness); CLAUDE_CODE_EXPERIMENTAL_CODE_MODE was set only per invocation."
+  ]
+}

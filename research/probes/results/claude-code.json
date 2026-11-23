@@ -1,0 +1,120 @@
+{
+  "impl": "claude-code",
+  "name": "Claude Code (Bash/Grep/Read, optional Bash sandbox, experimental Code Mode)",
+  "source": "https://code.claude.com/docs ; sandbox built on https://github.com/anthropics/sandbox-runtime",
+  "pinned": "Claude Code 2.1.325 (local binary, from the probe's init event); docs fetched 2026-11-22",
+  "language": "Shell (Bash tool); JavaScript in Code Mode (REPL tool)",
+  "engine": "Real shell on the user's machine; optional OS sandbox around shell commands only (Seatbelt on macOS, bubblewrap on Linux/WSL2) with a local filtering proxy for network. Code Mode JavaScript runs in the Claude Code process, outside the sandbox.",
+  "how_run": "P3-P5 probed with `claude -p --model haiku --setting-sources \"\" --settings <file> --tools Bash` (research/probes/claude-code/run.sh); the model was told to run fixed commands and the evidence is the raw tool_result in the stream-json transcript. Other probes from docs.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "Code Mode only (experimental, off by default, needs v2.1.323+ and an interactive terminal session, so not probed with -p). Docs: \"Claude writes a piece of JavaScript that makes the tool calls, and Claude Code runs that code in your session\"; example \"await edit(target, ...)\" and \"$`rg -l ...`\". MCP tool calls from code go through permission rules \"under the tool's usual name\". Without Code Mode there is no code-to-tool bridge: each tool call is a model turn.",
+      "evidence": "https://code.claude.com/docs/en/code-mode#how-code-mode-works ; https://code.claude.com/docs/en/code-mode#permission-checks"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "Bash: \"Inline up to roughly 30,000 characters by default; past that, the path of a file saved to the session directory ... plus a preview of up to the first 2,000 characters\". Failures: \"Inline up to roughly 10,000 characters; past that, a head-and-tail excerpt\". BASH_MAX_OUTPUT_LENGTH default 30000, max 150000. Code Mode returns {code, result, stdout, stderr, toolsUsed} with the last expression as result (docs example). Not probed.",
+      "evidence": "https://code.claude.com/docs/en/tools-reference#output-limits ; https://code.claude.com/docs/en/code-mode#read-code-output-in-the-hook"
+    },
+    "P3": {
+      "outcome": "blocked",
+      "detail": "Probed with sandbox on, empty allowedDomains, strictAllowlist, curl allowed by a permission rule. Via proxy: \"curl: (7) CONNECT tunnel failed, response 403\" plus \"deny network-outbound example.com:443 (host is not on the allow list)\". Bypassing proxy: \"curl: (6) Could not resolve host: example.com\". Without the allow rule the permission layer refused first: \"This command requires approval\". With the sandbox off (the default) network is unrestricted.",
+      "evidence": "research/probes/claude-code/out/run4-sandbox-on-allow-curl.summary.txt ; research/probes/claude-code/out/run2-sandbox-on.summary.txt"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "Probed with sandbox on: `head -n 3 /etc/hosts` returned \"##\\n# Host Database\\n#\". Docs: default reads cover \"Most of the machine, including credential files such as ~/.ssh and ~/.aws/credentials\" unless denyRead or credentials rules are set.",
+      "evidence": "research/probes/claude-code/out/run2-sandbox-on.summary.txt ; https://code.claude.com/docs/en/sandboxing#what-the-sandbox-restricts"
+    },
+    "P5": {
+      "outcome": "works",
+      "detail": "Probed with sandbox on: `printenv PROBE_SECRET` returned \"s3cr3t\". Docs: environment is \"Inherited from Claude Code, including any secrets in its environment\". With sandbox.credentials.envVars [{name: PROBE_SECRET, mode: deny}] the same command returned \"Exit code 1\" (variable unset).",
+      "evidence": "research/probes/claude-code/out/run2-sandbox-on.summary.txt ; research/probes/claude-code/out/run3-sandbox-deny-env.summary.txt ; https://code.claude.com/docs/en/sandboxing#protect-credentials"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "Bash foreground default 120 s (BASH_DEFAULT_TIMEOUT_MS), ceiling 600 s (BASH_MAX_TIMEOUT_MS). On timeout the command is moved to the background, not stopped: \"Command did not complete within its 120s timeout and was moved to the background\". Background limit 30 min (10 min in -p with a text prompt), max 2 h. Code Mode code \"stops after ten minutes\" unless backgrounded (up to two hours). Not probed.",
+      "evidence": "https://code.claude.com/docs/en/tools-reference#timeout-and-output-limits ; https://code.claude.com/docs/en/code-mode#long-running-code",
+      "display": "backgrounds at 120 s (docs)"
+    },
+    "P7": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Docs state no memory limit for Bash or the sandbox; only \"a command whose output passes 5 GB is killed\". Not probed (parent scoped probing to P3-P5).",
+      "evidence": "https://code.claude.com/docs/en/tools-reference#output-limits"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "Shell variables do not persist: \"Environment variables don't persist. An export in one command won't be available in the next.\" The working directory and the filesystem do persist. Code Mode variable persistence between pieces of code is not documented.",
+      "evidence": "https://code.claude.com/docs/en/tools-reference#what-persists-between-commands",
+      "display": "shell vars fresh (docs)"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "Code Mode: \"One piece of code can run commands in parallel\". Not probed. Plain Bash can background processes but each tool call is a separate model turn.",
+      "evidence": "https://code.claude.com/docs/en/code-mode#how-code-mode-works",
+      "display": "parallel (docs)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "Bash failures return the command's output with an \"Exit code N\" prefix (seen in probe runs). Code Mode output carries an error field \"only when the code failed or was stopped\".",
+      "evidence": "research/probes/claude-code/out/run4-sandbox-on-allow-curl.summary.txt ; https://code.claude.com/docs/en/code-mode#redact-code-output"
+    },
+    "P11": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "No per-command startup figure documented. Not probed.",
+      "evidence": "https://code.claude.com/docs/en/tools-reference"
+    },
+    "P12": {
+      "outcome": "not-applicable",
+      "detail": "No language boundary to escape: Bash is a real shell on the host, and \"The JavaScript itself and its file, web, and MCP tool calls run outside the sandbox\" in Code Mode. The sandbox covers shell commands only, and Claude may retry a blocked command with dangerouslyDisableSandbox unless allowUnsandboxedCommands is false.",
+      "evidence": "https://code.claude.com/docs/en/code-mode#limit-shell-commands-with-the-sandbox ; https://code.claude.com/docs/en/sandboxing#the-unsandboxed-retry-escape-hatch"
+    }
+  },
+  "defaults": {
+    "time": "Bash 120 s default, 600 s max (then moved to background); Code Mode 10 min foreground",
+    "memory": "none documented",
+    "output": "about 30,000 chars inline (failures about 10,000); overflow saved to a file with a 2,000-char preview",
+    "tool_calls": "none documented"
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Default path: fixed built-in tools. On macOS/Linux/WSL, Glob and Grep are left out of the default tool set; \"In Claude's shell those two commands run embedded versions of bfs and ugrep\". Code Mode adds a REPL tool whose JavaScript gets $`...` for shell and helpers such as edit().",
+      "evidence": "https://code.claude.com/docs/en/tools-reference#glob-tool-behavior ; https://code.claude.com/docs/en/code-mode#how-code-mode-works"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Fixed tools; MCP tool search for deferred tools (survey). Code Mode discovery mechanism is not documented.",
+      "evidence": "https://code.claude.com/docs/en/code-mode"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Code Mode calls tools in-process; each call still passes deny/ask rules and PreToolUse hooks under the tool's name; in auto mode the classifier reviews the whole code, \"not each tool call\".",
+      "evidence": "https://code.claude.com/docs/en/code-mode#permission-checks"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Sandbox is off by default and wraps shell commands only. Writes: cwd + temp; reads: most of the machine; network: no direct route, proxy with an empty allowlist; env inherited. If the sandbox cannot start, commands run unsandboxed unless failIfUnavailable is set.",
+      "evidence": "https://code.claude.com/docs/en/sandboxing#what-the-sandbox-restricts ; https://code.claude.com/docs/en/sandboxing#get-started"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "sandbox.credentials can deny or mask env vars and files; mask substitutes the real value only at the proxy for allowed hosts (needs network.tlsTerminate). \"There is no built-in credential deny list.\" CLAUDE_CODE_SUBPROCESS_ENV_SCRUB strips credentials from all subprocesses.",
+      "evidence": "https://code.claude.com/docs/en/sandboxing#protect-credentials ; https://code.claude.com/docs/en/env-vars"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Full tool output enters context up to the inline window; Code Mode returns only result/stdout/stderr of the code, and a PostToolUse hook on REPL can redact it before Claude reads it.",
+      "evidence": "https://code.claude.com/docs/en/tools-reference#output-limits ; https://code.claude.com/docs/en/code-mode#check-code-output-with-a-hook"
+    }
+  ],
+  "surprises": [
+    "Claude Code now ships an experimental Code Mode (REPL tool, JavaScript, v2.1.323+). The survey's \"fixed tools\" row is out of date.",
+    "Code Mode JavaScript and its file, web and MCP calls run outside the sandbox; only the shell commands it spawns are sandboxed.",
+    "With the sandbox on, sandboxed commands still read /etc/hosts and see PROBE_SECRET by default (probed). Docs say default reads include ~/.ssh and ~/.aws/credentials.",
+    "In -p mode with autoAllowBashIfSandboxed, curl and any compound command (`a; b`) were refused by the permission layer (\"This command requires approval\") before reaching the sandbox, so a headless P3 test needs an explicit allow rule.",
+    "`--setting-sources \"\"` with `--tools Bash` still listed the account's claude.ai MCP connector tools in the session init event (not called).",
+    "A foreground command that hits its timeout is moved to the background instead of being killed."
+  ]
+}

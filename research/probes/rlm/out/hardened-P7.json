@@ -1,0 +1,11 @@
+{
+  "probe": "P7",
+  "config": {
+    "kernel_mode": "subprocess",
+    "cell_timeout": 30
+  },
+  "peak_tree_rss_mib": 4163,
+  "wall_s": 32.05,
+  "outcome": "no-limit-within-120s",
+  "detail": "harness killed the process group at 4 GiB tree RSS after 32.1 s"
+}

@@ -1,0 +1,335 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs default R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 10833,
+  "peakTreeRssMb": 169,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "default",
+    "test": "R9d",
+    "notes": "run() (module default runner, shared)",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 71,
+          "ms": 10450,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 10000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 281,
+        "ms": 410,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": 42
+          },
+          "stringChars": 9
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1000,
+        "ms": 214,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": 42
+          },
+          "stringChars": 9
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 10521,
+        "ms": 211,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": 42
+          },
+          "stringChars": 9
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 119,
+    "hostEvents": [],
+    "totalMs": 10732
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:67525) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      132,
+      61
+    ],
+    [
+      444,
+      132
+    ],
+    [
+      652,
+      166
+    ],
+    [
+      825,
+      166
+    ],
+    [
+      983,
+      166
+    ],
+    [
+      1120,
+      167
+    ],
+    [
+      1279,
+      167
+    ],
+    [
+      1440,
+      167
+    ],
+    [
+      1659,
+      167
+    ],
+    [
+      1882,
+      167
+    ],
+    [
+      2021,
+      167
+    ],
+    [
+      2260,
+      167
+    ],
+    [
+      2403,
+      168
+    ],
+    [
+      2559,
+      168
+    ],
+    [
+      2717,
+      168
+    ],
+    [
+      2865,
+      168
+    ],
+    [
+      3013,
+      168
+    ],
+    [
+      3167,
+      168
+    ],
+    [
+      3344,
+      168
+    ],
+    [
+      3488,
+      168
+    ],
+    [
+      3635,
+      168
+    ],
+    [
+      3818,
+      168
+    ],
+    [
+      3975,
+      168
+    ],
+    [
+      4150,
+      168
+    ],
+    [
+      4297,
+      168
+    ],
+    [
+      4463,
+      168
+    ],
+    [
+      4637,
+      168
+    ],
+    [
+      4815,
+      168
+    ],
+    [
+      4976,
+      168
+    ],
+    [
+      5136,
+      168
+    ],
+    [
+      5297,
+      168
+    ],
+    [
+      5457,
+      168
+    ],
+    [
+      5602,
+      168
+    ],
+    [
+      5750,
+      168
+    ],
+    [
+      5907,
+      168
+    ],
+    [
+      6074,
+      168
+    ],
+    [
+      6225,
+      168
+    ],
+    [
+      6377,
+      168
+    ],
+    [
+      6598,
+      168
+    ],
+    [
+      6766,
+      168
+    ],
+    [
+      6904,
+      168
+    ],
+    [
+      7060,
+      169
+    ],
+    [
+      7215,
+      169
+    ],
+    [
+      7370,
+      169
+    ],
+    [
+      7573,
+      169
+    ],
+    [
+      7772,
+      169
+    ],
+    [
+      7936,
+      169
+    ],
+    [
+      8074,
+      169
+    ],
+    [
+      8224,
+      169
+    ],
+    [
+      8386,
+      169
+    ],
+    [
+      8539,
+      169
+    ],
+    [
+      8686,
+      169
+    ],
+    [
+      8847,
+      169
+    ],
+    [
+      8985,
+      169
+    ],
+    [
+      9135,
+      169
+    ],
+    [
+      9311,
+      169
+    ],
+    [
+      9515,
+      169
+    ],
+    [
+      9747,
+      169
+    ],
+    [
+      9999,
+      169
+    ],
+    [
+      10171,
+      169
+    ],
+    [
+      10379,
+      169
+    ],
+    [
+      10578,
+      169
+    ],
+    [
+      10713,
+      163
+    ]
+  ]
+}

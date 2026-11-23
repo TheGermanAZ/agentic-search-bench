@@ -1,0 +1,23 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P12d",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return typeof globalThis.__HOST_CANARY + \"|\" + typeof Function + \"|\" + typeof eval;"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "value": "undefined|function|undefined",
+      "wallMs": 258.454375,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": "undefined|function|undefined",
+    "ms": 258,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 152.3
+}

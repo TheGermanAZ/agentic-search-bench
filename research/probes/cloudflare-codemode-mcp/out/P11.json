@@ -1,0 +1,55 @@
+{
+  "executeMs": {
+    "raw": [
+      3,
+      3,
+      4,
+      3,
+      3,
+      4,
+      4,
+      3,
+      3,
+      3,
+      4,
+      3,
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      4,
+      5
+    ],
+    "median": 3,
+    "p90": 4
+  },
+  "searchMs": {
+    "raw": [
+      114,
+      115,
+      116,
+      114,
+      126,
+      122,
+      125,
+      116,
+      117,
+      119,
+      120,
+      119,
+      122,
+      127,
+      123,
+      121,
+      120,
+      118,
+      121,
+      123
+    ],
+    "median": 120,
+    "p90": 126
+  },
+  "note": "ms per full MCP tools/call through the real worker (auth, MCP transport, sandbox), Date.now() in workerd"
+}

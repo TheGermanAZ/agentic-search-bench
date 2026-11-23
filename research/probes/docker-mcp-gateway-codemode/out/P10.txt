@@ -1,0 +1,14 @@
+--- code 1 ---
+throw new Error("probe-boom")
+--- result 1 ---
+{"ms":2,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (56 chars):
+Error running script: Error: probe-boom at <eval>:2:7(3)
+--- code 2 ---
+const x = 1;
+const y = 2;
+throw new Error("probe-boom")
+--- result 2 ---
+{"ms":3,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (56 chars):
+Error running script: Error: probe-boom at <eval>:4:7(7)

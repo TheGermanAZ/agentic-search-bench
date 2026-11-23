@@ -1,0 +1,35 @@
+{
+ "probe": "P6",
+ "pid": 32720,
+ "env_GOOSE_DEFAULT_EXTENSION_TIMEOUT": "10",
+ "wall_ms": 73.0,
+ "peak_rss_mb": 7.4,
+ "exit": 0,
+ "killed": null,
+ "stderr": "",
+ "records": [
+  {
+   "exec": "config",
+   "probe": "P6",
+   "timeout_seconds": 10
+  },
+  {
+   "code": "async function run() {\nwhile (true) {}\n}",
+   "elapsed_ms": 14.988415999999999,
+   "exec": 0,
+   "host_calls": 0,
+   "is_error": true,
+   "probe": "P6",
+   "text": "Error: RuntimeLimitError: reached the maximum number of iteration loops on this execution\n    at run (code_mode.js:1:22)\n    at <main> (code_mode.js:4:5)"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.414167,
+   "exec": 1,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P6",
+   "text": "Result: 2"
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "no-limit-within-120s",
+  "display": "no limit (killed at 4.1 GB)",
+  "detail": "harness RSS watchdog at 4.11 GB after 1.9 s; peak tree RSS 4.113 GB; no error from the sandbox",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/hardened-P7.txt"
+}

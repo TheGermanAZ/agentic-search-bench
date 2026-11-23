@@ -1,0 +1,115 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 849,
+  "peakTreeRssMb": 98,
+  "peakTreeFootprintMb": 77,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R7a",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "label": "",
+      "startMs": 762,
+      "ms": 17,
+      "ok": true,
+      "result": {
+        "status": "error",
+        "text": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 2, in <module>\n    await asyncio.sleep(100000)\nAttributeError: module 'asyncio' has no attribute 'sleep'"
+      },
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 0,
+    "totalMs": 779
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      76,
+      28,
+      14
+    ],
+    [
+      126,
+      35,
+      14
+    ],
+    [
+      178,
+      43,
+      14
+    ],
+    [
+      229,
+      48,
+      32
+    ],
+    [
+      279,
+      51,
+      32
+    ],
+    [
+      330,
+      54,
+      40
+    ],
+    [
+      382,
+      57,
+      40
+    ],
+    [
+      435,
+      61,
+      40
+    ],
+    [
+      490,
+      64,
+      46
+    ],
+    [
+      538,
+      69,
+      46
+    ],
+    [
+      590,
+      74,
+      57
+    ],
+    [
+      643,
+      77,
+      57
+    ],
+    [
+      692,
+      82,
+      57
+    ],
+    [
+      744,
+      88,
+      68
+    ],
+    [
+      797,
+      93,
+      68
+    ],
+    [
+      848,
+      98,
+      77
+    ]
+  ]
+}

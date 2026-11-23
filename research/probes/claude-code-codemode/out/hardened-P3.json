@@ -1,0 +1,42 @@
+{
+ "tag": "hardened",
+ "probe": "P3",
+ "settings": "~/p/agentic-search-bench/research/probes/claude-code-codemode/settings-hardened.json",
+ "permissionMode": "default",
+ "transcript": "~/.claude/projects/-Users-thegermanaz-p-agentic-search-bench-research-probes-claude-code-codemode-work/bc5c7dba-9069-4736-871e-28685729e0de.jsonl",
+ "hostLookupCalls": [],
+ "steps": [
+  {
+   "step": "P3.1",
+   "code": "const r = await fetch(\"https://example.com\"); ({status: r.status, len: (await r.text()).length})",
+   "typist": "model",
+   "wallS": 2.0,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "const r = await fetch(\"https://example.com\"); ({status: r.status, len: (await r.text()).length})",
+     "codeRan": "const r = await fetch(\"https://example.com\"); ({status: r.status, len: (await r.text()).length})",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:36:42.212Z",
+     "result": {
+      "content": "<repl-output>\n<error>ReferenceError: fetch is not defined\nThrown at (statements quoted from the script as it ran, which is reformatted):\n  in &lt;anonymous&gt;: r = await fetch(\"https://example.com\");\nThe script threw partway through: statements before the failing one ran. No tool call had completed.</error>\n</repl-output>",
+      "is_error": true,
+      "ts": "2026-11-22T20:36:42.256Z",
+      "toolUseResult": {
+       "code": "const r = await fetch(\"https://example.com\"); ({status: r.status, len: (await r.text()).length})",
+       "result": null,
+       "stdout": "",
+       "stderr": "",
+       "error": "ReferenceError: fetch is not defined\nThrown at (statements quoted from the script as it ran, which is reformatted):\n  in <anonymous>: r = await fetch(\"https://example.com\");\nThe script threw partway through: statements before the failing one ran. No tool call had completed."
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 399680,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  }
+ ]
+}

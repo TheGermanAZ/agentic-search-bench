@@ -1,0 +1,27 @@
+config: WasmExecutor(additional_imports=[])
+code:
+null
+
+{
+  "probe": "P8",
+  "hardened": false,
+  "harness_wall_s": 2.4,
+  "peak_tree_rss_mib": 291,
+  "raw": {
+    "setup_ms": 2087,
+    "exec1": {
+      "ok": true,
+      "output": "None",
+      "logs": "",
+      "ms": 1.9
+    },
+    "exec2": {
+      "ok": true,
+      "output": "None",
+      "logs": "7\n",
+      "ms": 1.8
+    },
+    "wall_s": 2.11
+  },
+  "child_tail": ""
+}

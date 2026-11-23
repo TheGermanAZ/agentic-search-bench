@@ -1,0 +1,18 @@
+{
+  "probe": "P9b",
+  "config": "default",
+  "codes": [
+    "from concurrent.futures import ThreadPoolExecutor\nwith ThreadPoolExecutor(5) as ex:\n    rs = list(ex.map(lookup, [1, 2, 3, 4, 5]))\nprint(sum(x['value'] for x in rs))"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": "TypeError: Type is not msgpack serializable: ThreadPoolExecutor",
+      "raised": true,
+      "ms": 209.2,
+      "started": 1795377285.431055
+    }
+  ],
+  "setup_ms": 3.7,
+  "done": true
+}

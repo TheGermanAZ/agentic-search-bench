@@ -1,0 +1,26 @@
+{
+  "probe": "P7",
+  "config": "default",
+  "codes": [
+    "a = []\nwhile True:\n    a.append(\"x\" * 10**6)"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: ",
+      "error": "Error during execution: ",
+      "context_keys": [],
+      "host_builtins_leak": false,
+      "ms": 1735.0,
+      "started": 1795377672.412174
+    }
+  ],
+  "setup_ms": 15.3,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.01,
+  "peak_tree_rss_gb": 3.607,
+  "calls": [],
+  "child_log_tail": ""
+}

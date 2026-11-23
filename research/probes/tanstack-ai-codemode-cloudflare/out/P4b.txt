@@ -1,0 +1,62 @@
+label: P4b
+command: node probe.mjs P4b
+child exit: code=0 signal=null
+child wall ms (process start to exit): 288
+peak child RSS: 78.4 MB (ps every 50 ms)
+peak server (pid 76929) RSS: 76.3 MB; alive after probe: yes
+child stdout length: 438 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P4b",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.609250000000003,
+  "source": [
+    "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "No such module \"fs\".",
+          "name": "Error",
+          "stack": "Error: No such module \"fs\".\n    at main.js:47:22\n    at main.js:48:11\n    at Object.fetch (main.js:78:7)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 52.747749999999996,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: No such module \"fs\".",
+    "ms": 53,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 90
+}
+--- child stdout ---
+{
+  timestamp: [33m1795376374702[39m,
+  durationMs: [33m52[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'Error'[39m,
+    message: [32m'No such module "fs".'[39m,
+    stack: [32m'Error: No such module "fs".\n'[39m +
+      [32m'    at main.js:47:22\n'[39m +
+      [32m'    at main.js:48:11\n'[39m +
+      [32m'    at Object.fetch (main.js:78:7)'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

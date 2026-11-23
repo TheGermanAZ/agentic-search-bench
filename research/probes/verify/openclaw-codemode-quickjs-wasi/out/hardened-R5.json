@@ -1,0 +1,448 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs hardened R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 4029,
+  "peakTreeRssMb": 345,
+  "peakTreeFootprintMb": 316,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "hardened",
+    "test": "R5",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\",\"timeoutMs\":5000,\"memoryLimitBytes\":16777216,\"maxOutputBytes\":8192,\"maxSnapshotBytes\":1048576,\"maxPendingToolCalls\":8,\"snapshotTtlSeconds\":60}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "r": {
+        "startMs": 706,
+        "ms": 277,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "failed",
+            "code": "invalid_input",
+            "waits": 0,
+            "error": "code mode bridge queue limit exceeded (128 ordinary requests queued; 8 in-flight slots). Await smaller batches before creating more tool calls or timers.",
+            "output": [],
+            "textChars": 466,
+            "text": "{\"status\":\"failed\",\"code\":\"invalid_input\",\"failurePhase\":\"input\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"cbd240269611eabc107e1e04\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode bridge queue limit exceeded (128 ordinary requests queued; 8 in-flight slots). Await smaller batches before creating more tool calls or timers.\"}"
+          },
+          "stringChars": 638
+        },
+        "callsStarted": 0
+      },
+      "atReturn": {
+        "started": 0,
+        "done": 0
+      },
+      "after3s": {
+        "started": 0,
+        "done": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 807,
+    "hostEvents": [],
+    "totalMs": 3984
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_f2bb0374-f9de-420f-b2df-19bb37e221a0 workerId=code-mode-quickjs:1 failurePhase=input bridgeDispatchStarted=false errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      77,
+      61,
+      20
+    ],
+    [
+      132,
+      87,
+      20
+    ],
+    [
+      184,
+      98,
+      20
+    ],
+    [
+      233,
+      112,
+      68
+    ],
+    [
+      287,
+      124,
+      68
+    ],
+    [
+      346,
+      138,
+      68
+    ],
+    [
+      394,
+      148,
+      104
+    ],
+    [
+      443,
+      165,
+      104
+    ],
+    [
+      495,
+      174,
+      142
+    ],
+    [
+      546,
+      194,
+      142
+    ],
+    [
+      594,
+      206,
+      182
+    ],
+    [
+      651,
+      223,
+      182
+    ],
+    [
+      700,
+      238,
+      182
+    ],
+    [
+      753,
+      241,
+      214
+    ],
+    [
+      799,
+      256,
+      214
+    ],
+    [
+      850,
+      273,
+      247
+    ],
+    [
+      903,
+      292,
+      247
+    ],
+    [
+      954,
+      311,
+      247
+    ],
+    [
+      1018,
+      340,
+      293
+    ],
+    [
+      1058,
+      345,
+      293
+    ],
+    [
+      1131,
+      345,
+      293
+    ],
+    [
+      1174,
+      345,
+      316
+    ],
+    [
+      1228,
+      345,
+      316
+    ],
+    [
+      1278,
+      345,
+      316
+    ],
+    [
+      1328,
+      345,
+      316
+    ],
+    [
+      1382,
+      345,
+      316
+    ],
+    [
+      1433,
+      345,
+      316
+    ],
+    [
+      1482,
+      345,
+      316
+    ],
+    [
+      1532,
+      345,
+      316
+    ],
+    [
+      1584,
+      345,
+      316
+    ],
+    [
+      1636,
+      345,
+      316
+    ],
+    [
+      1686,
+      345,
+      316
+    ],
+    [
+      1741,
+      345,
+      316
+    ],
+    [
+      1792,
+      345,
+      316
+    ],
+    [
+      1845,
+      345,
+      316
+    ],
+    [
+      1894,
+      345,
+      316
+    ],
+    [
+      1945,
+      345,
+      316
+    ],
+    [
+      1997,
+      345,
+      316
+    ],
+    [
+      2050,
+      345,
+      316
+    ],
+    [
+      2102,
+      345,
+      316
+    ],
+    [
+      2153,
+      345,
+      316
+    ],
+    [
+      2203,
+      345,
+      316
+    ],
+    [
+      2256,
+      345,
+      316
+    ],
+    [
+      2308,
+      345,
+      316
+    ],
+    [
+      2361,
+      345,
+      316
+    ],
+    [
+      2411,
+      345,
+      316
+    ],
+    [
+      2464,
+      345,
+      316
+    ],
+    [
+      2519,
+      345,
+      316
+    ],
+    [
+      2564,
+      345,
+      316
+    ],
+    [
+      2615,
+      345,
+      316
+    ],
+    [
+      2667,
+      345,
+      316
+    ],
+    [
+      2722,
+      345,
+      316
+    ],
+    [
+      2770,
+      345,
+      316
+    ],
+    [
+      2821,
+      345,
+      316
+    ],
+    [
+      2871,
+      345,
+      316
+    ],
+    [
+      2921,
+      345,
+      316
+    ],
+    [
+      2971,
+      345,
+      316
+    ],
+    [
+      3026,
+      345,
+      316
+    ],
+    [
+      3079,
+      345,
+      316
+    ],
+    [
+      3129,
+      345,
+      316
+    ],
+    [
+      3180,
+      345,
+      316
+    ],
+    [
+      3233,
+      345,
+      316
+    ],
+    [
+      3285,
+      345,
+      316
+    ],
+    [
+      3337,
+      345,
+      316
+    ],
+    [
+      3390,
+      345,
+      316
+    ],
+    [
+      3447,
+      345,
+      316
+    ],
+    [
+      3494,
+      345,
+      316
+    ],
+    [
+      3546,
+      345,
+      316
+    ],
+    [
+      3595,
+      345,
+      316
+    ],
+    [
+      3644,
+      345,
+      316
+    ],
+    [
+      3694,
+      345,
+      316
+    ],
+    [
+      3745,
+      345,
+      316
+    ],
+    [
+      3798,
+      345,
+      316
+    ],
+    [
+      3853,
+      345,
+      316
+    ],
+    [
+      3899,
+      345,
+      316
+    ],
+    [
+      3950,
+      345,
+      316
+    ],
+    [
+      4002,
+      345,
+      316
+    ]
+  ]
+}

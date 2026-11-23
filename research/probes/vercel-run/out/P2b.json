@@ -1,0 +1,24 @@
+{
+  "impl": "vercel-run",
+  "probe": "P2b",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "console.log(\"A\".repeat(200000)); return \"RETURNED\";"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "status": "completed",
+      "value": "RETURNED",
+      "wallMs": 80.79249999999999,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": "RETURNED",
+    "ms": 81,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 136.1
+}

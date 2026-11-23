@@ -1,0 +1,24 @@
+{
+  "probe": "P9",
+  "config": "default",
+  "codes": [
+    "tot = 0\nfor i in [1, 2, 3, 4, 5]:\n    x = lookup(i)\n    tot += x[\"value\"]\nprint(tot)\ntot"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "30\n",
+      "error": null,
+      "context_keys": [
+        "i",
+        "tot",
+        "x"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1017.6,
+      "started": 1795377262.7925131
+    }
+  ],
+  "setup_ms": 2.0,
+  "done": true
+}

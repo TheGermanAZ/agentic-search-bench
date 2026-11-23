@@ -1,0 +1,7 @@
+code:
+r = call_tool("lookup", id=21)
+print(r['value'])
+
+{"ok": true, "result": null, "error": null, "ms": 562.3}
+stdout (3 chars): '42\n'
+host_calls=1

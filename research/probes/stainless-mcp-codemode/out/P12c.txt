@@ -1,0 +1,21 @@
+mode: default
+code:
+async function run(client) {
+  const F = (async function () {}).constructor as any;
+  const p = await F("return globalThis.process")();
+  return { pid: p.pid, platform: p.platform };
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"pid\":10488,\"platform\":\"darwin\"}"
+      }
+    ]
+  },
+  "ms": 400,
+  "hostCalls": 0
+}

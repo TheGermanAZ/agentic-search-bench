@@ -1,0 +1,91 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs hardened R8a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 714,
+  "peakTreeRssMb": 169,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "hardened",
+    "test": "R8a",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "startMs": 176,
+      "ms": 446,
+      "ok": true,
+      "result": {
+        "value": "done",
+        "stringChars": 4
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 339,
+    "hostEvents": [],
+    "totalMs": 622
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:91416) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      98,
+      55
+    ],
+    [
+      157,
+      65
+    ],
+    [
+      208,
+      69
+    ],
+    [
+      262,
+      80
+    ],
+    [
+      312,
+      88
+    ],
+    [
+      360,
+      101
+    ],
+    [
+      404,
+      103
+    ],
+    [
+      453,
+      114
+    ],
+    [
+      508,
+      129
+    ],
+    [
+      554,
+      140
+    ],
+    [
+      603,
+      158
+    ],
+    [
+      669,
+      169
+    ],
+    [
+      713,
+      145
+    ]
+  ]
+}

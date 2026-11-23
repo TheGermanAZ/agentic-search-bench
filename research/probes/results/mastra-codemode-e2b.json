@@ -1,0 +1,134 @@
+{
+  "impl": "mastra-codemode-e2b",
+  "name": "Mastra Code Mode, E2B transport",
+  "source": "npm @mastra/core 1.85.0 (createCodeMode from @mastra/core/tools); repo https://github.com/mastra-ai/mastra; npm @mastra/e2b 0.18.0",
+  "language": "TS (types stripped before running)",
+  "pinned": "@mastra/e2b 0.18.0 source at aa82a4a7858c637f654be24391ff306dcb568c00 (not installed or run)",
+  "engine": "node inside an E2B cloud micro-VM",
+  "how_run": "not run: createCodeMode({ tools, sandbox: new E2BSandbox() }, new E2BCodeModeTransport()) needs E2B credentials",
+  "probes": {
+    "P1": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    },
+    "P2": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    },
+    "P3": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    },
+    "P4": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    },
+    "P5": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    },
+    "P6": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    },
+    "P7": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    },
+    "P8": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    },
+    "P9": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    },
+    "P10": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    },
+    "P11": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    },
+    "P12": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "E2B needs an account and API key (apiKey or E2B_API_KEY); not run",
+      "evidence": "workspaces/e2b/src/sandbox/index.ts:159-160 at aa82a4a7858c637f654be24391ff306dcb568c00",
+      "display": "blocked-needs-credentials"
+    }
+  },
+  "hardened": null,
+  "defaults": {
+    "time": "30 s Code Mode default; E2B sandbox timeout 300 s (docs)",
+    "memory": "VM size of the E2B template (not checked)",
+    "output": "no cap in Code Mode",
+    "tool_calls": "no cap",
+    "note": "hardened is null: not run for lack of credentials"
+  },
+  "source_notes": [
+    {
+      "topic": "Bridge",
+      "finding": "Same stdio frame protocol as the default transport, but the runner and program are written into the VM with the E2B files API and run with plain `node`; TypeScript is stripped on the host with esbuild.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/workspaces/e2b/src/code-mode/transport.ts#L1-L19; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/workspaces/e2b/src/code-mode/transport.ts#L76; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/workspaces/e2b/src/code-mode/transport.ts#L115-L116"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "Tools still execute on the host (same dispatcher as other transports), so tool credentials never enter the VM; the E2B API key is read from the constructor or E2B_API_KEY.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/code-mode.ts#L102-L119; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/workspaces/e2b/src/sandbox/index.ts#L159-L160"
+    },
+    {
+      "topic": "API shape",
+      "finding": "Each Mastra tool's input and output schema goes zod -> JSON Schema -> a TypeScript string, and becomes one `declare function external_<id>(input): Promise<output>` line with the tool description as a doc comment.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/stub-generator.ts#L164-L186"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Everything upfront: createCodeModeInstructions joins a fixed usage contract and every stub into one instructions string for the system prompt. No search or lazy loading; the docs scope tools by making several createCodeMode instances instead.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/stub-generator.ts#L189-L213"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "Tools run on the host: each external_* call re-enters the real Mastra tool's execute with the outer tool's requestContext, mastra instance and workspace, and an allow-list rejects tool ids that were not exposed. Credentials the tool uses stay on the host side of the bridge.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/code-mode.ts#L102-L119"
+    },
+    {
+      "topic": "Defaults",
+      "finding": "Timeout defaults to 30 s for every backend (DEFAULT_TIMEOUT). The tool id defaults to execute_typescript.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/code-mode.ts#L20-L21"
+    },
+    {
+      "topic": "Errors",
+      "finding": "The result type declares error.line, but no transport ever sets it: the stdio runner, the isolated-vm envelope and the QuickJS envelope all copy only message and name. The model never sees a line number or stack.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/types.ts#L50-L54; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/runner.ts#L153-L157; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/isolated-vm/src/transport.ts#L266-L270; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/quickjs/src/transport.ts#L425-L429"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Both console output (logs[], one entry per call, in order) and the program's `return` value come back. Nothing truncates either; a bare final expression is not returned because the program is wrapped in an async function body.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/transport.ts#L76-L80; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/runner.ts#L38-L40"
+    }
+  ],
+  "surprises": []
+}

@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P10",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.4970830000000035,
+  "source": [
+    "throw new Error(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "probe-boom",
+          "name": "Error",
+          "stack": "Error: probe-boom\n    at main.js:47:17\n    at main.js:48:11\n    at Object.fetch (main.js:78:7)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 44.33170800000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: probe-boom",
+    "ms": 44,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 89.3
+}

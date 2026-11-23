@@ -1,0 +1,27 @@
+--- code 1 ---
+result = ().__class__
+--- result 1 ---
+{"ok": true, "jsonrpcError": {"code": -32602, "message": "Invalid params", "data": {"type": "InvalidParamsError", "reason": "code_validation"}}, "ms": 14.84, "hostCalls": 0, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 93}
+--- code 2 ---
+result = __import__("os").system("echo PWNED")
+--- result 2 ---
+{"ok": true, "jsonrpcError": {"code": -32602, "message": "Invalid params", "data": {"type": "InvalidParamsError", "reason": "code_validation"}}, "ms": 18.71, "hostCalls": 0, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 93}
+--- code 3 ---
+result = [getattr(Probe.lookup, "_" + "_globals" + "_" + "_", "none"), getattr(print, "_" + "_self" + "_" + "_", "none"), getattr(Probe, "_" + "_class" + "_" + "_", "none")]
+--- result 3 ---
+{"ok": true, "isError": false, "ms": 20.9, "hostCalls": 0, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 93}
+text (139 chars):
+{"result": ["none", "none", "none"], "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 4, "limit_bytes": 1024, "truncated": false}}
+--- code 4 ---
+result = [getattr(Probe.lookup, a, None) for a in ["func_globals", "f_globals", "gi_frame", "im_self", "cr_frame"]]
+--- result 4 ---
+{"ok": true, "isError": false, "ms": 23.45, "hostCalls": 0, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 93}
+text (145 chars):
+{"result": [null, null, null, null, null], "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 5, "limit_bytes": 1024, "truncated": false}}
+--- code 5 ---
+p = print
+result = p("PWNED-via-print-ref")
+--- result 5 ---
+{"ok": true, "isError": false, "ms": 25.27, "hostCalls": 0, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 93}
+text (140 chars):
+{"result": null, "logs": ["PWNED-via-print-ref"], "calls": [], "usage": {"call_count": 0, "ms": 6, "limit_bytes": 1024, "truncated": false}}

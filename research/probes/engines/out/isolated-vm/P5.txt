@@ -1,0 +1,5 @@
+console.log(typeof process === "undefined" ? "no process" : process.env.PROBE_SECRET)
+--- output
+no process
+---
+wall_ms=1 host_calls=0 peak_tree_rss_mb=72

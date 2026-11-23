@@ -1,0 +1,26 @@
+
+<--- Last few GCs --->
+
+[92718:0x74a100000]      160 ms: Mark-Compact 63.3 (96.8) -> 61.0 (95.2) MB, pooled: 0 MB, 15.04 / 0.00 ms  (+ 7.7 ms in 435 steps since start of marking, biggest step 0.1 ms, walltime since start of marking 34 ms) (average mu = 0.854, current mu = 0.775)[92718:0x74a100000]      226 ms: Mark-Compact 87.0 (96.1) -> 85.8 (215.2) MB, pooled: 0 MB, 56.79 / 0.00 ms  (average mu = 0.530, current mu = 0.135) allocation failure; scavenge might not succeed
+
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x104b6760c node::(anonymous namespace)::DefaultAbortHandler(char const*, char const*) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 2: 0x104b67870 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 3: 0x104dfad94 v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 4: 0x10505a248 v8::internal::Heap::stack() [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 5: 0x105058130 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 6: 0x10504cc58 v8::internal::HeapAllocator::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 7: 0x1050182c0 v8::internal::FactoryBase<v8::internal::Factory>::NewFixedArray(int, v8::internal::AllocationType) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 8: 0x105211eb4 v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastPackedObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)2>>::ConvertElementsWithCapacity(v8::internal::DirectHandle<v8::internal::JSObject>, v8::internal::DirectHandle<v8::internal::FixedArrayBase>, v8::internal::ElementsKind, unsigned int, unsigned int, unsigned int) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 9: 0x1052108d4 v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastPackedObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)2>>::GrowCapacity(v8::internal::DirectHandle<v8::internal::JSObject>, unsigned int) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+10: 0x1054adf5c v8::internal::Runtime_GrowArrayElements(int, unsigned long*, v8::internal::Isolate*) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+11: 0x105b22234 Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+12: 0x138be6574 
+13: 0x105a84bec Builtins_InterpreterEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+14: 0x105a84bec Builtins_InterpreterEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+15: 0x105a84bec Builtins_InterpreterEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+16: 0x105a84bec Builtins_InterpreterEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+17: 0x105a84bec Builtins_InterpreterEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+18: 0x105a828cc Builtins_JSEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation

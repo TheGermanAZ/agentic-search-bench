@@ -1,0 +1,1 @@
+{"id": "P8", "outcome": "persists", "detail": "same session: kept -> '7'; new checkout: \"NameError: name 'kept' is not defined\"", "error": null}

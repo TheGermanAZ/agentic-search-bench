@@ -1,0 +1,3 @@
+{"exec":"config","probe":"P7","timeout_seconds":10}
+{"code":"async function run() {\nconst a = []; while (true) a.push(\"x\".repeat(1e6))\n}","elapsed_ms":16.353959,"exec":0,"host_calls":0,"is_error":true,"probe":"P7","text":"Error: RuntimeLimitError: reached the maximum number of iteration loops on this execution\n    at run (code_mode.js:2:45)\n    at <main> (code_mode.js:4:5)"}
+{"code":"async function run() {\nreturn 1+1\n}","elapsed_ms":0.627166,"exec":1,"host_calls":0,"is_error":false,"probe":"P7","text":"Result: 2"}

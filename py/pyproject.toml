@@ -1,0 +1,13 @@
+[project]
+name = "asb-py-engines"
+version = "0.1.0"
+description = "Python sidecars for the agentic-search-bench code-mode engines py-monty, py-fastmcp and py-pydantic-ai"
+requires-python = "==3.12.*"
+dependencies = [
+  "pydantic-monty==1.6.0",
+  "fastmcp[code-mode]==4.2.4",
+  "pydantic-ai-harness[code-mode]==0.71.0",
+]
+
+[tool.uv]
+package = false

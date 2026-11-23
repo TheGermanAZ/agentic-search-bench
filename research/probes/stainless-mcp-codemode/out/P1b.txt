@@ -1,0 +1,19 @@
+mode: default
+code:
+async function run(client) {
+  return { ctor: client.constructor.name, baseURL: client.baseURL, keys: Object.keys(client.video) };
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ctor\":\"Mux\",\"baseURL\":\"http://localhost:41320\",\"keys\":[\"_client\",\"assets\",\"deliveryUsage\",\"liveStreams\",\"playbackIds\",\"playbackRestrictions\",\"transcriptionVocabularies\",\"uploads\",\"drmConfigurations\",\"playback\"]}"
+      }
+    ]
+  },
+  "ms": 401,
+  "hostCalls": 0
+}

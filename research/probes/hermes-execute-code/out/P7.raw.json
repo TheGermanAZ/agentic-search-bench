@@ -1,0 +1,28 @@
+{
+  "probe": "P7",
+  "config": "default",
+  "codes": [
+    "a = []\nwhile True:\n    a.append(\"x\" * 10**6)"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "model_sees": "{\"status\": \"error\", \"output\": \"\", \"exit_code\": -1, \"tool_calls_made\": 0, \"duration_seconds\": 32.31, \"kernel\": {\"mode\": \"session\", \"reused\": false, \"execution_count\": 1, \"state_reset\": false}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"The session kernel died while running the cell.\"}",
+      "status": "error",
+      "tool_calls_made": 0,
+      "model_sees_len": 358,
+      "error": "The session kernel died while running the cell.\n",
+      "ms": 32416.4,
+      "started": 1795383020.878726
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 33.44,
+  "peak_tree_rss_gb": 3.324,
+  "calls": [],
+  "child_log_tail": ""
+}

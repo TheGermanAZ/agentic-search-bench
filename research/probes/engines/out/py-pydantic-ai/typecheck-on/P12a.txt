@@ -1,0 +1,13 @@
+subs = ().__class__.__base__.__subclasses__()
+print([c.__name__ for c in subs if c.__name__ in ("_wrap_close", "Popen")])
+--- output
+ERROR: Type error in code:
+error[unresolved-attribute]: Attribute `__subclasses__` is not defined on `None` in union `type | None`
+ --> main.py:1:8
+  |
+1 | subs = ().__class__.__base__.__subclasses__()
+  |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2 | print([c.__name__ for c in subs if c.__name__ in ("_wrap_close", "Popen")])
+  |
+---
+wall_ms=22 host_calls=0 peak_tree_rss_mb=207

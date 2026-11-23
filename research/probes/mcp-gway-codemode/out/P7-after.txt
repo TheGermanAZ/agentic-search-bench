@@ -1,0 +1,7 @@
+after P7 harness cap (2026-11-22T21:07:15Z):
+  PID  %CPU    RSS      VSZ ELAPSED
+19589  91.2 1962992 499647456   02:40
+python [19589]: 64-bit    Footprint: 56 GB (16384 bytes per page)
+    phys_footprint: 56 GB
+    phys_footprint_peak: 56 GB
+killed own gateway pid 19589

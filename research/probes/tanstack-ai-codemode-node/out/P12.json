@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P12",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 60.79687500000003,
+  "source": [
+    "return String(this.constructor.constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "process is not defined",
+          "name": "ReferenceError",
+          "stack": "ReferenceError: process is not defined\n    at eval (eval at <anonymous> (<isolated-vm>:5:32), <anonymous>:3:1)\n    at <isolated-vm>:5:61\n    at <isolated-vm>:6:7\n    at <isolated-vm>:11:3"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 8.409875,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: process is not defined",
+    "ms": 8,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 81.7
+}

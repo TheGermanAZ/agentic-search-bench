@@ -1,0 +1,7 @@
+probe P5 hardened=True
+code:
+import os
+print("ENV=" + str(os.environ.get("PROBE_SECRET")))
+
+{"ok": true, "result": null, "error": null, "ms": 54.4}
+stdout (11 chars): 'ENV=s3cr3t\n'

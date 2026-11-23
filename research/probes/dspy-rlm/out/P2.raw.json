@@ -1,0 +1,31 @@
+{
+  "probe": "P2",
+  "config": "default",
+  "codes": [
+    "print(\"A\" * 200000)\n\"RETURNED\""
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nRETURNED\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\nRETURNED\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        8,
+        25
+      ],
+      "answer": "done",
+      "ms": 528.3,
+      "started": 1795381949.098799
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.95,
+  "peak_tree_rss_gb": 0.474,
+  "calls": [],
+  "child_log_tail": ""
+}

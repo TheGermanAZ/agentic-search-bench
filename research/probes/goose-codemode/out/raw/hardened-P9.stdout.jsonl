@@ -1,0 +1,2 @@
+{"exec":"config","probe":"P9","timeout_seconds":10}
+{"code":"async function run() {\nconst t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.call(\"lookup\", {id: i}))); console.log(Date.now() - t)\n}","elapsed_ms":202.928833,"exec":0,"host_calls":5,"is_error":false,"probe":"P9","text":"202.0\n"}

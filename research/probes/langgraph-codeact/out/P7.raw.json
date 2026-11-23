@@ -1,0 +1,15 @@
+{
+  "probe": "P7",
+  "config": "default",
+  "codes": [
+    "a = []\nwhile True:\n    a.append(\"x\" * 10**6)"
+  ],
+  "runs": [],
+  "setup_ms": 4.2,
+  "killed": "harness RSS watchdog at 4.39 GB after 0.7 s",
+  "exit_code": -9,
+  "wall_s": 0.79,
+  "peak_tree_rss_gb": 4.389,
+  "calls": [],
+  "child_log_tail": ""
+}

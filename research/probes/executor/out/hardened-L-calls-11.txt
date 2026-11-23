@@ -1,0 +1,82 @@
+{
+  "probe": "L-calls-11",
+  "serverPid": 16365,
+  "code": "let ok = 0; let err = null; for (let i = 0; i < 11; i++) { try { await tools.probe.lookup({id: i}); ok++ } catch (e) { err = String(e.message); break } } return { ok, err }",
+  "wallMs": 2377,
+  "hostToolCalls": 10,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":true,\"value\":{\"ok\":10,\"err\":\"Execution exceeded its tool-call limit of 10.\"},\"toolCalls\":[{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":225},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":218},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":221},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":217},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":220},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":225},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":332},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":226},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":233},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":216}]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": true,
+          "value": {
+            "ok": 10,
+            "err": "Execution exceeded its tool-call limit of 10."
+          },
+          "toolCalls": [
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 225
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 218
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 221
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 217
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 220
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 225
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 332
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 226
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 233
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 216
+            }
+          ]
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

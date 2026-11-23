@@ -1,0 +1,23 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P12b",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return String((function(){return this})().process);"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "value": "undefined",
+      "wallMs": 311.00254199999995,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": "undefined",
+    "ms": 311,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 150.7
+}

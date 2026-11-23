@@ -1,0 +1,476 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/hermes-execute-code/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../hermes-execute-code/adapter.py hardened R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 16404,
+  "peakTreeRssMb": 289,
+  "peakTreeFootprintMb": 166,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9d",
+    "impl": "hermes-execute-code",
+    "notes": "HERMES_HOME=home-hardened (docker, no network, 512 MB, 1 CPU, strict, timeout 10 s, 50 calls); one process, fresh task_id (container + kernel) per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 760,
+          "ms": 13081,
+          "ok": true,
+          "result": {
+            "status": "timeout",
+            "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "tool_calls_made": 0,
+            "model_sees_chars": 639,
+            "model_sees_head": "{\"status\": \"timeout\", \"output\": \"⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 11.92, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}"
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 912,
+        "ms": 3915,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "42\n",
+          "error": null,
+          "tool_calls_made": 1,
+          "model_sees_chars": 261,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"42\\n\", \"tool_calls_made\": 1, \"duration_seconds\": 2.58, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 4827,
+        "ms": 2583,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "42\n",
+          "error": null,
+          "tool_calls_made": 1,
+          "model_sees_chars": 261,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"42\\n\", \"tool_calls_made\": 1, \"duration_seconds\": 1.73, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 13844,
+        "ms": 2456,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "42\n",
+          "error": null,
+          "tool_calls_made": 1,
+          "model_sees_chars": 261,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"42\\n\", \"tool_calls_made\": 1, \"duration_seconds\": 2.03, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 1
+      }
+    },
+    "adapterStats": {
+      "tasks": 4
+    },
+    "hostMaxEventLoopLagMs": 54,
+    "totalMs": 16300
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      108,
+      27,
+      0
+    ],
+    [
+      299,
+      52,
+      36
+    ],
+    [
+      499,
+      75,
+      49
+    ],
+    [
+      706,
+      91,
+      76
+    ],
+    [
+      921,
+      128,
+      100
+    ],
+    [
+      1122,
+      215,
+      122
+    ],
+    [
+      1335,
+      215,
+      136
+    ],
+    [
+      1538,
+      203,
+      123
+    ],
+    [
+      1750,
+      214,
+      127
+    ],
+    [
+      1955,
+      214,
+      130
+    ],
+    [
+      2161,
+      215,
+      136
+    ],
+    [
+      2369,
+      179,
+      136
+    ],
+    [
+      2570,
+      170,
+      136
+    ],
+    [
+      2820,
+      125,
+      123
+    ],
+    [
+      3006,
+      170,
+      150
+    ],
+    [
+      3246,
+      216,
+      119
+    ],
+    [
+      3438,
+      183,
+      123
+    ],
+    [
+      3636,
+      170,
+      122
+    ],
+    [
+      3863,
+      141,
+      130
+    ],
+    [
+      4052,
+      219,
+      125
+    ],
+    [
+      4266,
+      277,
+      138
+    ],
+    [
+      4498,
+      218,
+      138
+    ],
+    [
+      4706,
+      167,
+      125
+    ],
+    [
+      4903,
+      233,
+      149
+    ],
+    [
+      5108,
+      189,
+      151
+    ],
+    [
+      5313,
+      187,
+      164
+    ],
+    [
+      5520,
+      279,
+      138
+    ],
+    [
+      5754,
+      233,
+      139
+    ],
+    [
+      5974,
+      232,
+      125
+    ],
+    [
+      6155,
+      182,
+      138
+    ],
+    [
+      6373,
+      184,
+      139
+    ],
+    [
+      6584,
+      181,
+      138
+    ],
+    [
+      6803,
+      155,
+      166
+    ],
+    [
+      7035,
+      175,
+      125
+    ],
+    [
+      7232,
+      142,
+      125
+    ],
+    [
+      7444,
+      232,
+      165
+    ],
+    [
+      7670,
+      161,
+      136
+    ],
+    [
+      7909,
+      171,
+      138
+    ],
+    [
+      8130,
+      187,
+      152
+    ],
+    [
+      8326,
+      186,
+      125
+    ],
+    [
+      8532,
+      186,
+      125
+    ],
+    [
+      8774,
+      186,
+      125
+    ],
+    [
+      9035,
+      187,
+      125
+    ],
+    [
+      9229,
+      202,
+      125
+    ],
+    [
+      9436,
+      172,
+      125
+    ],
+    [
+      9697,
+      142,
+      139
+    ],
+    [
+      9972,
+      188,
+      137
+    ],
+    [
+      10154,
+      142,
+      125
+    ],
+    [
+      10359,
+      169,
+      125
+    ],
+    [
+      10582,
+      231,
+      125
+    ],
+    [
+      10779,
+      187,
+      125
+    ],
+    [
+      10982,
+      142,
+      138
+    ],
+    [
+      11182,
+      187,
+      125
+    ],
+    [
+      11399,
+      142,
+      125
+    ],
+    [
+      11596,
+      142,
+      139
+    ],
+    [
+      11815,
+      187,
+      138
+    ],
+    [
+      12010,
+      142,
+      138
+    ],
+    [
+      12216,
+      142,
+      125
+    ],
+    [
+      12439,
+      219,
+      125
+    ],
+    [
+      12638,
+      142,
+      125
+    ],
+    [
+      12872,
+      174,
+      125
+    ],
+    [
+      13131,
+      175,
+      128
+    ],
+    [
+      13358,
+      142,
+      151
+    ],
+    [
+      13539,
+      142,
+      125
+    ],
+    [
+      13751,
+      142,
+      138
+    ],
+    [
+      13952,
+      142,
+      137
+    ],
+    [
+      14163,
+      186,
+      138
+    ],
+    [
+      14368,
+      187,
+      125
+    ],
+    [
+      14570,
+      152,
+      125
+    ],
+    [
+      14782,
+      161,
+      125
+    ],
+    [
+      14984,
+      142,
+      139
+    ],
+    [
+      15182,
+      142,
+      125
+    ],
+    [
+      15390,
+      148,
+      125
+    ],
+    [
+      15594,
+      142,
+      125
+    ],
+    [
+      15813,
+      142,
+      125
+    ],
+    [
+      16022,
+      142,
+      138
+    ],
+    [
+      16231,
+      142,
+      125
+    ]
+  ]
+}

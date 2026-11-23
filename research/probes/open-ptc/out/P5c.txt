@@ -1,0 +1,13 @@
+mode: default
+code:
+console.log(JSON.stringify(Deno.env.toObject()))
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "a06e0924-0a50-486a-abcb-bd424acfed9e",
+  "success": false,
+  "output": "\n\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) NotCapable: Requires env access, run again with the --allow-env flag\nconsole.log(JSON.stringify(Deno.env.toObject()))\n\u001b[0m\u001b[31m                                    ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mObject.toObject\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_os/30_os.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m133\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m12\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/6861461f5fcab241.ts\u001b[0m:\u001b[0m\u001b[33m35\u001b[0m:\u001b[0m\u001b[33m37\u001b[0m\n",
+  "ms": 17,
+  "hostCalls": 0
+}

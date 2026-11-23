@@ -1,0 +1,65 @@
+engine=quickjs hardened=true config={"enabled":true,"executor":"quickjs","timeoutMs":5000,"memoryLimitBytes":16777216,"maxOutputBytes":8192,"maxSnapshotBytes":1048576,"maxPendingToolCalls":8,"snapshotTtlSeconds":60} setupMs=1
+--- code 1 ---
+const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => lookup({id:i}))); console.log(Date.now()-t); return Date.now()-t;
+--- result 1 ---
+{"ms":218.25,"hostCalls":5,"ok":true,"waits":0}
+content text (269 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"d26ed397bcaf6019aad560e9","searchCount":0,"describeCount":0,"callCount":5,"visibleTools":["exec","wait"]},"output":[{"type":"text","text":"215"}],"value":215}
+details (359 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "d26ed397bcaf6019aad560e9",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 5,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [
+  {
+   "type": "text",
+   "text": "215"
+  }
+ ],
+ "value": 215
+}
+--- code 2 ---
+const t = Date.now(); const rs = await Promise.all(Array.from({length: 40}, (_, i) => lookup({id:i}))); return [rs.length, Date.now()-t];
+--- result 2 ---
+{"ms":1020.25,"hostCalls":40,"ok":true,"waits":0}
+content text (248 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"d26ed397bcaf6019aad560e9","searchCount":0,"describeCount":0,"callCount":45,"visibleTools":["exec","wait"]},"output":[],"value":[40,1018]}
+details (328 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "d26ed397bcaf6019aad560e9",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 45,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": [
+  40,
+  1018
+ ]
+}

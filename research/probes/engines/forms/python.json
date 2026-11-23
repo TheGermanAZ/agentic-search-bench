@@ -1,0 +1,19 @@
+{
+ "P1": "r = await read(21)\nprint(r[\"value\"])",
+ "P2": "print(\"A\" * 200000)\n\"RETURNED\"",
+ "P3": "import urllib.request\nr = urllib.request.urlopen(\"https://example.com\")\nprint(r.status)",
+ "P4": "print(len(open(\"/etc/hosts\").read()))",
+ "P5": "import os\nprint(os.environ.get(\"PROBE_SECRET\"))",
+ "P6": "while True:\n    pass",
+ "P7": "a = []\nwhile True:\n    a.append(\"x\" * 10**6 + str(len(a)))",
+ "P8a": "kept = 7\nprint(\"set\")",
+ "P8b": "try:\n    print(kept)\nexcept NameError:\n    print(\"gone\")",
+ "P9": "import asyncio\nimport time\nt = time.time()\nrs = await asyncio.gather(*[read(i) for i in [1, 2, 3, 4, 5]])\nprint(round((time.time() - t) * 1000), \",\".join(str(r[\"value\"]) for r in rs))",
+ "P10": "raise ValueError(\"probe-boom\")",
+ "P11": "print(1 + 1)",
+ "P12a": "subs = ().__class__.__base__.__subclasses__()\nprint([c.__name__ for c in subs if c.__name__ in (\"_wrap_close\", \"Popen\")])",
+ "P12b": "print(__import__(\"os\").system(\"echo PWNED\"))",
+ "P12c": "try:\n    print(sorted(globals()))\nexcept Exception as e:\n    print(\"err \" + type(e).__name__ + \": \" + str(e))",
+ "E1": "try:\n    await search(\"x\")\nexcept Exception as e:\n    print(\"caught: \" + str(e))",
+ "FLOOD": "while True:\n    print(\"x\" * 1000)"
+}

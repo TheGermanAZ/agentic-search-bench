@@ -1,0 +1,124 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default R3",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1274,
+  "peakTreeRssMb": 171,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "R3",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "A": {
+        "label": "recursion",
+        "startMs": 9,
+        "ms": 41,
+        "ok": true,
+        "result": {
+          "value": "ERROR: the sandbox stopped this program (memory or time limit, or an engine fault): Maximum call stack size exceeded.",
+          "stringChars": 117
+        },
+        "callsStarted": 0
+      },
+      "deep": {
+        "label": "deep-return",
+        "startMs": 50,
+        "ms": 1135,
+        "ok": true,
+        "result": {
+          "value": "ERROR: the sandbox stopped this program (memory or time limit, or an engine fault): Maximum call stack size exceeded.",
+          "stringChars": 117
+        },
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1185,
+        "ms": 14,
+        "ok": true,
+        "result": {
+          "value": "\"alive\"",
+          "stringChars": 7
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 3,
+    "hostEvents": [],
+    "totalMs": 1199
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      163,
+      77
+    ],
+    [
+      255,
+      115
+    ],
+    [
+      379,
+      122
+    ],
+    [
+      457,
+      133
+    ],
+    [
+      518,
+      134
+    ],
+    [
+      604,
+      137
+    ],
+    [
+      691,
+      137
+    ],
+    [
+      822,
+      139
+    ],
+    [
+      887,
+      154
+    ],
+    [
+      928,
+      159
+    ],
+    [
+      984,
+      161
+    ],
+    [
+      1033,
+      162
+    ],
+    [
+      1112,
+      162
+    ],
+    [
+      1204,
+      171
+    ],
+    [
+      1273,
+      0
+    ]
+  ]
+}

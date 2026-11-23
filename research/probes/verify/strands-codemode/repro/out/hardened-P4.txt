@@ -1,0 +1,34 @@
+probe: hardened-P4
+outcome: blocked
+display: blocked (PermissionError)
+detail: Execution error: Traceback (most recent call last): File "<python-input-0>", line 1, in <module> data = open("/etc/hosts").read() ~~~~~~~~~~~~~~~~~~ PermissionError: Permission denied: '/etc/hosts'
+
+code:
+----
+data = open("/etc/hosts").read()
+msg = "HOSTS " + str(len(data)) + " chars, mentions localhost: " + str("localhost" in data)
+print(msg)
+msg
+----
+
+setup_ms: 247.8
+wall_s (whole child process): 0.53
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.081
+host lookup calls: 0
+
+=== run 0 (8.5 ms) ===
+ok: false
+stdout: 
+status: error
+error: Execution error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    data = open("/etc/hosts").read()
+           ~~~~~~~~~~~~~~~~~~
+PermissionError: Permission denied: '/etc/hosts'
+
+=== child process log (tail) ===
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+

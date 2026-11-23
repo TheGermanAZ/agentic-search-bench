@@ -1,0 +1,8 @@
+code:
+r = tools.lookup(id=21)
+print(r['value'])
+result = r['value']
+
+{"ok": true, "result": 42, "error": null, "ms": 208.0}
+stdout (0 chars): ''
+host_calls=1

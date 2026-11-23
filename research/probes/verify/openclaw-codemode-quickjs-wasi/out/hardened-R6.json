@@ -1,0 +1,333 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs hardened R6",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 5768,
+  "peakTreeRssMb": 344,
+  "peakTreeFootprintMb": 314,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "hardened",
+    "test": "R6",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\",\"timeoutMs\":5000,\"memoryLimitBytes\":16777216,\"maxOutputBytes\":8192,\"maxSnapshotBytes\":1048576,\"maxPendingToolCalls\":8,\"snapshotTtlSeconds\":60}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "startMs": 696,
+      "ms": 5022,
+      "ok": true,
+      "result": {
+        "value": {
+          "status": "failed",
+          "code": "timeout",
+          "waits": 0,
+          "error": "code mode timeout exceeded",
+          "output": [],
+          "textChars": 332,
+          "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":true,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"1318c690e48fcc54539bacf4\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+        },
+        "stringChars": 371
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 790,
+    "hostEvents": [],
+    "totalMs": 5718
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_1f740493-f5e1-43c2-9761-38fc37ae09ed workerId=code-mode-quickjs:1 failurePhase=guest bridgeDispatchStarted=true errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      76,
+      63,
+      19
+    ],
+    [
+      179,
+      98,
+      19
+    ],
+    [
+      282,
+      124,
+      65
+    ],
+    [
+      384,
+      149,
+      102
+    ],
+    [
+      489,
+      176,
+      142
+    ],
+    [
+      589,
+      204,
+      180
+    ],
+    [
+      692,
+      236,
+      180
+    ],
+    [
+      796,
+      258,
+      211
+    ],
+    [
+      897,
+      296,
+      244
+    ],
+    [
+      1004,
+      338,
+      292
+    ],
+    [
+      1108,
+      338,
+      313
+    ],
+    [
+      1209,
+      338,
+      313
+    ],
+    [
+      1315,
+      338,
+      313
+    ],
+    [
+      1417,
+      339,
+      313
+    ],
+    [
+      1520,
+      339,
+      314
+    ],
+    [
+      1622,
+      339,
+      314
+    ],
+    [
+      1725,
+      339,
+      314
+    ],
+    [
+      1831,
+      339,
+      314
+    ],
+    [
+      1932,
+      339,
+      314
+    ],
+    [
+      2033,
+      339,
+      314
+    ],
+    [
+      2137,
+      339,
+      314
+    ],
+    [
+      2238,
+      339,
+      314
+    ],
+    [
+      2344,
+      339,
+      314
+    ],
+    [
+      2447,
+      339,
+      314
+    ],
+    [
+      2552,
+      339,
+      314
+    ],
+    [
+      2653,
+      339,
+      314
+    ],
+    [
+      2756,
+      339,
+      314
+    ],
+    [
+      2862,
+      339,
+      314
+    ],
+    [
+      2964,
+      339,
+      314
+    ],
+    [
+      3067,
+      339,
+      314
+    ],
+    [
+      3171,
+      339,
+      314
+    ],
+    [
+      3276,
+      339,
+      314
+    ],
+    [
+      3377,
+      339,
+      314
+    ],
+    [
+      3478,
+      339,
+      314
+    ],
+    [
+      3581,
+      339,
+      314
+    ],
+    [
+      3684,
+      339,
+      314
+    ],
+    [
+      3789,
+      339,
+      314
+    ],
+    [
+      3892,
+      339,
+      314
+    ],
+    [
+      3995,
+      339,
+      314
+    ],
+    [
+      4099,
+      339,
+      314
+    ],
+    [
+      4204,
+      339,
+      314
+    ],
+    [
+      4305,
+      339,
+      314
+    ],
+    [
+      4408,
+      339,
+      314
+    ],
+    [
+      4513,
+      339,
+      314
+    ],
+    [
+      4615,
+      339,
+      314
+    ],
+    [
+      4718,
+      339,
+      314
+    ],
+    [
+      4821,
+      339,
+      314
+    ],
+    [
+      4924,
+      339,
+      314
+    ],
+    [
+      5044,
+      339,
+      314
+    ],
+    [
+      5151,
+      339,
+      314
+    ],
+    [
+      5254,
+      339,
+      314
+    ],
+    [
+      5352,
+      339,
+      314
+    ],
+    [
+      5455,
+      339,
+      314
+    ],
+    [
+      5561,
+      339,
+      314
+    ],
+    [
+      5660,
+      339,
+      314
+    ],
+    [
+      5767,
+      344,
+      314
+    ]
+  ]
+}

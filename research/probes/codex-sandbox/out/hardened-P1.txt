@@ -1,0 +1,13 @@
+probe: P1 (hardened)
+codex: ~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex (codex-cli 0.169.0)
+CODEX_HOME: ~/p/agentic-search-bench/research/impls/codex-sandbox/codex-home-hardened (empty, config only from the flags below)
+flags: codex sandbox "-c" "shell_environment_policy.inherit=\"core\"" "-c" "shell_environment_policy.ignore_default_excludes=false" "-c" "permissions.hardened.filesystem={\":minimal\"=\"read\",\":workspace_roots\"=\"read\",\"/opt/homebrew/Cellar/python@3.15/3.15.0_1\"=\"read\",\"/etc/**\"=\"deny\",\"/private/etc/**\"=\"deny\"}" "-c" "permissions.hardened.network.enabled=false" "-P" "hardened" "-C" "~/p/agentic-search-bench/research/probes/codex-sandbox/work" -- <argv>
+
+--- sanity: python runs under the hardened profile (no tool bridge exists) ---
+argv: ["/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/bin/python3.15", "-c", "print(2)"]
+exit: 0  wall_ms: 92.2  peak_tree_rss_mb: 46.4  killed: None
+stdout:
+2
+
+stderr:
+

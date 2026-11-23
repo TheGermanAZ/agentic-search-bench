@@ -1,0 +1,28 @@
+{
+  "note": "supplementary: async hang, shows the timeout option is honoured (not ignored)",
+  "config": {
+    "executorOptions": {
+      "loader": "env.LOADER",
+      "timeout": 10000,
+      "globalOutbound": null,
+      "modules": {},
+      "bindings": {}
+    }
+  },
+  "tool": {
+    "code": "await new Promise(() => {})",
+    "mode": "tool",
+    "path": "/run",
+    "httpStatus": 200,
+    "wallMs": 10047,
+    "body": {
+      "mode": "tool",
+      "res": {
+        "ok": false,
+        "thrown": "Code execution failed: Execution timed out"
+      },
+      "hostCalls": 0,
+      "hostMs": 10007
+    }
+  }
+}

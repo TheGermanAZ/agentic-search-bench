@@ -1,0 +1,30 @@
+probe: P12d
+outcome: error
+display: TypeError: Type is not msgpack serializa
+detail: TypeError: Type is not msgpack serializable: function
+
+code:
+----
+def f():
+    global PROBE_LEAK
+    PROBE_LEAK = 'leaked'
+f()
+print('set')
+----
+
+setup_ms: 2.0
+wall_s (whole child process): 0.37
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.063
+host lookup calls: 0
+
+=== run 0 (2.7 ms) ===
+ok: false
+error: TypeError: Type is not msgpack serializable: function
+raised: true
+
+=== child process log (tail) ===
+~/p/agentic-search-bench/research/impls/langgraph-codeact/.venv/lib/python3.12/site-packages/langgraph/checkpoint/base/__init__.py:17: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects='messages' or allowed_objects='core') to suppress this warning.
+  from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+

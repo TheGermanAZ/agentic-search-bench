@@ -1,0 +1,7 @@
+{
+  "probe": "Pcap",
+  "outcome": "limited",
+  "display": "limited (50 calls)",
+  "detail": "Error calling tool 'execute': Exception: Tool call limit exceeded: at most 50 call_tool() invocations are allowed per execute().",
+  "evidence": "research/probes/fastmcp-codemode/out/Pcap.txt"
+}

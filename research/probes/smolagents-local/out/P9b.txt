@@ -1,0 +1,5 @@
+probe: P9b
+code (python, run through LocalPythonExecutor):
+import asyncio
+host_calls_so_far: 0
+result: {'ok': False, 'error_type': 'InterpreterError', 'error': "Code execution failed at line 'import asyncio' due to: InterpreterError: Import of asyncio is not allowed. Authorized imports are: ['itertools', 'stat', 'random', 'unicodedata', 'statistics', 'math', 'collections', 'queue', 'time', 're', 'datetime']", 'ms': 0.2}

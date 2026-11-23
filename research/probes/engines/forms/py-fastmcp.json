@@ -1,0 +1,15 @@
+{
+ "P1": "r = await call_tool(\"read\", {\"id\": \"21\"})\nreturn r[\"result\"][\"value\"]",
+ "P2": "print(\"A\" * 200000)\nreturn \"RETURNED\"",
+ "P3": "try:\n    import urllib.request\n    r = urllib.request.urlopen(\"https://example.com\")\n    return r.status\nexcept Exception as e:\n    return type(e).__name__ + \": \" + str(e)",
+ "P4": "try:\n    return len(open(\"/etc/hosts\").read())\nexcept Exception as e:\n    return type(e).__name__ + \": \" + str(e)",
+ "P5": "try:\n    import os\n    return os.environ.get(\"PROBE_SECRET\")\nexcept Exception as e:\n    return type(e).__name__ + \": \" + str(e)",
+ "P8a": "kept = 7\nreturn \"set\"",
+ "P8b": "try:\n    return kept\nexcept NameError:\n    return \"gone\"",
+ "P9": "import asyncio\nrs = await asyncio.gather(*[call_tool(\"read\", {\"id\": str(i)}) for i in [1, 2, 3, 4, 5]])\nreturn \",\".join(str(r[\"result\"][\"value\"]) for r in rs)",
+ "P11": "return 1 + 1",
+ "P12a": "try:\n    subs = ().__class__.__base__.__subclasses__()\n    return [c.__name__ for c in subs if c.__name__ in (\"_wrap_close\", \"Popen\")]\nexcept Exception as e:\n    return type(e).__name__ + \": \" + str(e)",
+ "P12b": "try:\n    return __import__(\"os\").system(\"echo PWNED\")\nexcept Exception as e:\n    return type(e).__name__ + \": \" + str(e)",
+ "P12c": "try:\n    return sorted(globals())\nexcept Exception as e:\n    return type(e).__name__ + \": \" + str(e)",
+ "E1": "try:\n    await call_tool(\"search\", {\"query\": \"x\"})\nexcept Exception as e:\n    return \"caught: \" + str(e)"
+}

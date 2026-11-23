@@ -1,0 +1,7 @@
+{
+  "probe": "PX",
+  "outcome": "works",
+  "detail": "P9-loop: ok=True out='LOOKUP_CALL\\nLOOKUP_CALL\\nLOOKUP_CALL\\nLOOKUP_CALL\\nLOOKUP_CALL\\n1021' err=None | P4-canary: ok=False out='Traceback (most recent call last):\\n  File \"/workspace/tmp_code_6f595c4cc07b1d0601cc89a340c21bb35d9739f0a77e637398aad1b9d' err=exit_code=1: Traceback (most recent call last):\n  File \"/workspace/tmp_code_6f595c4cc07b1d0601cc89a340c21bb35d9739f0a77e637398aad1b9dc3e0833.python\", line 1, in | P4-workdir: ok=True out=\"/workspace ['functions.py', 'tmp_code_1fb7db2832f7f3f7da06d3220839984114ac8a1e0933a7560e72bad4b2d61d52.python', 'tmp_cod\" err=None | P8-files: ok=True out='7' err=None | P6-orphan: ok=False out='Timeout' err=exit_code=124: \n Timeout | P12-whoami: ok=True out='0 Linux-7.2.12-orbstack-00394-gbecdd6130068-aarch64-with-glibc2.41' err=None | shell-block: ok=True out='shell-ok\\nLinux' err=None",
+  "display": "extras",
+  "config": "default"
+}

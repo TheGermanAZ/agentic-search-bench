@@ -1,0 +1,73 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 45,
+    "totalWallMs": 248,
+    "peakTreeRssMB": 80.7,
+    "stderrTail": ""
+  },
+  "backend": "isolated-vm",
+  "probe": "P4",
+  "mode": "hardened",
+  "setupMs": 92.4,
+  "record": {
+    "require": {
+      "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\").slice(0, 60)",
+      "wallMs": 33.2,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "require is not defined",
+          "name": "ReferenceError"
+        }
+      },
+      "threw": null
+    },
+    "dynamicImport": {
+      "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\").slice(0, 60)",
+      "wallMs": 4.5,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "Not supported",
+          "name": "Error"
+        }
+      },
+      "threw": null
+    },
+    "getBuiltinModule": {
+      "code": "return process.getBuiltinModule(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\").slice(0, 60)",
+      "wallMs": 2.1,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "process is not defined",
+          "name": "ReferenceError"
+        }
+      },
+      "threw": null
+    },
+    "denoReadTextFile": {
+      "code": "return await Deno.readTextFile(\"/etc/hosts\")",
+      "wallMs": 1.5,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "Deno is not defined",
+          "name": "ReferenceError"
+        }
+      },
+      "threw": null
+    }
+  }
+}

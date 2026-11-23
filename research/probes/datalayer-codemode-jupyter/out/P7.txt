@@ -1,0 +1,51 @@
+probe: P7
+outcome: no-limit-within-120s
+display: no limit (killed at 4.0 GB)
+detail: harness RSS watchdog at 4.01 GB after 9.3 s; peak tree RSS 4.013 GB; no error from the sandbox
+
+code:
+----
+a = []
+while True:
+    a.append("x" * 10**6)
+----
+
+setup_ms: 2576.3
+wall_s (whole child process): 9.31
+killed: harness RSS watchdog at 4.01 GB after 9.3 s
+child exit code: -9
+peak tree RSS GB: 4.013
+host lookup calls: 0
+
+=== child process log (tail) ===
+[11/22/26 15:12:00] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-fu6zgox              
+                             z/generated (mcp dir:                              
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-fu6zgox              
+                             z/generated/mcp)                                   
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-fu6zgox              
+                             z/generated/mcp/probe                              
+                    INFO     Starting Jupyter server       jupyter_server.py:262
+                             subprocess on 127.0.0.1:41520                      
+                             (workdir=/var/folders/tg/x0gc                      
+                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      
+                             dl-jupyter-server-fu6zgoxz/wo                      
+                             rkspace)                                           
+[11/22/26 15:12:01] INFO     No existing kernels found,    jupyter_server.py:412
+                             will create a new one                              
+                    INFO     Starting the kernel client…           client.py:412
+                    INFO     KernelHttpManager created a new      manager.py:258
+                             kernel: {'id':                                     
+                             'ce1224d5-e90f-496e-9191-be79c2e66df               
+                             3', 'name': 'python3',                             
+                             'last_activity':                                   
+                             '2026-11-22T20:12:01.610705Z',                     
+                             'execution_state': 'starting',                     
+                             'connections': 0}                                  
+                    INFO     Websocket connected                 _logging.py:104
+

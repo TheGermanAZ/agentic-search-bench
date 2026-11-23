@@ -1,0 +1,10 @@
+--- code 1 ---
+local ps = {}
+for i = 1, 5 do ps[i] = probe.lookup({id = i}) end
+local vals = {}
+for i = 1, 5 do vals[i] = ps[i]:await().value end
+result(vals)
+--- result 1 ---
+{"ms":208,"hostCalls":5,"side":{"proxyLogBytes":234868},"ok":true,"isError":false}
+text (12 chars):
+[2,4,6,8,10]

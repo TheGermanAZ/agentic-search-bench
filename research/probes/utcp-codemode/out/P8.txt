@@ -1,0 +1,17 @@
+{
+  "probe": "P8 state",
+  "execution1": {
+    "code": "globalThis.kept = 7",
+    "result": null,
+    "logs": [],
+    "threw": null
+  },
+  "execution2": {
+    "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+    "logs": [
+      "gone"
+    ],
+    "threw": null
+  },
+  "verdict": "fresh"
+}

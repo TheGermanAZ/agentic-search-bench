@@ -1,0 +1,13 @@
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+tool returned after 10.0 s: Execution error: timed out after 10 seconds.
+[+10 s] harness pid 31119 pgid 31114; monty descendants or orphans of this venv: none
+[+19 s] harness pid 31119 pgid 31114; monty descendants or orphans of this venv: none
+[+28 s] harness pid 31119 pgid 31114; monty descendants or orphans of this venv: none
+[+37 s] harness pid 31119 pgid 31114; monty descendants or orphans of this venv: none
+[+46 s] harness pid 31119 pgid 31114; monty descendants or orphans of this venv: none
+[+55 s] harness pid 31119 pgid 31114; monty descendants or orphans of this venv: none
+[+65 s] harness pid 31119 pgid 31114; monty descendants or orphans of this venv: none
+[+74 s] harness pid 31119 pgid 31114; monty descendants or orphans of this venv: none
+[+83 s] harness pid 31119 pgid 31114; monty descendants or orphans of this venv: none
+next run -> success 2
+[end] harness pid 31119 pgid 31114; monty descendants or orphans of this venv: none

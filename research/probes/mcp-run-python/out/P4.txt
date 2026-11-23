@@ -1,0 +1,10 @@
+python open:
+{"status": "run-error", "output": [], "error": "Traceback (most recent call last):\n  File \"main.py\", line 1, in <module>\n    open(\"/etc/hosts\").read()\n    ~~~~^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 44] No such file or directory: '/etc/hosts'\n"}
+Deno.readTextFileSync /etc/hosts:
+{"status": "run-error", "output": [], "error": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    js.Deno.readTextFileSync(\"/etc/hosts\")\n    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n  File \"ext:deno_fs/30_fs.js\", line 852, in Object.readTextFileSync\npyodide.ffi.JsException: NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag\n"}
+Deno cwd/readDir:
+{"status": "success", "output": [], "return_value": ["/private/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/tmp3d9fmhqq/mcp-run-python", ["zod", "@types", ".bin", ".deno", "@modelcontextprotocol"]]}
+Deno write cwd:
+{"status": "run-error", "output": [], "error": "Traceback (most recent call last):\n  File \"main.py\", line 2, in <module>\n    js.Deno.writeTextFileSync(\"probe-write.txt\", \"x\")\n    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"ext:deno_fs/30_fs.js\", line 952, in Object.writeTextFileSync\n  File \"ext:deno_fs/30_fs.js\", line 887, in writeFileSync\npyodide.ffi.JsException: NotCapable: Requires write access to \"probe-write.txt\", run again with the --allow-write flag\n"}
+Pyodide MEMFS /tmp:
+{"status": "success", "output": [], "return_value": "x"}

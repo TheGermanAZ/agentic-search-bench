@@ -1,0 +1,33 @@
+probe: hardened-P7
+outcome: limited
+display: limited (256 MiB)
+detail: stopped after 0.03 s, peak tree RSS 0.317 GB: Execution error: Traceback (most recent call last): File "<python-input-0>", line 3, in <module> a.append("x" * 10**6) ~~~~~~~~~~~ MemoryError: memory limit exceeded: 269066748 bytes > 268435456 bytes
+
+code:
+----
+a = []
+while True:
+    a.append("x" * 10**6)
+----
+
+setup_ms: 247.5
+wall_s (whole child process): 0.53
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.317
+host lookup calls: 0
+
+=== run 0 (32.4 ms) ===
+ok: false
+stdout: 
+status: error
+error: Execution error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 3, in <module>
+    a.append("x" * 10**6)
+             ~~~~~~~~~~~
+MemoryError: memory limit exceeded: 269066748 bytes > 268435456 bytes
+
+=== child process log (tail) ===
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+

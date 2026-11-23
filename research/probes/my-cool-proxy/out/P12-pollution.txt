@@ -1,0 +1,4 @@
+{"step":"A-before","text":"Script executed successfully.\n\nResult:\nnil"}
+{"step":"A-set","text":"Script executed successfully.\n\nResult:\nset"}
+{"step":"B-failed","error":"Error POSTing to endpoint (HTTP 400): {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32700,\"message\":\"Parse error: Invalid JSON-RPC message\"},\"id\":null}"}
+{"jsonrpc":"2.0","error":{"code":-32700,"message":"Parse error: Invalid JSON-RPC message"},"id":null}

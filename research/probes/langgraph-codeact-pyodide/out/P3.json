@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "works",
+  "display": "works (js.fetch 200; urllib fails)",
+  "detail": "urllib.request: 'unknown url type: https' (Pyodide has no https handler). The same URL through js.fetch with pyodide.ffi.run_sync printed HTTP 200 (P3b), and Deno reports net permission 'granted' (P3c): network is on in the example's configuration.",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P3.txt"
+}

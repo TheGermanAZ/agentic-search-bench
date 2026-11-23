@@ -1,0 +1,55 @@
+probe=P12 mode=from_env AGENTICA_NO_SANDBOX='1' PROBE_SECRET set in host: True
+sandbox mode: no_sandbox
+PWNED
+PWNED
+--- exec 1 (1 ms)
+output repr (first 600): "1201 ['_wrap_close', 'Popen']\n"
+len(output): 30
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 2 (2 ms)
+output repr (first 600): '0\n'
+len(output): 2
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 3 (2 ms)
+output repr (first 600): '0\n'
+len(output): 2
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 4 (2 ms)
+output repr (first 600): "CompletedProcess(args=['echo', 'PWNED'], returncode=0, stdout=b'PWNED\\n', stderr=b'')\n"
+len(output): 86
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 5 (1 ms)
+output repr (first 600): '<class \'function\'> (<class \'function\'>, <class \'object\'>)\n{\'__builtins__\': {\'__name__\': \'builtins\', \'__doc__\': "Built-in functions, types, exceptions, and other objects.\\n\\nThis module provides direct access to all \'built-in\'\\nidentifiers of Python; for example, builtins.len is\\nthe full name for the built-in function len().\\n\\nThis module is not normally accessed explicitly by most\\napplications, but can be useful in modules that provide\\nobjects with the same name as a built-in value, but in\\nwhich the built-in of that name is also needed.", \'__package__\': \'\', \'__loader__\': <class \'_frozen_i'
+len(output): 7101
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 6 (1 ms)
+output repr (first 600): '<code object lookup at 0xffff81f244b0, file "/probe/probe.py", line 28>\n(<cell at 0xffff8284f130: function object at 0xffff81f07a60>, <cell at 0xffff8284d360: ResourceHandle object at 0xffff81f563c0>, <cell at 0xffff8284eef0: ABCMeta object at 0xaaaadf3057b0>)\n'
+len(output): 261
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 7 (0 ms)
+output repr (first 600): 'linux aarch64 3.12.12 (main, Oct 14 2025, 21:26:46) [Clang 20.1.4 ]\n'
+len(output): 68
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+host lookup calls: 0
+[harness] exit=0 wall=2s container=symbolica-agentica-nosandbox-P12-55464

@@ -1,0 +1,403 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R4",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 11283,
+  "peakTreeRssMb": 343,
+  "peakTreeFootprintMb": 316,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R4",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "startMs": 1024,
+      "ms": 10176,
+      "ok": true,
+      "result": {
+        "value": {
+          "status": "failed",
+          "code": "timeout",
+          "waits": 0,
+          "error": "code mode timeout exceeded",
+          "output": [],
+          "textChars": 333,
+          "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"46bef1076eae493ed714b897\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+        },
+        "stringChars": 372
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 1151,
+    "hostEvents": [],
+    "totalMs": 11200
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_d59cb9c1-a6c9-4c70-b149-039e2c2a47d4 workerId=code-mode-quickjs:1 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      100,
+      61,
+      0
+    ],
+    [
+      255,
+      101,
+      63
+    ],
+    [
+      417,
+      126,
+      63
+    ],
+    [
+      570,
+      168,
+      130
+    ],
+    [
+      780,
+      205,
+      173
+    ],
+    [
+      975,
+      238,
+      205
+    ],
+    [
+      1105,
+      245,
+      215
+    ],
+    [
+      1298,
+      296,
+      242
+    ],
+    [
+      1438,
+      340,
+      295
+    ],
+    [
+      1656,
+      340,
+      315
+    ],
+    [
+      1790,
+      340,
+      315
+    ],
+    [
+      1950,
+      340,
+      315
+    ],
+    [
+      2098,
+      340,
+      315
+    ],
+    [
+      2264,
+      340,
+      315
+    ],
+    [
+      2457,
+      340,
+      315
+    ],
+    [
+      2582,
+      340,
+      315
+    ],
+    [
+      2748,
+      340,
+      315
+    ],
+    [
+      2915,
+      340,
+      315
+    ],
+    [
+      3122,
+      340,
+      315
+    ],
+    [
+      3266,
+      340,
+      315
+    ],
+    [
+      3428,
+      340,
+      315
+    ],
+    [
+      3664,
+      341,
+      315
+    ],
+    [
+      3816,
+      341,
+      316
+    ],
+    [
+      3970,
+      341,
+      316
+    ],
+    [
+      4124,
+      341,
+      316
+    ],
+    [
+      4282,
+      341,
+      316
+    ],
+    [
+      4451,
+      341,
+      316
+    ],
+    [
+      4579,
+      341,
+      316
+    ],
+    [
+      4772,
+      341,
+      316
+    ],
+    [
+      4909,
+      341,
+      316
+    ],
+    [
+      5065,
+      341,
+      316
+    ],
+    [
+      5208,
+      341,
+      316
+    ],
+    [
+      5360,
+      341,
+      316
+    ],
+    [
+      5509,
+      341,
+      316
+    ],
+    [
+      5664,
+      341,
+      316
+    ],
+    [
+      5850,
+      341,
+      316
+    ],
+    [
+      5976,
+      341,
+      316
+    ],
+    [
+      6142,
+      341,
+      316
+    ],
+    [
+      6295,
+      341,
+      316
+    ],
+    [
+      6444,
+      341,
+      316
+    ],
+    [
+      6603,
+      341,
+      316
+    ],
+    [
+      6763,
+      341,
+      316
+    ],
+    [
+      6906,
+      341,
+      316
+    ],
+    [
+      7062,
+      341,
+      316
+    ],
+    [
+      7225,
+      341,
+      316
+    ],
+    [
+      7363,
+      341,
+      316
+    ],
+    [
+      7564,
+      341,
+      316
+    ],
+    [
+      7696,
+      341,
+      316
+    ],
+    [
+      7856,
+      341,
+      316
+    ],
+    [
+      8058,
+      341,
+      316
+    ],
+    [
+      8204,
+      341,
+      316
+    ],
+    [
+      8350,
+      341,
+      316
+    ],
+    [
+      8503,
+      341,
+      316
+    ],
+    [
+      8679,
+      341,
+      316
+    ],
+    [
+      8826,
+      341,
+      316
+    ],
+    [
+      8993,
+      341,
+      316
+    ],
+    [
+      9127,
+      341,
+      316
+    ],
+    [
+      9346,
+      341,
+      316
+    ],
+    [
+      9480,
+      341,
+      316
+    ],
+    [
+      9727,
+      341,
+      316
+    ],
+    [
+      9854,
+      341,
+      316
+    ],
+    [
+      10035,
+      341,
+      316
+    ],
+    [
+      10194,
+      341,
+      316
+    ],
+    [
+      10353,
+      341,
+      316
+    ],
+    [
+      10517,
+      341,
+      316
+    ],
+    [
+      10686,
+      341,
+      316
+    ],
+    [
+      10813,
+      341,
+      316
+    ],
+    [
+      10984,
+      341,
+      316
+    ],
+    [
+      11134,
+      341,
+      316
+    ],
+    [
+      11281,
+      0,
+      316
+    ]
+  ]
+}

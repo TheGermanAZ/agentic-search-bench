@@ -1,0 +1,13 @@
+engine py-fastmcp, LIMITS.wallMs=65000 maxConcurrent=8
+sidecar up: versions {"fastmcp":"4.2.4","pydantic-monty":"1.6.0"} pid 49119; monty workers none
+WALL: returned after 65001 ms: "ERROR: stopped at the 65 s limit for the whole program, including corpus calls. Do less per execution."
+WALL: sidecar spawns 1 (1 = cancel confirmed, no forced kill); next run "42" in 224 ms; monty workers now none
+CRASH: during loop, monty workers 54354; killing sidecar python pid 49119
+CRASH: in-flight run returned after 1048 ms: "ERROR: the sandbox stopped this program (python sidecar exited)"
+CRASH: monty workers after the kill: none
+CRASH: next run "42" in 961 ms (includes respawn); spawns 1 -> 2, new pid 54544
+CONC: 12 concurrent runs in 502 ms (8 slots, 200 ms each: about 400 ms expected); outputs ["42"]
+MASK P10: model saw "ERROR: Error calling tool 'execute'"; server log says "pydantic_monty.MontyRuntimeError: ValueError: probe-boom"
+MASK P7: model saw "ERROR: Error calling tool 'execute'"; server log says "pydantic_monty.MontyRuntimeError: MemoryError: memory limit exceeded: 537115134 bytes > 536870912 bytes"
+MASK P6: model saw "ERROR: Error calling tool 'execute'"; server log says "pydantic_monty.MontyRuntimeError: TimeoutError: feed time limit exceeded: 60.001605208s > 60s"
+closed: monty workers left none

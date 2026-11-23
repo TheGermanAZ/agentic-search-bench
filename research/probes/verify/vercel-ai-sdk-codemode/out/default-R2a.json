@@ -1,0 +1,96 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs default R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1221,
+  "peakTreeRssMb": 160,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "default",
+    "test": "R2a",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "startMs": 365,
+      "ms": 755,
+      "ok": true,
+      "result": {
+        "value": [
+          true,
+          "threw Function constructor is not allowed",
+          "threw Function constructor is not allowed",
+          "Object,Function,Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,Iterator,Array,parseInt,parseFloat,isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,eval,Number,Boolean,String,Math,Ref…[702 chars]…,Float16Array,Float32Array,Float64Array,DataView,Promise,WeakRef,FinalizationRegistry,console,__runCreateBridgePromise,__runAssertNoDetachedBridgeCalls,__codeMode,__runSerializeJsonPayload,__runResult"
+        ],
+        "stringChars": 784
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 643,
+    "hostEvents": [],
+    "totalMs": 1120
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:72763) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      189,
+      58
+    ],
+    [
+      361,
+      65
+    ],
+    [
+      527,
+      72
+    ],
+    [
+      577,
+      100
+    ],
+    [
+      631,
+      101
+    ],
+    [
+      708,
+      106
+    ],
+    [
+      765,
+      106
+    ],
+    [
+      847,
+      129
+    ],
+    [
+      905,
+      131
+    ],
+    [
+      1055,
+      160
+    ],
+    [
+      1112,
+      160
+    ],
+    [
+      1177,
+      160
+    ],
+    [
+      1219,
+      160
+    ]
+  ]
+}

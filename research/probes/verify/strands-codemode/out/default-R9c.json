@@ -1,0 +1,467 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R9c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 60807,
+  "peakTreeRssMb": 126,
+  "peakTreeFootprintMb": 90,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9c",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 514,
+          "ms": 60021,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[200042 chars]…xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n[output truncated at 199929 characters]\n\nExecution error:\nTimeoutError: time limit exceeded: 60.003114625s > 60s"
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 665,
+        "ms": 215,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1002,
+        "ms": 214,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 60535,
+        "ms": 216,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 21,
+    "totalMs": 60751
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      76,
+      30,
+      17
+    ],
+    [
+      849,
+      124,
+      85
+    ],
+    [
+      1617,
+      114,
+      86
+    ],
+    [
+      2391,
+      114,
+      86
+    ],
+    [
+      3163,
+      114,
+      86
+    ],
+    [
+      3935,
+      114,
+      86
+    ],
+    [
+      4704,
+      114,
+      86
+    ],
+    [
+      5482,
+      114,
+      86
+    ],
+    [
+      6281,
+      114,
+      86
+    ],
+    [
+      7052,
+      114,
+      86
+    ],
+    [
+      7827,
+      114,
+      86
+    ],
+    [
+      8604,
+      114,
+      86
+    ],
+    [
+      9381,
+      114,
+      86
+    ],
+    [
+      10158,
+      114,
+      86
+    ],
+    [
+      10928,
+      114,
+      86
+    ],
+    [
+      11703,
+      114,
+      86
+    ],
+    [
+      12478,
+      114,
+      86
+    ],
+    [
+      13253,
+      114,
+      86
+    ],
+    [
+      14028,
+      114,
+      86
+    ],
+    [
+      14805,
+      114,
+      86
+    ],
+    [
+      15579,
+      114,
+      86
+    ],
+    [
+      16358,
+      114,
+      86
+    ],
+    [
+      17127,
+      114,
+      86
+    ],
+    [
+      17904,
+      114,
+      86
+    ],
+    [
+      18670,
+      114,
+      86
+    ],
+    [
+      19446,
+      114,
+      86
+    ],
+    [
+      20214,
+      114,
+      86
+    ],
+    [
+      20988,
+      114,
+      86
+    ],
+    [
+      21759,
+      114,
+      86
+    ],
+    [
+      22534,
+      114,
+      86
+    ],
+    [
+      23304,
+      114,
+      86
+    ],
+    [
+      24079,
+      114,
+      86
+    ],
+    [
+      24852,
+      114,
+      86
+    ],
+    [
+      25625,
+      114,
+      86
+    ],
+    [
+      26409,
+      114,
+      86
+    ],
+    [
+      27178,
+      114,
+      86
+    ],
+    [
+      27950,
+      114,
+      86
+    ],
+    [
+      28820,
+      114,
+      86
+    ],
+    [
+      29597,
+      114,
+      86
+    ],
+    [
+      30376,
+      114,
+      86
+    ],
+    [
+      31152,
+      114,
+      86
+    ],
+    [
+      31932,
+      114,
+      86
+    ],
+    [
+      32705,
+      114,
+      86
+    ],
+    [
+      33488,
+      114,
+      86
+    ],
+    [
+      34277,
+      114,
+      86
+    ],
+    [
+      35053,
+      114,
+      86
+    ],
+    [
+      35828,
+      114,
+      86
+    ],
+    [
+      36605,
+      114,
+      86
+    ],
+    [
+      37384,
+      114,
+      86
+    ],
+    [
+      38168,
+      114,
+      86
+    ],
+    [
+      38938,
+      114,
+      86
+    ],
+    [
+      39712,
+      114,
+      86
+    ],
+    [
+      40480,
+      114,
+      86
+    ],
+    [
+      41253,
+      114,
+      86
+    ],
+    [
+      42026,
+      114,
+      86
+    ],
+    [
+      42789,
+      114,
+      86
+    ],
+    [
+      43575,
+      37,
+      86
+    ],
+    [
+      44342,
+      37,
+      86
+    ],
+    [
+      45187,
+      37,
+      86
+    ],
+    [
+      45934,
+      37,
+      86
+    ],
+    [
+      46703,
+      37,
+      86
+    ],
+    [
+      47473,
+      37,
+      86
+    ],
+    [
+      48249,
+      37,
+      86
+    ],
+    [
+      49009,
+      37,
+      86
+    ],
+    [
+      49778,
+      37,
+      86
+    ],
+    [
+      50552,
+      37,
+      86
+    ],
+    [
+      51330,
+      37,
+      86
+    ],
+    [
+      52103,
+      37,
+      86
+    ],
+    [
+      52881,
+      37,
+      86
+    ],
+    [
+      53654,
+      37,
+      86
+    ],
+    [
+      54431,
+      37,
+      86
+    ],
+    [
+      55196,
+      37,
+      86
+    ],
+    [
+      55975,
+      37,
+      86
+    ],
+    [
+      56746,
+      37,
+      86
+    ],
+    [
+      57511,
+      37,
+      86
+    ],
+    [
+      58289,
+      37,
+      86
+    ],
+    [
+      59056,
+      37,
+      86
+    ],
+    [
+      59830,
+      37,
+      86
+    ],
+    [
+      60595,
+      46,
+      86
+    ]
+  ]
+}

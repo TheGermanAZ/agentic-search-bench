@@ -1,0 +1,10 @@
+code:
+throw new Error("probe-boom")
+
+result:
+{
+  "id": "be4b0dfe-95c9-4f84-b0fb-c040c07d8728",
+  "error": "\u001b[0m\u001b[32mDownload\u001b[0m http://localhost:41310/client.ts?v=1\n\u001b[0m\u001b[32mCheck\u001b[0m file:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/8efc2b874691467f.ts\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) Error: probe-boom\nthrow new Error(\"probe-boom\")\n\u001b[0m\u001b[31m      ^\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/8efc2b874691467f.ts\u001b[0m:\u001b[0m\u001b[33m4\u001b[0m:\u001b[0m\u001b[33m7\u001b[0m\n",
+  "ms": 1108,
+  "hostCalls": 0
+}

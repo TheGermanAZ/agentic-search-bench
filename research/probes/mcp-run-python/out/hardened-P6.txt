@@ -1,0 +1,3 @@
+CODE: while True: pass  (hardened: allow_networking=False)
+OUTCOME: no-limit-within-120s
+harness stopped the process group (pid 71934) at 120 s; no limit fired in the sandbox

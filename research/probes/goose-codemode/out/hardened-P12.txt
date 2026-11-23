@@ -1,0 +1,45 @@
+probe: P12 (hardened)
+binary: goose-codemode-hardened-probe
+GOOSE_DEFAULT_EXTENSION_TIMEOUT=10
+process wall_ms: 63.9
+peak_rss_mb: 9.0
+exit: 0
+killed: None
+
+{"exec": "config", "probe": "P12", "timeout_seconds": 10}
+
+--- execution 0 ---
+code:
+async function run() {
+return this.constructor.constructor("return process")()
+}
+is_error: True
+elapsed_ms: 1.05
+host_calls: 0
+text returned to model:
+Error: ReferenceError: process is not defined (code_mode.js:4:5)
+    at anonymous (unknown at :2:1)
+    at run (code_mode.js:2:54)
+    at <main> (code_mode.js:4:5)
+
+--- execution 1 ---
+code:
+async function run() {
+return (function(){return this})().process
+}
+is_error: False
+elapsed_ms: 0.46
+host_calls: 0
+text returned to model:
+
+
+--- execution 2 ---
+code:
+async function run() {
+return Object.getOwnPropertyNames(globalThis).filter(n => !/^[A-Z]/.test(n))
+}
+is_error: False
+elapsed_ms: 1.14
+host_calls: 0
+text returned to model:
+Result: ["globalThis","undefined","isFinite","isNaN","parseInt","parseFloat","eval","encodeURI","encodeURIComponent","decodeURI","decodeURIComponent","tools","console","run"]

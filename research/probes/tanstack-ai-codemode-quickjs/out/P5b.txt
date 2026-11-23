@@ -1,0 +1,45 @@
+label: P5b
+command: node probe.mjs P5b
+child exit: code=0 signal=null
+child wall ms (process start to exit): 445
+peak child RSS: 84.7 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P5b",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 26.951000000000022,
+  "source": [
+    "return typeof process + \"|\" + Object.getOwnPropertyNames(globalThis).join(\",\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "undefined|Object,Function,Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,Array,parseInt,parseFloat,isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,Number,Boolean,String,Math,Reflect,Symbol,eval,globalThis,Date,RegExp,JSON,Proxy,Map,Set,WeakMap,WeakSet,ArrayBuffer,SharedArrayBuffer,Uint8ClampedArray,Int8Array,Uint8Array,Int16Array,Uint16Array,Int32Array,Uint32Array,BigInt64Array,BigUint64Array,Float32Array,Float64Array,DataView,Promise,BigInt,console,__external_lookup_impl,external_lookup,__external_failing_impl,external_failing",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 55.510125000000016,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "undefined|Object,Function,Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,Array,parseInt,parseFloat,isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,Number,Boolean,String,Math,Reflect,Symbol,eval,globalThis,Date,RegExp,JSON,Proxy,Map,Set,WeakMap,WeakSet,ArrayBuffer,SharedArrayBuffer,Uint8ClampedArray,Int8Array,Uint8Array,Int16Array,Uint16Array,Int32Array,Uint32Array,BigInt64Array,BigUint64Array,Float32Array,Float64Array,DataView,Promise,BigInt,console,__external_lookup_impl,external_lookup,__external_failing_impl,external_failing",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 56,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 84.8
+}
+--- child stdout ---
+
+--- child stderr ---
+

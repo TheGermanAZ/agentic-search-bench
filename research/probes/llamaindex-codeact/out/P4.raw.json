@@ -1,0 +1,24 @@
+{
+  "probe": "P4",
+  "config": "default",
+  "codes": [
+    "data = open(\"/etc/hosts\").read()\nmsg = \"HOSTS \" + str(len(data)) + \" chars, mentions localhost: \" + str(\"localhost\" in data)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "HOSTS 450 chars, mentions localhost: True\n\n\nHOSTS 450 chars, mentions localhost: True",
+      "error": null,
+      "ms": 74.5,
+      "started": 1795378419.704885
+    }
+  ],
+  "setup_ms": 9.6,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.98,
+  "peak_tree_rss_gb": 0.145,
+  "calls": [],
+  "child_log_tail": ""
+}

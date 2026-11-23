@@ -1,0 +1,263 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py hardened R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2896,
+  "peakTreeRssMb": 197,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9b",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich'], 'timeout': 1.0, 'memory_limit': 16777216, 'max_ptc_calls': 8, 'mode': 'call', 'subagents': False}), new thread_id per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1543,
+          "ms": 626,
+          "ok": true,
+          "result": "<error type=\"OutOfMemory\">out of memory</error>",
+          "callsStarted": 1
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1704,
+        "ms": 569,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 2273,
+        "ms": 235,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 2508,
+        "ms": 242,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 32,
+    "totalMs": 2750
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      119,
+      28
+    ],
+    [
+      186,
+      31
+    ],
+    [
+      232,
+      35
+    ],
+    [
+      316,
+      38
+    ],
+    [
+      355,
+      43
+    ],
+    [
+      411,
+      45
+    ],
+    [
+      502,
+      49
+    ],
+    [
+      545,
+      51
+    ],
+    [
+      601,
+      55
+    ],
+    [
+      647,
+      57
+    ],
+    [
+      703,
+      58
+    ],
+    [
+      753,
+      59
+    ],
+    [
+      799,
+      61
+    ],
+    [
+      849,
+      62
+    ],
+    [
+      903,
+      65
+    ],
+    [
+      942,
+      67
+    ],
+    [
+      1031,
+      68
+    ],
+    [
+      1081,
+      70
+    ],
+    [
+      1128,
+      70
+    ],
+    [
+      1170,
+      71
+    ],
+    [
+      1243,
+      74
+    ],
+    [
+      1284,
+      75
+    ],
+    [
+      1340,
+      77
+    ],
+    [
+      1381,
+      79
+    ],
+    [
+      1434,
+      81
+    ],
+    [
+      1498,
+      85
+    ],
+    [
+      1540,
+      85
+    ],
+    [
+      1593,
+      88
+    ],
+    [
+      1639,
+      91
+    ],
+    [
+      1742,
+      105
+    ],
+    [
+      1818,
+      129
+    ],
+    [
+      1890,
+      149
+    ],
+    [
+      1937,
+      160
+    ],
+    [
+      1986,
+      165
+    ],
+    [
+      2035,
+      168
+    ],
+    [
+      2084,
+      174
+    ],
+    [
+      2131,
+      181
+    ],
+    [
+      2187,
+      188
+    ],
+    [
+      2254,
+      197
+    ],
+    [
+      2307,
+      184
+    ],
+    [
+      2345,
+      184
+    ],
+    [
+      2404,
+      184
+    ],
+    [
+      2465,
+      184
+    ],
+    [
+      2507,
+      184
+    ],
+    [
+      2569,
+      184
+    ],
+    [
+      2616,
+      184
+    ],
+    [
+      2675,
+      184
+    ],
+    [
+      2725,
+      184
+    ],
+    [
+      2768,
+      184
+    ],
+    [
+      2827,
+      184
+    ],
+    [
+      2895,
+      0
+    ]
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R3",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 745,
+  "peakTreeRssMb": 116,
+  "peakTreeFootprintMb": 79,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R3",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "recursion": {
+        "label": "recursion",
+        "startMs": 563,
+        "ms": 35,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "RecursionError: maximum recursion depth exceeded"
+        },
+        "callsStarted": 0
+      },
+      "deep-return": {
+        "label": "deep-return",
+        "startMs": 599,
+        "ms": 44,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[…[2003 chars]…]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]"
+        },
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 643,
+        "ms": 38,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "alive"
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostMaxEventLoopLagMs": 6,
+    "totalMs": 681
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      114,
+      36,
+      0
+    ],
+    [
+      165,
+      48,
+      22
+    ],
+    [
+      216,
+      53,
+      22
+    ],
+    [
+      290,
+      60,
+      22
+    ],
+    [
+      333,
+      66,
+      43
+    ],
+    [
+      369,
+      68,
+      43
+    ],
+    [
+      414,
+      74,
+      57
+    ],
+    [
+      551,
+      84,
+      57
+    ],
+    [
+      591,
+      91,
+      57
+    ],
+    [
+      632,
+      96,
+      74
+    ],
+    [
+      690,
+      116,
+      74
+    ],
+    [
+      743,
+      99,
+      79
+    ]
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "probe": "P9",
+  "outcome": "works",
+  "detail": "207 ms for five 200 ms lookups (parallel); 0 host-side calls; 5 LOOKUP_CALL markers from inside the executor",
+  "display": "parallel (207 ms)",
+  "elapsed_ms": 207,
+  "host_calls": 0,
+  "config": "hardened"
+}

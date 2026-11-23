@@ -1,0 +1,191 @@
+{
+  "impl": "pydantic-ai-harness-codemode",
+  "name": "Pydantic AI Harness CodeMode (run_code over Monty)",
+  "source": "https://github.com/pydantic/pydantic-ai (src/pydantic_ai_harness/pydantic_ai_harness/code_mode/); PyPI pydantic-ai-harness[code-mode]",
+  "pinned": "pydantic-ai-harness 0.71.0 from PyPI, which is pydantic/pydantic-ai tag v2.71.0 = 8e4f468aad21f87af6634885b44e2834d8b3b983 (clone at research/impls/pydantic-ai-harness-codemode/src; diff -r against the installed wheel is empty). Runtime: pydantic-ai-slim 2.71.0, pydantic-monty 1.6.0, CPython 3.12.11.",
+  "language": "Python (Monty subset)",
+  "engine": "Monty, a Rust bytecode interpreter, in a local `monty` worker subprocess from pydantic_monty.AsyncMonty (_monty_exec.py:212), driven through the feed_start/resume snapshot API. The first snippet of each REPL is type-checked with ty before it runs.",
+  "how_run": "Agent(FunctionModel(scripted), capabilities=[CodeMode()]) with lookup registered via agent.tool_plain; the scripted model calls run_code(code=...) and the harness records the tool result the model would see. No LLM, no API key.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "model saw '{\"output\": \"42\\\\n\"}' (ToolReturnPart), 1 host call",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P1.txt",
+      "display": "works (42, 1 call)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "model saw 200038 chars (ToolReturnPart), 200000 'A's, RETURNED present: True, markers: [], head '{\"output\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', tail 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\\\n\", \"result\": \"RETURNED\"}'",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P2.txt",
+      "display": "works (200,038 chars, no marker)"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "model saw (ToolReturnPart): 'Type error in code:\\nerror[unresolved-import]: Cannot resolve imported module `urllib.request`\\n --> main.py:1:8\\n  |\\n1 | import urllib.request\\n  |        ^^^^^^^^^^^^^^\\n2 | urllib.request.urlopen(\"https://example.com\")\\n  |\\ninfo: Searched in the following paths during module resolution:\\ninfo:   1. / (first-party code)\\ninfo:   2. vendored://stdlib (stdlib typeshed stubs vendored by ty)\\ninfo: make sure'",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P3.txt",
+      "display": "not-defined (no urllib)"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 1, in <module>\\n    open(\"/etc/hosts\").read()\\n    ~~~~~~~~~~~~~~~~~~\\nPermissionError: Permission denied: \\'/etc/hosts\\''",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P4.txt",
+      "display": "blocked (PermissionError)"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 2, in <module>\\n    os.environ.get(\"PROBE_SECRET\")\\n    ~~~~~~~~~~\\nRuntimeError: \\'os.environ\\' is not supported in this environment'",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P5.txt",
+      "display": "blocked (os.environ unsupported)"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "stopped after 30.02 s agent-run wall; model saw (ToolReturnPart): 'Runtime error:\\nTimeoutError: feed time limit exceeded: 30.000054458s > 30s\\n\\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call.'; host alive, next agent run returned '2'",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P6.txt",
+      "display": "limited (30 s)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "stopped after 0.16 s agent-run wall; model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 3, in <module>\\n    a.append(\"x\" * 10**6)\\n             ~~~~~~~~~~~\\nMemoryError: memory limit exceeded: 269331226 bytes > 268435456 bytes\\n\\nThe sandbox ran out of memory and the session was reset. Re-run any imports, recreate any state you need, and use less memory: process smaller batches, avoid large intermediate values, and print less output.'; host alive, next agent run returned '2'; peak sampled host tree RSS 100 MiB; run through mem-lock.sh",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P7.txt",
+      "display": "limited (256 MiB)"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "second run_code in the same agent run saw: '{\"output\": \"7\\\\n\"}'; a new agent run saw: 'Type error in code:\\nerror[unresolved-reference]: Name `kept` used when not defined\\n --> main.py:1:7\\n  |\\n1 | print(kept)\\n  |       ^^^^\\n\\n'",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P8.txt",
+      "display": "persists (within one agent run)"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "5 lookups spanned 201 ms on the host (first start to last end; about 200 parallel, 1000 serial); model saw '[2, 4, 6, 8, 10]' (ToolReturnPart); 5 host calls; agent-run wall 0.23 s",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P9.txt",
+      "display": "parallel (201 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 1, in <module>\\n    raise ValueError(\"probe-boom\")\\nValueError: probe-boom'; line number present: True",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P10.txt",
+      "display": "works (message + line 1)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "fresh agent run with one run_code(1+1): median 16.5 ms, p90 29.0 ms (n=20); first run incl. imports and pool spawn 498 ms; 20 run_code calls in one run 115 ms total. Measures a whole Agent.run_sync with FunctionModel (graph, catalog build, ty check of the first snippet, Monty checkout); an earlier run on this machine gave 38 ms median, so the machine load moves it 2x. Raw Monty fresh checkout is 0.05 to 0.14 ms (results/pydantic-monty.json), so nearly all of this is harness and agent overhead (inferred, not profiled).",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P11.txt",
+      "display": "works (16.5 ms median per agent run)"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "9 escape attempts, each run twice: as the first snippet of a run (ty type check on) and as the second snippet (_toolset.py:1429-1431 skips the type check after the first snippet, so the code reaches Monty's runtime). Runtime results: ().__class__ -> AttributeError 'tuple' object has no attribute '__class__'; __import__ -> NameError: Unknown function: __import__; type(()).__mro__, (lambda: 0).__globals__, object.__subclasses__ -> AttributeError; os.system -> AttributeError module 'os' has no attribute 'system'; import subprocess -> ModuleNotFoundError; sys.modules -> AttributeError; getattr((), '__class__') -> AttributeError. First-snippet runs mostly stop earlier as ty type errors. No host object or PWNED output reached.",
+      "evidence": "research/probes/pydantic-ai-harness-codemode/out/P12.txt",
+      "display": "blocked (runtime, not only ty)"
+    }
+  },
+  "defaults": {
+    "time": "30 s of sandbox execution per run_code snippet; time awaiting tools and sleeping do not count (research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:343-346 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L343-L346); default at research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:373 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L373)). Observed P6: TimeoutError at 30.0 s, session reset.",
+    "memory": "256 MiB Monty heap (research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:374 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L374)). Observed P7: MemoryError at 269,331,226 > 268,435,456 bytes after 0.16 s; host process and the next agent run survived.",
+    "output": "No truncation below 10 MiB (P2: 200,038 chars whole). Print output is capped at 10 MiB per feed (research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/_monty_exec.py:271 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/_monty_exec.py#L271)); past it Monty raises MemoryError and the session resets, but the 10 MiB already printed is still sent to the model inside the retry text (X-print-cap: research/probes/pydantic-ai-harness-codemode/out/X-print-cap.txt, 10,486,097 chars).",
+    "tool_calls": "100 nested tool calls per run_code (research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:745-752 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L745-L752)): X-tool-cap (research/probes/pydantic-ai-harness-codemode/out/X-tool-cap.txt) asked for 101 via gather, 100 ran on the host, then the whole snippet failed. Plus max_suspensions 1000 host interactions per REPL session, which covers the whole agent run (research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:351-355 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L351-L355); default research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:375 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L375)): X-suspensions (research/probes/pydantic-ai-harness-codemode/out/X-suspensions.txt) got 991 lookups through, then snippet 10 and every later snippet failed with 'suspension limit 1000 exceeded'."
+  },
+  "hardened": {
+    "config": "CodeMode(resource_limits={'max_duration_seconds': 1.0, 'max_memory': 10_000_000, 'max_suspensions': 1000}, max_tool_calls=100). Keys from CodeModeResourceLimits (research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:339-355 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L339-L355)) and the capability fields (research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py:159-201 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py#L159-L201)); values follow Monty's documented example (pydantic/monty docs/resource-limits.md:11-15, as in results/pydantic-monty.json). No network option exists because the sandbox has no network module; files, env and clock stay off unless os_access or mount is passed (research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py:166-192 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py#L166-L192)). The remote worker option (monty_sandbox, research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py:225-234 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py#L225-L234)) was not probed: the installed monty binary has no server mode and a hosted server needs an account (blocked-needs-credentials).",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "model saw (ToolReturnPart): 'Type error in code:\\nerror[unresolved-import]: Cannot resolve imported module `urllib.request`\\n --> main.py:1:8\\n  |\\n1 | import urllib.request\\n  |        ^^^^^^^^^^^^^^\\n2 | urllib.request.urlopen(\"https://example.com\")\\n  |\\ninfo: Searched in the following paths during module resolution:\\ninfo:   1. / (first-party code)\\ninfo:   2. vendored://stdlib (stdlib typeshed stubs vendored by ty)\\ninfo: make sure'",
+        "evidence": "research/probes/pydantic-ai-harness-codemode/out/hardened-P3.txt",
+        "display": "not-defined (no urllib)"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 1, in <module>\\n    open(\"/etc/hosts\").read()\\n    ~~~~~~~~~~~~~~~~~~\\nPermissionError: Permission denied: \\'/etc/hosts\\''",
+        "evidence": "research/probes/pydantic-ai-harness-codemode/out/hardened-P4.txt",
+        "display": "blocked (PermissionError)"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 2, in <module>\\n    os.environ.get(\"PROBE_SECRET\")\\n    ~~~~~~~~~~\\nRuntimeError: \\'os.environ\\' is not supported in this environment'",
+        "evidence": "research/probes/pydantic-ai-harness-codemode/out/hardened-P5.txt",
+        "display": "blocked (os.environ unsupported)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "stopped after 1.02 s agent-run wall; model saw (ToolReturnPart): 'Runtime error:\\nTimeoutError: feed time limit exceeded: 1.000027458s > 1s\\n\\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call.'; host alive, next agent run returned '2'",
+        "evidence": "research/probes/pydantic-ai-harness-codemode/out/hardened-P6.txt",
+        "display": "limited (1 s)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "stopped after 0.03 s agent-run wall; model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 3, in <module>\\n    a.append(\"x\" * 10**6)\\n             ~~~~~~~~~~~\\nMemoryError: memory limit exceeded: 10293602 bytes > 10000000 bytes\\n\\nThe sandbox ran out of memory and the session was reset. Re-run any imports, recreate any state you need, and use less memory: process smaller batches, avoid large intermediate values, and print less output.'; host alive, next agent run returned '2'; peak sampled host tree RSS 98 MiB; run through mem-lock.sh",
+        "evidence": "research/probes/pydantic-ai-harness-codemode/out/hardened-P7.txt",
+        "display": "limited (10 MB)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "5 lookups spanned 201 ms on the host (first start to last end; about 200 parallel, 1000 serial); model saw '[2, 4, 6, 8, 10]' (ToolReturnPart); 5 host calls; agent-run wall 0.23 s",
+        "evidence": "research/probes/pydantic-ai-harness-codemode/out/hardened-P9.txt",
+        "display": "parallel (201 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "9 escape attempts, each run twice: as the first snippet of a run (ty type check on) and as the second snippet (_toolset.py:1429-1431 skips the type check after the first snippet, so the code reaches Monty's runtime). Runtime results: ().__class__ -> AttributeError 'tuple' object has no attribute '__class__'; __import__ -> NameError: Unknown function: __import__; type(()).__mro__, (lambda: 0).__globals__, object.__subclasses__ -> AttributeError; os.system -> AttributeError module 'os' has no attribute 'system'; import subprocess -> ModuleNotFoundError; sys.modules -> AttributeError; getattr((), '__class__') -> AttributeError. First-snippet runs mostly stop earlier as ty type errors. No host object or PWNED output reached.",
+        "evidence": "research/probes/pydantic-ai-harness-codemode/out/hardened-P12.txt",
+        "display": "blocked (runtime, not only ty)"
+      }
+    }
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Each sandboxed tool's ToolDefinition.function_signature (from its JSON Schema) is rendered as an `async def name(*, ...)` Python stub plus TypedDict blocks. With the CodeMode default dynamic_catalog=True the catalog goes into the agent instructions as <pyai:context id=\"toolset:code_mode:catalog\">, and run_code's description keeps only static prose (module list, no fs/env/clock). Observed text in out/P1.txt.",
+      "evidence": "research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:1682-1700 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L1682-L1700); research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/_code_tools.py:289-297 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/_code_tools.py#L289-L297); research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py:250-284 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py#L250-L284); research/probes/pydantic-ai-harness-codemode/out/P1.txt"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Every sandboxed tool is listed upfront in the catalog. Tools marked defer_loading stay off the wire until the local search_tools function (Tool Search) or a capability load reveals them; the catalog update is then appended to history, so the prompt cache survives. This is the path past 100 tools without every schema in the prompt.",
+      "evidence": "research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:409-430 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L409-L430); research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py:250-284 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py#L250-L284)"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "MontyExecutor drives the REPL with feed_start/resume: each external call pauses Monty as a FunctionSnapshot, CodeMode dispatches it through Pydantic AI's tool manager in the host process, and resumes with the result serialized to plain JSON. Async calls are kept pending so asyncio.gather resolves them together (P9 201 ms for five 200 ms calls). Tool functions, their credentials and os_access stay in the host process, also with a remote worker.",
+      "evidence": "research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/_monty_exec.py:521-600 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/_monty_exec.py#L521-L600); research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:770 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L770); README research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/README.md:652-661 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/README.md#L652-L661)"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Monty interpreter in a separate worker subprocess, no filesystem, env, clock or network unless os_access or mount is given. README claims Code Mode is safe in a webserver and IPython Code Mode is not. Probes agree for Code Mode: P3 not-defined, P4/P5 blocked, all 9 P12 attempts blocked at Monty's runtime even with the type checker skipped.",
+      "evidence": "research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/README.md:84-94 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/README.md#L84-L94); research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py:109-120 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py#L109-L120); research/probes/pydantic-ai-harness-codemode/out/P12.txt"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Printed text and the last expression both return, as {'output': ..., 'result': ...}; only one of them when the other is empty. The printed-output cap is 10 MiB and fires as a MemoryError, not a truncation marker.",
+      "evidence": "research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:772-782 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L772-L782); research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/_monty_exec.py:271-280 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/_monty_exec.py#L271-L280); research/probes/pydantic-ai-harness-codemode/out/P2.txt; research/probes/pydantic-ai-harness-codemode/out/X-print-cap.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "What the harness adds over raw Monty: raw pydantic-monty 1.6.0 has no time or memory default (results/pydantic-monty.json P6 no-limit-within-120s, P7 hit 4 GiB), while CodeMode applies 30 s and 256 MiB unless resource_limits='unlimited'. It also adds the 100-calls-per-snippet budget and keeps Monty's 1000-suspension session budget, which cannot be disabled.",
+      "evidence": "research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:362-396 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L362-L396); research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:745-752 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L745-L752)"
+    },
+    {
+      "topic": "State",
+      "finding": "One REPL per agent run: variables persist across run_code calls in a run and start fresh in a new run unless repl_store is set. A time, memory or print-cap trip resets the session. `restart: true` lets the model reset it.",
+      "evidence": "research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py:239-248 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py#L239-L248); research/probes/pydantic-ai-harness-codemode/out/P8.txt"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Runtime errors go back to the model as a retry: 'Runtime error:' + Monty traceback with file, line and message, plus a list of nested calls that already started (so the model does not replay side effects) and session-reset advice when a limit tripped. Type errors return 'Type error in code:' with the ty diagnostic before any code runs. Retries count against max_retries=3.",
+      "evidence": "research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:849-880 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L849-L880); research/probes/pydantic-ai-harness-codemode/out/P10.txt; research/probes/pydantic-ai-harness-codemode/out/P3.txt"
+    },
+    {
+      "topic": "Other",
+      "finding": "Type checking runs only on the first snippet of a fresh REPL that has tools; later snippets skip it. Tools registered with requires_approval=True and external tools stay native under the default selector, so approvals still pause the run. speculate and eager can start read-only calls while arguments stream. IPythonCodeMode in the same package runs a real IPython kernel with no sandbox (README table), not probed here.",
+      "evidence": "research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py:1429-1432 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_toolset.py#L1429-L1432); research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py:130-143 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py#L130-L143); research/impls/pydantic-ai-harness-codemode/src/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py:203-223 (https://github.com/pydantic/pydantic-ai/blob/8e4f468aad21f87af6634885b44e2834d8b3b983/src/pydantic_ai_harness/pydantic_ai_harness/code_mode/_capability.py#L203-L223)"
+    }
+  ],
+  "surprises": [
+    "The 10 MiB print cap does not keep output away from the model. X-print-cap printed 11 MB: Monty raised MemoryError at 10,485,760 bytes and reset the session, and the retry text still carried all 10,485,760 printed chars between [stdout before error] markers (10,486,097 chars total). Below the cap nothing is truncated (P2). The README (code_mode/README.md:686) says the cap resets the session but not that the printed text is still forwarded. Evidence research/probes/pydantic-ai-harness-codemode/out/X-print-cap.txt.",
+    "The ty type check runs only on the first snippet (_toolset.py:1429-1431). The earlier run of this probe saw P12 stopped by ty and could not tell whether Monty itself blocks the escapes. Rerunning each attempt as a second snippet shows Monty's runtime blocks all 9. Evidence research/probes/pydantic-ai-harness-codemode/out/P12.txt.",
+    "max_suspensions=1000 is per REPL session, so it caps a whole agent run, not one snippet. X-suspensions got 991 lookups through, then every later snippet in the run failed with 'suspension limit 1000 exceeded' until restart. An investigation agent that fans out to many lookups across run_code calls hits this ceiling. Evidence research/probes/pydantic-ai-harness-codemode/out/X-suspensions.txt.",
+    "One over the per-snippet budget fails the whole snippet: asking for 101 lookups in one gather ran 100 on the host and returned none of their results to the code.",
+    "time.time() and datetime.now() raise inside run_code unless os_access or os_policy is set, so the SPEC's in-sandbox P9 timing code cannot run; P9 times the lookups on the host.",
+    "The harness turns raw Monty's G2 and G3 failures into passes: raw pydantic-monty has no default time or memory limit, CodeMode applies 30 s and 256 MiB by default. results/fastmcp-codemode.json (also Monty-backed, MontySandboxProvider) did not exist when this was written, so no numeric comparison with it."
+  ]
+}

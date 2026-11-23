@@ -1,0 +1,212 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1484,
+  "peakTreeRssMb": 330,
+  "peakTreeFootprintMb": 82,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9b",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 586,
+          "ms": 43,
+          "ok": true,
+          "result": {
+            "status": "error",
+            "text": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 3, in <module>\n    a.append(\"x\" * 10**6)\n             ~~~~~~~~~~~\nMemoryError: memory limit exceeded: 269066748 bytes > 268435456 bytes"
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 736,
+        "ms": 214,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 211,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1213,
+        "ms": 210,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 2,
+    "totalMs": 1423
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      82,
+      28,
+      0
+    ],
+    [
+      127,
+      34,
+      16
+    ],
+    [
+      179,
+      44,
+      16
+    ],
+    [
+      232,
+      51,
+      35
+    ],
+    [
+      283,
+      56,
+      35
+    ],
+    [
+      334,
+      61,
+      35
+    ],
+    [
+      385,
+      66,
+      46
+    ],
+    [
+      436,
+      72,
+      46
+    ],
+    [
+      488,
+      78,
+      60
+    ],
+    [
+      541,
+      86,
+      60
+    ],
+    [
+      591,
+      89,
+      60
+    ],
+    [
+      642,
+      93,
+      72
+    ],
+    [
+      695,
+      330,
+      72
+    ],
+    [
+      747,
+      98,
+      79
+    ],
+    [
+      800,
+      98,
+      79
+    ],
+    [
+      849,
+      110,
+      79
+    ],
+    [
+      902,
+      110,
+      82
+    ],
+    [
+      953,
+      110,
+      82
+    ],
+    [
+      1004,
+      110,
+      82
+    ],
+    [
+      1055,
+      99,
+      82
+    ],
+    [
+      1106,
+      110,
+      82
+    ],
+    [
+      1157,
+      110,
+      82
+    ],
+    [
+      1206,
+      110,
+      82
+    ],
+    [
+      1259,
+      110,
+      82
+    ],
+    [
+      1312,
+      111,
+      82
+    ],
+    [
+      1364,
+      111,
+      82
+    ],
+    [
+      1416,
+      111,
+      82
+    ],
+    [
+      1469,
+      111,
+      82
+    ]
+  ]
+}

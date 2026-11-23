@@ -1,0 +1,33 @@
+probe: P1
+outcome: works
+display: works (42, 1 call)
+detail: 42 in printed stdout: True; 42 in returned value: False; output '42'; host lookup calls: 1
+
+code:
+----
+r = lookup(21)
+msg = r["value"]
+print(msg)
+msg
+----
+
+setup_ms: 2.2
+wall_s (whole child process): 2.72
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.09
+host lookup calls: 1
+  call id=21 start=1795377260.248 end=1795377260.453 pid=34460
+
+=== run 0 (207.9 ms) ===
+ok: true
+stdout: 42
+
+error: null
+context_keys: ["msg", "r"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+~/p/agentic-search-bench/research/impls/langgraph-codeact/.venv/lib/python3.12/site-packages/langgraph/checkpoint/base/__init__.py:17: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects='messages' or allowed_objects='core') to suppress this warning.
+  from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+

@@ -1,0 +1,12 @@
+--- code 1 ---
+console.log("A".repeat(200000)); "RETURNED"
+--- result 1 ---
+{"ms":6,"hostCalls":0,"ok":true,"isError":false}
+text (11 chars):
+<no output>
+--- code 2 ---
+console.log("A".repeat(200000)); return "RETURNED"
+--- result 2 ---
+{"ms":11,"hostCalls":0,"ok":true,"isError":false}
+text (8 chars):
+RETURNED

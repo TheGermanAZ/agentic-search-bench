@@ -1,0 +1,530 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R9e3",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 11662,
+  "peakTreeRssMb": 466,
+  "peakTreeFootprintMb": 449,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R9e3",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1238,
+          "ms": 10160,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"d544b84f0d2ab9ae06974ddc\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 1241,
+          "ms": 10157,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"beaed8527efd76e78354703f\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 1241,
+          "ms": 10153,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"565e5207023a2765d723e6b5\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1392,
+        "ms": 367,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"55b9ddd006d432dfc342e3e2\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1761,
+        "ms": 205,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"4458e06ca10ad056a6345234\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 11398,
+        "ms": 210,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"7527e4b4fae75a1149d247f8\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 1367,
+    "hostEvents": [],
+    "totalMs": 11608
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-3 sessionKey=agent:main:verify-3 runId=verify-run-3 toolCallId=verify-3 codeModeRunId=cm_9eb61dbc-0c15-44d2-970f-0235955788ee workerId=code-mode-quickjs:3 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_221ac18b-df3e-4afd-81f3-082a97dfb74b workerId=code-mode-quickjs:1 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-2 sessionKey=agent:main:verify-2 runId=verify-run-2 toolCallId=verify-2 codeModeRunId=cm_151ed475-ff0f-45f1-97d9-75b99e61823a workerId=code-mode-quickjs:2 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      77,
+      58,
+      18
+    ],
+    [
+      243,
+      94,
+      51
+    ],
+    [
+      388,
+      113,
+      68
+    ],
+    [
+      536,
+      132,
+      91
+    ],
+    [
+      693,
+      156,
+      107
+    ],
+    [
+      850,
+      176,
+      131
+    ],
+    [
+      1000,
+      197,
+      172
+    ],
+    [
+      1158,
+      220,
+      186
+    ],
+    [
+      1311,
+      248,
+      203
+    ],
+    [
+      1477,
+      338,
+      236
+    ],
+    [
+      1640,
+      455,
+      349
+    ],
+    [
+      1786,
+      455,
+      442
+    ],
+    [
+      1935,
+      457,
+      443
+    ],
+    [
+      2095,
+      457,
+      444
+    ],
+    [
+      2260,
+      457,
+      444
+    ],
+    [
+      2398,
+      457,
+      444
+    ],
+    [
+      2551,
+      457,
+      444
+    ],
+    [
+      2712,
+      457,
+      444
+    ],
+    [
+      2858,
+      457,
+      444
+    ],
+    [
+      3013,
+      457,
+      444
+    ],
+    [
+      3167,
+      457,
+      444
+    ],
+    [
+      3387,
+      457,
+      444
+    ],
+    [
+      3528,
+      457,
+      444
+    ],
+    [
+      3679,
+      457,
+      444
+    ],
+    [
+      3821,
+      457,
+      444
+    ],
+    [
+      3976,
+      457,
+      444
+    ],
+    [
+      4132,
+      457,
+      444
+    ],
+    [
+      4287,
+      457,
+      444
+    ],
+    [
+      4444,
+      457,
+      444
+    ],
+    [
+      4595,
+      457,
+      444
+    ],
+    [
+      4751,
+      457,
+      444
+    ],
+    [
+      4904,
+      457,
+      444
+    ],
+    [
+      5063,
+      457,
+      444
+    ],
+    [
+      5221,
+      457,
+      444
+    ],
+    [
+      5376,
+      457,
+      444
+    ],
+    [
+      5528,
+      457,
+      444
+    ],
+    [
+      5688,
+      457,
+      444
+    ],
+    [
+      5841,
+      457,
+      444
+    ],
+    [
+      5989,
+      457,
+      444
+    ],
+    [
+      6145,
+      457,
+      444
+    ],
+    [
+      6296,
+      457,
+      444
+    ],
+    [
+      6462,
+      457,
+      444
+    ],
+    [
+      6619,
+      457,
+      444
+    ],
+    [
+      6773,
+      457,
+      444
+    ],
+    [
+      6922,
+      457,
+      444
+    ],
+    [
+      7076,
+      457,
+      444
+    ],
+    [
+      7239,
+      457,
+      444
+    ],
+    [
+      7384,
+      457,
+      444
+    ],
+    [
+      7541,
+      457,
+      444
+    ],
+    [
+      7700,
+      457,
+      444
+    ],
+    [
+      7841,
+      457,
+      444
+    ],
+    [
+      7994,
+      457,
+      444
+    ],
+    [
+      8152,
+      457,
+      444
+    ],
+    [
+      8303,
+      457,
+      444
+    ],
+    [
+      8457,
+      457,
+      444
+    ],
+    [
+      8610,
+      457,
+      444
+    ],
+    [
+      8766,
+      457,
+      444
+    ],
+    [
+      8920,
+      457,
+      444
+    ],
+    [
+      9080,
+      457,
+      444
+    ],
+    [
+      9230,
+      457,
+      444
+    ],
+    [
+      9384,
+      457,
+      444
+    ],
+    [
+      9541,
+      457,
+      444
+    ],
+    [
+      9694,
+      457,
+      444
+    ],
+    [
+      9850,
+      457,
+      444
+    ],
+    [
+      10002,
+      457,
+      444
+    ],
+    [
+      10159,
+      457,
+      444
+    ],
+    [
+      10317,
+      457,
+      444
+    ],
+    [
+      10470,
+      457,
+      444
+    ],
+    [
+      10621,
+      457,
+      444
+    ],
+    [
+      10777,
+      457,
+      444
+    ],
+    [
+      10933,
+      457,
+      444
+    ],
+    [
+      11089,
+      457,
+      444
+    ],
+    [
+      11246,
+      457,
+      444
+    ],
+    [
+      11398,
+      457,
+      444
+    ],
+    [
+      11551,
+      466,
+      449
+    ]
+  ]
+}

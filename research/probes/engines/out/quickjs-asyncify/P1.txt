@@ -1,0 +1,5 @@
+const r = await corpus.read(21); console.log(r.value)
+--- output
+42
+---
+wall_ms=274 host_calls=1 peak_tree_rss_mb=115

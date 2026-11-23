@@ -1,0 +1,1 @@
+full vectors: 158252928 floats; 10% slice: 15825292 floats -> JSON 496183153 chars in 6607 ms ; extrapolated full: ~4.96 G chars, ~66 s of blocked host event loop; rss now 1302 MB

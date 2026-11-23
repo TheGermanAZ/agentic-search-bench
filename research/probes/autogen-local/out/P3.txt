@@ -1,0 +1,8 @@
+probe P3 hardened=False
+code:
+import urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=20)
+print("STATUS", r.status)
+
+{"ok": true, "result": null, "error": null, "ms": 417.5}
+stdout (11 chars): 'STATUS 200\n'

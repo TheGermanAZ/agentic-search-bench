@@ -1,0 +1,47 @@
+probe: P7 (codex code-mode host, V8, hardened)
+host: codex-code-mode-host codex 0.169.0
+session/open cellExecutionLimits sent: {"maxYieldTimeMs": 1000, "maxHeapSizeBytes": 67108864}
+session/execute yield_time_ms=1000 max_output_tokens=1000
+handshake: {"type": "connection/ready", "selectedVersion": 1, "capabilities": ["bounded-output-v1", "delegate-capacity-4096", "session-cell-execution-resource-limits", "yield-observation"]}
+session/open reply: {"type": "operation/response", "id": 1, "result": {"status": "ok", "value": {"type": "session/ready", "sessionId": "s1"}}}
+wall_ms: 10481.6
+peak_rss_mb: 1497.4
+killed: None
+
+--- execution 0 ---
+source:
+const a = []; while (true) a.push("x".repeat(1e6) + a.length);
+elapsed_ms: 1009.35
+host_calls: 0
+initial response:
+{"type": "execute/initialResponse", "id": 2, "result": {"status": "ok", "value": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1006907083}}}}
+wait at t=2055ms: {"type": "operation/response", "id": 3, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1001496916}}}}}}
+wait at t=3057ms: {"type": "operation/response", "id": 4, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1001774917}}}}}}
+wait at t=4064ms: {"type": "operation/response", "id": 5, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1003287250}}}}}}
+...
+wait at t=9077ms: {"type": "operation/response", "id": 10, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1002430333}}}}}}
+wait at t=10080ms: {"type": "operation/response", "id": 11, "result": {"status": "ok", "value": {"type": "wait/completed", "outcome": {"LiveCell": {"Yielded": {"cell_id": "1", "content_items": [], "code_mode_host_duration_ns": 1001908208}}}}}}
+wait at t=10481ms: null
+total waits/terminates: 10
+
+--- after the probe ---
+host_alive_before: false
+same_session_trivial: {"source": "text(\"alive \" + String(1 + 1));", "elapsed_ms": 0.07, "host_calls": 0, "response": "BrokenPipeError(32, 'Broken pipe')"}
+second_session_open: "BrokenPipeError(32, 'Broken pipe')"
+second_session_trivial: {"source": "text(\"alive \" + String(1 + 1));", "elapsed_ms": 0.01, "host_calls": 0, "response": "BrokenPipeError(32, 'Broken pipe')"}
+host_alive_after: false
+host_returncode: -5
+
+--- host stderr (tail) ---
+ 188
+    19  codex-code-mode-host                0x0000000105f8354c v8::internal::SourceTextModule::InnerModuleEvaluation(v8::internal::Isolate*, v8::internal::Handle<v8::internal::SourceTextModule>, v8::internal::ZoneForwardList<v8::internal::Handle<v8::internal::SourceTextModule>>*, unsigned int*) + 1916
+    20  codex-code-mode-host                0x0000000105f82c60 v8::internal::SourceTextModule::Evaluate(v8::internal::Isolate*, v8::internal::Handle<v8::internal::SourceTextModule>) + 216
+    21  codex-code-mode-host                0x0000000105fb72e8 v8::internal::Module::Evaluate(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Module>) + 216
+    22  codex-code-mode-host                0x00000001063f6be0 v8::Module::Evaluate(v8::Local<v8::Context>) + 368
+    23  codex-code-mode-host                0x0000000104381f44 codex_code_mode_runtime::runtime::run_runtime::h7962c16beaa86e09 + 7936
+    24  codex-code-mode-host                0x000000010435459c std::sys::backtrace::__rust_begin_short_backtrace::h328071fe6bd93bfb + 328
+    25  codex-code-mode-host                0x00000001041bf6f4 std::sys::backtrace::__rust_begin_short_backtrace::hba92dac37d260b78 + 5728
+    26  codex-code-mode-host                0x0000000104aae21c _RNvNtNtNtNtCsg55jX0GwzBC_3std3sys12thread_local11destructors4list8register + 6616
+    27  libsystem_pthread.dylib             0x000000018acc5c58 _pthread_start + 136
+    28  libsystem_pthread.dylib             0x000000018acc0c1c thread_start + 8
+

@@ -1,0 +1,34 @@
+{
+  "impl": "tanstack-ai-codemode-daytona-e2b",
+  "name": "TanStack AI Code Mode, Daytona and E2B remote drivers",
+  "source": "https://github.com/TanStack/ai (packages/ai-isolate-daytona, packages/ai-isolate-e2b); npm @tanstack/ai-isolate-daytona 1.1.1, @tanstack/ai-isolate-e2b 1.1.0",
+  "pinned": "TanStack/ai c695ada5091e7022bf13b235220645ceb65d43b0",
+  "language": "TS (stripped with sucrase); runs as JavaScript in the remote sandbox",
+  "engine": "A remote Linux sandbox owned by the application: Daytona process.codeRun, or a node process in an E2B sandbox",
+  "how_run": "Not run: both drivers need a hosted sandbox created with an account (Daytona SDK credentials, E2B_API_KEY).",
+  "probes": {
+    "P1": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account", "evidence": "docs/code-mode/code-mode-isolates.md:252-300 at c695ada", "display": "blocked-needs-credentials" },
+    "P2": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account", "evidence": "docs/code-mode/code-mode-isolates.md:252-300 at c695ada", "display": "blocked-needs-credentials" },
+    "P3": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account. Docs: these drivers run in a full remote Linux sandbox with its own file system, network and processes.", "evidence": "docs/code-mode/code-mode.md:126 at c695ada", "display": "blocked-needs-credentials" },
+    "P4": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account", "evidence": "docs/code-mode/code-mode.md:126 at c695ada", "display": "blocked-needs-credentials" },
+    "P5": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account", "evidence": "docs/code-mode/code-mode-isolates.md:252-300 at c695ada", "display": "blocked-needs-credentials" },
+    "P6": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account", "evidence": "docs/code-mode/code-mode-isolates.md:252-300 at c695ada", "display": "blocked-needs-credentials" },
+    "P7": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account. Docs table: Daytona has no memory limit, E2B does.", "evidence": "docs/code-mode/code-mode-isolates.md:57 at c695ada", "display": "blocked-needs-credentials" },
+    "P8": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account", "evidence": "docs/code-mode/code-mode-isolates.md:252-300 at c695ada", "display": "blocked-needs-credentials" },
+    "P9": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account. Docs: Daytona uses replay rounds (maxToolRounds 10); E2B runs the code once.", "evidence": "docs/code-mode/code-mode-isolates.md:266-300 at c695ada", "display": "blocked-needs-credentials" },
+    "P10": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account", "evidence": "docs/code-mode/code-mode-isolates.md:252-300 at c695ada", "display": "blocked-needs-credentials" },
+    "P11": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account", "evidence": "docs/code-mode/code-mode-isolates.md:252-300 at c695ada", "display": "blocked-needs-credentials" },
+    "P12": { "outcome": "blocked-needs-credentials", "detail": "needs a Daytona or E2B account", "evidence": "docs/code-mode/code-mode-isolates.md:252-300 at c695ada", "display": "blocked-needs-credentials" }
+  },
+  "hardened": null,
+  "defaults": {
+    "time": "Docs: timeout 30,000 ms for both (code-mode-isolates.md); not measured",
+    "memory": "Docs: Daytona none, E2B uses memoryLimit; not measured",
+    "output": "not measured",
+    "tool_calls": "Docs: Daytona maxToolRounds 10; not measured. hardened is null because nothing could be run."
+  },
+  "source_notes": [
+    { "topic": "Why not probed", "finding": "Both drivers need a hosted sandbox created with an account: `new Daytona()` from @daytona/sdk, and E2B with E2B_API_KEY. SPEC forbids looking for credentials.", "evidence": "https://github.com/TanStack/ai/blob/c695ada5091e7022bf13b235220645ceb65d43b0/docs/code-mode/code-mode-isolates.md (Daytona driver, E2B driver)" }
+  ],
+  "surprises": []
+}

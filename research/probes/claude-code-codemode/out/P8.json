@@ -1,0 +1,72 @@
+{
+ "tag": "default",
+ "probe": "P8",
+ "settings": "~/p/agentic-search-bench/research/probes/claude-code-codemode/settings-default.json",
+ "permissionMode": "default",
+ "transcript": "~/.claude/projects/-Users-thegermanaz-p-agentic-search-bench-research-probes-claude-code-codemode-work/767f9703-251e-4ca8-8f60-53d578d0ee95.jsonl",
+ "hostLookupCalls": [],
+ "steps": [
+  {
+   "step": "P8.1",
+   "code": "globalThis.kept = 7",
+   "typist": "model",
+   "wallS": 2.0,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "globalThis.kept = 7",
+     "codeRan": "globalThis.kept = 7",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:33:50.323Z",
+     "result": {
+      "content": "<repl-output>\n<result>7</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:33:50.370Z",
+      "toolUseResult": {
+       "code": "globalThis.kept = 7",
+       "result": "7",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 373504,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  },
+  {
+   "step": "P8.2",
+   "code": "typeof kept === \"undefined\" ? \"gone\" : kept",
+   "typist": "model",
+   "wallS": 2.0,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "typeof kept === \"undefined\" ? \"gone\" : kept",
+     "codeRan": "typeof kept === \"undefined\" ? \"gone\" : kept",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:33:53.038Z",
+     "result": {
+      "content": "<repl-output>\n<result>7</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:33:53.070Z",
+      "toolUseResult": {
+       "code": "typeof kept === \"undefined\" ? \"gone\" : kept",
+       "result": "7",
+       "stdout": "",
+       "stderr": ""
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 387888,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  }
+ ]
+}

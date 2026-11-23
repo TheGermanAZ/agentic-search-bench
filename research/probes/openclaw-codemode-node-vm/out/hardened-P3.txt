@@ -1,0 +1,66 @@
+engine=node hardened=true config={"enabled":true,"executor":"node","timeoutMs":5000,"memoryLimitBytes":16777216,"maxOutputBytes":8192,"maxSnapshotBytes":1048576,"maxPendingToolCalls":8,"snapshotTtlSeconds":60} setupMs=1
+--- code 1 ---
+const r = await fetch("https://example.com"); return r.status;
+--- result 1 ---
+{"ms":213.59,"hostCalls":0,"ok":true,"waits":0}
+content text (390 chars):
+{"status":"failed","code":"internal_error","failurePhase":"guest","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"error":"ReferenceError: fetch is not defined\n    at openclaw-code-mode:user.js:1:11"}
+details (471 chars):
+{
+ "status": "failed",
+ "code": "internal_error",
+ "failurePhase": "guest",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "ReferenceError: fetch is not defined\n    at openclaw-code-mode:user.js:1:11"
+}
+--- code 2 ---
+return [typeof fetch, typeof XMLHttpRequest, typeof WebSocket, typeof require, typeof process];
+--- result 2 ---
+{"ms":152.5,"hostCalls":0,"ok":true,"waits":0}
+content text (299 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"value":["undefined","undefined","undefined","undefined","undefined"]}
+details (388 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": [
+  "undefined",
+  "undefined",
+  "undefined",
+  "undefined",
+  "undefined"
+ ]
+}

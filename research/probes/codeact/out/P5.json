@@ -1,0 +1,5 @@
+{
+  "probe": "P5",
+  "outcome": "works",
+  "detail": "sandbox printed 's3cr3t'; host PROBE_SECRET is set"
+}

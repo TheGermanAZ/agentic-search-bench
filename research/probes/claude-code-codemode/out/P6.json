@@ -1,0 +1,47 @@
+{
+ "tag": "default",
+ "probe": "P6",
+ "settings": "~/p/agentic-search-bench/research/probes/claude-code-codemode/settings-default.json",
+ "permissionMode": "default",
+ "transcript": "~/.claude/projects/-Users-thegermanaz-p-agentic-search-bench-research-probes-claude-code-codemode-work/aa12560a-b29f-4d0e-a5a2-adf15395b347.jsonl",
+ "hostLookupCalls": [],
+ "steps": [
+  {
+   "step": "P6.1b",
+   "code": "while (true) {}",
+   "typist": "hook (model refused or injection forced)",
+   "wallS": 4.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "1+1",
+     "codeRan": "while (true) {}",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:35:25.522Z",
+     "result": {
+      "content": "<repl-output>\n<log>[The step budget stopped this script's code 1 time: a turn took more than 300000000 steps (a step is one pass through a loop or one call of a function). A turn is the code that runs from the script's start, a tool call's result or a timer's firing until the next tool call's result or timer. If nothing awaited the stopped code (a timer's callback, an async function called without await), it ended partway with no error. Give one turn less to do, or split it with an await of a tool call or a timer.]</log>\n<error>RangeError: REPL: a turn ran 300000000 steps, its budget (a step is one pass through a loop or one call of a function), and was stopped. A turn is the code that runs from the script's start, a tool call's result or a timer's firing until the next tool call's result or timer. End the loop, or await a tool call or a timer in it.\nThrown at (statements quoted from the script as it ran, which is reformatted):\n  in &lt;anonymous&gt;: while (true) {}\nThe script threw partway through: statements before the failing one ran. No tool call had completed.</error>\n</repl-output>",
+      "is_error": true,
+      "ts": "2026-11-22T20:35:26.071Z",
+      "toolUseResult": {
+       "code": "while (true) {}",
+       "result": null,
+       "stdout": "[The step budget stopped this script's code 1 time: a turn took more than 300000000 steps (a step is one pass through a loop or one call of a function). A turn is the code that runs from the script's start, a tool call's result or a timer's firing until the next tool call's result or timer. If nothing awaited the stopped code (a timer's callback, an async function called without await), it ended partway with no error. Give one turn less to do, or split it with an await of a tool call or a timer.]",
+       "stderr": "",
+       "error": "RangeError: REPL: a turn ran 300000000 steps, its budget (a step is one pass through a loop or one call of a function), and was stopped. A turn is the code that runs from the script's start, a tool call's result or a timer's firing until the next tool call's result or timer. End the loop, or await a tool call or a timer in it.\nThrown at (statements quoted from the script as it ran, which is reformatted):\n  in <anonymous>: while (true) {}\nThe script threw partway through: statements before the failing one ran. No tool call had completed."
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 369648,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true,
+   "modelAttempt": {
+    "calls": [],
+    "wallS": 4.0,
+    "reply": "DONE\n\nThe result was an error, not a normal return. The code that actually ran was `while (true) {}`, not `1+1`, so the hook's replacement appears to have happened. The REPL's step budget stopped it, and no tool call completed."
+   }
+  }
+ ]
+}

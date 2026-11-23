@@ -1,0 +1,5 @@
+try { await corpus.search("x") } catch (e) { console.log("caught: " + e.message) }
+--- output
+caught: host-tool-boom internal detail db=<url>
+---
+wall_ms=5 host_calls=0 peak_tree_rss_mb=171

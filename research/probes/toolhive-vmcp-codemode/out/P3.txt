@@ -1,0 +1,14 @@
+--- code 1 ---
+r = urllib.request.urlopen("https://example.com")
+return r
+--- result 1 ---
+{"ms":3,"hostCalls":0,"ok":true,"isError":true}
+text (59 chars):
+script execution failed: script.star:2:9: undefined: urllib
+--- code 2 ---
+load("net", "http")
+return http.get("https://example.com")
+--- result 2 ---
+{"ms":4,"hostCalls":0,"ok":true,"isError":true}
+text (74 chars):
+script execution failed: script.star:2:5: load statement within a function

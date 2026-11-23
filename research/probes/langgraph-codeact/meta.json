@@ -1,0 +1,95 @@
+{
+  "impl": "langgraph-codeact",
+  "name": "LangGraph CodeAct (archived), eval_fn from examples/math_example.py",
+  "source": "https://github.com/langchain-ai/langgraph-codeact (archived)",
+  "pinned": "de14f16f5eb96351086c675c6a1bca238974b57d (0.1.3, last push 2025-05-16), installed with the repo's uv.lock: langgraph 0.4.5, langgraph-checkpoint 2.0.26, langchain-core 0.3.60",
+  "language": "Python",
+  "engine": "CPython exec(code, builtins.__dict__, _locals) in the host process (the example eval_fn, which the README marks 'just for demonstration purposes, not safe').",
+  "how_run": "create_codeact(model, [lookup], eval).compile() driven with ainvoke and a scripted GenericFakeChatModel that emits one fenced code block and then 'done'; the previous run's `context` is passed back in as graph input. The examples compile with MemorySaver instead, which breaks on most probes (see surprises).",
+  "defaults": {
+    "time": "None in the library or the example eval (P6 ran 120 s until the harness stopped it).",
+    "memory": "None (P7 reached 4.4 GB in 0.7 s; harness kill).",
+    "output": "Only captured stdout, as one user message; the last expression's value is dropped (P2 'RETURNED' did not come back). No truncation: all 200,000 A's came back.",
+    "tool_calls": "No cap.",
+    "hardened": "No hardened run: the eval example has no options at all, and langgraph-codeact itself sets no limits. The project's stricter offering is the Pyodide example, probed separately as langgraph-codeact-pyodide."
+  },
+  "hardened_config": null,
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Tools are plain Python callables. create_codeact wraps each as a StructuredTool and puts tool.func into the sandbox context under the tool's name, so code calls lookup(21) directly. The eval_fn contract is (code, locals) -> (stdout, new_vars).",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/langgraph_codeact/__init__.py#L12-L13; #L78-L84"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Upfront: create_default_prompt writes a Python signature and docstring for every tool into the system prompt. No search.",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/langgraph_codeact/__init__.py#L29-L52"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "None: the tool function runs in the same interpreter as the agent, called directly by exec'd code (P1: 1 host call). Credentials held by a tool are in the same process as the model's code.",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/langgraph_codeact/__init__.py#L97-L121"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "None. The example passes builtins.__dict__ itself as the globals of exec, so any `global` assignment inside a function writes into the host's builtins module (P12d: a PROBE_LEAK name appeared in the harness's builtins). The README says to use a sandbox in production and points to the Pyodide example.",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/examples/math_example.py#L13-L29; https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/README.md#L101-L103; research/probes/langgraph-codeact/out/P12d.txt"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "The sandbox node appends the eval_fn's stdout string as a user message for the model. Nothing else reaches the model, and nothing is truncated.",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/langgraph_codeact/__init__.py#L112-L121"
+    },
+    {
+      "topic": "Limits",
+      "finding": "None anywhere in langgraph_codeact (128 lines) or the example eval.",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/langgraph_codeact/__init__.py"
+    },
+    {
+      "topic": "State",
+      "finding": "Persistent through graph state: new top-level variables go into state['context'] and are merged back into the next exec's locals (P8 printed 7). With a checkpointer that state must be serializable.",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/langgraph_codeact/__init__.py#L112-L121"
+    },
+    {
+      "topic": "Errors",
+      "finding": "The example returns 'Error during execution: ' + repr(e): type and message survive, no line number (P10).",
+      "evidence": "https://github.com/langchain-ai/langgraph-codeact/blob/de14f16f5eb96351086c675c6a1bca238974b57d/examples/math_example.py#L22-L23; research/probes/langgraph-codeact/out/P10.txt"
+    },
+    {
+      "topic": "Parallelism",
+      "finding": "Tools are sync callables and there is no async path in the example eval, so a loop is serial (P9, 1,020 ms). Plain exec allows threads, and ThreadPoolExecutor.map ran the five lookups in 205 ms (P9b).",
+      "evidence": "research/probes/langgraph-codeact/out/P9.txt; research/probes/langgraph-codeact/out/P9b.txt"
+    },
+    {
+      "topic": "Maintenance",
+      "finding": "Archived, MIT, last push 2025-05-16.",
+      "evidence": "gh repo view langchain-ai/langgraph-codeact: isArchived true, pushedAt 2025-05-16T19:56:24Z"
+    }
+  ],
+  "surprises": [
+    "Compiled with MemorySaver, as both examples do, the agent raises TypeError: Type is not msgpack serializable as soon as code creates a module, function or class at top level (import os, def f, a ThreadPoolExecutor), because those land in state['context'] and the checkpointer cannot store them. Seen with the uv.lock versions and with current langgraph 1.0.1 (out-memorysaver-lock/, out-latest/). The probes above therefore run without a checkpointer.",
+    "Sandbox code can write into the host's builtins module through a function's `global` statement (P12d), because the example uses builtins.__dict__ as exec's globals.",
+    "A function defined inside the exec'd code cannot call a tool: P8b's helper() raised NameError: name 'lookup' is not defined, because function globals are builtins.__dict__ while tools and top-level names live in the separate locals dict."
+  ],
+  "overrides": {
+    "P2": {
+      "display": "stdout only (200,000 A, no marker)"
+    },
+    "P3": {
+      "display": "works (example.com 200)"
+    },
+    "P7": {
+      "display": "no limit (killed at 4.4 GB)"
+    },
+    "P9b": {
+      "display": "parallel via threads (205 ms)"
+    },
+    "P12d": {
+      "outcome": "escaped",
+      "display": "escaped (writes host builtins)"
+    },
+    "P8b": {
+      "display": "error (def can't see tools)"
+    }
+  }
+}

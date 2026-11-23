@@ -1,0 +1,11 @@
+{
+  "loop": {
+    "code": "while (true) {}",
+    "ms": 30003,
+    "hostCalls": 0,
+    "result": null,
+    "error": "Execution timed out after 30000ms",
+    "logs": []
+  },
+  "hostAliveAfter": true
+}

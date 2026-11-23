@@ -1,0 +1,80 @@
+{
+  "worker": {
+    "exitCode": 0,
+    "signal": null,
+    "killed": null,
+    "wallMs": 106,
+    "peakRssKb": 83504
+  },
+  "parsed": {
+    "probe": "P8",
+    "host": {
+      "node": "v24.22.1",
+      "pid": 62204
+    },
+    "runs": [
+      {
+        "label": "exec 1: kept=7",
+        "script": "kept=7",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "ms": 28,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "exec 2: echo ${kept:-gone}",
+        "script": "echo ${kept:-gone}",
+        "exitCode": 0,
+        "stdout": "gone\n",
+        "stderr": "",
+        "ms": 5,
+        "stdoutLength": 5,
+        "hostCalls": 0
+      },
+      {
+        "label": "exec 1b: write file",
+        "script": "echo persisted > /home/user/p8.txt",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "ms": 1,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "exec 2b: read file",
+        "script": "cat /home/user/p8.txt",
+        "exitCode": 0,
+        "stdout": "persisted\n",
+        "stderr": "",
+        "ms": 2,
+        "stdoutLength": 10,
+        "hostCalls": 0
+      },
+      {
+        "label": "exec 1c: cd /tmp",
+        "script": "cd /tmp",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "ms": 0,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "exec 2c: pwd",
+        "script": "pwd",
+        "exitCode": 0,
+        "stdout": "/home/user\n",
+        "stderr": "",
+        "ms": 2,
+        "stdoutLength": 11,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 83504,
+    "maxInFlight": 0
+  }
+}

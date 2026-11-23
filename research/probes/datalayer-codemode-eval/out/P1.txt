@@ -1,0 +1,35 @@
+probe: P1
+outcome: error
+display: hangs (tool call never returns)
+detail: harness time watchdog at 120.0 s; no result came back
+
+code:
+----
+from generated.mcp.probe import lookup
+r = await lookup({"id": 21})
+msg = r["value"]
+print(msg)
+msg
+----
+
+setup_ms: 320.8
+wall_s (whole child process): 120.01
+killed: harness time watchdog at 120.0 s
+child exit code: -9
+peak tree RSS GB: 0.179
+host lookup calls: 0
+
+=== child process log (tail) ===
+[11/22/26 14:53:10] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-cl3kv4tj/generate              
+                             d (mcp dir:                                        
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-cl3kv4tj/generate              
+                             d/mcp)                                             
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-cl3kv4tj/generate              
+                             d/mcp/probe                                        
+

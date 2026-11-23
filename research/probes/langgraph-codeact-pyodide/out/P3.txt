@@ -1,0 +1,43 @@
+probe: P3
+outcome: works
+display: works (js.fetch 200; urllib fails)
+detail: urllib.request: 'unknown url type: https' (Pyodide has no https handler). The same URL through js.fetch with pyodide.ffi.run_sync printed HTTP 200 (P3b), and Deno reports net permission 'granted' (P3c): network is on in the example's configuration.
+
+code:
+----
+import urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10)
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+import ssl, urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10, context=ssl._create_unverified_context())
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+
+setup_ms: 23.3
+wall_s (whole child process): 3.32
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.308
+host lookup calls: 0
+
+=== run 0 (1241.0 ms) ===
+ok: false
+stdout: Error during execution: <urlopen error unknown url type: https>
+error: Error during execution: <urlopen error unknown url type: https>
+context_keys: []
+host_builtins_leak: false
+
+=== run 1 (1593.0 ms) ===
+ok: false
+stdout: Error during execution: name 'HTTPSHandler' is not defined
+error: Error during execution: name 'HTTPSHandler' is not defined
+context_keys: []
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

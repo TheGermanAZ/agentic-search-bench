@@ -1,0 +1,10 @@
+code:
+ex = [c.cell_contents for c in search_tools.__closure__ if type(c.cell_contents).__name__ == 'CodeExecutor'][0]
+cfg = ex.client.config
+print('client type:', type(ex.client).__name__)
+print('server env visible to guest:', cfg['mcpServers']['host']['env'])
+print('sessions:', sorted(ex.client.sessions))
+ok: True error: None
+client type: MCPClient
+server env visible to guest: {'LOOKUP_COUNT_FILE': '~/p/agentic-search-bench/research/probes/mcp-use-codemode/out/lookup-count.txt'}
+sessions: ['code_mode', 'host']

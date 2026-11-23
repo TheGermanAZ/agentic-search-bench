@@ -1,0 +1,9 @@
+config: get_environment('ipython', {'kernel_mode': 'subprocess', 'cell_timeout': 30})
+code:
+while True:
+    pass
+result: {'ok': True, 'stdout': '', 'stderr': '\nTimeoutError: cell execution exceeded 30s and was interrupted', 's': 30.03}
+same env after the probe: {'ok': True, 'stdout': '2\n', 'stderr': '', 's': 0.14}
+host-side lookup calls: 0
+host pid: 26525
+wall: 30.31 s

@@ -1,0 +1,4 @@
+ERROR: 'require' is not defined
+    at <eval> (eval.js:1:1)
+---
+wall_ms=56 host_calls=0

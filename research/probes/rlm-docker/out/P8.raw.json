@@ -1,0 +1,13 @@
+{
+  "exec1": {
+    "stdout": "",
+    "stderr": "",
+    "ms": 113.9
+  },
+  "exec2": {
+    "stdout": "7\n",
+    "stderr": "",
+    "ms": 102.1
+  },
+  "wall_s": 3.56
+}

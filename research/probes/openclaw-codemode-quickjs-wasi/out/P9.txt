@@ -1,0 +1,65 @@
+engine=quickjs hardened=false config={"enabled":true,"executor":"quickjs"} setupMs=1
+--- code 1 ---
+const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => lookup({id:i}))); console.log(Date.now()-t); return Date.now()-t;
+--- result 1 ---
+{"ms":212.34,"hostCalls":5,"ok":true,"waits":0}
+content text (269 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"3baf9413a10824bdc24a1ff1","searchCount":0,"describeCount":0,"callCount":6,"visibleTools":["exec","wait"]},"output":[{"type":"text","text":"207"}],"value":207}
+details (359 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "3baf9413a10824bdc24a1ff1",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 6,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [
+  {
+   "type": "text",
+   "text": "207"
+  }
+ ],
+ "value": 207
+}
+--- code 2 ---
+const t = Date.now(); const rs = await Promise.all(Array.from({length: 40}, (_, i) => lookup({id:i}))); return [rs.length, Date.now()-t];
+--- result 2 ---
+{"ms":622.84,"hostCalls":40,"ok":true,"waits":0}
+content text (247 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"3baf9413a10824bdc24a1ff1","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":[40,618]}
+details (327 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "3baf9413a10824bdc24a1ff1",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": [
+  40,
+  618
+ ]
+}

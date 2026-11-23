@@ -1,0 +1,8 @@
+try:
+    return kept
+except NameError:
+    return "gone"
+--- output
+gone
+---
+wall_ms=15 host_calls=0 peak_tree_rss_mb=192

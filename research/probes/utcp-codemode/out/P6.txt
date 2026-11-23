@@ -1,0 +1,11 @@
+{
+  "probe": "P6 infinite loop",
+  "code": "while (true) {}",
+  "wallMs": 30001.869,
+  "wallSeconds": 30,
+  "result": null,
+  "logs": [
+    "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+  ],
+  "threw": null
+}

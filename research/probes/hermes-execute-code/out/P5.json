@@ -1,0 +1,7 @@
+{
+  "probe": "P5",
+  "outcome": "blocked",
+  "display": "blocked by name (ps -E bypass)",
+  "detail": "os.environ.get('PROBE_SECRET') -> None (name contains SECRET, scrubbed). But P5scrub read PROBE_SECRET=s3cr3t from the parent process's environment with ps -E, and PATHFINDER_DB_URL passed the scrub.",
+  "evidence": "research/probes/hermes-execute-code/out/P5.txt"
+}

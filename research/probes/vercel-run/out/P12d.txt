@@ -1,0 +1,38 @@
+label: P12d
+command: node probe.mjs P12d
+child exit: code=0 signal=null
+child wall ms (process start to exit): 150
+peak child RSS: 112.5 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P12d",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return typeof globalThis.__HOST_CANARY + \"|\" + typeof Function + \"|\" + typeof eval;"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "status": "completed",
+      "value": "undefined|function|undefined",
+      "wallMs": 80.51108400000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": "undefined|function|undefined",
+    "ms": 81,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 132
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:67006) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

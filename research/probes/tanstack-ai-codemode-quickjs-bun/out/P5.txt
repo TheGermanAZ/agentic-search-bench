@@ -1,0 +1,58 @@
+label: P5
+command: bun probe.mjs P5
+child exit: code=0 signal=null
+child wall ms (process start to exit): 220
+peak child RSS: 64.0 MB (ps every 50 ms)
+child stdout length: 686 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P5",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 3.0412919999999986,
+  "source": [
+    "return process.env.PROBE_SECRET;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "'process' is not defined",
+          "name": "ReferenceError",
+          "stack": "    at <anonymous> (<code-mode>:5:8)\n    at <anonymous> (<code-mode>:6:7)\n    at <eval> (<code-mode>:11:3)\n"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 145.95100000000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: 'process' is not defined",
+    "ms": 146,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 47.5
+}
+--- child stdout ---
+{
+  [0mtimestamp[2m:[0m [0m[33m1795376528723[0m[0m[2m,[0m
+  [0mdurationMs[2m:[0m [0m[33m145[0m[0m[2m,[0m
+  [0mphase[2m:[0m [0m[32m[0m[32m"execute"[0m[0m[0m[2m,[0m
+  [0msuccess[2m:[0m [0m[33mfalse[0m[0m[2m,[0m
+  [0mlogCount[2m:[0m [0m[33m0[0m[0m[2m,[0m
+  [0merror[2m:[0m {
+    [0mname[2m:[0m [0m[32m[0m[32m"ReferenceError"[0m[0m[0m[2m,[0m
+    [0mmessage[2m:[0m [0m[32m[0m[32m"'process' is not defined"[0m[0m[0m[2m,[0m
+    [0mstack[2m:[0m [0m[32m[0m[32m"    at <anonymous> (<code-mode>:5:8)\n    at <anonymous> (<code-mode>:6:7)\n    at <eval> (<code-mode>:11:3)\n"[0m[0m[0m[2m,[0m
+  }[0m[2m,[0m
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

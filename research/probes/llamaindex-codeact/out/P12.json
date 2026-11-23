@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "escaped",
+  "display": "escaped (os.system)",
+  "detail": "P12a subclasses walk: ran; 'SUBS 1108 True True SUBS 1108 True True' | P12b __import__('os').system: ran; 'SYSTEM 0 SYSTEM 0' | P12c _wrap_close globals popen: ran; 'WRAP PWNED2 WRAP PWNED2'",
+  "evidence": "research/probes/llamaindex-codeact/out/P12.txt"
+}

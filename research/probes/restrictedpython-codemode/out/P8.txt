@@ -1,0 +1,6 @@
+exec1:
+{"ok": true, "result": null, "error": null, "ms": 3.8}
+stdout (0 chars): ''
+exec2:
+{"ok": false, "result": null, "error": "Execution error: name 'kept' is not defined", "ms": 0.1}
+stdout (0 chars): ''

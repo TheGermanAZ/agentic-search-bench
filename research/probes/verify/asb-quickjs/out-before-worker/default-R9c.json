@@ -1,0 +1,390 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default R9c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 76688,
+  "peakTreeRssMb": 3281,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "R9c",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 4,
+          "ms": 75956,
+          "ok": false,
+          "threw": "RangeError: Out of memory\n    at join (unknown)\n    at runCode (~/p/agentic-search-bench/src/sandbox.ts:118:20)\n    at async timed (unknown)",
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 75961,
+        "ms": 205,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 76168,
+        "ms": 202,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 76370,
+        "ms": 203,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 75941,
+    "hostEvents": [],
+    "totalMs": 76573
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      77,
+      66
+    ],
+    [
+      1047,
+      288
+    ],
+    [
+      2011,
+      521
+    ],
+    [
+      2978,
+      746
+    ],
+    [
+      3946,
+      966
+    ],
+    [
+      4921,
+      1795
+    ],
+    [
+      5912,
+      1404
+    ],
+    [
+      6876,
+      1443
+    ],
+    [
+      7842,
+      1591
+    ],
+    [
+      8816,
+      1757
+    ],
+    [
+      9797,
+      1908
+    ],
+    [
+      10771,
+      1704
+    ],
+    [
+      11740,
+      1901
+    ],
+    [
+      12711,
+      1861
+    ],
+    [
+      13686,
+      1707
+    ],
+    [
+      14741,
+      1277
+    ],
+    [
+      15755,
+      1412
+    ],
+    [
+      16736,
+      1483
+    ],
+    [
+      17690,
+      1556
+    ],
+    [
+      18712,
+      1656
+    ],
+    [
+      19677,
+      1759
+    ],
+    [
+      20641,
+      1937
+    ],
+    [
+      21607,
+      2129
+    ],
+    [
+      22575,
+      2330
+    ],
+    [
+      23549,
+      2528
+    ],
+    [
+      24519,
+      2719
+    ],
+    [
+      25492,
+      2750
+    ],
+    [
+      26460,
+      2703
+    ],
+    [
+      27431,
+      2615
+    ],
+    [
+      28397,
+      2639
+    ],
+    [
+      29372,
+      2596
+    ],
+    [
+      30343,
+      2502
+    ],
+    [
+      31310,
+      2470
+    ],
+    [
+      32276,
+      2425
+    ],
+    [
+      33280,
+      2379
+    ],
+    [
+      34249,
+      2395
+    ],
+    [
+      35214,
+      2416
+    ],
+    [
+      36187,
+      2446
+    ],
+    [
+      37153,
+      1989
+    ],
+    [
+      38231,
+      2051
+    ],
+    [
+      39222,
+      2107
+    ],
+    [
+      40361,
+      2117
+    ],
+    [
+      41432,
+      2043
+    ],
+    [
+      42456,
+      2046
+    ],
+    [
+      43441,
+      2059
+    ],
+    [
+      44419,
+      1979
+    ],
+    [
+      45371,
+      2042
+    ],
+    [
+      46344,
+      2071
+    ],
+    [
+      47306,
+      1989
+    ],
+    [
+      48271,
+      1971
+    ],
+    [
+      49242,
+      2015
+    ],
+    [
+      50208,
+      2008
+    ],
+    [
+      51177,
+      2017
+    ],
+    [
+      52164,
+      2078
+    ],
+    [
+      53113,
+      2076
+    ],
+    [
+      54080,
+      2081
+    ],
+    [
+      55064,
+      2219
+    ],
+    [
+      56022,
+      2166
+    ],
+    [
+      56994,
+      2218
+    ],
+    [
+      57956,
+      2181
+    ],
+    [
+      58924,
+      2173
+    ],
+    [
+      59890,
+      2363
+    ],
+    [
+      60858,
+      2369
+    ],
+    [
+      61832,
+      2379
+    ],
+    [
+      62799,
+      2392
+    ],
+    [
+      63764,
+      2406
+    ],
+    [
+      64731,
+      2455
+    ],
+    [
+      65700,
+      2469
+    ],
+    [
+      66668,
+      2522
+    ],
+    [
+      67644,
+      2582
+    ],
+    [
+      68613,
+      2600
+    ],
+    [
+      69582,
+      2678
+    ],
+    [
+      70551,
+      2790
+    ],
+    [
+      71516,
+      2851
+    ],
+    [
+      72500,
+      2930
+    ],
+    [
+      73471,
+      3019
+    ],
+    [
+      74440,
+      3102
+    ],
+    [
+      75408,
+      3177
+    ],
+    [
+      76374,
+      3261
+    ]
+  ]
+}

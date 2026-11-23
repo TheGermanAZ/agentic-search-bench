@@ -1,0 +1,157 @@
+{
+  "impl": "restrictedpython-codemode",
+  "name": "imran31415/codemode_python_benchmark CodeExecutor (RestrictedPython)",
+  "source": "https://github.com/imran31415/codemode_python_benchmark",
+  "pinned": "363507ee639f63532c70ed81aa5ef44ac28c619f (2025-10-09, last commit); RestrictedPython 9.0 (requirements.txt says >=7.0)",
+  "language": "Python",
+  "engine": "CPython exec() in the host process (executor.py:209) of code compiled by RestrictedPython.compile_restricted. The restricted globals hand the guest the real __import__ and getattr, so the compile-time checks are the only guard.",
+  "how_run": "sandbox.executor.CodeExecutor({'lookup': lookup}).execute(code), the call CodeModeAgent.run makes (agents/codemode_agent.py:187). The tool is reached as tools.lookup(id=...).",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "result variable = 42, 1 host-side call. print() output is discarded, so the probe also sets `result`, the only value the executor returns.",
+      "display": "works (42, 1 host call)",
+      "evidence": "research/probes/restrictedpython-codemode/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "Neither came back. print() goes to a SafePrinter whose buffer is never read (executor.py:179-199), and a bare last expression is not returned. Only the variable `result` returns: with result = \"RETURNED\" (out/PX.txt, P2-result-var) the value came back. 0 of 200000 printed chars reach the caller.",
+      "display": "print dropped; only `result` returns",
+      "evidence": "research/probes/restrictedpython-codemode/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "import urllib.request is allowed (the real __import__ is in the guest builtins, executor.py:145). urlopen(\"https://example.com\") returned STATUS 200.",
+      "display": "works (example.com 200)",
+      "evidence": "research/probes/restrictedpython-codemode/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "open() is not in the guest builtins (NameError, out/PX.txt P4-open-only), but import io; io.open(\"/etc/hosts\").read() returned the host file (450 chars, identical to the host's).",
+      "display": "works (via import io)",
+      "evidence": "research/probes/restrictedpython-codemode/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "works",
+      "detail": "import os; os.environ.get(\"PROBE_SECRET\") returned s3cr3t.",
+      "display": "works (s3cr3t)",
+      "evidence": "research/probes/restrictedpython-codemode/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "No time limit. execute() has no timeout parameter and exec runs on the caller's thread; the harness stopped it at 120 s.",
+      "display": "no-limit-within-120s",
+      "evidence": "research/probes/restrictedpython-codemode/out/P6.txt"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "No memory limit. The guest list grew inside the host process until the harness stopped it at 4.2 GB RSS after 12.4 s. A real agent process would die with it.",
+      "display": "no-limit-within-120s (4.2 GB)",
+      "evidence": "research/probes/restrictedpython-codemode/out/P7.txt"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "Fresh. Execution 2 failed with \"name 'kept' is not defined\". execute() builds new globals and locals per call (executor.py:141-206).",
+      "display": "fresh",
+      "evidence": "research/probes/restrictedpython-codemode/out/P8.txt"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "The plain loop took 1018 ms for five lookups (serial, 5 host calls). Tools are synchronous host functions. A ThreadPoolExecutor in guest code took 209 ms (out/PX.txt, P9-threads), possible only because imports are unrestricted.",
+      "display": "serial (1,018 ms); threads 209 ms",
+      "evidence": "research/probes/restrictedpython-codemode/out/P9.txt"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "The SPEC code fails before it raises: \"Execution error: name 'ValueError' is not defined\", because the exception classes are missing from the guest builtins (see source notes). Raising a ValueError subclass reached through import io gives \"Execution error: probe-boom\": message only, no type, no line number (out/PX.txt).",
+      "display": "ValueError undefined; no line",
+      "evidence": "research/probes/restrictedpython-codemode/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "per fresh session + execution: median 0.1 ms, p90 0.2 ms. Same-session runs median 0.0 / p90 0.1 ms; new session + run median 0.1 / p90 0.2 ms; one-time setup 0.0 ms",
+      "display": "median 0.1 ms",
+      "evidence": "research/probes/restrictedpython-codemode/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "escaped",
+      "detail": "Spec attempts are rejected at compile time: \"__class__\" / \"__import__\" are invalid names because they start with \"_\". But import os; os.system(\"echo PWNED-c >> <host file>\") printed PWNED-c and wrote the host marker file. sys.modules and gc are also reachable (out/PX.txt).",
+      "display": "escaped (import os; os.system)",
+      "evidence": "research/probes/restrictedpython-codemode/out/P12.txt"
+    }
+  },
+  "hardened": null,
+  "defaults": {
+    "time": "None. CodeExecutor.execute(code) has no timeout and runs exec on the calling thread (executor.py:101, 209). P6 ran 120 s.",
+    "memory": "None. Guest allocations live in the host process (P7 reached 4.2 GB).",
+    "output": "print() output is discarded. Only the `result` variable is returned, plus JSON-serializable locals, uncapped (executor.py:211-227).",
+    "tool_calls": "No cap. Tools are plain host callables behind ToolsAPI.__getattr__ (executor.py:49-81).",
+    "hardened": "No stricter option exists. CodeExecutor.__init__ takes only the tools dict (executor.py:92-99), so hardened is null."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Tools are a dict of host callables wrapped in ToolsAPI, whose __getattr__ returns the raw host function, so guest code calls tools.<name>(...). The model learns the API from a hand-written string (TypedDicts, signatures, docstrings) returned by get_code_mode_api(); nothing is generated from a schema.",
+      "evidence": "https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/sandbox/executor.py#L49-L81 ; https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/tools/business_tools.py#L315"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Everything upfront: the whole tools_api string is pasted into the system prompt on every turn. No search.",
+      "evidence": "https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/agents/codemode_agent.py#L48-L55"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "No bridge. Guest and tools share one CPython process; a tool call is a direct Python call into the host function.",
+      "evidence": "https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/sandbox/executor.py#L198 and #L209"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "RestrictedPython compile-time checks only. The executor puts the real __import__ and the real getattr into the guest builtins, which disables RestrictedPython's import and attribute guards. Any module is importable, so os, socket and subprocess are one import away. The README claims \"No filesystem access, No network access, No dangerous imports\"; P3, P4, P5 and P12 show all three are false.",
+      "evidence": "https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/sandbox/executor.py#L145-L146 and #L200 ; README claim https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/README.md#L246-L252"
+    },
+    {
+      "topic": "Builtins bug",
+      "finding": "restricted_builtins = safe_globals.copy() copies {'__builtins__': safe_builtins}, not safe_builtins itself. So none of RestrictedPython's safe builtins (exceptions such as ValueError and NameError, isinstance, None-safe helpers) reach the guest; only the 25 names the executor adds by hand do. That is why raise ValueError and except NameError fail with NameError.",
+      "evidence": "https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/sandbox/executor.py#L141-L176"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Only the guest variable `result` and JSON-serializable non-underscore locals come back. print() is routed to a SafePrinter instance whose buffer is never read. No truncation anywhere.",
+      "evidence": "https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/sandbox/executor.py#L179-L227"
+    },
+    {
+      "topic": "Limits",
+      "finding": "No time, memory, output or call-count limits in the executor. The agent loop caps model turns at max_iterations=10, which does not bound one execution.",
+      "evidence": "https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/sandbox/executor.py#L101-L233 ; https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/agents/codemode_agent.py#L121"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh per execute(): new globals and locals dicts each call. Host-side tool state (the accounting state object) persists across calls.",
+      "evidence": "https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/sandbox/executor.py#L193-L206"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Every exception becomes {'success': False, 'error': 'Execution error: ' + str(e)}: no type name, no traceback, no line number. Compile errors list RestrictedPython messages with line numbers.",
+      "evidence": "https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/sandbox/executor.py#L119-L124 and #L229-L233"
+    },
+    {
+      "topic": "README numbers",
+      "finding": "Reproducible as arithmetic from data still in git history, not from the repo tree. results/*.json is gitignored and commit 9053b68 deleted the root benchmark_results_*.json, but commit 917128b holds them. Summing input+output tokens over successful scenarios gives exactly 144,250 (regular, 6/8) and 45,741 (code mode, 7/8). The two totals cover different scenario sets: regular includes scenario 7 and lacks 8, code mode includes 8. On the 6 scenarios both passed, the totals are 144,250 vs 38,942 (73.0% fewer). The 6/8 vs 7/8 gap is rate limits, not capability: regular scenario 8 and code-mode scenario 6 both failed with HTTP 429; regular scenario 6 hit max iterations. One run per agent, Claude 3 Haiku. Verified without calling any model API.",
+      "evidence": "research/probes/restrictedpython-codemode/recompute_readme.py, research/probes/restrictedpython-codemode/out/readme-recompute.txt ; https://github.com/imran31415/codemode_python_benchmark/blob/917128b349645177f2aee74aeeac250b41c4cae6/benchmark_results_claude.json ; https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/docs/RESULTS_DATA.md#L9-L41"
+    },
+    {
+      "topic": "Anything else",
+      "finding": "No approvals, no credential separation (tools are host closures; guest code can read os.environ), no async support (tools are sync). Repo unlicensed in the tree and last touched 2025-10-09.",
+      "evidence": "https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/sandbox/executor.py#L57-L81"
+    }
+  ],
+  "surprises": [
+    "README says the sandbox has no filesystem, no network and no dangerous imports (README.md:246-252). The executor hands the guest the real __import__ (executor.py:145), so import os / io / urllib work: P3 got example.com 200, P4 read /etc/hosts, P5 read PROBE_SECRET, P12 ran os.system on the host.",
+    "The SPEC escape forms are blocked, but only by RestrictedPython's compile-time rule against _-prefixed names. That rule is cosmetic once import is free.",
+    "safe_globals.copy() is used where safe_builtins was meant (executor.py:141), so ValueError, NameError and the other RestrictedPython safe builtins are missing. The SPEC P10 code cannot even raise; error handling with except NameError fails.",
+    "print() output never reaches the model. The agent prompt tells the model to store the answer in `result` (codemode_agent.py:60), which is the only channel.",
+    "The README headline compares token totals over different scenario sets (regular has scenario 7 and not 8; code mode has 8). Matched on the 6 scenarios both finished, the saving is 73.0%, not 68.3%. The success-rate difference comes from HTTP 429 rate-limit failures, not from task failures.",
+    "The result files behind the README are gitignored and were deleted from the tree in 9053b68; they survive only in commit 917128b.",
+    "The executor runs exec in the agent's own process with no timeout: one `while True: pass` hangs the agent forever, and one big allocation kills it."
+  ]
+}

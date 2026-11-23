@@ -1,0 +1,6 @@
+{
+  "probe": "P1",
+  "outcome": "works",
+  "detail": "printed '42', 1 host call",
+  "wall_ms": 210.3
+}

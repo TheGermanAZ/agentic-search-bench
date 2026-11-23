@@ -1,0 +1,47 @@
+label: P2e
+command: node probe.mjs P2e
+child exit: code=0 signal=null
+child wall ms (process start to exit): 1130
+peak child RSS: 166.7 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P2e",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return \"A\".repeat(2000000);"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "CodeModeError",
+        "code": "CODE_MODE_SERIALIZATION_ERROR",
+        "message": "Code mode result exceeds the 1048576 byte size limit.",
+        "details": {
+          "bytes": 2000002,
+          "maxBytes": 1048576
+        },
+        "stack": "CodeModeError: Code mode result exceeds the 1048576 byte size limit.\n    at assertJsonPayloadSize (file://~/p/agentic-search-bench/research/impls/vercel-ai-sdk-codemode/pkg/node_modules/@ai-sdk/code-mode/dist/utils/serialization.js:26:30)\n    at toStrictJsonPayload (file://~/p/agentic-search-bench/research/impls/vercel-ai-sdk-codemode/pkg/node_modules/@ai-sdk/code-mode/dist/utils/serialization.js:21:2)\n    at toJsonPayload (file://~/p/agentic-search-bench/research/impls/vercel-ai-sdk-codemode/pkg/node_modules/@ai-sdk/code-mode/dist/utils/serialization.js:8:9)\n    at runCodeMode (file://~/p/agentic-search-bench/research/impls/vercel-ai-sdk-codemode/pkg/node_modules/@ai-sdk/code-mode/dist/run-code-mode.js:71:61)\n    at async Object.execute (file://~/p/agentic-search-bench/research/impls/vercel-ai-sdk-codemode/pkg/node_modules/@ai-sdk/code-mode/dist/code-mode-tool.js:24:47)\n    at async once (file://~/p/agentic-search-bench/research/probes/vercel-ai-sdk-codemode/probe.mjs:97:15)\n    at async file://~/p/agentic-search-bench/research/probes/vercel-ai-sdk-codemode/probe.mjs:136:45",
+        "string": "CodeModeError: Code mode result exceeds the 1048576 byte size limit."
+      },
+      "wallMs": 1026.0986659999999,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "CodeModeError: CODE_MODE_SERIALIZATION_ERROR Code mode result exceeds the 1048576 byte size limit.",
+    "ms": 1026,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 176
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:82708) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

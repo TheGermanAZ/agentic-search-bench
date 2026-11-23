@@ -1,0 +1,10 @@
+print(__import__("os").system("echo PWNED"))  # type: ignore
+--- output
+ERROR: Runtime error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    print(__import__("os").system("echo PWNED"))  # type: ignore
+          ~~~~~~~~~~~~~~~~
+NameError: Unknown function: __import__
+---
+wall_ms=19 host_calls=0 peak_tree_rss_mb=181

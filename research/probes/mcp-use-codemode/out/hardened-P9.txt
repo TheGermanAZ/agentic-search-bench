@@ -1,0 +1,9 @@
+code:
+loop = asyncio.get_running_loop()
+t = loop.time()
+await asyncio.gather(*[host.lookup(id=i) for i in [1, 2, 3, 4, 5]])
+print(int((loop.time() - t) * 1000))
+
+{"ok": true, "result": null, "error": null, "ms": 209.2}
+stdout (3 chars): '206'
+host_calls=5

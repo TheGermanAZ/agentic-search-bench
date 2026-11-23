@@ -1,0 +1,7 @@
+TypeError: Cannot read properties of undefined (reading 'process')
+    at eval (eval at __run ([worker eval]:502:16), <anonymous>:4:35)
+    at eval (eval at __run ([worker eval]:502:16), <anonymous>:5:3)
+    at __run ([worker eval]:506:21)
+    at MessagePort.__hostMessageHandler ([worker eval]:532:10)
+    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:869:20)
+    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)

@@ -1,0 +1,79 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs default R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 553,
+  "peakTreeRssMb": 111,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "default",
+    "test": "R2b",
+    "notes": "one CodemodeSandbox({}) shared",
+    "data": {
+      "startMs": 15,
+      "ms": 409,
+      "ok": true,
+      "result": {
+        "value": {
+          "ok": true,
+          "value": {
+            "type": "object",
+            "name": "Error",
+            "msg": "host-tool-boom internal detail db=postgres://user:pw@host",
+            "stack": "    at settle (codemode-prelude.js:419:33)\n",
+            "own": [
+              "message"
+            ],
+            "esc": "undefined"
+          },
+          "output": [],
+          "calls": [
+            {
+              "name": "failing",
+              "status": "error",
+              "durationMs": 4.816542000000027
+            }
+          ],
+          "storeWrites": {
+            "set": {},
+            "delete": []
+          }
+        },
+        "stringChars": 139
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 48,
+    "hostEvents": [],
+    "totalMs": 424
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      256,
+      58
+    ],
+    [
+      399,
+      75
+    ],
+    [
+      453,
+      111
+    ],
+    [
+      551,
+      111
+    ]
+  ]
+}

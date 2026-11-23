@@ -1,0 +1,46 @@
+{
+  "probe": "P3try",
+  "config": "default",
+  "codes": [
+    "try:\n    import urllib.request\n    r = urllib.request.urlopen(\"https://example.com\", timeout=10)\n    print(\"HTTP\", r.status)\nexcept BaseException as e:\n    print('URLLIB caught', type(e).__name__, str(e)[:300])",
+    "try:\n    from pyodide.http import pyfetch\n    r = await pyfetch(\"https://example.com\")\n    print(\"HTTP\", r.status)\nexcept BaseException as e:\n    print('PYFETCH caught', type(e).__name__, str(e)[:300])"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nURLLIB caught URLError <urlopen error [Errno 23] Host is unreachable>\n\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\nURLLIB caught URLError <urlopen error [Errno 23] Host is unreachable>\n\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        70,
+        25
+      ],
+      "answer": "done",
+      "ms": 572.0,
+      "started": 1795382007.929027
+    },
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nPYFETCH caught AbortError Requires net access to \"example.com:443\", run again with the --allow-net flag\n\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\nPYFETCH caught AbortError Requires net access to \"example.com:443\", run again with the --allow-net flag\n\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        104,
+        25
+      ],
+      "answer": "done",
+      "ms": 608.3,
+      "started": 1795382008.501354
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.71,
+  "peak_tree_rss_gb": 0.512,
+  "calls": [],
+  "child_log_tail": ""
+}

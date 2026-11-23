@@ -1,0 +1,7 @@
+{
+  "probe": "P5scrub",
+  "outcome": "blocked",
+  "display": "blocked (no forward; ps sees no host)",
+  "detail": "In the container: PATHFINDER_DB_URL None, PROBE_PLAIN_VALUE None, ps of the parent pid returned nothing (0 chars).",
+  "evidence": "research/probes/hermes-execute-code/out/hardened-P5scrub.txt"
+}

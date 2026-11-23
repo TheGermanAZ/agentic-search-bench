@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "detail": "time limit: ExecutionTimeoutError: Code execution exceeded the maximum execution time of 1 seconds",
+  "wall_s": 4.0,
+  "config": "LocalPythonExecutor(additional_authorized_imports=[], timeout_seconds=1)"
+}

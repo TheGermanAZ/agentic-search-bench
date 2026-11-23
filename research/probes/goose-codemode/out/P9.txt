@@ -1,0 +1,19 @@
+probe: P9
+binary: goose-codemode-probe
+process wall_ms: 253.3
+peak_rss_mb: 8.0
+exit: 0
+killed: None
+
+--- execution 0 ---
+code:
+async function run() {
+const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.call("lookup", {id: i}))); console.log(Date.now() - t)
+}
+is_error: False
+elapsed_ms: 209.22
+host_calls: 5
+returned chars: 6
+text returned to model:
+203.0
+

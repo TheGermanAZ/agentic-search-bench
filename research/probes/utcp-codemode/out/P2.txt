@@ -1,0 +1,37 @@
+{
+  "probe": "P2 output",
+  "forms": {
+    "literal-spec-form": {
+      "code": "console.log(\"A\".repeat(200000)); \"RETURNED\"",
+      "wallMs": 1.468291999999991,
+      "result": null,
+      "logCount": 1,
+      "logTotalChars": 200000,
+      "printedACount": 200000,
+      "logs": [
+        {
+          "length": 200000,
+          "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      ],
+      "threw": null
+    },
+    "return-form": {
+      "code": "console.log(\"A\".repeat(200000)); return \"RETURNED\"",
+      "wallMs": 1.2075829999999996,
+      "result": "RETURNED",
+      "logCount": 1,
+      "logTotalChars": 200000,
+      "printedACount": 200000,
+      "logs": [
+        {
+          "length": 200000,
+          "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      ],
+      "threw": null
+    }
+  }
+}

@@ -1,0 +1,12 @@
+code:
+from functions import lookup
+import asyncio, time
+async def main():
+    return await asyncio.gather(*[asyncio.to_thread(lookup, id=i) for i in [1, 2, 3, 4, 5]])
+t = time.time()
+asyncio.run(main())
+print(int((time.time() - t) * 1000))
+
+{"ok": true, "result": null, "error": null, "ms": 332.6}
+stdout (64 chars): 'LOOKUP_CALL\nLOOKUP_CALL\nLOOKUP_CALL\nLOOKUP_CALL\nLOOKUP_CALL\n208\n'
+host_calls=0

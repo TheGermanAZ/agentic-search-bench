@@ -1,0 +1,179 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py hardened R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2657,
+  "peakTreeRssMb": 103,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9d",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(hardened {'limits': {'max_feed_duration_secs': 10, 'max_memory': 50000000}, 'wall_clock_timeout_secs': 60}); new in-process Client per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1610,
+          "ms": 66,
+          "ok": true,
+          "result": {
+            "is_error": false,
+            "text": ""
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1760,
+        "ms": 240,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 2000,
+        "ms": 230,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 2230,
+        "ms": 240,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 4,
+    "totalMs": 2470
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      117,
+      21
+    ],
+    [
+      206,
+      29
+    ],
+    [
+      283,
+      37
+    ],
+    [
+      368,
+      42
+    ],
+    [
+      504,
+      48
+    ],
+    [
+      607,
+      49
+    ],
+    [
+      682,
+      51
+    ],
+    [
+      752,
+      53
+    ],
+    [
+      832,
+      56
+    ],
+    [
+      919,
+      61
+    ],
+    [
+      1023,
+      63
+    ],
+    [
+      1106,
+      65
+    ],
+    [
+      1189,
+      71
+    ],
+    [
+      1288,
+      72
+    ],
+    [
+      1430,
+      74
+    ],
+    [
+      1584,
+      79
+    ],
+    [
+      1722,
+      83
+    ],
+    [
+      1800,
+      89
+    ],
+    [
+      1884,
+      93
+    ],
+    [
+      2012,
+      103
+    ],
+    [
+      2105,
+      103
+    ],
+    [
+      2207,
+      94
+    ],
+    [
+      2291,
+      102
+    ],
+    [
+      2371,
+      102
+    ],
+    [
+      2471,
+      102
+    ],
+    [
+      2550,
+      102
+    ],
+    [
+      2650,
+      102
+    ]
+  ]
+}

@@ -1,0 +1,3 @@
+CODE: a=[]; while True: a.append('x'*10**6)
+OUTCOME: no-limit-within-120s
+no sandbox limit fired; harness killed the tree after the first sample over 4 GiB (4.15 GiB) at 8.2 s

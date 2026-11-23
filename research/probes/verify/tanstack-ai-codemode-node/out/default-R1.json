@@ -1,0 +1,131 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../tanstack-ai-codemode-node/adapter.mjs default R1",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1332,
+  "peakTreeRssMb": 112,
+  "watchKill": null,
+  "record": {
+    "impl": "tanstack-ai-codemode-node",
+    "config": "default",
+    "test": "R1",
+    "notes": "one createCodeModeTool({driver: node}) shared; execute({typescriptCode}) as chat() calls it",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 915,
+        "ms": 146,
+        "ok": true,
+        "result": {
+          "value": {
+            "success": true,
+            "result": "hijacked",
+            "logs": []
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 0
+      },
+      "B": {
+        "label": "B",
+        "startMs": 1063,
+        "ms": 119,
+        "ok": true,
+        "result": {
+          "value": {
+            "success": true,
+            "result": [
+              "undefined",
+              "undefined",
+              "undefined",
+              "{\"a\":1}",
+              false
+            ],
+            "logs": []
+          },
+          "stringChars": 34
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 941,
+    "hostEvents": [],
+    "totalMs": 1182
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      140,
+      49
+    ],
+    [
+      227,
+      56
+    ],
+    [
+      324,
+      60
+    ],
+    [
+      389,
+      65
+    ],
+    [
+      451,
+      68
+    ],
+    [
+      627,
+      69
+    ],
+    [
+      702,
+      69
+    ],
+    [
+      752,
+      69
+    ],
+    [
+      857,
+      71
+    ],
+    [
+      926,
+      112
+    ],
+    [
+      1023,
+      77
+    ],
+    [
+      1096,
+      80
+    ],
+    [
+      1152,
+      80
+    ],
+    [
+      1206,
+      80
+    ],
+    [
+      1274,
+      80
+    ],
+    [
+      1330,
+      0
+    ]
+  ]
+}

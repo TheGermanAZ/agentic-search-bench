@@ -1,0 +1,6 @@
+probe: P10
+code (python, run through PythonREPL.__call__):
+raise ValueError("probe-boom")
+host_calls_so_far: 0
+ok: True
+output: '---------------------------------------------------------------------------\nValueError                                Traceback (most recent call last)\nCell In[1], line 1\n----> 1 raise ValueError("probe-boom")\n\nValueError: probe-boom\n'

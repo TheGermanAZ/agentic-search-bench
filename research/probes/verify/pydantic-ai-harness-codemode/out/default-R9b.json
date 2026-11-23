@@ -1,0 +1,247 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2447,
+  "peakTreeRssMb": 226,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9b",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1202,
+          "ms": 222,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 3, in <module>\n    a.append(\"x\" * 10**6)\n             ~~~~~~~~~~~\nMemoryError: memory limit exceeded: 269339891 bytes > 268435456 bytes\n\nThe sandbox ran out of memory and the session was reset. Re-run any imports, recreate any state you need, and use less memory: process smaller batches, avoid large intermediate values, and print less output."
+          ],
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1352,
+        "ms": 297,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1650,
+        "ms": 288,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1938,
+        "ms": 272,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 17,
+    "totalMs": 2210
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      122,
+      19
+    ],
+    [
+      163,
+      23
+    ],
+    [
+      218,
+      27
+    ],
+    [
+      266,
+      30
+    ],
+    [
+      334,
+      34
+    ],
+    [
+      412,
+      36
+    ],
+    [
+      474,
+      39
+    ],
+    [
+      520,
+      41
+    ],
+    [
+      577,
+      44
+    ],
+    [
+      625,
+      45
+    ],
+    [
+      675,
+      46
+    ],
+    [
+      717,
+      49
+    ],
+    [
+      764,
+      52
+    ],
+    [
+      819,
+      53
+    ],
+    [
+      883,
+      56
+    ],
+    [
+      922,
+      57
+    ],
+    [
+      989,
+      59
+    ],
+    [
+      1033,
+      60
+    ],
+    [
+      1088,
+      62
+    ],
+    [
+      1132,
+      63
+    ],
+    [
+      1186,
+      65
+    ],
+    [
+      1251,
+      67
+    ],
+    [
+      1299,
+      68
+    ],
+    [
+      1350,
+      70
+    ],
+    [
+      1395,
+      71
+    ],
+    [
+      1444,
+      77
+    ],
+    [
+      1497,
+      88
+    ],
+    [
+      1555,
+      103
+    ],
+    [
+      1611,
+      226
+    ],
+    [
+      1653,
+      108
+    ],
+    [
+      1719,
+      108
+    ],
+    [
+      1762,
+      108
+    ],
+    [
+      1811,
+      108
+    ],
+    [
+      1861,
+      80
+    ],
+    [
+      1921,
+      109
+    ],
+    [
+      1986,
+      109
+    ],
+    [
+      2032,
+      109
+    ],
+    [
+      2086,
+      109
+    ],
+    [
+      2133,
+      80
+    ],
+    [
+      2191,
+      101
+    ],
+    [
+      2230,
+      108
+    ],
+    [
+      2297,
+      108
+    ],
+    [
+      2336,
+      108
+    ],
+    [
+      2394,
+      108
+    ],
+    [
+      2446,
+      0
+    ]
+  ]
+}

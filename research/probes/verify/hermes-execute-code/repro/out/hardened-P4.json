@@ -1,0 +1,7 @@
+{
+  "probe": "P4",
+  "outcome": "blocked",
+  "display": "blocked (container's own /etc/hosts)",
+  "detail": "Read 148 chars: the container's /etc/hosts, not the host's 450-char file. Hardened Pwrite: FileNotFoundError for the host path.",
+  "evidence": "research/probes/repro/out/hardened-P4.txt"
+}

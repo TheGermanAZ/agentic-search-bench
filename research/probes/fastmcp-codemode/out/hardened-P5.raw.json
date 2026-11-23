@@ -1,0 +1,25 @@
+{
+  "probe": "P5",
+  "config": "hardened",
+  "codes": [
+    "import os\nmsg = \"ENV \" + str(os.environ.get(\"PROBE_SECRET\"))\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "structured": null,
+      "stdout": "",
+      "error": "Error calling tool 'execute': RuntimeError: 'os.environ' is not supported in this environment",
+      "ms": 32.3,
+      "started": 1795379060.0720599
+    }
+  ],
+  "setup_ms": 25.2,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.62,
+  "peak_tree_rss_gb": 0.088,
+  "calls": [],
+  "child_log_tail": "[11/22/26 15:24:20] Error calling tool 'execute'                                \n                    \u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Traceback (most recent call last) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/server/server.py:1673 in call_tool                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/tools/base.py:555 in _run                           \u2502\n                    \u2502                                                          \u2502\n                    \u2502                 ... 8 frames hidden ...                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:275 in run     \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:309 in         \u2502\n                    \u2502 _run_monty                                               \u2502\n                    \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n                    MontyRuntimeError: RuntimeError: 'os.environ' is not        \n                    supported in this environment                               \n"
+}

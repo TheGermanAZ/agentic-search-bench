@@ -1,0 +1,1 @@
+neighbor printed "42" in 204 ms; aggressor P7 ended after 1568 ms with "ERROR: the sandbox stopped this program: it used more than the 512 MB memory lim"

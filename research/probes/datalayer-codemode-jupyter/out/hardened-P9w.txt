@@ -1,0 +1,72 @@
+probe: hardened-P9w
+outcome: works
+display: parallel (202 ms)
+detail: 5 host calls spanning 202 ms host-side (first start to last end); execution wall 715.1 ms; output "{'id': 1, 'value': 2} {'id': 2, 'value': 4} {'id': 3, 'value': 6} {'id': 4, 'value': 8} {'id': 5, 'v..."
+
+code:
+----
+from generated.mcp.probe import lookup
+import asyncio
+await lookup({'id': 0})
+rs = await asyncio.gather(lookup({"id": 1}), lookup({"id": 2}), lookup({"id": 3}), lookup({"id": 4}), lookup({"id": 5}))
+for x in rs:
+    print(repr(x)[:300])
+----
+
+setup_ms: 2590.2
+wall_s (whole child process): 4.27
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.448
+host lookup calls: 6
+  call id=0 start=1795378315.115 end=1795378315.316 pid=84037
+  call id=1 start=1795378315.319 end=1795378315.520 pid=84037
+  call id=2 start=1795378315.319 end=1795378315.520 pid=84037
+  call id=3 start=1795378315.319 end=1795378315.521 pid=84037
+  call id=4 start=1795378315.319 end=1795378315.521 pid=84037
+  call id=5 start=1795378315.320 end=1795378315.521 pid=84037
+
+=== run 0 (715.1 ms) ===
+ok: true
+stdout: {'id': 1, 'value': 2}
+{'id': 2, 'value': 4}
+{'id': 3, 'value': 6}
+{'id': 4, 'value': 8}
+{'id': 5, 'value': 10}
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== child process log (tail) ===
+[11/22/26 15:11:52] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-np7tzlh              
+                             q/generated (mcp dir:                              
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-np7tzlh              
+                             q/generated/mcp)                                   
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-np7tzlh              
+                             q/generated/mcp/probe                              
+                    INFO     Starting Jupyter server       jupyter_server.py:262
+                             subprocess on 127.0.0.1:41520                      
+                             (workdir=/var/folders/tg/x0gc                      
+                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      
+                             code-sandbox-7xopcfcs)                             
+[11/22/26 15:11:53] INFO     No existing kernels found,    jupyter_server.py:412
+                             will create a new one                              
+                    INFO     Starting the kernel client…           client.py:412
+                    INFO     KernelHttpManager created a new      manager.py:258
+                             kernel: {'id':                                     
+                             'a1a76b03-06b0-4d66-814f-01333e05c0a               
+                             d', 'name': 'python3',                             
+                             'last_activity':                                   
+                             '2026-11-22T20:11:53.605685Z',                     
+                             'execution_state': 'starting',                     
+                             'connections': 0}                                  
+                    INFO     Websocket connected                 _logging.py:104
+[11/22/26 15:11:55] INFO     Stopping the kernel client…           client.py:433
+

@@ -1,0 +1,9 @@
+probe: P7b (hardened)
+binary: goose-codemode-hardened-probe
+GOOSE_DEFAULT_EXTENSION_TIMEOUT=10
+process wall_ms: 721.4
+peak_rss_mb: 4494.5
+exit: -9
+killed: killed by harness at 4494 MB RSS after 0.6s
+
+{"exec": "config", "probe": "P7b", "timeout_seconds": 10}

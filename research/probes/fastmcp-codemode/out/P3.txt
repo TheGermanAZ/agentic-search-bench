@@ -1,0 +1,87 @@
+probe: P3
+outcome: not-defined
+display: not-defined
+detail: Error calling tool 'execute': ModuleNotFoundError: No module named 'urllib'
+
+code:
+----
+import urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10)
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+import ssl, urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10, context=ssl._create_unverified_context())
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+
+setup_ms: 25.7
+wall_s (whole child process): 0.63
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.085
+host lookup calls: 0
+
+=== run 0 (43.9 ms) ===
+ok: false
+structured: null
+stdout: 
+error: Error calling tool 'execute': ModuleNotFoundError: No module named 'urllib'
+
+=== run 1 (9.3 ms) ===
+ok: false
+structured: null
+stdout: 
+error: Error calling tool 'execute': ModuleNotFoundError: No module named 'ssl'
+
+=== child process log (tail) ===
+[11/22/26 15:23:31] Error calling tool 'execute'                                
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/server/server.py:1673 in call_tool                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/tools/base.py:555 in _run                           │
+                    │                                                          │
+                    │                 ... 7 frames hidden ...                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:309 in         │
+                    │ _run_monty                                               │
+                    ╰──────────────────────────────────────────────────────────╯
+                    MontyRuntimeError: ModuleNotFoundError: No module named     
+                    'urllib'                                                    
+                    Error calling tool 'execute'                                
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/server/server.py:1673 in call_tool                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/tools/base.py:555 in _run                           │
+                    │                                                          │
+                    │                 ... 7 frames hidden ...                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:309 in         │
+                    │ _run_monty                                               │
+                    ╰──────────────────────────────────────────────────────────╯
+                    MontyRuntimeError: ModuleNotFoundError: No module named     
+                    'ssl'                                                       
+

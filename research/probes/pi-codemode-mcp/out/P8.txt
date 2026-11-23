@@ -1,0 +1,29 @@
+{
+  "impl": "pi-codemode-mcp",
+  "config": "default",
+  "probe": "P8",
+  "options": {},
+  "firstExecIncludingServerSpawnMs": 2.41,
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "globalThis.kept = 7; state.keptInState = 7; return \"set\"",
+      "ms": 3,
+      "hostCalls": 0,
+      "isError": false,
+      "textChars": 35,
+      "text": "{\n  \"result\": \"set\",\n  \"logs\": []\n}"
+    },
+    {
+      "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept); return state.keptInState",
+      "ms": 10,
+      "hostCalls": 0,
+      "isError": false,
+      "textChars": 139,
+      "text": "{\n  \"result\": 7,\n  \"logs\": [\n    {\n      \"level\": \"log\",\n      \"message\": \"gone\",\n      \"timestamp\": \"2026-11-22T19:36:49.076Z\"\n    }\n  ]\n}"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P8"], "exit_code": 0, "wall_ms": 1137, "peak_tree_rss_mb": 98.4, "watch_kill": null}

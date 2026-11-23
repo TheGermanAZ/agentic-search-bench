@@ -1,0 +1,4 @@
+{
+  "wranglerDevReadyMs": 938,
+  "note": "time from spawning `wrangler dev` until /noop answered"
+}

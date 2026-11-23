@@ -1,0 +1,7 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "display": "works (11.2 ms median)",
+  "detail": "20 runs in one session: median 11.2 ms, p90 17.6 ms; one-time setup 567.7 ms; fresh session per run (open+run+close, n=5): median 15.3 ms",
+  "evidence": "research/probes/strands-codemode/out/P11.txt"
+}

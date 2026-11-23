@@ -1,0 +1,70 @@
+{
+  "worker": {
+    "exitCode": 0,
+    "signal": null,
+    "killed": null,
+    "wallMs": 329,
+    "peakRssKb": 171248
+  },
+  "parsed": {
+    "probe": "P12js",
+    "host": {
+      "node": "v24.22.1",
+      "pid": 82612
+    },
+    "runs": [
+      {
+        "label": "js-exec -c 'console.log(this.constructor.constructor(\"return process\")().pid)'",
+        "script": "js-exec -c 'console.log(this.constructor.constructor(\"return process\")().pid)'",
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "at <eval> (-c:1:31): Function constructor is not allowed\n",
+        "ms": 146,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "js-exec -c 'console.log((function(){ return this })().process)'",
+        "script": "js-exec -c 'console.log((function(){ return this })().process)'",
+        "exitCode": 0,
+        "stdout": "{\"argv\":[\"-c\"],\"env\":{\"HOME\":\"/home/user\",\"PATH\":\"/usr/bin:/bin\",\"IFS\":\" \\t\\n\",\"OSTYPE\":\"linux-gnu\",\"MACHTYPE\":\"x86_64-pc-linux-gnu\",\"HOSTTYPE\":\"x86_64\",\"HOSTNAME\":\"localhost\",\"PWD\":\"/home/user\",\"OLDPWD\":\"/home/user\",\"OPTIND\":\"1\",\"SHELLOPTS\":\"braceexpand:hashall:interactive-comments\",\"BASHOPTS\":\"globskipdots\"},\"platform\":\"linux\",\"arch\":\"x64\",\"versions\":{\"node\":\"22.0.0\",\"quickjs\":\"2025\"},\"version\":\"v22.0.0\"}\n",
+        "stderr": "",
+        "ms": 14,
+        "stdoutLength": 411,
+        "hostCalls": 0
+      },
+      {
+        "label": "js-exec -c 'console.log(typeof require, typeof process, process.env.PROBE_SECRET)'",
+        "script": "js-exec -c 'console.log(typeof require, typeof process, process.env.PROBE_SECRET)'",
+        "exitCode": 0,
+        "stdout": "function object undefined\n",
+        "stderr": "",
+        "ms": 17,
+        "stdoutLength": 26,
+        "hostCalls": 0
+      },
+      {
+        "label": "js-exec -c 'console.log(require(\"fs\").readFileSync(\"/etc/hosts\", \"utf8\").slice(0, 40))'",
+        "script": "js-exec -c 'console.log(require(\"fs\").readFileSync(\"/etc/hosts\", \"utf8\").slice(0, 40))'",
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "at <eval> (-c:1:71): ENOENT: no such file or directory, stat '<path>'\n",
+        "ms": 13,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      },
+      {
+        "label": "js-exec -c 'console.log(require(\"child_process\").execSync(\"echo inner-child\").toString())'",
+        "script": "js-exec -c 'console.log(require(\"child_process\").execSync(\"echo inner-child\").toString())'",
+        "exitCode": 0,
+        "stdout": "inner-child\n\n",
+        "stderr": "",
+        "ms": 16,
+        "stdoutLength": 13,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 177888,
+    "maxInFlight": 0
+  }
+}

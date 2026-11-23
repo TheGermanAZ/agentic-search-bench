@@ -1,0 +1,100 @@
+probe: hardened-P12
+outcome: blocked
+display: blocked
+detail: P12a subclasses walk: failed; "Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'" | P12b __import__('os').system: failed; "Error calling tool 'execute': NameError: name '__import__' is not defined" | P12c _wrap_close globals popen: failed; "Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'"
+
+code:
+----
+subs = ().__class__.__base__.__subclasses__()
+names = [c.__name__ for c in subs]
+msg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)
+print(msg)
+msg
+----
+msg = "SYSTEM " + str(__import__("os").system("echo PWNED"))
+print(msg)
+msg
+----
+wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']
+msg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()
+print(msg)
+msg
+----
+
+setup_ms: 26.4
+wall_s (whole child process): 0.62
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.089
+host lookup calls: 0
+
+=== run 0 (31.4 ms) ===
+ok: false
+structured: null
+stdout: 
+error: Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'
+
+=== run 1 (9.8 ms) ===
+ok: false
+structured: null
+stdout: 
+error: Error calling tool 'execute': NameError: name '__import__' is not defined
+
+=== run 2 (10.1 ms) ===
+ok: false
+structured: null
+stdout: 
+error: Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'
+
+=== child process log (tail) ===
+                             │
+                    ╰──────────────────────────────────────────────────────────╯
+                    MontyRuntimeError: AttributeError: 'tuple' object has no    
+                    attribute '__class__'                                       
+                    Error calling tool 'execute'                                
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/server/server.py:1673 in call_tool                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/tools/base.py:555 in _run                           │
+                    │                                                          │
+                    │                 ... 8 frames hidden ...                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:309 in         │
+                    │ _run_monty                                               │
+                    ╰──────────────────────────────────────────────────────────╯
+                    MontyRuntimeError: NameError: name '__import__' is not      
+                    defined                                                     
+                    Error calling tool 'execute'                                
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/server/server.py:1673 in call_tool                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/tools/base.py:555 in _run                           │
+                    │                                                          │
+                    │                 ... 8 frames hidden ...                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:309 in         │
+                    │ _run_monty                                               │
+                    ╰──────────────────────────────────────────────────────────╯
+                    MontyRuntimeError: AttributeError: 'tuple' object has no    
+                    attribute '__class__'                                       
+

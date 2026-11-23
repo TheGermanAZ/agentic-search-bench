@@ -1,0 +1,43 @@
+{
+  "probe": "P12",
+  "config": "default",
+  "codes": [
+    "subs = ().__class__.__base__.__subclasses__()\nnames = [c.__name__ for c in subs]\nmsg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)\nprint(msg)\nmsg",
+    "msg = \"SYSTEM \" + str(__import__(\"os\").system(\"echo PWNED\"))\nprint(msg)\nmsg",
+    "wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']\nmsg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "structured": null,
+      "stdout": "",
+      "error": "Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'",
+      "ms": 85.7,
+      "started": 1795381406.342824
+    },
+    {
+      "ok": false,
+      "structured": null,
+      "stdout": "",
+      "error": "Error calling tool 'execute': NameError: name '__import__' is not defined",
+      "ms": 51.0,
+      "started": 1795381406.428708
+    },
+    {
+      "ok": false,
+      "structured": null,
+      "stdout": "",
+      "error": "Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'",
+      "ms": 22.7,
+      "started": 1795381406.479985
+    }
+  ],
+  "setup_ms": 140.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.81,
+  "peak_tree_rss_gb": 0.098,
+  "calls": [],
+  "child_log_tail": "                             \u2502\n                    \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n                    MontyRuntimeError: AttributeError: 'tuple' object has no    \n                    attribute '__class__'                                       \n                    Error calling tool 'execute'                                \n                    \u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Traceback (most recent call last) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/server/server.py:1673 in call_tool                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/tools/base.py:555 in _run                           \u2502\n                    \u2502                                                          \u2502\n                    \u2502                 ... 7 frames hidden ...                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:275 in run     \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:309 in         \u2502\n                    \u2502 _run_monty                                               \u2502\n                    \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n                    MontyRuntimeError: NameError: name '__import__' is not      \n                    defined                                                     \n                    Error calling tool 'execute'                                \n                    \u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Traceback (most recent call last) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/server/server.py:1673 in call_tool                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/tools/base.py:555 in _run                           \u2502\n                    \u2502                                                          \u2502\n                    \u2502                 ... 7 frames hidden ...                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:275 in run     \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:309 in         \u2502\n                    \u2502 _run_monty                                               \u2502\n                    \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n                    MontyRuntimeError: AttributeError: 'tuple' object has no    \n                    attribute '__class__'                                       \n"
+}

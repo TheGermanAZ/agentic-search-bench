@@ -1,0 +1,2661 @@
+{
+ "probe": "P6",
+ "host": "~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex-code-mode-host",
+ "limits_sent": {
+  "maxYieldTimeMs": 1000,
+  "maxHeapSizeBytes": 67108864
+ },
+ "max_output_tokens": 1000,
+ "hello": {
+  "type": "connection/ready",
+  "selectedVersion": 1,
+  "capabilities": [
+   "bounded-output-v1",
+   "delegate-capacity-4096",
+   "session-cell-execution-resource-limits",
+   "yield-observation"
+  ]
+ },
+ "session_open": {
+  "type": "operation/response",
+  "id": 1,
+  "result": {
+   "status": "ok",
+   "value": {
+    "type": "session/ready",
+    "sessionId": "s1"
+   }
+  }
+ },
+ "wall_ms": 120026.6,
+ "peak_rss_mb": 26.9,
+ "killed": "killed by harness at 120s (no-limit-within-120s)",
+ "records": [
+  {
+   "source": "while (true) {}",
+   "elapsed_ms": 1019.15,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 2,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Yielded": {
+       "cell_id": "1",
+       "content_items": [],
+       "code_mode_host_duration_ns": 1016517291
+      }
+     }
+    }
+   },
+   "waits": [
+    {
+     "t_ms": 2089,
+     "reply": {
+      "type": "operation/response",
+      "id": 3,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1004551542
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 3092,
+     "reply": {
+      "type": "operation/response",
+      "id": 4,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001996500
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 4094,
+     "reply": {
+      "type": "operation/response",
+      "id": 5,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001079208
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 5096,
+     "reply": {
+      "type": "operation/response",
+      "id": 6,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002401959
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 6098,
+     "reply": {
+      "type": "operation/response",
+      "id": 7,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001734167
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 7101,
+     "reply": {
+      "type": "operation/response",
+      "id": 8,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002121083
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 8103,
+     "reply": {
+      "type": "operation/response",
+      "id": 9,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001460750
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 9106,
+     "reply": {
+      "type": "operation/response",
+      "id": 10,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001822417
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 10121,
+     "reply": {
+      "type": "operation/response",
+      "id": 11,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001821209
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 11124,
+     "reply": {
+      "type": "operation/response",
+      "id": 12,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002060875
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 12126,
+     "reply": {
+      "type": "operation/response",
+      "id": 13,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002102000
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 13132,
+     "reply": {
+      "type": "operation/response",
+      "id": 14,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001256834
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 14134,
+     "reply": {
+      "type": "operation/response",
+      "id": 15,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002099417
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 15143,
+     "reply": {
+      "type": "operation/response",
+      "id": 16,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001519958
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 16165,
+     "reply": {
+      "type": "operation/response",
+      "id": 17,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002959250
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 17179,
+     "reply": {
+      "type": "operation/response",
+      "id": 18,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1000646666
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 18181,
+     "reply": {
+      "type": "operation/response",
+      "id": 19,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001679083
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 19183,
+     "reply": {
+      "type": "operation/response",
+      "id": 20,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002081292
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 20186,
+     "reply": {
+      "type": "operation/response",
+      "id": 21,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002654583
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 21189,
+     "reply": {
+      "type": "operation/response",
+      "id": 22,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002268541
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 22192,
+     "reply": {
+      "type": "operation/response",
+      "id": 23,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002307792
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 23194,
+     "reply": {
+      "type": "operation/response",
+      "id": 24,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002073291
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 24200,
+     "reply": {
+      "type": "operation/response",
+      "id": 25,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002330000
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 25205,
+     "reply": {
+      "type": "operation/response",
+      "id": 26,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001863542
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 26207,
+     "reply": {
+      "type": "operation/response",
+      "id": 27,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001716459
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 27209,
+     "reply": {
+      "type": "operation/response",
+      "id": 28,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001881583
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 28213,
+     "reply": {
+      "type": "operation/response",
+      "id": 29,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002387458
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 29215,
+     "reply": {
+      "type": "operation/response",
+      "id": 30,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001770458
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 30218,
+     "reply": {
+      "type": "operation/response",
+      "id": 31,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002126166
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 31220,
+     "reply": {
+      "type": "operation/response",
+      "id": 32,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001877708
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 32223,
+     "reply": {
+      "type": "operation/response",
+      "id": 33,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002437375
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 33225,
+     "reply": {
+      "type": "operation/response",
+      "id": 34,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001352000
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 34228,
+     "reply": {
+      "type": "operation/response",
+      "id": 35,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001508417
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 35230,
+     "reply": {
+      "type": "operation/response",
+      "id": 36,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001609000
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 36233,
+     "reply": {
+      "type": "operation/response",
+      "id": 37,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002089459
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 37235,
+     "reply": {
+      "type": "operation/response",
+      "id": 38,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002240417
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 38238,
+     "reply": {
+      "type": "operation/response",
+      "id": 39,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002137417
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 39239,
+     "reply": {
+      "type": "operation/response",
+      "id": 40,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1000868958
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 40242,
+     "reply": {
+      "type": "operation/response",
+      "id": 41,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002061166
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 41244,
+     "reply": {
+      "type": "operation/response",
+      "id": 42,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001552958
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 42247,
+     "reply": {
+      "type": "operation/response",
+      "id": 43,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002740542
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 43256,
+     "reply": {
+      "type": "operation/response",
+      "id": 44,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002238666
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 44257,
+     "reply": {
+      "type": "operation/response",
+      "id": 45,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1000476916
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 45260,
+     "reply": {
+      "type": "operation/response",
+      "id": 46,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002306125
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 46262,
+     "reply": {
+      "type": "operation/response",
+      "id": 47,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002133834
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 47264,
+     "reply": {
+      "type": "operation/response",
+      "id": 48,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001064291
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 48267,
+     "reply": {
+      "type": "operation/response",
+      "id": 49,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002216209
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 49270,
+     "reply": {
+      "type": "operation/response",
+      "id": 50,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002564125
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 50271,
+     "reply": {
+      "type": "operation/response",
+      "id": 51,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1000684583
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 51273,
+     "reply": {
+      "type": "operation/response",
+      "id": 52,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001371416
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 52275,
+     "reply": {
+      "type": "operation/response",
+      "id": 53,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002081250
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 53277,
+     "reply": {
+      "type": "operation/response",
+      "id": 54,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001176917
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 54280,
+     "reply": {
+      "type": "operation/response",
+      "id": 55,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002322875
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 55282,
+     "reply": {
+      "type": "operation/response",
+      "id": 56,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002054166
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 56284,
+     "reply": {
+      "type": "operation/response",
+      "id": 57,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1000943458
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 57285,
+     "reply": {
+      "type": "operation/response",
+      "id": 58,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001264875
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 58287,
+     "reply": {
+      "type": "operation/response",
+      "id": 59,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001599833
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 59290,
+     "reply": {
+      "type": "operation/response",
+      "id": 60,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002214708
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 60292,
+     "reply": {
+      "type": "operation/response",
+      "id": 61,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001809750
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 61294,
+     "reply": {
+      "type": "operation/response",
+      "id": 62,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1000865791
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 62297,
+     "reply": {
+      "type": "operation/response",
+      "id": 63,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002606000
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 63300,
+     "reply": {
+      "type": "operation/response",
+      "id": 64,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1000535917
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 64303,
+     "reply": {
+      "type": "operation/response",
+      "id": 65,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001126708
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 65305,
+     "reply": {
+      "type": "operation/response",
+      "id": 66,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001311792
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 66306,
+     "reply": {
+      "type": "operation/response",
+      "id": 67,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1000681500
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 67308,
+     "reply": {
+      "type": "operation/response",
+      "id": 68,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001653500
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 68309,
+     "reply": {
+      "type": "operation/response",
+      "id": 69,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001059125
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 69310,
+     "reply": {
+      "type": "operation/response",
+      "id": 70,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1000042875
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 70313,
+     "reply": {
+      "type": "operation/response",
+      "id": 71,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002037000
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 71316,
+     "reply": {
+      "type": "operation/response",
+      "id": 72,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002012459
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 72318,
+     "reply": {
+      "type": "operation/response",
+      "id": 73,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001042958
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 73320,
+     "reply": {
+      "type": "operation/response",
+      "id": 74,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002074333
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 74321,
+     "reply": {
+      "type": "operation/response",
+      "id": 75,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001159292
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 75324,
+     "reply": {
+      "type": "operation/response",
+      "id": 76,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001884208
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 76325,
+     "reply": {
+      "type": "operation/response",
+      "id": 77,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001085875
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 77327,
+     "reply": {
+      "type": "operation/response",
+      "id": 78,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001162542
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 78329,
+     "reply": {
+      "type": "operation/response",
+      "id": 79,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001613666
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 79330,
+     "reply": {
+      "type": "operation/response",
+      "id": 80,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1000876208
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 80332,
+     "reply": {
+      "type": "operation/response",
+      "id": 81,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002056750
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 81334,
+     "reply": {
+      "type": "operation/response",
+      "id": 82,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001914875
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 82337,
+     "reply": {
+      "type": "operation/response",
+      "id": 83,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002388292
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 83340,
+     "reply": {
+      "type": "operation/response",
+      "id": 84,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002084042
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 84342,
+     "reply": {
+      "type": "operation/response",
+      "id": 85,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002074875
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 85344,
+     "reply": {
+      "type": "operation/response",
+      "id": 86,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001678125
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 86349,
+     "reply": {
+      "type": "operation/response",
+      "id": 87,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002317875
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 87351,
+     "reply": {
+      "type": "operation/response",
+      "id": 88,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001644833
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 88355,
+     "reply": {
+      "type": "operation/response",
+      "id": 89,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002466500
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 89358,
+     "reply": {
+      "type": "operation/response",
+      "id": 90,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002119125
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 90360,
+     "reply": {
+      "type": "operation/response",
+      "id": 91,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001503250
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 91362,
+     "reply": {
+      "type": "operation/response",
+      "id": 92,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002081750
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 92365,
+     "reply": {
+      "type": "operation/response",
+      "id": 93,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002117042
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 93367,
+     "reply": {
+      "type": "operation/response",
+      "id": 94,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002090875
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 94370,
+     "reply": {
+      "type": "operation/response",
+      "id": 95,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002102166
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 95372,
+     "reply": {
+      "type": "operation/response",
+      "id": 96,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002061750
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 96374,
+     "reply": {
+      "type": "operation/response",
+      "id": 97,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001616125
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 97376,
+     "reply": {
+      "type": "operation/response",
+      "id": 98,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001150000
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 98378,
+     "reply": {
+      "type": "operation/response",
+      "id": 99,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001315334
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 99381,
+     "reply": {
+      "type": "operation/response",
+      "id": 100,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001831834
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 100384,
+     "reply": {
+      "type": "operation/response",
+      "id": 101,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002124375
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 101387,
+     "reply": {
+      "type": "operation/response",
+      "id": 102,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002083708
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 102390,
+     "reply": {
+      "type": "operation/response",
+      "id": 103,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002254875
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 103394,
+     "reply": {
+      "type": "operation/response",
+      "id": 104,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001893500
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 104397,
+     "reply": {
+      "type": "operation/response",
+      "id": 105,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002142917
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 105404,
+     "reply": {
+      "type": "operation/response",
+      "id": 106,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002593917
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 106405,
+     "reply": {
+      "type": "operation/response",
+      "id": 107,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001424458
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 107408,
+     "reply": {
+      "type": "operation/response",
+      "id": 108,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002743042
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 108411,
+     "reply": {
+      "type": "operation/response",
+      "id": 109,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002058750
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 109413,
+     "reply": {
+      "type": "operation/response",
+      "id": 110,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002063875
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 110415,
+     "reply": {
+      "type": "operation/response",
+      "id": 111,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001428792
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 111416,
+     "reply": {
+      "type": "operation/response",
+      "id": 112,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001312667
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 112420,
+     "reply": {
+      "type": "operation/response",
+      "id": 113,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002890167
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 113422,
+     "reply": {
+      "type": "operation/response",
+      "id": 114,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002279041
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 114423,
+     "reply": {
+      "type": "operation/response",
+      "id": 115,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1000910209
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 115426,
+     "reply": {
+      "type": "operation/response",
+      "id": 116,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002129333
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 116429,
+     "reply": {
+      "type": "operation/response",
+      "id": 117,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002552708
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 117433,
+     "reply": {
+      "type": "operation/response",
+      "id": 118,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002713709
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 118434,
+     "reply": {
+      "type": "operation/response",
+      "id": 119,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001171334
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 119437,
+     "reply": {
+      "type": "operation/response",
+      "id": 120,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002101333
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 120027,
+     "reply": null
+    }
+   ]
+  }
+ ],
+ "after": {
+  "host_alive_before": false,
+  "host_alive_after": false,
+  "host_returncode": -9
+ }
+}

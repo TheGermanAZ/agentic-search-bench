@@ -1,0 +1,72 @@
+{
+ "tools": [
+  {
+   "name": "execute_tool_script",
+   "description": "Execute a Starlark script that orchestrates multiple tool calls and returns an aggregated result. Use 'return' to produce output.\n\nAvailable tools (callable as functions with keyword or positional arguments):\n  - probe_lookup: Look up a record by id. Returns {id, value}.\n\nUse call_tool(\"name\", ...) to call any tool by its original name.\n\nBuilt-in: parallel([fn1, fn2, ...]) executes zero-arg callables concurrently and returns results in order. Use with lambda to fan out tool calls. If a callable errors, the whole script fails, but sibling callables still run to completion first (no early cancellation).\n\nNamed data arguments passed in the 'data' parameter are available as top-level variables.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "data": {
+      "description": "Optional named values injected as top-level variables in the script.",
+      "type": "object"
+     },
+     "script": {
+      "description": "A Starlark script. Call any listed tool as a function, use loops/conditionals, fan out with parallel(), and use 'return' to produce output.",
+      "examples": [
+       "# 'deps' is supplied via the data argument below. Bind the loop variable with a\n# default arg (d=d) so each lambda captures its own value rather than the last one.\nresults = parallel([\n    lambda d=d: osv_query_vulnerability(package=d[\"name\"], version=d[\"version\"])\n    for d in deps\n])\nvulnerable = [r for r in results if r.get(\"vulns\")]\nreturn {\"checked\": len(results), \"vulnerable\": vulnerable}"
+      ],
+      "type": "string"
+     }
+    },
+    "required": [
+     "script"
+    ],
+    "examples": [
+     {
+      "data": {
+       "deps": [
+        {
+         "name": "lodash",
+         "version": "4.17.20"
+        },
+        {
+         "name": "express",
+         "version": "4.17.1"
+        }
+       ]
+      },
+      "script": "# 'deps' is supplied via the data argument below. Bind the loop variable with a\n# default arg (d=d) so each lambda captures its own value rather than the last one.\nresults = parallel([\n    lambda d=d: osv_query_vulnerability(package=d[\"name\"], version=d[\"version\"])\n    for d in deps\n])\nvulnerable = [r for r in results if r.get(\"vulns\")]\nreturn {\"checked\": len(results), \"vulnerable\": vulnerable}"
+     }
+    ]
+   },
+   "annotations": {
+    "readOnlyHint": false,
+    "idempotentHint": false
+   }
+  },
+  {
+   "name": "probe_lookup",
+   "description": "Look up a record by id. Returns {id, value}.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "description": "record id",
+      "type": "number"
+     }
+    },
+    "required": [
+     "id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+   },
+   "annotations": {
+    "readOnlyHint": false,
+    "idempotentHint": false
+   }
+  }
+ ],
+ "ttlMs": 0,
+ "cacheScope": "private"
+}

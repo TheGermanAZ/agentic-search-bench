@@ -1,0 +1,53 @@
+{
+  "config": {
+    "timeoutMs": 10000,
+    "memoryLimitMB": 64,
+    "call": "client.callToolChain(code, 10000, 64)"
+  },
+  "probe": "P12 escape",
+  "hostCanaryValue": "host-canary-123",
+  "attempts": {
+    "A: return this.constructor.constructor(\"return process\")()": {
+      "code": "return this.constructor.constructor(\"return process\")()",
+      "wallMs": 3,
+      "hostCalls": 0,
+      "result": null,
+      "logs": [
+        "[ERROR] Code execution failed: ReferenceError: process is not defined\n    at eval (eval at <anonymous> (<isolated-vm>:5:39), <anonymous>:3:1)\n    at <isolated-vm>:5:68\n    at <isolated-vm>:6:15\n    at <isolated-vm>:11:11"
+      ],
+      "threw": null
+    },
+    "B: return (function(){return this})().process": {
+      "code": "return (function(){ return this; })().process",
+      "wallMs": 2.3,
+      "hostCalls": 0,
+      "result": null,
+      "logs": [],
+      "threw": null
+    },
+    "C: return Function(\"return typeof process\")()": {
+      "code": "return Function(\"return typeof process\")()",
+      "wallMs": 2.5,
+      "hostCalls": 0,
+      "result": "undefined",
+      "logs": [],
+      "threw": null
+    },
+    "D: canary return Function(\"return globalThis.__HOST_CANARY\")()": {
+      "code": "return Function(\"return globalThis.__HOST_CANARY\")()",
+      "wallMs": 3.4,
+      "hostCalls": 0,
+      "result": null,
+      "logs": [],
+      "threw": null
+    },
+    "F: return typeof require/module/ivm/Deno/Bun": {
+      "code": "return [typeof require, typeof module, typeof ivm, typeof Deno, typeof Bun].join(\",\")",
+      "wallMs": 2.6,
+      "hostCalls": 0,
+      "result": "undefined,undefined,undefined,undefined,undefined",
+      "logs": [],
+      "threw": null
+    }
+  }
+}

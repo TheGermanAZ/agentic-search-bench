@@ -1,0 +1,48 @@
+probe: P4 (hardened)
+codex: ~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex (codex-cli 0.169.0)
+CODEX_HOME: ~/p/agentic-search-bench/research/impls/codex-sandbox/codex-home-hardened (empty, config only from the flags below)
+flags: codex sandbox "-c" "shell_environment_policy.inherit=\"core\"" "-c" "shell_environment_policy.ignore_default_excludes=false" "-c" "permissions.hardened.filesystem={\":minimal\"=\"read\",\":workspace_roots\"=\"read\",\"/opt/homebrew/Cellar/python@3.15/3.15.0_1\"=\"read\",\"/etc/**\"=\"deny\",\"/private/etc/**\"=\"deny\"}" "-c" "permissions.hardened.network.enabled=false" "-P" "hardened" "-C" "~/p/agentic-search-bench/research/probes/codex-sandbox/work" -- <argv>
+
+--- python open /etc/hosts ---
+argv: ["/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/bin/python3.15", "-c", "print(open(\"/etc/hosts\").read()[:200])"]
+exit: 1  wall_ms: 104.4  peak_tree_rss_mb: 49.4  killed: None
+stdout:
+
+stderr:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    print(open("/etc/hosts").read()[:200])
+          ~~~~^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted: '/etc/hosts'
+
+
+--- shell head -c 200 /etc/hosts ---
+argv: ["/usr/bin/head", "-c", "200", "/etc/hosts"]
+exit: 1  wall_ms: 52.0  peak_tree_rss_mb: 2.9  killed: None
+stdout:
+
+stderr:
+head: /etc/hosts: Operation not permitted
+
+
+--- python open a repo file outside the workspace root ---
+argv: ["/opt/homebrew/Cellar/python@3.15/3.15.0_1/Frameworks/Python.framework/Versions/3.15/bin/python3.15", "-c", "print(open(\"~/p/agentic-search-bench/research/probes/SPEC.md\").read()[:80])"]
+exit: 1  wall_ms: 102.8  peak_tree_rss_mb: 48.9  killed: None
+stdout:
+
+stderr:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    print(open("~/p/agentic-search-bench/research/probes/SPEC.md").read()[:80])
+          ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted: '~/p/agentic-search-bench/research/probes/SPEC.md'
+
+
+--- shell head a repo file outside the workspace root ---
+argv: ["/usr/bin/head", "-c", "80", "~/p/agentic-search-bench/research/probes/SPEC.md"]
+exit: 1  wall_ms: 51.1  peak_tree_rss_mb: 3.9  killed: None
+stdout:
+
+stderr:
+head: ~/p/agentic-search-bench/research/probes/SPEC.md: Operation not permitted
+

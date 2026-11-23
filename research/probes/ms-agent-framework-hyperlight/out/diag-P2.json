@@ -1,0 +1,9 @@
+{
+  "probe": "P2",
+  "outcome": "error",
+  "detail": "return value back: False (result='None'); print chars back: 0; marker: []; error=RuntimeError: Execution failed: guest execution failed: Guest aborted: 8 panicked at /Users/gha-macos-4/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hyperlight-guest-bin-0.18.0/src/guest_funct",
+  "display": "print dropped, no return",
+  "a_count": 0,
+  "returned": false,
+  "config": "default"
+}

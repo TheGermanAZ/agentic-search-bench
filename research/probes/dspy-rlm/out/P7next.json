@@ -1,0 +1,7 @@
+{
+  "probe": "P7next",
+  "outcome": "works",
+  "display": "survives (next iteration ran)",
+  "detail": "In one forward: the memory loop caught MemoryError, then the next iteration printed 'next iteration 2'. Peak tree RSS 3.0 GB.",
+  "evidence": "research/probes/dspy-rlm/out/P7next.txt"
+}

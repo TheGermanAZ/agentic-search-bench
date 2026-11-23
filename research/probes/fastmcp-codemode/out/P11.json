@@ -1,0 +1,7 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "display": "median 7.7 ms",
+  "detail": "20 runs in one session: median 7.7 ms, p90 8.0 ms; one-time setup 26.7 ms; fresh session per run (open+run+close, n=5): median 12.8 ms",
+  "evidence": "research/probes/fastmcp-codemode/out/P11.txt"
+}

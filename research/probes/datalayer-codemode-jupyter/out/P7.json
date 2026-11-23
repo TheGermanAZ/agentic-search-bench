@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "no-limit-within-120s",
+  "display": "no limit (killed at 4.0 GB)",
+  "detail": "harness RSS watchdog at 4.01 GB after 9.3 s; peak tree RSS 4.013 GB; no error from the sandbox",
+  "evidence": "research/probes/datalayer-codemode-jupyter/out/P7.txt"
+}

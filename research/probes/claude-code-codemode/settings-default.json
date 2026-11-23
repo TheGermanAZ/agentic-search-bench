@@ -1,0 +1,15 @@
+{
+ "hooks": {
+  "PreToolUse": [
+   {
+    "matcher": "REPL",
+    "hooks": [
+     {
+      "type": "command",
+      "command": "python3 -I ~/p/agentic-search-bench/research/probes/claude-code-codemode/inject-hook.py"
+     }
+    ]
+   }
+  ]
+ }
+}

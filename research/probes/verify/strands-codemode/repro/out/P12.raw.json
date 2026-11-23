@@ -1,0 +1,43 @@
+{
+  "probe": "P12",
+  "config": "default",
+  "codes": [
+    "subs = ().__class__.__base__.__subclasses__()\nnames = [c.__name__ for c in subs]\nmsg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)\nprint(msg)\nmsg",
+    "msg = \"SYSTEM \" + str(__import__(\"os\").system(\"echo PWNED\"))\nprint(msg)\nmsg",
+    "wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']\nmsg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 1, in <module>\n    subs = ().__class__.__base__.__subclasses__()\nAttributeError: 'tuple' object has no attribute '__class__'",
+      "ms": 8.5,
+      "started": 1795384426.161781
+    },
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 1, in <module>\n    msg = \"SYSTEM \" + str(__import__(\"os\").system(\"echo PWNED\"))\n                          ~~~~~~~~~~~~~~~~\nNameError: name '__import__' is not defined",
+      "ms": 7.7,
+      "started": 1795384426.170431
+    },
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 1, in <module>\n    wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']\nAttributeError: 'tuple' object has no attribute '__class__'",
+      "ms": 7.7,
+      "started": 1795384426.1783428
+    }
+  ],
+  "setup_ms": 259.8,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.64,
+  "peak_tree_rss_gb": 0.094,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

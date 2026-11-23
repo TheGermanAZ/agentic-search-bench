@@ -1,0 +1,53 @@
+probe: P12js
+worker exit: 0 signal: null killed: null
+wall ms: 329
+peak host RSS KB: 171248
+
+script: js-exec -c 'console.log(this.constructor.constructor("return process")().pid)'
+exit: 1
+stdout (0 chars):
+
+stderr:
+at <eval> (-c:1:31): Function constructor is not allowed
+
+ms: 146, host lookup calls so far: 0
+
+script: js-exec -c 'console.log((function(){ return this })().process)'
+exit: 0
+stdout (411 chars):
+{"argv":["-c"],"env":{"HOME":"/home/user","PATH":"/usr/bin:/bin","IFS":" \t\n","OSTYPE":"linux-gnu","MACHTYPE":"x86_64-pc-linux-gnu","HOSTTYPE":"x86_64","HOSTNAME":"localhost","PWD":"/home/user","OLDPWD":"/home/user","OPTIND":"1","SHELLOPTS":"braceexpand:hashall:interactive-comments","BASHOPTS":"globskipdots"},"platform":"linux","arch":"x64","versions":{"node":"22.0.0","quickjs":"2025"},"version":"v22.0.0"}
+
+stderr:
+
+ms: 14, host lookup calls so far: 0
+
+script: js-exec -c 'console.log(typeof require, typeof process, process.env.PROBE_SECRET)'
+exit: 0
+stdout (26 chars):
+function object undefined
+
+stderr:
+
+ms: 17, host lookup calls so far: 0
+
+script: js-exec -c 'console.log(require("fs").readFileSync("/etc/hosts", "utf8").slice(0, 40))'
+exit: 1
+stdout (0 chars):
+
+stderr:
+at <eval> (-c:1:71): ENOENT: no such file or directory, stat '<path>'
+
+ms: 13, host lookup calls so far: 0
+
+script: js-exec -c 'console.log(require("child_process").execSync("echo inner-child").toString())'
+exit: 0
+stdout (13 chars):
+inner-child
+
+
+stderr:
+
+ms: 16, host lookup calls so far: 0
+
+outcome: blocked
+detail: no host value seen: exit 1 "at <eval> (-c:1:31): Function constructor is not allowed" | exit 0 "{"argv":["-c"],"env":{"HOME":"/home/user","PATH":"/usr/bin:/bin","IFS":" \t\n","OSTYPE":"l" | exit 0 "function object undefined" | exit 1 "at <eval> (-c:1:71): ENOENT: no such file or directory, stat '<path>'" | exit 0 "inner-child"

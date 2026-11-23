@@ -1,0 +1,9 @@
+{
+  "tool": "execute",
+  "code": "async () => { const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => cloudflare.request({ method: \"GET\", path: \"/lookup/\" + i }))); return Date.now() - t }",
+  "ms": 210,
+  "hostCalls": 5,
+  "isError": false,
+  "text": "206",
+  "rpcError": null
+}

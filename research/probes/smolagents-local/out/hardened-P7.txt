@@ -1,0 +1,8 @@
+config: LocalPythonExecutor(additional_authorized_imports=[], timeout_seconds=5)
+probe: P7
+code (python, run through LocalPythonExecutor):
+a = []
+while True:
+    a.append("x" * 10**6)
+host_calls_so_far: 0
+watchdog: peak RSS 4317331456 bytes after 0.3 s, stopped

@@ -1,0 +1,340 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R4",
+  "exit": {
+    "code": null,
+    "signal": "SIGABRT"
+  },
+  "wallMs": 30258,
+  "peakTreeRssMb": 57,
+  "watchKill": null,
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R4",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "startMs": 91,
+      "ms": 30071,
+      "ok": true,
+      "result": {
+        "value": {
+          "result": null,
+          "logs": [
+            "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+          ]
+        },
+        "stringChars": 69
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 74,
+    "hostEvents": [],
+    "totalMs": 30162
+  },
+  "childStdoutOtherChars": 435,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      133,
+      50
+    ],
+    [
+      815,
+      57
+    ],
+    [
+      1183,
+      57
+    ],
+    [
+      1725,
+      57
+    ],
+    [
+      2189,
+      57
+    ],
+    [
+      2598,
+      57
+    ],
+    [
+      2997,
+      57
+    ],
+    [
+      3523,
+      57
+    ],
+    [
+      3876,
+      57
+    ],
+    [
+      4295,
+      57
+    ],
+    [
+      4692,
+      57
+    ],
+    [
+      5129,
+      57
+    ],
+    [
+      5507,
+      57
+    ],
+    [
+      5923,
+      57
+    ],
+    [
+      6293,
+      57
+    ],
+    [
+      6711,
+      57
+    ],
+    [
+      7114,
+      57
+    ],
+    [
+      7478,
+      57
+    ],
+    [
+      7818,
+      57
+    ],
+    [
+      8197,
+      57
+    ],
+    [
+      8598,
+      57
+    ],
+    [
+      8945,
+      57
+    ],
+    [
+      9307,
+      57
+    ],
+    [
+      9683,
+      57
+    ],
+    [
+      10035,
+      57
+    ],
+    [
+      10381,
+      57
+    ],
+    [
+      10776,
+      57
+    ],
+    [
+      11144,
+      57
+    ],
+    [
+      11503,
+      57
+    ],
+    [
+      11876,
+      57
+    ],
+    [
+      12241,
+      57
+    ],
+    [
+      12591,
+      57
+    ],
+    [
+      12951,
+      57
+    ],
+    [
+      13354,
+      57
+    ],
+    [
+      13737,
+      57
+    ],
+    [
+      14172,
+      57
+    ],
+    [
+      14681,
+      57
+    ],
+    [
+      15022,
+      57
+    ],
+    [
+      15421,
+      57
+    ],
+    [
+      15843,
+      57
+    ],
+    [
+      16296,
+      57
+    ],
+    [
+      16766,
+      57
+    ],
+    [
+      17356,
+      57
+    ],
+    [
+      17711,
+      57
+    ],
+    [
+      18285,
+      57
+    ],
+    [
+      18635,
+      57
+    ],
+    [
+      19015,
+      57
+    ],
+    [
+      19401,
+      57
+    ],
+    [
+      20523,
+      47
+    ],
+    [
+      20945,
+      47
+    ],
+    [
+      21319,
+      47
+    ],
+    [
+      21667,
+      47
+    ],
+    [
+      22041,
+      47
+    ],
+    [
+      22408,
+      47
+    ],
+    [
+      22778,
+      47
+    ],
+    [
+      23161,
+      47
+    ],
+    [
+      23515,
+      47
+    ],
+    [
+      23869,
+      47
+    ],
+    [
+      24293,
+      47
+    ],
+    [
+      24683,
+      47
+    ],
+    [
+      25068,
+      47
+    ],
+    [
+      25440,
+      47
+    ],
+    [
+      25807,
+      47
+    ],
+    [
+      26198,
+      47
+    ],
+    [
+      26624,
+      47
+    ],
+    [
+      27153,
+      47
+    ],
+    [
+      27500,
+      47
+    ],
+    [
+      27860,
+      47
+    ],
+    [
+      28260,
+      47
+    ],
+    [
+      28602,
+      47
+    ],
+    [
+      28972,
+      47
+    ],
+    [
+      29324,
+      47
+    ],
+    [
+      29675,
+      47
+    ],
+    [
+      30153,
+      47
+    ]
+  ]
+}

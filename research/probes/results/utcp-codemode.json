@@ -1,0 +1,190 @@
+{
+  "impl": "utcp-codemode",
+  "name": "UTCP Code Mode (@utcp/code-mode)",
+  "source": "https://github.com/universal-tool-calling-protocol/code-mode (npm: @utcp/code-mode 1.2.13, gitHead e5fdc319bfae1ceec57e7bce37048337635ffb51)",
+  "pinned": "e5fdc319bfae1ceec57e7bce37048337635ffb51 (@utcp/code-mode 1.2.13); @utcp/sdk 1.1.0; @utcp/direct-call 1.1.0; isolated-vm 6.0.2",
+  "language": "TS",
+  "engine": "isolated-vm 6.0.2: a separate V8 isolate per callToolChain call, with a 128 MB memoryLimit. Guest code is plain JavaScript with no Node APIs. The README says \"Node.js VM sandboxing\", but the code does not use node:vm.",
+  "how_run": "CodeModeUtcpClient.create(), then registerManual({name: \"host\", call_template_type: \"direct-call\", callable_name: \"hostManual\"}) for the lookup tool, then client.callToolChain(code, timeout, memoryLimit) once per execution.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed 42, 1 host call. Host tool is reached as host.lookup because tools are namespaced by manual name.",
+      "evidence": "research/probes/utcp-codemode/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "Literal spec form (bare last expression) returned result null, not \"RETURNED\". The return form returned \"RETURNED\". Either way all 200000 printed chars came back in logs, with no truncation marker.",
+      "evidence": "research/probes/utcp-codemode/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "ReferenceError: fetch is not defined. No request left the host.",
+      "evidence": "research/probes/utcp-codemode/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "require(\"fs\") -> ReferenceError: require is not defined. import(\"fs\") -> Error: Not supported (isolated-vm rejects dynamic import).",
+      "evidence": "research/probes/utcp-codemode/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "ReferenceError: process is not defined. Host env PROBE_SECRET=s3cr3t was set, and nothing from the host env was visible.",
+      "evidence": "research/probes/utcp-codemode/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "Stopped by the host timer at 30.0 s (wall 30001 ms): \"Script execution timeout after 30000ms\".",
+      "evidence": "research/probes/utcp-codemode/out/P6.txt",
+      "display": "limited (30 s)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "Isolate disposed at the 128 MB guest limit after 0.53 s: \"Isolate was disposed during execution due to memory limit\". Host RSS baseline 64.6 MB, peak 212.6 MB (one run).",
+      "evidence": "research/probes/utcp-codemode/out/P7.txt",
+      "display": "limited (128 MB)"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "Second execution printed \"gone\". Each callToolChain creates a new isolate.",
+      "evidence": "research/probes/utcp-codemode/out/P8.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "Five lookups of 200 ms each took 1013 ms, so they ran serially (about 1000 means serial). 5 host calls. Each bridged call blocks the isolate thread.",
+      "evidence": "research/probes/utcp-codemode/out/P9.txt",
+      "display": "serial"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "No throw reaches the caller. callToolChain resolves with result null and logs[0] = \"[ERROR] Code execution failed: Error: probe-boom\" plus a stack with <isolated-vm>:5:21. Message and stack survive. Line numbers are user line + 4.",
+      "evidence": "research/probes/utcp-codemode/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "Median 0.73 ms, p90 0.81 ms over 20 fresh executions of 1+1 (this run). Four runs on a quieter machine gave medians 0.73 to 0.97 ms. One run during heavy machine load gave 2.63 ms, so it is excluded. One-time setup (create + registerManual) 2.76 ms.",
+      "evidence": "research/probes/utcp-codemode/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "not-defined",
+      "detail": "No escape. this.constructor.constructor(\"return process\")() -> ReferenceError: process is not defined. Function(...) runs in the isolate realm, where typeof process is \"undefined\". Host canary globalThis.__HOST_CANARY is not visible. The only host-named global is the tool namespace \"host\".",
+      "evidence": "research/probes/utcp-codemode/out/P12.txt"
+    }
+  },
+  "defaults": {
+    "time": "30000 ms per callToolChain (default timeout arg). Enforced by the isolated-vm script timeout and a host-side timer. src line 182, 292-296, 312.",
+    "memory": "128 MB isolate heap (default memoryLimit arg). src line 183, 189.",
+    "output": "No cap found in the source. The logs array and the JSON return value are unbounded (src 186, 280, 319, 400). 200000 printed chars came back whole in P2.",
+    "tool_calls": "No per-execution call cap found in the source (grep for limit/max finds only the memory limit). Only the 30 s timeout bounds the count. Not measured beyond 5 calls in P9."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Each registered tool becomes a global function under its manual namespace: global.<manual>.<tool> = function(args) { applySyncPromise(...) }. Names with no dot would be flat globals, but registerManual always prefixes the manual name, so only the namespaced form occurs. TypeScript interfaces are generated from JSON Schema by toolToTypeScriptInterface and getAllToolsTypeScriptInterfaces.",
+      "evidence": "https://github.com/universal-tool-calling-protocol/code-mode/blob/e5fdc319bfae1ceec57e7bce37048337635ffb51/typescript-library/src/code_mode_utcp_client.ts#L106-L168 and #L464-L496 (generator loop); manual prefix at @utcp/sdk dist/index.js:1396-1397 (npm, not in repo)"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Everything is pushed in up front on every execution. callToolChain calls getTools() and then setupUtilities injects __interfaces, which is the TypeScript text for all tools. searchTools is a host-side UtcpClient method (sdk dist/index.js:1536-1538), not available inside the sandbox. The prompt template tells the agent to search first, then read __interfaces.",
+      "evidence": "https://github.com/universal-tool-calling-protocol/code-mode/blob/e5fdc319bfae1ceec57e7bce37048337635ffb51/typescript-library/src/code_mode_utcp_client.ts#L185 and #L506-L521; agent prompt #L15-L58"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Tool calls go from the isolate to the host through an ivm.Reference that wraps an async host function (toolCallerRef). The in-isolate stub blocks its thread in applySyncPromise until the host promise settles. This makes calls look synchronous, and it is why Promise.all over tool calls ran serially in P9.",
+      "evidence": "https://github.com/universal-tool-calling-protocol/code-mode/blob/e5fdc319bfae1ceec57e7bce37048337635ffb51/typescript-library/src/code_mode_utcp_client.ts#L440-L456 and #L475-L482 (applySyncPromise at #L478)"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "The engine is an isolated-vm Isolate (a separate V8 isolate), not node:vm. The authors claim \"Node.js VM sandboxing\" in the README, and the code does not match that wording. It does match the claim that the guest has no network and no filesystem, which P3 and P4 confirm. P12 also confirms the guest cannot reach process, so the isolate, not the wrapper, is the boundary.",
+      "evidence": "https://github.com/universal-tool-calling-protocol/code-mode/blob/e5fdc319bfae1ceec57e7bce37048337635ffb51/typescript-library/src/code_mode_utcp_client.ts#L2 and #L189; README claim https://github.com/universal-tool-calling-protocol/code-mode/blob/e5fdc319bfae1ceec57e7bce37048337635ffb51/README.md#L435"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "console.* is bridged to a host array (logs) with no cap, and the return value goes back as JSON. Errors are caught and written into logs as \"[ERROR] ...\" with result null, so callToolChain never throws for guest errors.",
+      "evidence": "https://github.com/universal-tool-calling-protocol/code-mode/blob/e5fdc319bfae1ceec57e7bce37048337635ffb51/typescript-library/src/code_mode_utcp_client.ts#L186, #L280, #L321-L327, #L390-L421"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Time: timeout default 30000 (#L182), enforced by script.run({timeout}) (#L312) and a host timer (#L291-L296). Memory: memoryLimit default 128 (#L183), applied at isolate creation (#L189). Count: none found. Output: none found.",
+      "evidence": "https://github.com/universal-tool-calling-protocol/code-mode/blob/e5fdc319bfae1ceec57e7bce37048337635ffb51/typescript-library/src/code_mode_utcp_client.ts#L180-L336"
+    },
+    {
+      "topic": "State",
+      "finding": "A new isolate and context are created for every callToolChain call, so no state persists between executions. P8 confirms this.",
+      "evidence": "https://github.com/universal-tool-calling-protocol/code-mode/blob/e5fdc319bfae1ceec57e7bce37048337635ffb51/typescript-library/src/code_mode_utcp_client.ts#L189 and #L239"
+    },
+    {
+      "topic": "Errors",
+      "finding": "The wrapper runs user code inside an async IIFE and reports String(e.stack) through __rejectResult. The stack carries isolate line numbers, offset by 4 wrapper lines from user code (P10 multi-line case).",
+      "evidence": "https://github.com/universal-tool-calling-protocol/code-mode/blob/e5fdc319bfae1ceec57e7bce37048337635ffb51/typescript-library/src/code_mode_utcp_client.ts#L274-L285 and #L321-L327"
+    },
+    {
+      "topic": "Other: teardown and leak handling",
+      "finding": "Every bridged call races a chainDone promise so no call can pin an isolate thread past the chain, and disposal is retried. The authors describe a thread leak they fixed, so the design treats thread health as a real risk.",
+      "evidence": "https://github.com/universal-tool-calling-protocol/code-mode/blob/e5fdc319bfae1ceec57e7bce37048337635ffb51/typescript-library/src/code_mode_utcp_client.ts#L192-L221 and #L357-L384"
+    },
+    {
+      "topic": "Host tool argument convention",
+      "finding": "@utcp/direct-call spreads the args object into positional parameters (Object.values(toolArgs)), so lookup({id:21}) calls the host function as lookup(21). Host code that expects an object gets the raw value.",
+      "evidence": "@utcp/direct-call dist/index.js:4184 (npm, not in repo)"
+    }
+  ],
+  "surprises": [
+    "README.md (lines 101 and 435) says \"Node.js VM sandboxing\" and \"Node.js isolates\". The engine is isolated-vm, a V8 isolate, not node:vm. The naming is loose, but the security property the README claims (no fs, no network, no process) holds in P3, P4, P5, and P12.",
+    "The sandbox does not return the last expression. The literal spec form (bare \"RETURNED\") gives result null, and only \"return\" gives the value. The README examples and the agent prompt both use return, so the docs are consistent but the spec form is not valid here.",
+    "Guest errors do not throw to the caller. callToolChain resolves with result null, and the error is only in logs as \"[ERROR] ...\". A caller that checks only result sees a silent null.",
+    "Tools are always namespaced as manual.tool, so the bare lookup({id}) form in the spec cannot be expressed. The probe uses host.lookup.",
+    "Each direct-call host function receives its arguments spread positionally. lookup({id:21}) calls the host with 21, so a host implemented against an object argument silently gets the wrong value.",
+    "Promise.all over tool calls runs serially (P9: 1013 ms for five 200 ms calls). Nothing in the README claims parallel execution, but \"Batching advantage\" could be read that way.",
+    "The README cites imran31415/codemode_python_benchmark for \"$9,536/year\" and \"validates the performance claims\", and lists \"16 realistic scenarios\" (README line 483). That repo measures a different thing: a Python RestrictedPython code mode against native tool calling, with Claude 3 Haiku, 8 scenarios, and end-to-end wall time including LLM calls. It does not test @utcp/code-mode and does not test any sandbox boundary. The benchmark repo does not mention UTCP. The UTCP table figures \"67% / 75% / 88% faster\" with \"3 / 8 / 16 iterations\" (README lines 25-35) do not appear in the benchmark. Its nearest figures are 80.5% speedup for the 16-iteration Scenario 7 (docs/RESULTS_DATA.md line 23) and 87.5% fewer iterations on average.",
+    "Benchmark source evidence: sandbox/executor.py line 209 runs exec(byte_code, restricted_globals, restricted_locals) in the same CPython process. https://github.com/imran31415/codemode_python_benchmark/blob/363507ee639f63532c70ed81aa5ef44ac28c619f/sandbox/executor.py#L209. The repo has no results/ JSON at this commit, even though its README tree lists results/ with benchmark_results_claude.json (README lines 112-118)."
+  ],
+  "hardened": {
+    "config": "client.callToolChain(code, 10000, 64): timeout 10000 ms and memoryLimit 64 MB, the only two public limit arguments, positional (typescript-library/src/code_mode_utcp_client.ts:181-184; memoryLimit goes to new ivm.Isolate at :189, timeout to script.run at :312 and a host timer at :291-296). Defaults are 30000 ms and 128 MB; 10 s and 64 MB were chosen by this run, as no floor is documented. No network, filesystem, env, output or tool-call option exists. The typescript-library README documents an options object, callToolChain(code, { timeout, memoryLimit }) (typescript-library/README.md:79-82). Passed that way, every execution fails at once with \"Script execution timeout after [object Object]ms\", even P1 (out/hardened-README-options-form.txt), so this run uses the positional form.",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "ReferenceError: fetch is not defined. No request left the host.",
+        "evidence": "research/probes/utcp-codemode/out/hardened-P3.txt",
+        "display": "not-defined (no fetch)"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "detail": "require(\"fs\") -> ReferenceError: require is not defined. import(\"fs\") -> Error: Not supported.",
+        "evidence": "research/probes/utcp-codemode/out/hardened-P4.txt",
+        "display": "not-defined (no require)"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "detail": "ReferenceError: process is not defined, with PROBE_SECRET=s3cr3t set on the host.",
+        "evidence": "research/probes/utcp-codemode/out/hardened-P5.txt",
+        "display": "not-defined (no process)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "Stopped at 10.0 s (wall 10002 ms): \"Script execution timeout after 10000ms\".",
+        "evidence": "research/probes/utcp-codemode/out/hardened-P6.txt",
+        "display": "limited (10 s)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "Isolate disposed at the 64 MB limit after 0.51 s: \"Isolate was disposed during execution due to memory limit\". Host RSS 55.3 MB baseline, 137.6 MB peak. A second chain running in the same host process at the same time finished with the right result (6, three host calls), and a trivial execution afterwards returned 2.",
+        "evidence": "research/probes/utcp-codemode/out/hardened-P7.txt",
+        "display": "limited (64 MB)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "Five 200 ms lookups took 1019 ms in-guest, 5 host calls: serial, as in the default run.",
+        "evidence": "research/probes/utcp-codemode/out/hardened-P9.txt",
+        "display": "serial (1,019 ms)"
+      },
+      "P12": {
+        "outcome": "not-defined",
+        "detail": "No escape. this.constructor.constructor(\"return process\")() -> ReferenceError: process is not defined. (function(){return this})().process -> undefined. typeof process via Function -> \"undefined\". Host canary not visible. require, module, ivm, Deno, Bun all undefined.",
+        "evidence": "research/probes/utcp-codemode/out/hardened-P12.txt",
+        "display": "not-defined (no process)"
+      }
+    }
+  }
+}

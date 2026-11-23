@@ -1,0 +1,30 @@
+
+<--- Last few GCs --->
+
+[7007:0xb43d48000]      166 ms: Mark-Compact 63.0 (96.3) -> 60.0 (95.6) MB, pooled: 0 MB, 16.17 / 0.00 ms  (+ 8.4 ms in 434 steps since start of marking, biggest step 0.4 ms, walltime since start of marking 30 ms) (average mu = 0.847, current mu = 0.739) [7007:0xb43d48000]      271 ms: Mark-Compact 92.9 (96.5) -> 89.8 (219.2) MB, pooled: 0 MB, 97.50 / 0.00 ms  (average mu = 0.414, current mu = 0.074) allocation failure; scavenge might not succeed
+
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x1046cf60c node::(anonymous namespace)::DefaultAbortHandler(char const*, char const*) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 2: 0x1046cf870 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 3: 0x104962d94 v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 4: 0x104bc2248 v8::internal::Heap::stack() [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 5: 0x104bc0130 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 6: 0x104bb4c58 v8::internal::HeapAllocator::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 7: 0x104b96338 v8::internal::Factory::NewFillerObject(int, v8::internal::AllocationAlignment, v8::internal::AllocationType, v8::internal::AllocationOrigin) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 8: 0x105023fb4 v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+ 9: 0x10568a5dc Builtins_WasmCEntry [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+10: 0x10568aa24 Builtins_StringAdd_CheckNone [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+11: 0x10572d7b4 Builtins_StringRepeat [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+12: 0x10572d8b4 Builtins_StringPrototypeRepeat [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+13: 0x13af11c04 
+14: 0x1055ecbec Builtins_InterpreterEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+15: 0x1055ecbec Builtins_InterpreterEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+16: 0x1055ecbec Builtins_InterpreterEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+17: 0x1055ecbec Builtins_InterpreterEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+18: 0x1055ecbec Builtins_InterpreterEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+19: 0x1055ea8cc Builtins_JSEntryTrampoline [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+20: 0x1055ea570 Builtins_JSEntry [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+21: 0x104b0646c v8::internal::(anonymous namespace)::Invoke(v8::internal::Isolate*, v8::internal::(anonymous namespace)::InvokeParams const&) [~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node]
+22: 0x104b05dd0 v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::DirectHandle<v8::internal::Object>, v8::internal::DirectHandle<v8::internal::Object>, v

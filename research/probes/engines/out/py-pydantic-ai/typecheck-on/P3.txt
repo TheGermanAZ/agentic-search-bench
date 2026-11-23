@@ -1,0 +1,19 @@
+import urllib.request
+r = urllib.request.urlopen("https://example.com")
+print(r.status)
+--- output
+ERROR: Type error in code:
+error[unresolved-import]: Cannot resolve imported module `urllib.request`
+ --> main.py:1:8
+  |
+1 | import urllib.request
+  |        ^^^^^^^^^^^^^^
+2 | r = urllib.request.urlopen("https://example.com")
+3 | print(r.status)
+  |
+info: Searched in the following paths during module resolution:
+info:   1. / (first-party code)
+info:   2. vendored://stdlib (stdlib typeshed stubs vendored by ty)
+info: make sure your Python environment is properly configured: https://docs.astral.sh/ty/modules/#python-environment
+---
+wall_ms=20 host_calls=0 peak_tree_rss_mb=202

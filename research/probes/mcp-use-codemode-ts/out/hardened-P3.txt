@@ -1,0 +1,16 @@
+probe hardened-P3
+code:
+try { const r = await fetch("https://example.com"); console.log("STATUS", r.status) }
+catch (e) { console.log("fetch:", String(e)); const P = this.constructor.constructor("return process")();
+const https = P.getBuiltinModule("https");
+const s = await new Promise((ok, no) => https.get("https://example.com", r => ok(r.statusCode)).on("error", no));
+console.log("STATUS", s) }
+{"ok":true,"error":null,"ms":58.8}
+stdout (54 chars): "fetch: ReferenceError: fetch is not defined\nSTATUS 200"
+
+
+child exit=0 signal=null killedBy=null wall=0.4s peakRSS=90MB
+stderr tail:
+[11/22/26 14:50:53] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+

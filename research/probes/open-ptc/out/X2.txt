@@ -1,0 +1,13 @@
+mode: default
+code:
+const res = await fetch("http://localhost:41302", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({jsonrpc:"2.0", id:1, method:"callTool", params:{toolRef:"nope.nope", args:{}}})}); console.log(res.status, await res.text())
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "f72a84ee-f5bd-4c60-a4ae-b6eebb6d6faf",
+  "success": true,
+  "output": "200 {\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"success\":false,\"error\":\"Tool not found: nope.nope\"}}\n\n\n",
+  "ms": 24,
+  "hostCalls": 0
+}

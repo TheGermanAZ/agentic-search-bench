@@ -1,0 +1,18 @@
+{
+  "init_ms": 362,
+  "ready_ms_incl_tools_list": 362,
+  "serverInfo": {
+    "name": "voidmcp",
+    "version": "dev"
+  },
+  "tools": [
+    "add_mcp",
+    "remove_mcp",
+    "list_mcps",
+    "search",
+    "execute_code"
+  ],
+  "execute_code_description_chars": 2427,
+  "search_lookup": "Found 1 tool(s) matching \"lookup\":\n\ndeclare namespace tools.lookup {\n  /** Look up a value by numeric id. */\n  function lookup(args: {\n    id: number;\n  }): Promise<any>;\n}",
+  "search_star": "Found 1 tool(s) matching \"*\":\n\ndeclare namespace tools.lookup {\n  /** Look up a value by numeric id. */\n  function lookup(args: {\n    id: number;\n  }): Promise<any>;\n}"
+}

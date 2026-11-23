@@ -1,0 +1,63 @@
+probe: P1
+outcome: works
+display: works (42, 1 call)
+detail: 42 in printed stdout: True; 42 in returned value: True; output '42 42'; host lookup calls: 1
+
+code:
+----
+from generated.mcp.probe import lookup
+r = await lookup({"id": 21})
+msg = r["value"]
+print(msg)
+msg
+----
+
+setup_ms: 2533.7
+wall_s (whole child process): 3.92
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.446
+host lookup calls: 1
+  call id=21 start=1795378134.581 end=1795378134.782 pid=77089
+
+=== run 0 (484.5 ms) ===
+ok: true
+stdout: 42
+stderr: 
+result: 42
+error: null
+interrupted: false
+
+=== child process log (tail) ===
+[11/22/26 15:08:52] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-vpt56ne              
+                             e/generated (mcp dir:                              
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-vpt56ne              
+                             e/generated/mcp)                                   
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-vpt56ne              
+                             e/generated/mcp/probe                              
+                    INFO     Starting Jupyter server       jupyter_server.py:262
+                             subprocess on 127.0.0.1:41520                      
+                             (workdir=/var/folders/tg/x0gc                      
+                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      
+                             dl-jupyter-server-vpt56nee/wo                      
+                             rkspace)                                           
+[11/22/26 15:08:53] INFO     No existing kernels found,    jupyter_server.py:412
+                             will create a new one                              
+                    INFO     Starting the kernel client…           client.py:412
+                    INFO     KernelHttpManager created a new      manager.py:258
+                             kernel: {'id':                                     
+                             'a9164f6e-a79c-44b4-9351-996dacb0b2f               
+                             b', 'name': 'python3',                             
+                             'last_activity':                                   
+                             '2026-11-22T20:08:53.118104Z',                     
+                             'execution_state': 'starting',                     
+                             'connections': 0}                                  
+                    INFO     Websocket connected                 _logging.py:104
+[11/22/26 15:08:54] INFO     Stopping the kernel client…           client.py:433
+

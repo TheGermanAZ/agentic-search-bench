@@ -1,0 +1,4 @@
+deno run args: ['run', '--allow-read=./node_modules', '--node-modules-dir=auto', 'src/main.ts', 'stdio', '--return-mode=json']
+tools/list: ['run_python_code']
+print(21*2): status=success return=None error='' output=['42']
+Host tool lookup: none can be registered (same as wave 1 P1); this checks the hardened server still runs code.

@@ -1,0 +1,1 @@
+bare python3 print(2): median 17.4 ms p90 18.1 ms

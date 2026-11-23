@@ -1,0 +1,228 @@
+probe: P11
+outcome: works
+display: median 0.7 ms
+detail: 20 runs in one session: median 0.7 ms, p90 0.9 ms; one-time setup 311.1 ms; fresh session per run (open+run+close, n=0): median None ms
+
+code:
+----
+print(2)
+----
+
+setup_ms: 311.1
+wall_s (whole child process): 2.25
+killed: None
+child exit code: 1
+peak tree RSS GB: 0.395
+host lookup calls: 0
+
+=== run 0 (2.0 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 1 (0.7 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 2 (0.6 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 3 (0.7 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 4 (0.7 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 5 (0.8 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 6 (0.9 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 7 (0.8 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 8 (1.2 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 9 (0.9 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 10 (0.9 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 11 (0.7 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 12 (0.7 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 13 (0.7 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 14 (0.6 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 15 (0.7 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 16 (0.9 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 17 (0.6 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 18 (0.7 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== run 19 (0.7 ms) ===
+ok: true
+stdout: 2
+stderr: 
+result: null
+error: null
+interrupted: false
+
+=== child process log (tail) ===
+                        cancel scope in a different                        
+                             task than it was entered in                        
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/anyio/streams/memory.py", line 119, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/anyio/streams/memory.py", line 114, in receive_nowait
+    raise WouldBlock
+anyio._core._exceptions.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/probes/datalayer-codemode-eval/probe_core.py", line 469, in <module>
+    child(sys.argv[2], sys.argv[3])
+  File "~/p/agentic-search-bench/research/probes/datalayer-codemode-eval/probe_core.py", line 158, in child
+    loop.run_until_complete(go())
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/probes/datalayer-codemode-eval/probe_core.py", line 145, in go
+    s2 = await ad.open_session(config)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/probes/datalayer-codemode-eval/adapter.py", line 50, in open_session
+    await registry.discover_all()
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/agent_codemode/discovery/registry.py", line 91, in discover_all
+    tools = await client.list_tools()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/agent_codemode/proxy/mcp_client.py", line 197, in list_tools
+    session = await self._get_stdio_session()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/agent_codemode/proxy/mcp_client.py", line 118, in _get_stdio_session
+    await stdio_session.initialize()
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/mcp/client/session.py", line 654, in initialize
+    result = await self.send_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/mcp/client/session.py", line 586, in send_request
+    raw = await self._dispatcher.send_raw_request(method, data.get("params"), opts)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/mcp/shared/jsonrpc_dispatcher.py", line 416, in send_raw_request
+    outcome = await receive.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/anyio/streams/memory.py", line 131, in receive
+    await receive_event.wait()
+  File "~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2009, in wait
+    await self._event.wait()
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/locks.py", line 212, in wait
+    await fut
+asyncio.exceptions.CancelledError: Cancelled via cancel scope 10c649d10 by <Task pending name='Task-6' coro=<<async_generator_athrow without __name__>()>>
+

@@ -1,0 +1,39 @@
+{
+  "thisConstructor": {
+    "code": "return this.constructor.constructor(\"return process\")()",
+    "ms": 0,
+    "hostCalls": 0,
+    "result": null,
+    "error": "TypeError: Cannot read properties of undefined (reading 'constructor')\n    at eval (eval at __run ([worker eval]:502:16), <anonymous>:4:13)\n    at eval (eval at __run ([worker eval]:502:16), <anonymous>:5:3)\n    at __run ([worker eval]:506:21)\n    at MessagePort.__hostMessageHandler ([worker eval]:532:10)\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:869:20)\n    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)",
+    "logs": []
+  },
+  "sloppyThis": {
+    "code": "return (function(){return this})().process",
+    "ms": 0,
+    "hostCalls": 0,
+    "result": null,
+    "error": "TypeError: Cannot read properties of undefined (reading 'process')\n    at eval (eval at __run ([worker eval]:502:16), <anonymous>:4:35)\n    at eval (eval at __run ([worker eval]:502:16), <anonymous>:5:3)\n    at __run ([worker eval]:506:21)\n    at MessagePort.__hostMessageHandler ([worker eval]:532:10)\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:869:20)\n    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)",
+    "logs": []
+  },
+  "processGlobal": {
+    "code": "return typeof process + \" pid=\" + process.pid + \" hostPid=\" + 77755 + \" versions.node=\" + process.versions.node",
+    "ms": 0,
+    "hostCalls": 0,
+    "result": "object pid=77755 hostPid=77755 versions.node=24.22.1",
+    "logs": []
+  },
+  "childProcessEcho": {
+    "code": "return require(\"node:child_process\").execSync(\"echo PWNED\").toString()",
+    "ms": 7,
+    "hostCalls": 0,
+    "result": "PWNED\n",
+    "logs": []
+  },
+  "functionCtor": {
+    "code": "return Function(\"return typeof process\")()",
+    "ms": 1,
+    "hostCalls": 0,
+    "result": "object",
+    "logs": []
+  }
+}

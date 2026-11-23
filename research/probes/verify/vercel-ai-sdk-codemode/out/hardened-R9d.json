@@ -1,0 +1,290 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs hardened R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 5649,
+  "peakTreeRssMb": 179,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "hardened",
+    "test": "R9d",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 131,
+          "ms": 5211,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 342,
+        "ms": 304,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 221,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 5342,
+        "ms": 209,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 175,
+    "hostEvents": [],
+    "totalMs": 5551
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:5069) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      104,
+      51
+    ],
+    [
+      198,
+      77
+    ],
+    [
+      320,
+      122
+    ],
+    [
+      422,
+      158
+    ],
+    [
+      523,
+      176
+    ],
+    [
+      616,
+      176
+    ],
+    [
+      720,
+      176
+    ],
+    [
+      844,
+      176
+    ],
+    [
+      936,
+      176
+    ],
+    [
+      1038,
+      176
+    ],
+    [
+      1134,
+      177
+    ],
+    [
+      1271,
+      177
+    ],
+    [
+      1361,
+      177
+    ],
+    [
+      1478,
+      177
+    ],
+    [
+      1574,
+      177
+    ],
+    [
+      1676,
+      177
+    ],
+    [
+      1777,
+      177
+    ],
+    [
+      1882,
+      177
+    ],
+    [
+      2012,
+      177
+    ],
+    [
+      2103,
+      177
+    ],
+    [
+      2206,
+      177
+    ],
+    [
+      2311,
+      177
+    ],
+    [
+      2416,
+      177
+    ],
+    [
+      2520,
+      177
+    ],
+    [
+      2641,
+      177
+    ],
+    [
+      2727,
+      178
+    ],
+    [
+      2828,
+      178
+    ],
+    [
+      2935,
+      178
+    ],
+    [
+      3033,
+      178
+    ],
+    [
+      3139,
+      178
+    ],
+    [
+      3231,
+      178
+    ],
+    [
+      3365,
+      178
+    ],
+    [
+      3454,
+      178
+    ],
+    [
+      3571,
+      178
+    ],
+    [
+      3660,
+      178
+    ],
+    [
+      3763,
+      178
+    ],
+    [
+      3878,
+      178
+    ],
+    [
+      3994,
+      178
+    ],
+    [
+      4079,
+      178
+    ],
+    [
+      4209,
+      178
+    ],
+    [
+      4315,
+      178
+    ],
+    [
+      4419,
+      178
+    ],
+    [
+      4517,
+      178
+    ],
+    [
+      4608,
+      178
+    ],
+    [
+      4729,
+      178
+    ],
+    [
+      4820,
+      178
+    ],
+    [
+      4919,
+      178
+    ],
+    [
+      5027,
+      178
+    ],
+    [
+      5127,
+      178
+    ],
+    [
+      5228,
+      178
+    ],
+    [
+      5343,
+      179
+    ],
+    [
+      5435,
+      172
+    ],
+    [
+      5538,
+      172
+    ],
+    [
+      5647,
+      0
+    ]
+  ]
+}

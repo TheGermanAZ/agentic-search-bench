@@ -1,0 +1,193 @@
+{
+  "impl": "opencode-codemode",
+  "name": "OpenCode 2.x Code Mode (execute tool, @opencode/codemode)",
+  "source": "https://github.com/anomalyco/opencode (packages/codemode, packages/core/src/codemode); npm @opencode/codemode 2.3.2, @opencode/cli 2.3.2",
+  "pinned": "tag v2.3.2, commit c0ad18b402eb2827fc1ee71c171b1177b3fc02d1 (2026-11-18); @opencode/codemode 2.3.2 from npm (deps acorn 8.15.0, effect 4.1.0); run under Bun 1.4.4 (the repo's packageManager)",
+  "language": "JS (a subset, interpreted)",
+  "engine": "A hand-written JavaScript interpreter in TypeScript: Acorn parses, a custom compiler emits opcodes, a custom VM runs them in the host process, with a cooperative scheduler that yields to the host between step slices. No V8 isolate, no QuickJS, no node:vm, no new Function. Only the language features and globals the interpreter implements exist.",
+  "how_run": "Default and deny runs call OpenCode's own execute tool, CodeModeTool.create(inventory, executeTool, permission) from packages/core at the pinned tag, as Tool.snapshot builds it (fetch extension on, no limits), with a Permission stub that evaluates the documented base policy through OpenCode's Permission.evaluate; the hardened run calls the public package API CodeMode.make({ tools, limits }).execute(code). No model. research/probes/opencode-codemode/run.sh <mode> <probe>.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "Printed 42 (output \"Logs:\\n42\"), 1 host call, 232 ms. Tools live under the tools object, so the call is tools.lookup({id: 21}); a bare lookup is not defined.",
+      "evidence": "research/probes/opencode-codemode/out/P1.txt",
+      "display": "works (42, 1 call)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "The execute tool itself has no cap: both the bare-expression form and the return form gave \"RETURNED\" plus all 200,000 printed chars (200,016 chars total, no marker). The session step then cuts every tool result at 50 KiB or 2,000 lines: run through OpenCode's ToolOutput.truncate, the model would get 51,400 chars (51,184 A's) ending \"[showing lines 1-4 of 4 (last line cut); full output saved to <data>/tool-output/tool_...]\". The return value is printed before the logs, so it survives the cut.",
+      "evidence": "research/probes/opencode-codemode/out/P2.txt",
+      "display": "uncapped tool; session cuts at 50 KiB"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "fetch is a global by default: fetch(\"https://example.com\") returned status 200 and a 577-char body; the call showed as a fetch row in toolCalls. It is gated by the webfetch permission, which the documented base policy allows. With a webfetch deny rule added (deny mode) the same code returned \"Error: Permission denied: webfetch\" (out/deny-P3.txt).",
+      "evidence": "research/probes/opencode-codemode/out/P3.txt ; research/probes/opencode-codemode/out/deny-P3.txt",
+      "display": "works (example.com 200; permission)"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "require(\"fs\") and import(\"fs\") both: \"Error: Cannot import \\\"fs\\\": it isn't available here, where packages and files can't be loaded. Use the provided globals.\" Deno: \"ReferenceError: Unknown identifier 'Deno'.\" fetch(\"file:///etc/hosts\"): \"Error: fetch cannot be used for filesystem access.\" require exists (typeof function) but resolves only host-provided globals; Bun, Deno, path and fs are undefined.",
+      "evidence": "research/probes/opencode-codemode/out/P4.txt",
+      "display": "blocked"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "\"ReferenceError: Unknown identifier 'process'.\" typeof process is \"undefined\". Host PROBE_SECRET=s3cr3t was set and not visible.",
+      "evidence": "research/probes/opencode-codemode/out/P5.txt",
+      "display": "not-defined"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "while(true){} ran until the harness stopped it at 120 s. The execute tool sets no timeout. The host stayed usable: a 1 s host timer ticked 119 times during the loop, and a second execution of 1+1 started 5 s in returned in 1.85 ms, because the VM yields to the event loop between step slices.",
+      "evidence": "research/probes/opencode-codemode/out/P6.txt",
+      "display": "no-limit-within-120s (host stays up)"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "No memory limit, and the program runs inside the host process: the harness killed the whole Bun process at 4.27 GB RSS within 1 s. In OpenCode this process is the agent itself. The interpreter's only size guards are per value: strings up to 2^24 chars, arrays up to 10,000,000 elements, 10,000 pending promises.",
+      "evidence": "research/probes/opencode-codemode/out/P7.txt",
+      "display": "no limit (host process 4.3 GB in 1 s)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "fresh. The spec form globalThis.kept = 7 fails (\"ReferenceError: Unknown identifier 'globalThis'.\"); var kept = 7 and kept = 7 were also tried. The second execution printed \"gone\" every time.",
+      "evidence": "research/probes/opencode-codemode/out/P8.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "Promise.all of 5 lookups took 207 ms inside the program (233 ms wall), 5 host calls: parallel.",
+      "evidence": "research/probes/opencode-codemode/out/P9.txt",
+      "display": "parallel (207 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "Model text is \"Error: probe-boom\" with error: true. The message survives; a thrown error carries no stack and no line, even on line 3 of a 3-line program. Interpreter errors do carry a location, e.g. \"ReferenceError: Unknown identifier 'process'. (line 1, col 8)\". A bad tool argument returns a guided message: \"Invalid arguments for tool \\\"lookup\\\": - id: Expected number ... Update the arguments and call the tool again.\"",
+      "evidence": "research/probes/opencode-codemode/out/P10.txt",
+      "display": "message only (no line for throw)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "Median 0.60 ms, p90 1.11 ms over 20 executions of 1+1 through the execute tool (first run 26 ms, a cold compile). One-time setup (CodeModeTool.create + catalog) 2.6 ms.",
+      "evidence": "research/probes/opencode-codemode/out/P11.txt",
+      "display": "0.6 ms median"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "All 16 attempts failed. this.constructor.constructor(...) and (function(){return this})().process: \"TypeError: Cannot read properties of undefined\" (this is undefined). [].constructor.constructor, Function(...), console.log.constructor, a tool promise's and a tool result's constructor.constructor, and a fetch Response's methods: \"TypeError: The Function constructor is not supported; write the function inline.\" eval and globalThis: \"Unknown identifier\". require(\"child_process\"): \"Cannot import\". ({}).__proto__ is undefined, so no prototype pollution reached the host. Host canary not visible.",
+      "evidence": "research/probes/opencode-codemode/out/P12.txt",
+      "display": "blocked"
+    }
+  },
+  "hardened": {
+    "config": "@opencode/codemode public API CodeMode.make({ tools, limits: { timeoutMs: 30000, maxToolCalls: 20, maxOutputBytes: 32768 } }) with no extensions, so no fetch. The values are the ones OpenCode itself uses for automations (packages/core/src/automation/code.ts:18-24). The limits option is documented at packages/codemode/README.md:451-464 and typed at packages/codemode/src/codemode/codemode.ts:33-50. OpenCode's interactive execute tool exposes none of these to users; the only user-side control is a permission rule {\"action\":\"webfetch\",\"resource\":\"*\",\"effect\":\"deny\"} (https://opencode.ai/docs/permissions/), shown in out/deny-P3.txt. No memory option exists anywhere.",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "Without the fetch extension: \"ReferenceError: Unknown identifier 'fetch'.\" typeof fetch is \"undefined\". Inside OpenCode the equivalent is the webfetch deny rule: \"Error: Permission denied: webfetch\" (out/deny-P3.txt).",
+        "evidence": "research/probes/opencode-codemode/out/hardened-P3.txt ; research/probes/opencode-codemode/out/deny-P3.txt",
+        "display": "not-defined"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "Same as default: Cannot import \"fs\" for require and import(); Deno and fetch are unknown identifiers.",
+        "evidence": "research/probes/opencode-codemode/out/hardened-P4.txt",
+        "display": "blocked"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "detail": "\"ReferenceError: Unknown identifier 'process'.\"",
+        "evidence": "research/probes/opencode-codemode/out/hardened-P5.txt",
+        "display": "not-defined"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "Stopped at 30.03 s: {kind: \"TimeoutExceeded\", message: \"Execution timed out after 30000ms.\"}. The host timer ticked 30 times and a concurrent 1+1 returned in 2.07 ms during the loop.",
+        "evidence": "research/probes/opencode-codemode/out/hardened-P6.txt",
+        "display": "limited (30 s)"
+      },
+      "P7": {
+        "outcome": "no-limit-within-120s",
+        "detail": "The 30 s timeout does not help: the host Bun process passed 4 GB (5.09 GB at the first sample over) in under 1 s and the harness killed it. There is no memory option.",
+        "evidence": "research/probes/opencode-codemode/out/hardened-P7.txt",
+        "display": "no limit (host process 5.1 GB in 1 s)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "204 ms inside the program, 5 host calls: parallel. maxToolCalls 20 was not reached.",
+        "evidence": "research/probes/opencode-codemode/out/hardened-P9.txt",
+        "display": "parallel (204 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "Same 13 language attempts as default, same TypeError/ReferenceError texts; the 3 fetch attempts fail on the unknown identifier fetch.",
+        "evidence": "research/probes/opencode-codemode/out/hardened-P12.txt",
+        "display": "blocked"
+      }
+    }
+  },
+  "defaults": {
+    "time": "None in OpenCode's execute tool: runtime() builds CodeMode.make without limits (packages/core/src/codemode/tool.ts:289-301) and execute passes none (tool.ts:129-132). The package default is also none: \"Execution limits have no default values.\" (packages/codemode/README.md:459). Each fetch has its own 30 s timeout (packages/core/src/codemode/fetch.ts:9, 58). Hardened: timeoutMs, enforced between interpreter steps (packages/codemode/src/language/runtime/execute.ts:296-308).",
+    "memory": "None, and no option for one. Per-value guards only: MAX_STRING_LENGTH 2^24, MAX_ARRAY_LENGTH 10,000,000, MAX_PENDING_PROMISES 10,000, MAX_VALUE_DEPTH 32 (packages/codemode/src/language/runtime/limits.ts:7-13). Programs run in the host process.",
+    "output": "None in the execute tool (no maxOutputBytes). Every tool result, execute included, is then cut by the session at 50 KiB or 2,000 lines with a marker and the full text saved to a file (packages/core/src/tool-output.ts:13-14, 93-113; applied at packages/core/src/session/runner/step.ts:152). Hardened maxOutputBytes cuts whole log lines: a single 200,000-char line came back as \"[logs truncated: showing 0 of 1 lines]\" with truncated: true (out/hardened-P2.txt).",
+    "tool_calls": "None in the execute tool; concurrency is unrestricted (README.md:464). Hardened maxToolCalls counts tools and search() calls; fetch and other extension calls are not counted (README \"Extension.make\")."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Each OpenCode tool (MCP, plugin, built-in with codemode not false) becomes a Code Mode Tool.make under a tools tree keyed by namespace, and the catalog renders a TypeScript-like signature per tool from its Effect Schema or JSON Schema. Signatures are rendered lazily, only for tools the catalog shows.",
+      "evidence": "https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/core/src/codemode/tool.ts#L326-L343 and #L239-L261"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "The catalog is inlined into instructions up to a budget (INLINE_BUDGET 2,000 at 4 chars per token, descriptions cut at 500); beyond that the catalog is marked partial and the model must call the in-program search(...) global, which counts as a tool call. This scales past 100 tools without every schema in the prompt.",
+      "evidence": "https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/core/src/codemode/catalog.ts#L50-L58 ; https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/core/src/codemode/instructions.ts#L11-L15"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "No process or isolate boundary. A tool call is a Host.fn the VM invokes in the same process; OpenCode runs the real tool through executeTool with permission.nested, so each nested call meets the same permission rules as a direct call. Tool calls start as Effect fibers, which is why P9 ran in parallel.",
+      "evidence": "https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/core/src/codemode/tool.ts#L133-L160"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "The boundary is the language, not the OS: \"Rather than trying to sandbox arbitrary JavaScript, CodeMode only runs the language features we implement.\" The design issue locked \"Keep the hand-rolled interpreter; do not embed QuickJS/V8 for v1\". P4, P5 and P12 match the claim. But the project's own threat model says \"OpenCode does not sandbox the agent\", and the execute tool runs with no time, memory or output limit in the agent process, so P6 and P7 fail.",
+      "evidence": "https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/codemode/README.md#L7-L9 ; https://github.com/anomalyco/opencode/issues/34787 ; https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/SECURITY.md#L15-L19"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "formatResult sends the return value as compact JSON, then \"Warnings:\" and \"Logs:\" blocks, as one text part; a null value is dropped when there are logs. Files emitted by nested tools are collected on the host and attached as file parts, never inlined in the program value.",
+      "evidence": "https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/core/src/codemode/tool.ts#L434-L454 and #L170-L198"
+    },
+    {
+      "topic": "Limits",
+      "finding": "OpenCode's interactive execute passes no limits, while its own automations pass timeoutMs 30,000, maxToolCalls 20 and maxOutputBytes 32 KiB to the same runtime. The fetch extension has a 30 s per-request timeout, blocks file: URLs and credentials in URLs, re-checks webfetch rules on each redirect, and caps redirects at 20.",
+      "evidence": "https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/core/src/codemode/tool.ts#L289-L301 ; https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/core/src/automation/code.ts#L18-L24 ; https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/core/src/codemode/fetch.ts#L9-L82"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh per execution (P8). The package can suspend a run to a JSON snapshot and resume it later, even in another process of the same build, with idempotent and durable tool semantics; OpenCode uses this for background Code Mode jobs only under the full_codemode flag.",
+      "evidence": "packages/codemode/README.md \"Suspending and resuming a run\" ; https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/core/src/codemode/job.ts#L45-L120"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Diagnostics have kinds (ParseError, UnsupportedSyntax, UnknownTool, InvalidToolInput, ToolCallLimitExceeded, TimeoutExceeded, ToolFailure, ExecutionFailure) and a location for interpreter errors; a user throw loses its line (P10). The model gets the message plus suggestions not already in it.",
+      "evidence": "https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/core/src/codemode/tool.ts#L434-L439"
+    },
+    {
+      "topic": "Credentials and approvals",
+      "finding": "Credentials stay on the host: MCP and plugin tools run in OpenCode's process, and OpenAPI tools resolve auth on the host (\"Authentication is resolved by the host and never shown to the model\"). Code Mode is on by default: execute is present unless a rule denies it with resource *.",
+      "evidence": "https://github.com/anomalyco/opencode/blob/c0ad18b402eb2827fc1ee71c171b1177b3fc02d1/packages/core/src/tool.ts#L272-L300 ; packages/codemode/README.md \"OpenAPI tools\""
+    }
+  ],
+  "surprises": [
+    "The tools docs say the runtime \"has no direct filesystem access, imports, or timers\" and \"provides fetch\" (https://opencode.ai/docs/tools/). Both hold (P3, P4). But import and require do exist as syntax: they load host-provided globals by Node module name and throw for anything else (README \"Extension.make\").",
+    "The design issue #34787 locked \"Keep ambient authority out: no fs, child processes, network/fetch, process/env, or timers for v1\". v2.3.2 ships fetch on by default, gated only by the webfetch permission, whose documented default is allow. Model-written code can send data to any URL unless the user adds a webfetch rule.",
+    "The early PR description's \"in-process AsyncFunction with no isolation or timeout\" no longer describes the engine: code now runs in a custom interpreter that blocks the Function constructor, eval and globalThis (P12). The \"no timeout\" half still holds for the interactive execute tool (P6), and there is still no memory limit in any configuration (P7).",
+    "Execution limits exist and work (hardened P6 stopped at 30.0 s), but OpenCode only applies them to automations, not to the execute tool a model calls interactively.",
+    "Because the interpreter yields between step slices, an infinite loop does not freeze the OpenCode process (119 timer ticks in 120 s, concurrent executions still answered in about 2 ms). A memory bomb does take the whole process down to the OS limit, since there is no heap cap.",
+    "README shows runtime.catalog() as a call; at 2.3.2 it is an array property (codemode.ts:175, 280), so the README call throws \"runtime.catalog is not a function\".",
+    "The language is not quite JavaScript: no globalThis, no this at top level, no Function constructor, ({}).__proto__ is undefined, and a bare final expression is returned like a REPL. The SPEC's P8 form fails as a ReferenceError.",
+    "The wave-2 sweep subagent reported that Kilo Code includes a copy of this package; I did not verify that or probe Kilo Code."
+  ]
+}

@@ -1,0 +1,2 @@
+open: PermissionError: Permission denied: '/etc/hosts'
+pathlib: PermissionError: Permission denied: '/etc/hosts'

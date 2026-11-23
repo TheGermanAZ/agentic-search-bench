@@ -1,0 +1,7 @@
+{
+  "probe": "P1",
+  "outcome": "works",
+  "display": "works (42, 1 call)",
+  "detail": "42 in printed stdout: False; 42 in returned value: True; output '42'; host lookup calls: 1",
+  "evidence": "research/probes/fastmcp-codemode/out/P1.txt"
+}

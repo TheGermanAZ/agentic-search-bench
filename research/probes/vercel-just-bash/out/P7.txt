@@ -1,0 +1,16 @@
+probe: P7
+worker exit: 0 signal: null killed: null
+wall ms: 133
+peak host RSS KB: 151904
+
+script: s=xxxxxxxxxxxxxxxx; while true; do s="$s$s"; done; echo ${#s}
+exit: 126
+stdout (0 chars):
+
+stderr:
+bash: word expansion: string length limit exceeded (67108864 bytes)
+
+ms: 62, host lookup calls so far: 0
+
+outcome: limited
+detail: stopped after 62 ms, peak host RSS 348704 KB (worker maxRSS): "bash: word expansion: string length limit exceeded (67108864 bytes)" exit 126

@@ -1,0 +1,10 @@
+code:
+console.log(await Deno.readTextFile("/etc/hosts"))
+
+result:
+{
+  "id": "0252f8f8-cb73-44af-9c96-c548005cc27e",
+  "error": "\u001b[0m\u001b[32mDownload\u001b[0m http://localhost:41310/client.ts?v=1\n\u001b[0m\u001b[32mCheck\u001b[0m file:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/1e9474d32ad93fbf.ts\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag\nconsole.log(await Deno.readTextFile(\"/etc/hosts\"))\n\u001b[0m\u001b[31m                       ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mObject.readTextFile\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fs/30_fs.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m866\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m24\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/1e9474d32ad93fbf.ts\u001b[0m:\u001b[0m\u001b[33m4\u001b[0m:\u001b[0m\u001b[33m24\u001b[0m\n",
+  "ms": 1217,
+  "hostCalls": 0
+}

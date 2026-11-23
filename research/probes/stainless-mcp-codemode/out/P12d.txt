@@ -1,0 +1,21 @@
+mode: default
+code:
+async function run(client) {
+  const o = new (globalThis as any).Deno.Command("echo", { args: ["PWNED"] }).outputSync();
+  return new TextDecoder().decode(o.stdout);
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "NotCapable: Requires run access to \"echo\", run again with the --allow-run flag"
+      }
+    ],
+    "isError": true
+  },
+  "ms": 389,
+  "hostCalls": 0
+}

@@ -1,0 +1,151 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py default R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1675,
+  "peakTreeRssMb": 179,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R7a",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich']}), new thread_id per execution",
+    "data": {
+      "label": "",
+      "startMs": 1124,
+      "ms": 480,
+      "ok": true,
+      "result": "<error type=\"Deadlock\">eval_async's top-level promise is pending but no async host calls are in flight. Did you forget to register a function as async (is_async=True)? Or is a JS Promise missing its resolver?</error>",
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 101,
+    "totalMs": 1604
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      98,
+      30
+    ],
+    [
+      145,
+      35
+    ],
+    [
+      190,
+      42
+    ],
+    [
+      254,
+      47
+    ],
+    [
+      311,
+      51
+    ],
+    [
+      346,
+      55
+    ],
+    [
+      402,
+      57
+    ],
+    [
+      458,
+      57
+    ],
+    [
+      502,
+      58
+    ],
+    [
+      556,
+      60
+    ],
+    [
+      609,
+      63
+    ],
+    [
+      658,
+      66
+    ],
+    [
+      707,
+      68
+    ],
+    [
+      763,
+      69
+    ],
+    [
+      821,
+      72
+    ],
+    [
+      856,
+      74
+    ],
+    [
+      914,
+      79
+    ],
+    [
+      975,
+      79
+    ],
+    [
+      1024,
+      80
+    ],
+    [
+      1077,
+      85
+    ],
+    [
+      1116,
+      85
+    ],
+    [
+      1168,
+      88
+    ],
+    [
+      1218,
+      91
+    ],
+    [
+      1347,
+      127
+    ],
+    [
+      1404,
+      146
+    ],
+    [
+      1446,
+      158
+    ],
+    [
+      1535,
+      163
+    ],
+    [
+      1574,
+      170
+    ],
+    [
+      1633,
+      172
+    ],
+    [
+      1673,
+      179
+    ]
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "probe": "P3c",
+  "outcome": "works",
+  "display": "net permission granted",
+  "detail": "NET granted",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P3c.txt"
+}

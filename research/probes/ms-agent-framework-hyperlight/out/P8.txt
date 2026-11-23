@@ -1,0 +1,6 @@
+exec1:
+{"ok": true, "result": null, "error": null, "ms": 365.1}
+stdout (42 chars): 'Code executed successfully without output.'
+exec2:
+{"ok": true, "result": null, "error": null, "ms": 61.0}
+stdout (5 chars): 'gone\n'

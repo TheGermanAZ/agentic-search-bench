@@ -1,0 +1,105 @@
+label: hardened-P7
+command: bun probe.mjs P7 --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 788
+peak child RSS: 103.8 MB (ps every 50 ms)
+child stdout length: 701 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P7",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    },
+    "driver": {
+      "maxToolCalls": 100
+    }
+  },
+  "runtime": "bun 1.4.4",
+  "setupMs": 3.453583999999992,
+  "source": [
+    "const a = []; while (true) a.push(\"x\".repeat(1e6));"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 273,
+    "siblingEndMs": 477,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Code execution exceeded memory limit",
+          "name": "MemoryLimitError",
+          "stack": "    at <anonymous> (<code-mode>:5:45)\n    at <anonymous> (<code-mode>:6:7)\n    at <eval> (<code-mode>:11:3)\n"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 272.83941599999997,
+      "hostCalls": 0
+    }
+  ],
+  "concurrentSiblingRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 204.343791,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 202.24904200000003,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 273,
+    "siblingEndMs": 477,
+    "main": "MemoryLimitError: Code execution exceeded memory limit",
+    "ms": 273,
+    "sibling": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    },
+    "siblingMs": 204,
+    "after": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    }
+  },
+  "hostRssAfterMB": 79.4
+}
+--- child stdout ---
+{
+  [0mtimestamp[2m:[0m [0m[33m1795376624993[0m[0m[2m,[0m
+  [0mdurationMs[2m:[0m [0m[33m271[0m[0m[2m,[0m
+  [0mphase[2m:[0m [0m[32m[0m[32m"execute"[0m[0m[0m[2m,[0m
+  [0msuccess[2m:[0m [0m[33mfalse[0m[0m[2m,[0m
+  [0mlogCount[2m:[0m [0m[33m0[0m[0m[2m,[0m
+  [0merror[2m:[0m {
+    [0mname[2m:[0m [0m[32m[0m[32m"MemoryLimitError"[0m[0m[0m[2m,[0m
+    [0mmessage[2m:[0m [0m[32m[0m[32m"Code execution exceeded memory limit"[0m[0m[0m[2m,[0m
+    [0mstack[2m:[0m [0m[32m[0m[32m"    at <anonymous> (<code-mode>:5:45)\n    at <anonymous> (<code-mode>:6:7)\n    at <eval> (<code-mode>:11:3)\n"[0m[0m[0m[2m,[0m
+  }[0m[2m,[0m
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

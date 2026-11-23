@@ -1,0 +1,46 @@
+{
+  "name": "agentic-search-bench",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "ingest": "tsx src/ingest.ts",
+    "embed": "uv run scripts/embed_mps.py data/index/corpus.sqlite data/index/vectors.f32",
+    "check-vectors": "tsx src/check-vectors.ts",
+    "build-evals": "tsx src/build-evals.ts",
+    "bench": "tsx src/bench.ts",
+    "judge": "tsx src/judge.ts",
+    "rescore": "tsx src/rescore.ts",
+    "ask": "tsx src/ask.ts",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.330",
+    "@huggingface/transformers": "^4.3.2",
+    "@jitl/quickjs-ng-wasmfile-release-sync": "0.32.0",
+    "@jitl/quickjs-wasmfile-release-asyncify": "0.32.0",
+    "isolated-vm": "7.0.2",
+    "quickjs-emscripten": "0.32.0",
+    "run": "2.1.13",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsx": "^4.20.6",
+    "typescript": "^7.0.2"
+  },
+  "trustedDependencies": [
+    "onnxruntime-node"
+  ],
+  "packageManager": "pnpm@10.20.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "isolated-vm",
+      "onnxruntime-node",
+      "protobufjs"
+    ]
+  }
+}

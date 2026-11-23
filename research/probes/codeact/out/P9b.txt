@@ -1,0 +1,12 @@
+probe: P9b
+code (python, run through PythonREPL.__call__):
+import time
+import concurrent.futures
+t = time.time()
+with concurrent.futures.ThreadPoolExecutor(5) as ex:
+    rs = list(ex.map(lambda i: lookup(id=i), [1, 2, 3, 4, 5]))
+print(int((time.time() - t) * 1000))
+print(sum(r['value'] for r in rs))
+host_calls_so_far: 5
+output: '210\n30\n'
+host calls: 5

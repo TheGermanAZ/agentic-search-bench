@@ -1,0 +1,9 @@
+$ docker run --rm --name datalayer-codemode-docker-homecheck -e HOME=<host HOME, /Users/...> -e JUPYTER_TOKEN=x datalayer-codemode-docker-jupyter:1.12.4 bash -lc "timeout 8 jupyter server --ip=0.0.0.0 --port=8888 --ServerApp.token=x --ServerApp.open_browser=False --ServerApp.root_dir=/workspace"
+  [Previous line repeated 2 more times]
+  File "/usr/local/lib/python3.11/pathlib.py", line 1116, in mkdir
+    os.mkdir(self, mode)
+PermissionError: [Errno 13] Permission denied: '/Users'
+
+$ same command without -e HOME (image default HOME=/home/sandbox), 8 s:
+[I 2026-11-22 20:17:21.887 ServerApp] Serving notebooks from local directory: /workspace
+[I 2026-11-22 20:17:21.887 ServerApp] Jupyter Server 2.21.1 is running at:

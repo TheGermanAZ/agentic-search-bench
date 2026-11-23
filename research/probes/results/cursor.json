@@ -1,0 +1,109 @@
+{
+  "impl": "cursor",
+  "name": "Cursor agent (Instant Grep, formerly semantic search; terminal sandbox)",
+  "source": "https://cursor.com/docs/agent/tools/search ; https://cursor.com/docs/agent/security/run-modes ; https://cursor.com/blog/semsearch ; https://cursor.com/blog/fast-regex-search ; https://cursor.com/blog/agent-sandboxing",
+  "pinned": "docs fetched 2026-11-22; blog posts dated 2025-11-06 (semsearch), 2026-02-18 (agent-sandboxing), 2026-03-23 (fast-regex-search)",
+  "language": "Tool calls and shell commands (no documented code mode)",
+  "engine": "Shell on the user's machine; optional sandbox: Seatbelt via sandbox-exec (macOS), Landlock + seccomp (Linux). Search: Instant Grep, a local index.",
+  "how_run": "Not run: Cursor is not installed and scriptable here. All entries from docs and Cursor blog posts.",
+  "probes": {
+    "P1": {
+      "outcome": "not-applicable",
+      "detail": "No code-calls-tool bridge documented; the agent calls tools directly.",
+      "evidence": "https://cursor.com/docs/agent/security"
+    },
+    "P2": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Terminal output limits not documented.",
+      "evidence": "https://cursor.com/docs/agent/tools/terminal"
+    },
+    "P3": {
+      "outcome": "blocked",
+      "detail": "Sandboxed commands: \"Network: Blocked by default, then opened by your network mode and sandbox.json.\" The default network mode is \"sandbox.json + Defaults\" (\"Cursor's built-in defaults for common package managers and language tools\"). Whether example.com is in that default list was not checked.",
+      "evidence": "https://cursor.com/docs/agent/security/run-modes#network-access"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "Read access default is System: \"The agent can read files outside the workspace without approval. This is the default.\" Workspace mode restricts sandboxed commands to the workspace, a read allowlist and system paths.",
+      "evidence": "https://cursor.com/docs/agent/security/run-modes#read-access"
+    },
+    "P5": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Docs list variables Cursor injects (CURSOR_SANDBOX, CURSOR_ORIG_UID, ...) but do not say whether host secrets are stripped.",
+      "evidence": "https://cursor.com/docs/agent/security/run-modes#environment-variables"
+    },
+    "P6": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "No command timeout documented.",
+      "evidence": "https://cursor.com/docs/agent/security/run-modes"
+    },
+    "P7": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "No memory limit documented.",
+      "evidence": "https://cursor.com/docs/agent/security/run-modes"
+    },
+    "P8": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Shell state between commands not documented. In Workspace read mode the private temp folder \"keeps its files between commands\".",
+      "evidence": "https://cursor.com/docs/agent/security/run-modes#sandboxing"
+    },
+    "P9": {
+      "outcome": "not-applicable",
+      "detail": "No code-level parallel tool calls. The Explore subagent \"executes many parallel searches\" as agent tool calls.",
+      "evidence": "https://cursor.com/docs/agent/tools/search#explore-subagent"
+    },
+    "P10": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Not documented.",
+      "evidence": "https://cursor.com/docs/agent/security/run-modes"
+    },
+    "P11": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Not documented.",
+      "evidence": "https://cursor.com/docs/agent/security/run-modes"
+    },
+    "P12": {
+      "outcome": "not-applicable",
+      "detail": "Real shell on the host; the sandbox is OS-level. \"Some commands need full system access and bypass the sandbox. Cursor will indicate when a command runs outside the sandbox and ask for your approval.\"",
+      "evidence": "https://cursor.com/docs/agent/security/run-modes#sandboxing"
+    }
+  },
+  "defaults": {
+    "time": "not documented",
+    "memory": "not documented",
+    "output": "not documented",
+    "tool_calls": "not documented"
+  },
+  "source_notes": [
+    {
+      "topic": "Discovery / search",
+      "finding": "Current docs: \"Cursor ships with Instant Grep, a custom search engine that outperforms ripgrep on large codebases\"; \"Instant Grep builds and queries its index on your machine. Cursor does not upload file paths or code to build a search index, and it does not store embeddings of your codebase for search.\"",
+      "evidence": "https://cursor.com/docs/agent/tools/search"
+    },
+    {
+      "topic": "Semantic search retired",
+      "finding": "Forum posts from accounts that speak for Cursor (staff status not verified) say semantic indexing was turned down in 2026: \"Semantic/embeddings indexing is being turned down in favor of grep-based retrieval.\" and \"Search runs against the files on your machine, so Cursor no longer builds a semantic index of the repo.\" (v3.12 onwards). Read only as search excerpts.",
+      "evidence": "https://forum.cursor.com/t/what-do-you-think-about-cursor-removing-the-codebase-indexing-settings/165899 ; https://forum.cursor.com/t/codebase-indexing-not-working-in-v-3-12-onwards/167527"
+    },
+    {
+      "topic": "Earlier evidence",
+      "finding": "The Nov 6, 2025 post measured +12.5% average accuracy (6.5% to 23.5%) with semantic search added to grep and concluded \"Semantic search is currently necessary to achieve the best results, especially in large codebases.\"",
+      "evidence": "https://cursor.com/blog/semsearch"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "macOS: Seatbelt via sandbox-exec with a generated profile for the whole subprocess tree. Linux: Landlock + seccomp; ignored files overwritten in an overlay. Kernel too old -> falls back to asking approval.",
+      "evidence": "https://cursor.com/docs/agent/security/run-modes#how-sandboxing-works-on-your-platform ; https://cursor.com/blog/agent-sandboxing"
+    },
+    {
+      "topic": "Approvals",
+      "finding": "Run modes Auto-review (classifier), Allowlist, Run Everything. Auto-review \"is not a security boundary\".",
+      "evidence": "https://cursor.com/docs/agent/security/run-modes#pick-a-mode"
+    }
+  ],
+  "surprises": [
+    "Cursor's current docs say it no longer stores embeddings for search, and forum posts say semantic indexing was turned down in favor of Instant Grep in 2026. The survey's key finding 4 (+12.5% with semantic search) describes a path Cursor has since retired.",
+    "Default read access is System: sandboxed commands can read outside the workspace unless Workspace mode is chosen.",
+    "Default network mode allows Cursor's built-in package-manager domains, not zero domains."
+  ]
+}

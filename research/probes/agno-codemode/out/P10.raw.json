@@ -1,0 +1,24 @@
+{
+  "probe": "P10",
+  "config": "default",
+  "codes": [
+    "x = 1\nraise ValueError(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "---------------------------------------------------------------------------\nValueError                                Traceback (most recent call last)\nCell In[1], line 2\n      1 x = 1\n----> 2 raise ValueError(\"probe-boom\")\n\nValueError: probe-boom",
+      "error": "---------------------------------------------------------------------------\nValueError                                Traceback (most recent call last)\nCell In[1], line 2\n      1 x = 1\n----> 2 raise ValueError(\"probe-boom\")\n\nValueError: probe-boom",
+      "ms": 943.3,
+      "started": 1795382347.1611142
+    }
+  ],
+  "setup_ms": 0.3,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.37,
+  "peak_tree_rss_gb": 0.121,
+  "calls": [],
+  "child_log_tail": "WARNING CodeMode runs arbitrary Python and shell with the permissions of this process. It is not a sandbox: provide human supervision or run the agent in an isolated container.\n"
+}

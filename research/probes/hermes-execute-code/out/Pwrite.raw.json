@@ -1,0 +1,27 @@
+{
+  "probe": "Pwrite",
+  "config": "default",
+  "codes": [
+    "import os\np = os.path.join('~/p/agentic-search-bench/research/probes/hermes-execute-code/out', 'hermes-write-probe.txt')\nopen(p, 'w').write('x')\nmsg = 'WROTE ' + str(os.path.exists(p))\nos.remove(p)\nprint(msg)"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "WROTE True\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"WROTE True\\n\", \"exit_code\": 0, \"tool_calls_made\": 0, \"duration_seconds\": 0.05, \"kernel\": {\"mode\": \"session\", \"reused\": false, \"execution_count\": 1, \"state_reset\": false}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 11, \"stdout_bytes_total\": 11, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 0,
+      "model_sees_len": 312,
+      "ms": 71.1,
+      "started": 1795382863.7124531
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.03,
+  "peak_tree_rss_gb": 0.138,
+  "calls": [],
+  "child_log_tail": ""
+}

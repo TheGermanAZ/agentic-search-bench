@@ -1,0 +1,184 @@
+{
+  "impl": "executor",
+  "name": "Executor (UsefulSoftwareCo / Rhys Sullivan)",
+  "source": "https://github.com/UsefulSoftwareCo/executor",
+  "pinned": "c381941128ad29263baa6906d3b082ad9327ce56 (CLI package 2.0.0-beta.66; interpreter @opencode-ai/codemode@0.0.0-dev-19272 with Executor's patch patches/@opencode-ai%2Fcodemode@0.0.0-dev-19272.patch; apps framework built locally as apps@0.0.1-beta.143)",
+  "language": "JS (TypeScript accepted: transpiled with typescript 5.8.2 before interpreting)",
+  "engine": "@opencode-ai/codemode: a tree-walking JavaScript interpreter written in JS (acorn parser, Effect fibers for async), running inside the Executor server's own Node.js process and heap. Not a V8 isolate, not workerd, not a subprocess. App tools themselves run in a separate workerd process.",
+  "how_run": "Built the local server from source (bun install, apps:build) and ran it with node on 127.0.0.1:4399; deployed an app 'probe' with tool lookup via POST /v1/apps/deploy; each probe is one MCP tools/call 'execute' over streamable HTTP /mcp with the local bearer key (calls are tools.probe.lookup({id}) because Executor namespaces tools by app).",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "logs [\"42\"], value null (no return statement), 1 host-side call recorded by Executor (toolCalls, outcome success, 232 ms)",
+      "evidence": "research/probes/executor/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "both came back: value \"RETURNED\" and logs with the full 200,000-char line; no truncation marker, no truncated flag; MCP text content 200,113 chars",
+      "evidence": "research/probes/executor/out/P2.summary.txt"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "ExecutionFailure: Unknown identifier 'fetch'. (line 1, col 7)",
+      "evidence": "research/probes/executor/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "require: Unknown identifier 'require'; await import(\"fs\"): UnsupportedSyntax 'ImportExpression' is not supported; Deno: Unknown identifier 'Deno'",
+      "evidence": "research/probes/executor/out/P4a.txt, P4b.txt, P4c.txt"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "Unknown identifier 'process'. The server process did have PROBE_SECRET=s3cr3t in its env.",
+      "evidence": "research/probes/executor/out/P5.txt, P5.host-env-check.txt"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "harness aborted the request at 120,003 ms (default limit is 300 s). During the loop a second execute of 1+1 returned in 8 ms (server stayed responsive); server CPU 172% during the loop, 0.6% five seconds after the client aborted, so client cancel stopped the program. Extra run P6long: stopped at 300,010 ms with TimeoutExceeded 'Execution timed out after 300000ms; earlier tool calls may have completed.' Extra run with EXECUTOR_MCP_TIMEOUT_MS=10000: stopped at 10,004 ms.",
+      "evidence": "research/probes/executor/out/P6.txt, P6long.txt, short-timeout/P6-10s.txt",
+      "display": "no-limit-within-120s (300 s default)"
+    },
+    "P7": {
+      "outcome": "error",
+      "detail": "no memory limit: the whole Executor server process died with 'FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory' about 62 s in, peak sampled RSS 4,050 MB; the harness did not kill it. Every MCP session on the server is lost, and a workerd child was left orphaned.",
+      "evidence": "research/probes/executor/out/P7.txt, P7.server-log.txt",
+      "display": "host crash (server)"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "fresh. globalThis.kept = 7 fails (Unknown identifier 'globalThis'); var kept = 7 returns 7; next execution logs \"gone\"",
+      "evidence": "research/probes/executor/out/P8-exec1-globalThis.txt, P8-exec1-var.txt, P8-exec2.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "223 ms for 5 lookups (parallel), 5 host calls",
+      "evidence": "research/probes/executor/out/P9.txt",
+      "display": "parallel (223 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "error {kind: ExecutionFailure, message: \"Uncaught: probe-boom\"}; message survives, no stack, no line number (also none when thrown from a nested function)",
+      "evidence": "research/probes/executor/out/P10.txt, P10b.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "20 fresh executions of 1+1 over loopback MCP: median 3 ms, p90 4 ms; MCP initialize 3 ms; server cold start about 2-3 s; app deploy 0.77 s",
+      "evidence": "research/probes/executor/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "this.constructor.constructor(...): UnsupportedSyntax 'ThisExpression'; (function(){return this})().process: same; ({}).constructor: 'Property constructor is not available'; [].map.constructor: 'Runtime references are opaque'; tools.constructor: 'Only tools are callable here'; Object.getPrototypeOf: not a function; o.__proto__: not available; tool result .constructor: not available",
+      "evidence": "research/probes/executor/out/P12a.txt through P12i.txt"
+    }
+  },
+  "defaults": {
+    "time": "300,000 ms wall per execute, discovery plus program (packages/mcp/src/contracts/execute.ts:511); operator can change it with EXECUTOR_MCP_TIMEOUT_MS (apps/local/server/src/contracts/config.ts:61). Approval wait does not count (verified).",
+    "memory": "none. The interpreter shares the server's Node heap (about 4 GB default on this machine); exceeding it crashes the server.",
+    "output": "none. Executor passes no maxOutputBytes (packages/mcp/src/implementation/execute.ts:1784-1785); value and logs return whole (200,000-char log came back intact).",
+    "tool_calls": "100 admitted calls per execute, tools.search included (packages/mcp/src/contracts/execute.ts:512; EXECUTOR_MCP_MAX_TOOL_CALLS). Also: 65,536-char source cap (contracts/execute.ts:32 and 243), 64 live programs per server (implementation/executions.ts:767), 2,000 nested async calls (codemode promises.js:19)."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Each app tool becomes a CodeMode Tool.make with the app's input/output schemas (execute.ts:1001-1009); the program sees one global proxy, tools, a path-accumulating ToolReference (codemode interpreter/runtime.js:168). Signatures are rendered to TypeScript text only when search pages are read (codemode tool-schema.js:201, 248; patches/codemode-lazy-catalog.md).",
+      "evidence": "https://github.com/UsefulSoftwareCo/executor/blob/c381941128ad29263baa6906d3b082ad9327ce56/packages/mcp/src/implementation/execute.ts#L1001-L1009"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On demand. The MCP surface is fixed: skills, search, describe, call, execute, resume. Inside a program, tools.search, tools.search.describe and a global search() are served by Executor's backend BM25 search (execute.ts:1751-1782; patches/codemode-host-search.md). Apps not named statically are lazy namespaces loaded on first use (execute.ts:1415, 1771; patches/codemode-lazy-namespaces.md).",
+      "evidence": "https://github.com/UsefulSoftwareCo/executor/blob/c381941128ad29263baa6906d3b082ad9327ce56/packages/mcp/src/implementation/execute.ts#L1751-L1782"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "No serialization boundary to the interpreter: a tools.* call is an Effect forked in the same process (codemode runtime.js:230), arguments copied as JSON data (tool-runtime.js:448-450), then backend.callTool sends it to the app runtime (execute.ts:973-981), which runs the app in a separate workerd process (packages/sdk/src/implementation/workerd-apps.ts:189-190, whose own comment says 'Agent execute(code) is unrelated'). Approval pause holds the program's fibers with a custom scheduler (implementation/program-scheduler.ts, executions.ts:777).",
+      "evidence": "https://github.com/UsefulSoftwareCo/executor/blob/c381941128ad29263baa6906d3b082ad9327ce56/packages/sdk/src/implementation/workerd-apps.ts#L189"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "The code is TypeScript-transpiled and parsed with acorn (codemode interpreter/execute.js:89-108), then walked by an interpreter whose global scope is an explicit allowlist: tools, search, Promise, Symbol, Object, Math, JSON, Number, String, Boolean, Array, console, Date, RegExp, Map, Set, URL, URLSearchParams, URI functions, Error constructors (runtime.js:168-197). No this, globalThis, Function, eval, timers. The boundary is the interpreter's object model, not a process or isolate: it runs in the Executor server's Node process. Docs say so: 'Limits are cooperative, not process isolation' (apps/docs/content/mcp.md:120-122).",
+      "evidence": "research/impls/executor/src/node_modules/.bun/@opencode-ai+codemode@0.0.0-dev-19272/node_modules/@opencode-ai/codemode/dist/interpreter/runtime.js:160-197"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Both value (last expression or return) and console logs, plus toolCalls with per-call outcome and duration, wrapped in {status, execution, unavailableApps}. CodeMode can truncate (execute.js:86, 119-182) but Executor never sets maxOutputBytes.",
+      "evidence": "https://github.com/UsefulSoftwareCo/executor/blob/c381941128ad29263baa6906d3b082ad9327ce56/packages/mcp/src/implementation/execute.ts#L1784-L1785"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Time: Effect.timeoutOrElse around the program (codemode execute.js:49-78), with Executor substituting a deadline clock so approval time is excluded (execute.ts:1651-1667). The loop is stoppable because Effect preempts a fiber every 2,048 ops; patched Turn keeps JS run-to-completion (promises.js:23-31). Tool calls: recordCall throws ToolCallLimitExceeded at calls.length >= max (tool-runtime.js:403-407), and it is a catchable program error. Source: schema maxLength on the MCP input (contracts/execute.ts:243). Memory: nothing.",
+      "evidence": "https://github.com/UsefulSoftwareCo/executor/blob/c381941128ad29263baa6906d3b082ad9327ce56/packages/mcp/src/contracts/execute.ts#L504-L513"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh per execution: a new Interpreter and scope per call (codemode execute.js:19-32). No snapshots; a program paused for approval lives only in server memory, and a restart loses it (docs mcp.md 'What is coming later'; resumeUnavailableMessage 'lost' in contracts/execute.ts).",
+      "evidence": "research/impls/executor/src/node_modules/.bun/@opencode-ai+codemode@0.0.0-dev-19272/node_modules/@opencode-ai/codemode/dist/interpreter/execute.js:19-32"
+    },
+    {
+      "topic": "Errors",
+      "finding": "normalizeError maps a program throw to {kind: ExecutionFailure, message: 'Uncaught: <message>'} with no stack and no location (codemode interpreter/errors.js:31-54). Interpreter-detected errors (unknown identifier, unsupported syntax, bad property) do carry {line, column}. A failing tool call becomes ToolFailure with a call_ reference (execute.ts:1884-1887).",
+      "evidence": "research/impls/executor/src/node_modules/.bun/@opencode-ai+codemode@0.0.0-dev-19272/node_modules/@opencode-ai/codemode/dist/interpreter/errors.js:31-54"
+    },
+    {
+      "topic": "Approvals and credentials",
+      "finding": "Approval is declared per tool in app code (always()/never()); execute returns status approval-required with requestId and the exact invocation, and resume({requestId, response:{action}}) continues the same program. Verified: a 15 s approval wait under a 10 s timeout still completed. Credentials never enter the interpreter: accounts are resolved on the host and passed to the app in workerd (execute.ts:966-981). The local bearer key at plain /mcp gets model mode, because the URL parser defaults to model (packages/mcp-auth/src/contracts/grant.ts:143).",
+      "evidence": "research/probes/executor/out/short-timeout/A-approval-resume.txt"
+    }
+  ],
+  "surprises": [
+    "The 'sandboxed interpreter' is a JS-in-JS tree-walker running in the Executor server's own Node process. A program's memory is the server's memory: P7 crashed the whole local server with a V8 heap OOM in about 62 s and dropped every session. Docs do hedge with 'cooperative, not process isolation', but name no memory limit, and there is none.",
+    "A one-line synchronous infinite recursion, function f(n){return f(n+1)} f(0), crashed the whole server with a heap OOM in 31.5 s, twice (peak RSS 4.4 GB). Executor's own patch notes say 'Sync recursion is unchanged: it never overflows and runs until TimeoutExceeded' (patches/codemode-run-to-completion.md:85). The 5-minute timeout never gets a chance.",
+    "After the server crash a workerd child process was left orphaned (PPID 1).",
+    "The 100-call cap counts tools.search calls too: search plus 100 lookups failed. Hitting the cap is a catchable exception inside the program (a try/catch loop got 100 results and the error message), but uncaught it interrupts every in-flight call (101 parallel lookups: 100 interrupted, result failed in 30 ms).",
+    "Thrown errors keep only the message: 'Uncaught: probe-boom', with no line number or stack, even though the interpreter reports line and column for its own errors.",
+    "Common JS idioms do not exist: globalThis, this, setTimeout, Function, Object.getPrototypeOf. Docs mention no timers; the rest is undocumented and makes the P8 and P12 probe forms fail at parse or lookup time rather than at a security check.",
+    "Docs match on the rest: 65,536 chars passes and 65,537 is rejected by the MCP schema (-32602); while(true) is stopped at 300,010 ms; results come back whole; approval wait is excluded from the time budget; other executions stay responsive (8 ms) while one program spins."
+  ],
+  "hardened": {
+    "config": "Private server built from the pinned local source on 127.0.0.1:41840, fresh EXECUTOR_DATA_DIR and supplied keys (research/probes/executor/hardened-start-server.sh). EXECUTOR_MCP_TIMEOUT_MS=10000 (my choice; default 300000; apps/local/server/src/contracts/config.ts:61, default packages/mcp/src/contracts/execute.ts:511, documented apps/local/server/README.md:65). EXECUTOR_MCP_MAX_TOOL_CALLS=10 (my choice; default 100; config.ts:64, README.md:66; verified honored: the 11th call failed with 'Execution exceeded its tool-call limit of 10.', out/hardened-L-calls-11.txt). No other public limit exists: McpLimits has only these two fields (packages/mcp/src/contracts/execute.ts:504-507); no memory, output-size, network, filesystem or env option for programs; EXECUTOR_EVALUATION_MEMORY_MB bounds the declaration cache, not programs (packages/sdk/src/implementation/declaration-config.ts:22,45); the self-host Docker build reads only EXECUTOR_MCP_TIMEOUT_MS (apps/hosted/self-host/src/mcp.ts:49-54) and sets no container memory limit (apps/hosted/self-host/compose.yaml). The interpreter never has fetch, process or fs (apps/docs/content/mcp.md:120-122).",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "ExecutionFailure: Unknown identifier 'fetch'. (line 1, col 7)",
+        "evidence": "research/probes/executor/out/hardened-P3.txt",
+        "display": "not-defined"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "detail": "require: Unknown identifier 'require'; await import(\"fs\"): UnsupportedSyntax 'ImportExpression'; Deno: Unknown identifier 'Deno'",
+        "evidence": "research/probes/executor/out/hardened-P4a.txt, hardened-P4b.txt, hardened-P4c.txt",
+        "display": "not-defined"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "detail": "Unknown identifier 'process'. The server process had PROBE_SECRET=s3cr3t in its env (serverHasProbeSecretInEnv: true).",
+        "evidence": "research/probes/executor/out/hardened-P5.txt",
+        "display": "not-defined"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "TimeoutExceeded 'Execution timed out after 10000ms; earlier tool calls may have completed.' at 10,024 ms. Server CPU 50% during the loop, 0.3% 3 s after; 1+1 then returned 2 in the same session (16 ms) and a new one (6 ms).",
+        "evidence": "research/probes/executor/out/hardened-P6.txt",
+        "display": "limited (10 s)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "SPEC code. Stopped by the 10 s time budget, not by memory: TimeoutExceeded at 10,017 ms, server RSS 283 MB before, 1,684 MB peak. Server survived; 1+1 returned 2 in the same session (30 ms) and a new session (20 ms). No memory option exists, so the bound is allocation rate times the timeout. Extra: sync recursion f(n+1), which crashed the default server in 31.5 s, also timed out at 10 s (peak 2,673 MB) and the server survived.",
+        "evidence": "research/probes/executor/out/hardened-P7.txt, research/probes/executor/out/hardened-L-sync-recursion.txt",
+        "display": "limited (10 s time, 1.7 GB peak)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "287 ms for 5 lookups (parallel), 5 host calls under the 10-call cap",
+        "evidence": "research/probes/executor/out/hardened-P9.txt",
+        "display": "parallel (287 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "Same nine attempts as default, same refusals: ThisExpression unsupported (a, b); 'Property constructor is not available' (c, i); 'Runtime references are opaque' (d); 'Only tools are callable here' (e); un-awaited Promise rejected (f); Object.getPrototypeOf not a function (g); __proto__ not available (h)",
+        "evidence": "research/probes/executor/out/hardened-P12a.txt through hardened-P12i.txt",
+        "display": "blocked"
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "probe": "P4",
+  "outcome": "blocked",
+  "detail": "InterpreterError: Code execution failed at line 'open(\"/etc/hosts\").read()' due to: InterpreterError: Forbidden function evaluation: 'open' is not among the explicitly allowed tools or defined/imported in the preceding code",
+  "wall_ms": 0.2,
+  "config": "LocalPythonExecutor(additional_authorized_imports=[], timeout_seconds=5)"
+}

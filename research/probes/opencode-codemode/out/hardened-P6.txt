@@ -1,0 +1,37 @@
+{
+  "mode": "hardened",
+  "probe": "P6",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 0,
+  "hostPolluted": null,
+  "result": {
+    "winner": {
+      "stopped": "by-implementation",
+      "r": {
+        "code": "while (true) {}",
+        "ms": 30025.61,
+        "hostCalls": 0,
+        "result": {
+          "ok": false,
+          "error": {
+            "kind": "TimeoutExceeded",
+            "message": "Execution timed out after 30000ms."
+          },
+          "toolCalls": []
+        }
+      }
+    },
+    "wallMs": 30026,
+    "hostTimerTicksDuringLoop": 30,
+    "concurrentExecutionDuringLoop": {
+      "code": "1+1",
+      "ms": 2.07,
+      "hostCalls": 0,
+      "result": {
+        "ok": true,
+        "value": 2,
+        "toolCalls": []
+      }
+    }
+  }
+}

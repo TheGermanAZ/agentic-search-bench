@@ -1,0 +1,1 @@
+neighbor printed "42" in 257 ms; aggressor P6 ended after 60075 ms with "ERROR: interrupted\n    at <eval> (eval.js:1:1)"

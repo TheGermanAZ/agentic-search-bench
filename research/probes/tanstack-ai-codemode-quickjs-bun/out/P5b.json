@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P5b",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 2.941750000000006,
+  "source": [
+    "return typeof process + \"|\" + Object.getOwnPropertyNames(globalThis).join(\",\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "undefined|Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,Array,Object,Function,Iterator,parseInt,parseFloat,isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,eval,Number,Boolean,String,Math,Reflect,Symbol,globalThis,BigInt,Date,RegExp,JSON,Proxy,Map,Set,WeakMap,WeakSet,ArrayBuffer,SharedArrayBuffer,Uint8ClampedArray,Int8Array,Uint8Array,Int16Array,Uint16Array,Int32Array,Uint32Array,BigInt64Array,BigUint64Array,Float16Array,Float32Array,Float64Array,DataView,Promise,WeakRef,FinalizationRegistry,console,external_lookup,external_failing",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 148.12775000000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "undefined|Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,Array,Object,Function,Iterator,parseInt,parseFloat,isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,eval,Number,Boolean,String,Math,Reflect,Symbol,globalThis,BigInt,Date,RegExp,JSON,Proxy,Map,Set,WeakMap,WeakSet,ArrayBuffer,SharedArrayBuffer,Uint8ClampedArray,Int8Array,Uint8Array,Int16Array,Uint16Array,Int32Array,Uint32Array,BigInt64Array,BigUint64Array,Float16Array,Float32Array,Float64Array,DataView,Promise,WeakRef,FinalizationRegistry,console,external_lookup,external_failing",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 148,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 44
+}

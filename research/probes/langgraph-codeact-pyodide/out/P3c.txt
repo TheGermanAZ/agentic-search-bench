@@ -1,0 +1,27 @@
+probe: P3c
+outcome: works
+display: net permission granted
+detail: NET granted
+
+code:
+----
+import js
+print('NET', js.Deno.permissions.querySync(js.JSON.parse('{"name": "net", "host": "example.com"}')).state)
+----
+
+setup_ms: 41.1
+wall_s (whole child process): 1.52
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.3
+host lookup calls: 0
+
+=== run 0 (1212.7 ms) ===
+ok: true
+stdout: NET granted
+error: null
+context_keys: ["js"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

@@ -1,0 +1,17 @@
+{
+  "probe": "P6",
+  "config": "--timeout 5s --memory 8 --max-tool-calls 10 --pool-size 1",
+  "code": "while (true) {}",
+  "wall_ms": 120001,
+  "host_calls": 0,
+  "isError": null,
+  "response_text": "{\"harnessTimeout\":true,\"ms\":120000}",
+  "response_text_length": 35,
+  "raw_flags": {
+    "harnessTimeout": true,
+    "transportClosed": false
+  },
+  "wall_ms_until_stopped_or_harness_kill": 120002,
+  "ping_after": "no answer within 5 s (server wedged)",
+  "proxy_alive": true
+}

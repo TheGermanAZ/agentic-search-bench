@@ -1,0 +1,72 @@
+{
+  "cmd": "python3 probe_core.py run ../../../../impls/strands-codemode/.venv/bin/python hardened P7",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 594,
+  "peakTreeRssMb": 119,
+  "peakTreeFootprintMb": 82,
+  "watchKill": null,
+  "record": null,
+  "childStdoutOtherChars": 77,
+  "childStdoutHead": "{\"tag\": \"hardened-P7\", \"outcome\": \"limited\", \"display\": \"limited (256 MiB)\"}\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      78,
+      43,
+      12
+    ],
+    [
+      127,
+      58,
+      12
+    ],
+    [
+      178,
+      74,
+      12
+    ],
+    [
+      230,
+      78,
+      51
+    ],
+    [
+      281,
+      85,
+      51
+    ],
+    [
+      333,
+      92,
+      66
+    ],
+    [
+      385,
+      98,
+      66
+    ],
+    [
+      437,
+      107,
+      66
+    ],
+    [
+      488,
+      113,
+      82
+    ],
+    [
+      543,
+      119,
+      82
+    ],
+    [
+      593,
+      21,
+      13
+    ]
+  ]
+}

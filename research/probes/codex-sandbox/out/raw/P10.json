@@ -1,0 +1,34 @@
+[
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "raise ValueError(\"probe-boom\")"
+  ],
+  "exit": 1,
+  "wall_ms": 83.7,
+  "peak_tree_rss_mb": 44.0,
+  "killed": null,
+  "stdout_len": 0,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    raise ValueError(\"probe-boom\")\nValueError: probe-boom\n",
+  "label": "python raise"
+ },
+ {
+  "mode": "workspace-write",
+  "argv": [
+   "python3",
+   "-c",
+   "raise ValueError(\"probe-boom\")"
+  ],
+  "exit": 1,
+  "wall_ms": 88.0,
+  "peak_tree_rss_mb": 45.9,
+  "killed": null,
+  "stdout_len": 0,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    raise ValueError(\"probe-boom\")\nValueError: probe-boom\n",
+  "label": "python raise"
+ }
+]

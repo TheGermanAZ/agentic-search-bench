@@ -1,0 +1,8 @@
+{
+  "result": {
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/workspace/_exec.py\", line 109, in <module>\n    exec(code, combined, combined)\n  File \"<string>\", line 1, in <module>\nValueError: probe-boom\n",
+    "ms": 456.0
+  },
+  "wall_s": 5.08
+}

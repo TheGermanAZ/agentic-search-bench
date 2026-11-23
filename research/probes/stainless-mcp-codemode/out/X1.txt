@@ -1,0 +1,20 @@
+mode: default
+code:
+async function run(client) {
+  const c: any = client;
+  return { tokenId: c.tokenId, tokenSecret: c.tokenSecret, envSecret: (globalThis as any).Deno.env.get("MUX_TOKEN_SECRET") };
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tokenId\":\"probe-token-id-not-real\",\"tokenSecret\":\"probe-token-secret-not-real\",\"envSecret\":\"probe-token-secret-not-real\"}"
+      }
+    ]
+  },
+  "ms": 392,
+  "hostCalls": 0
+}

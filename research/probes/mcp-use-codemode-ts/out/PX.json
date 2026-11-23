@@ -1,0 +1,9 @@
+{
+  "probe": "PX",
+  "config": "default",
+  "outcome": "works",
+  "detail": "see raw",
+  "display": "extras",
+  "peak_child_rss_mb": 85,
+  "wall_s": 0.4
+}

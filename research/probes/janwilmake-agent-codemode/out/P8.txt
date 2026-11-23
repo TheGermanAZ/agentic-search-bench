@@ -1,0 +1,24 @@
+[
+  {
+    "file": "P8a.ts",
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "wallMs": 297,
+    "hostCalls": 0,
+    "stdoutChars": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "file": "P8b.ts",
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "wallMs": 368,
+    "hostCalls": 0,
+    "stdoutChars": 5,
+    "stdout": "gone\n",
+    "stderr": ""
+  }
+]

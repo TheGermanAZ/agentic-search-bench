@@ -1,0 +1,7 @@
+{
+  "probe": "Pcap",
+  "outcome": "limited",
+  "display": "truncated (50,000 + marker)",
+  "detail": "print('B' * 120000): 50,000 B's around '... [OUTPUT TRUNCATED - 70,001 bytes omitted out of 120,001 total] ...'.",
+  "evidence": "research/probes/hermes-execute-code/out/Pcap.txt"
+}

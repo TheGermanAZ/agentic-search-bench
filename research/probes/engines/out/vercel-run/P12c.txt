@@ -1,0 +1,5 @@
+try { console.log(String(Object.keys(globalThis))) } catch (e) { console.log("err " + e) }
+--- output
+console,corpus
+---
+wall_ms=4 host_calls=0 peak_tree_rss_mb=173

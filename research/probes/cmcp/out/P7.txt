@@ -1,0 +1,55 @@
+{
+  "probe": "P7",
+  "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+  "args_extra": {},
+  "wall_ms": 184,
+  "host_calls": 0,
+  "isError": true,
+  "response_text": "execute error: JS promise rejected: Error: out of memory\n    at <anonymous> (eval_script:19:26)\n    at <eval> (eval_script:19:40)\n",
+  "response_text_length": 130,
+  "console_on_proxy_stderr": [],
+  "raw_flags": {
+    "harnessTimeout": false,
+    "transportClosed": false,
+    "rpcError": null
+  },
+  "container_cgroup_mb": {
+    "baseline": 97,
+    "peak": 98
+  },
+  "timeline_s_mb": [],
+  "killed_by_harness_at_4GB": false,
+  "next_execution": {
+    "probe": "P7-after",
+    "code": "return 'alive'",
+    "args_extra": {},
+    "wall_ms": 1,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "\"alive\"",
+    "response_text_length": 7,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  "next_execution_alloc_small": {
+    "probe": "P7-after-alloc",
+    "code": "return \"y\".repeat(1e6).length",
+    "args_extra": {},
+    "wall_ms": 3,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "1000000",
+    "response_text_length": 7,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  "stderr_tail": "22T19:47:25.600259Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[1mserve_inner\u001b[0m\u001b[2m:\u001b[0m \u001b[2mrmcp::service\u001b[0m\u001b[2m:\u001b[0m Service initialized as client \u001b[3mpeer_info\u001b[0m\u001b[2m=\u001b[0mSome(InitializeResult { protocol_version: ProtocolVersion(\"2025-03-26\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: None, completions: None, prompts: None, resources: None, tools: Some(ToolsCapability { list_changed: None }), tasks: None }, server_info: Implementation { name: \"lookup\", title: None, version: \"1.0.0\", description: None, icons: None, website_url: None }, instructions: None })\n\u001b[2m2026-11-22T19:47:25.600526Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mcmcp_core::client\u001b[0m\u001b[2m:\u001b[0m connected \u001b[3mserver\u001b[0m\u001b[2m=\u001b[0mlookup \u001b[3mtool_count\u001b[0m\u001b[2m=\u001b[0m1\n\u001b[2m2026-11-22T19:47:25.603832Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mcmcp\u001b[0m\u001b[2m:\u001b[0m starting MCP server on stdio (hot-reload enabled)\n\u001b[2m2026-11-22T19:47:25.604613Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mrmcp::handler::server\u001b[0m\u001b[2m:\u001b[0m client initialized\n\u001b[2m2026-11-22T19:47:25.604631Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[1mserve_inner\u001b[0m\u001b[2m:\u001b[0m \u001b[2mrmcp::service\u001b[0m\u001b[2m:\u001b[0m Service initialized as server \u001b[3mpeer_info\u001b[0m\u001b[2m=\u001b[0mSome(InitializeRequestParams { meta: None, protocol_version: ProtocolVersion(\"2025-03-26\"), capabilities: ClientCapabilities { experimental: None, extensions: None, roots: None, sampling: None, elicitation: None, tasks: None }, client_info: Implementation { name: \"asb-probe\", title: None, version: \"1\", description: None, icons: None, website_url: None } })\n"
+}

@@ -1,0 +1,10 @@
+# docker run --device /dev/kvm (OrbStack, arm64)
+docker: Error response from daemon: error gathering device information while adding custom device "/dev/kvm": no such file or directory
+
+Run 'docker run --help' for more information
+exit=127
+# docker run without --device
+aarch64
+ls: cannot access '/dev/kvm': No such file or directory
+ls: cannot access '/dev/mshv': No such file or directory
+exit=2

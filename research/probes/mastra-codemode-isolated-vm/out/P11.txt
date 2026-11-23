@@ -1,0 +1,49 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 60,
+    "totalWallMs": 286,
+    "peakTreeRssMB": 79.7,
+    "stderrTail": ""
+  },
+  "backend": "isolated-vm",
+  "probe": "P11",
+  "mode": "default",
+  "setupMs": 83.8,
+  "record": {
+    "oneTimeSetupMs": 83.8,
+    "oneTimeSetupCovers": "import @mastra/core/tools + transport, createTool, createCodeMode",
+    "firstExecutionMs": 34.7,
+    "firstResult": {
+      "success": true,
+      "result": 2,
+      "logs": []
+    },
+    "medianMs": 1.6,
+    "p90Ms": 2.9,
+    "samples": [
+      4.1,
+      1.9,
+      2.9,
+      2.9,
+      1.9,
+      1.3,
+      2,
+      1.6,
+      1.3,
+      1.5,
+      1.3,
+      1.3,
+      1.4,
+      1.3,
+      1.4,
+      1.7,
+      1.7,
+      3.5,
+      1.4,
+      1.2
+    ]
+  }
+}

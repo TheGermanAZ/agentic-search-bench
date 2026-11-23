@@ -1,0 +1,36 @@
+{
+  "probe": "P3",
+  "config": "hardened",
+  "codes": [
+    "import urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10)\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg",
+    "import ssl, urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10, context=ssl._create_unverified_context())\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: <urlopen error unknown url type: https>",
+      "error": "Error during execution: <urlopen error unknown url type: https>",
+      "context_keys": [],
+      "host_builtins_leak": false,
+      "ms": 1275.6,
+      "started": 1795377623.4864671
+    },
+    {
+      "ok": false,
+      "stdout": "Error during execution: name 'HTTPSHandler' is not defined",
+      "error": "Error during execution: name 'HTTPSHandler' is not defined",
+      "context_keys": [],
+      "host_builtins_leak": false,
+      "ms": 1675.5,
+      "started": 1795377624.762293
+    }
+  ],
+  "setup_ms": 28.5,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 3.46,
+  "peak_tree_rss_gb": 0.34,
+  "calls": [],
+  "child_log_tail": ""
+}

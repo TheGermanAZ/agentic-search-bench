@@ -1,0 +1,10 @@
+CODE:
+r = lookup(id=21)
+print(r['value'])
+PRINTED:
+42
+RETURN:
+None
+EXC:
+None
+HOST_CALLS: 1

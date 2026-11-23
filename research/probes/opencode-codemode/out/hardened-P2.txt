@@ -1,0 +1,31 @@
+{
+  "mode": "hardened",
+  "probe": "P2",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 0,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "console.log(\"A\".repeat(200000)); \"RETURNED\"",
+      "ms": 23.75,
+      "ok": true,
+      "returnedVisible": true,
+      "longestRunOfA": 0,
+      "totalChars": 42,
+      "truncatedFlag": true,
+      "outputHead": "[\"[logs truncated: showing 0 of 1 lines]\"]",
+      "outputTail": "[\"[logs truncated: showing 0 of 1 lines]\"]"
+    },
+    {
+      "code": "console.log(\"A\".repeat(200000)); return \"RETURNED\"",
+      "ms": 1.2,
+      "ok": true,
+      "returnedVisible": true,
+      "longestRunOfA": 0,
+      "totalChars": 42,
+      "truncatedFlag": true,
+      "outputHead": "[\"[logs truncated: showing 0 of 1 lines]\"]",
+      "outputTail": "[\"[logs truncated: showing 0 of 1 lines]\"]"
+    }
+  ]
+}

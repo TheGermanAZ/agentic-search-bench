@@ -1,0 +1,32 @@
+probe: P4
+outcome: blocked
+display: blocked (not in Pyodide FS)
+detail: '[Error] FileNotFoundError: [44, \'No such file or directory\']' (Pyodide's in-memory FS has no /etc/hosts); js.Deno.readTextFileSync('/etc/hosts') -> 'NotCapable: Requires read access to "/etc/hosts"' (P12jsTry).
+
+code:
+----
+data = open("/etc/hosts").read()
+msg = "HOSTS " + str(len(data)) + " chars, mentions localhost: " + str("localhost" in data)
+print(msg)
+msg
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 0.75
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.47
+host lookup calls: 0
+
+=== run 0 (381.6 ms) ===
+ok: false
+stdout: 
+model_view_all: ["<repl_output>\n[Error] FileNotFoundError: [44, 'No such file or directory']\n</repl_output>"]
+raw_outputs_untruncated_len: [60, 25]
+answer: done
+error: <repl_output>
+[Error] FileNotFoundError: [44, 'No such file or directory']
+</repl_output>
+
+=== child process log (tail) ===
+

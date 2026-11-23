@@ -1,0 +1,14 @@
+mode: default
+code:
+const r = await callTool("main_ws_1795375950947_1.lookup", {id: 50}); console.log("cross-connection result", JSON.stringify(r))
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "c6a25068-1c35-45d2-b4b3-b73181a9699c",
+  "success": true,
+  "output": "cross-connection result {\"id\":50,\"value\":100}\n\n\n",
+  "hostCallsOnConnectionA": 1,
+  "connA": "ws_1795375950947_1",
+  "connB": "ws_1795375952140_2"
+}

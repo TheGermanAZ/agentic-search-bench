@@ -1,0 +1,6 @@
+probe P6 hardened=True
+code:
+while True:
+    pass
+{"ok": false, "result": null, "error": "exit_code=124: \n Timeout", "ms": 10058.6}
+stdout (9 chars): '\n Timeout'

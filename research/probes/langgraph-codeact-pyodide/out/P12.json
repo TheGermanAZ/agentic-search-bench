@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "blocked",
+  "display": "blocked (Deno perms)",
+  "detail": "P12a subclasses walk: ran; 'SUBS 397 True True' | P12b __import__('os').system: failed; 'Error during execution: Pyodide has suffered a fatal error. Please report this to the Pyodide maintainers. The cause of the fatal error was: NotCapable: Requires env access, run again with the --allow-env flag at Object....' | P12c _wrap_close globals popen: failed; 'Error during execution: [Errno 138] emscripten does not support processes. Error during execution: [Errno 138] emscripten does not support processes.'",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P12.txt"
+}

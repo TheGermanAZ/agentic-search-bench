@@ -1,0 +1,30 @@
+probe: P1
+outcome: works
+display: works (42, 1 call)
+detail: 42 in printed stdout: False; 42 in returned value: True; output '42'; host lookup calls: 1
+
+code:
+----
+r = await call_tool("lookup", {"id": 21})
+msg = r["value"]
+print(msg)
+msg
+----
+
+setup_ms: 42.5
+wall_s (whole child process): 1.25
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.106
+host lookup calls: 1
+  call id=21 start=1795379009.998 end=1795379010.199 pid=8320
+
+=== run 0 (262.6 ms) ===
+ok: true
+result: 42
+structured: null
+stdout: 
+
+=== child process log (tail) ===
+42
+

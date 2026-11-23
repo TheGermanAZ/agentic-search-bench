@@ -1,0 +1,38 @@
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P4",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 95.380292,
+  "source": [
+    "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "require is not defined",
+          "name": "ReferenceError",
+          "stack": "ReferenceError: require is not defined\n    at <isolated-vm>:5:1\n    at <isolated-vm>:6:7\n    at <isolated-vm>:11:3"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 19.284374999999955,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: require is not defined",
+    "ms": 19,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 81.3
+}

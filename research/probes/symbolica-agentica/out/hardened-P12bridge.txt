@@ -1,0 +1,137 @@
+probe=P12bridge mode=wasm AGENTICA_NO_SANDBOX=None PROBE_SECRET set in host: True
+sandbox mode: wasm
+[38;2;209;82;141;48;2;59;21;39m^^^[39;49m missing virtual resource 80000001:0:ffff93d54e00 in AgentWorld[0].Frame[0]
+decoding type anno [38;2;115;108;158;48;2;31;29;44mref[80000001:0:ffff93d54e00][39;49m threw exception 
+┃ /1/agentica_internal/warpc/frame.py:947#Frame.raise_dec_err
+┃ Traceback (most recent call last):
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 817, in dec_type
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 770, in dec_any
+┃ 
+┃   File "/1/agentica_internal/warpc/msg/term_resource.py", line 33, in decode
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 826, in dec_resource
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 231, in get_user_resource
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 241, in missing_user_resource
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 947, in raise_dec_err
+┃ 
+┃ agentica_internal.warpc.exceptions.WarpDecodingError: resource with grid=80000001:0:ffff93d54e00 is not defined.
+┃ 
+┃ 
+┃ frame: AgentWorld[0].Frame[0]
+┃ 
+┃ remote resources: 0x14f0c08 0x1638008 0x1949208 0x1990208 0x1637408 0x182fa08 0x17ab008 0x17a8e08 0x182f610 0x182ea10 0x194ae18 0x17d6a18 0x1771618 0x175be28 0x1837e28 0x1772e28 ...
+[38;2;209;82;141;48;2;59;21;39m^^^[39;49m missing virtual resource 80000001:0:ffff93dea520 in AgentWorld[0].Frame[0]
+decoding type anno [38;2;194;212;107;48;2;54;59;29mref[80000001:0:ffff93dea520][39;49m threw exception 
+┃ /1/agentica_internal/warpc/frame.py:947#Frame.raise_dec_err
+┃ Traceback (most recent call last):
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 817, in dec_type
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 770, in dec_any
+┃ 
+┃   File "/1/agentica_internal/warpc/msg/term_resource.py", line 33, in decode
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 826, in dec_resource
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 231, in get_user_resource
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 241, in missing_user_resource
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 947, in raise_dec_err
+┃ 
+┃ agentica_internal.warpc.exceptions.WarpDecodingError: resource with grid=80000001:0:ffff93dea520 is not defined.
+┃ 
+┃ 
+┃ frame: AgentWorld[0].Frame[0]
+┃ 
+┃ remote resources: 0x14f0c08 0x1638008 0x1949208 0x1990208 0x1637408 0x182fa08 0x17ab008 0x17a8e08 0x182f610 0x182ea10 0x194ae18 0x17d6a18 0x1771618 0x1576618 0x17f6a18 0x18fdc18 ...
+[38;2;209;82;141;48;2;59;21;39m^^^[39;49m missing virtual resource 80000001:0:ffff93d54e00 in AgentWorld[0].Frame[0]
+decoding type anno [38;2;115;108;158;48;2;31;29;44mref[80000001:0:ffff93d54e00][39;49m threw exception 
+┃ /1/agentica_internal/warpc/frame.py:947#Frame.raise_dec_err
+┃ Traceback (most recent call last):
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 817, in dec_type
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 770, in dec_any
+┃ 
+┃   File "/1/agentica_internal/warpc/msg/term_resource.py", line 33, in decode
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 826, in dec_resource
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 231, in get_user_resource
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 241, in missing_user_resource
+┃ 
+┃   File "/1/agentica_internal/warpc/frame.py", line 947, in raise_dec_err
+┃ 
+┃ agentica_internal.warpc.exceptions.WarpDecodingError: resource with grid=80000001:0:ffff93d54e00 is not defined.
+┃ 
+┃ 
+┃ frame: AgentWorld[0].Frame[0]
+┃ 
+┃ remote resources: 0x14f0c08 0x1638008 0x1949208 0x1990208 0x1637408 0x182fa08 0x17ab008 0x17a8e08 0x182f610 0x182ea10 0x194ae18 0x17d6a18 0x1771618 0x1576618 0x17f6a18 0x18fdc18 ...
+host /tmp/pwned.txt exists: True PWNED-FROM-SANDBOX root
+
+--- exec 1 (4 ms)
+output repr (first 600): "<'lookup' function 80000001:0:ffff949563e0> function [] False\n"
+len(output): 62
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 2 (122 ms)
+output repr (first 600): '<class \'dict\'>\n{\'__name__\': \'__main__\', \'__doc__\': "Symbolica Agentica sandbox probes (SPEC.md P1-P12), no model in the loop.\\n\\nRuns inside the symbolica-agentica-sandbox:probe image (see docker/Dockerfile) with the\\nagentica-server venv: `uv run --no-sync python /probe/probe.py <probe> [--mode from_env|wasm]`.\\n\n'
+len(output): 316
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 3 (3 ms)
+output repr (first 600): "<class 'dict'>\n<module 'os' (frozen)>\n"
+len(output): 38
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 4 (5 ms)
+output repr (first 600): "[('CALLS', 'dict'), ('HOST_API_KEY', 'str'), ('SandboxTestContext', 'type'), ('asyncio', 'module'), ('lookup', 'function'), ('main', 'function'), ('mode', 'str'), ('os', 'module'), ('probe', 'str'), ('psutil', 'module'), ('run', 'function'), ('show', 'function'), ('statistics', 'module'), ('sys', 'module'), ('threading', 'module'), ('time', 'module')]\n"
+len(output): 354
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 5 (3 ms)
+output repr (first 600): 'HOST_API_KEY via __globals__: s3cr3t\n'
+len(output): 37
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 6 (25 ms)
+output repr (first 600): "<class 'virtual.module'> <module 'psutil' from '/usr/site-packages/'>\n<class 'type'>\n"
+len(output): 85
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 7 (5 ms)
+output repr (first 600): "host Popen: psutil.Popen(pid=21, name='sh', status='sleeping') 21\n"
+len(output): 66
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+--- exec 8 (11 ms)
+output repr (first 600): 'Traceback (most recent call last):\n  <repl> line 1\n    print(hostos.system("echo PWNED"))\nAttributeError: module \'os\' has no attribute \'system\'\n\n'
+len(output): 145
+out_str: None
+exception_name: builtins.AttributeError
+traceback_str: 'Traceback (most recent call last):\n  <repl> line 1\n    print(hostos.system("echo PWNED"))\nAttributeError: module \'os\' has no attribute \'system\'\n'
+has_result: False
+host lookup calls: 0
+[harness] exit=0 wall=5s container=symbolica-agentica-hardened-P12bridge-51883

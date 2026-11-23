@@ -1,0 +1,20 @@
+probe: P7
+binary: goose-codemode-probe
+process wall_ms: 61.9
+peak_rss_mb: 3.5
+exit: 0
+killed: None
+
+--- execution 0 ---
+code:
+async function run() {
+const a = []; while (true) a.push("x".repeat(1e6))
+}
+is_error: True
+elapsed_ms: 0.99
+host_calls: 0
+returned chars: 153
+text returned to model:
+Error: RuntimeLimitError: reached the maximum number of iteration loops on this execution
+    at run (code_mode.js:2:45)
+    at <main> (code_mode.js:4:5)

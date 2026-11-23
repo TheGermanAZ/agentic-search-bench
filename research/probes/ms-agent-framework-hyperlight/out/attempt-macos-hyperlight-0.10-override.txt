@@ -1,0 +1,9 @@
+platform: macOS-26.5.2-arm64-arm-64bit arm64 python 3.12.11
+  agent-framework-hyperlight 1.0.0b261112
+  agent-framework-core 1.26.0
+  hyperlight-sandbox 0.10.0
+  hyperlight-sandbox-python-guest 0.10.0
+  hyperlight-sandbox-backend-wasm 0.10.0
+result: [<agent_framework._types.Content object at 0x1095dd580>]
+host calls: 1
+RuntimeError: _native_wasm::WasmSandbox is unsendable, but is being dropped on another thread

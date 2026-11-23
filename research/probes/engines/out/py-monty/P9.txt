@@ -1,0 +1,9 @@
+import asyncio
+import time
+t = time.time()
+rs = await asyncio.gather(*[read(i) for i in [1, 2, 3, 4, 5]])
+print(round((time.time() - t) * 1000), ",".join(str(r["value"]) for r in rs))
+--- output
+222 2,4,6,8,10
+---
+wall_ms=224 host_calls=5 peak_tree_rss_mb=147

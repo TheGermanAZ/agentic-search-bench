@@ -1,0 +1,321 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/../_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/adapter.mjs hardened R4",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 8363,
+  "peakTreeRssMb": 166,
+  "peakTreeFootprintMb": 46,
+  "watchKill": null,
+  "record": {
+    "impl": "bifrost-codemode",
+    "config": "hardened",
+    "test": "R4",
+    "notes": "maximhq/bifrost:v2.6.0, data-hardened/config.json; gateway restarted for this test (8233 ms); new MCP client per execution; Starlark codes",
+    "data": {
+      "notApplicable": "no regex module in Starlark"
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "gatewayStartMs": 8233,
+      "containerBaselineMb": 262,
+      "containerPeakMb": 262,
+      "containerLastMb": 262,
+      "containerKilled": null,
+      "containerRssMsMb": [
+        [
+          48,
+          262
+        ]
+      ]
+    },
+    "hostMaxEventLoopLagMs": 31,
+    "hostEvents": [],
+    "totalMs": 8331
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      78,
+      67,
+      23
+    ],
+    [
+      228,
+      120,
+      46
+    ],
+    [
+      382,
+      120,
+      46
+    ],
+    [
+      536,
+      76,
+      46
+    ],
+    [
+      686,
+      76,
+      34
+    ],
+    [
+      838,
+      76,
+      34
+    ],
+    [
+      992,
+      76,
+      34
+    ],
+    [
+      1142,
+      76,
+      34
+    ],
+    [
+      1296,
+      76,
+      34
+    ],
+    [
+      1449,
+      76,
+      34
+    ],
+    [
+      1601,
+      76,
+      34
+    ],
+    [
+      1755,
+      76,
+      34
+    ],
+    [
+      1908,
+      76,
+      33
+    ],
+    [
+      2062,
+      76,
+      34
+    ],
+    [
+      2213,
+      76,
+      33
+    ],
+    [
+      2369,
+      76,
+      34
+    ],
+    [
+      2521,
+      76,
+      34
+    ],
+    [
+      2673,
+      76,
+      34
+    ],
+    [
+      2826,
+      76,
+      34
+    ],
+    [
+      2979,
+      76,
+      34
+    ],
+    [
+      3131,
+      76,
+      34
+    ],
+    [
+      3282,
+      76,
+      34
+    ],
+    [
+      3434,
+      76,
+      34
+    ],
+    [
+      3586,
+      76,
+      33
+    ],
+    [
+      3738,
+      76,
+      33
+    ],
+    [
+      3890,
+      76,
+      34
+    ],
+    [
+      4042,
+      76,
+      33
+    ],
+    [
+      4192,
+      76,
+      34
+    ],
+    [
+      4345,
+      76,
+      34
+    ],
+    [
+      4499,
+      76,
+      34
+    ],
+    [
+      4652,
+      76,
+      34
+    ],
+    [
+      4803,
+      85,
+      34
+    ],
+    [
+      4955,
+      76,
+      34
+    ],
+    [
+      5106,
+      76,
+      34
+    ],
+    [
+      5258,
+      76,
+      34
+    ],
+    [
+      5409,
+      76,
+      34
+    ],
+    [
+      5563,
+      76,
+      34
+    ],
+    [
+      5716,
+      76,
+      33
+    ],
+    [
+      5866,
+      75,
+      34
+    ],
+    [
+      6020,
+      76,
+      34
+    ],
+    [
+      6172,
+      76,
+      34
+    ],
+    [
+      6325,
+      76,
+      34
+    ],
+    [
+      6491,
+      76,
+      34
+    ],
+    [
+      6642,
+      76,
+      34
+    ],
+    [
+      6783,
+      76,
+      34
+    ],
+    [
+      6935,
+      76,
+      34
+    ],
+    [
+      7090,
+      76,
+      34
+    ],
+    [
+      7241,
+      86,
+      34
+    ],
+    [
+      7394,
+      76,
+      34
+    ],
+    [
+      7547,
+      76,
+      33
+    ],
+    [
+      7698,
+      76,
+      34
+    ],
+    [
+      7850,
+      76,
+      34
+    ],
+    [
+      8002,
+      76,
+      34
+    ],
+    [
+      8156,
+      76,
+      34
+    ],
+    [
+      8310,
+      78,
+      35
+    ]
+  ]
+}

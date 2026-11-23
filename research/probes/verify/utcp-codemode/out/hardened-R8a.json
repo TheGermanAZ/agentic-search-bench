@@ -1,0 +1,148 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs hardened R8a",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 10061,
+  "peakTreeRssMb": 65,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 9991,
+    "rssMb": 63
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "hardened",
+    "test": "R8a",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, 10000, 64)",
+    "data": {
+      "startMs": 39,
+      "ms": 9,
+      "ok": true,
+      "result": {
+        "value": {
+          "result": "done",
+          "logs": [
+            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[20971520 chars]…xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          ]
+        },
+        "stringChars": 20971524
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 20,
+    "hostEvents": [],
+    "totalMs": 49
+  },
+  "childStdoutOtherChars": 435,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      6928,
+      65
+    ],
+    [
+      7798,
+      63
+    ],
+    [
+      7827,
+      63
+    ],
+    [
+      7877,
+      63
+    ],
+    [
+      7946,
+      63
+    ],
+    [
+      7981,
+      63
+    ],
+    [
+      8045,
+      63
+    ],
+    [
+      8081,
+      63
+    ],
+    [
+      8133,
+      63
+    ],
+    [
+      8662,
+      63
+    ],
+    [
+      8738,
+      63
+    ],
+    [
+      8784,
+      63
+    ],
+    [
+      8867,
+      63
+    ],
+    [
+      8946,
+      63
+    ],
+    [
+      9060,
+      63
+    ],
+    [
+      9142,
+      63
+    ],
+    [
+      9211,
+      63
+    ],
+    [
+      9302,
+      63
+    ],
+    [
+      9395,
+      63
+    ],
+    [
+      9481,
+      63
+    ],
+    [
+      9562,
+      63
+    ],
+    [
+      9693,
+      63
+    ],
+    [
+      9879,
+      63
+    ],
+    [
+      9991,
+      63
+    ],
+    [
+      10059,
+      0
+    ]
+  ]
+}

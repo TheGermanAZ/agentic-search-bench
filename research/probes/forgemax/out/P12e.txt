@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { const k = "con" + "structor"; const F = Object.getPrototypeOf(async function(){})[k]; return typeof F; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "\"undefined\""
+      }
+    ],
+    "isError": false
+  },
+  "ms": 14,
+  "hostCalls": 0
+}

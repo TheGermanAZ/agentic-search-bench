@@ -1,0 +1,278 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 4800,
+  "peakTreeRssMb": 379,
+  "peakTreeFootprintMb": 351,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R5",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "r": {
+        "startMs": 1216,
+        "ms": 508,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "failed",
+            "code": "invalid_input",
+            "waits": 0,
+            "error": "code mode bridge queue limit exceeded (128 ordinary requests queued; 16 in-flight slots). Await smaller batches before creating more tool calls or timers.",
+            "output": [],
+            "textChars": 467,
+            "text": "{\"status\":\"failed\",\"code\":\"invalid_input\",\"failurePhase\":\"input\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"78bf1ec05b9b330699dbd58a\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode bridge queue limit exceeded (128 ordinary requests queued; 16 in-flight slots). Await smaller batches before creating more tool calls or timers.\"}"
+          },
+          "stringChars": 640
+        },
+        "callsStarted": 0
+      },
+      "atReturn": {
+        "started": 0,
+        "done": 0
+      },
+      "after3s": {
+        "started": 0,
+        "done": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 1466,
+    "hostEvents": [],
+    "totalMs": 4725
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_013aaab2-faab-4b73-bc9f-9c489567c0de workerId=code-mode-quickjs:1 failurePhase=input bridgeDispatchStarted=false errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      84,
+      54,
+      0
+    ],
+    [
+      196,
+      88,
+      21
+    ],
+    [
+      304,
+      99,
+      58
+    ],
+    [
+      423,
+      105,
+      58
+    ],
+    [
+      522,
+      124,
+      68
+    ],
+    [
+      627,
+      146,
+      97
+    ],
+    [
+      732,
+      172,
+      126
+    ],
+    [
+      844,
+      181,
+      126
+    ],
+    [
+      937,
+      204,
+      150
+    ],
+    [
+      1054,
+      211,
+      182
+    ],
+    [
+      1211,
+      246,
+      219
+    ],
+    [
+      1361,
+      266,
+      219
+    ],
+    [
+      1503,
+      304,
+      239
+    ],
+    [
+      1596,
+      323,
+      280
+    ],
+    [
+      1718,
+      351,
+      315
+    ],
+    [
+      1812,
+      379,
+      315
+    ],
+    [
+      1920,
+      379,
+      351
+    ],
+    [
+      2033,
+      379,
+      351
+    ],
+    [
+      2160,
+      379,
+      351
+    ],
+    [
+      2241,
+      379,
+      351
+    ],
+    [
+      2395,
+      379,
+      351
+    ],
+    [
+      2508,
+      379,
+      351
+    ],
+    [
+      2592,
+      379,
+      351
+    ],
+    [
+      2701,
+      379,
+      351
+    ],
+    [
+      2811,
+      379,
+      351
+    ],
+    [
+      2910,
+      379,
+      351
+    ],
+    [
+      3040,
+      379,
+      351
+    ],
+    [
+      3120,
+      379,
+      351
+    ],
+    [
+      3281,
+      379,
+      351
+    ],
+    [
+      3366,
+      379,
+      351
+    ],
+    [
+      3481,
+      379,
+      351
+    ],
+    [
+      3569,
+      379,
+      351
+    ],
+    [
+      3688,
+      379,
+      351
+    ],
+    [
+      3779,
+      379,
+      351
+    ],
+    [
+      3895,
+      379,
+      351
+    ],
+    [
+      4007,
+      379,
+      351
+    ],
+    [
+      4167,
+      379,
+      351
+    ],
+    [
+      4256,
+      379,
+      351
+    ],
+    [
+      4350,
+      379,
+      351
+    ],
+    [
+      4493,
+      379,
+      351
+    ],
+    [
+      4579,
+      379,
+      351
+    ],
+    [
+      4687,
+      379,
+      351
+    ],
+    [
+      4798,
+      0,
+      351
+    ]
+  ]
+}

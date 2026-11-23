@@ -1,0 +1,8 @@
+{
+  "probe": "P2",
+  "outcome": "limited",
+  "detail": "execute_code returned 200001 chars of stdout with no cap; the last expression 'RETURNED' is not returned (exec drops it). format_iteration cuts the model view to 20036 chars with a head-only marker: True",
+  "stdout_len": 200001,
+  "model_view_len": 20036,
+  "returned_value_present": false
+}

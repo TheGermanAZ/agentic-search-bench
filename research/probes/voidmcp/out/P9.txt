@@ -1,0 +1,14 @@
+{
+  "probe": "P9",
+  "config": "defaults",
+  "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.lookup.lookup({id:i}))); console.log(Date.now()-t)",
+  "wall_ms": 1025,
+  "host_calls": 5,
+  "isError": null,
+  "response_text": "{\"logs\":[{\"level\":\"log\",\"msg\":\"1018\"}],\"tool_calls\":[{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":202,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":201,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":206,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":201,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":201,\"status\":\"success\"}],\"duration_ms\":1018}",
+  "response_text_length": 438,
+  "raw_flags": {
+    "harnessTimeout": false,
+    "transportClosed": false
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "probe": "P2",
+  "config": "default",
+  "outcome": "works",
+  "detail": "return value back: false (result=undefined); print chars back: 200000; JSON text 200045 chars; error=null",
+  "display": "full (200,000 chars), no return",
+  "peak_child_rss_mb": 86,
+  "wall_s": 0.4
+}

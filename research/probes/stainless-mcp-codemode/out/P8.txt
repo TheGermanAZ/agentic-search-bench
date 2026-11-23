@@ -1,0 +1,31 @@
+mode: default
+code:
+globalThis.kept = 7 / typeof kept
+
+result:
+{
+  "first": {
+    "response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "set"
+        }
+      ]
+    },
+    "ms": 454,
+    "hostCalls": 0
+  },
+  "second": {
+    "response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "gone"
+        }
+      ]
+    },
+    "ms": 425,
+    "hostCalls": 0
+  }
+}

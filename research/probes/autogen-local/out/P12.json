@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "escaped",
+  "detail": "P12a: escaped: PWNED-a\nwrap_close no-Popen | P12b: escaped: PWNED-b",
+  "display": "escaped (P12a, P12b)",
+  "config": "default"
+}

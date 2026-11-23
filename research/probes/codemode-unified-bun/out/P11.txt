@@ -1,0 +1,55 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 509,
+    "totalWallMs": 855,
+    "peakTreeRssMB": 203.6,
+    "stderrTail": " const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\n1+1\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n⚠️  Could not load TypeScript declarations: ReferenceError: require is not defined\n    at loadTypeScriptDeclarations (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:210:46)\n    at generateMCPProxy (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:273:34)\n    at file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:694:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:41:01.702Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\n1+1\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n⚠️  Could not load TypeScript declarations: ReferenceError: require is not defined\n    at loadTypeScriptDeclarations (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:210:46)\n    at generateMCPProxy (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:273:34)\n    at file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:694:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:41:01.722Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\n1+1\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔄 Shutting down Code Mode MCP server...\n✅ MCP Manager shut down\n✅ Runtime bun shut down\n✅ Code Mode MCP server shut down complete\n"
+  },
+  "runtime": "bun",
+  "probe": "P11",
+  "mode": "default",
+  "setupMs": 279.8,
+  "executeToolDescription": "Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes with different capabilities. When MCP integration is enabled, code has access to MCP tools via the global `mcp` object (e.g., mcp.automem.store_memory(), mcp[\"sequential-thinking\"].sequentialthinking()). For TypeScript type definitions and API documentation of available MCP tools, read the resource mcp://types/declarations before writing code.",
+  "transportErrors": [],
+  "record": {
+    "oneTimeSetupMs": 279.8,
+    "oneTimeSetupCovers": "spawn dist/mcp-server.js, MCP initialize, MCP manager connecting the lookup server, tools/list",
+    "firstExecutionMs": 52.4,
+    "firstResult": {
+      "success": true,
+      "logs": [],
+      "metrics": {
+        "executionTime": 21,
+        "memoryUsed": 0
+      },
+      "runtime": "bun"
+    },
+    "medianMs": 18.7,
+    "p90Ms": 28.5,
+    "samples": [
+      28.7,
+      23.8,
+      28.4,
+      27.2,
+      29.5,
+      16,
+      15.9,
+      18.5,
+      20.4,
+      28.5,
+      16.4,
+      16.8,
+      17.5,
+      14.4,
+      18.7,
+      15.8,
+      18,
+      27.4,
+      19.7,
+      16.5
+    ]
+  }
+}

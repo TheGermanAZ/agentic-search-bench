@@ -1,0 +1,19 @@
+try:
+    print(sorted(globals()))
+except Exception as e:
+    print("err " + type(e).__name__ + ": " + str(e))
+--- output
+ERROR: Type error in code:
+error[unresolved-reference]: Name `globals` used when not defined
+ --> main.py:2:18
+  |
+1 | try:
+2 |     print(sorted(globals()))
+  |                  ^^^^^^^
+3 | except Exception as e:
+4 |     print("err " + type(e).__name__ + ": " + str(e))
+  |
+info: `globals` was added as a builtin in Python 3.0
+info: Python 3.14 was assumed when resolving types because it is the newest Python version supported by ty, and neither a command-line argument nor a configuration setting was provided
+---
+wall_ms=23 host_calls=0 peak_tree_rss_mb=212

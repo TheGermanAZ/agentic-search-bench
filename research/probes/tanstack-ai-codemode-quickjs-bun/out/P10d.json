@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P10d",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 2.689208999999998,
+  "source": [
+    "return await external_lookup({id: \"not-a-number\"});"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string",
+          "name": "Error",
+          "stack": "    at <anonymous> (<tool-wrapper>:6:22)\n"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 166.18383300000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string",
+    "ms": 166,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 45.2
+}

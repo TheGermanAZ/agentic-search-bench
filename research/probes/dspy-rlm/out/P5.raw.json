@@ -1,0 +1,31 @@
+{
+  "probe": "P5",
+  "config": "default",
+  "codes": [
+    "import os\nmsg = \"ENV \" + str(os.environ.get(\"PROBE_SECRET\"))\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nENV None\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\nENV None\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        8,
+        25
+      ],
+      "answer": "done",
+      "ms": 529.4,
+      "started": 1795381962.097523
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.09,
+  "peak_tree_rss_gb": 0.485,
+  "calls": [],
+  "child_log_tail": ""
+}

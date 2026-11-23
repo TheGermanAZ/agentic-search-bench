@@ -1,0 +1,61 @@
+label: P11
+command: node probe.mjs P11
+child exit: code=0 signal=null
+child wall ms (process start to exit): 213
+peak child RSS: 149.9 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P11",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return 1+1;"
+  ],
+  "firstExecutionMs": 88.024625,
+  "first": {
+    "ok": true,
+    "status": "completed",
+    "value": 2,
+    "wallMs": 87.982708,
+    "hostCalls": 0
+  },
+  "timesMs": [
+    5.07,
+    5.06,
+    4.98,
+    3.92,
+    3.79,
+    3.42,
+    3.68,
+    3.44,
+    3.55,
+    4.32,
+    4.29,
+    5.05,
+    3.18,
+    2.97,
+    3.19,
+    3.03,
+    3.19,
+    3.19,
+    3.24,
+    3.1
+  ],
+  "medianMs": 3.5,
+  "p90Ms": 5.05,
+  "summary": {
+    "median": 3.5,
+    "p90": 5.05,
+    "first": 88
+  },
+  "hostRssAfterMB": 155.4
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:70545) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

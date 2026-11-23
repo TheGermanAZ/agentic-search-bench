@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "blocked",
+  "display": "blocked (3 of 3)",
+  "detail": "P12a subclasses walk: failed; 'Execution error: Traceback (most recent call last): File \"<python-input-0>\", line 1, in <module> subs = ().__class__.__base__.__subclasses__() AttributeError: \\'tuple\\' object has no attribute \\'__class__\\'' | P12b __import__('os').system: failed; 'Execution error: Traceback (most recent call last): File \"<python-input-0>\", line 1, in <module> msg = \"SYSTEM \" + str(__import__(\"os\").system(\"echo PWNED\")) ~~~~~~~~~~~~~~~~ NameError: name \\'__import__\\' is not defined' | P12c _wrap_close globals popen: failed; 'Execution error: Traceback (most recent call last): File \"<python-input-0>\", line 1, in <module> wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == \\'_wrap_close\\'] AttributeError: \\'tuple\\' object has ...'",
+  "evidence": "research/probes/strands-codemode/out/P12.txt"
+}

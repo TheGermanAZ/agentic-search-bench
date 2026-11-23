@@ -1,0 +1,4 @@
+"\"A\" * 200000"
+  chars back: 8060; tail: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n[value truncated: 192000 more chars. Return or print less.]"
+"print(\"x\" * 100000)\nraise ValueError(\"boom\")"
+  chars back: 8034; tail: "efore error]\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 2, in <module>\n    raise ValueError(\"boom\")\nValueError: boom"

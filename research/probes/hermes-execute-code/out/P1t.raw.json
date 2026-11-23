@@ -1,0 +1,27 @@
+{
+  "probe": "P1t",
+  "config": "default",
+  "codes": [
+    "from hermes_tools import terminal\nr = terminal('sleep 0.2; echo $((21*2))')\nprint(r['output'])"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "42\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"42\\n\", \"exit_code\": 0, \"tool_calls_made\": 1, \"duration_seconds\": 0.5, \"kernel\": {\"mode\": \"session\", \"reused\": false, \"execution_count\": 1, \"state_reset\": false}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 1,
+      "model_sees_len": 301,
+      "ms": 502.0,
+      "started": 1795382842.385891
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.38,
+  "peak_tree_rss_gb": 0.17,
+  "calls": [],
+  "child_log_tail": ""
+}

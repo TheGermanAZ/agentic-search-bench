@@ -1,0 +1,21 @@
+probe: P9 (hardened)
+binary: goose-codemode-hardened-probe
+GOOSE_DEFAULT_EXTENSION_TIMEOUT=10
+process wall_ms: 239.0
+peak_rss_mb: 8.1
+exit: 0
+killed: None
+
+{"exec": "config", "probe": "P9", "timeout_seconds": 10}
+
+--- execution 0 ---
+code:
+async function run() {
+const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.call("lookup", {id: i}))); console.log(Date.now() - t)
+}
+is_error: False
+elapsed_ms: 202.93
+host_calls: 5
+text returned to model:
+202.0
+

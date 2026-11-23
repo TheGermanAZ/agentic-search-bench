@@ -1,0 +1,59 @@
+label: hardened-P12g
+command: bun probe.mjs P12g --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 242
+peak child RSS: 59.2 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P12g",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    },
+    "driver": {
+      "maxToolCalls": 100
+    }
+  },
+  "runtime": "bun 1.4.4",
+  "setupMs": 2.948999999999998,
+  "source": [
+    "const ref = globalThis.__external_lookup_ref ?? globalThis.__external_lookup_impl; let d; try { d = String(ref.deref && ref.deref()); } catch (e) { d = \"deref threw: \" + e.message; } let c; try { c = String(ref.constructor.constructor(\"return process\")()); } catch (e) { c = \"ctor threw: \" + e.message; } return { deref: d, ctor: c };"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": {
+          "deref": "deref threw: cannot read property 'deref' of undefined",
+          "ctor": "ctor threw: cannot read property 'constructor' of undefined"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 159.617375,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": {
+        "deref": "deref threw: cannot read property 'deref' of undefined",
+        "ctor": "ctor threw: cannot read property 'constructor' of undefined"
+      },
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 160,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 47
+}
+--- child stdout ---
+
+--- child stderr ---
+

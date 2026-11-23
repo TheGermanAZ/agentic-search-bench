@@ -1,0 +1,141 @@
+{
+  "impl": "anthropic-ptc",
+  "name": "Claude API programmatic tool calling + code execution tool",
+  "source": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling ; https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool ; https://github.com/anthropics/anthropic-sdk-python",
+  "pinned": "docs fetched 2026-11-22 (tool versions code_execution_20260120 / code_execution_20260521); anthropic-sdk-python@8baaef1c4d23b2e4861d05da0dca65252e879eb8",
+  "language": "Python",
+  "engine": "Anthropic-hosted Linux container (Python 3.11, x86_64, 1 CPU, 5 GiB RAM, 5 GiB disk); REPL state persists with container reuse",
+  "how_run": "Not run: no API key on this machine. Documented entry point is a Messages API request with the code_execution_20260120+ tool and allowed_callers: [\"code_execution_20260120\"] on each client tool.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "Docs only, not run. \"Tools that allow a code execution caller are exposed to Claude's code as async Python functions ... Each function takes a single dict of arguments and returns a string: the text of the tool_result you send back.\" Each call pauses the code and surfaces a tool_use block with caller.type code_execution_20260120 to the client.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#how-programmatic-tool-calling-works"
+    },
+    "P2": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Docs state the result carries stdout and stderr: \"code_execution_result\", \"stdout\": ..., \"stderr\": ..., \"return_code\". Docs are silent on stdout truncation for a 200,000-char print and on whether a final bare expression is echoed. The bash sub-tool has an output_file_too_large error: \"Command output exceeded the maximum size\" (size not given).",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#code-execution-completion ; https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool#errors"
+    },
+    "P3": {
+      "outcome": "blocked",
+      "detail": "Docs: \"Internet access: Completely disabled for security\" and \"External connections: No outbound network requests allowed\". Not run. Resolves the survey's open item.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool#networking-and-security"
+    },
+    "P4": {
+      "outcome": "not-applicable",
+      "detail": "Code runs in Anthropic's container, so the client's /etc/hosts is unreachable by construction. Docs: \"Sandbox isolation: Full isolation from host system and other containers\" and \"File access: Limited to workspace directory only\". Reading the container's own /etc/hosts is undocumented.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool#networking-and-security"
+    },
+    "P5": {
+      "outcome": "not-applicable",
+      "detail": "PROBE_SECRET in the client process is never sent to the container (inference from architecture). Docs are silent on environment variables inside the container.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool#containers"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "Docs: \"each REPL cell also has a 90-second wall-clock limit\"; a cell that exceeds it \"returns a normal code execution result with a non-zero return_code and a detection_timeout status message\". A whole tool call past the (unstated) maximum returns execution_time_exceeded. A pending host tool call times out after about 4 minutes: \"TimeoutError: Calling tool ['query_database'] timed out (no response after 270s).\"",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool#tool-versions ; https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool#resource-limits ; https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#container-expiration-during-tool-call",
+      "display": "limited (90 s, docs)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "Docs: \"Memory: The container has 5 GiB of RAM.\" Behaviour at the limit (OOM text) is not documented.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool#resource-limits",
+      "display": "5 GiB container (docs)"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "Persists only when the client passes the container ID back. Docs: \"With code_execution_20260120 or later and programmatic tool calling, the Python interpreter state (such as variable bindings) also persists across requests that reuse the container.\" Without it: \"Each request runs in a new container\". Containers expire 30 days after creation; checkpointed after about 5 minutes idle.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool#container-reuse",
+      "display": "persists (docs)"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "Docs: \"Claude can run them in parallel with asyncio.gather\". Parallel calls arrive as several tool_use blocks in one paused response; \"repeat Step 3 with a tool_result for every pending programmatic call in one user message\". Elapsed time depends on the client. disable_parallel_tool_use: true is not supported with PTC.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#how-programmatic-tool-calling-works ; https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#step-4-next-tool-call-or-completion",
+      "display": "parallel (docs)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "Docs say exceptions surface in stderr: \"Claude receives the error in stderr\". The documented TimeoutError example has stderr text and \"return_code\": 0, so return_code alone does not flag the failure. Exact traceback format for a raised ValueError is not documented.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#container-expiration-during-tool-call"
+    },
+    "P11": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Docs name only \"a small fixed overhead (container startup, script generation)\". No latency figure.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#when-to-use-programmatic-calling"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "Docs claim \"Full isolation from host system and other containers\". Not tested. Note: os.system and Bash are features inside the container (the tool runs Bash commands by design), so __import__('os').system('echo PWNED') would print inside the sandbox; the claim is about reaching Anthropic's host.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool#networking-and-security"
+    }
+  },
+  "defaults": {
+    "time": "90 s wall clock per REPL cell (PTC); about 4 min (270 s in the example) per pending host tool call; whole-call maximum unstated",
+    "memory": "5 GiB RAM, 5 GiB disk, 1 CPU",
+    "output": "stdout + stderr in code_execution_result; truncation threshold unstated",
+    "tool_calls": "No count limit stated; each programmatic call counts toward normal tool-use rate limits"
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Client tools opt in with allowed_callers; the API turns them into async Python functions taking one dict and returning a string. SDK types accept direct, code_execution_20250825, code_execution_20260120, code_execution_20260521.",
+      "evidence": "https://github.com/anthropics/anthropic-sdk-python/blob/8baaef1c4d23b2e4861d05da0dca65252e879eb8/src/anthropic/types/tool_param.py#L45-L47 ; https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#the-allowed_callers-field"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "All opted-in tools are presented upfront; deferred loading via defer_loading + Tool Search Tool is a separate feature (tool_param.py defer_loading field).",
+      "evidence": "https://github.com/anthropics/anthropic-sdk-python/blob/8baaef1c4d23b2e4861d05da0dca65252e879eb8/src/anthropic/types/tool_param.py#L52-L56"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Pause/resume over the Messages API. Code pauses at each call; the response has stop_reason tool_use and a tool_use block whose caller is {type: code_execution_20260120, tool_id: <server_tool_use id>}. The client replies with a user message of only tool_result blocks and must pass the container ID, or the API rejects it.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#step-3-provide-tool-result ; https://github.com/anthropics/anthropic-sdk-python/blob/8baaef1c4d23b2e4861d05da0dca65252e879eb8/src/anthropic/types/tool_use_block.py#L19"
+    },
+    {
+      "topic": "Bridge (SDK)",
+      "finding": "The SDK thread state copies the container ID from each reply into the next request automatically: \"container-bound server tools reject a follow-up request that omits the container the previous turn ran in.\" A tool that raises becomes a tool_result with is_error: True.",
+      "evidence": "https://github.com/anthropics/anthropic-sdk-python/blob/8baaef1c4d23b2e4861d05da0dca65252e879eb8/src/anthropic/lib/threads/_thread_state.py#L332-L341 ; https://github.com/anthropics/anthropic-sdk-python/blob/8baaef1c4d23b2e4861d05da0dca65252e879eb8/src/anthropic/lib/tools/_beta_runner.py#L853-L874"
+    },
+    {
+      "topic": "Bridge (SDK, MCP)",
+      "finding": "mcp_tool() wraps an MCP ClientSession tool as a client-side runnable tool and accepts allowed_callers. Docs forbid programmatic calls to MCP connector tools, but MCP tools run client-side through this helper can be offered to code (inference from source; not run).",
+      "evidence": "https://github.com/anthropics/anthropic-sdk-python/blob/8baaef1c4d23b2e4861d05da0dca65252e879eb8/src/anthropic/lib/tools/mcp.py#L316-L351 ; https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#tool-restrictions"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Container, not a language sandbox. Docs claim full host isolation, workspace-only file access, no internet.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool#networking-and-security"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Only the final code output enters context: \"Tool results from programmatic calls are not added to Claude's context: Only the final code output is.\" Programmatic tool results also do not count toward token usage.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#token-efficiency"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Tool errors are returned to the running code as tool_result text; code-level exceptions go to stderr.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#tool-execution-errors"
+    },
+    {
+      "topic": "Notable",
+      "finding": "Not ZDR or HIPAA eligible; container data retained up to 30 days. Tool results must be strings or text blocks (images rejected). strict: true tools, tool_choice forcing, and MCP connector tools are excluded. Not available in Managed Agents. Haiku 4.5 lacks PTC.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#data-handling ; https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling#constraints-and-limitations"
+    },
+    {
+      "topic": "Numbers",
+      "finding": "Docs report: agentic search benchmarks (BrowseComp, DeepSearchQA) +11% average with 24% fewer input tokens; a 75-tool benchmark -38% billed input tokens with no accuracy change; tau2-bench unchanged score at about 8% more cost.",
+      "evidence": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling (intro and #token-efficiency)"
+    }
+  ],
+  "surprises": [
+    "The survey's opt-in value allowed_callers: [\"code_execution_20250825\"] is outdated. PTC now requires code_execution_20260120 or later, yet the SDK Literal still lists code_execution_20250825 as a caller value (tool_param.py:45-47).",
+    "allowed_callers is guidance, not enforcement: \"it is not a hard API-level block on direct calls ... Do not rely on allowed_callers as a security boundary.\"",
+    "The documented TimeoutError result has return_code 0 with the error only in stderr.",
+    "Network inside the container is now documented as completely disabled (survey listed it as unverified).",
+    "Not ZDR eligible and data is retained up to 30 days, which matters for an investigations customer. OpenAI PTC supports ZDR.",
+    "On tau2-bench, PTC cost about 8% more with no score change; Anthropic says sequential single-call workflows do not benefit."
+  ]
+}

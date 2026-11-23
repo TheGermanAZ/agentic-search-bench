@@ -1,0 +1,169 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2321,
+  "peakTreeRssMb": 87,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R2b",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "label": "",
+      "startMs": 2007,
+      "ms": 222,
+      "ok": true,
+      "result": [
+        "['RuntimeError', 'host-tool-boom internal detail db=postgres://user:pw@host', \"RuntimeError('host-tool-boom internal detail db=postgres://user:pw@host')\"]"
+      ],
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 24,
+    "totalMs": 2229
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      154,
+      27
+    ],
+    [
+      247,
+      38
+    ],
+    [
+      300,
+      48
+    ],
+    [
+      357,
+      49
+    ],
+    [
+      406,
+      49
+    ],
+    [
+      469,
+      49
+    ],
+    [
+      552,
+      51
+    ],
+    [
+      606,
+      52
+    ],
+    [
+      676,
+      52
+    ],
+    [
+      733,
+      52
+    ],
+    [
+      794,
+      52
+    ],
+    [
+      867,
+      54
+    ],
+    [
+      939,
+      56
+    ],
+    [
+      987,
+      56
+    ],
+    [
+      1044,
+      56
+    ],
+    [
+      1150,
+      56
+    ],
+    [
+      1213,
+      57
+    ],
+    [
+      1283,
+      57
+    ],
+    [
+      1394,
+      60
+    ],
+    [
+      1441,
+      60
+    ],
+    [
+      1541,
+      60
+    ],
+    [
+      1596,
+      61
+    ],
+    [
+      1640,
+      61
+    ],
+    [
+      1750,
+      62
+    ],
+    [
+      1792,
+      65
+    ],
+    [
+      1841,
+      66
+    ],
+    [
+      1962,
+      66
+    ],
+    [
+      2024,
+      71
+    ],
+    [
+      2069,
+      71
+    ],
+    [
+      2119,
+      77
+    ],
+    [
+      2177,
+      77
+    ],
+    [
+      2221,
+      78
+    ],
+    [
+      2281,
+      87
+    ],
+    [
+      2320,
+      80
+    ]
+  ]
+}

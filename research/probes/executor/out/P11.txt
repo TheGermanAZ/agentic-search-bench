@@ -1,0 +1,30 @@
+{
+  "probe": "P11",
+  "code": "1+1",
+  "mcpInitializeMs": 3,
+  "timesMs": [
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    3,
+    2,
+    3,
+    3,
+    2,
+    4,
+    3,
+    3,
+    3,
+    3,
+    2,
+    2,
+    3,
+    3
+  ],
+  "medianMs": 3,
+  "p90Ms": 4,
+  "note": "Each execute is a separate HTTP round trip to the local server over loopback; one MCP session for all 20."
+}

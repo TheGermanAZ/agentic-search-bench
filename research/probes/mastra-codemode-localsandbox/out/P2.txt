@@ -1,0 +1,50 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 156,
+    "totalWallMs": 285,
+    "peakTreeRssMB": 151.9,
+    "stderrTail": ""
+  },
+  "backend": "localsandbox",
+  "probe": "P2",
+  "mode": "default",
+  "setupMs": 87.5,
+  "record": {
+    "literalSpecForm": {
+      "code": "console.log(\"A\".repeat(200000)); \"RETURNED\"",
+      "wallMs": 94.3,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "logs": [
+          {
+            "length": 200000,
+            "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        ]
+      },
+      "threw": null
+    },
+    "returnForm": {
+      "code": "console.log(\"A\".repeat(200000)); return \"RETURNED\"",
+      "wallMs": 57.1,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "RETURNED",
+        "logs": [
+          {
+            "length": 200000,
+            "head": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        ]
+      },
+      "threw": null
+    }
+  }
+}

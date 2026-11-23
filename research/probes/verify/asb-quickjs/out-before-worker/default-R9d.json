@@ -1,0 +1,381 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 60698,
+  "peakTreeRssMb": 94,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "R9d",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 9,
+          "ms": 60019,
+          "ok": true,
+          "result": {
+            "value": "ERROR: interrupted\n    at exec (native)\n    at test (native)\n    at <eval> (eval.js:1:47)",
+            "stringChars": 89
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 60029,
+        "ms": 214,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 60244,
+        "ms": 206,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 60450,
+        "ms": 206,
+        "ok": true,
+        "result": {
+          "value": "null",
+          "stringChars": 4
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 60008,
+    "hostEvents": [],
+    "totalMs": 60656
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      86,
+      60
+    ],
+    [
+      845,
+      88
+    ],
+    [
+      1617,
+      89
+    ],
+    [
+      2377,
+      89
+    ],
+    [
+      3274,
+      90
+    ],
+    [
+      4110,
+      90
+    ],
+    [
+      4882,
+      90
+    ],
+    [
+      5642,
+      90
+    ],
+    [
+      6439,
+      90
+    ],
+    [
+      7190,
+      90
+    ],
+    [
+      7968,
+      90
+    ],
+    [
+      8721,
+      90
+    ],
+    [
+      9500,
+      90
+    ],
+    [
+      10244,
+      90
+    ],
+    [
+      11019,
+      90
+    ],
+    [
+      11783,
+      90
+    ],
+    [
+      12554,
+      90
+    ],
+    [
+      13324,
+      90
+    ],
+    [
+      14080,
+      90
+    ],
+    [
+      14857,
+      90
+    ],
+    [
+      15635,
+      90
+    ],
+    [
+      16403,
+      91
+    ],
+    [
+      17245,
+      91
+    ],
+    [
+      18005,
+      91
+    ],
+    [
+      18768,
+      91
+    ],
+    [
+      19529,
+      91
+    ],
+    [
+      20301,
+      91
+    ],
+    [
+      21076,
+      91
+    ],
+    [
+      21836,
+      91
+    ],
+    [
+      22596,
+      91
+    ],
+    [
+      23355,
+      91
+    ],
+    [
+      24118,
+      91
+    ],
+    [
+      24878,
+      92
+    ],
+    [
+      25646,
+      92
+    ],
+    [
+      26404,
+      92
+    ],
+    [
+      27299,
+      92
+    ],
+    [
+      28177,
+      92
+    ],
+    [
+      29125,
+      92
+    ],
+    [
+      29963,
+      93
+    ],
+    [
+      30732,
+      93
+    ],
+    [
+      31605,
+      93
+    ],
+    [
+      32549,
+      93
+    ],
+    [
+      33458,
+      93
+    ],
+    [
+      34362,
+      94
+    ],
+    [
+      35138,
+      94
+    ],
+    [
+      35987,
+      94
+    ],
+    [
+      36775,
+      94
+    ],
+    [
+      37602,
+      94
+    ],
+    [
+      38507,
+      94
+    ],
+    [
+      39297,
+      94
+    ],
+    [
+      40069,
+      94
+    ],
+    [
+      40842,
+      94
+    ],
+    [
+      41657,
+      94
+    ],
+    [
+      42496,
+      94
+    ],
+    [
+      43368,
+      94
+    ],
+    [
+      44170,
+      94
+    ],
+    [
+      44940,
+      94
+    ],
+    [
+      45709,
+      40
+    ],
+    [
+      46467,
+      33
+    ],
+    [
+      47274,
+      34
+    ],
+    [
+      48182,
+      34
+    ],
+    [
+      49052,
+      34
+    ],
+    [
+      49852,
+      34
+    ],
+    [
+      50611,
+      34
+    ],
+    [
+      51374,
+      34
+    ],
+    [
+      52145,
+      34
+    ],
+    [
+      52902,
+      34
+    ],
+    [
+      53720,
+      34
+    ],
+    [
+      54595,
+      34
+    ],
+    [
+      55407,
+      35
+    ],
+    [
+      56287,
+      34
+    ],
+    [
+      57132,
+      34
+    ],
+    [
+      57902,
+      34
+    ],
+    [
+      58710,
+      34
+    ],
+    [
+      59525,
+      34
+    ],
+    [
+      60324,
+      53
+    ]
+  ]
+}

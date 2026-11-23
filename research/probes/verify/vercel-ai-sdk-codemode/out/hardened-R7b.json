@@ -1,0 +1,329 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs hardened R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 7435,
+  "peakTreeRssMb": 167,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "hardened",
+    "test": "R7b",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "r": {
+        "startMs": 222,
+        "ms": 5320,
+        "ok": false,
+        "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+        "callsStarted": 0
+      },
+      "atReturn": {
+        "started": 0,
+        "done": 0
+      },
+      "after1500ms": {
+        "started": 1,
+        "done": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 7043,
+        "ms": 317,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 378,
+    "hostEvents": [],
+    "totalMs": 7361
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:78750) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      123,
+      57
+    ],
+    [
+      260,
+      67
+    ],
+    [
+      365,
+      103
+    ],
+    [
+      453,
+      105
+    ],
+    [
+      560,
+      130
+    ],
+    [
+      659,
+      154
+    ],
+    [
+      756,
+      154
+    ],
+    [
+      877,
+      154
+    ],
+    [
+      989,
+      154
+    ],
+    [
+      1095,
+      154
+    ],
+    [
+      1193,
+      154
+    ],
+    [
+      1294,
+      154
+    ],
+    [
+      1400,
+      155
+    ],
+    [
+      1495,
+      155
+    ],
+    [
+      1646,
+      155
+    ],
+    [
+      1735,
+      155
+    ],
+    [
+      1842,
+      156
+    ],
+    [
+      1947,
+      156
+    ],
+    [
+      2061,
+      156
+    ],
+    [
+      2157,
+      156
+    ],
+    [
+      2249,
+      156
+    ],
+    [
+      2387,
+      156
+    ],
+    [
+      2475,
+      156
+    ],
+    [
+      2594,
+      156
+    ],
+    [
+      2688,
+      156
+    ],
+    [
+      2839,
+      156
+    ],
+    [
+      2980,
+      156
+    ],
+    [
+      3091,
+      156
+    ],
+    [
+      3206,
+      156
+    ],
+    [
+      3331,
+      156
+    ],
+    [
+      3498,
+      156
+    ],
+    [
+      3593,
+      156
+    ],
+    [
+      3699,
+      156
+    ],
+    [
+      3806,
+      156
+    ],
+    [
+      3909,
+      156
+    ],
+    [
+      4018,
+      156
+    ],
+    [
+      4126,
+      156
+    ],
+    [
+      4234,
+      156
+    ],
+    [
+      4378,
+      156
+    ],
+    [
+      4464,
+      156
+    ],
+    [
+      4577,
+      156
+    ],
+    [
+      4679,
+      156
+    ],
+    [
+      4784,
+      156
+    ],
+    [
+      4867,
+      156
+    ],
+    [
+      4973,
+      156
+    ],
+    [
+      5088,
+      156
+    ],
+    [
+      5176,
+      156
+    ],
+    [
+      5288,
+      156
+    ],
+    [
+      5387,
+      156
+    ],
+    [
+      5491,
+      156
+    ],
+    [
+      5597,
+      156
+    ],
+    [
+      5692,
+      148
+    ],
+    [
+      5792,
+      148
+    ],
+    [
+      5889,
+      148
+    ],
+    [
+      5994,
+      148
+    ],
+    [
+      6107,
+      148
+    ],
+    [
+      6234,
+      148
+    ],
+    [
+      6332,
+      148
+    ],
+    [
+      6434,
+      148
+    ],
+    [
+      6527,
+      148
+    ],
+    [
+      6669,
+      148
+    ],
+    [
+      6753,
+      148
+    ],
+    [
+      6877,
+      148
+    ],
+    [
+      6962,
+      148
+    ],
+    [
+      7067,
+      148
+    ],
+    [
+      7167,
+      157
+    ],
+    [
+      7272,
+      167
+    ],
+    [
+      7365,
+      167
+    ]
+  ]
+}

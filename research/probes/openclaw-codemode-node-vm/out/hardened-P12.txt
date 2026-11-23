@@ -1,0 +1,382 @@
+engine=node hardened=true config={"enabled":true,"executor":"node","timeoutMs":5000,"memoryLimitBytes":16777216,"maxOutputBytes":8192,"maxSnapshotBytes":1048576,"maxPendingToolCalls":8,"snapshotTtlSeconds":60} setupMs=1
+--- code 1 ---
+return this.constructor.constructor("return process")();
+--- result 1 ---
+{"ms":143.56,"hostCalls":0,"ok":true,"waits":0}
+content text (530 chars):
+{"status":"failed","code":"invalid_input","failurePhase":"input","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":45,"visibleTools":["exec","wait"]},"output":[],"error":"code mode module access is disabled. Call an enabled async tool global from guest JavaScript; use catalog.search(query) when the bounded quick index omits it. Do not retry the same source with require() or an import."}
+details (611 chars):
+{
+ "status": "failed",
+ "code": "invalid_input",
+ "failurePhase": "input",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 45,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "code mode module access is disabled. Call an enabled async tool global from guest JavaScript; use catalog.search(query) when the bounded quick index omits it. Do not retry the same source with require() or an import."
+}
+--- code 2 ---
+return (function(){return this})().process;
+--- result 2 ---
+{"ms":163.99,"hostCalls":0,"ok":true,"waits":0}
+content text (243 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":45,"visibleTools":["exec","wait"]},"output":[],"value":null}
+details (315 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 45,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": null
+}
+--- code 3 ---
+return this.constructor.constructor("return typeof process")();
+--- result 3 ---
+{"ms":171.13,"hostCalls":0,"ok":true,"waits":0}
+content text (250 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":45,"visibleTools":["exec","wait"]},"output":[],"value":"undefined"}
+details (322 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 45,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": "undefined"
+}
+--- code 4 ---
+const p = this.constructor.constructor("return process")(); return p && p.mainModule ? "PWNED" : String(p);
+--- result 4 ---
+{"ms":185.83,"hostCalls":0,"ok":true,"waits":0}
+content text (530 chars):
+{"status":"failed","code":"invalid_input","failurePhase":"input","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":45,"visibleTools":["exec","wait"]},"output":[],"error":"code mode module access is disabled. Call an enabled async tool global from guest JavaScript; use catalog.search(query) when the bounded quick index omits it. Do not retry the same source with require() or an import."}
+details (611 chars):
+{
+ "status": "failed",
+ "code": "invalid_input",
+ "failurePhase": "input",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 45,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "code mode module access is disabled. Call an enabled async tool global from guest JavaScript; use catalog.search(query) when the bounded quick index omits it. Do not retry the same source with require() or an import."
+}
+--- code 5 ---
+try { return lookup.constructor.constructor("return typeof process")(); } catch (e) { return "threw: " + e.message; }
+--- result 5 ---
+{"ms":165.68,"hostCalls":0,"ok":true,"waits":0}
+content text (250 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":45,"visibleTools":["exec","wait"]},"output":[],"value":"undefined"}
+details (322 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 45,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": "undefined"
+}
+--- code 6 ---
+try { const r = await lookup({id: 1}); return [r.constructor.constructor("return typeof process")(), Object.getPrototypeOf(r) === Object.prototype]; } catch (e) { return "threw: " + e.message; }
+--- result 6 ---
+{"ms":394.84,"hostCalls":1,"ok":true,"waits":0}
+content text (257 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":46,"visibleTools":["exec","wait"]},"output":[],"value":["undefined",true]}
+details (337 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 46,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": [
+  "undefined",
+  true
+ ]
+}
+--- code 7 ---
+try { await lookup("bad"); } catch (e) { return [e.constructor === Error, e.constructor.constructor("return typeof process")(), e.message]; } return "no throw";
+--- result 7 ---
+{"ms":165.09,"hostCalls":0,"ok":true,"waits":0}
+content text (385 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":47,"visibleTools":["exec","wait"]},"output":[],"value":[true,"undefined","Invalid arguments for tool \"lookup\": <root>: expected object; received [redacted] (string). Expected input: { id: number }."]}
+details (468 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 47,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": [
+  true,
+  "undefined",
+  "Invalid arguments for tool \"lookup\": <root>: expected object; received [redacted] (string). Expected input: { id: number }."
+ ]
+}
+--- code 8 ---
+
+const seen = new Set(); const leaks = []; const G = Function;
+function visit(v, path, depth) {
+  if (v === null || (typeof v !== "object" && typeof v !== "function") || seen.has(v) || depth > 3) return;
+  seen.add(v);
+  try { const F = v.constructor && v.constructor.constructor; if (typeof F === "function" && F !== G) leaks.push(path); } catch (e) {}
+  try { const p = Object.getPrototypeOf(v); if (p) visit(p, path + ".__proto__", depth + 1); } catch (e) {}
+  for (const k of Object.getOwnPropertyNames(v)) { let x; try { x = v[k]; } catch (e) { continue; } visit(x, path + "." + k, depth + 1); }
+}
+for (const k of Object.getOwnPropertyNames(globalThis)) { try { visit(globalThis[k], k, 0); } catch (e) {} }
+let te; try { te = new TextEncoder().encode("x"); visit(te, "encoded", 0); } catch (e) {}
+return { globals: Object.getOwnPropertyNames(globalThis).length, scanned: seen.size, leaks: leaks.slice(0, 20) };
+--- result 8 ---
+{"ms":175.66,"hostCalls":0,"ok":true,"waits":0}
+content text (278 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":47,"visibleTools":["exec","wait"]},"output":[],"value":{"globals":94,"scanned":607,"leaks":[]}}
+details (364 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 47,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": {
+  "globals": 94,
+  "scanned": 607,
+  "leaks": []
+ }
+}
+--- code 9 ---
+try { new TextDecoder("no-such-label"); return "no throw"; } catch (e) { return [String(e), e.constructor === RangeError, e.constructor.constructor("return typeof process")()]; }
+--- result 9 ---
+{"ms":161.5,"hostCalls":0,"ok":true,"waits":0}
+content text (346 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":47,"visibleTools":["exec","wait"]},"output":[],"value":["RangeError [ERR_ENCODING_NOT_SUPPORTED]: The \"no-such-label\" encoding is not supported",false,"object"]}
+details (429 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 47,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": [
+  "RangeError [ERR_ENCODING_NOT_SUPPORTED]: The \"no-such-label\" encoding is not supported",
+  false,
+  "object"
+ ]
+}
+--- code 10 ---
+try { new TextDecoder("utf-8", { fatal: true }).decode(new Uint8Array([0xff])); return "no throw"; } catch (e) { return [String(e), e.constructor === TypeError, e.constructor.constructor("return typeof process")()]; }
+--- result 10 ---
+{"ms":180.88,"hostCalls":0,"ok":true,"waits":0}
+content text (318 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":47,"visibleTools":["exec","wait"]},"output":[],"value":["TypeError: The encoded data was not valid for encoding utf-8",false,"object"]}
+details (401 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 47,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": [
+  "TypeError: The encoded data was not valid for encoding utf-8",
+  false,
+  "object"
+ ]
+}
+--- code 11 ---
+try { new TextDecoder("no-such-label"); } catch (e) { const p = e.constructor.constructor("return process")(); return [p.env.PROBE_SECRET, p.pid, p.getBuiltinModule("child_process").execSync("echo PWNED").toString().trim(), p.getBuiltinModule("fs").readFileSync("/etc/hosts", "utf8").slice(0, 60)]; } return "no throw";
+--- result 11 ---
+{"ms":193.79,"hostCalls":0,"ok":true,"waits":0}
+content text (325 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":47,"visibleTools":["exec","wait"]},"output":[],"value":[null,87508,"PWNED","##\n# Host Database\n#\n# localhost is used to configure the lo"]}
+details (411 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 47,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": [
+  null,
+  87508,
+  "PWNED",
+  "##\n# Host Database\n#\n# localhost is used to configure the lo"
+ ]
+}
+--- code 12 ---
+try { new TextDecoder("no-such-label"); } catch (e) { const p = e.constructor.constructor("return process")(); const wt = p.getBuiltinModule("worker_threads"); const out = p.getBuiltinModule("child_process").execSync("ps -wwE -o command= -p " + p.pid).toString(); return { isMainThread: wt.isMainThread, threadId: wt.threadId, secretViaPs: out.split(" ").filter((x) => x.startsWith("PROBE_SECRET="))[0] ?? null }; } return "no throw";
+--- result 12 ---
+{"ms":263.62,"hostCalls":0,"ok":true,"waits":0}
+content text (311 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":47,"visibleTools":["exec","wait"]},"output":[],"value":{"isMainThread":false,"threadId":24,"secretViaPs":"PROBE_SECRET=s3cr3t"}}
+details (397 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 47,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": {
+  "isMainThread": false,
+  "threadId": 24,
+  "secretViaPs": "PROBE_SECRET=s3cr3t"
+ }
+}

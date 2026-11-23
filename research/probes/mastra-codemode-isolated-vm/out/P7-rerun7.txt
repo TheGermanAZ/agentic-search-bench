@@ -1,0 +1,59 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 4651,
+    "totalWallMs": 4897,
+    "peakTreeRssMB": 242.6,
+    "stderrTail": ""
+  },
+  "backend": "isolated-vm",
+  "probe": "P7",
+  "mode": "default",
+  "setupMs": 131.5,
+  "record": {
+    "rssBeforeMB": 79.9,
+    "probe": {
+      "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+      "wallMs": 1659.8,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "Isolate was disposed during execution due to memory limit",
+          "name": "Error"
+        }
+      },
+      "threw": null
+    },
+    "rssAfterMB": 219.5,
+    "survivalCheck": {
+      "code": "const r = await external_lookup({id: 21}); return r.value",
+      "wallMs": 224.3,
+      "hostCalls": 1,
+      "out": {
+        "success": true,
+        "result": 42,
+        "logs": []
+      },
+      "threw": null
+    },
+    "secondProbe": {
+      "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+      "wallMs": 1175.5,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "Isolate was disposed during execution due to memory limit",
+          "name": "Error"
+        }
+      },
+      "threw": null
+    },
+    "rssAfterSecondMB": 219.2
+  }
+}

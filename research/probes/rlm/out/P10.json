@@ -1,0 +1,5 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "detail": "raised inside execute_code is caught: stderr = '\\nValueError: probe-boom'; message survives: True; traceback: False; line number: False"
+}

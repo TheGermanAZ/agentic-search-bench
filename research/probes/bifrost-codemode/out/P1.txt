@@ -1,0 +1,12 @@
+--- code 1 ---
+r = probe.lookup(id=21)
+print(r["value"])
+result = r["value"]
+--- result 1 ---
+{"ms":211,"hostCalls":1,"ok":true,"isError":false}
+text (70 chars):
+Print output:
+42.0
+
+Execution completed successfully.
+Return value: 42

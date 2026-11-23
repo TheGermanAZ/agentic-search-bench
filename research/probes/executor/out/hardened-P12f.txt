@@ -1,0 +1,41 @@
+{
+  "probe": "P12f",
+  "serverPid": 16365,
+  "code": "const p = tools.probe.lookup({id:1}); return p.constructor.constructor(\"return process\")()",
+  "wallMs": 17,
+  "hostToolCalls": 1,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 13,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":false,\"error\":{\"kind\":\"InvalidDataValue\",\"message\":\"This value is an un-awaited Promise; await it first - e.g. `const result = await tools.ns.tool(...)`. (line 2, col 8) Other tool calls were still running when the program stopped and were interrupted. toolCalls lists every call with its outcome: calls marked success did run.\",\"location\":{\"line\":2,\"column\":8}},\"toolCalls\":[{\"name\":\"probe.lookup\",\"outcome\":\"interrupted\",\"durationMs\":0}]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": false,
+          "error": {
+            "kind": "InvalidDataValue",
+            "message": "This value is an un-awaited Promise; await it first - e.g. `const result = await tools.ns.tool(...)`. (line 2, col 8) Other tool calls were still running when the program stopped and were interrupted. toolCalls lists every call with its outcome: calls marked success did run.",
+            "location": {
+              "line": 2,
+              "column": 8
+            }
+          },
+          "toolCalls": [
+            {
+              "name": "probe.lookup",
+              "outcome": "interrupted",
+              "durationMs": 0
+            }
+          ]
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

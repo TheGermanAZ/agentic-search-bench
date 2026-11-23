@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "blocked",
+  "display": "blocked (raw _socket bypasses)",
+  "detail": "RuntimeError: Network access is disabled by sandbox policy Traceback (most recent call last): File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py\", line 283, in run_code compiled = compile(code, \"<sandbox>\", \"eval\") ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"<sandbox>\", line 1 import urllib.re...",
+  "evidence": "research/probes/datalayer-codemode-eval/out/hardened-P3.txt"
+}

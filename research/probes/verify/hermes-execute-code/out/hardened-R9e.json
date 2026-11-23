@@ -1,0 +1,536 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/hermes-execute-code/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../hermes-execute-code/adapter.py hardened R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 26765,
+  "peakTreeRssMb": 901,
+  "peakTreeFootprintMb": 352,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9e",
+    "impl": "hermes-execute-code",
+    "notes": "HERMES_HOME=home-hardened (docker, no network, 512 MB, 1 CPU, strict, timeout 10 s, 50 calls); one process, fresh task_id (container + kernel) per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 813,
+          "ms": 17117,
+          "ok": true,
+          "result": {
+            "status": "timeout",
+            "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "tool_calls_made": 0,
+            "model_sees_chars": 639,
+            "model_sees_head": "{\"status\": \"timeout\", \"output\": \"⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 13.45, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}"
+          },
+          "callsStarted": 1
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 814,
+          "ms": 15755,
+          "ok": true,
+          "result": {
+            "status": "timeout",
+            "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "tool_calls_made": 0,
+            "model_sees_chars": 639,
+            "model_sees_head": "{\"status\": \"timeout\", \"output\": \"⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 12.89, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}"
+          },
+          "callsStarted": 1
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 815,
+          "ms": 15781,
+          "ok": true,
+          "result": {
+            "status": "timeout",
+            "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "tool_calls_made": 0,
+            "model_sees_chars": 639,
+            "model_sees_head": "{\"status\": \"timeout\", \"output\": \"⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 12.88, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}"
+          },
+          "callsStarted": 1
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 817,
+          "ms": 15808,
+          "ok": true,
+          "result": {
+            "status": "timeout",
+            "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "tool_calls_made": 0,
+            "model_sees_chars": 639,
+            "model_sees_head": "{\"status\": \"timeout\", \"output\": \"⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 12.86, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}"
+          },
+          "callsStarted": 1
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 843,
+          "ms": 17095,
+          "ok": true,
+          "result": {
+            "status": "timeout",
+            "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "tool_calls_made": 0,
+            "model_sees_chars": 639,
+            "model_sees_head": "{\"status\": \"timeout\", \"output\": \"⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 13.32, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}"
+          },
+          "callsStarted": 1
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 877,
+          "ms": 18445,
+          "ok": true,
+          "result": {
+            "status": "timeout",
+            "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "tool_calls_made": 0,
+            "model_sees_chars": 639,
+            "model_sees_head": "{\"status\": \"timeout\", \"output\": \"⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 13.68, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}"
+          },
+          "callsStarted": 1
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 879,
+          "ms": 17085,
+          "ok": true,
+          "result": {
+            "status": "timeout",
+            "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "tool_calls_made": 0,
+            "model_sees_chars": 639,
+            "model_sees_head": "{\"status\": \"timeout\", \"output\": \"⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 13.24, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}"
+          },
+          "callsStarted": 1
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 902,
+          "ms": 18648,
+          "ok": true,
+          "result": {
+            "status": "timeout",
+            "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+            "tool_calls_made": 0,
+            "model_sees_chars": 639,
+            "model_sees_head": "{\"status\": \"timeout\", \"output\": \"⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 0, \"duration_seconds\": 14.28, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}"
+          },
+          "callsStarted": 1
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 964,
+        "ms": 11300,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "42\n",
+          "error": null,
+          "tool_calls_made": 1,
+          "model_sees_chars": 261,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"42\\n\", \"tool_calls_made\": 1, \"duration_seconds\": 6.72, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 12264,
+        "ms": 9388,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "42\n",
+          "error": null,
+          "tool_calls_made": 1,
+          "model_sees_chars": 261,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"42\\n\", \"tool_calls_made\": 1, \"duration_seconds\": 5.18, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 21652,
+        "ms": 4986,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "42\n",
+          "error": null,
+          "tool_calls_made": 1,
+          "model_sees_chars": 261,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"42\\n\", \"tool_calls_made\": 1, \"duration_seconds\": 2.96, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 3, \"stdout_bytes_total\": 3, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 1
+      }
+    },
+    "adapterStats": {
+      "tasks": 11
+    },
+    "hostMaxEventLoopLagMs": 236,
+    "totalMs": 26638
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      120,
+      23,
+      0
+    ],
+    [
+      399,
+      57,
+      35
+    ],
+    [
+      714,
+      90,
+      73
+    ],
+    [
+      1160,
+      281,
+      110
+    ],
+    [
+      1480,
+      530,
+      229
+    ],
+    [
+      1797,
+      530,
+      230
+    ],
+    [
+      2168,
+      531,
+      230
+    ],
+    [
+      2481,
+      534,
+      231
+    ],
+    [
+      2839,
+      535,
+      231
+    ],
+    [
+      3156,
+      533,
+      218
+    ],
+    [
+      3463,
+      500,
+      231
+    ],
+    [
+      3769,
+      519,
+      229
+    ],
+    [
+      4076,
+      431,
+      205
+    ],
+    [
+      4391,
+      511,
+      215
+    ],
+    [
+      4681,
+      353,
+      230
+    ],
+    [
+      5008,
+      421,
+      270
+    ],
+    [
+      5359,
+      218,
+      207
+    ],
+    [
+      5670,
+      524,
+      229
+    ],
+    [
+      6043,
+      387,
+      214
+    ],
+    [
+      6375,
+      391,
+      181
+    ],
+    [
+      6841,
+      349,
+      209
+    ],
+    [
+      7360,
+      498,
+      194
+    ],
+    [
+      7719,
+      616,
+      187
+    ],
+    [
+      8194,
+      651,
+      140
+    ],
+    [
+      8562,
+      445,
+      283
+    ],
+    [
+      8944,
+      338,
+      210
+    ],
+    [
+      9444,
+      585,
+      227
+    ],
+    [
+      9888,
+      687,
+      290
+    ],
+    [
+      10340,
+      416,
+      169
+    ],
+    [
+      10716,
+      543,
+      234
+    ],
+    [
+      11139,
+      780,
+      303
+    ],
+    [
+      11745,
+      408,
+      191
+    ],
+    [
+      12203,
+      564,
+      219
+    ],
+    [
+      12584,
+      559,
+      222
+    ],
+    [
+      13076,
+      640,
+      215
+    ],
+    [
+      13593,
+      656,
+      352
+    ],
+    [
+      13891,
+      685,
+      209
+    ],
+    [
+      14402,
+      536,
+      224
+    ],
+    [
+      14962,
+      414,
+      250
+    ],
+    [
+      15514,
+      505,
+      204
+    ],
+    [
+      15920,
+      597,
+      273
+    ],
+    [
+      16413,
+      374,
+      231
+    ],
+    [
+      16830,
+      494,
+      249
+    ],
+    [
+      17178,
+      493,
+      220
+    ],
+    [
+      17581,
+      614,
+      256
+    ],
+    [
+      18107,
+      241,
+      249
+    ],
+    [
+      18563,
+      544,
+      246
+    ],
+    [
+      18967,
+      504,
+      233
+    ],
+    [
+      19516,
+      327,
+      167
+    ],
+    [
+      19812,
+      325,
+      168
+    ],
+    [
+      20125,
+      280,
+      141
+    ],
+    [
+      20589,
+      189,
+      163
+    ],
+    [
+      20928,
+      235,
+      155
+    ],
+    [
+      21235,
+      145,
+      128
+    ],
+    [
+      21696,
+      188,
+      155
+    ],
+    [
+      22144,
+      233,
+      141
+    ],
+    [
+      22569,
+      235,
+      155
+    ],
+    [
+      22885,
+      190,
+      142
+    ],
+    [
+      23308,
+      190,
+      142
+    ],
+    [
+      23672,
+      190,
+      142
+    ],
+    [
+      24054,
+      179,
+      128
+    ],
+    [
+      24417,
+      191,
+      141
+    ],
+    [
+      24727,
+      145,
+      142
+    ],
+    [
+      25054,
+      190,
+      142
+    ],
+    [
+      25509,
+      191,
+      141
+    ],
+    [
+      25889,
+      222,
+      128
+    ],
+    [
+      26231,
+      170,
+      128
+    ],
+    [
+      26606,
+      190,
+      128
+    ]
+  ]
+}

@@ -1,0 +1,2 @@
+new pool per run (what CodeMode does): median 6.0 ms, max 36.4 ms
+one pool and session reused:          median 0.10 ms, max 4.80 ms

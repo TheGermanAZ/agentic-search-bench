@@ -1,0 +1,35 @@
+probe: P8within
+outcome: works
+display: persists
+detail: Second iteration of the same forward printed 7.
+
+code:
+----
+kept = 7
+#--NEXT--
+try:
+    msg = kept
+except NameError:
+    msg = "gone"
+print(msg)
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 0.77
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.459
+host lookup calls: 0
+
+=== run 0 (417.7 ms) ===
+ok: true
+stdout: <repl_output>
+7
+
+</repl_output>
+model_view_all: ["<repl_output>\n(no output - did you forget to print?)\n</repl_output>", "<repl_output>\n7\n\n</repl_output>"]
+raw_outputs_untruncated_len: [38, 2, 25]
+answer: done
+
+=== child process log (tail) ===
+

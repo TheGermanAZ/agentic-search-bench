@@ -1,0 +1,10 @@
+engine py-monty, LIMITS.wallMs=65000 maxConcurrent=8
+sidecar up: versions {"pydantic-monty":"1.6.0"} pid 43300; monty workers 43301 43303
+WALL: returned after 65003 ms: "ERROR: stopped at the 65 s limit for the whole program, including corpus calls. Do less per execution."
+WALL: sidecar spawns 1 (1 = cancel confirmed, no forced kill); next run "42" in 203 ms; monty workers now 43301 48722
+CRASH: during loop, monty workers 43301 48722; killing sidecar python pid 43300
+CRASH: in-flight run returned after 1046 ms: "ERROR: the sandbox stopped this program (python sidecar exited)"
+CRASH: monty workers after the kill: none
+CRASH: next run "42" in 295 ms (includes respawn); spawns 1 -> 2, new pid 48925
+CONC: 12 concurrent runs in 414 ms (8 slots, 200 ms each: about 400 ms expected); outputs ["42"]
+closed: monty workers left none

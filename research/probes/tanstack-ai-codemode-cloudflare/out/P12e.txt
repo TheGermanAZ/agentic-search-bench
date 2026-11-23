@@ -1,0 +1,63 @@
+label: P12e
+command: node probe.mjs P12e
+child exit: code=0 signal=null
+child wall ms (process start to exit): 198
+peak child RSS: 84.4 MB (ps every 50 ms)
+peak server (pid 76929) RSS: 80.3 MB; alive after probe: yes
+child stdout length: 575 chars, 'A' count: 1
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P12e",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.4502089999999868,
+  "source": [
+    "return String(Object.getPrototypeOf(async function(){}).constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Code generation from strings disallowed for this context",
+          "name": "EvalError",
+          "stack": "EvalError: Code generation from strings disallowed for this context\n    at AsyncFunction (<anonymous>)\n    at main.js:47:67\n    at main.js:48:11\n    at Object.fetch (main.js:78:7)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 45.51570799999999,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "EvalError: Code generation from strings disallowed for this context",
+    "ms": 46,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 89.3
+}
+--- child stdout ---
+{
+  timestamp: [33m1795376391073[39m,
+  durationMs: [33m44[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'EvalError'[39m,
+    message: [32m'Code generation from strings disallowed for this context'[39m,
+    stack: [32m'EvalError: Code generation from strings disallowed for this context\n'[39m +
+      [32m'    at AsyncFunction (<anonymous>)\n'[39m +
+      [32m'    at main.js:47:67\n'[39m +
+      [32m'    at main.js:48:11\n'[39m +
+      [32m'    at Object.fetch (main.js:78:7)'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

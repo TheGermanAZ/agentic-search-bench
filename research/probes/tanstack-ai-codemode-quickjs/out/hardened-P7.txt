@@ -1,0 +1,110 @@
+label: hardened-P7
+command: node probe.mjs P7 --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 8110
+peak child RSS: 2139.3 MB (ps every 50 ms)
+child stdout length: 1377 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P7",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 6.447750000000013,
+  "source": [
+    "const a = []; while (true) a.push(\"x\".repeat(1e6));"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 7440,
+    "siblingEndMs": 7648,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Code execution exceeded memory limit",
+          "name": "MemoryLimitError",
+          "stack": "InternalError: out of memory\n    at <anonymous> (eval.js:5)\n    at <anonymous> (eval.js:6)\n    at <eval> (eval.js:11)\nHost: InternalError: out of memory\n    at QuickJSContext.unwrapResult (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/quickjs-emscripten-core/dist/chunk-JTKJZQYV.mjs:4:24443)\n    at QuickJSIsolateContext.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/@tanstack/ai-isolate-quickjs/dist/esm/isolate-context.js:182:34)\n    at async Object.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:181:108)\n    at async once (file://~/p/agentic-search-bench/research/probes/tanstack-ai-codemode-quickjs/probe.mjs:110:15)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 7449.641874999999,
+      "hostCalls": 1
+    }
+  ],
+  "concurrentSiblingRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 207.31787499999973,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 202.6544159999994,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 7440,
+    "siblingEndMs": 7648,
+    "main": "MemoryLimitError: Code execution exceeded memory limit",
+    "ms": 7450,
+    "sibling": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    },
+    "siblingMs": 207,
+    "after": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    }
+  },
+  "hostRssAfterMB": 2133.7
+}
+--- child stdout ---
+{
+  timestamp: [33m1795376524645[39m,
+  durationMs: [33m7446[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'MemoryLimitError'[39m,
+    message: [32m'Code execution exceeded memory limit'[39m,
+    stack: [32m'InternalError: out of memory\n'[39m +
+      [32m'    at <anonymous> (eval.js:5)\n'[39m +
+      [32m'    at <anonymous> (eval.js:6)\n'[39m +
+      [32m'    at <eval> (eval.js:11)\n'[39m +
+      [32m'Host: InternalError: out of memory\n'[39m +
+      [32m'    at QuickJSContext.unwrapResult (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/quickjs-emscripten-core/dist/chunk-JTKJZQYV.mjs:4:24443)\n'[39m +
+      [32m'    at QuickJSIsolateContext.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/@tanstack/ai-isolate-quickjs/dist/esm/isolate-context.js:182:34)\n'[39m +
+      [32m'    at async Object.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-quickjs/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:181:108)\n'[39m +
+      [32m'    at async once (file://~/p/agentic-search-bench/research/probes/tanstack-ai-codemode-quickjs/probe.mjs:110:15)'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

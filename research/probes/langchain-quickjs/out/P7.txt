@@ -1,0 +1,48 @@
+{
+ "config": "default",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ]
+ },
+ "probe": "P7",
+ "result": [
+  {
+   "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+   "output": "<error type=\"OutOfMemory\">out of memory</error>",
+   "turn_ms": 418.0,
+   "eval_ms": 394.2,
+   "host_calls": 1
+  },
+  {
+   "neighbour_during": {
+    "code": "const r = await tools.lookup({id: 3}); r.value",
+    "output": "<result>6</result>",
+    "turn_ms": 342.8,
+    "eval_ms": 321.8,
+    "host_calls": 1
+   }
+  },
+  {
+   "same_thread_after": {
+    "code": "1 + 1",
+    "output": "<result>2</result>",
+    "turn_ms": 10.3,
+    "eval_ms": 3.7,
+    "host_calls": 0
+   }
+  },
+  {
+   "other_thread_after": {
+    "code": "2 + 2",
+    "output": "<result>4</result>",
+    "turn_ms": 94.7,
+    "eval_ms": 1.1,
+    "host_calls": 0
+   }
+  }
+ ]
+}
+
+monitor: {"config": "default", "probe": "P7", "exit_code": 0, "wall_s": 1.21, "peak_rss_mb": 339.9, "first_rss_mb": 2.0, "killed": null, "stderr_tail": ["Dropping QuickJS snapshot for slot_id=qjs_b6f5eca02196457883310436af239231 (size=68288564 bytes exceeds max_snapshot_bytes=67108864)"]}
+rss_samples_s_mb: [[0.01, 2.0], [0.07, 35.2], [0.14, 45.1], [0.2, 54.0], [0.26, 59.9], [0.33, 63.4], [0.39, 70.6], [0.45, 77.2], [0.51, 86.3], [0.58, 91.7], [0.65, 138.8], [0.71, 166.4], [0.77, 185.4], [0.84, 204.6], [0.9, 224.2], [0.96, 243.3], [1.03, 339.8], [1.09, 339.9], [1.16, 337.2]]

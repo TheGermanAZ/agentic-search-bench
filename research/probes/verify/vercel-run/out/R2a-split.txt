@@ -1,0 +1,7 @@
+(node:10143) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+const r = await host.lookup({id:1}); return Object.getPrototypeOf(r) === Object.prototype; => true
+const r = await host.lookup({id:1}); try { return String(r.constructor.constructor("return typeof process")()); } catch (e) { return "threw " + e.message; } => "threw Function constructor is not allowed"
+try { return String(host.lookup.constructor("return typeof process")()); } catch (e) { return "threw " + e.message; } => THREW RunDetachedBridgeRequestError RUN_DETACHED_BRIDGE_REQUEST "JavaScript runtime created an unawaited hostFunction bridge request: host.lookup.constructor."
+try { const p = host.lookup.constructor("return 1")(); return typeof p; } catch (e) { return "threw " + e.message; } => THREW RunDetachedBridgeRequestError RUN_DETACHED_BRIDGE_REQUEST "JavaScript runtime created an unawaited hostFunction bridge request: host.lookup.constructor."
+host.lookup({id: 1}); return "left a bridge call un-awaited"; => THREW RunDetachedBridgeRequestError RUN_DETACHED_BRIDGE_REQUEST "JavaScript runtime created an unawaited hostFunction bridge request: host.lookup."

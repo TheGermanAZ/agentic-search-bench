@@ -1,0 +1,32 @@
+{
+  "impl": "vercel-run",
+  "probe": "P10d",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "try { await host.failing(); } catch (e) { return { name: e.name, message: e.message, stack: e.stack }; }"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "status": "completed",
+      "value": {
+        "name": "Error",
+        "message": "Host function failed.",
+        "stack": "    at apply (run-setup.js:438:33)\n    at <anonymous> (run.js:3:18)\n    at <eval> (run.js:4:1)\n"
+      },
+      "wallMs": 185.417584,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": {
+      "name": "Error",
+      "message": "Host function failed.",
+      "stack": "    at apply (run-setup.js:438:33)\n    at <anonymous> (run.js:3:18)\n    at <eval> (run.js:4:1)\n"
+    },
+    "ms": 185,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 134.5
+}

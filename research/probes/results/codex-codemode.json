@@ -1,0 +1,182 @@
+{
+  "impl": "codex-codemode",
+  "name": "OpenAI Codex CLI code mode (codex-code-mode-host, V8)",
+  "source": "https://github.com/openai/codex (installed @openai/codex via bun ships codex-code-mode-host)",
+  "pinned": "codex-cli 0.169.0; source tag rust-v0.169.0 = d32063f96c2dff1dc96af839b3952abb6acfeda4",
+  "language": "JS (ES module)",
+  "engine": "V8 isolate (rusty v8 with v8_enable_sandbox) in a separate codex-code-mode-host process that is spawned without Seatbelt",
+  "how_run": "Python client spawns the shipped codex-code-mode-host binary and speaks its default framed-JSON stdio protocol (same handshake and capabilities as codex-rs/code-mode remote_session), opens a session with server-side output truncation as Codex core does, executes cells with one function tool `lookup`, and answers tool/invoke delegate requests; no model.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "await tools.lookup({id: 21}) then text(): returned content_items [{input_text: \"42\"}]; 1 host call; 245 ms",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P1.txt"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "Only text() output returns (console is deleted; the final expression \"RETURNED\" is not returned). The 200,000 A's came back truncated to 40,000 chars with header 'Warning: truncated output (original token count: 50000)\\nTotal output lines: 1' (10,000-token default).",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P2.txt"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "error_text: ReferenceError: fetch is not defined at exec_main.mjs:1:1",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P3.txt"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "import(\"fs\"): 'unsupported import in exec'; require: ReferenceError: require is not defined; Deno: ReferenceError: Deno is not defined",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P4.txt"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "ReferenceError: process is not defined; PROBE_SECRET was in the host process env but is unreachable from JS",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P5.txt"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "Cell yielded after 11.0 s (default yield 10 s) and kept running; every session/wait returned Yielded again until the harness killed the host at 120 s. Yield is an observation point, not a time limit.",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P6.txt",
+      "display": "no-limit-within-120s (yields)"
+    },
+    "P7": {
+      "outcome": "error",
+      "detail": "No heap limit is applied: after about 8 s at ~1.4 GB the whole host process aborted with V8 'Fatal JavaScript out of memory: Ineffective mark-compacts near heap limit'. The client got no response (stdout closed), so every session on that host died.",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P7.txt and research/probes/codex-sandbox/out/codemode/P7.stderr.txt",
+      "display": "host crash"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "globals do not persist (second cell printed \"gone\"); explicit store(\"kept\", 7) / load(\"kept\") does persist across cells in a session (printed 7)",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P8.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "Promise.all of 5 tools.lookup: 211 ms (parallel), 5 host calls",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P9.txt",
+      "display": "parallel (211 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "content_items text 'Script error:\\nError: probe-boom\\n    at exec_main.mjs:1:7' and error_text 'Error: probe-boom\\n    at exec_main.mjs:1:7'; message and line survive",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "median 0.79 ms, p90 0.90 ms per cell over 20 cells in one session; first cell 4.3 ms; one-time host spawn + handshake 88.5 ms",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P11.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "Top-level this is undefined in the module, so this.constructor... throws TypeError. globalThis.constructor.constructor(\"return typeof process\")() returned \"undefined\"; Function(\"return this\")().process returned undefined. Globals are ECMAScript builtins plus tools, ALL_TOOLS, text, image, store, load, notify, setTimeout, exit, and similar helpers.",
+      "evidence": "research/probes/codex-sandbox/out/codemode/P12.txt"
+    }
+  },
+  "defaults": {
+    "time": "none; cells yield to the caller after 10 s (DEFAULT_EXEC_YIELD_TIME_MS) and keep running until terminated or interrupted",
+    "memory": "none enforced; V8 default heap (~1.4 GB observed) then fatal OOM of the host process",
+    "output": "10,000 tokens per exec call by default (DEFAULT_MAX_OUTPUT_TOKENS_PER_EXEC_CALL), truncated with a warning header; 1 MiB bounded-output cap on the wire",
+    "tool_calls": "no count limit observed; capability 'delegate-capacity-4096' advertises 4,096 concurrent delegate requests"
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Generated: Codex renders a TypeScript declaration `declare const tools: { name(args: {...}): Promise<...> }` from each tool's JSON Schema into the exec tool description; in V8 each enabled tool becomes a function on the `tools` object, named by normalize_code_mode_identifier.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-protocol/src/description.rs#L465-L473, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-protocol/src/description.rs#L417, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/runtime/globals.rs#L65-L78"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Upfront by default (all enabled tools declared in the description, plus an ALL_TOOLS global); feature code_mode_tool_search adds ranked in-code search, and code_mode_only hides direct tools behind exec/wait.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/runtime/globals.rs#L80, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/features/src/lib.rs#L150-L170, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/core/src/tools/spec_plan.rs#L436"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Separate host process. Core and host exchange u32-length-prefixed JSON frames over stdio (or gRPC over stdio). A tools.x() call becomes a delegate/request tool/invoke frame to Codex core, which runs the tool through its normal router and answers with delegate/response.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-protocol/src/host/codec.rs#L11-L47, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-protocol/src/host/message.rs#L132-L240, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/runtime/callbacks.rs#L15"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "V8 isolate with the V8 sandbox build flag; console, Atomics, SharedArrayBuffer and WebAssembly are deleted; imports are rejected. The host process itself is spawned with plain Command (no Seatbelt), with Codex-internal tokens scrubbed from its env.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/Cargo.toml#L30, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/runtime/globals.rs#L16-L24, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/runtime/module_loader.rs#L192, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode/src/remote_session/connection.rs#L164-L176, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/core/src/code_mode_host.rs#L246-L256"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Only what the cell emits through text()/image()/content() returns as content_items, plus error_text. Server-side truncation to max_output_tokens (default 10,000) with a 'Warning: truncated output' header.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-protocol/src/runtime.rs#L15-L17, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/output/output_render.rs#L62, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/utils/output-truncation/src/lib.rs#L42"
+    },
+    {
+      "topic": "Limits",
+      "finding": "The protocol carries max_heap_size_bytes, but CodeModeService::with_options overwrites it with None and the runtime creates isolates with default CreateParams, so no heap cap is applied (only the UI engine gets 64 MB). No wall-clock limit; yield_time_ms only controls when the caller gets a Yielded snapshot.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/service.rs#L59-L71, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/runtime/mod.rs#L191, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/ui/engine.rs#L23-L25"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh V8 context per cell; a session-level key/value store (store/load) is snapshotted into each cell.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/session_runtime/mod.rs#L46-L48, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/runtime/callbacks.rs#L215"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Uncaught errors return as content 'Script error:\\n<message + stack>' and error_text, with exec_main.mjs line:col.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/code-mode-runtime/src/runtime/module_loader.rs#L16, research/probes/codex-sandbox/out/codemode/P10.txt"
+    },
+    {
+      "topic": "Other",
+      "finding": "Feature `code_mode` is stage UnderDevelopment and default off; sub-flags select the standalone host, gRPC transport, prewarm, interrupt handling and code-mode-only. Async: top-level await, Promise.all, setTimeout and notify() are available.",
+      "evidence": "https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/features/src/lib.rs#L1305-L1310, https://github.com/openai/codex/blob/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/features/src/lib.rs#L150-L170"
+    }
+  ],
+  "surprises": [
+    "Codex was briefed as having no code mode; codex-cli 0.169.0 ships one (codex-code-mode-host, 70 MB V8 binary) behind the `code_mode` feature flag.",
+    "max_heap_size_bytes is part of the wire protocol and the host advertises 'session-cell-execution-resource-limits', yet service.rs forces the heap limit to None; an allocation loop crashes the entire host process (P7).",
+    "No execution time limit: a busy loop keeps a cell alive indefinitely and only yields observations every 10 s (P6).",
+    "The code-mode host runs outside Seatbelt; the only boundary for model-written JS is the V8 isolate, while shell commands get Seatbelt.",
+    "A bare final expression is discarded; output must go through text() (console is deleted) (P2)."
+  ],
+  "hardened": {
+    "config": "No Codex config key, host CLI flag or env var sets a time or heap limit: [features.code_mode] only has default_exec_yield_time_ms, experimental_show_cell_overhead, tool_input_schema_max_bytes, excluded_tool_namespaces, direct_only_tool_namespaces (features/src/feature_configs.rs:38-60); codex-code-mode-host takes only --listen and --otel-trace-listen/--otel-trace-exporter (code-mode-host/src/main.rs:20-43); Codex core always opens sessions with default (empty) limits (core/src/code_mode_host.rs:64-66, core/src/tools/code_mode/mod.rs:257). So the strictest public knobs are the host's stdio protocol fields, sent directly: session/open cellExecutionLimits {maxHeapSizeBytes: 67108864 (64 MiB, chosen), maxYieldTimeMs: 1000 (chosen)} (code-mode-protocol/src/host/payload.rs:26-31, host/message.rs:186-194), outputTruncation server; session/execute yield_time_ms 1000, max_output_tokens 1000 (payload.rs:205-211). The host advertises session-cell-execution-resource-limits and replies session/ready, then drops the heap limit (code-mode-runtime/src/service.rs:59-71 sets max_heap_size_bytes: None; isolates use CreateParams::default, runtime/mod.rs:191), so it counts as absent. maxYieldTimeMs only caps when the caller gets a Yielded snapshot (service.rs:257-270). session/terminate is a real kill (out/codemode/hardened-P6-terminate.txt) but only on request: core sends it when the model calls wait with terminate:true (core/src/tools/code_mode/wait_handler.rs:129) or the user interrupts (core/src/tools/code_mode/mod.rs:171), so it is not a limit. Paths relative to research/impls/codex-sandbox/src/codex-rs (tag rust-v0.169.0).",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "ReferenceError: fetch is not defined at exec_main.mjs:1:1 (same as default)",
+        "evidence": "research/probes/codex-sandbox/out/codemode/hardened-P3.txt",
+        "display": "not-defined (fetch)"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "detail": "import(\"fs\"): 'unsupported import in exec'; require and Deno: ReferenceError not defined",
+        "evidence": "research/probes/codex-sandbox/out/codemode/hardened-P4.txt",
+        "display": "not-defined (no fs, require, Deno)"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "detail": "ReferenceError: process is not defined; PROBE_SECRET=s3cr3t was in the host env",
+        "evidence": "research/probes/codex-sandbox/out/codemode/hardened-P5.txt",
+        "display": "not-defined (no process)"
+      },
+      "P6": {
+        "outcome": "no-limit-within-120s",
+        "detail": "while(true){} yielded after 1.0 s (maxYieldTimeMs 1000) and kept running; every session/wait returned Yielded again until the harness killed the host at 120 s. A separate run that sent session/terminate after the first yield got Terminated at 1.06 s and the same session and a new session then ran a trivial cell, so terminate works but nothing sends it automatically.",
+        "evidence": "research/probes/codex-sandbox/out/codemode/hardened-P6.txt and research/probes/codex-sandbox/out/codemode/hardened-P6-terminate.txt",
+        "display": "no-limit-within-120s (yields 1 s)"
+      },
+      "P7": {
+        "outcome": "error",
+        "detail": "maxHeapSizeBytes 64 MiB was accepted (session/ready) and ignored: RSS reached 1,497 MB and after 10.5 s the whole host aborted (exit -5) with V8 'Fatal JavaScript out of memory: Ineffective mark-compacts near heap limit'. A trivial cell in the same session and opening a second session then failed with Broken pipe: every session on the host died.",
+        "evidence": "research/probes/codex-sandbox/out/codemode/hardened-P7.txt and research/probes/codex-sandbox/out/codemode/hardened-P7.stderr.txt",
+        "display": "host crash (64 MB limit ignored)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "Promise.all of 5 tools.lookup: cell measured 206 ms (213 ms round trip), 5 host calls",
+        "evidence": "research/probes/codex-sandbox/out/codemode/hardened-P9.txt",
+        "display": "parallel (206 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "this.constructor: TypeError (this undefined); globalThis.constructor.constructor(\"return typeof process\")() returned \"undefined\"; Function(\"return this\")().process undefined; (function(){return this})().process TypeError; globals are builtins plus code-mode helpers only",
+        "evidence": "research/probes/codex-sandbox/out/codemode/hardened-P12.txt",
+        "display": "blocked (all attempts)"
+      }
+    }
+  }
+}

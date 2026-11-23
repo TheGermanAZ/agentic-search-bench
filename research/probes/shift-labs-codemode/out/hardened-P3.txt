@@ -1,0 +1,17 @@
+{
+  "literalFetch": {
+    "code": "const r = await fetch(\"https://example.com\"); return r.status",
+    "ms": 200.78,
+    "hostCalls": 0,
+    "result": null,
+    "error": "    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)\n\n[Showing lines 8-8 of 8 (470B in all). Full output: ~/p/agentic-search-bench/research/probes/shift-labs-codemode/out/outbox/codemode-error-42fb8ac99b6915f9.txt]",
+    "logs": []
+  },
+  "globalThisFetch": {
+    "code": "const r = await globalThis.fetch(\"https://example.com\"); return r.status",
+    "ms": 329.27,
+    "hostCalls": 0,
+    "result": 200,
+    "logs": []
+  }
+}

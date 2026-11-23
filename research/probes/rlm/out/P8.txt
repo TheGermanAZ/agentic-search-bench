@@ -1,0 +1,8 @@
+probe: P8
+code (python, run through LocalREPL.execute_code):
+execution 1: kept = 7
+execution 2: try print(kept) except NameError print('gone')
+host_calls_so_far: 0
+execution 1 stdout='' stderr=''
+execution 2 stdout='7\n' stderr=''
+env.locals has kept: True; persistent flag: False

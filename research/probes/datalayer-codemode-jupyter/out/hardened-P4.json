@@ -1,0 +1,7 @@
+{
+  "probe": "P4",
+  "outcome": "works",
+  "display": "works (read /etc/hosts)",
+  "detail": "HOSTS 450 chars, mentions localhost: True",
+  "evidence": "research/probes/datalayer-codemode-jupyter/out/hardened-P4.txt"
+}

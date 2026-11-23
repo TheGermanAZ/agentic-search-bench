@@ -1,0 +1,6 @@
+code:
+x = 1
+raise ValueError("probe-boom")
+
+{"ok": false, "result": null, "error": "Execution error: name 'ValueError' is not defined", "ms": 0.1}
+stdout (0 chars): ''

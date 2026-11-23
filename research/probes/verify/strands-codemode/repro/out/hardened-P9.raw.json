@@ -1,0 +1,55 @@
+{
+  "probe": "P9",
+  "config": "hardened",
+  "codes": [
+    "import asyncio\nrs = await asyncio.gather(lookup(id=1), lookup(id=2), lookup(id=3), lookup(id=4), lookup(id=5))\nmsg = sum(x[\"value\"] for x in rs)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "30",
+      "status": "success",
+      "ms": 211.2,
+      "started": 1795384500.710042
+    }
+  ],
+  "setup_ms": 269.8,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.85,
+  "peak_tree_rss_gb": 0.109,
+  "calls": [
+    {
+      "id": 1,
+      "start": 1795384500.7174761,
+      "end": 1795384500.9179251,
+      "pid": 90328
+    },
+    {
+      "id": 2,
+      "start": 1795384500.717643,
+      "end": 1795384500.918635,
+      "pid": 90328
+    },
+    {
+      "id": 3,
+      "start": 1795384500.717907,
+      "end": 1795384500.918902,
+      "pid": 90328
+    },
+    {
+      "id": 4,
+      "start": 1795384500.7180219,
+      "end": 1795384500.919168,
+      "pid": 90328
+    },
+    {
+      "id": 5,
+      "start": 1795384500.718144,
+      "end": 1795384500.919256,
+      "pid": 90328
+    }
+  ],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

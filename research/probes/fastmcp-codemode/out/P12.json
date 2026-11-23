@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "blocked",
+  "display": "blocked",
+  "detail": "P12a subclasses walk: failed; \"Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'\" | P12b __import__('os').system: failed; \"Error calling tool 'execute': NameError: name '__import__' is not defined\" | P12c _wrap_close globals popen: failed; \"Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'\"",
+  "evidence": "research/probes/fastmcp-codemode/out/P12.txt"
+}

@@ -1,0 +1,331 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default A5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3114,
+  "peakTreeRssMb": 2272,
+  "peakTreeFootprintMb": 3207,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "A5",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "rs": [
+        {
+          "label": "bomb0",
+          "startMs": 2,
+          "ms": 2799,
+          "ok": true,
+          "result": {
+            "value": "ERROR: out of memory\n    at <eval> (eval.js:1:45)",
+            "stringChars": 49
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "bomb1",
+          "startMs": 2,
+          "ms": 2931,
+          "ok": true,
+          "result": {
+            "value": "ERROR: out of memory\n    at <eval> (eval.js:1:45)",
+            "stringChars": 49
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "bomb2",
+          "startMs": 2,
+          "ms": 3019,
+          "ok": true,
+          "result": {
+            "value": "ERROR: out of memory\n    at <eval> (eval.js:1:45)",
+            "stringChars": 49
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "bomb3",
+          "startMs": 2,
+          "ms": 2822,
+          "ok": true,
+          "result": {
+            "value": "ERROR: out of memory\n    at <eval> (eval.js:1:45)",
+            "stringChars": 49
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "bomb4",
+          "startMs": 2,
+          "ms": 2842,
+          "ok": true,
+          "result": {
+            "value": "ERROR: out of memory\n    at <eval> (eval.js:1:45)",
+            "stringChars": 49
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "bomb5",
+          "startMs": 2,
+          "ms": 3045,
+          "ok": true,
+          "result": {
+            "value": "ERROR: out of memory\n    at <eval> (eval.js:1:45)",
+            "stringChars": 49
+          },
+          "callsStarted": 0
+        }
+      ],
+      "rssMb": 861
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 11,
+    "hostEvents": [],
+    "totalMs": 3047
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      109,
+      76,
+      0
+    ],
+    [
+      167,
+      77,
+      60
+    ],
+    [
+      190,
+      78,
+      60
+    ],
+    [
+      262,
+      107,
+      60
+    ],
+    [
+      321,
+      174,
+      76
+    ],
+    [
+      363,
+      202,
+      76
+    ],
+    [
+      431,
+      248,
+      202
+    ],
+    [
+      480,
+      301,
+      202
+    ],
+    [
+      529,
+      333,
+      202
+    ],
+    [
+      600,
+      353,
+      319
+    ],
+    [
+      638,
+      377,
+      319
+    ],
+    [
+      684,
+      425,
+      319
+    ],
+    [
+      756,
+      505,
+      399
+    ],
+    [
+      814,
+      595,
+      399
+    ],
+    [
+      870,
+      674,
+      399
+    ],
+    [
+      907,
+      721,
+      630
+    ],
+    [
+      967,
+      797,
+      630
+    ],
+    [
+      1013,
+      861,
+      630
+    ],
+    [
+      1073,
+      922,
+      831
+    ],
+    [
+      1204,
+      992,
+      831
+    ],
+    [
+      1312,
+      1244,
+      831
+    ],
+    [
+      1404,
+      1362,
+      1129
+    ],
+    [
+      1558,
+      1572,
+      1439
+    ],
+    [
+      1642,
+      1731,
+      1439
+    ],
+    [
+      1695,
+      1907,
+      1826
+    ],
+    [
+      1739,
+      2039,
+      1826
+    ],
+    [
+      1777,
+      2134,
+      1826
+    ],
+    [
+      1845,
+      2257,
+      2146
+    ],
+    [
+      1905,
+      2272,
+      2146
+    ],
+    [
+      1971,
+      2254,
+      2146
+    ],
+    [
+      2053,
+      2224,
+      2480
+    ],
+    [
+      2144,
+      2251,
+      2480
+    ],
+    [
+      2205,
+      2227,
+      2480
+    ],
+    [
+      2355,
+      2186,
+      2702
+    ],
+    [
+      2441,
+      2164,
+      2702
+    ],
+    [
+      2516,
+      2053,
+      2814
+    ],
+    [
+      2611,
+      2138,
+      2814
+    ],
+    [
+      2689,
+      2159,
+      2814
+    ],
+    [
+      2765,
+      2243,
+      3066
+    ],
+    [
+      2816,
+      2257,
+      3066
+    ],
+    [
+      2875,
+      2007,
+      3207
+    ],
+    [
+      2912,
+      1515,
+      3207
+    ],
+    [
+      2959,
+      1543,
+      1791
+    ],
+    [
+      3024,
+      1284,
+      1791
+    ],
+    [
+      3077,
+      1017,
+      1791
+    ],
+    [
+      3113,
+      0,
+      1791
+    ]
+  ]
+}

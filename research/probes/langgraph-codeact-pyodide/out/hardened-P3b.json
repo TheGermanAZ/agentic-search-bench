@@ -1,0 +1,7 @@
+{
+  "probe": "P3b",
+  "outcome": "blocked",
+  "display": "blocked (Deno NotCapable)",
+  "detail": "Error during execution: NotCapable: Requires net access to \"example.com:443\", run again with the --allow-net flag",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/hardened-P3b.txt"
+}

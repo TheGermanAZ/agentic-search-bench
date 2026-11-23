@@ -1,0 +1,6 @@
+console.log(require("fs").readFileSync("/etc/hosts", "utf8").length)
+--- output
+ERROR: 'require' is not defined
+    at <eval> (eval.js:1:13)
+---
+wall_ms=54 host_calls=0 peak_tree_rss_mb=157

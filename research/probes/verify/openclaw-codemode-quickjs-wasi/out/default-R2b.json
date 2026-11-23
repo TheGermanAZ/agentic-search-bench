@@ -1,0 +1,185 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1329,
+  "peakTreeRssMb": 343,
+  "peakTreeFootprintMb": 293,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R2b",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "startMs": 862,
+      "ms": 399,
+      "ok": true,
+      "result": {
+        "value": {
+          "status": "completed",
+          "waits": 0,
+          "value": {
+            "type": "object",
+            "name": "Error",
+            "msg": "host-tool-boom internal detail db=postgres://user:***@host",
+            "stack": "    at beginRequest (openclaw-code-mode:controller.js:215:27)\n    at request (openclaw-code-mode:controller.js:250:39)\n    at failing (openclaw-code-mode:controller.js:530:56)\n    at <anonymous> (openclaw-code-mode:user.js:2:20)\n    at value (openclaw-code-mode:controller.js:688:71)\n    at <eval> (openclaw-code-mode:user.js:1:48)\n",
+            "own": [
+              "message",
+              "stack",
+              "location",
+              "code",
+              "effectStatus"
+            ],
+            "esc": "undefined"
+          },
+          "output": [],
+          "textChars": 763,
+          "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"5687c16f3a95d0c9a67920f9\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":{\"type\":\"object\",\"name\":\"Error\",\"msg\":\"host-tool-boom internal …[763 chars]…user.js:2:20)\\n    at value (openclaw-code-mode:controller.js:688:71)\\n    at <eval> (openclaw-code-mode:user.js:1:48)\\n\",\"own\":[\"message\",\"stack\",\"location\",\"code\",\"effectStatus\"],\"esc\":\"undefined\"}}"
+        },
+        "stringChars": 1218
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 1009,
+    "hostEvents": [],
+    "totalMs": 1261
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_41ff385e-ee71-4520-a246-091058a29f64 workerId=code-mode-quickjs:1 failurePhase=bridge failureCode=tool_error bridgeDispatchStarted=true bridgeRequestId=bridge:callValue:1 bridgeMethod=callValue errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      80,
+      62,
+      0
+    ],
+    [
+      139,
+      85,
+      22
+    ],
+    [
+      203,
+      99,
+      22
+    ],
+    [
+      238,
+      102,
+      63
+    ],
+    [
+      297,
+      112,
+      63
+    ],
+    [
+      342,
+      119,
+      63
+    ],
+    [
+      411,
+      133,
+      91
+    ],
+    [
+      452,
+      143,
+      91
+    ],
+    [
+      511,
+      160,
+      119
+    ],
+    [
+      563,
+      177,
+      119
+    ],
+    [
+      625,
+      197,
+      119
+    ],
+    [
+      664,
+      205,
+      174
+    ],
+    [
+      712,
+      207,
+      174
+    ],
+    [
+      759,
+      216,
+      174
+    ],
+    [
+      811,
+      236,
+      199
+    ],
+    [
+      905,
+      239,
+      199
+    ],
+    [
+      948,
+      244,
+      199
+    ],
+    [
+      1009,
+      261,
+      218
+    ],
+    [
+      1073,
+      277,
+      218
+    ],
+    [
+      1101,
+      287,
+      218
+    ],
+    [
+      1149,
+      299,
+      257
+    ],
+    [
+      1219,
+      316,
+      257
+    ],
+    [
+      1275,
+      343,
+      293
+    ],
+    [
+      1329,
+      0,
+      293
+    ]
+  ]
+}

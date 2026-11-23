@@ -1,0 +1,44 @@
+Function execute_code failed (RuntimeError).
+platform: macOS-26.5.2-arm64-arm-64bit arm64 python 3.12.11
+  agent-framework-hyperlight 1.0.0b261112
+  agent-framework-core 1.26.0
+  hyperlight-sandbox 0.9.0
+  hyperlight-sandbox-python-guest 0.9.0
+  hyperlight-sandbox-backend-wasm NOT INSTALLED
+EXCEPTION: RuntimeError The selected Hyperlight backend is not installed or not supported on this platform. Install a compatible backend package, such as `hyperlight-sandbox-backend-wasm`.
+Traceback (most recent call last):
+  File "~/p/agentic-search-bench/research/probes/ms-agent-framework-hyperlight/attempt.py", line 33, in main
+    res = await ex.invoke(arguments={"code": code})
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/ms-agent-framework-hyperlight/.venv/lib/python3.12/site-packages/agent_framework/_tools.py", line 1330, in invoke
+    result = await self._invoke_function(call_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/ms-agent-framework-hyperlight/.venv/lib/python3.12/site-packages/agent_framework/_tools.py", line 956, in _invoke_function
+    return await res if inspect.isawaitable(res) else res
+           ^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/ms-agent-framework-hyperlight/.venv/lib/python3.12/site-packages/agent_framework/_tools.py", line 944, in _await_invocation_result
+    return await result
+           ^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/ms-agent-framework-hyperlight/.venv/lib/python3.12/site-packages/agent_framework_hyperlight/_execute_code_tool.py", line 2056, in _run_code
+    return await asyncio.shield(execution)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/ms-agent-framework-hyperlight/.venv/lib/python3.12/site-packages/agent_framework_hyperlight/_execute_code_tool.py", line 2052, in _execute
+    return current_context.run(self._registry.execute, config=config, code=code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/ms-agent-framework-hyperlight/.venv/lib/python3.12/site-packages/agent_framework_hyperlight/_execute_code_tool.py", line 1524, in execute
+    entry = self._get_or_create_entry(config, control=control)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/ms-agent-framework-hyperlight/.venv/lib/python3.12/site-packages/agent_framework_hyperlight/_execute_code_tool.py", line 1556, in _get_or_create_entry
+    entry = self._create_entry(
+            ^^^^^^^^^^^^^^^^^^^
+  File "~/p/agentic-search-bench/research/impls/ms-agent-framework-hyperlight/.venv/lib/python3.12/site-packages/agent_framework_hyperlight/_execute_code_tool.py", line 1647, in _create_entry
+    worker.initialize(_build_sandbox, include_detailed_errors=config.include_detailed_errors)
+  File "~/p/agentic-search-bench/research/impls/ms-agent-framework-hyperlight/.venv/lib/python3.12/site-packages/agent_framework_hyperlight/_execute_code_tool.py", line 349, in initialize
+    self._run_on_worker(_init_on_worker, include_detailed_errors=include_detailed_errors)
+  File "~/p/agentic-search-bench/research/impls/ms-agent-framework-hyperlight/.venv/lib/python3.12/site-packages/agent_framework_hyperlight/_execute_code_tool.py", line 331, in _run_on_worker
+    raise error
+RuntimeError: The selected Hyperlight backend is not installed or not supported on this platform. Install a compatible backend package, such as `hyperlight-sandbox-backend-wasm`.
+host calls: 0

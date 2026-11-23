@@ -1,0 +1,27 @@
+config: {"port": 41940, "image_name": "smolagents-docker-jupyter-kernel", "container_run_kwargs": {"name": "smolagents-docker-p8"}}
+code:
+None
+
+{
+  "probe": "P8",
+  "hardened": false,
+  "harness_wall_s": 2.5,
+  "peak_container_mem_mib": 0,
+  "raw": {
+    "setup_ms": 1540,
+    "exec1": {
+      "ok": true,
+      "output": "None",
+      "logs": "",
+      "ms": 52.1
+    },
+    "exec2": {
+      "ok": true,
+      "output": "None",
+      "logs": "7\n",
+      "ms": 50.4
+    },
+    "wall_s": 2.06
+  },
+  "child_tail": ""
+}

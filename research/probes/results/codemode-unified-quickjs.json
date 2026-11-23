@@ -1,0 +1,198 @@
+{
+  "impl": "codemode-unified-quickjs",
+  "name": "CodeMode Unified, QuickJS runtime (the default runtime)",
+  "source": "https://github.com/danieliser/codemode-unified",
+  "pinned": "6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93 (2025-10-01)",
+  "language": "JS/TS",
+  "engine": "QuickJS WASM (quickjs-emscripten 0.23) in the MCP server process; a pool of reused contexts with no memory or interrupt limits",
+  "how_run": "MCP stdio server dist/mcp-server.js (CODEMODE_ENABLE_MCP_INTEGRATION=true, MCP_CONFIG_PATH naming a stdio MCP server that serves `lookup`), tool execute_code {code, runtime: 'quickjs'}. Probes run in the script form this runtime accepts (last expression is the result; no await, return or console), most on a new server each, because a reused context rejects every program after the first",
+  "probes": {
+    "P1": {
+      "outcome": "error",
+      "detail": "spec code: SyntaxError: expecting ';' (no top-level await). Expression form returned {} with 0 host calls: the injected __mcpCall uses console.log, which is not defined, and supportsAsync is false",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P1.txt",
+      "display": "error (no await/console; 0 calls)"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "console is not defined, so nothing can be printed; the last-expression value came back whole at 200,000 chars",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P2.txt",
+      "display": "return only (200,000; no console)"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "'fetch' is not defined",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P3.txt",
+      "display": "not-defined"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "'require' is not defined; import('fs') evaluates to an unresolved promise ({}); Deno, Bun, std, os undefined",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P4.txt",
+      "display": "not-defined"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "'process' is not defined",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P5.txt",
+      "display": "not-defined"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "evalCode is synchronous with no interrupt handler, so the 30 s setTimeout can never fire; the whole MCP server hung until the harness killed it at 120 s",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P6.txt",
+      "display": "host hang (no limit, 120 s)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "InternalError: out of memory after 5.8 s at 2.25 GB tree RSS; no limit is configured, the WASM heap ran out. The server answered the next call",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P7.txt",
+      "display": "limited (WASM ~2 GB ceiling)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "with MCP off, the second run returned kept = 7. With MCP on, the second run fails: SyntaxError: redeclaration of '__mcpCallCounter', from the injected const left in the reused context",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P8.txt",
+      "display": "persists (breaks next run)"
+    },
+    "P9": {
+      "outcome": "error",
+      "detail": "Promise.all of five calls returned {} with 0 host calls",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P9.txt",
+      "display": "error (no tool calls possible)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "error.message 'Error: probe-boom'; no line (e.stack inside the guest shows eval.js:19)",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P10.txt",
+      "display": "message only (no line)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "MCP off: median 0.5 ms, p90 2.1 ms, first 30 ms, setup 170 ms. MCP on: run 1 returned 2, runs 2 to 4 failed with the redeclaration error",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P11.txt",
+      "display": "0.5 ms (1st run only w/ MCP)"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "Function constructor: typeof process is undefined; sloppy this.process undefined",
+      "evidence": "research/probes/codemode-unified-quickjs/out/P12.txt",
+      "display": "blocked"
+    }
+  },
+  "hardened": {
+    "config": "execute_code argument timeout: 5000 (https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L879)",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-quickjs/out/hardened-P3.txt",
+        "display": "not-defined"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-quickjs/out/hardened-P4.txt",
+        "display": "not-defined"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-quickjs/out/hardened-P5.txt",
+        "display": "not-defined"
+      },
+      "P6": {
+        "outcome": "no-limit-within-120s",
+        "detail": "timeout 5000 has no effect on a synchronous loop; server hung until the 120 s harness kill",
+        "evidence": "research/probes/codemode-unified-quickjs/out/hardened-P6.txt",
+        "display": "host hang (no limit, 120 s)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "out of memory after 5.8 s at 2.2 GB",
+        "evidence": "research/probes/codemode-unified-quickjs/out/hardened-P7.txt",
+        "display": "limited (WASM ~2 GB ceiling)"
+      },
+      "P9": {
+        "outcome": "error",
+        "detail": "0 host calls",
+        "evidence": "research/probes/codemode-unified-quickjs/out/hardened-P9.txt",
+        "display": "error (no tool calls possible)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "same as default",
+        "evidence": "research/probes/codemode-unified-quickjs/out/hardened-P12.txt",
+        "display": "blocked"
+      }
+    }
+  },
+  "defaults": {
+    "time": "30 s setTimeout that cannot interrupt synchronous evaluation",
+    "memory": "none configured",
+    "output": "no cap",
+    "tool_calls": "not possible (console missing, no async)"
+  },
+  "source_notes": [
+    {
+      "topic": "Isolation boundary",
+      "finding": "Contexts come from one shared WASM module, are pooled (max(2, cpus/2)) and reused for up to 100 executions; the security configuration methods are empty ('No configuration for now - minimal test').",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/sandbox/quickjs-runtime.ts#L29-L35; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/sandbox/quickjs-runtime.ts#L125-L143; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/sandbox/quickjs-runtime.ts#L164-L189"
+    },
+    {
+      "topic": "Limits",
+      "finding": "evalCode runs synchronously inside a Promise whose timeout is a setTimeout; no interrupt handler or memory limit is set, so neither time nor memory is bounded by the implementation.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/sandbox/quickjs-runtime.ts#L196-L223"
+    },
+    {
+      "topic": "Language",
+      "finding": "The adapter declares supportsAsync false, and the code is evaluated as a global script, so `await`, top-level `return` and console are unavailable; the MCP prelude that relies on console.log therefore fails.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/runtime/quickjs-runtime.ts#L61-L71; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/sandbox/quickjs-runtime.ts#L223"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Not a live bridge but a two-pass replay. Pass 1 runs the whole program with every mcp.* call returning a placeholder string and logging '__MCP_CALL__' JSON; the server then runs all logged calls with Promise.all, bakes the results into the source as literals, and runs the whole program a second time. Arguments that depend on an earlier tool result are computed from the placeholder, and every side effect happens twice (P13).",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L903-L918; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L946-L1021; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L1111-L1134; research/probes/codemode-unified-bun/out/P13_twoPass.txt"
+    },
+    {
+      "topic": "API shape",
+      "finding": "A generated `const mcp = { <server>: { <tool>: async (args) => __mcpCall('<server>.<tool>', args) } }` proxy is prepended to the program. Results come back wrapped as {content, text, parsed, isError, helpers}, so `r.value` is undefined and the value sits at r.parsed.value (P1).",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L403-L466; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L974-L1007"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On-demand mode (the default) tells the model to read the resource mcp://types/declarations, but reading it always fails: loadTypeScriptDeclarations calls require() inside an ES module. The model gets no tool names. auto-include mode (CODEMODE_TYPE_EXPOSURE) lists every tool in the description instead.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L35; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L327-L340; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L513-L529; research/probes/codemode-unified-bun/out/P15_discovery.txt"
+    },
+    {
+      "topic": "Setup",
+      "finding": "Tool access is off unless CODEMODE_ENABLE_MCP_INTEGRATION=true, which the README does not mention. execute_code defaults to runtime 'quickjs', although the README recommends Bun.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L1359; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L879"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "Tools run in the MCP server process, but on startup it prints the first 20 characters of every downstream MCP server env value with console.log, which goes to stdout, the MCP protocol channel.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L281; research/probes/codemode-unified-bun/out/envlog-stdout.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "execute_code takes a timeout (default 30 s) and nothing else; getRuntime builds every runtime with only {type}, so the memoryLimit, Deno permission and E2B apiKey fields in RuntimeConfig cannot be set through the MCP server. No output cap, no tool-call cap.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L502-L508; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L879; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/mcp-server.ts#L945"
+    },
+    {
+      "topic": "HTTP mode",
+      "finding": "The HTTP backend's /execute ignores the `runtime` field shown in the README curl example; its sandbox manager only wraps QuickJS.",
+      "evidence": "https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/server.ts#L109-L128; https://github.com/danieliser/codemode-unified/blob/6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93/src/sandbox/index.ts#L9-L19"
+    },
+    {
+      "topic": "Maintenance",
+      "finding": "27 commits, last on 2025-10-01, single author; package.json says MIT but the repo has no LICENSE file; not published to npm. The README badge says 'Production Ready'.",
+      "evidence": "git log at 6e4daa3e7ae17bf0764adeb5c72ba922c58b4d93; npm view @danieliser/codemode-unified -> 404"
+    }
+  ],
+  "surprises": [
+    "The default runtime cannot call tools at all: the injected bridge needs console.log and await, which this runtime lacks.",
+    "After one successful run, every later run in the same pooled context fails with 'redeclaration of __mcpCallCounter'.",
+    "A `while (true) {}` hangs the whole MCP server; the timeout argument does nothing."
+  ]
+}

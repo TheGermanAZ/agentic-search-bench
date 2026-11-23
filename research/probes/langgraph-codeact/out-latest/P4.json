@@ -1,0 +1,7 @@
+{
+  "probe": "P4",
+  "outcome": "works",
+  "display": "works (read /etc/hosts)",
+  "detail": "HOSTS 450 [last line of /etc/hosts redacted]",
+  "evidence": "research/probes/langgraph-codeact/out/P4.txt"
+}

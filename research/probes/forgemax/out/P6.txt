@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { while (true) {} }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"execution timed out after 5000ms\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 5023,
+  "hostCalls": 0
+}

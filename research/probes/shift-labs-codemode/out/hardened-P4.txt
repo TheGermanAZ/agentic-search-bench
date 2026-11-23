@@ -1,0 +1,20 @@
+{
+  "requireFs": {
+    "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+    "ms": 243.2,
+    "hostCalls": 0,
+    "result": "127.0.0.1 internal.redacted.localhost.localhost\n\n[Showing lines 15-15 of 15 (450B in all). Full output: ~/p/agentic-search-bench/research/probes/shift-labs-codemode/out/outbox/codemode-result-20ab5fecf7129802.txt]",
+    "logs": [],
+    "truncated": true,
+    "fullResultPath": "~/p/agentic-search-bench/research/probes/shift-labs-codemode/out/outbox/codemode-result-20ab5fecf7129802.txt"
+  },
+  "dynamicImport": {
+    "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\").slice(0,80)",
+    "ms": 163.84,
+    "hostCalls": 0,
+    "result": "# w\n\n[Showing lines 5-5 of 5 (80B in all). Full output: ~/p/agentic-search-bench/research/probes/shift-labs-codemode/out/outbox/codemode-result-e031ae16d77b3bbf.txt]",
+    "logs": [],
+    "truncated": true,
+    "fullResultPath": "~/p/agentic-search-bench/research/probes/shift-labs-codemode/out/outbox/codemode-result-e031ae16d77b3bbf.txt"
+  }
+}

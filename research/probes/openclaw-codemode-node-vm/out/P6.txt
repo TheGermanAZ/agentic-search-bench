@@ -1,0 +1,88 @@
+engine=node hardened=false config={"enabled":true,"executor":"node"} setupMs=1
+--- code 1 ---
+while (true) {}
+--- result 1 ---
+{"ms":10013.49,"hostCalls":0,"ok":true,"waits":0}
+content text (333 chars):
+{"status":"failed","code":"timeout","failurePhase":"guest","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":1,"visibleTools":["exec","wait"]},"output":[],"error":"code mode timeout exceeded"}
+details (414 chars):
+{
+ "status": "failed",
+ "code": "timeout",
+ "failurePhase": "guest",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 1,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "code mode timeout exceeded"
+}
+--- code 2 ---
+(concurrent, started at +100 ms) return 42;
+--- result 2 ---
+{"ms":192.55,"hostCalls":0,"ok":true,"waits":0,"finishedAfterMs":193}
+content text (240 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":1,"visibleTools":["exec","wait"]},"output":[],"value":42}
+details (312 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 1,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": 42
+}
+--- code 3 ---
+return 42; (after)
+--- result 3 ---
+{"ms":390.99,"hostCalls":0,"ok":true,"waits":0}
+content text (240 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"a6ed06489dd2169bc0c6c98e","searchCount":0,"describeCount":0,"callCount":1,"visibleTools":["exec","wait"]},"output":[],"value":42}
+details (312 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "a6ed06489dd2169bc0c6c98e",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 1,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": 42
+}

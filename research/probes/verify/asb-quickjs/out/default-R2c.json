@@ -1,0 +1,38 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default R2c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 32,
+  "peakTreeRssMb": 0,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "R2c",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "startMs": 2,
+      "ms": 18,
+      "ok": true,
+      "result": {
+        "value": "{\"keys\":[\"d\",\"m\",\"s\"],\"fn\":\"undefined\",\"call\":\"threw not a function\",\"d\":\"string\",\"ds\":\"1970-01-01T00:00:00.000Z\",\"m\":\"object\",\"ms\":\"{}\"}",
+        "stringChars": 137
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 0,
+    "hostEvents": [],
+    "totalMs": 20
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": []
+}

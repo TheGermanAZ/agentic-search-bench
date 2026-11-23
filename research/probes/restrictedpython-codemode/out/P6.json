@@ -1,0 +1,8 @@
+{
+  "probe": "P6",
+  "outcome": "no-limit-within-120s",
+  "detail": "still running after 120.0 s, harness stopped it",
+  "display": "no-limit-within-120s",
+  "peak_rss_mb": 26,
+  "wall_s": 120.0
+}

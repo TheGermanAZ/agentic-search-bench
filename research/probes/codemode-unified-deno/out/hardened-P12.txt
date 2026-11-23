@@ -1,0 +1,145 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 203,
+    "totalWallMs": 546,
+    "peakTreeRssMB": 230.2,
+    "stderrTail": " tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n⚠️  Could not load TypeScript declarations: ReferenceError: require is not defined\n    at loadTypeScriptDeclarations (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:210:46)\n    at generateMCPProxy (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:273:34)\n    at file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:694:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:41:29.792Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nreturn Bun.spawnSync([\"sh\",\"-c\",\"echo PWNED; id -un\"]).stdout.toString()\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n⚠️  Could not load TypeScript declarations: ReferenceError: require is not defined\n    at loadTypeScriptDeclarations (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:210:46)\n    at generateMCPProxy (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:273:34)\n    at file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/mcp-server.js:694:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:41:29.814Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nconst o = await new Deno.Command(\"sh\", { args: [\"-c\", \"echo PWNED; id -un\"] }).output(); return new TextDecoder().decode(o.stdout)\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔄 Shutting down Code Mode MCP server...\n✅ MCP Manager shut down\n✅ Runtime deno shut down\n✅ Code Mode MCP server shut down complete\n"
+  },
+  "runtime": "deno",
+  "probe": "P12",
+  "mode": "hardened",
+  "setupMs": 263.4,
+  "executeToolDescription": "Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes with different capabilities. When MCP integration is enabled, code has access to MCP tools via the global `mcp` object (e.g., mcp.automem.store_memory(), mcp[\"sequential-thinking\"].sequentialthinking()). For TypeScript type definitions and API documentation of available MCP tools, read the resource mcp://types/declarations before writing code.",
+  "transportErrors": [],
+  "record": {
+    "A_functionCtor": {
+      "code": "return String(this.constructor.constructor(\"return process\")())",
+      "wallMs": 41.9,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "type": "runtime",
+          "message": "Deno exited with code 1: EXECUTION_ERROR: Cannot read properties of undefined (reading 'constructor')\nTypeError: Cannot read properties of undefined (reading 'constructor')\n    at file:///tmp/deno-exec-req_1795376489662_856j99evf.ts:30:20\n    at file:///tmp/deno-exec-req_1795376489662_856j99evf.ts:31:3\n",
+          "stack": "Error: Deno exited with code 1: EXECUTION_ERROR: Cannot read properties of undefined (reading 'constructor')\nTypeError: Cannot read properties of undefined (reading 'constructor')\n    at file:///tmp/deno-exec-req_1795376489662_856j99evf.ts:30:20\n    at file:///tmp/deno-exec-req_1795376489662_856j99evf.ts:31:3\n\n    at ChildProcess.<anonymous> (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/runtime/deno-runtime.js:250:28)\n    at ChildProcess.emit (node:events:514:28)\n    at maybeClose (node:internal/child_process:1172:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:335:5)",
+          "code": "DENO_EXEC_FAILED",
+          "timestamp": "2026-11-22T19:41:29.686Z"
+        },
+        "metrics": {
+          "executionTime": 24,
+          "memoryUsed": 0
+        },
+        "runtime": "deno"
+      },
+      "threw": null
+    },
+    "B_sloppyThis": {
+      "code": "return String((function(){ return this })().process)",
+      "wallMs": 22.9,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "type": "runtime",
+          "message": "Deno exited with code 1: EXECUTION_ERROR: Cannot read properties of undefined (reading 'process')\nTypeError: Cannot read properties of undefined (reading 'process')\n    at file:///tmp/deno-exec-req_1795376489688_zu2m1pozd.ts:30:40\n    at file:///tmp/deno-exec-req_1795376489688_zu2m1pozd.ts:31:3\n",
+          "stack": "Error: Deno exited with code 1: EXECUTION_ERROR: Cannot read properties of undefined (reading 'process')\nTypeError: Cannot read properties of undefined (reading 'process')\n    at file:///tmp/deno-exec-req_1795376489688_zu2m1pozd.ts:30:40\n    at file:///tmp/deno-exec-req_1795376489688_zu2m1pozd.ts:31:3\n\n    at ChildProcess.<anonymous> (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/runtime/deno-runtime.js:250:28)\n    at ChildProcess.emit (node:events:514:28)\n    at maybeClose (node:internal/child_process:1172:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:335:5)",
+          "code": "DENO_EXEC_FAILED",
+          "timestamp": "2026-11-22T19:41:29.710Z"
+        },
+        "metrics": {
+          "executionTime": 22,
+          "memoryUsed": 0
+        },
+        "runtime": "deno"
+      },
+      "threw": null
+    },
+    "C_typeofs": {
+      "code": "return [typeof process, typeof require, typeof Deno, typeof Bun, typeof fetch].join(\",\")",
+      "wallMs": 37.3,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "object,undefined,object,undefined,function",
+        "logs": [],
+        "metrics": {
+          "executionTime": 36,
+          "memoryUsed": 0
+        },
+        "runtime": "deno"
+      },
+      "threw": null
+    },
+    "D_exec_node": {
+      "code": "const p = Function(\"return process\")(); return p.getBuiltinModule(\"child_process\").execSync(\"echo PWNED; id -un\").toString()",
+      "wallMs": 43.3,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "type": "runtime",
+          "message": "Deno exited with code 1: EXECUTION_ERROR: Requires env access, run again with the --allow-env flag\nNotCapable: Requires env access, run again with the --allow-env flag\n    at Object.toObject (ext:deno_os/30_os.js:133:12)\n    at normalizeSpawnArguments (ext:deno_node/internal/child_process.ts:1085:41)\n    at spawnSync (ext:deno_node/child_process.ts:231:10)\n    at Object.execSync (ext:deno_node/child_process.ts:552:17)\n    at file:///tmp/deno-exec-req_1795376489749_tq3bxikog.ts:30:84\n    at file:///tmp/deno-exec-req_1795376489749_tq3bxikog.ts:31:3\n",
+          "stack": "Error: Deno exited with code 1: EXECUTION_ERROR: Requires env access, run again with the --allow-env flag\nNotCapable: Requires env access, run again with the --allow-env flag\n    at Object.toObject (ext:deno_os/30_os.js:133:12)\n    at normalizeSpawnArguments (ext:deno_node/internal/child_process.ts:1085:41)\n    at spawnSync (ext:deno_node/child_process.ts:231:10)\n    at Object.execSync (ext:deno_node/child_process.ts:552:17)\n    at file:///tmp/deno-exec-req_1795376489749_tq3bxikog.ts:30:84\n    at file:///tmp/deno-exec-req_1795376489749_tq3bxikog.ts:31:3\n\n    at ChildProcess.<anonymous> (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/runtime/deno-runtime.js:250:28)\n    at ChildProcess.emit (node:events:514:28)\n    at maybeClose (node:internal/child_process:1172:16)\n    at Socket.<anonymous> (node:internal/child_process:527:11)\n    at Socket.emit (node:events:514:28)\n    at Pipe.<anonymous> (node:net:362:12)",
+          "code": "DENO_EXEC_FAILED",
+          "timestamp": "2026-11-22T19:41:29.790Z"
+        },
+        "metrics": {
+          "executionTime": 41,
+          "memoryUsed": 0
+        },
+        "runtime": "deno"
+      },
+      "threw": null
+    },
+    "E_exec_bun": {
+      "code": "return Bun.spawnSync([\"sh\",\"-c\",\"echo PWNED; id -un\"]).stdout.toString()",
+      "wallMs": 22.8,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "type": "runtime",
+          "message": "Deno exited with code 1: EXECUTION_ERROR: Bun is not defined\nReferenceError: Bun is not defined\n    at file:///tmp/deno-exec-req_1795376489792_7j53f7y67.ts:30:1\n    at file:///tmp/deno-exec-req_1795376489792_7j53f7y67.ts:31:3\n",
+          "stack": "Error: Deno exited with code 1: EXECUTION_ERROR: Bun is not defined\nReferenceError: Bun is not defined\n    at file:///tmp/deno-exec-req_1795376489792_7j53f7y67.ts:30:1\n    at file:///tmp/deno-exec-req_1795376489792_7j53f7y67.ts:31:3\n\n    at ChildProcess.<anonymous> (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/runtime/deno-runtime.js:250:28)\n    at ChildProcess.emit (node:events:514:28)\n    at maybeClose (node:internal/child_process:1172:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:335:5)",
+          "code": "DENO_EXEC_FAILED",
+          "timestamp": "2026-11-22T19:41:29.813Z"
+        },
+        "metrics": {
+          "executionTime": 21,
+          "memoryUsed": 0
+        },
+        "runtime": "deno"
+      },
+      "threw": null
+    },
+    "F_exec_deno": {
+      "code": "const o = await new Deno.Command(\"sh\", { args: [\"-c\", \"echo PWNED; id -un\"] }).output(); return new TextDecoder().decode(o.stdout)",
+      "wallMs": 27.6,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "type": "runtime",
+          "message": "Deno exited with code 1: EXECUTION_ERROR: Requires run access to \"sh\", run again with the --allow-run flag\nNotCapable: Requires run access to \"sh\", run again with the --allow-run flag\n    at spawnInner (ext:deno_process/40_process.js:652:17)\n    at Command.output (ext:deno_process/40_process.js:804:12)\n    at file:///tmp/deno-exec-req_1795376489815_f8x2h7lhf.ts:30:80\n    at file:///tmp/deno-exec-req_1795376489815_f8x2h7lhf.ts:31:3\n",
+          "stack": "Error: Deno exited with code 1: EXECUTION_ERROR: Requires run access to \"sh\", run again with the --allow-run flag\nNotCapable: Requires run access to \"sh\", run again with the --allow-run flag\n    at spawnInner (ext:deno_process/40_process.js:652:17)\n    at Command.output (ext:deno_process/40_process.js:804:12)\n    at file:///tmp/deno-exec-req_1795376489815_f8x2h7lhf.ts:30:80\n    at file:///tmp/deno-exec-req_1795376489815_f8x2h7lhf.ts:31:3\n\n    at ChildProcess.<anonymous> (file://~/p/agentic-search-bench/research/impls/codemode-unified-bun/repo/dist/runtime/deno-runtime.js:250:28)\n    at ChildProcess.emit (node:events:514:28)\n    at maybeClose (node:internal/child_process:1172:16)\n    at Socket.<anonymous> (node:internal/child_process:527:11)\n    at Socket.emit (node:events:514:28)\n    at Pipe.<anonymous> (node:net:362:12)",
+          "code": "DENO_EXEC_FAILED",
+          "timestamp": "2026-11-22T19:41:29.841Z"
+        },
+        "metrics": {
+          "executionTime": 26,
+          "memoryUsed": 0
+        },
+        "runtime": "deno"
+      },
+      "threw": null
+    }
+  }
+}

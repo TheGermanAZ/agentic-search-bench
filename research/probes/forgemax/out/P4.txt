@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { return require("fs").readFileSync("/etc/hosts", "utf8"); }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"banned pattern detected: `require() is not available in the sandbox — use forge.callTool() to interact with external services` — the sandbox has no filesystem, network, or module access. Use forge.callTool() or forge.server() to interact with external services.\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 0,
+  "hostCalls": 0
+}

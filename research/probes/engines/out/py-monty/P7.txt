@@ -1,0 +1,11 @@
+a = []
+while True:
+    a.append("x" * 10**6 + str(len(a)))
+--- output
+ERROR: Traceback (most recent call last):
+  File "<python-input-0>", line 3, in <module>
+    a.append("x" * 10**6 + str(len(a)))
+             ~~~~~~~~~~~~~~~~~~~~~~~~~
+MemoryError: memory limit exceeded: 537115258 bytes > 536870912 bytes
+---
+wall_ms=47 host_calls=0 peak_tree_rss_mb=172

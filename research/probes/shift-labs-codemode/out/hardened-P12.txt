@@ -1,0 +1,39 @@
+{
+  "thisConstructor": {
+    "code": "return this.constructor.constructor(\"return process\")()",
+    "ms": 250.53,
+    "hostCalls": 0,
+    "result": null,
+    "error": "    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)\n\n[Showing lines 7-7 of 7 (460B in all). Full output: ~/p/agentic-search-bench/research/probes/shift-labs-codemode/out/outbox/codemode-error-01ad296e89c01b85.txt]",
+    "logs": []
+  },
+  "sloppyThis": {
+    "code": "return (function(){return this})().process",
+    "ms": 259.49,
+    "hostCalls": 0,
+    "result": null,
+    "error": "    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)\n\n[Showing lines 7-7 of 7 (456B in all). Full output: ~/p/agentic-search-bench/research/probes/shift-labs-codemode/out/outbox/codemode-error-ce729132ddc853e4.txt]",
+    "logs": []
+  },
+  "processGlobal": {
+    "code": "return typeof process + \" pid=\" + process.pid + \" hostPid=\" + 14848 + \" versions.node=\" + process.versions.node",
+    "ms": 293.37,
+    "hostCalls": 0,
+    "result": "object pid=14848 hostPid=14848 versions.node=24.22.1",
+    "logs": []
+  },
+  "childProcessEcho": {
+    "code": "return require(\"node:child_process\").execSync(\"echo PWNED\").toString()",
+    "ms": 268.05,
+    "hostCalls": 0,
+    "result": "PWNED\n",
+    "logs": []
+  },
+  "functionCtor": {
+    "code": "return Function(\"return typeof process\")()",
+    "ms": 217.17,
+    "hostCalls": 0,
+    "result": "object",
+    "logs": []
+  }
+}

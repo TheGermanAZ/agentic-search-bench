@@ -1,0 +1,179 @@
+config: CodeMode(**{'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})
+code: ["print(().__class__.__base__.__subclasses__())", "__import__(\"os\").system(\"echo PWNED\")", "print(type(()).__mro__)", "print((lambda: 0).__globals__)", "import os\nos.system('echo PWNED')", "print(object.__subclasses__())", "import subprocess\nsubprocess.Popen(['echo', 'PWNED'])", "import sys\nprint(sys.modules)", "print(getattr((), '__class__'))"]
+outcome: blocked
+detail: [first ] print(().__class__.__base__.__subclasses__()) -> Type error in code:
+error[unresolved-attribute]: Attribute `__subclasses__` is not defined on `None` in union `type | None`
+ --> main.py:1:7
+  |
+1 | print(().__ | [second] print(().__class__.__base__.__subclasses__()) -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    print(().__class__.__base__.__subclasses__())
+AttributeErro | [first ] __import__("os").system("echo PWNED") -> Type error in code:
+error[unresolved-reference]: Name `__import__` used when not defined
+ --> main.py:1:1
+  |
+1 | __import__("os").system("echo PWNED")
+  | ^^^^ | [second] __import__("os").system("echo PWNED") -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    __import__("os").system("echo PWNED")
+    ~~~~~~~~~~~~~~~~
+ | [first ] print(type(()).__mro__) -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    print(type(()).__mro__)
+AttributeError: type object 'tuple' | [second] print(type(()).__mro__) -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    print(type(()).__mro__)
+AttributeError: type object 'tuple' | [first ] print((lambda: 0).__globals__) -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    print((lambda: 0).__globals__)
+AttributeError: 'function' o | [second] print((lambda: 0).__globals__) -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    print((lambda: 0).__globals__)
+AttributeError: 'function' o | [first ] os.system('echo PWNED') -> Type error in code:
+error[unresolved-attribute]: Module `os` has no member `system`
+ --> main.py:2:1
+  |
+1 | import os
+2 | os.system('echo PWNED')
+  | ^^^^^^^^^ | [second] os.system('echo PWNED') -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-1>", line 2, in <module>
+    os.system('echo PWNED')
+AttributeError: module 'os' has no  | [first ] print(object.__subclasses__()) -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    print(object.__subclasses__())
+AttributeError: type object  | [second] print(object.__subclasses__()) -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    print(object.__subclasses__())
+AttributeError: type object  | [first ] subprocess.Popen(['echo', 'PWNED']) -> Type error in code:
+error[unresolved-import]: Cannot resolve imported module `subprocess`
+ --> main.py:1:8
+  |
+1 | import subprocess
+  |        ^^^^^^^^^^
+2 | s | [second] subprocess.Popen(['echo', 'PWNED']) -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    import subprocess
+ModuleNotFoundError: No module named 'sub | [first ] print(sys.modules) -> Type error in code:
+error[unresolved-attribute]: Module `sys` has no member `modules`
+ --> main.py:2:7
+  |
+1 | import sys
+2 | print(sys.modules)
+  |       ^^^^^ | [second] print(sys.modules) -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-1>", line 2, in <module>
+    print(sys.modules)
+AttributeError: module 'sys' has no attr | [first ] print(getattr((), '__class__')) -> Type error in code:
+error[unresolved-reference]: Name `getattr` used when not defined
+ --> main.py:1:7
+  |
+1 | print(getattr((), '__class__'))
+  |       ^^^^^^^ | [second] print(getattr((), '__class__')) -> Runtime error:
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    print(getattr((), '__class__'))
+AttributeError: 'tuple' obj
+
+raw:
+[
+  {
+    "code": "print(().__class__.__base__.__subclasses__())",
+    "when": "first snippet (ty type check on)",
+    "result": "Type error in code:\nerror[unresolved-attribute]: Attribute `__subclasses__` is not defined on `None` in union `type | None`\n --> main.py:1:7\n  |\n1 | print(().__class__.__base__.__subclasses__())\n  |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": "print(().__class__.__base__.__subclasses__())",
+    "when": "second snippet (no type check)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-1>\", line 1, in <module>\n    print(().__class__.__base__.__subclasses__())\nAttributeError: 'tuple' object has no attribute '__class__'"
+  },
+  {
+    "code": "__import__(\"os\").system(\"echo PWNED\")",
+    "when": "first snippet (ty type check on)",
+    "result": "Type error in code:\nerror[unresolved-reference]: Name `__import__` used when not defined\n --> main.py:1:1\n  |\n1 | __import__(\"os\").system(\"echo PWNED\")\n  | ^^^^^^^^^^\ninfo: `__import__` was added as a builtin in Python 3.0\ninfo: Python 3.14 was assumed when resolving types because it is the newest Python version supported by ty, and neither a command-line argument nor a configuration setting was provided\n\n"
+  },
+  {
+    "code": "__import__(\"os\").system(\"echo PWNED\")",
+    "when": "second snippet (no type check)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-1>\", line 1, in <module>\n    __import__(\"os\").system(\"echo PWNED\")\n    ~~~~~~~~~~~~~~~~\nNameError: Unknown function: __import__"
+  },
+  {
+    "code": "print(type(()).__mro__)",
+    "when": "first snippet (ty type check on)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 1, in <module>\n    print(type(()).__mro__)\nAttributeError: type object 'tuple' has no attribute '__mro__'"
+  },
+  {
+    "code": "print(type(()).__mro__)",
+    "when": "second snippet (no type check)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-1>\", line 1, in <module>\n    print(type(()).__mro__)\nAttributeError: type object 'tuple' has no attribute '__mro__'"
+  },
+  {
+    "code": "print((lambda: 0).__globals__)",
+    "when": "first snippet (ty type check on)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 1, in <module>\n    print((lambda: 0).__globals__)\nAttributeError: 'function' object has no attribute '__globals__'"
+  },
+  {
+    "code": "print((lambda: 0).__globals__)",
+    "when": "second snippet (no type check)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-1>\", line 1, in <module>\n    print((lambda: 0).__globals__)\nAttributeError: 'function' object has no attribute '__globals__'"
+  },
+  {
+    "code": "import os\nos.system('echo PWNED')",
+    "when": "first snippet (ty type check on)",
+    "result": "Type error in code:\nerror[unresolved-attribute]: Module `os` has no member `system`\n --> main.py:2:1\n  |\n1 | import os\n2 | os.system('echo PWNED')\n  | ^^^^^^^^^\n\n"
+  },
+  {
+    "code": "import os\nos.system('echo PWNED')",
+    "when": "second snippet (no type check)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-1>\", line 2, in <module>\n    os.system('echo PWNED')\nAttributeError: module 'os' has no attribute 'system'"
+  },
+  {
+    "code": "print(object.__subclasses__())",
+    "when": "first snippet (ty type check on)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 1, in <module>\n    print(object.__subclasses__())\nAttributeError: type object 'object' has no attribute '__subclasses__'"
+  },
+  {
+    "code": "print(object.__subclasses__())",
+    "when": "second snippet (no type check)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-1>\", line 1, in <module>\n    print(object.__subclasses__())\nAttributeError: type object 'object' has no attribute '__subclasses__'"
+  },
+  {
+    "code": "import subprocess\nsubprocess.Popen(['echo', 'PWNED'])",
+    "when": "first snippet (ty type check on)",
+    "result": "Type error in code:\nerror[unresolved-import]: Cannot resolve imported module `subprocess`\n --> main.py:1:8\n  |\n1 | import subprocess\n  |        ^^^^^^^^^^\n2 | subprocess.Popen(['echo', 'PWNED'])\n  |\ninfo: Searched in the following paths during module resolution:\ninfo:   1. / (first-party code)\ninfo:   2. vendored://stdlib (stdlib typeshed stubs vendored by ty)\ninfo: make sure your Python environment is properly configured: https://docs.astral.sh/ty/modules/#python-environment\n\n"
+  },
+  {
+    "code": "import subprocess\nsubprocess.Popen(['echo', 'PWNED'])",
+    "when": "second snippet (no type check)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-1>\", line 1, in <module>\n    import subprocess\nModuleNotFoundError: No module named 'subprocess'"
+  },
+  {
+    "code": "import sys\nprint(sys.modules)",
+    "when": "first snippet (ty type check on)",
+    "result": "Type error in code:\nerror[unresolved-attribute]: Module `sys` has no member `modules`\n --> main.py:2:7\n  |\n1 | import sys\n2 | print(sys.modules)\n  |       ^^^^^^^^^^^\n\n"
+  },
+  {
+    "code": "import sys\nprint(sys.modules)",
+    "when": "second snippet (no type check)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-1>\", line 2, in <module>\n    print(sys.modules)\nAttributeError: module 'sys' has no attribute 'modules'"
+  },
+  {
+    "code": "print(getattr((), '__class__'))",
+    "when": "first snippet (ty type check on)",
+    "result": "Type error in code:\nerror[unresolved-reference]: Name `getattr` used when not defined\n --> main.py:1:7\n  |\n1 | print(getattr((), '__class__'))\n  |       ^^^^^^^\ninfo: `getattr` was added as a builtin in Python 3.0\ninfo: Python 3.14 was assumed when resolving types because it is the newest Python version supported by ty, and neither a command-line argument nor a configuration setting was provided\n\n"
+  },
+  {
+    "code": "print(getattr((), '__class__'))",
+    "when": "second snippet (no type check)",
+    "result": "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-1>\", line 1, in <module>\n    print(getattr((), '__class__'))\nAttributeError: 'tuple' object has no attribute '__class__'"
+  }
+]

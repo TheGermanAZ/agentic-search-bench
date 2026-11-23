@@ -1,0 +1,58 @@
+label: P10b
+command: bun probe.mjs P10b
+child exit: code=0 signal=null
+child wall ms (process start to exit): 279
+peak child RSS: 65.4 MB (ps every 50 ms)
+child stdout length: 696 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P10b",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 3.0722079999999963,
+  "source": [
+    "const x = 1;\nconst y = 2;\nfunction inner() { throw new Error(\"probe-boom\"); }\ninner();"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "probe-boom",
+          "name": "Error",
+          "stack": "    at inner (<code-mode>:7:35)\n    at <anonymous> (<code-mode>:8:6)\n    at <anonymous> (<code-mode>:9:7)\n    at <eval> (<code-mode>:14:3)\n"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 205.12720899999997,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: probe-boom",
+    "ms": 205,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 45.7
+}
+--- child stdout ---
+{
+  [0mtimestamp[2m:[0m [0m[33m1795376531179[0m[0m[2m,[0m
+  [0mdurationMs[2m:[0m [0m[33m204[0m[0m[2m,[0m
+  [0mphase[2m:[0m [0m[32m[0m[32m"execute"[0m[0m[0m[2m,[0m
+  [0msuccess[2m:[0m [0m[33mfalse[0m[0m[2m,[0m
+  [0mlogCount[2m:[0m [0m[33m0[0m[0m[2m,[0m
+  [0merror[2m:[0m {
+    [0mname[2m:[0m [0m[32m[0m[32m"Error"[0m[0m[0m[2m,[0m
+    [0mmessage[2m:[0m [0m[32m[0m[32m"probe-boom"[0m[0m[0m[2m,[0m
+    [0mstack[2m:[0m [0m[32m[0m[32m"    at inner (<code-mode>:7:35)\n    at <anonymous> (<code-mode>:8:6)\n    at <anonymous> (<code-mode>:9:7)\n    at <eval> (<code-mode>:14:3)\n"[0m[0m[0m[2m,[0m
+  }[0m[2m,[0m
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

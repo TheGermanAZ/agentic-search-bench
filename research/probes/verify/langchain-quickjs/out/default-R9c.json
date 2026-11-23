@@ -1,0 +1,375 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py default R9c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 53069,
+  "peakTreeRssMb": 190,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9c",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich']}), new thread_id per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1741,
+          "ms": 50960,
+          "ok": true,
+          "result": "<stdout>\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[4061 chars]…xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx… [truncated 3329999329 chars]\n</stdout>\n<error type=\"Timeout\">interrupted</error>",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1930,
+        "ms": 709,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 2639,
+        "ms": 226,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 52701,
+        "ms": 237,
+        "ok": true,
+        "result": "<stdout>\n42\n</stdout>\n<result>null</result>",
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 93,
+    "totalMs": 52938
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      132,
+      31
+    ],
+    [
+      803,
+      61
+    ],
+    [
+      1475,
+      80
+    ],
+    [
+      2223,
+      162
+    ],
+    [
+      2916,
+      189
+    ],
+    [
+      3641,
+      190
+    ],
+    [
+      4270,
+      190
+    ],
+    [
+      4884,
+      190
+    ],
+    [
+      5591,
+      190
+    ],
+    [
+      6212,
+      190
+    ],
+    [
+      6939,
+      190
+    ],
+    [
+      7544,
+      190
+    ],
+    [
+      8225,
+      190
+    ],
+    [
+      8845,
+      190
+    ],
+    [
+      9516,
+      190
+    ],
+    [
+      10143,
+      190
+    ],
+    [
+      10759,
+      190
+    ],
+    [
+      11509,
+      190
+    ],
+    [
+      12213,
+      190
+    ],
+    [
+      12939,
+      190
+    ],
+    [
+      13774,
+      190
+    ],
+    [
+      14578,
+      190
+    ],
+    [
+      15211,
+      190
+    ],
+    [
+      15837,
+      190
+    ],
+    [
+      16626,
+      190
+    ],
+    [
+      17406,
+      190
+    ],
+    [
+      18210,
+      190
+    ],
+    [
+      18991,
+      190
+    ],
+    [
+      19726,
+      190
+    ],
+    [
+      20583,
+      190
+    ],
+    [
+      21341,
+      161
+    ],
+    [
+      22109,
+      161
+    ],
+    [
+      22895,
+      158
+    ],
+    [
+      23624,
+      158
+    ],
+    [
+      24291,
+      158
+    ],
+    [
+      25020,
+      158
+    ],
+    [
+      25722,
+      158
+    ],
+    [
+      26454,
+      158
+    ],
+    [
+      27090,
+      158
+    ],
+    [
+      27694,
+      158
+    ],
+    [
+      28308,
+      158
+    ],
+    [
+      28922,
+      158
+    ],
+    [
+      29558,
+      158
+    ],
+    [
+      30312,
+      158
+    ],
+    [
+      30978,
+      158
+    ],
+    [
+      31637,
+      158
+    ],
+    [
+      32273,
+      158
+    ],
+    [
+      32871,
+      158
+    ],
+    [
+      33555,
+      158
+    ],
+    [
+      34199,
+      158
+    ],
+    [
+      34808,
+      158
+    ],
+    [
+      35460,
+      158
+    ],
+    [
+      36113,
+      158
+    ],
+    [
+      37074,
+      127
+    ],
+    [
+      37857,
+      127
+    ],
+    [
+      38586,
+      127
+    ],
+    [
+      39228,
+      127
+    ],
+    [
+      39830,
+      127
+    ],
+    [
+      40449,
+      127
+    ],
+    [
+      41100,
+      127
+    ],
+    [
+      41732,
+      127
+    ],
+    [
+      42342,
+      127
+    ],
+    [
+      42946,
+      127
+    ],
+    [
+      43575,
+      127
+    ],
+    [
+      44204,
+      127
+    ],
+    [
+      44821,
+      127
+    ],
+    [
+      45422,
+      127
+    ],
+    [
+      46031,
+      127
+    ],
+    [
+      46643,
+      127
+    ],
+    [
+      47281,
+      127
+    ],
+    [
+      48051,
+      127
+    ],
+    [
+      48674,
+      127
+    ],
+    [
+      49300,
+      127
+    ],
+    [
+      49936,
+      127
+    ],
+    [
+      50560,
+      127
+    ],
+    [
+      51218,
+      127
+    ],
+    [
+      51822,
+      127
+    ],
+    [
+      52430,
+      127
+    ],
+    [
+      53066,
+      0
+    ]
+  ]
+}

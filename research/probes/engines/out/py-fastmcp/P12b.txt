@@ -1,0 +1,8 @@
+try:
+    return __import__("os").system("echo PWNED")
+except Exception as e:
+    return type(e).__name__ + ": " + str(e)
+--- output
+NameError: name '__import__' is not defined
+---
+wall_ms=15 host_calls=0 peak_tree_rss_mb=193

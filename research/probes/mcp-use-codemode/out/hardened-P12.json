@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "escaped",
+  "detail": "P12a: escaped: wrap_close Popen | P12b: not-defined: name '__import__' is not defined | P12c: escaped: rc 0",
+  "display": "escaped (P12a, P12c)",
+  "config": "hardened"
+}

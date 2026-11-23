@@ -1,0 +1,64 @@
+label: P12c
+command: node probe.mjs P12c
+child exit: code=0 signal=null
+child wall ms (process start to exit): 468
+peak child RSS: 79.4 MB (ps every 50 ms)
+child stdout length: 814 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P12c",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 122.85854199999997,
+  "source": [
+    "return String(external_lookup.constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "process is not defined",
+          "name": "ReferenceError",
+          "stack": "ReferenceError: process is not defined\n    at eval (eval at <anonymous> (<isolated-vm>:5:31), <anonymous>:3:1)\n    at <isolated-vm>:5:60\n    at <isolated-vm>:6:7\n    at <isolated-vm>:11:3\n    at (<isolated-vm boundary>)\n    at execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:35:73)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 25.377499999999998,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: process is not defined",
+    "ms": 25,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 82.9
+}
+--- child stdout ---
+{
+  timestamp: [33m1795376240071[39m,
+  durationMs: [33m21[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'ReferenceError'[39m,
+    message: [32m'process is not defined'[39m,
+    stack: [32m'ReferenceError: process is not defined\n'[39m +
+      [32m'    at eval (eval at <anonymous> (<isolated-vm>:5:31), <anonymous>:3:1)\n'[39m +
+      [32m'    at <isolated-vm>:5:60\n'[39m +
+      [32m'    at <isolated-vm>:6:7\n'[39m +
+      [32m'    at <isolated-vm>:11:3\n'[39m +
+      [32m'    at (<isolated-vm boundary>)\n'[39m +
+      [32m'    at execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:35:73)'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

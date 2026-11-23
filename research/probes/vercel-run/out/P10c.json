@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-run",
+  "probe": "P10c",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return await host.failing();"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "Error",
+        "code": "RUN_HOST_FUNCTION_ERROR",
+        "message": "Host function failed.",
+        "stack": "Error: Host function failed.\n    at <anonymous> (run.js:1:19)",
+        "string": "Error: Host function failed."
+      },
+      "wallMs": 189.52200000000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "Error: RUN_HOST_FUNCTION_ERROR Host function failed.",
+    "ms": 190,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 135.3
+}

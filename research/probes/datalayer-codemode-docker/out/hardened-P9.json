@@ -1,0 +1,7 @@
+{
+  "probe": "P9",
+  "outcome": "error",
+  "display": "host crash",
+  "detail": "child process died (exit 1) before any result; log: , in set_variable data, metadata = serialize_object(value) ^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/api.py\", line 128, in serialize_object data, metadata = proxy_obj._repr_mimebundle_() ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/jupyter_mimetypes/_proxy.py\", line 147,...",
+  "evidence": "research/probes/datalayer-codemode-docker/out/hardened-P9.txt"
+}

@@ -1,0 +1,56 @@
+{
+  "probe": "L-sync-recursion",
+  "serverPid": 16365,
+  "code": "function f(n) { return f(n + 1) } f(0)",
+  "wallMs": 10979,
+  "reason": "returned",
+  "peakRssMb": 2673,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":false,\"error\":{\"kind\":\"TimeoutExceeded\",\"message\":\"Execution timed out after 10000ms; earlier tool calls may have completed.\"},\"toolCalls\":[]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": false,
+          "error": {
+            "kind": "TimeoutExceeded",
+            "message": "Execution timed out after 10000ms; earlier tool calls may have completed."
+          },
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  },
+  "after": {
+    "sameSession": {
+      "code": "1+1",
+      "ms": 13,
+      "value": 2,
+      "raw": {
+        "ok": true,
+        "value": 2,
+        "toolCalls": []
+      }
+    },
+    "newSession": {
+      "code": "1+1",
+      "ms": 8,
+      "value": 2,
+      "raw": {
+        "ok": true,
+        "value": 2,
+        "toolCalls": []
+      }
+    },
+    "serverAlive": true,
+    "serverRssMbAfter": 2673
+  }
+}

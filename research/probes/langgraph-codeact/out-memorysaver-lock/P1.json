@@ -1,0 +1,7 @@
+{
+  "probe": "P1",
+  "outcome": "works",
+  "display": "works (42, 1 call)",
+  "detail": "42 in printed stdout: True; 42 in returned value: False; output '42'; host lookup calls: 1",
+  "evidence": "research/probes/langgraph-codeact/out/P1.txt"
+}

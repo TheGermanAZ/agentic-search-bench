@@ -1,0 +1,190 @@
+{
+  "impl": "smolagents-docker",
+  "name": "smolagents DockerExecutor (executor_type=\"docker\")",
+  "source": "https://github.com/huggingface/smolagents (Apache-2.0), PyPI smolagents[docker]",
+  "pinned": "smolagents 1.26.0 (tag v1.26.0 = 12c1bc820eca50ace6f80a21d90426d41d74f845); image built from the default Dockerfile (python:3.12-bullseye + jupyter_kernel_gateway)",
+  "language": "Python",
+  "engine": "CPython 3.12 IPython kernel inside a Jupyter Kernel Gateway Docker container; code sent over the kernel websocket",
+  "how_run": "DockerExecutor(additional_imports=[], logger, port=41940+n, image_name='smolagents-docker-jupyter-kernel', build_new_image=False, container_run_kwargs={'name': 'smolagents-docker-<probe>'}), send_tools({'lookup': Lookup()}), then executor(code). This is what CodeAgent(executor_type='docker') builds (agents.py:1598-1619).",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed '42'; lookup (a smolagents Tool) was sent with send_tools, which ships the tool's source into the kernel, so it ran in the container: 0 host-side calls",
+      "evidence": "research/probes/smolagents-docker/out/P1.txt",
+      "display": "works (42, runs in container)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "logs came back whole: 200,001 chars, no marker; output 'RETURNED'. CodeAgent caps only the last-output value at 20,000 chars (agents.py:1752, utils.py:254-265); remote executor logs go to the model uncapped (agents.py:1733)",
+      "evidence": "research/probes/smolagents-docker/out/P2.txt",
+      "display": "works (200,001 chars, no cap)"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "printed 200 from https://example.com; container on the default bridge network",
+      "evidence": "research/probes/smolagents-docker/out/P3.txt",
+      "display": "works (example.com 200)"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "read the container's /etc/hosts (127.0.0.1 localhost ... 192.168.215.2 <container id>), not the host's; nothing is mounted",
+      "evidence": "research/probes/smolagents-docker/out/P4.txt",
+      "display": "blocked (container /etc/hosts only)"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "printed None; the container gets only KG_AUTH_TOKEN",
+      "evidence": "research/probes/smolagents-docker/out/P5.txt",
+      "display": "blocked (None)"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "the websocket loop waits for an idle status with no timeout (remote_executors.py:501-525); harness removed the container at 120 s, then the caller got WebSocketConnectionClosedException",
+      "evidence": "research/probes/smolagents-docker/out/P6.txt",
+      "display": "no-limit-within-120s"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "no memory limit by default; harness removed the container at 4,124 MiB cgroup memory after 1.7 s",
+      "evidence": "research/probes/smolagents-docker/out/P7.txt",
+      "display": "no-limit-within-120s (4 GiB kill)"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "execution 2 printed '7' (one kernel per executor)",
+      "evidence": "research/probes/smolagents-docker/out/P8.txt",
+      "display": "persists"
+    },
+    "P9": {
+      "outcome": "not-applicable",
+      "detail": "tools run inside the kernel, so there is no host bridge to parallelize. lookup in the kernel: loop 1,017 ms, 5 threads 207 ms, 0 host calls",
+      "evidence": "research/probes/smolagents-docker/out/P9.txt",
+      "display": "n/a (no host bridge; threads 207 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "AgentError with the IPython traceback: 'ValueError Traceback ... Cell In[2], line 1 ----> 1 raise ValueError(\"probe-boom\") ... ValueError: probe-boom' (ANSI colour codes included)",
+      "evidence": "research/probes/smolagents-docker/out/P10.txt",
+      "display": "works (message + line 1)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "same executor: median 56 ms, p90 66 ms (n=20); setup (container start, kernel create, send_tools) about 1518 ms with the image cached; first image build 81.7 s",
+      "evidence": "research/probes/smolagents-docker/out/P11.txt",
+      "display": "works (56 ms, 1.5 s setup)"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "subclass walk ran (789 classes, 1 _wrap_close); os.system and _wrap_close.__init__.__globals__['system'] printed PWNED and returned 0, inside the container, as root (uid=0); no docker.sock, no /Users",
+      "evidence": "research/probes/smolagents-docker/out/P12.txt",
+      "display": "blocked (os.system ran in container)"
+    }
+  },
+  "defaults": {
+    "time": "None: _websocket_run_code_raise_errors blocks on ws.recv() until the kernel reports idle (research/impls/smolagents-docker/repo/src/smolagents/remote_executors.py:481-530).",
+    "memory": "None unless container_run_kwargs sets one (research/impls/smolagents-docker/repo/src/smolagents/remote_executors.py:634-652).",
+    "output": "No cap on logs for remote executors; CodeAgent truncates only the last-output value to 20,000 chars with a middle marker (agents.py:1752, utils.py:254-265).",
+    "tool_calls": "No cap. Tools run inside the kernel."
+  },
+  "hardened": {
+    "config": "DockerExecutor(..., container_run_kwargs={'name': ..., 'mem_limit': '512m', 'cpu_quota': 50000, 'pids_limit': 100, 'security_opt': ['no-new-privileges'], 'cap_drop': ['ALL']}). container_run_kwargs is public (research/impls/smolagents-docker/repo/src/smolagents/remote_executors.py:567-568, 634-652); the values are the ones in the project's secure-execution tutorial (docs/source/en/tutorials/secure_code_execution.md:366-375, https://github.com/huggingface/smolagents/blob/12c1bc820eca50ace6f80a21d90426d41d74f845/docs/source/en/tutorials/secure_code_execution.md#L366-L375). The tutorial also says to disable network and add timeouts (lines 440-445), but DockerExecutor has no timeout option and network_mode='none' breaks it (out/extra-network-none.txt). Harness: research/probes/smolagents-docker/harness.py --hardened",
+    "probes": {
+      "P3": {
+        "outcome": "works",
+        "detail": "printed 200: the hardened kwargs do not touch the network. network_mode=\"none\" breaks the executor, because it reaches the kernel through a published port (out/extra-network-none.txt: connection refused at setup)",
+        "evidence": "research/probes/smolagents-docker/out/hardened-P3.txt",
+        "display": "works (example.com 200)"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "container /etc/hosts only",
+        "evidence": "research/probes/smolagents-docker/out/hardened-P4.txt",
+        "display": "blocked (container /etc/hosts only)"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "printed None",
+        "evidence": "research/probes/smolagents-docker/out/hardened-P5.txt",
+        "display": "blocked (None)"
+      },
+      "P6": {
+        "outcome": "no-limit-within-120s",
+        "detail": "no timeout option exists; harness removed the container at 120 s",
+        "evidence": "research/probes/smolagents-docker/out/hardened-P6.txt",
+        "display": "no-limit-within-120s"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "cgroup memory peaked at 512 MiB and docker inspect showed OOMKilled=true, so mem_limit stopped the allocation; but the caller never got an error: run_code_raise_errors kept waiting on the websocket until the harness removed the container at 120 s. Host survived.",
+        "evidence": "research/probes/smolagents-docker/out/hardened-P7.txt",
+        "display": "limited (512 MB OOM; caller hangs)"
+      },
+      "P9": {
+        "outcome": "not-applicable",
+        "detail": "no host bridge; lookup in the kernel: loop 1,021 ms, threads 206 ms",
+        "evidence": "research/probes/smolagents-docker/out/hardened-P9.txt",
+        "display": "n/a (no host bridge; threads 206 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "os.system and _wrap_close system returned 0 inside the container, still as uid=0 (cap_drop does not change the user); no docker.sock, no /Users",
+        "evidence": "research/probes/smolagents-docker/out/hardened-P12.txt",
+        "display": "blocked (os.system ran in container)"
+      }
+    }
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Tools become Python source: get_tools_definition_code runs instance_to_source on each Tool and the class is re-created in the kernel; the model sees tool signatures in the CodeAgent system prompt.",
+      "evidence": "research/impls/smolagents-docker/repo/src/smolagents/tools.py:1335-1360; research/impls/smolagents-docker/repo/src/smolagents/remote_executors.py:94-113"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "All tools are rendered upfront in the CodeAgent system prompt; no search.",
+      "evidence": "research/impls/smolagents-docker/repo/src/smolagents/agents.py initialize_system_prompt"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "None back to the host. Code goes in over the Jupyter websocket; tools execute inside the container, so credentials a tool needs must be inside the container too. Final answers come back by raising FinalAnswerException with a serialized value.",
+      "evidence": "research/impls/smolagents-docker/repo/src/smolagents/remote_executors.py:94-113, 481-530"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "A Docker container from python:3.12-bullseye, running the kernel as root, default bridge network, published only on 127.0.0.1 with a random KG_AUTH_TOKEN. Docs call remote executors \"truly robust security isolation\"; the code adds no limits of its own.",
+      "evidence": "research/impls/smolagents-docker/repo/src/smolagents/remote_executors.py:594-652; docs/source/en/tutorials/secure_code_execution.md:109"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "stream messages become logs, execute_result becomes output; both returned whole.",
+      "evidence": "research/impls/smolagents-docker/repo/src/smolagents/remote_executors.py:508-525"
+    },
+    {
+      "topic": "Limits",
+      "finding": "None by default; container_run_kwargs is the only knob.",
+      "evidence": "research/impls/smolagents-docker/repo/src/smolagents/remote_executors.py:567-568"
+    },
+    {
+      "topic": "State",
+      "finding": "One kernel per executor, so state persists across calls.",
+      "evidence": "out/P8.txt"
+    },
+    {
+      "topic": "Errors",
+      "finding": "IPython traceback with ANSI colour codes, wrapped in AgentError.",
+      "evidence": "out/P10.txt"
+    },
+    {
+      "topic": "E2B, Modal, Blaxel",
+      "finding": "E2BExecutor, ModalExecutor and BlaxelExecutor need accounts and API keys: blocked-needs-credentials, not probed.",
+      "evidence": "research/impls/smolagents-docker/repo/src/smolagents/remote_executors.py:335, 726, 859"
+    }
+  ],
+  "surprises": [
+    "No execution timeout: an infinite loop blocks CodeAgent forever. The tutorial lists \"Implement execution timeouts\" as a key practice (secure_code_execution.md:441), but DockerExecutor has no option for it.",
+    "With the tutorial mem_limit, the cgroup OOM killer stops P7, but the caller hangs instead of getting a MemoryError.",
+    "network_mode=\"none\" cannot be used: the executor talks to the kernel through a published port, so the documented \"disable unnecessary network access\" breaks it.",
+    "Remote-executor print logs reach the model uncapped (200,001 chars); the local executor caps them at 50,000.",
+    "The kernel runs as root inside the container."
+  ]
+}

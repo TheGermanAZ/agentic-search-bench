@@ -1,0 +1,33 @@
+probe: P1
+outcome: works
+display: works (42, 1 call)
+detail: 42 in printed stdout: True; 42 in returned value: False; output '42'; host lookup calls: 1
+
+code:
+----
+from hermes_tools import lookup
+r = lookup(id=21)
+msg = r["value"]
+print(msg)
+msg
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 1.97
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.165
+host lookup calls: 1
+  call id=21 start=1795382841.285 end=1795382841.486 pid=14600
+
+=== run 0 (454.0 ms) ===
+ok: true
+stdout: 42
+
+model_sees: {"status": "success", "output": "42\n", "exit_code": 0, "tool_calls_made": 1, "duration_seconds": 0.45, "kernel": {"mode": "session", "reused": false, "execution_count": 1, "state_reset": false}, "stdout_truncated": false, "stdout_bytes_captured": 3, "stdout_bytes_total": 3, "stdout_bytes_omitted": 0}
+status: success
+tool_calls_made: 1
+model_sees_len: 302
+
+=== child process log (tail) ===
+

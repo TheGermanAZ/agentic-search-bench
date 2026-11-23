@@ -1,0 +1,32 @@
+probe: P9b
+outcome: error
+display: TypeError: Type is not msgpack serializa
+detail: TypeError: Type is not msgpack serializable: ThreadPoolExecutor
+
+code:
+----
+from concurrent.futures import ThreadPoolExecutor
+with ThreadPoolExecutor(5) as ex:
+    rs = list(ex.map(lookup, [1, 2, 3, 4, 5]))
+print(sum(x['value'] for x in rs))
+----
+
+setup_ms: 3.7
+wall_s (whole child process): 0.5
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.072
+host lookup calls: 5
+  call id=2 start=1795377285.433 end=1795377285.638 pid=35791
+  call id=3 start=1795377285.433 end=1795377285.638 pid=35791
+  call id=1 start=1795377285.433 end=1795377285.638 pid=35791
+  call id=5 start=1795377285.434 end=1795377285.639 pid=35791
+  call id=4 start=1795377285.434 end=1795377285.639 pid=35791
+
+=== run 0 (209.2 ms) ===
+ok: false
+error: TypeError: Type is not msgpack serializable: ThreadPoolExecutor
+raised: true
+
+=== child process log (tail) ===
+

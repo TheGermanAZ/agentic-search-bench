@@ -1,0 +1,60 @@
+Leftover WASM sandbox roots in $TMPDIR after the probe runs (one per voidmcp serve process; SIGKILLed processes never run pool.Close):
+drwx------@    2 thegermanaz  staff        64 Nov 22 14:39 voidmcp-sandbox-1189941809
+drwx------@    2 thegermanaz  staff        64 Nov 22 14:33 voidmcp-sandbox-1194468875
+drwx------@    2 thegermanaz  staff        64 Nov 22 14:39 voidmcp-sandbox-1328962787
+drwx------@    2 thegermanaz  staff        64 Nov 22 14:42 voidmcp-sandbox-2407070233
+drwx------@    3 thegermanaz  staff        96 Nov 22 14:39 voidmcp-sandbox-2629553064
+drwx------@    2 thegermanaz  staff        64 Nov 22 14:34 voidmcp-sandbox-2829674912
+drwx------@    2 thegermanaz  staff        64 Nov 22 14:42 voidmcp-sandbox-2989157711
+drwx------@    2 thegermanaz  staff        64 Nov 22 14:37 voidmcp-sandbox-3711221305
+drwx------@    4 thegermanaz  staff       128 Nov 22 14:34 voidmcp-sandbox-536275985
+drwx------@    2 thegermanaz  staff        64 Nov 22 14:39 voidmcp-sandbox-575683606
+drwx------@    2 thegermanaz  staff        64 Nov 22 14:33 voidmcp-sandbox-822295481
+
+== /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/voidmcp-sandbox-1189941809
+total 0
+drwx------@    2 thegermanaz  staff     64 Nov 22 14:39 .
+drwx------@ 1721 thegermanaz  staff  55072 Nov 22 14:48 ..
+== /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/voidmcp-sandbox-1194468875
+total 0
+drwx------@    2 thegermanaz  staff     64 Nov 22 14:33 .
+drwx------@ 1721 thegermanaz  staff  55072 Nov 22 14:48 ..
+== /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/voidmcp-sandbox-1328962787
+total 0
+drwx------@    2 thegermanaz  staff     64 Nov 22 14:39 .
+drwx------@ 1721 thegermanaz  staff  55072 Nov 22 14:48 ..
+== /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/voidmcp-sandbox-2407070233
+total 0
+drwx------@    2 thegermanaz  staff     64 Nov 22 14:42 .
+drwx------@ 1721 thegermanaz  staff  55072 Nov 22 14:48 ..
+== /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/voidmcp-sandbox-2629553064
+total 8
+drwx------@    3 thegermanaz  staff     96 Nov 22 14:39 .
+drwx------@ 1721 thegermanaz  staff  55072 Nov 22 14:48 ..
+-rw-------@    1 thegermanaz  staff     30 Nov 22 14:39 probe-written.txt
+== /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/voidmcp-sandbox-2829674912
+total 0
+drwx------@    2 thegermanaz  staff     64 Nov 22 14:34 .
+drwx------@ 1721 thegermanaz  staff  55072 Nov 22 14:48 ..
+== /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/voidmcp-sandbox-2989157711
+total 0
+drwx------@    2 thegermanaz  staff     64 Nov 22 14:42 .
+drwx------@ 1721 thegermanaz  staff  55072 Nov 22 14:48 ..
+== /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/voidmcp-sandbox-3711221305
+total 0
+drwx------@    2 thegermanaz  staff     64 Nov 22 14:37 .
+drwx------@ 1721 thegermanaz  staff  55072 Nov 22 14:48 ..
+== /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/voidmcp-sandbox-536275985
+total 16
+drwx------@    4 thegermanaz  staff    128 Nov 22 14:34 .
+drwx------@ 1721 thegermanaz  staff  55072 Nov 22 14:48 ..
+-rw-------@    1 thegermanaz  staff      1 Nov 22 14:34 kept.txt
+-rw-------@    1 thegermanaz  staff     30 Nov 22 14:34 probe-written.txt
+== /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/voidmcp-sandbox-575683606
+total 0
+drwx------@    2 thegermanaz  staff     64 Nov 22 14:39 .
+drwx------@ 1721 thegermanaz  staff  55072 Nov 22 14:48 ..
+== /var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/voidmcp-sandbox-822295481
+total 0
+drwx------@    2 thegermanaz  staff     64 Nov 22 14:33 .
+drwx------@ 1721 thegermanaz  staff  55072 Nov 22 14:48 ..

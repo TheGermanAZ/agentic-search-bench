@@ -1,0 +1,33 @@
+{
+  "id": "P6jsNormal",
+  "workerPid": 41060,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 1040,
+  "peakRssKbSampled": 181744,
+  "stderr": "(node:41060) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "parsed": {
+    "probe": "P6jsNormal",
+    "config": {
+      "profile": "normal"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 41060
+    },
+    "runs": [
+      {
+        "script": "js-exec -c 'while (true) {}'",
+        "exitCode": 124,
+        "stdout": "",
+        "stderr": "js-exec: Execution timeout: exceeded 30000ms limit\n",
+        "ms": 906,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 182896,
+    "maxInFlight": 0,
+    "hostCalls": 0
+  }
+}

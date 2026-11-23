@@ -1,0 +1,8 @@
+{
+  "mode": "default",
+  "childExit": 0,
+  "signal": null,
+  "killedByHarness": null,
+  "wallMs": 1004,
+  "peakTreeRssMb": 182
+}

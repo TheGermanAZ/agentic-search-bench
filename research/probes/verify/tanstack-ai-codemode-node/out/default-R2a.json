@@ -1,0 +1,92 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../tanstack-ai-codemode-node/adapter.mjs default R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 966,
+  "peakTreeRssMb": 81,
+  "watchKill": null,
+  "record": {
+    "impl": "tanstack-ai-codemode-node",
+    "config": "default",
+    "test": "R2a",
+    "notes": "one createCodeModeTool({driver: node}) shared; execute({typescriptCode}) as chat() calls it",
+    "data": {
+      "startMs": 576,
+      "ms": 228,
+      "ok": true,
+      "result": {
+        "value": {
+          "success": true,
+          "result": [
+            true,
+            "undefined",
+            "[object Promise]",
+            "Object,Function,Array,Number,parseFloat,parseInt,Infinity,NaN,undefined,Boolean,String,Symbol,Date,Promise,RegExp,Error,AggregateError,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,globalThis,JSON,Math,Intl,ArrayBuffer,Atomics,Uint8Array,Int8Array,Uint16Array,Int16Array,Uint32Ar…[809 chars]…tack,AsyncDisposableStack,Float16Array,SharedArrayBuffer,WebAssembly,global,__captureLog,__external_lookup_ref,external_lookup,__external_failing_ref,external_failing,__external_rich_ref,external_rich"
+          ],
+          "logs": []
+        },
+        "stringChars": 834
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 566,
+    "hostEvents": [],
+    "totalMs": 805
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      175,
+      50
+    ],
+    [
+      267,
+      65
+    ],
+    [
+      345,
+      65
+    ],
+    [
+      393,
+      71
+    ],
+    [
+      453,
+      77
+    ],
+    [
+      606,
+      77
+    ],
+    [
+      662,
+      79
+    ],
+    [
+      732,
+      78
+    ],
+    [
+      804,
+      81
+    ],
+    [
+      881,
+      81
+    ],
+    [
+      965,
+      0
+    ]
+  ]
+}

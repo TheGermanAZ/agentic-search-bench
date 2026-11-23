@@ -1,0 +1,30 @@
+probe: P1t
+outcome: works
+display: works (42 via terminal)
+detail: Unpatched built-in terminal tool from the kernel: terminal('sleep 0.2; echo $((21*2))') -> output '42'.
+
+code:
+----
+from hermes_tools import terminal
+r = terminal('sleep 0.2; echo $((21*2))')
+print(r['output'])
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 1.38
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.17
+host lookup calls: 0
+
+=== run 0 (502.0 ms) ===
+ok: true
+stdout: 42
+
+model_sees: {"status": "success", "output": "42\n", "exit_code": 0, "tool_calls_made": 1, "duration_seconds": 0.5, "kernel": {"mode": "session", "reused": false, "execution_count": 1, "state_reset": false}, "stdout_truncated": false, "stdout_bytes_captured": 3, "stdout_bytes_total": 3, "stdout_bytes_omitted": 0}
+status: success
+tool_calls_made: 1
+model_sees_len: 301
+
+=== child process log (tail) ===
+

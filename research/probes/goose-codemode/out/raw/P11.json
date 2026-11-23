@@ -1,0 +1,199 @@
+{
+ "probe": "P11",
+ "wall_ms": 68.1,
+ "peak_rss_mb": 7.8,
+ "exit": 0,
+ "killed": null,
+ "stderr": "",
+ "records": [
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 1.543083,
+   "exec": 0,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.784708,
+   "exec": 1,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 1.0353750000000002,
+   "exec": 2,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 3.836541,
+   "exec": 3,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.735375,
+   "exec": 4,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.3055,
+   "exec": 5,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 1.037709,
+   "exec": 6,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.806958,
+   "exec": 7,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.6596249999999999,
+   "exec": 8,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.6490410000000001,
+   "exec": 9,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.397125,
+   "exec": 10,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.155709,
+   "exec": 11,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.24991599999999997,
+   "exec": 12,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.153625,
+   "exec": 13,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.153834,
+   "exec": 14,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.15025,
+   "exec": 15,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.1655,
+   "exec": 16,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.435375,
+   "exec": 17,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.616541,
+   "exec": 18,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 7.954084,
+   "exec": 19,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  },
+  {
+   "code": "async function run() {\nreturn 1+1\n}",
+   "elapsed_ms": 0.369125,
+   "exec": 20,
+   "host_calls": 0,
+   "is_error": false,
+   "probe": "P11",
+   "text": "Result: 2"
+  }
+ ]
+}

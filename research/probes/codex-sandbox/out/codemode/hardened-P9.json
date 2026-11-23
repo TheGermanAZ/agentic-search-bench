@@ -1,0 +1,67 @@
+{
+ "probe": "P9",
+ "host": "~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex-code-mode-host",
+ "limits_sent": {
+  "maxYieldTimeMs": 1000,
+  "maxHeapSizeBytes": 67108864
+ },
+ "max_output_tokens": 1000,
+ "hello": {
+  "type": "connection/ready",
+  "selectedVersion": 1,
+  "capabilities": [
+   "bounded-output-v1",
+   "delegate-capacity-4096",
+   "session-cell-execution-resource-limits",
+   "yield-observation"
+  ]
+ },
+ "session_open": {
+  "type": "operation/response",
+  "id": 1,
+  "result": {
+   "status": "ok",
+   "value": {
+    "type": "session/ready",
+    "sessionId": "s1"
+   }
+  }
+ },
+ "wall_ms": 259.8,
+ "peak_rss_mb": 23.0,
+ "killed": null,
+ "records": [
+  {
+   "source": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.lookup({id: i}))); text(String(Date.now() - t));",
+   "elapsed_ms": 212.98,
+   "host_calls": 5,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 2,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Result": {
+       "cell_id": "1",
+       "content_items": [
+        {
+         "type": "input_text",
+         "text": "206"
+        }
+       ],
+       "error_text": null,
+       "result_buffered_for_ns": 0,
+       "code_mode_host_duration_ns": 212417166
+      }
+     }
+    }
+   },
+   "waits": []
+  }
+ ],
+ "after": {
+  "host_alive_before": true,
+  "host_alive_after": true,
+  "host_returncode": null
+ }
+}

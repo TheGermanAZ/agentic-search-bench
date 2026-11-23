@@ -1,0 +1,7 @@
+{
+  "probe": "P2",
+  "outcome": "works",
+  "display": "stdout only (200,000 A, no marker)",
+  "detail": "RETURNED came back: False (in nowhere); 200000 of 200000 A's came back; marker found: None; stdout chars 200000; error ''",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P2.txt"
+}

@@ -1,0 +1,10 @@
+code:
+const fs = await import("node:fs"); console.log(fs.readFileSync("/etc/hosts","utf8"))
+
+result:
+{
+  "id": "92e2585c-9436-453b-b897-586b9444a334",
+  "error": "\u001b[0m\u001b[32mDownload\u001b[0m http://localhost:41310/client.ts?v=1\n\u001b[0m\u001b[32mCheck\u001b[0m file:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/f1f59f0dfaec16e2.ts\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag\nconst fs = await import(\"node:fs\"); console.log(fs.readFileSync(\"/etc/hosts\",\"utf8\"))\n\u001b[0m\u001b[31m                                                   ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mModule.readFileSync\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_node/fs.ts\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m421\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m16\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/f1f59f0dfaec16e2.ts\u001b[0m:\u001b[0m\u001b[33m4\u001b[0m:\u001b[0m\u001b[33m52\u001b[0m\n",
+  "ms": 1228,
+  "hostCalls": 0
+}

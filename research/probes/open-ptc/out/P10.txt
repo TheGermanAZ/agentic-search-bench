@@ -1,0 +1,13 @@
+mode: default
+code:
+throw new Error("probe-boom")
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "6697fc43-636b-4357-a4e4-8759d8a382d9",
+  "success": false,
+  "output": "\n\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) Error: probe-boom\nthrow new Error(\"probe-boom\")\n\u001b[0m\u001b[31m      ^\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/250517f355c91838.ts\u001b[0m:\u001b[0m\u001b[33m35\u001b[0m:\u001b[0m\u001b[33m7\u001b[0m\n",
+  "ms": 18,
+  "hostCalls": 0
+}

@@ -1,0 +1,63 @@
+label: P10d
+command: node probe.mjs P10d
+child exit: code=0 signal=null
+child wall ms (process start to exit): 246
+peak child RSS: 110.6 MB (ps every 50 ms)
+peak server (pid 76929) RSS: 78.0 MB; alive after probe: yes
+child stdout length: 673 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P10d",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.0981250000000102,
+  "source": [
+    "return await external_lookup({id: \"not-a-number\"});"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string",
+          "name": "Error",
+          "stack": "Error: Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string\n    at external_lookup (main.js:38:19)\n    at main.js:61:24\n    at main.js:62:11\n    at Object.fetch (main.js:92:7)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 50.44020900000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string",
+    "ms": 50,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 91.2
+}
+--- child stdout ---
+{
+  timestamp: [33m1795376389362[39m,
+  durationMs: [33m49[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'Error'[39m,
+    message: [32m'Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string'[39m,
+    stack: [32m'Error: Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string\n'[39m +
+      [32m'    at external_lookup (main.js:38:19)\n'[39m +
+      [32m'    at main.js:61:24\n'[39m +
+      [32m'    at main.js:62:11\n'[39m +
+      [32m'    at Object.fetch (main.js:92:7)'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

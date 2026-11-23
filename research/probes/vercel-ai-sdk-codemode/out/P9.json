@@ -1,0 +1,23 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P9",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.lookup({id:i}))); const dt = Date.now()-t; console.log(dt); return dt;"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "value": 257,
+      "wallMs": 285.296917,
+      "hostCalls": 5
+    }
+  ],
+  "summary": {
+    "value": 257,
+    "ms": 285,
+    "hostCalls": 5
+  },
+  "hostRssAfterMB": 160.2
+}

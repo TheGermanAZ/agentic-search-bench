@@ -1,0 +1,46 @@
+{
+ "tag": "default",
+ "probe": "P6b",
+ "settings": "~/p/agentic-search-bench/research/probes/claude-code-codemode/settings-default.json",
+ "permissionMode": "default",
+ "transcript": "~/.claude/projects/-Users-thegermanaz-p-agentic-search-bench-research-probes-claude-code-codemode-work/a79aff4b-565d-4a38-b7ca-a542899dd8e7.jsonl",
+ "hostLookupCalls": [],
+ "steps": [
+  {
+   "step": "P6b.1",
+   "code": "while (true) { await sleep(1) }",
+   "typist": "model",
+   "wallS": 34.2,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "while (true) { await sleep(1) }",
+     "codeRan": "while (true) { await sleep(1) }",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:36:34.351Z",
+     "result": {
+      "content": "<repl-output>\n<error>Error: REPL execution timed out after 30000ms of script time (inner tool calls excluded). Script may still be running \u2014 avoid unbounded awaits.\nThe script was stopped partway through: statements before the stop ran. No tool call had completed.</error>\n</repl-output>",
+      "is_error": true,
+      "ts": "2026-11-22T20:37:04.395Z",
+      "toolUseResult": {
+       "code": "while (true) { await sleep(1) }",
+       "result": null,
+       "stdout": "",
+       "stderr": "",
+       "error": "Error: REPL execution timed out after 30000ms of script time (inner tool calls excluded). Script may still be running \u2014 avoid unbounded awaits.\nThe script was stopped partway through: statements before the stop ran. No tool call had completed.",
+       "plainErrorLine": {
+        "text": "Timed out after 30s, not counting time spent in tool calls",
+        "replaces": "Error: REPL execution timed out after 30000ms of script time (inner tool calls excluded). Script may still be running \u2014 avoid unbounded awaits."
+       }
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 356320,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  }
+ ]
+}

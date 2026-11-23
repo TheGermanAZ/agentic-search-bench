@@ -1,0 +1,455 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/../_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/adapter.mjs default R1",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 11800,
+  "peakTreeRssMb": 157,
+  "peakTreeFootprintMb": 46,
+  "watchKill": null,
+  "record": {
+    "impl": "bifrost-codemode",
+    "config": "default",
+    "test": "R1",
+    "notes": "maximhq/bifrost:v2.6.0, data/config.json; gateway restarted for this test (11531 ms); new MCP client per execution; Starlark codes",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 11674,
+        "ms": 45,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 53,
+            "text": "Execution completed successfully.\nReturn value: \"set\""
+          },
+          "stringChars": 53
+        },
+        "callsStarted": 0
+      },
+      "B": {
+        "label": "B",
+        "startMs": 11719,
+        "ms": 17,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": true,
+            "textChars": 328,
+            "text": "Execution runtime error:\n\ncode.star:1:10: undefined: leftover\n\nHints:\nVariable 'leftover' is not defined.\nNote: Each executeToolCode call runs in a fresh scope — no variables persist between calls.\nAvailable server keys: probe\nAccess tools using: server_name.tool_name(param=\"value\")\n\nEnvironment:\n  Available server keys: probe"
+          },
+          "stringChars": 328
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "gatewayStartMs": 11531,
+      "containerBaselineMb": 261,
+      "containerPeakMb": 261,
+      "containerLastMb": 261,
+      "containerKilled": null,
+      "containerRssMsMb": [
+        [
+          83,
+          261
+        ]
+      ]
+    },
+    "hostMaxEventLoopLagMs": 67,
+    "hostEvents": [],
+    "totalMs": 11736
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      92,
+      63,
+      0
+    ],
+    [
+      244,
+      120,
+      24
+    ],
+    [
+      398,
+      120,
+      46
+    ],
+    [
+      561,
+      120,
+      46
+    ],
+    [
+      707,
+      120,
+      46
+    ],
+    [
+      865,
+      120,
+      46
+    ],
+    [
+      1035,
+      86,
+      32
+    ],
+    [
+      1182,
+      76,
+      33
+    ],
+    [
+      1336,
+      84,
+      33
+    ],
+    [
+      1499,
+      76,
+      33
+    ],
+    [
+      1644,
+      76,
+      33
+    ],
+    [
+      1797,
+      76,
+      33
+    ],
+    [
+      1953,
+      76,
+      33
+    ],
+    [
+      2107,
+      76,
+      33
+    ],
+    [
+      2275,
+      76,
+      33
+    ],
+    [
+      2421,
+      76,
+      33
+    ],
+    [
+      2573,
+      76,
+      33
+    ],
+    [
+      2754,
+      86,
+      33
+    ],
+    [
+      2886,
+      76,
+      33
+    ],
+    [
+      3060,
+      76,
+      33
+    ],
+    [
+      3189,
+      76,
+      32
+    ],
+    [
+      3344,
+      76,
+      33
+    ],
+    [
+      3495,
+      76,
+      33
+    ],
+    [
+      3650,
+      76,
+      33
+    ],
+    [
+      3803,
+      76,
+      33
+    ],
+    [
+      3957,
+      76,
+      32
+    ],
+    [
+      4112,
+      79,
+      32
+    ],
+    [
+      4277,
+      76,
+      33
+    ],
+    [
+      4428,
+      76,
+      33
+    ],
+    [
+      4591,
+      76,
+      33
+    ],
+    [
+      4729,
+      76,
+      33
+    ],
+    [
+      4881,
+      76,
+      33
+    ],
+    [
+      5038,
+      76,
+      33
+    ],
+    [
+      5193,
+      76,
+      33
+    ],
+    [
+      5362,
+      76,
+      33
+    ],
+    [
+      5497,
+      76,
+      33
+    ],
+    [
+      5652,
+      76,
+      33
+    ],
+    [
+      5807,
+      76,
+      33
+    ],
+    [
+      5962,
+      76,
+      33
+    ],
+    [
+      6120,
+      76,
+      33
+    ],
+    [
+      6277,
+      76,
+      33
+    ],
+    [
+      6432,
+      76,
+      33
+    ],
+    [
+      6582,
+      75,
+      33
+    ],
+    [
+      6738,
+      76,
+      33
+    ],
+    [
+      6893,
+      76,
+      33
+    ],
+    [
+      7053,
+      76,
+      33
+    ],
+    [
+      7241,
+      76,
+      32
+    ],
+    [
+      7386,
+      76,
+      33
+    ],
+    [
+      7540,
+      76,
+      32
+    ],
+    [
+      7690,
+      76,
+      33
+    ],
+    [
+      7844,
+      76,
+      33
+    ],
+    [
+      8001,
+      76,
+      33
+    ],
+    [
+      8176,
+      76,
+      33
+    ],
+    [
+      8317,
+      86,
+      33
+    ],
+    [
+      8498,
+      76,
+      33
+    ],
+    [
+      8642,
+      76,
+      32
+    ],
+    [
+      8812,
+      76,
+      33
+    ],
+    [
+      8975,
+      76,
+      32
+    ],
+    [
+      9121,
+      76,
+      33
+    ],
+    [
+      9281,
+      76,
+      33
+    ],
+    [
+      9425,
+      76,
+      33
+    ],
+    [
+      9583,
+      76,
+      33
+    ],
+    [
+      9733,
+      85,
+      33
+    ],
+    [
+      9890,
+      76,
+      33
+    ],
+    [
+      10048,
+      73,
+      33
+    ],
+    [
+      10198,
+      68,
+      33
+    ],
+    [
+      10353,
+      66,
+      33
+    ],
+    [
+      10505,
+      66,
+      33
+    ],
+    [
+      10668,
+      66,
+      33
+    ],
+    [
+      10818,
+      66,
+      33
+    ],
+    [
+      10969,
+      66,
+      33
+    ],
+    [
+      11140,
+      66,
+      33
+    ],
+    [
+      11280,
+      66,
+      33
+    ],
+    [
+      11435,
+      66,
+      33
+    ],
+    [
+      11597,
+      66,
+      33
+    ],
+    [
+      11761,
+      93,
+      33
+    ]
+  ]
+}

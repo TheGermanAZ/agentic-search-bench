@@ -1,0 +1,8 @@
+try:
+    await search(query="x")
+except Exception as e:
+    print("caught: " + str(e))
+--- output
+caught: host-tool-boom internal detail db=<url>
+---
+wall_ms=37 host_calls=0 peak_tree_rss_mb=185

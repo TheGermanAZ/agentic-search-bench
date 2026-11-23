@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "limited",
+  "display": "limited (wasm32 4 GiB ceiling)",
+  "detail": "stopped after 3.04 s, peak tree RSS 2.528 GB: <repl_output> [Error] MemoryError: </repl_output>",
+  "evidence": "research/probes/dspy-rlm/out/P7.txt"
+}

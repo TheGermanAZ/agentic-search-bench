@@ -1,0 +1,22 @@
+probe hardened-P9
+code:
+const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => host.lookup({id:i}))); console.log(Date.now()-t)
+{"ok":true,"error":null,"ms":217.2}
+stdout (3 chars): "216"
+
+
+child exit=0 signal=null killedBy=null wall=1.0s peakRSS=94MB
+stderr tail:
+[11/22/26 14:53:25] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+

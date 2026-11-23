@@ -1,0 +1,6 @@
+r = await read(id="21")
+print(r["value"] if r else None)
+--- output
+42
+---
+wall_ms=728 host_calls=1 peak_tree_rss_mb=199

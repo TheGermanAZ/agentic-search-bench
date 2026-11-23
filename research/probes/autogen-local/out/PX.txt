@@ -1,0 +1,60 @@
+--- P9-loop: serial loop form
+code:
+from functions import lookup
+import time
+t = time.time()
+rs = [lookup(id=i) for i in [1, 2, 3, 4, 5]]
+print(int((time.time() - t) * 1000))
+{"ok": true, "result": null, "error": null, "ms": 1071.1}
+stdout (65 chars): 'LOOKUP_CALL\nLOOKUP_CALL\nLOOKUP_CALL\nLOOKUP_CALL\nLOOKUP_CALL\n1010\n'
+
+--- P4-canary: a host file inside the repo (not mounted into Docker)
+code:
+print(open("~/p/agentic-search-bench/research/probes/autogen-local/canary.txt").read())
+{"ok": true, "result": null, "error": null, "ms": 53.2}
+stdout (18 chars): 'host-canary-7f3a\n\n'
+
+--- P4-workdir: what the guest sees in its working directory
+code:
+import os
+print(os.getcwd(), sorted(os.listdir(".")))
+{"ok": true, "result": null, "error": null, "ms": 48.3}
+stdout (177 chars): "/private/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/autogen-local-n6s37a78 ['functions.py', 'tmp_code_5ea34411091ad072d74f3993d9189acf24b376b20dee6b125e3bbc20e604f0b7.py']\n"
+
+--- P8-files: files written by one execution, read by the next
+code:
+open("kept.txt", "w").write("7")
+print("wrote")
+{"ok": true, "result": null, "error": null, "ms": 46.7}
+stdout (6 chars): 'wrote\n'
+
+--- P8-files: files written by one execution, read by the next
+code:
+import os
+print(open("kept.txt").read() if os.path.exists("kept.txt") else "gone")
+{"ok": true, "result": null, "error": null, "ms": 35.5}
+stdout (2 chars): '7\n'
+
+--- P6-orphan: does the timeout kill children of the guest process
+code:
+import subprocess
+subprocess.Popen(["sleep", "97"])
+while True:
+    pass
+{"ok": false, "result": null, "error": "exit_code=124: \nTimeout", "ms": 97103.3}
+stdout (8 chars): '\nTimeout'
+
+--- P12-whoami: guest identity
+code:
+import os, platform
+print(os.getuid(), platform.platform())
+{"ok": true, "result": null, "error": null, "ms": 73.9}
+stdout (33 chars): '501 macOS-26.5.2-arm64-arm-64bit\n'
+
+--- shell-block: subprocess from guest
+code:
+import subprocess
+print(subprocess.run(['sh', '-c', 'echo shell-ok; uname -s'], capture_output=True, text=True).stdout)
+{"ok": true, "result": null, "error": null, "ms": 61.8}
+stdout (17 chars): 'shell-ok\nDarwin\n\n'
+

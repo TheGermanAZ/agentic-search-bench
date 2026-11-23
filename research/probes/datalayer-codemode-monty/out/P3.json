@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "error",
+  "display": "host crash",
+  "detail": "child process died (exit 1) before any result; log: [11/22/26 14:59:42] INFO Generating MCP bindings to codegen.py:62 /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-monty-51p36cm2/generat ed (mcp dir: /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-monty-51p36cm2/generat ed/mcp) INFO Generating bindings for server codegen.py:73 'probe' into /var/folders/tg/x0gcvxzs2ks8jyz23g3pg dpw0000gn/T/dl-monty-51p36cm2/generat ed/mcp/probe Traceback (most recent call last): File \"~/p/agentic-search-bench/research/probes/datalayer-...",
+  "evidence": "research/probes/datalayer-codemode-monty/out/P3.txt"
+}

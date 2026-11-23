@@ -1,0 +1,29 @@
+{
+  "probe": "P5",
+  "config": "default",
+  "codes": [
+    "import os\nmsg = \"ENV \" + str(os.environ.get(\"PROBE_SECRET\"))\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "ENV None",
+      "error": null,
+      "context_keys": [
+        "msg",
+        "os"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1181.0,
+      "started": 1795377412.427684
+    }
+  ],
+  "setup_ms": 16.4,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.59,
+  "peak_tree_rss_gb": 0.294,
+  "calls": [],
+  "child_log_tail": ""
+}

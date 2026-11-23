@@ -1,0 +1,276 @@
+{
+ "probe": "P7",
+ "host": "~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex-code-mode-host",
+ "limits_sent": {
+  "maxYieldTimeMs": 1000,
+  "maxHeapSizeBytes": 67108864
+ },
+ "max_output_tokens": 1000,
+ "hello": {
+  "type": "connection/ready",
+  "selectedVersion": 1,
+  "capabilities": [
+   "bounded-output-v1",
+   "delegate-capacity-4096",
+   "session-cell-execution-resource-limits",
+   "yield-observation"
+  ]
+ },
+ "session_open": {
+  "type": "operation/response",
+  "id": 1,
+  "result": {
+   "status": "ok",
+   "value": {
+    "type": "session/ready",
+    "sessionId": "s1"
+   }
+  }
+ },
+ "wall_ms": 10481.6,
+ "peak_rss_mb": 1497.4,
+ "killed": null,
+ "records": [
+  {
+   "source": "const a = []; while (true) a.push(\"x\".repeat(1e6) + a.length);",
+   "elapsed_ms": 1009.35,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 2,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Yielded": {
+       "cell_id": "1",
+       "content_items": [],
+       "code_mode_host_duration_ns": 1006907083
+      }
+     }
+    }
+   },
+   "waits": [
+    {
+     "t_ms": 2055,
+     "reply": {
+      "type": "operation/response",
+      "id": 3,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001496916
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 3057,
+     "reply": {
+      "type": "operation/response",
+      "id": 4,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001774917
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 4064,
+     "reply": {
+      "type": "operation/response",
+      "id": 5,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1003287250
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 5066,
+     "reply": {
+      "type": "operation/response",
+      "id": 6,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001506209
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 6069,
+     "reply": {
+      "type": "operation/response",
+      "id": 7,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002451791
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 7071,
+     "reply": {
+      "type": "operation/response",
+      "id": 8,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001466750
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 8074,
+     "reply": {
+      "type": "operation/response",
+      "id": 9,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002072667
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 9077,
+     "reply": {
+      "type": "operation/response",
+      "id": 10,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1002430333
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 10080,
+     "reply": {
+      "type": "operation/response",
+      "id": 11,
+      "result": {
+       "status": "ok",
+       "value": {
+        "type": "wait/completed",
+        "outcome": {
+         "LiveCell": {
+          "Yielded": {
+           "cell_id": "1",
+           "content_items": [],
+           "code_mode_host_duration_ns": 1001908208
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "t_ms": 10481,
+     "reply": null
+    }
+   ]
+  }
+ ],
+ "after": {
+  "host_alive_before": false,
+  "same_session_trivial": {
+   "source": "text(\"alive \" + String(1 + 1));",
+   "elapsed_ms": 0.07,
+   "host_calls": 0,
+   "response": "BrokenPipeError(32, 'Broken pipe')"
+  },
+  "second_session_open": "BrokenPipeError(32, 'Broken pipe')",
+  "second_session_trivial": {
+   "source": "text(\"alive \" + String(1 + 1));",
+   "elapsed_ms": 0.01,
+   "host_calls": 0,
+   "response": "BrokenPipeError(32, 'Broken pipe')"
+  },
+  "host_alive_after": false,
+  "host_returncode": -5
+ }
+}

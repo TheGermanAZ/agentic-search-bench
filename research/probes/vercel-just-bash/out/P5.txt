@@ -1,0 +1,25 @@
+probe: P5
+worker exit: 0 signal: null killed: null
+wall ms: 98
+peak host RSS KB: 0
+
+script: echo "[$PROBE_SECRET]"
+exit: 0
+stdout (3 chars):
+[]
+
+stderr:
+
+ms: 32, host lookup calls so far: 0
+
+script: printenv PROBE_SECRET; echo "exit=$?"
+exit: 0
+stdout (7 chars):
+exit=1
+
+stderr:
+
+ms: 3, host lookup calls so far: 0
+
+outcome: blocked
+detail: echo "[$PROBE_SECRET]" printed "[]" with PROBE_SECRET=s3cr3t set on the host. host env not visible.

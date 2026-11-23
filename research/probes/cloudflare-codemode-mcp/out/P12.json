@@ -1,0 +1,56 @@
+{
+  "execute_functionConstructor": {
+    "tool": "execute",
+    "code": "async () => { const p = this.constructor.constructor(\"return process\")(); return p === undefined ? \"undefined\" : { type: typeof p, platform: p.platform, envKeys: Object.keys(p.env ?? {}) } }",
+    "ms": 5,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: Code generation from strings disallowed for this context",
+    "rpcError": null
+  },
+  "execute_sloppyThis": {
+    "tool": "execute",
+    "code": "async () => { const p = (function(){return this})().process; return p === undefined ? \"undefined\" : { type: typeof p, platform: p.platform, envKeys: Object.keys(p.env ?? {}) } }",
+    "ms": 3,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: Cannot read properties of undefined (reading 'process')",
+    "rpcError": null
+  },
+  "execute_thisShape": {
+    "tool": "execute",
+    "code": "async () => ({ thisType: typeof this, ctor: this?.constructor?.name ?? null })",
+    "ms": 3,
+    "hostCalls": 0,
+    "isError": false,
+    "text": "{\n  \"thisType\": \"object\",\n  \"ctor\": \"CodeExecutor\"\n}",
+    "rpcError": null
+  },
+  "search_functionConstructor": {
+    "tool": "search",
+    "code": "async () => { const p = this.constructor.constructor(\"return process\")(); return p === undefined ? \"undefined\" : { type: typeof p, platform: p.platform, envKeys: Object.keys(p.env ?? {}) } }",
+    "ms": 149,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: Code generation from strings disallowed for this context",
+    "rpcError": null
+  },
+  "search_sloppyThis": {
+    "tool": "search",
+    "code": "async () => { const p = (function(){return this})().process; return p === undefined ? \"undefined\" : { type: typeof p, platform: p.platform, envKeys: Object.keys(p.env ?? {}) } }",
+    "ms": 146,
+    "hostCalls": 0,
+    "isError": true,
+    "text": "Error: Cannot read properties of undefined (reading 'process')",
+    "rpcError": null
+  },
+  "search_thisShape": {
+    "tool": "search",
+    "code": "async () => ({ thisType: typeof this, ctor: this?.constructor?.name ?? null })",
+    "ms": 150,
+    "hostCalls": 0,
+    "isError": false,
+    "text": "{\n  \"thisType\": \"object\",\n  \"ctor\": \"SearchSandbox\"\n}",
+    "rpcError": null
+  }
+}

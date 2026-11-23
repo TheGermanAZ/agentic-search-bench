@@ -1,0 +1,8 @@
+{
+  "probe": "hardened-P7",
+  "outcome": "no-limit-within-120s",
+  "detail": "harness stopped it at 4.25 GB RSS after 0.4 s",
+  "display": "no-limit-within-120s (4.2 GB)",
+  "peak_rss_mb": 4351,
+  "wall_s": 0.4
+}

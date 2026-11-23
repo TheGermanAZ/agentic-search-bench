@@ -1,0 +1,115 @@
+{
+  "impl": "asb-quickjs",
+  "name": "This repo's code mode (QuickJS via quickjs-emscripten)",
+  "source": "src/sandbox.ts in agentic-search-bench",
+  "pinned": "quickjs-emscripten 0.32.0, asyncify variant",
+  "language": "JS",
+  "engine": "QuickJS compiled to WASM (quickjs-emscripten 0.32 asyncify), one Bun worker thread per execution; the compiled module is shared, each execution gets a fresh instance, context and 512 MB WebAssembly memory",
+  "how_run": "runCode(code, corpus) from src/sandbox.ts, the same entry point the codemode strategy uses (src/strategies.ts:121), with a stand-in corpus whose read() waits 200 ms; harness research/probes/asb-quickjs/run.ts",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed 42, 1 host call, 224 ms",
+      "evidence": "research/probes/asb-quickjs/out/P1.txt",
+      "display": "works (42, 1 call)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "printed output and the last expression both return; joined output truncated at 8,000 chars with a marker",
+      "evidence": "research/probes/asb-quickjs/out/P2.txt; src/sandbox.ts MAX_OUTPUT",
+      "display": "truncated (8,000 + marker)"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "'fetch' is not defined",
+      "evidence": "research/probes/asb-quickjs/out/P3.txt",
+      "display": "not-defined"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "'require' is not defined; dynamic import() refused by the module loader and returned as an error",
+      "evidence": "research/probes/asb-quickjs/out/P4.txt, P4b.txt",
+      "display": "not-defined"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "no process object",
+      "evidence": "research/probes/asb-quickjs/out/P5.txt",
+      "display": "not-defined"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "interrupted after 60,001 ms by the deadline interrupt handler",
+      "evidence": "research/probes/asb-quickjs/out/P6.txt",
+      "display": "limited (60 s CPU; 65 s wall)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "display": "limited (512 MB WASM memory)",
+      "detail": "Rerun 2026-11-22 after a fix. Wave 1 reported a 512 MB QuickJS heap cap; that was wrong. QuickJS setMemoryLimit never fires in this WASM build (its allocation counter showed about 53 KB after 50 MB of strings), and the old sandbox reached 3.08 GB host RSS before the 2 GB WASM ceiling stopped it. Fixed by giving each execution its own WebAssembly.Memory with a 512 MB maximum. Now: out of memory after 1.5 s at 576 MB host RSS (1 MB strings); a single 512 MB string fails at once; three concurrent executions run normally afterwards. Many-small-objects variant peaks at 1.67 GB host RSS, of which about 1.1 GB is the engine JIT (a loop that allocates nothing reaches 1.1 GB and plateaus; see jit-rss.txt).",
+      "evidence": "research/probes/asb-quickjs/out/P7.txt; research/probes/asb-quickjs/out/P7-rss.txt; research/probes/asb-quickjs/out/jit-rss.txt"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "fresh: second execution printed gone",
+      "evidence": "research/probes/asb-quickjs/out/P8b.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "serial, 1,012 ms for 5 calls: the corpus API is synchronous inside the sandbox, so Promise.all cannot overlap host calls",
+      "evidence": "research/probes/asb-quickjs/out/P9.txt",
+      "display": "serial (1,006 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "ERROR: probe-boom with eval.js line and column",
+      "evidence": "research/probes/asb-quickjs/out/P10.txt",
+      "display": "works (message + line:col)"
+    },
+    "P11": {
+      "outcome": "works",
+      "display": "works (6.5 ms median, new worker)",
+      "detail": "median 6.49 ms, p90 7.10 ms per execution on a quiet machine, including a new worker thread (was 1.4 ms in-process, 9 to 11 ms before the shared module)",
+      "evidence": "research/probes/asb-quickjs/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "Function constructor and sloppy this both see no process (undefined)",
+      "evidence": "research/probes/asb-quickjs/out/P12a.txt, P12b.txt",
+      "display": "blocked"
+    }
+  },
+  "defaults": {
+    "time": "60 s guest CPU (QuickJS interrupt, in the worker) and 65 s wall clock for the whole program including corpus calls (host terminates the worker)",
+    "memory": "512 MB WebAssembly memory maximum per execution (guest); host also pays a one-time ~1.1 GB JIT cost per process",
+    "output": "8,000 chars, counted as printed; the rest is dropped with a marker",
+    "tool_calls": "no count cap; bounded by the 65 s wall clock; at most 8 executions run at once (SANDBOX_MAX_CONCURRENT)",
+    "hardened_reason": "No stricter option exists. runCode(code, corpus) takes no options (src/sandbox.ts:49), and the execute tool calls it as runCode(code, corpus) (src/strategies.ts:121). The limits are module-private constants: MAX_OUTPUT 8000 (src/sandbox.ts:30), TIMEOUT_MS 60000 (:31), and a 512 MiB WebAssembly.Memory maximum (MEMORY_LIMIT_BYTES). No env var or export changes them."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "one corpus object built from a fixed dispatch table; the model gets a hand-written TypeScript declaration (CORPUS_API) in its system prompt",
+      "evidence": "src/sandbox.ts dispatch, PRELUDE, CORPUS_API"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "a single asyncified host function __host(JSON) suspends the guest while the host awaits; results return as JSON strings",
+      "evidence": "src/sandbox.ts newAsyncifiedFunction"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "everything upfront; six functions fit in the prompt",
+      "evidence": "src/strategies.ts CODEMODE_GUIDE"
+    }
+  ],
+  "surprises": [
+    "Found by these probes and fixed: all executions shared one asyncify WASM module, which supports one suspended host call at a time; the benchmark ran code mode 5-way concurrent. No code-mode answer in runs/ mentions an asyncify error, but raw tool output was not stored, so a silent retry cannot be ruled out.",
+    "Found and fixed: a dynamic import() threw out of the sandbox into the host (Lifetime not alive) and wedged later executions; now refused by a module loader and returned as an error.",
+    "Code mode here cannot run tool calls in parallel, unlike Cloudflare's async bindings; the benchmark's code-mode wins came from fewer model round trips, not parallel I/O.",
+    "Our own wave-1 P7 claim was wrong: QuickJS setMemoryLimit is inert in quickjs-emscripten 0.32 (found by the TanStack wave-2 worker, confirmed here with RSS). The wave-1 harness never measured host RSS. Fixed in src/sandbox.ts with a capped WebAssembly.Memory.",
+    "Independent verification (research/probes/verify/REPORT.md) found that in-process QuickJS let one runaway program freeze every other request for 60 s, that the guest could call the bridge global with an inherited name (constructor) and make the host serialize the whole Corpus, that console.log grew host memory without bound (3.3 GB), and that host error text reached the model verbatim. Fixed: one worker thread per execution with a host-side 65 s wall clock, the bridge captured and deleted from globals, a Map for dispatch, output counted as it is printed, URLs and paths scrubbed from host errors. Rerun of the same suite: a neighbor request finished in about 212 ms during a busy loop, memory bomb, log flood or slow regex (was 60 to 76 s); __host is not defined in the guest; the planted DSN reaches the model as <url>. Remaining: 8 concurrent runaway programs fill the concurrency cap, so the next request queues for up to 65 s."
+  ],
+  "hardened": null
+}

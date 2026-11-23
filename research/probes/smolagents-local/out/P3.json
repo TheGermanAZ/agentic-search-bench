@@ -1,0 +1,6 @@
+{
+  "probe": "P3",
+  "outcome": "blocked",
+  "detail": "InterpreterError: Code execution failed at line 'import urllib.request' due to: InterpreterError: Import of urllib.request is not allowed. Authorized imports are: ['math', 'collections', 'time', 'queue', 'random', 'itertools', 'stat', 'statistics', 'unicodedata', 're', 'datetime']",
+  "wall_ms": 0.2
+}

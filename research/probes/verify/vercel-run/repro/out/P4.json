@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-run",
+  "probe": "P4",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "require is not defined",
+        "stack": "ReferenceError: require is not defined\n    at <anonymous> (run.js:1:8)",
+        "string": "ReferenceError: require is not defined"
+      },
+      "wallMs": 306.48091700000003,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR require is not defined",
+    "ms": 306,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 141.2
+}

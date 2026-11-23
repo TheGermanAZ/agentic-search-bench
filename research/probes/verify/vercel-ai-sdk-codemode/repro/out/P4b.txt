@@ -1,0 +1,43 @@
+label: P4b
+command: node probe.mjs P4b
+child exit: code=0 signal=null
+child wall ms (process start to exit): 854
+peak child RSS: 138.6 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P4b",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "could not load module 'fs'",
+        "stack": "ReferenceError: could not load module 'fs'",
+        "string": "ReferenceError: could not load module 'fs'"
+      },
+      "wallMs": 479.87866599999995,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR could not load module 'fs'",
+    "ms": 480,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 147.7
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:72541) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

@@ -1,0 +1,13 @@
+{
+  "note": "server started with EXECUTOR_MCP_TIMEOUT_MS=10000",
+  "code": "while (true) {}",
+  "wallMs": 10004,
+  "execution": {
+    "ok": false,
+    "error": {
+      "kind": "TimeoutExceeded",
+      "message": "Execution timed out after 10000ms; earlier tool calls may have completed."
+    },
+    "toolCalls": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "note": "supplementary, NOT the hardened config: env.LOADER wrapped by this harness to add Worker Loader `limits: { cpuMs: 1000 }`, which codemode exposes no option for. Tests whether local workerd enforces that field at all. Harness cap 30 s.",
+  "config": {
+    "executorOptions": {
+      "loader": "env.LOADER",
+      "timeout": 10000,
+      "globalOutbound": null,
+      "modules": {},
+      "bindings": {}
+    }
+  },
+  "code": "while (true) {}",
+  "mode": "tool",
+  "path": "/run-loader-limits",
+  "wallMs": 30008,
+  "harnessError": "harness-timeout",
+  "killedForRss": false,
+  "serverAliveAfter": false,
+  "recoveryWaitMs": 70054,
+  "trivialExecutionAfter": null
+}

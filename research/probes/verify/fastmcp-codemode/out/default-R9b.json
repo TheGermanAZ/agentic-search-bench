@@ -1,0 +1,203 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py default R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1706,
+  "peakTreeRssMb": 148,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9b",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(defaults); new in-process Client per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 828,
+          "ms": 101,
+          "ok": true,
+          "result": {
+            "is_error": true,
+            "text": "Error calling tool 'execute': MemoryError: memory limit exceeded: 100045946 bytes > 100000000 bytes"
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 979,
+        "ms": 218,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1197,
+        "ms": 211,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1408,
+        "ms": 211,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "42"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 29,
+    "totalMs": 1619
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[11/22/26 16:29:17] Error calling tool 'execute'                                \n                    ╭─────────── Traceback (most recent call last) ────────────╮\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/server/server.py:1673 in call_tool                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 7 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:309 in         │\n                    │ _run_monty                                               │\n                    ╰──────────────────────────────────────────────────────────╯\n                    MontyRuntimeError: MemoryError: memory limit exceeded:      \n                    100045946 bytes > 100000000 bytes                           \n",
+  "rssSamplesMsMb": [
+    [
+      75,
+      22
+    ],
+    [
+      127,
+      31
+    ],
+    [
+      176,
+      36
+    ],
+    [
+      230,
+      40
+    ],
+    [
+      281,
+      46
+    ],
+    [
+      330,
+      49
+    ],
+    [
+      380,
+      52
+    ],
+    [
+      432,
+      54
+    ],
+    [
+      482,
+      56
+    ],
+    [
+      535,
+      60
+    ],
+    [
+      585,
+      64
+    ],
+    [
+      635,
+      68
+    ],
+    [
+      686,
+      73
+    ],
+    [
+      738,
+      77
+    ],
+    [
+      789,
+      80
+    ],
+    [
+      840,
+      84
+    ],
+    [
+      890,
+      87
+    ],
+    [
+      943,
+      92
+    ],
+    [
+      993,
+      148
+    ],
+    [
+      1043,
+      99
+    ],
+    [
+      1094,
+      109
+    ],
+    [
+      1144,
+      109
+    ],
+    [
+      1195,
+      109
+    ],
+    [
+      1245,
+      109
+    ],
+    [
+      1297,
+      99
+    ],
+    [
+      1348,
+      109
+    ],
+    [
+      1398,
+      109
+    ],
+    [
+      1449,
+      109
+    ],
+    [
+      1500,
+      109
+    ],
+    [
+      1553,
+      109
+    ],
+    [
+      1603,
+      109
+    ],
+    [
+      1654,
+      109
+    ],
+    [
+      1705,
+      109
+    ]
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 5716,
+  "peakTreeRssMb": 113,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R5",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 2094,
+        "ms": 498,
+        "ok": true,
+        "result": [
+          "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 2, in <module>\n    rs = await asyncio.gather(*[lookup(id=i) for i in range(2000)])\n                                ~~~~~~~~~~~~\nRuntimeError: Code mode allows 100 nested tool calls per `run_code` call and this snippet asked for more. Call fewer tools, for example by filtering the inputs first, or split the work across several `run_code` calls.\n\n100 nested tool calls started before execution stopped:\n- lookup({'id':…[2591 chars]…y have applied a partial change\n- lookup({'id': 24}) did not finish, so it may have applied a partial change\n- lookup({'id': 25}) did not finish, so it may have applied a partial change\n- ... and 74 more not shown\nAccount for all 100 before retrying; repeating a call repeats whatever it already did."
+        ],
+        "callsStarted": 100
+      },
+      "atReturn": {
+        "started": 100,
+        "done": 0
+      },
+      "after3s": {
+        "started": 100,
+        "done": 0
+      }
+    },
+    "hostMaxEventLoopLagMs": 19,
+    "totalMs": 5592
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      112,
+      27
+    ],
+    [
+      239,
+      43
+    ],
+    [
+      357,
+      51
+    ],
+    [
+      485,
+      51
+    ],
+    [
+      666,
+      53
+    ],
+    [
+      759,
+      53
+    ],
+    [
+      918,
+      56
+    ],
+    [
+      1041,
+      56
+    ],
+    [
+      1158,
+      57
+    ],
+    [
+      1264,
+      59
+    ],
+    [
+      1396,
+      61
+    ],
+    [
+      1521,
+      63
+    ],
+    [
+      1615,
+      65
+    ],
+    [
+      1774,
+      66
+    ],
+    [
+      1908,
+      67
+    ],
+    [
+      2034,
+      71
+    ],
+    [
+      2180,
+      72
+    ],
+    [
+      2283,
+      76
+    ],
+    [
+      2428,
+      77
+    ],
+    [
+      2607,
+      111
+    ],
+    [
+      2734,
+      82
+    ],
+    [
+      2838,
+      82
+    ],
+    [
+      2943,
+      82
+    ],
+    [
+      3079,
+      82
+    ],
+    [
+      3222,
+      82
+    ],
+    [
+      3394,
+      82
+    ],
+    [
+      3557,
+      82
+    ],
+    [
+      3674,
+      82
+    ],
+    [
+      3779,
+      82
+    ],
+    [
+      3875,
+      82
+    ],
+    [
+      4008,
+      82
+    ],
+    [
+      4135,
+      82
+    ],
+    [
+      4270,
+      82
+    ],
+    [
+      4390,
+      82
+    ],
+    [
+      4535,
+      82
+    ],
+    [
+      4632,
+      82
+    ],
+    [
+      4801,
+      82
+    ],
+    [
+      4919,
+      82
+    ],
+    [
+      5018,
+      82
+    ],
+    [
+      5121,
+      82
+    ],
+    [
+      5218,
+      82
+    ],
+    [
+      5322,
+      82
+    ],
+    [
+      5486,
+      82
+    ],
+    [
+      5589,
+      82
+    ],
+    [
+      5715,
+      0
+    ]
+  ]
+}

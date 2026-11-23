@@ -1,0 +1,14 @@
+{
+  "probe": "P9cap",
+  "config": "--timeout 5s --memory 8 --max-tool-calls 10 --pool-size 1",
+  "code": "let n = 0; try { for (let i = 0; i < 60; i++) { await tools.lookup.lookup({id: i}); n++; } } catch (e) { return 'stopped after ' + n + ': ' + e.message } return 'all ' + n",
+  "wall_ms": 2062,
+  "host_calls": 10,
+  "isError": true,
+  "response_text": "{\"error\":\"[uninitialized]\",\"tool_calls\":[{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":236,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":201,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":201,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":200,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":200,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":201,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":201,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":201,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":200,\"status\":\"success\"},{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":201,\"status\":\"success\"}],\"duration_ms\":2052}",
+  "response_text_length": 791,
+  "raw_flags": {
+    "harnessTimeout": false,
+    "transportClosed": false
+  }
+}

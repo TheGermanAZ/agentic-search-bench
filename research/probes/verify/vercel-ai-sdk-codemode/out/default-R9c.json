@@ -1,0 +1,382 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs default R9c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 30935,
+  "peakTreeRssMb": 179,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "default",
+    "test": "R9c",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 456,
+          "ms": 30043,
+          "ok": false,
+          "threw": "RunTimeoutError: JavaScript runtime execution timed out after 30000ms.\n    at file://~/p/agentic-search-bench/research/impls/vercel-ai-sdk-codemode/pkg/node_modules/run/dist/runtime/manager.js:578:20\n    at AsyncResource.runInAsyncScope (node:async_hooks:227:14)\n    at Timeout.<anonymous> (file://~/p/agentic-search-bench/research/impls/vercel-ai-sdk-codemode/pkg/node_modules/run/dist/runtime/manager.js:384:23)\n    at listOnTimeout (node:internal/timers:685:17)\n    at process.processTimers (node:internal/timers:618:7)",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 792,
+        "ms": 441,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1234,
+        "ms": 244,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 30499,
+        "ms": 210,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 637,
+    "hostEvents": [],
+    "totalMs": 30709
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:70610) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      207,
+      46
+    ],
+    [
+      592,
+      70
+    ],
+    [
+      1040,
+      140
+    ],
+    [
+      1400,
+      177
+    ],
+    [
+      1779,
+      178
+    ],
+    [
+      2152,
+      178
+    ],
+    [
+      2558,
+      178
+    ],
+    [
+      2966,
+      178
+    ],
+    [
+      3383,
+      178
+    ],
+    [
+      3781,
+      178
+    ],
+    [
+      4150,
+      178
+    ],
+    [
+      4511,
+      178
+    ],
+    [
+      4926,
+      178
+    ],
+    [
+      5297,
+      178
+    ],
+    [
+      5667,
+      178
+    ],
+    [
+      6072,
+      178
+    ],
+    [
+      6415,
+      178
+    ],
+    [
+      6768,
+      178
+    ],
+    [
+      7165,
+      178
+    ],
+    [
+      7524,
+      178
+    ],
+    [
+      7913,
+      178
+    ],
+    [
+      8280,
+      178
+    ],
+    [
+      8628,
+      178
+    ],
+    [
+      8984,
+      178
+    ],
+    [
+      9490,
+      178
+    ],
+    [
+      9844,
+      178
+    ],
+    [
+      10229,
+      178
+    ],
+    [
+      10623,
+      178
+    ],
+    [
+      11011,
+      178
+    ],
+    [
+      11384,
+      178
+    ],
+    [
+      11762,
+      178
+    ],
+    [
+      12226,
+      179
+    ],
+    [
+      12792,
+      177
+    ],
+    [
+      13136,
+      145
+    ],
+    [
+      13523,
+      145
+    ],
+    [
+      13874,
+      145
+    ],
+    [
+      14244,
+      145
+    ],
+    [
+      14648,
+      145
+    ],
+    [
+      15001,
+      145
+    ],
+    [
+      15406,
+      145
+    ],
+    [
+      15784,
+      145
+    ],
+    [
+      16179,
+      145
+    ],
+    [
+      16546,
+      145
+    ],
+    [
+      16939,
+      145
+    ],
+    [
+      17305,
+      145
+    ],
+    [
+      17657,
+      145
+    ],
+    [
+      18124,
+      145
+    ],
+    [
+      18467,
+      145
+    ],
+    [
+      18843,
+      145
+    ],
+    [
+      19235,
+      145
+    ],
+    [
+      19697,
+      145
+    ],
+    [
+      20137,
+      145
+    ],
+    [
+      20493,
+      145
+    ],
+    [
+      20902,
+      145
+    ],
+    [
+      21290,
+      145
+    ],
+    [
+      21717,
+      145
+    ],
+    [
+      22098,
+      145
+    ],
+    [
+      22463,
+      145
+    ],
+    [
+      22850,
+      145
+    ],
+    [
+      23322,
+      145
+    ],
+    [
+      23722,
+      145
+    ],
+    [
+      24102,
+      146
+    ],
+    [
+      24464,
+      146
+    ],
+    [
+      24832,
+      146
+    ],
+    [
+      25310,
+      146
+    ],
+    [
+      25761,
+      146
+    ],
+    [
+      26300,
+      146
+    ],
+    [
+      26869,
+      146
+    ],
+    [
+      27272,
+      146
+    ],
+    [
+      27627,
+      146
+    ],
+    [
+      28085,
+      146
+    ],
+    [
+      28569,
+      146
+    ],
+    [
+      28971,
+      146
+    ],
+    [
+      29439,
+      146
+    ],
+    [
+      29813,
+      146
+    ],
+    [
+      30161,
+      146
+    ],
+    [
+      30610,
+      146
+    ]
+  ]
+}

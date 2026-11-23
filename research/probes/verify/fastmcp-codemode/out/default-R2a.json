@@ -1,0 +1,270 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py default R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3742,
+  "peakTreeRssMb": 106,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R2a",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(defaults); new in-process Client per execution",
+    "data": {
+      "label": "",
+      "startMs": 3031,
+      "ms": 522,
+      "ok": true,
+      "result": {
+        "is_error": false,
+        "text": "[\"dict\",\"threw AttributeError: 'dict' object has no attribute '__class__'\",\"threw AttributeError: type object 'dict' has no attribute '__subclasses__'\",\"threw AttributeError: 'dict' object has no attribute '__class__'\"]"
+      },
+      "callsStarted": 1
+    },
+    "hostMaxEventLoopLagMs": 77,
+    "totalMs": 3553
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      143,
+      23
+    ],
+    [
+      183,
+      29
+    ],
+    [
+      304,
+      34
+    ],
+    [
+      388,
+      41
+    ],
+    [
+      435,
+      44
+    ],
+    [
+      495,
+      44
+    ],
+    [
+      605,
+      44
+    ],
+    [
+      682,
+      49
+    ],
+    [
+      742,
+      53
+    ],
+    [
+      793,
+      53
+    ],
+    [
+      851,
+      53
+    ],
+    [
+      896,
+      53
+    ],
+    [
+      973,
+      54
+    ],
+    [
+      1030,
+      55
+    ],
+    [
+      1127,
+      55
+    ],
+    [
+      1193,
+      56
+    ],
+    [
+      1269,
+      56
+    ],
+    [
+      1368,
+      56
+    ],
+    [
+      1412,
+      56
+    ],
+    [
+      1482,
+      56
+    ],
+    [
+      1559,
+      57
+    ],
+    [
+      1628,
+      57
+    ],
+    [
+      1675,
+      57
+    ],
+    [
+      1736,
+      57
+    ],
+    [
+      1784,
+      58
+    ],
+    [
+      1863,
+      58
+    ],
+    [
+      1912,
+      59
+    ],
+    [
+      1964,
+      60
+    ],
+    [
+      2007,
+      61
+    ],
+    [
+      2100,
+      62
+    ],
+    [
+      2150,
+      66
+    ],
+    [
+      2195,
+      67
+    ],
+    [
+      2249,
+      68
+    ],
+    [
+      2296,
+      74
+    ],
+    [
+      2385,
+      76
+    ],
+    [
+      2436,
+      77
+    ],
+    [
+      2480,
+      77
+    ],
+    [
+      2529,
+      78
+    ],
+    [
+      2589,
+      78
+    ],
+    [
+      2646,
+      78
+    ],
+    [
+      2704,
+      80
+    ],
+    [
+      2751,
+      82
+    ],
+    [
+      2800,
+      82
+    ],
+    [
+      2865,
+      84
+    ],
+    [
+      2925,
+      86
+    ],
+    [
+      2967,
+      86
+    ],
+    [
+      3015,
+      87
+    ],
+    [
+      3075,
+      87
+    ],
+    [
+      3154,
+      87
+    ],
+    [
+      3243,
+      92
+    ],
+    [
+      3286,
+      103
+    ],
+    [
+      3342,
+      103
+    ],
+    [
+      3385,
+      106
+    ],
+    [
+      3459,
+      106
+    ],
+    [
+      3506,
+      106
+    ],
+    [
+      3576,
+      106
+    ],
+    [
+      3616,
+      106
+    ],
+    [
+      3694,
+      96
+    ],
+    [
+      3741,
+      0
+    ]
+  ]
+}

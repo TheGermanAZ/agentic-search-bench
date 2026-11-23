@@ -1,0 +1,1 @@
+["--approval-mode","default","--exclude-tools","read_file,glob,grep_search,web_fetch,zoom_image,read_mcp_resource","--max-wall-time","60s","--max-tool-calls","32"]

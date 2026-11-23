@@ -1,0 +1,12 @@
+--- code 1 ---
+s = "x" * (1 << 31)
+return len(s)
+--- result 1 ---
+{"ms":4,"hostCalls":0,"peakRssMB":341,"ok":true,"isError":true}
+text (58 chars):
+script execution failed: repeat count 2147483648 too large
+--- code 2 ---
+a = ["x" * (1 << 29) + str(i) for i in range(16)]
+return len(a)
+--- result 2 ---
+{"ms":2728,"hostCalls":0,"peakRssMB":4384,"rssKilled":true,"ok":false,"error":"fetch failed"}

@@ -1,0 +1,104 @@
+{
+  "impl": "openai-code-interpreter",
+  "name": "OpenAI Code Interpreter tool (Responses API)",
+  "source": "https://developers.openai.com/api/docs/guides/tools-code-interpreter ; https://developers.openai.com/api/docs/guides/tools-shell ; https://developers.openai.com/api/reference/resources/containers/methods/create",
+  "pinned": "docs fetched 2026-11-22; openai-python@f63f14b34754fa77fc839ac2cf95da3ef42e1f6a",
+  "language": "Python",
+  "engine": "OpenAI-hosted container, \"a fully sandboxed virtual machine\" (hosted shell page: Debian 12 based runtime, Python 3.11; not stated on the CI page itself)",
+  "how_run": "Not run: no API key on this machine. Documented entry point is the code_interpreter tool with container {type: auto, memory_limit} or an explicit container ID.",
+  "probes": {
+    "P1": {
+      "outcome": "not-applicable",
+      "detail": "Code Interpreter code cannot call client tools; it runs code over files. The reverse exists: an OpenAI PTC program may call code_interpreter (allowed_callers supports it).",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-code-interpreter ; https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling#supported-tools"
+    },
+    "P2": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "The call item carries outputs of type logs (string) or image (url); generated files return as container_file_citation annotations. Docs do not say whether a final bare expression is echoed or where logs are truncated.",
+      "evidence": "https://github.com/openai/openai-python/blob/f63f14b34754fa77fc839ac2cf95da3ef42e1f6a/src/openai/types/responses/response_code_interpreter_tool_call.py ; https://developers.openai.com/api/docs/guides/tools-code-interpreter#dealing-with-citations"
+    },
+    "P3": {
+      "outcome": "blocked",
+      "detail": "Default per the hosted shell guide, which covers the same hosted containers: \"Hosted containers don't have outbound network access by default.\" Enabling it needs an org allow list set by an admin plus a request-level network_policy. The CI tool config also takes network_policy (disabled, or allowlist with allowed_domains and optional domain_secrets) per the SDK types and the containers API reference. The CI page itself is silent. Resolves the survey's open item.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-shell#network-access ; https://github.com/openai/openai-python/blob/f63f14b34754fa77fc839ac2cf95da3ef42e1f6a/src/openai/types/responses/tool.py#L207-L223 ; https://developers.openai.com/api/reference/resources/containers/methods/create"
+    },
+    "P4": {
+      "outcome": "not-applicable",
+      "detail": "Runs in OpenAI's VM, so the client's files are unreachable by construction. Inside the container the model reads and writes files it is given or creates.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-code-interpreter#containers"
+    },
+    "P5": {
+      "outcome": "not-applicable",
+      "detail": "Client environment is never sent (inference). Docs silent on container environment variables. Network allowlists can attach domain_secrets per domain.",
+      "evidence": "https://developers.openai.com/api/reference/resources/containers/methods/create"
+    },
+    "P6": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "No execution time limit documented.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-code-interpreter"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "Docs: \"You can choose from 1g (default), 4g, 16g, or 64g.\" Behaviour at the limit not documented.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-code-interpreter#containers"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "While the container is active. Docs: \"A container expires if it is not used for 20 minutes\" and then \"any state in the old container's memory (like python objects) will be lost.\" Auto mode \"reuses an active container that was used by a previous code_interpreter_call item in the model's context.\"",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-code-interpreter#expiration",
+      "display": "persists (docs)"
+    },
+    "P9": {
+      "outcome": "not-applicable",
+      "detail": "No host tool calls from code.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-code-interpreter"
+    },
+    "P10": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "Error formatting not documented; call status can be failed or incomplete per the SDK type.",
+      "evidence": "https://github.com/openai/openai-python/blob/f63f14b34754fa77fc839ac2cf95da3ef42e1f6a/src/openai/types/responses/response_code_interpreter_tool_call.py"
+    },
+    "P11": {
+      "outcome": "blocked-needs-credentials",
+      "detail": "No startup figure documented.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-code-interpreter"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "Docs claim \"a fully sandboxed virtual machine\". Not tested. os.system runs inside the VM by design.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-code-interpreter#containers"
+    }
+  },
+  "defaults": {
+    "time": "not documented",
+    "memory": "1g default; 4g, 16g, 64g tiers",
+    "output": "logs and image outputs on the call item; files as container_file_citation",
+    "tool_calls": "not-applicable"
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Single hosted python tool; the model knows it as \"python\". No client tools bridged in.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-code-interpreter"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Container VM; network off by default for hosted containers, opt-in allowlist governed by an org-level admin allow list; request policy can only narrow it.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-shell#network-policy-precedence"
+    },
+    {
+      "topic": "State",
+      "finding": "Container lives until 20 minutes idle; memory tier fixed for the container's life.",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-code-interpreter#expiration"
+    },
+    {
+      "topic": "Notable",
+      "finding": "Allowlisting \"introduces security risks such as prompt injection-driven data exfiltration\" (shell guide).",
+      "evidence": "https://developers.openai.com/api/docs/guides/tools-shell#network-access"
+    }
+  ],
+  "surprises": [
+    "The Code Interpreter page never states the network default; the answer is on the hosted Shell page, which says hosted containers have no outbound network by default and that Shell and Code Interpreter share the container lifecycle.",
+    "Network can be opened per container with an allowlist and per-domain secrets, so \"no network\" is a default, not a property."
+  ]
+}

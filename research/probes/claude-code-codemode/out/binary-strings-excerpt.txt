@@ -1,0 +1,57 @@
+Excerpts from `strings $(readlink -f $(which claude))`, Claude Code 2.1.325 native build.
+
+##### 'case"entrypoint":return"for now it only works in the interactive terminal"': 1 occurrence(s)
+
+ool call`;case"runtime":return"it needs Claude Code's native build (see code.claude.com/docs/en/setup)";case"engine":return`this version of Claude Code didn't pass a check that only ${Mm} needs (updating Claude Code may help)`;case"no_bash":return"for now it needs Git for Windows (Bash) on Windows";case"entrypoint":return"for now it only works in the interactive terminal";case"unattended":return"for now it doesn't work in background jobs, in teammates' panes or with Remote Control";case"no_setup":return"Claude Code skipped the start-up steps that check for it (it skips them while CI or IS_DEMO is set)";case"tools":return"this launch's tool options (--restricted, --t
+
+##### 'the vm context is sealed': 2 occurrence(s)
+
+{ filenames } = await Glob({ pattern: '*.ts' }) const { file } = await Read({ file_path: 'config.json' }) await Edit({ file_path: 'foo.ts', old_string: 'old', new_string: 'new' }) const { stdout } = await ${m}({ command: 'git status' }) \`\`\` ## Tips - \`import\`/\`require\` don't work here \u2014 the vm context is sealed. For filesystem access use \`Read\`/\`Write\`/\`Glob\`; for shell use \`${m}\`. - Use \`Promise.all()\` for parallel operations - Variables persist across REPL calls - Last expression is returned as the result - ${c?`Don't write a temp file just to feed a shell command \u2014 pipe via heredoc: \`aw
+
+rn s.join(` `)}var Tu={"import-statement":"import","dynamic-import":"import","require-call":"require"};function ku(e,n){let r;try{r=e.scanImports(n.replace(/^#!.*/,""))}catch{return}for(let{kind:s}of r){let c=Tu[s];if(!c)continue;throw Ct(Error(`Module loading (${c}) is not available in REPL \u2014 the vm context is sealed. `+"Use the tool globals instead: await Read({file_path: '...'}), await Glob({pattern: '...'}), the registered shell tool, etc."),Os)}}function ya(e){if(e===null||typeof e!=="object")return e;if(ad(e))return e;let n=Object.getOwnPropertyDescriptor(e,"value");return n&&"value"in n?n.value:e}function
+
+##### '300000000': 3 occurrence(s)
+
+?s.trim():void 0}catch{return}}function uqr(e,s){if(s===void 0)return!0;return Ih(s,plt(e))}function fje(e,s){if(s===e)return!0;return!1}function Ih(e,s){return s===void 0||s===e||gP(e,s)}function gP(e,s){if(!bn())return!1;let n=Number(e),r=Number(s);return Number.isFinite(n)&&Number.isFinite(r)&&n>300000000000000000!==r>300000000000000000}async function Cv(e,s){if(s===void 0)return!0;return Ih(s,await Pc(e))}async function S_(e,s){let n=await Pc(e,{skipCache:!0});return n===void 0?void 0:fje(s,n)}class xh{#e=void 0;get token(){return this.#e}set(e){return this.#e=e,e}reset(){this.#e=void 0}}var NTe=ne
+
+return}}function uqr(e,s){if(s===void 0)return!0;return Ih(s,plt(e))}function fje(e,s){if(s===e)return!0;return!1}function Ih(e,s){return s===void 0||s===e||gP(e,s)}function gP(e,s){if(!bn())return!1;let n=Number(e),r=Number(s);return Number.isFinite(n)&&Number.isFinite(r)&&n>300000000000000000!==r>300000000000000000}async function Cv(e,s){if(s===void 0)return!0;return Ih(s,await Pc(e))}async function S_(e,s){let n=await Pc(e,{skipCache:!0});return n===void 0?void 0:fje(s,n)}class xh{#e=void 0;get token(){return this.#e}set(e){return this.#e=e,e}reset(){this.#e=void 0}}var NTe=new xh;class Ph{#e=new Ma
+
+##### 'Code generation from strings disallowed': 7 occurrence(s)
+
+::operator()() const bool JSC::JSObject::trySetIndexQuickly(VM &, unsigned int, JSValue, ArrayProfile *) evaluation namespace cache/webkit-ee59053d32ace3b7-macos-arm64-lto-aot/include/wtf/text/StringBuilder.h unsigned int WTF::StringBuilder::length() const importModuleDynamically microtaskMode wasm Code generation from strings disallowed for this context: eval() and new Function() were removed by --trim because your code never uses them. To keep them, add "interpreter" to compile.trim.allow in Bun.build(). Code generation from strings disallowed for this context node:vm code is alive cache/webkit-ee59053d32ace3b7-macos-arm64-lto-ao
+
+igned int WTF::StringBuilder::length() const importModuleDynamically microtaskMode wasm Code generation from strings disallowed for this context: eval() and new Function() were removed by --trim because your code never uses them. To keep them, add "interpreter" to compile.trim.allow in Bun.build(). Code generation from strings disallowed for this context node:vm code is alive cache/webkit-ee59053d32ace3b7-macos-arm64-lto-aot/include/wtf/ConcurrentPtrHashSet.h bool WTF::ConcurrentPtrHashSet::containsImpl(void *) const Could not import the module ' produceCachedData timeout getStatusCode getStatus getNamespace getError instantiate ev
+
+##### 'of script time (inner tool calls excluded)': 1 occurrence(s)
+
+Se)}}}},ne=new Map,Ye=new Map,Fe=new Map,et=new Set,Me=new Map,at=new Set,tt=oc();tt.promise.catch(()=>{});let it={},ke=(W,q)=>{it.by??=W,tt.reject(q)},we=(W,q)=>{if(qc()&&m==="classic")pe(!0).then(()=>ke(W,q));else ke(W,q)},Xe=ic(U,()=>we("timed_out",Ct(Error(`REPL execution timed out after ${U}ms of script time (inner tool calls excluded). Script may still be running \u2014 avoid unbounded awaits.`),As(U)))),ze=dc((W,q)=>{if(jt())l("tengu_repl_inner_watchdog_fired",{replToolUseID:M,...qc()?{toolName:ds(W.toolName)?Yn(W.toolName):S("other_tool")}:{toolName:Yn(W.toolName),watchdogMs:q,nativeTimeoutMs:W.nativeTimeoutMs}});D.abort(),ke(
+
+##### 'chars elided': 9 occurrence(s)
+
+connected to this account, H  of them on this computer, and none has been selected for this session. d Multiple Chrome browsers are connected to this account and none has been selected for this session. >  List the browsers on this computer first, in the order below. no_browser_selected osPlatform  chars elided> disabled:   not sent ] tab lookup failed availableTabs selectedTabId Cannot destructure property 'tabs' from null or undefined value never_acted history_moved acted_on_main_tab not_in_group agent_last_tab group_main_tab only_tab useLastActedTab resultErrored Cannot destructure property 'ok' from n
+
+ whose variables it can read, got from its tool calls. They go ahead of the output, after the tools line, in the tool_result or, for a background script, in its event. imagesOmitted imagesRefused refusedCalls imagePagesFailed imagePagesFailedOmitted documentsOmitted [non-serializable value]  ... [  chars elided  ] ...  wordsWithYes& [Result not kept here: it is over the   characters kept for one call.] waitingMs  call had run once in the sandbox, which blocked it, and was waiting to run again outside it.  of them had run once in the sandbox, which blocked them, and were waiting to run again outside it.  c
+
+##### 'console ring': 1 occurrence(s)
+
+{if(jt())l("tengu_repl_tool_call_cap",{replToolUseID:M,lane:f(m),afterReturn:Y});we("tool_call_cap",W)},We.onLeftoverCodeStopped=()=>h?.onLateLog(is);let lt=We.console;if(ee)lt.warn(vjs());let Dt=()=>{let W=lt.getStdout(),q=We.ringLines,Se=[W===""&&q>0?`[console.log wrote ${q} ${I(q,"line")} to the console ring, not to this output \u2014 use self.log(...) for output you want to see, or read the ring with console.tail()]`:W],De=Ce.stops();if(De.clock>0)Se.push(gos("wall clock",De.clock,`${MVn()} ms`));if(De.budget>0)Se.push(gos("step budget",De.budget,`${We.stepBudget} steps (a step is one pass through a l
+
+##### 'codeGeneration:{strings:!1,wasm:!1}': 7 occurrence(s)
+
+a) => {         const p = _apply(fn, undefined, a)         try { _apply(_then, p, [undefined, rejected]) } catch {}         return p       }     })`,e)(Bce(t))}function G5e(e,t="Error",n){let r=()=>`${t}: ${e}`;return Object.setPrototypeOf(r,null),Object.freeze(r),Object.freeze({__proto__:null,name:t,message:e,stack:n??`${t}: ${e}`,toString:r})}var c;function h(){if(!c){let e=SY({__proto__:null},{codeGeneration:{strings:!1,wasm:!1}});Zzr(e),eTe(e,_2e),c=o.runInContext(`(e => {         // Independent try blocks \u2014 a throwing .name getter must not discard         // an already-validated .message (and vice versa).         let msg, name = 'Error', stack         try {           const m = e?.message           msg = typeof m ===
+
+##### 'src/utils/vmHardening.ts': 2 occurrence(s)
+
+a   there, which an object matcher can never match (a matcher has no operator keys); the hook will not run for it. A   is matched by the literal value or, as a string, by a RegExp, e.g. {  : /^prefix/ } ^[a-zA-Z0-9/._+@-]+$ fellBackFrom The options argument of hardenVMIntrinsics and createVMIntakeWalkers must be either { importModuleDynamically: <function> } or COMPILE_WITHOUT_IMPORT_HOOK, which src/utils/vmHardening.ts exports 'use strict'; delete Error.captureStackTrace, (async v => ({__proto__: null, v: await v})) ((fn, ...args) => fn(...args)) (e => {       let name = 'Error', message = '', stack = ''       try { const v = e?.name; if (typeof v === 'string') name = v } catch {}       try {         const v = e?
+
+##### 'calls, its cap. The call was not made': 2 occurrence(s)
+
+l error: the step counter did not set up its clock (installStepBudget). This is a fault in the REPL tool, not in the script. markStop( REPL: the script's synchronous run took   ms, its wall clock, and was stopped. The step budget counts loops and calls, not the time one built-in call takes, such as a regular expression match over a long input; give such a call less to do. : this script has made   calls, its cap. The call was not made, and no later call of this script will be answered. REPL call cap reached callsWhenOver onLeftoverCodeStopped toolCallsRefused onToolCallCap onCallSettled Cannot destructure property 'toolWrappers' from null or undefined value lineText REPL script failed to parse ReplParseError , which is already a
+
+##### 'its wall clock, and was stopped': 2 occurrence(s)
+
+rest -= take         steps.left = take - 1       }       return () => {         if (--steps.left < 0) {           nextStride()         }       }     })(globalThis. ) } finally { delete globalThis.  } })(); REPL: internal error: the step counter did not set up its clock (installStepBudget). This is a fault in the REPL tool, not in the script. markStop( REPL: the script's synchronous run took   ms, its wall clock, and was stopped. The step budget counts loops and calls, not the time one built-in call takes, such as a regular expression match over a long input; give such a call less to do. : this script has made   calls, its cap. The call was not made, and no later call of this script will be answered. REPL call cap reached 
+
+##### 'REPL inner tool call': 2 occurrence(s)
+
+Add 'await' next time. Its error: keyOnly Cannot destructure property 'documents' from null or undefined value+  tool call(s) still running at script end ( REPL error stack trace: \n\s+at  tool_call_cap tengu_repl_script_end continueFalse innerCallCount innerExecutedCount codeChars innerErrorCount innerDeclinedCount hookContinueFalse REPL execution timed out after  tengu_repl_inner_watchdog_fired REPL inner tool call  ms watchdog (native timeout C watchdogMs  sent a note with its result (_notes holds it whole): More results came with notes: read the _notes of each. sandboxRetry onToolStart onToolEnd tengu_repl_tool_call_cap afterReturn [console.log wrote  wall clock step budget  steps (a step is one pass throug

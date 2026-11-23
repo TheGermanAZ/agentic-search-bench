@@ -1,0 +1,211 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py hardened R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2964,
+  "peakTreeRssMb": 182,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R2b",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich'], 'timeout': 1.0, 'memory_limit': 16777216, 'max_ptc_calls': 8, 'mode': 'call', 'subagents': False}), new thread_id per execution",
+    "data": {
+      "label": "",
+      "startMs": 2068,
+      "ms": 732,
+      "ok": true,
+      "result": "<stdout>\n{\"type\":\"object\",\"name\":\"HostError\",\"msg\":\"Host function failed\",\"stack\":\"\",\"own\":[\"stack\",\"message\",\"name\"],\"esc\":\"undefined\"}\n</stdout>\n<result>null</result>",
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 84,
+    "totalMs": 2800
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      170,
+      25
+    ],
+    [
+      222,
+      36
+    ],
+    [
+      269,
+      38
+    ],
+    [
+      322,
+      44
+    ],
+    [
+      367,
+      46
+    ],
+    [
+      422,
+      47
+    ],
+    [
+      560,
+      47
+    ],
+    [
+      607,
+      54
+    ],
+    [
+      665,
+      54
+    ],
+    [
+      712,
+      55
+    ],
+    [
+      774,
+      55
+    ],
+    [
+      838,
+      58
+    ],
+    [
+      902,
+      58
+    ],
+    [
+      957,
+      58
+    ],
+    [
+      1019,
+      58
+    ],
+    [
+      1074,
+      59
+    ],
+    [
+      1121,
+      60
+    ],
+    [
+      1171,
+      60
+    ],
+    [
+      1222,
+      62
+    ],
+    [
+      1265,
+      65
+    ],
+    [
+      1313,
+      68
+    ],
+    [
+      1384,
+      70
+    ],
+    [
+      1461,
+      72
+    ],
+    [
+      1586,
+      75
+    ],
+    [
+      1655,
+      77
+    ],
+    [
+      1703,
+      79
+    ],
+    [
+      1760,
+      81
+    ],
+    [
+      1800,
+      84
+    ],
+    [
+      1852,
+      85
+    ],
+    [
+      1908,
+      85
+    ],
+    [
+      1961,
+      85
+    ],
+    [
+      2036,
+      85
+    ],
+    [
+      2083,
+      88
+    ],
+    [
+      2162,
+      90
+    ],
+    [
+      2284,
+      91
+    ],
+    [
+      2334,
+      150
+    ],
+    [
+      2388,
+      152
+    ],
+    [
+      2448,
+      161
+    ],
+    [
+      2506,
+      164
+    ],
+    [
+      2563,
+      169
+    ],
+    [
+      2747,
+      171
+    ],
+    [
+      2797,
+      177
+    ],
+    [
+      2842,
+      177
+    ],
+    [
+      2912,
+      182
+    ],
+    [
+      2962,
+      0
+    ]
+  ]
+}

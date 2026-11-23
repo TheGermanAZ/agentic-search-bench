@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "no-limit-within-120s",
+  "display": "no-limit-within-120s (300 s default)",
+  "detail": "Harness stopped it at 120 s; the default timeout is 300 s. Side check out/p6_default_check.txt: interrupted at 300.1 s ('[cell interrupted: exceeded timeout of 300s]', KeyboardInterrupt), next cell printed 2.",
+  "evidence": "research/probes/agno-codemode/out/P6.txt"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "P12js",
+  "workerPid": 4294,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 580,
+  "peakRssKbSampled": 174816,
+  "stderr": "(node:4294) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "parsed": {
+    "probe": "P12js",
+    "config": {
+      "executionLimitProfile": "hardened"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 4294
+    },
+    "runs": [
+      {
+        "script": "js-exec -c 'console.log(this.constructor.constructor(\"return process\")().pid)'",
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "at <eval> (-c:1:31): Function constructor is not allowed\n",
+        "ms": 319,
+        "hostCalls": 0
+      },
+      {
+        "script": "js-exec -c 'console.log((function(){ return this })().process)'",
+        "exitCode": 0,
+        "stdout": "{\"argv\":[\"-c\"],\"env\":{\"HOME\":\"/home/user\",\"PATH\":\"/usr/bin:/bin\",\"IFS\":\" \\t\\n\",\"OSTYPE\":\"linux-gnu\",\"MACHTYPE\":\"x86_64-pc-linux-gnu\",\"HOSTTYPE\":\"x86_64\",\"HOSTNAME\":\"localhost\",\"PWD\":\"/home/user\",\"OLDPWD\":\"/home/user\",\"OPTIND\":\"1\",\"SHELLOPTS\":\"braceexpand:hashall:interactive-comments\",\"BASHOPTS\":\"globskipdots\"},\"platform\":\"linux\",\"arch\":\"x64\",\"versions\":{\"node\":\"22.0.0\",\"quickjs\":\"2025\"},\"version\":\"v22.0.0\"}\n",
+        "stderr": "",
+        "ms": 22,
+        "hostCalls": 0
+      },
+      {
+        "script": "js-exec -c 'console.log(typeof require, typeof process, process.pid, process.env.PROBE_SECRET)'",
+        "exitCode": 0,
+        "stdout": "function object undefined undefined\n",
+        "stderr": "",
+        "ms": 20,
+        "hostCalls": 0
+      },
+      {
+        "script": "js-exec -c 'console.log(require(\"child_process\").execSync(\"echo inner-child\").toString())'",
+        "exitCode": 0,
+        "stdout": "inner-child\n\n",
+        "stderr": "",
+        "ms": 28,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 177552,
+    "maxInFlight": 0,
+    "hostCalls": 0
+  }
+}

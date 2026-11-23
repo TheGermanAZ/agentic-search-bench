@@ -1,0 +1,9 @@
+probe P3 hardened=False
+code:
+r, w = await asyncio.open_connection("example.com", 443, ssl=True)
+w.write(b"GET / HTTP/1.1\r\nHost: example.com\r\nConnection: close\r\n\r\n")
+line = (await r.readline()).decode()
+print("STATUS", line.split()[1])
+
+{"ok": true, "result": null, "error": null, "ms": 119.4}
+stdout (10 chars): 'STATUS 200'

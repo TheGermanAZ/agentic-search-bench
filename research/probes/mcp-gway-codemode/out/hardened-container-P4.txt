@@ -1,0 +1,15 @@
+--- code 1 ---
+result = open("/etc/hosts").read()
+--- result 1 ---
+{"ok": true, "jsonrpcError": {"code": -32602, "message": "Invalid params", "data": {"type": "InvalidParamsError", "reason": "code_validation"}}, "ms": 13.1, "hostCalls": 0, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 74}
+--- code 2 ---
+result = read_file("/etc/hosts")
+--- result 2 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "StarlarkError"}}, "ms": 22.62, "hostCalls": 0, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 74}
+--- code 3 ---
+f = getattr(Probe, "op" + "en", "no such attribute")
+result = f
+--- result 3 ---
+{"ok": true, "isError": false, "ms": 28.97, "hostCalls": 0, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 74}
+text (134 chars):
+{"result": "no such attribute", "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 9, "limit_bytes": 1024, "truncated": false}}

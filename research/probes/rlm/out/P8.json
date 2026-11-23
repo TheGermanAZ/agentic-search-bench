@@ -1,0 +1,5 @@
+{
+  "probe": "P8",
+  "outcome": "persists",
+  "detail": "execution 2 printed '7'; env.locals['kept'] = 7 (persistent=False)"
+}

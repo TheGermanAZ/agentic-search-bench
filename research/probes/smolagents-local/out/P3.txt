@@ -1,0 +1,6 @@
+probe: P3
+code (python, run through LocalPythonExecutor):
+import urllib.request
+urllib.request.urlopen("https://example.com")
+host_calls_so_far: 0
+result: {'ok': False, 'error_type': 'InterpreterError', 'error': "Code execution failed at line 'import urllib.request' due to: InterpreterError: Import of urllib.request is not allowed. Authorized imports are: ['math', 'collections', 'time', 'queue', 'random', 'itertools', 'stat', 'statistics', 'unicodedata', 're', 'datetime']", 'ms': 0.2}

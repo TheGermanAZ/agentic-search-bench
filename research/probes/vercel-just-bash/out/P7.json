@@ -1,0 +1,30 @@
+{
+  "worker": {
+    "exitCode": 0,
+    "signal": null,
+    "killed": null,
+    "wallMs": 133,
+    "peakRssKb": 151904
+  },
+  "parsed": {
+    "probe": "P7",
+    "host": {
+      "node": "v24.22.1",
+      "pid": 62174
+    },
+    "runs": [
+      {
+        "label": "s=xxxxxxxxxxxxxxxx; while true; do s=\"$s$s\"; done; echo ${#s}",
+        "script": "s=xxxxxxxxxxxxxxxx; while true; do s=\"$s$s\"; done; echo ${#s}",
+        "exitCode": 126,
+        "stdout": "",
+        "stderr": "bash: word expansion: string length limit exceeded (67108864 bytes)\n",
+        "ms": 62,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 348704,
+    "maxInFlight": 0
+  }
+}

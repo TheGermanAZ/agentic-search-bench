@@ -1,0 +1,63 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P7",
+  "config": {
+    "executionPolicy": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxToolInputBytes": 262144,
+      "maxToolOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "const a = []; while (true) a.push(\"x\".repeat(1e6));"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 125,
+    "siblingEndMs": 385,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "InternalError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "out of memory",
+        "stack": "InternalError: out of memory\n    at <anonymous> (code-mode.js:1:39)\n    at <anonymous> (code-mode.js:2:1)",
+        "string": "InternalError: out of memory"
+      },
+      "wallMs": 190.211583,
+      "hostCalls": 1
+    }
+  ],
+  "concurrentSiblingRun": {
+    "ok": true,
+    "value": 42,
+    "wallMs": 259.159833,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "ok": true,
+    "value": 42,
+    "wallMs": 205.821083,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 125,
+    "siblingEndMs": 385,
+    "error": "InternalError: RUN_USER_SOURCE_ERROR out of memory",
+    "ms": 190,
+    "sibling": 42,
+    "after": 42
+  },
+  "hostRssAfterMB": 209.7
+}

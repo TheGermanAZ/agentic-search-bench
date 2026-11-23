@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "probe": {
+      "command": "~/.local/share/fnm/node-versions/v24.22.1/installation/bin/node",
+      "args": [
+        "~/p/agentic-search-bench/research/probes/codemode-unified-bun/lookup-server.mjs",
+        "~/p/agentic-search-bench/research/probes/codemode-unified-quickjs/out/calls-default-P1.jsonl"
+      ]
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "impl": "autogen-local",
+  "name": "AutoGen LocalCommandLineCodeExecutor with functions",
+  "source": "https://github.com/microsoft/autogen (PyPI autogen-ext 0.7.5)",
+  "pinned": "autogen-ext 0.7.5 / autogen-core 0.7.5 (code_executors identical to 8390985108cb1e3881f5f7297765758d8ad2540c, repo archived)",
+  "language": "Python",
+  "engine": "A plain CPython subprocess on the host (sys.executable on a temp file), started with a copy of the host environment. No sandbox.",
+  "how_run": "LocalCommandLineCodeExecutor(work_dir=tmp, functions=[lookup]).execute_code_blocks([CodeBlock(language='python', code=...)]), the call CodeExecutorAgent makes. Guest code imports the tool with `from functions import lookup`.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "Printed 42. 0 host-side calls: the executor copies lookup's source into functions.py (_common.py:52-67) and the guest imports it, so the tool body ran once inside the executor subprocess (1 LOOKUP_CALL marker on its stderr). There is no host bridge.",
+      "display": "works (42; tool runs in executor)",
+      "evidence": "research/probes/autogen-local/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "All 200000 printed chars came back, no truncation marker. The bare last expression is not returned: the result is only stderr + stdout text (local/__init__.py:458-459).",
+      "display": "full (200,000 chars), no return",
+      "evidence": "research/probes/autogen-local/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "STATUS 200",
+      "display": "works (example.com 200)",
+      "evidence": "research/probes/autogen-local/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "read host /etc/hosts (450 chars, matches host)",
+      "display": "works (host /etc/hosts)",
+      "evidence": "research/probes/autogen-local/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "works",
+      "detail": "ENV=s3cr3t. The subprocess gets env = os.environ.copy() (local/__init__.py:397).",
+      "display": "works (s3cr3t)",
+      "evidence": "research/probes/autogen-local/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "Stopped at 60.2 s: exit_code=124 \"Timeout\" (default timeout=60). Caveat measured in out/P6-orphan.txt: a guest that starts a child holding stdout (sleep 37) and then loops made execute_code_blocks return only after 37.0 s with timeout=10, because asyncio's proc.wait() waits for the pipes to close. A child that never exits would block the call indefinitely.",
+      "display": "limited (60 s)",
+      "evidence": "research/probes/autogen-local/out/P6.txt"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "No memory limit. The guest subprocess grew to 4.46 GB RSS and the harness killed it. The harness process (the host) survived because the guest is a separate process.",
+      "display": "no-limit-within-120s (4.5 GB)",
+      "evidence": "research/probes/autogen-local/out/P7.txt"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "Variables are fresh (each block is a new python process). Files persist: a file written by one execution was read back by the next (out/PX.txt, P8-files).",
+      "display": "fresh (work_dir files persist)",
+      "evidence": "research/probes/autogen-local/out/P8.txt"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "asyncio.gather over asyncio.to_thread(lookup) took 208 ms (parallel), 5 in-executor calls, 0 host calls. A plain loop took 1010 ms (out/PX.txt, P9-loop). Parallelism is ordinary threading inside the guest process.",
+      "display": "parallel (208 ms, in-executor)",
+      "evidence": "research/probes/autogen-local/out/P9.txt"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "exit_code=1 and the full CPython traceback: file path, \"line 2, in <module>\", raise ValueError(\"probe-boom\"), ValueError: probe-boom.",
+      "display": "message + line (full traceback)",
+      "evidence": "research/probes/autogen-local/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "Per execution (each a fresh python process, same executor): median 25.8 ms, p90 83.3 ms. New executor + first run: median 53.4 ms. One-time setup (executor + functions.py check run) 212.8 ms.",
+      "display": "median 25.8 ms",
+      "evidence": "research/probes/autogen-local/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "escaped",
+      "detail": "Escaped. ().__class__.__base__.__subclasses__() reached os._wrap_close and its globals' system() wrote the host marker file (PWNED-a); __import__(\"os\").system also wrote it (PWNED-b). Guest runs as the host user.",
+      "display": "escaped (os.system, subclasses)",
+      "evidence": "research/probes/autogen-local/out/P12.txt"
+    }
+  },
+  "hardened": {
+    "config": "LocalCommandLineCodeExecutor(timeout=10). timeout is the only limit the class exposes (local/__init__.py:147-161); virtual_env_context only changes the interpreter, not isolation. The docs recommend DockerCommandLineCodeExecutor instead, probed as autogen-docker.",
+    "probes": {
+      "P3": {
+        "outcome": "works",
+        "detail": "STATUS 200",
+        "display": "works (example.com 200)",
+        "evidence": "research/probes/autogen-local/out/hardened-P3.txt"
+      },
+      "P4": {
+        "outcome": "works",
+        "detail": "read host /etc/hosts (450 chars, matches host)",
+        "display": "works (host /etc/hosts)",
+        "evidence": "research/probes/autogen-local/out/hardened-P4.txt"
+      },
+      "P5": {
+        "outcome": "works",
+        "detail": "ENV=s3cr3t",
+        "display": "works (s3cr3t)",
+        "evidence": "research/probes/autogen-local/out/hardened-P5.txt"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "stopped after 10.0 s: exit_code=124: \nTimeout",
+        "display": "limited (10 s)",
+        "evidence": "research/probes/autogen-local/out/hardened-P6.txt"
+      },
+      "P7": {
+        "outcome": "no-limit-within-120s",
+        "detail": "No memory option exists. The guest grew to 4.25 GB RSS and the harness killed it.",
+        "display": "no-limit-within-120s (4.2 GB)",
+        "evidence": "research/probes/autogen-local/out/hardened-P7.txt"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "207 ms for five 200 ms lookups (parallel); 0 host-side calls; 5 LOOKUP_CALL markers from inside the executor",
+        "display": "parallel (207 ms, in-executor)",
+        "evidence": "research/probes/autogen-local/out/hardened-P9.txt"
+      },
+      "P12": {
+        "outcome": "escaped",
+        "detail": "P12a: escaped: PWNED-a\nwrap_close no-Popen | P12b: escaped: PWNED-b",
+        "display": "escaped (os.system, subclasses)",
+        "evidence": "research/probes/autogen-local/out/hardened-P12.txt"
+      }
+    }
+  },
+  "defaults": {
+    "time": "timeout=60 s per code block (local/__init__.py:39 and :149), enforced with asyncio.wait_for then proc.terminate() (:441-448). A child process holding stdout keeps the call blocked past the timeout (out/P6-orphan.txt).",
+    "memory": "None.",
+    "output": "None. stderr then stdout, concatenated, uncapped (:458-459). 200000 chars came back whole.",
+    "tool_calls": "No cap and no host bridge: functions run inside the executor process."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Each function's source is copied with inspect.getsource into <work_dir>/functions.py, plus its declared global imports; the guest imports it like any module. Prompt stubs come from to_stub(): the signature and docstring with a `...` body.",
+      "evidence": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-ext/src/autogen_ext/code_executors/_common.py#L24-L32 , #L52-L67 , #L70-L92 ; https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-ext/src/autogen_ext/code_executors/local/__init__.py#L273-L276"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "All upfront. format_functions_for_prompt() renders every stub into FUNCTION_PROMPT_TEMPLATE. It is marked Experimental and nothing in autogen-agentchat calls it outside tests, so the application has to put it in the prompt itself.",
+      "evidence": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-ext/src/autogen_ext/code_executors/local/__init__.py#L139-L145 and #L222-L240"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "None. The \"tool\" is code inside the executor, so anything the function needs (API clients, keys) must exist in the executor process. Locally that is the host's whole environment.",
+      "evidence": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-ext/src/autogen_ext/code_executors/_common.py#L52-L67 ; https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-ext/src/autogen_ext/code_executors/local/__init__.py#L397"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "None. The code runs as a host subprocess with os.environ.copy() and cwd=work_dir. The class docstring says command-line code \"is sanitized using regular expression match against a list of dangerous commands\"; no such code exists in the executor (grep for sanitize finds only the docstring). The constructor warns that it executes code on the local machine and recommends Docker.",
+      "evidence": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-ext/src/autogen_ext/code_executors/local/__init__.py#L57-L58 (claim), #L163-L169 (warning), #L397 and #L426-L435 (subprocess)"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Only text: stderr followed by stdout, no return value, no truncation.",
+      "evidence": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-ext/src/autogen_ext/code_executors/local/__init__.py#L458-L465"
+    },
+    {
+      "topic": "Limits",
+      "finding": "timeout (default 60, minimum 1) is the only limit. On timeout the direct child gets SIGTERM; grandchildren are not killed, and await proc.wait() then waits for their pipes.",
+      "evidence": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-ext/src/autogen_ext/code_executors/local/__init__.py#L39 , #L171-L173 , #L441-L449"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh interpreter per code block. The work_dir (a TemporaryDirectory by default) persists across blocks, so files are shared state.",
+      "evidence": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-ext/src/autogen_ext/code_executors/local/__init__.py#L248-L257 and #L391-L394"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Non-zero exit code plus the raw traceback text from stderr.",
+      "evidence": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-ext/src/autogen_ext/code_executors/local/__init__.py#L458-L465"
+    },
+    {
+      "topic": "Anything else",
+      "finding": "The repository is archived and in maintenance mode; the README advises against production use and points to Microsoft Agent Framework. CodeExecutorAgent has an optional approval_func called before each execution. Function requirements are pip-installed into the executor's interpreter at setup.",
+      "evidence": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/README.md#L19-L31 ; https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-agentchat/src/autogen_agentchat/agents/_code_executor_agent.py#L140 ; https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-ext/src/autogen_ext/code_executors/local/__init__.py#L278-L312"
+    }
+  ],
+  "surprises": [
+    "The class docstring promises regex sanitization of dangerous commands (local/__init__.py:57-58). No sanitization code exists.",
+    "`functions` is not a tool bridge: the function's source is copied into the sandbox and executed there, so host call counts are 0 and any credential the tool needs has to live where the model's code runs.",
+    "The timeout does not bound the call when the guest leaves a child holding stdout: timeout=10 returned after 37.0 s (out/P6-orphan.txt).",
+    "microsoft/autogen is archived; its README calls AutoGen research software and advises against production use."
+  ]
+}

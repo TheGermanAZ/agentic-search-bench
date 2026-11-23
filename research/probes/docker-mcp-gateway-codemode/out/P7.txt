@@ -1,0 +1,4 @@
+--- code 1 ---
+const a = []; while (true) a.push("x".repeat(1e6))
+--- result 1 ---
+{"ms":23123,"hostCalls":0,"peakRssMB":4099,"rssKilled":true,"side":{"gatewayStdoutChars":0,"head":""},"ok":false,"error":"fetch failed"}

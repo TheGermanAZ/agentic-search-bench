@@ -1,0 +1,68 @@
+[
+  {
+    "probe": "P8-exec1",
+    "code": "globalThis.kept = 7; return 'set'",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "\"set\"",
+    "response_text_length": 5,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P8-exec2",
+    "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept); return typeof kept === \"undefined\" ? \"gone\" : kept",
+    "args_extra": {},
+    "wall_ms": 1,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "7",
+    "response_text_length": 1,
+    "console_on_proxy_stderr": [
+      "[js] LOG: 7"
+    ],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P8-prototype-poison",
+    "code": "Array.prototype.map = function () { return ['poisoned by an earlier execution'] }; return 'poisoned'",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "\"poisoned\"",
+    "response_text_length": 10,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P8-prototype-victim",
+    "code": "return [1, 2, 3].map(x => x * 2)",
+    "args_extra": {},
+    "wall_ms": 0,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "[\n  \"poisoned by an earlier execution\"\n]",
+    "response_text_length": 40,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  }
+]

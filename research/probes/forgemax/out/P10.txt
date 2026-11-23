@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { throw new Error("probe-boom"); }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"probe-boom\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 14,
+  "hostCalls": 0
+}

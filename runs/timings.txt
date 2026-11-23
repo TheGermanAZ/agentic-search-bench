@@ -1,0 +1,7 @@
+14 cores, Apple M3 Max, load average 26.0 27.0 28.7, 5 runs each
+ripgrep, whole corpus, literal           median   3519 ms   runs 3430, 3491, 3519, 3801, 4296
+ripgrep, whole corpus, phone pattern     median   4736 ms   runs 4229, 4861, 4963, 4736, 4579
+count() with sender and date filter      median      9 ms   runs 188, 9, 8, 9, 10
+messages() with recipient filter         median     69 ms   runs 133, 69, 68, 69, 69
+hybrid search, no filter                 median   1227 ms   runs 2172, 1227, 1358, 1213, 1226
+hybrid search, sender filter             median    683 ms   runs 777, 749, 654, 668, 683

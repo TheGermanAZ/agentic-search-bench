@@ -1,0 +1,148 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/strands-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../strands-codemode/adapter.py default R1c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1295,
+  "peakTreeRssMb": 111,
+  "peakTreeFootprintMb": 83,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R1c",
+    "impl": "strands-codemode",
+    "notes": "builtin_tools programmatic_tool_caller=True; one process, one create_harness agent per execution (Strands agents reject concurrent calls); trailing expression rewritten to print()",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 749,
+        "ms": 446,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "A done"
+        },
+        "callsStarted": 2
+      },
+      "B": {
+        "label": "B(concurrent)",
+        "startMs": 850,
+        "ms": 20,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "text": "gone"
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostMaxEventLoopLagMs": 9,
+    "totalMs": 1195
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\nprompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n",
+  "rssSamplesMsMb": [
+    [
+      115,
+      34,
+      0
+    ],
+    [
+      191,
+      47,
+      25
+    ],
+    [
+      233,
+      55,
+      25
+    ],
+    [
+      277,
+      59,
+      25
+    ],
+    [
+      317,
+      64,
+      43
+    ],
+    [
+      481,
+      71,
+      43
+    ],
+    [
+      513,
+      75,
+      43
+    ],
+    [
+      573,
+      79,
+      59
+    ],
+    [
+      719,
+      88,
+      59
+    ],
+    [
+      744,
+      89,
+      70
+    ],
+    [
+      812,
+      95,
+      70
+    ],
+    [
+      853,
+      110,
+      70
+    ],
+    [
+      905,
+      110,
+      82
+    ],
+    [
+      954,
+      110,
+      82
+    ],
+    [
+      1034,
+      110,
+      82
+    ],
+    [
+      1071,
+      111,
+      83
+    ],
+    [
+      1138,
+      111,
+      83
+    ],
+    [
+      1202,
+      111,
+      83
+    ],
+    [
+      1237,
+      111,
+      83
+    ],
+    [
+      1292,
+      0,
+      83
+    ]
+  ]
+}

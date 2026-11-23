@@ -1,0 +1,42 @@
+{
+ "tag": "default",
+ "probe": "P5",
+ "settings": "~/p/agentic-search-bench/research/probes/claude-code-codemode/settings-default.json",
+ "permissionMode": "default",
+ "transcript": "~/.claude/projects/-Users-thegermanaz-p-agentic-search-bench-research-probes-claude-code-codemode-work/4344c012-b50e-469c-b90a-ca41a867a252.jsonl",
+ "hostLookupCalls": [],
+ "steps": [
+  {
+   "step": "P5.1",
+   "code": "process.env.PROBE_SECRET",
+   "typist": "model",
+   "wallS": 4.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "process.env.PROBE_SECRET",
+     "codeRan": "process.env.PROBE_SECRET",
+     "exactCode": true,
+     "toolUseTs": "2026-11-22T20:21:52.155Z",
+     "result": {
+      "content": "<repl-output>\n<error>ReferenceError: process is not defined\nThrown at (statements quoted from the script as it ran, which is reformatted):\n  in &lt;anonymous&gt;: process.env.PROBE_SECRET\nThe script threw partway through: statements before the failing one ran. No tool call had completed.</error>\n</repl-output>",
+      "is_error": true,
+      "ts": "2026-11-22T20:21:52.198Z",
+      "toolUseResult": {
+       "code": "process.env.PROBE_SECRET",
+       "result": null,
+       "stdout": "",
+       "stderr": "",
+       "error": "ReferenceError: process is not defined\nThrown at (statements quoted from the script as it ran, which is reformatted):\n  in <anonymous>: process.env.PROBE_SECRET\nThe script threw partway through: statements before the failing one ran. No tool call had completed."
+      }
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 375696,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  }
+ ]
+}

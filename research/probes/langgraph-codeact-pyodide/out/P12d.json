@@ -1,0 +1,7 @@
+{
+  "probe": "P12d",
+  "outcome": "blocked",
+  "display": "blocked (stays in Pyodide)",
+  "detail": "set",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P12d.txt"
+}

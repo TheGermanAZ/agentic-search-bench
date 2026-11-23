@@ -1,0 +1,14 @@
+{
+  "setup_ms": 2081,
+  "result": {
+    "ok": false,
+    "error": "AgentError: Failed to communicate with Deno server: HTTPConnectionPool(host='127.0.0.1', port=41986): Read timed out. (read timeout=5)",
+    "ms": 5002.1
+  },
+  "after": {
+    "ok": false,
+    "error": "AgentError: Failed to communicate with Deno server: HTTPConnectionPool(host='127.0.0.1', port=41986): Read timed out. (read timeout=5)",
+    "ms": 5002.0
+  },
+  "wall_s": 12.11
+}

@@ -1,0 +1,7 @@
+{
+  "probe": "P6b",
+  "outcome": "no-limit-within-120s",
+  "display": "kernel still busy after timeout",
+  "detail": "harness time watchdog at 120.1 s; no result came back",
+  "evidence": "research/probes/datalayer-codemode-jupyter/out/P6b.txt"
+}

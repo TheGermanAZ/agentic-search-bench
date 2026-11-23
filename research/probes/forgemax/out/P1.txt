@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { const r = await forge.callTool("host", "lookup", {id: 21}); return r.value; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "42"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 1156,
+  "hostCalls": 1
+}

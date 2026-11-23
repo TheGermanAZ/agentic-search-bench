@@ -1,0 +1,4 @@
+first session setup 0.0 ms
+same session, 20 runs (ms): [1.4, 0.1, 0.2, 0.1, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+new session + run, 20x (ms): [0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.4, 0.1, 0.1, 0.1, 0.2, 0.1, 0.1, 0.1, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0]
+last: {'ok': True, 'stdout': '', 'result': None, 'error': None, 'raw': {'success': True, 'result': None, 'locals': {}}}

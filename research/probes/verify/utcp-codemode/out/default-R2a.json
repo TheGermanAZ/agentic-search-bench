@@ -1,0 +1,235 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R2a",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 3473,
+  "peakTreeRssMb": 57,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 3409,
+    "rssMb": 57
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R2a",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "startMs": 37,
+      "ms": 246,
+      "ok": true,
+      "result": {
+        "value": {
+          "result": [
+            true,
+            "undefined",
+            "undefined",
+            "Object,Function,Array,Number,parseFloat,parseInt,Infinity,NaN,undefined,Boolean,String,Symbol,Date,Promise,RegExp,Error,AggregateError,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,globalThis,JSON,Math,Intl,ArrayBuffer,Atomics,Uint8Array,Int8Array,Uint16Array,Int16Array,Uint32Ar…[825 chars]…ableStack,Float16Array,SharedArrayBuffer,WebAssembly,global,__logRef,__errorRef,__warnRef,__infoRef,__callToolRef,host,__interfaces,__interfaceMapJson,__getToolInterface,__resolveResult,__rejectResult"
+          ],
+          "logs": []
+        },
+        "stringChars": 843
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 30,
+    "hostEvents": [],
+    "totalMs": 283
+  },
+  "childStdoutOtherChars": 569,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      162,
+      49
+    ],
+    [
+      231,
+      56
+    ],
+    [
+      326,
+      56
+    ],
+    [
+      394,
+      56
+    ],
+    [
+      461,
+      57
+    ],
+    [
+      554,
+      57
+    ],
+    [
+      606,
+      57
+    ],
+    [
+      661,
+      57
+    ],
+    [
+      724,
+      57
+    ],
+    [
+      797,
+      57
+    ],
+    [
+      912,
+      57
+    ],
+    [
+      965,
+      57
+    ],
+    [
+      1013,
+      57
+    ],
+    [
+      1119,
+      57
+    ],
+    [
+      1169,
+      57
+    ],
+    [
+      1301,
+      57
+    ],
+    [
+      1365,
+      57
+    ],
+    [
+      1435,
+      57
+    ],
+    [
+      1497,
+      57
+    ],
+    [
+      1572,
+      57
+    ],
+    [
+      1636,
+      57
+    ],
+    [
+      1697,
+      57
+    ],
+    [
+      1742,
+      57
+    ],
+    [
+      1819,
+      57
+    ],
+    [
+      1903,
+      57
+    ],
+    [
+      1953,
+      57
+    ],
+    [
+      2022,
+      57
+    ],
+    [
+      2088,
+      57
+    ],
+    [
+      2161,
+      57
+    ],
+    [
+      2221,
+      57
+    ],
+    [
+      2329,
+      57
+    ],
+    [
+      2426,
+      57
+    ],
+    [
+      2487,
+      57
+    ],
+    [
+      2546,
+      57
+    ],
+    [
+      2692,
+      57
+    ],
+    [
+      2770,
+      57
+    ],
+    [
+      2843,
+      57
+    ],
+    [
+      2901,
+      57
+    ],
+    [
+      3000,
+      57
+    ],
+    [
+      3055,
+      57
+    ],
+    [
+      3119,
+      57
+    ],
+    [
+      3162,
+      57
+    ],
+    [
+      3219,
+      57
+    ],
+    [
+      3309,
+      57
+    ],
+    [
+      3408,
+      57
+    ],
+    [
+      3472,
+      0
+    ]
+  ]
+}

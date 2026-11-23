@@ -1,0 +1,282 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/hermes-execute-code/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../hermes-execute-code/adapter.py hardened R8a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2589,
+  "peakTreeRssMb": 172,
+  "peakTreeFootprintMb": 124,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R8a",
+    "impl": "hermes-execute-code",
+    "notes": "HERMES_HOME=home-hardened (docker, no network, 512 MB, 1 CPU, strict, timeout 10 s, 50 calls); one process, fresh task_id (container + kernel) per execution",
+    "data": {
+      "label": "",
+      "startMs": 655,
+      "ms": 1865,
+      "ok": true,
+      "result": {
+        "status": "success",
+        "output": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[50000 chars]…xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "error": null,
+        "tool_calls_made": 0,
+        "model_sees_chars": 50265,
+        "model_sees_head": "{\"status\": \"success\", \"output\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[1500 chars]…xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      },
+      "callsStarted": 0
+    },
+    "adapterStats": {
+      "tasks": 1
+    },
+    "hostMaxEventLoopLagMs": 34,
+    "totalMs": 2520
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      84,
+      28,
+      16
+    ],
+    [
+      134,
+      36,
+      16
+    ],
+    [
+      187,
+      46,
+      16
+    ],
+    [
+      238,
+      51,
+      36
+    ],
+    [
+      288,
+      55,
+      36
+    ],
+    [
+      339,
+      62,
+      36
+    ],
+    [
+      390,
+      71,
+      49
+    ],
+    [
+      442,
+      75,
+      49
+    ],
+    [
+      493,
+      80,
+      63
+    ],
+    [
+      547,
+      87,
+      63
+    ],
+    [
+      601,
+      92,
+      63
+    ],
+    [
+      654,
+      113,
+      78
+    ],
+    [
+      704,
+      122,
+      78
+    ],
+    [
+      757,
+      164,
+      109
+    ],
+    [
+      808,
+      170,
+      109
+    ],
+    [
+      860,
+      170,
+      123
+    ],
+    [
+      917,
+      171,
+      123
+    ],
+    [
+      972,
+      171,
+      123
+    ],
+    [
+      1020,
+      171,
+      123
+    ],
+    [
+      1074,
+      171,
+      123
+    ],
+    [
+      1125,
+      125,
+      123
+    ],
+    [
+      1171,
+      162,
+      110
+    ],
+    [
+      1226,
+      159,
+      110
+    ],
+    [
+      1277,
+      170,
+      123
+    ],
+    [
+      1329,
+      170,
+      123
+    ],
+    [
+      1484,
+      155,
+      123
+    ],
+    [
+      1509,
+      125,
+      110
+    ],
+    [
+      1556,
+      171,
+      110
+    ],
+    [
+      1610,
+      171,
+      110
+    ],
+    [
+      1660,
+      126,
+      110
+    ],
+    [
+      1710,
+      160,
+      110
+    ],
+    [
+      1761,
+      171,
+      110
+    ],
+    [
+      1815,
+      171,
+      124
+    ],
+    [
+      1867,
+      126,
+      124
+    ],
+    [
+      1918,
+      126,
+      124
+    ],
+    [
+      1969,
+      126,
+      111
+    ],
+    [
+      2020,
+      126,
+      111
+    ],
+    [
+      2071,
+      126,
+      124
+    ],
+    [
+      2122,
+      126,
+      124
+    ],
+    [
+      2174,
+      151,
+      124
+    ],
+    [
+      2226,
+      126,
+      124
+    ],
+    [
+      2276,
+      126,
+      124
+    ],
+    [
+      2328,
+      140,
+      110
+    ],
+    [
+      2380,
+      126,
+      110
+    ],
+    [
+      2432,
+      126,
+      110
+    ],
+    [
+      2486,
+      170,
+      110
+    ],
+    [
+      2539,
+      172,
+      110
+    ],
+    [
+      2588,
+      127,
+      124
+    ]
+  ]
+}

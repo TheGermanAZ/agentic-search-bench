@@ -1,0 +1,11 @@
+probe=P5 mode=from_env AGENTICA_NO_SANDBOX='1' PROBE_SECRET set in host: True
+sandbox mode: no_sandbox
+--- exec 1 (1 ms)
+output repr (first 600): "'s3cr3t'\n{'PATH': '/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'HOSTNAME': '41ab845dddf8', 'PROBE_SECRET': 's3cr3t', 'PYTHONPATH': '/opt/agentica-server/src', 'AGENTICA_NO_SANDBOX': '1', 'RUSTUP_HOME': '/usr/local/rustup', 'CARGO_HOME': '/usr/local/cargo', 'RUST_VERSION': '1.100.0', 'UV_LINK_MODE': 'copy', 'SETUPTOOLS_SCM_PRETEND_VERSION': '0.4.1', 'HOME': '/root', 'LC_CTYPE': 'C.UTF-8', 'WASMTIME_BACKTRACE_DETAILS': '1'}\n"
+len(output): 466
+out_str: None
+exception_name: None
+traceback_str: None
+has_result: False
+host lookup calls: 0
+[harness] exit=0 wall=2s container=symbolica-agentica-nosandbox-P5-55463

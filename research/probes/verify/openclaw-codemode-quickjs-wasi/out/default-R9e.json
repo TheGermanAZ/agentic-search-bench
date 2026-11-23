@@ -1,0 +1,631 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R9e",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 11607,
+  "peakTreeRssMb": 471,
+  "peakTreeFootprintMb": 454,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R9e",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 870,
+          "ms": 10252,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"eaeababff9632b300f8959d9\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 872,
+          "ms": 10265,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"df8201c3f5bbb2d267ec9e52\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 873,
+          "ms": 10244,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"a98b8f9995b3c08a225be377\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 873,
+          "ms": 10247,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 333,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"a637ab705ef812e16c2c7dac\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 372
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 873,
+          "ms": 10254,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 332,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"host\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"c2d0eb404f8a39940bad6f21\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 371
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 873,
+          "ms": 10255,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 332,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"host\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"f4cbdd47f453a7bc49407409\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 371
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 873,
+          "ms": 10256,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 332,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"host\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"cccb45f08ccfff00633bab79\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 371
+          },
+          "callsStarted": 0
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 874,
+          "ms": 10256,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "timeout",
+              "waits": 0,
+              "error": "code mode timeout exceeded",
+              "output": [],
+              "textChars": 332,
+              "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"host\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"fe9cac7ea359d7d56169aa7e\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+            },
+            "stringChars": 371
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1025,
+        "ms": 10107,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "failed",
+            "code": "timeout",
+            "waits": 0,
+            "error": "code mode timeout exceeded",
+            "output": [],
+            "textChars": 332,
+            "text": "{\"status\":\"failed\",\"code\":\"timeout\",\"failurePhase\":\"host\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"49e5b40088ae843302543986\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode timeout exceeded\"}"
+          },
+          "stringChars": 371
+        },
+        "callsStarted": 0
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 11132,
+        "ms": 218,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"6683bea8376921af495e2e2b\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 11350,
+        "ms": 205,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"1c39c845da09f0a3b1f94d30\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 962,
+    "hostEvents": [],
+    "totalMs": 11555
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "-7938-4667-a133-0440921c36c5 workerId=code-mode-quickjs:3 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-4 sessionKey=agent:main:verify-4 runId=verify-run-4 toolCallId=verify-4 codeModeRunId=cm_99cec694-6620-4197-a772-7483871df163 workerId=code-mode-quickjs:4 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_73634577-e82d-4327-be64-cf8a418edb44 workerId=code-mode-quickjs:1 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n[agents/code-mode] Code Mode execution failed sessionId=verify-5 sessionKey=agent:main:verify-5 runId=verify-run-5 toolCallId=verify-5 codeModeRunId=cm_64aaf593-db00-4fce-b4e7-19cc0ec29522 workerId=code-mode-quickjs:3 failurePhase=host bridgeDispatchStarted=false errorCategory=Error failureKind=timeout\n[agents/code-mode] Code Mode execution failed sessionId=verify-6 sessionKey=agent:main:verify-6 runId=verify-run-6 toolCallId=verify-6 codeModeRunId=cm_ae0fdae8-435f-4e28-9099-59bb10ffbb08 workerId=code-mode-quickjs:4 failurePhase=host bridgeDispatchStarted=false errorCategory=Error failureKind=timeout\n[agents/code-mode] Code Mode execution failed sessionId=verify-7 sessionKey=agent:main:verify-7 runId=verify-run-7 toolCallId=verify-7 codeModeRunId=cm_57264f13-932d-43e3-acc5-75d4417d2659 workerId=code-mode-quickjs:1 failurePhase=host bridgeDispatchStarted=false errorCategory=Error failureKind=timeout\n[agents/code-mode] Code Mode execution failed sessionId=verify-8 sessionKey=agent:main:verify-8 runId=verify-run-8 toolCallId=verify-8 codeModeRunId=cm_dc77fdf6-653e-4238-8878-e16a1f0174bd workerId=code-mode-quickjs:3 failurePhase=host bridgeDispatchStarted=false errorCategory=Error failureKind=timeout\n[agents/code-mode] Code Mode execution failed sessionId=verify-9 sessionKey=agent:main:verify-9 runId=verify-run-9 toolCallId=verify-9 codeModeRunId=cm_5bb8dfb9-454f-4321-9405-6fa57e7fb37e workerId=code-mode-quickjs:4 failurePhase=host bridgeDispatchStarted=false errorCategory=Error failureKind=timeout\n[agents/code-mode] Code Mode execution failed sessionId=verify-2 sessionKey=agent:main:verify-2 runId=verify-run-2 toolCallId=verify-2 codeModeRunId=cm_eb96fc00-e949-405c-aeff-985617d5bac6 workerId=code-mode-quickjs:2 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      76,
+      62,
+      19
+    ],
+    [
+      228,
+      100,
+      62
+    ],
+    [
+      380,
+      123,
+      77
+    ],
+    [
+      538,
+      139,
+      93
+    ],
+    [
+      693,
+      179,
+      118
+    ],
+    [
+      846,
+      229,
+      204
+    ],
+    [
+      1001,
+      266,
+      234
+    ],
+    [
+      1195,
+      380,
+      334
+    ],
+    [
+      1372,
+      456,
+      443
+    ],
+    [
+      1537,
+      456,
+      443
+    ],
+    [
+      1662,
+      456,
+      443
+    ],
+    [
+      1816,
+      456,
+      443
+    ],
+    [
+      1974,
+      456,
+      443
+    ],
+    [
+      2136,
+      457,
+      444
+    ],
+    [
+      2299,
+      457,
+      444
+    ],
+    [
+      2444,
+      457,
+      444
+    ],
+    [
+      2600,
+      457,
+      444
+    ],
+    [
+      2756,
+      457,
+      444
+    ],
+    [
+      2905,
+      457,
+      444
+    ],
+    [
+      3085,
+      457,
+      444
+    ],
+    [
+      3233,
+      457,
+      444
+    ],
+    [
+      3381,
+      457,
+      444
+    ],
+    [
+      3524,
+      457,
+      444
+    ],
+    [
+      3695,
+      457,
+      444
+    ],
+    [
+      3842,
+      457,
+      444
+    ],
+    [
+      3992,
+      457,
+      444
+    ],
+    [
+      4152,
+      457,
+      444
+    ],
+    [
+      4314,
+      457,
+      444
+    ],
+    [
+      4467,
+      457,
+      444
+    ],
+    [
+      4657,
+      457,
+      444
+    ],
+    [
+      4802,
+      457,
+      444
+    ],
+    [
+      4935,
+      457,
+      444
+    ],
+    [
+      5096,
+      457,
+      444
+    ],
+    [
+      5253,
+      457,
+      444
+    ],
+    [
+      5398,
+      457,
+      444
+    ],
+    [
+      5554,
+      457,
+      444
+    ],
+    [
+      5712,
+      457,
+      444
+    ],
+    [
+      5869,
+      457,
+      444
+    ],
+    [
+      6042,
+      457,
+      444
+    ],
+    [
+      6185,
+      457,
+      444
+    ],
+    [
+      6336,
+      457,
+      444
+    ],
+    [
+      6491,
+      457,
+      444
+    ],
+    [
+      6644,
+      457,
+      444
+    ],
+    [
+      6801,
+      457,
+      444
+    ],
+    [
+      6952,
+      457,
+      444
+    ],
+    [
+      7114,
+      457,
+      444
+    ],
+    [
+      7265,
+      457,
+      444
+    ],
+    [
+      7422,
+      457,
+      444
+    ],
+    [
+      7577,
+      457,
+      444
+    ],
+    [
+      7735,
+      457,
+      444
+    ],
+    [
+      7883,
+      457,
+      444
+    ],
+    [
+      8043,
+      457,
+      444
+    ],
+    [
+      8197,
+      457,
+      444
+    ],
+    [
+      8353,
+      457,
+      444
+    ],
+    [
+      8503,
+      457,
+      444
+    ],
+    [
+      8662,
+      457,
+      444
+    ],
+    [
+      8817,
+      457,
+      444
+    ],
+    [
+      8976,
+      457,
+      444
+    ],
+    [
+      9132,
+      457,
+      444
+    ],
+    [
+      9297,
+      457,
+      444
+    ],
+    [
+      9439,
+      457,
+      444
+    ],
+    [
+      9593,
+      457,
+      444
+    ],
+    [
+      9746,
+      457,
+      444
+    ],
+    [
+      9898,
+      457,
+      444
+    ],
+    [
+      10069,
+      457,
+      444
+    ],
+    [
+      10213,
+      457,
+      444
+    ],
+    [
+      10374,
+      457,
+      444
+    ],
+    [
+      10518,
+      457,
+      444
+    ],
+    [
+      10683,
+      457,
+      444
+    ],
+    [
+      10838,
+      457,
+      444
+    ],
+    [
+      10983,
+      457,
+      444
+    ],
+    [
+      11140,
+      458,
+      444
+    ],
+    [
+      11287,
+      470,
+      450
+    ],
+    [
+      11439,
+      471,
+      454
+    ],
+    [
+      11596,
+      471,
+      454
+    ]
+  ]
+}

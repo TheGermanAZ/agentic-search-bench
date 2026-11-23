@@ -1,0 +1,29 @@
+probe: P1
+outcome: error
+display: error (tool source lacks its imports)
+detail: 42 in printed stdout: False; 42 in returned value: False; output "Error during execution: name 'time' is not defined Error during execution: name 'time' is not defined"; host lookup calls: 0
+
+code:
+----
+r = lookup(21)
+msg = r["value"]
+print(msg)
+msg
+----
+
+setup_ms: 24.2
+wall_s (whole child process): 2.81
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.346
+host lookup calls: 0
+
+=== run 0 (1746.8 ms) ===
+ok: false
+stdout: Error during execution: name 'time' is not defined
+error: Error during execution: name 'time' is not defined
+context_keys: []
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

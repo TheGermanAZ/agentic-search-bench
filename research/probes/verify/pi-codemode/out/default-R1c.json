@@ -1,0 +1,125 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs default R1c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 832,
+  "peakTreeRssMb": 121,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "default",
+    "test": "R1c",
+    "notes": "one CodemodeSandbox({}) shared",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 18,
+        "ms": 669,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": "A done",
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 201.33804199999997
+              },
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 201.851
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 22
+        },
+        "callsStarted": 2
+      },
+      "B": {
+        "label": "B(concurrent)",
+        "startMs": 137,
+        "ms": 141,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": [
+              "undefined",
+              "undefined"
+            ],
+            "output": [],
+            "calls": [],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 18
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 36,
+    "hostEvents": [],
+    "totalMs": 687
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      234,
+      51
+    ],
+    [
+      322,
+      91
+    ],
+    [
+      386,
+      121
+    ],
+    [
+      449,
+      118
+    ],
+    [
+      512,
+      118
+    ],
+    [
+      561,
+      118
+    ],
+    [
+      648,
+      118
+    ],
+    [
+      721,
+      118
+    ],
+    [
+      776,
+      118
+    ],
+    [
+      831,
+      0
+    ]
+  ]
+}

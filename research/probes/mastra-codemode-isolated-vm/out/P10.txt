@@ -1,0 +1,59 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 52,
+    "totalWallMs": 191,
+    "peakTreeRssMB": 70.3,
+    "stderrTail": ""
+  },
+  "backend": "isolated-vm",
+  "probe": "P10",
+  "mode": "default",
+  "setupMs": 84.4,
+  "record": {
+    "spec": {
+      "code": "throw new Error(\"probe-boom\")",
+      "wallMs": 41.5,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "probe-boom",
+          "name": "Error"
+        }
+      },
+      "threw": null
+    },
+    "multiLine": {
+      "code": "const x = 1;\nconst y = 2;\nthrow new Error(\"probe-boom-line3\");",
+      "wallMs": 3,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "probe-boom-line3",
+          "name": "Error"
+        }
+      },
+      "threw": null
+    },
+    "undefinedRef": {
+      "code": "const x = 1;\nnotDefinedAnywhere();",
+      "wallMs": 2.5,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "notDefinedAnywhere is not defined",
+          "name": "ReferenceError"
+        }
+      },
+      "threw": null
+    }
+  }
+}

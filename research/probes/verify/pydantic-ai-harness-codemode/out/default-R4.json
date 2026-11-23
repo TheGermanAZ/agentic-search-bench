@@ -1,0 +1,173 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R4",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2782,
+  "peakTreeRssMb": 110,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R4",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "label": "",
+      "startMs": 2446,
+      "ms": 174,
+      "ok": true,
+      "result": [
+        "None"
+      ],
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 31,
+    "totalMs": 2620
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      259,
+      34
+    ],
+    [
+      394,
+      38
+    ],
+    [
+      523,
+      38
+    ],
+    [
+      601,
+      42
+    ],
+    [
+      693,
+      43
+    ],
+    [
+      781,
+      43
+    ],
+    [
+      983,
+      43
+    ],
+    [
+      1041,
+      49
+    ],
+    [
+      1121,
+      52
+    ],
+    [
+      1171,
+      53
+    ],
+    [
+      1238,
+      53
+    ],
+    [
+      1281,
+      56
+    ],
+    [
+      1347,
+      56
+    ],
+    [
+      1469,
+      56
+    ],
+    [
+      1511,
+      56
+    ],
+    [
+      1570,
+      57
+    ],
+    [
+      1613,
+      57
+    ],
+    [
+      1683,
+      57
+    ],
+    [
+      1745,
+      60
+    ],
+    [
+      1807,
+      62
+    ],
+    [
+      1848,
+      62
+    ],
+    [
+      1925,
+      62
+    ],
+    [
+      1980,
+      63
+    ],
+    [
+      2090,
+      63
+    ],
+    [
+      2175,
+      65
+    ],
+    [
+      2256,
+      65
+    ],
+    [
+      2311,
+      66
+    ],
+    [
+      2387,
+      66
+    ],
+    [
+      2443,
+      69
+    ],
+    [
+      2492,
+      70
+    ],
+    [
+      2542,
+      71
+    ],
+    [
+      2622,
+      76
+    ],
+    [
+      2679,
+      83
+    ],
+    [
+      2720,
+      110
+    ],
+    [
+      2781,
+      0
+    ]
+  ]
+}

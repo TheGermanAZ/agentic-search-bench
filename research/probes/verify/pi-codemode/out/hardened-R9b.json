@@ -1,0 +1,248 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs hardened R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1505,
+  "peakTreeRssMb": 138,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "hardened",
+    "test": "R9b",
+    "notes": "one CodemodeSandbox({\"timeoutMs\":30000,\"memoryLimitBytes\":33554432}) shared",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 9,
+          "ms": 124,
+          "ok": true,
+          "result": {
+            "value": {
+              "ok": false,
+              "error": {
+                "kind": "script",
+                "name": "InternalError",
+                "message": "out of memory",
+                "stack": "InternalError: out of memory\n    at <anonymous> (codemode.js:1:66)"
+              },
+              "output": [],
+              "calls": []
+            },
+            "stringChars": 98
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 162,
+        "ms": 227,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 201.86266600000002
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 225,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 200.54150000000004
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1226,
+        "ms": 227,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 201.42295799999988
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 2,
+    "hostEvents": [],
+    "totalMs": 1453
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      74,
+      72
+    ],
+    [
+      125,
+      118
+    ],
+    [
+      176,
+      138
+    ],
+    [
+      226,
+      107
+    ],
+    [
+      278,
+      108
+    ],
+    [
+      329,
+      108
+    ],
+    [
+      379,
+      108
+    ],
+    [
+      432,
+      108
+    ],
+    [
+      480,
+      104
+    ],
+    [
+      533,
+      104
+    ],
+    [
+      584,
+      104
+    ],
+    [
+      635,
+      104
+    ],
+    [
+      684,
+      104
+    ],
+    [
+      737,
+      104
+    ],
+    [
+      787,
+      104
+    ],
+    [
+      837,
+      104
+    ],
+    [
+      889,
+      104
+    ],
+    [
+      939,
+      104
+    ],
+    [
+      990,
+      104
+    ],
+    [
+      1042,
+      104
+    ],
+    [
+      1092,
+      108
+    ],
+    [
+      1145,
+      108
+    ],
+    [
+      1194,
+      108
+    ],
+    [
+      1245,
+      108
+    ],
+    [
+      1296,
+      108
+    ],
+    [
+      1346,
+      108
+    ],
+    [
+      1400,
+      108
+    ],
+    [
+      1451,
+      108
+    ],
+    [
+      1504,
+      0
+    ]
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-run",
+  "probe": "P3",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "const r = await fetch(\"https://example.com\"); return r.status;"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "fetch is not defined",
+        "stack": "ReferenceError: fetch is not defined\n    at <anonymous> (run.js:1:17)",
+        "string": "ReferenceError: fetch is not defined"
+      },
+      "wallMs": 83.37462500000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR fetch is not defined",
+    "ms": 83,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 131.9
+}

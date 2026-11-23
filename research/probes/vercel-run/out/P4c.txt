@@ -1,0 +1,43 @@
+label: P4c
+command: node probe.mjs P4c
+child exit: code=0 signal=null
+child wall ms (process start to exit): 165
+peak child RSS: 131.9 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P4c",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return await Deno.readTextFile(\"/etc/hosts\");"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "Deno is not defined",
+        "stack": "ReferenceError: Deno is not defined\n    at <anonymous> (run.js:1:14)",
+        "string": "ReferenceError: Deno is not defined"
+      },
+      "wallMs": 90.15287500000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR Deno is not defined",
+    "ms": 90,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 134.4
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:66523) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

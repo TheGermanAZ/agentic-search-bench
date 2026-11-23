@@ -1,0 +1,37 @@
+probe: P9
+outcome: works
+display: serial (1,019 ms)
+detail: 5 host calls spanning 1019 ms host-side (first start to last end); execution wall 1085.5 ms; output '30 30'
+
+code:
+----
+tot = 0
+for i in [1, 2, 3, 4, 5]:
+    x = lookup(i)
+    tot += x["value"]
+print(tot)
+tot
+----
+
+setup_ms: 9.5
+wall_s (whole child process): 1.76
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.144
+host lookup calls: 5
+  call id=1 start=1795377513.462 end=1795377513.664 pid=47802
+  call id=2 start=1795377513.664 end=1795377513.869 pid=47802
+  call id=3 start=1795377513.869 end=1795377514.074 pid=47802
+  call id=4 start=1795377514.075 end=1795377514.280 pid=47802
+  call id=5 start=1795377514.280 end=1795377514.482 pid=47802
+
+=== run 0 (1085.5 ms) ===
+ok: true
+stdout: 30
+
+
+30
+error: null
+
+=== child process log (tail) ===
+

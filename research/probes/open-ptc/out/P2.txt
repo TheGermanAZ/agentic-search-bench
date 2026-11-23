@@ -1,0 +1,13 @@
+mode: default
+code:
+console.log("A".repeat(200000)); "RETURNED"
+
+result:
+{
+  "success": true,
+  "ms": 18,
+  "outputLength": 200003,
+  "aCount": 200000,
+  "containsRETURNED": false,
+  "tail": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n\n\n"
+}

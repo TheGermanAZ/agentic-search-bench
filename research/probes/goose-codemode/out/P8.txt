@@ -1,0 +1,31 @@
+probe: P8
+binary: goose-codemode-probe
+process wall_ms: 68.7
+peak_rss_mb: 0.0
+exit: 0
+killed: None
+
+--- execution 0 ---
+code:
+async function run() {
+globalThis.kept = 7
+}
+is_error: False
+elapsed_ms: 0.83
+host_calls: 0
+returned chars: 0
+text returned to model:
+
+
+--- execution 1 ---
+code:
+async function run() {
+console.log(typeof kept === "undefined" ? "gone" : kept)
+}
+is_error: False
+elapsed_ms: 0.32
+host_calls: 0
+returned chars: 5
+text returned to model:
+gone
+

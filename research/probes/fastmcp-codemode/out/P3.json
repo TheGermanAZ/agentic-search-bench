@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "not-defined",
+  "display": "not-defined",
+  "detail": "Error calling tool 'execute': ModuleNotFoundError: No module named 'urllib'",
+  "evidence": "research/probes/fastmcp-codemode/out/P3.txt"
+}

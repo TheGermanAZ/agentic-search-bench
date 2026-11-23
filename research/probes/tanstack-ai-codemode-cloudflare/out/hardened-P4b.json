@@ -1,0 +1,38 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P4b",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 2.2132919999999956,
+  "source": [
+    "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "No such module \"fs\".",
+          "name": "Error",
+          "stack": "Error: No such module \"fs\".\n    at main.js:47:22\n    at main.js:48:11\n    at Object.fetch (main.js:78:7)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 43.32579100000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: No such module \"fs\".",
+    "ms": 43,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 89.4
+}

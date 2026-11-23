@@ -1,0 +1,46 @@
+--- code 1 ---
+local r = probe.lookup({id = 1}):await()
+result(tostring(r.probePolluted))
+--- result 1 ---
+{"ms":205,"hostCalls":1,"side":{"proxyLogBytes":265214},"ok":true,"isError":false}
+text (42 chars):
+Script executed successfully.
+
+Result:
+nil
+--- code 2 ---
+local r = probe.lookup({id = 1}):await()
+r.__proto__.probePolluted = "written-by-guest-lua"
+result("set")
+--- result 2 ---
+{"ms":205,"hostCalls":1,"side":{"proxyLogBytes":265371},"ok":true,"isError":false}
+text (42 chars):
+Script executed successfully.
+
+Result:
+set
+--- code 3 ---
+local r = probe.lookup({id = 1}):await()
+result(tostring(r.probePolluted))
+--- result 3 ---
+{"ms":2,"hostCalls":0,"side":{"proxyLogBytes":265371},"ok":false,"error":"Error POSTing to endpoint (HTTP 400): {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32700,\"message\":\"Parse error: Invalid JSON-RPC message\"},\"id\":null}"}
+--- code 4 ---
+result(tostring(_gateway.probePolluted))
+--- result 4 ---
+{"ms":8,"hostCalls":0,"side":{"proxyLogBytes":1870},"ok":true,"isError":false}
+text (42 chars):
+Script executed successfully.
+
+Result:
+nil
+--- code 5 ---
+local r = probe.lookup({id = 1}):await()
+r.__proto__.probePolluted = nil
+result(tostring(r.probePolluted))
+--- result 5 ---
+{"ms":209,"hostCalls":1,"side":{"proxyLogBytes":3338},"ok":true,"isError":true}
+text (173 chars):
+Script execution failed:
+TypeError: Cannot read properties of null (reading 'then')
+stack traceback:
+	[string "local r = probe.lookup({id = 1}):await()..."]:3: in main chunk

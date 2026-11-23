@@ -1,0 +1,7 @@
+probe: P6b
+code (python, run through LocalPythonExecutor):
+import time
+time.sleep(35)
+print('done')
+host_calls_so_far: 0
+result: {'ok': False, 'error_type': 'ExecutionTimeoutError', 'error': 'Code execution exceeded the maximum execution time of 30 seconds', 'ms': 35010.7}

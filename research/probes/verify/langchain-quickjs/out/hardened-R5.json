@@ -1,0 +1,329 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/langchain-quickjs/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py hardened R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 8620,
+  "peakTreeRssMb": 182,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R5",
+    "impl": "langchain-quickjs",
+    "notes": "one agent, CodeInterpreterMiddleware({'ptc': ['lookup', 'failing', 'rich'], 'timeout': 1.0, 'memory_limit': 16777216, 'max_ptc_calls': 8, 'mode': 'call', 'subagents': False}), new thread_id per execution",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 1817,
+        "ms": 3706,
+        "ok": true,
+        "result": "<error type=\"Timeout\">interrupted</error>",
+        "callsStarted": 0
+      },
+      "atReturn": {
+        "started": 0,
+        "done": 0
+      },
+      "after3s": {
+        "started": 0,
+        "done": 0
+      }
+    },
+    "hostMaxEventLoopLagMs": 88,
+    "totalMs": 8523
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "~/p/agentic-search-bench/research/probes/verify/_py/../langchain-quickjs/adapter.py:64: LangChainBetaWarning: The class `CodeInterpreterMiddleware` is in beta. It is actively being worked on, so the API may change.\n  agent = create_agent(model=Scripted(), tools=[lookup, failing, rich], middleware=[CodeInterpreterMiddleware(**CONFIGS[config])], checkpointer=InMemorySaver())\n",
+  "rssSamplesMsMb": [
+    [
+      97,
+      30
+    ],
+    [
+      208,
+      35
+    ],
+    [
+      320,
+      41
+    ],
+    [
+      510,
+      48
+    ],
+    [
+      622,
+      53
+    ],
+    [
+      720,
+      55
+    ],
+    [
+      818,
+      58
+    ],
+    [
+      938,
+      60
+    ],
+    [
+      1040,
+      62
+    ],
+    [
+      1147,
+      68
+    ],
+    [
+      1257,
+      68
+    ],
+    [
+      1344,
+      70
+    ],
+    [
+      1444,
+      74
+    ],
+    [
+      1547,
+      79
+    ],
+    [
+      1694,
+      81
+    ],
+    [
+      1802,
+      86
+    ],
+    [
+      1899,
+      91
+    ],
+    [
+      2008,
+      119
+    ],
+    [
+      2106,
+      151
+    ],
+    [
+      2202,
+      164
+    ],
+    [
+      2345,
+      173
+    ],
+    [
+      2446,
+      180
+    ],
+    [
+      2550,
+      180
+    ],
+    [
+      2645,
+      180
+    ],
+    [
+      2749,
+      180
+    ],
+    [
+      2850,
+      180
+    ],
+    [
+      2968,
+      180
+    ],
+    [
+      3108,
+      180
+    ],
+    [
+      3219,
+      180
+    ],
+    [
+      3311,
+      180
+    ],
+    [
+      3450,
+      181
+    ],
+    [
+      3557,
+      181
+    ],
+    [
+      3655,
+      181
+    ],
+    [
+      3761,
+      181
+    ],
+    [
+      3852,
+      181
+    ],
+    [
+      3955,
+      181
+    ],
+    [
+      4065,
+      181
+    ],
+    [
+      4171,
+      181
+    ],
+    [
+      4311,
+      181
+    ],
+    [
+      4464,
+      181
+    ],
+    [
+      4577,
+      181
+    ],
+    [
+      4682,
+      181
+    ],
+    [
+      4787,
+      181
+    ],
+    [
+      4890,
+      181
+    ],
+    [
+      5016,
+      181
+    ],
+    [
+      5117,
+      181
+    ],
+    [
+      5225,
+      182
+    ],
+    [
+      5380,
+      182
+    ],
+    [
+      5500,
+      182
+    ],
+    [
+      5589,
+      182
+    ],
+    [
+      5735,
+      181
+    ],
+    [
+      5892,
+      181
+    ],
+    [
+      6036,
+      181
+    ],
+    [
+      6136,
+      181
+    ],
+    [
+      6244,
+      181
+    ],
+    [
+      6377,
+      181
+    ],
+    [
+      6498,
+      181
+    ],
+    [
+      6620,
+      181
+    ],
+    [
+      6716,
+      181
+    ],
+    [
+      6827,
+      181
+    ],
+    [
+      6945,
+      181
+    ],
+    [
+      7072,
+      181
+    ],
+    [
+      7199,
+      181
+    ],
+    [
+      7610,
+      181
+    ],
+    [
+      7745,
+      181
+    ],
+    [
+      7949,
+      181
+    ],
+    [
+      8046,
+      180
+    ],
+    [
+      8140,
+      178
+    ],
+    [
+      8262,
+      178
+    ],
+    [
+      8365,
+      178
+    ],
+    [
+      8468,
+      178
+    ],
+    [
+      8570,
+      178
+    ]
+  ]
+}

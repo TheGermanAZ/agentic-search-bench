@@ -1,0 +1,85 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 6,
+    "totalWallMs": 193,
+    "peakTreeRssMB": 121,
+    "stderrTail": "t response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nreturn [typeof process, typeof require, typeof Deno, typeof Bun, typeof fetch].join(\",\")\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:45:34.018Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nconst p = Function(\"return process\")(); return p.getBuiltinModule(\"child_process\").execSync(\"echo PWNED; id -un\").toString()\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:45:34.019Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nreturn Bun.spawnSync([\"sh\",\"-c\",\"echo PWNED; id -un\"]).stdout.toString()\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔍 Available MCP tools: [ { name: 'lookup', namespace: 'probe.lookup' } ]\n\n=== MCP Proxy Debug Info ===\nTimestamp: 2026-11-22T19:45:34.019Z\nMCP Proxy Length: 156 chars\nEnhanced Code Preview (first 800 chars):\n\n// MCP Tool Call Handler\nconst __mcpCallCounter = { count: 0 };\nasync function __mcpCall(namespace, args) {\n  const id = __mcpCallCounter.count++;\n  const placeholder = `<<MCP_CALL_${namespace}_${id}>>`;\n  console.log('__MCP_CALL__', JSON.stringify({ placeholder, namespace, args }));\n  return placeholder;\n}\n\nconst mcp = {\n  probe: {\n    lookup: async (args) => {\n      const response = await __mcpCall('probe.lookup', args);\n      return response;\n    },\n  },\n};\n\nconst o = await new Deno.Command(\"sh\", { args: [\"-c\", \"echo PWNED; id -un\"] }).output(); return new TextDecoder().decode(o.stdout)\n=== End Debug Info ===\n\n📝 Debug log written to: /tmp/codemode-unified-debug.log\n🔄 Shutting down Code Mode MCP server...\n✅ MCP Manager shut down\n✅ Runtime isolated-vm shut down\n✅ Code Mode MCP server shut down complete\n"
+  },
+  "runtime": "isolated-vm",
+  "probe": "P12",
+  "mode": "default",
+  "setupMs": 147.3,
+  "executeToolDescription": "Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes with different capabilities. When MCP integration is enabled, code has access to MCP tools via the global `mcp` object (e.g., mcp.automem.store_memory(), mcp[\"sequential-thinking\"].sequentialthinking()). For TypeScript type definitions and API documentation of available MCP tools, read the resource mcp://types/declarations before writing code.",
+  "transportErrors": [],
+  "record": {
+    "A_functionCtor": {
+      "code": "return String(this.constructor.constructor(\"return process\")())",
+      "wallMs": 1.5,
+      "hostCalls": 0,
+      "out": {
+        "error": "isolated-vm runtime not yet implemented",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:34.017Z"
+      },
+      "threw": null
+    },
+    "B_sloppyThis": {
+      "code": "return String((function(){ return this })().process)",
+      "wallMs": 0.4,
+      "hostCalls": 0,
+      "out": {
+        "error": "isolated-vm runtime not yet implemented",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:34.018Z"
+      },
+      "threw": null
+    },
+    "C_typeofs": {
+      "code": "return [typeof process, typeof require, typeof Deno, typeof Bun, typeof fetch].join(\",\")",
+      "wallMs": 0.3,
+      "hostCalls": 0,
+      "out": {
+        "error": "isolated-vm runtime not yet implemented",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:34.018Z"
+      },
+      "threw": null
+    },
+    "D_exec_node": {
+      "code": "const p = Function(\"return process\")(); return p.getBuiltinModule(\"child_process\").execSync(\"echo PWNED; id -un\").toString()",
+      "wallMs": 0.4,
+      "hostCalls": 0,
+      "out": {
+        "error": "isolated-vm runtime not yet implemented",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:34.018Z"
+      },
+      "threw": null
+    },
+    "E_exec_bun": {
+      "code": "return Bun.spawnSync([\"sh\",\"-c\",\"echo PWNED; id -un\"]).stdout.toString()",
+      "wallMs": 0.5,
+      "hostCalls": 0,
+      "out": {
+        "error": "isolated-vm runtime not yet implemented",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:34.019Z"
+      },
+      "threw": null
+    },
+    "F_exec_deno": {
+      "code": "const o = await new Deno.Command(\"sh\", { args: [\"-c\", \"echo PWNED; id -un\"] }).output(); return new TextDecoder().decode(o.stdout)",
+      "wallMs": 0.3,
+      "hostCalls": 0,
+      "out": {
+        "error": "isolated-vm runtime not yet implemented",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:34.019Z"
+      },
+      "threw": null
+    }
+  }
+}

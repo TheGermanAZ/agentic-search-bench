@@ -1,0 +1,7 @@
+{
+  "probe": "P4",
+  "outcome": "blocked",
+  "detail": "read a file but not the host's: '127.0.0.1\\tlocalhost\\n::1\\tlocalhost ip6-localhost ip6-loopback\\nfe00::\\tip6-localnet\\nff00::\\tip6-mcastprefix\\nff02::1\\tip6-allnodes\\nff02::2\\tip6-allrouters\\n192.168.215.2\\t92b7dad5eee2\\n\\n'",
+  "display": "blocked (own /etc/hosts)",
+  "config": "hardened"
+}

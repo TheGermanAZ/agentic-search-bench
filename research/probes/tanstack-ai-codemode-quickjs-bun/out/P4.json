@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P4",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 3.073207999999994,
+  "source": [
+    "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "'require' is not defined",
+          "name": "ReferenceError",
+          "stack": "    at <anonymous> (<code-mode>:5:8)\n    at <anonymous> (<code-mode>:6:7)\n    at <eval> (<code-mode>:11:3)\n"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 178.503625,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: 'require' is not defined",
+    "ms": 179,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 46.1
+}

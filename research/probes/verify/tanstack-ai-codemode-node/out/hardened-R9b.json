@@ -1,0 +1,130 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../tanstack-ai-codemode-node/adapter.mjs hardened R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1471,
+  "peakTreeRssMb": 148,
+  "watchKill": null,
+  "record": {
+    "impl": "tanstack-ai-codemode-node",
+    "config": "hardened",
+    "test": "R9b",
+    "notes": "one createCodeModeTool({driver: node}) shared; execute({typescriptCode}) as chat() calls it",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 315,
+          "ms": 269,
+          "ok": false,
+          "threw": "Error: Isolate is already disposed\n    at NodeIsolateContext.dispose (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:66:17)\n    at disposeContext (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:112:32)\n    at Object.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:233:10)\n    at async timed (file://~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs:76:15)",
+          "callsStarted": 1
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 475,
+        "ms": 286,
+        "ok": true,
+        "result": {
+          "value": {
+            "success": true,
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 202,
+        "ok": true,
+        "result": {
+          "value": {
+            "success": true,
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1203,
+        "ms": 204,
+        "ok": true,
+        "result": {
+          "value": {
+            "success": true,
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 302,
+    "hostEvents": [],
+    "totalMs": 1407
+  },
+  "childStdoutOtherChars": 630,
+  "childStdoutHead": "{\n  timestamp: \u001b[33m1795383054482\u001b[39m,\n  durationMs: \u001b[33m266\u001b[39m,\n  phase: \u001b[32m'execute'\u001b[39m,\n  success: \u001b[33mfalse\u001b[39m,\n  logCount: \u001b[33m0\u001b[39m,\n  error: {\n    name: \u001b[32m'Error'\u001b[39m,\n    message: \u001b[32m'Isolate was disposed during execution due to memory limit'\u001b[39m,\n    stack: \u001b[32m'Error: Isolate was disposed during execution due to memory limit\\n'\u001b[39m +\n      \u001b[32m'    at (<isolated-vm boundary>)\\n'\u001b[39m +\n      \u001b[32m'    at execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:35:73)'\u001b[39m\n  }\n}\n",
+  "childStderrTail": "❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed\n",
+  "rssSamplesMsMb": [
+    [
+      323,
+      56
+    ],
+    [
+      382,
+      123
+    ],
+    [
+      419,
+      97
+    ],
+    [
+      466,
+      112
+    ],
+    [
+      657,
+      148
+    ],
+    [
+      687,
+      146
+    ],
+    [
+      738,
+      146
+    ],
+    [
+      1015,
+      146
+    ],
+    [
+      1058,
+      146
+    ],
+    [
+      1123,
+      146
+    ],
+    [
+      1470,
+      146
+    ]
+  ]
+}

@@ -1,0 +1,77 @@
+probe: hardened-P9
+outcome: error
+display: error (4 of 5 cold calls failed)
+detail: 1 host calls; KeyError: 'value' [31m---------------------------------------------------------------------------[39m [31mKeyError[39m Traceback (most recent call last) [36mCell[39m[36m [39m[32mIn[8][39m[32m, line 4[39m [32m 1[39m [38;5;28;01mfrom[39;00m generated.mcp.probe [38;5;28;01mimport[39;00m lookup [32m 2[39m [38;5;28;01mimport[39;00m asyncio [32m 3[39m rs = [38;5;28;01mawait[39;...
+
+code:
+----
+from generated.mcp.probe import lookup
+import asyncio
+rs = await asyncio.gather(lookup({"id": 1}), lookup({"id": 2}), lookup({"id": 3}), lookup({"id": 4}), lookup({"id": 5}))
+msg = sum(x["value"] for x in rs)
+print(msg)
+msg
+----
+
+setup_ms: 2581.1
+wall_s (whole child process): 4.39
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.706
+host lookup calls: 1
+  call id=5 start=1795378310.727 end=1795378310.928 pid=83823
+
+=== run 0 (823.4 ms) ===
+ok: false
+stdout: 
+stderr: 
+result: null
+error: KeyError: 'value'
+[31m---------------------------------------------------------------------------[39m
+[31mKeyError[39m                                  Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[8][39m[32m, line 4[39m
+[32m      1[39m [38;5;28;01mfrom[39;00m generated.mcp.probe [38;5;28;01mimport[39;00m lookup
+[32m      2[39m [38;5;28;01mimport[39;00m asyncio
+[32m      3[39m rs = [38;5;28;01mawait[39;00m asyncio.gather(lookup({[33m"id"[39m: [32m1[39m}), lookup({[33m"id"[39m: [32m2[39m}), lookup({[33m"id"[39m: [32m3[39m}), lookup({[33m"id"[39m: [32m4[39m}), lookup({[33m"id"[39m: [32m5[39m}))
+[32m----> [39m[32m4[39m msg = sum(x[[33m"value"[39m] [38;5;28;01mfor[39;00m x [38;5;28;01min[39;00m rs)
+[32m      5[39m print(msg)
+[32m      6[39m msg
+
+[36mCell[39m[36m [39m[32mIn[8][39m[32m, line 4[39m, in [36m<genexpr>[39m[34m(.0)[39m
+[32m----> [39m[32m4[39m [38;5;28;01mfrom[39;00m generated.mcp.probe [38;5;28;01mimport[39;00m lookup
+
+[31mKeyError[39m: 'value'
+interrupted: false
+
+=== child process log (tail) ===
+[11/22/26 15:11:48] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-lhvfcxt              
+                             e/generated (mcp dir:                              
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-lhvfcxt              
+                             e/generated/mcp)                                   
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-jupyter-server-lhvfcxt              
+                             e/generated/mcp/probe                              
+                    INFO     Starting Jupyter server       jupyter_server.py:262
+                             subprocess on 127.0.0.1:41520                      
+                             (workdir=/var/folders/tg/x0gc                      
+                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      
+                             code-sandbox-vdxwfy65)                             
+[11/22/26 15:11:49] INFO     No existing kernels found,    jupyter_server.py:412
+                             will create a new one                              
+                    INFO     Starting the kernel client…           client.py:412
+                    INFO     KernelHttpManager created a new      manager.py:258
+                             kernel: {'id':                                     
+                             'd8193ee5-fa9c-45ee-927f-550cddcf7cc               
+                             3', 'name': 'python3',                             
+                             'last_activity':                                   
+                             '2026-11-22T20:11:49.197379Z',                     
+                             'execution_state': 'starting',                     
+                             'connections': 0}                                  
+                    INFO     Websocket connected                 _logging.py:104
+[11/22/26 15:11:51] INFO     Stopping the kernel client…           client.py:433
+

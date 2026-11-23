@@ -1,0 +1,22 @@
+{
+  "impl": "pi-codemode-mcp",
+  "config": "default",
+  "probe": "P3b",
+  "options": {},
+  "warmupExecIncludingServerSpawnMs": 413.02,
+  "hostCalls": 0,
+  "hostCallLog": [],
+  "results": [
+    {
+      "code": "const hostFetch = Buffer.constructor.constructor(\"return fetch\")(); const r = await hostFetch(\"https://example.com\"); return r.status + \" \" + (await r.text()).length + \" bytes\"",
+      "ms": 127,
+      "hostCalls": 0,
+      "isError": false,
+      "textChars": 45,
+      "text": "{\n  \"result\": \"200 577 bytes\",\n  \"logs\": []\n}"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P3b"], "exit_code": 0, "wall_ms": 1143, "peak_tree_rss_mb": 187.2, "watch_kill": null}

@@ -1,0 +1,9 @@
+{
+  "probe": "P10",
+  "config": "default",
+  "outcome": "works",
+  "detail": "returned error=\"probe-boom\"; message survives: true; line/stack survives: false",
+  "display": "message, no stack",
+  "peak_child_rss_mb": 86,
+  "wall_s": 0.4
+}

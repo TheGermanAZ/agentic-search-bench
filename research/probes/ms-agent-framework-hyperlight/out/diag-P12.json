@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "blocked",
+  "detail": "P12a: blocked: wrap_close no-Popen | P12b: blocked: Execution error | details=AttributeError: module 'os' has no attribute 'system'\n | P12c: blocked: Execution error | details=ModuleNotFoundError: No module named 'subprocess'\n",
+  "display": "blocked",
+  "config": "default"
+}

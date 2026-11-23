@@ -1,0 +1,34 @@
+{
+  "probe": "P3",
+  "config": "default",
+  "codes": [
+    "import urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10)\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg",
+    "import ssl, urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10, context=ssl._create_unverified_context())\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "structured": null,
+      "stdout": "",
+      "error": "Error calling tool 'execute': ModuleNotFoundError: No module named 'urllib'",
+      "ms": 216.0,
+      "started": 1795381358.825307
+    },
+    {
+      "ok": false,
+      "structured": null,
+      "stdout": "",
+      "error": "Error calling tool 'execute': ModuleNotFoundError: No module named 'ssl'",
+      "ms": 19.5,
+      "started": 1795381359.041579
+    }
+  ],
+  "setup_ms": 218.7,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 4.18,
+  "peak_tree_rss_gb": 0.095,
+  "calls": [],
+  "child_log_tail": "[11/22/26 16:02:38] Error calling tool 'execute'                                \n                    \u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Traceback (most recent call last) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/server/server.py:1673 in call_tool                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/tools/base.py:555 in _run                           \u2502\n                    \u2502                                                          \u2502\n                    \u2502                 ... 7 frames hidden ...                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:275 in run     \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:309 in         \u2502\n                    \u2502 _run_monty                                               \u2502\n                    \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n                    MontyRuntimeError: ModuleNotFoundError: No module named     \n                    'urllib'                                                    \n[11/22/26 16:02:39] Error calling tool 'execute'                                \n                    \u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Traceback (most recent call last) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/server/server.py:1673 in call_tool                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/tools/base.py:555 in _run                           \u2502\n                    \u2502                                                          \u2502\n                    \u2502                 ... 7 frames hidden ...                  \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:275 in run     \u2502\n                    \u2502                                                          \u2502\n                    \u2502 ~/p/agentic-search-bench/research/impls \u2502\n                    \u2502 /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas \u2502\n                    \u2502 tmcp/experimental/transforms/code_mode.py:309 in         \u2502\n                    \u2502 _run_monty                                               \u2502\n                    \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n                    MontyRuntimeError: ModuleNotFoundError: No module named     \n                    'ssl'                                                       \n"
+}

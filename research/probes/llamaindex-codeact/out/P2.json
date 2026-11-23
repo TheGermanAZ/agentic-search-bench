@@ -1,0 +1,7 @@
+{
+  "probe": "P2",
+  "outcome": "works",
+  "display": "full (200,000 A + RETURNED)",
+  "detail": "RETURNED came back: True (in stdout); 200000 of 200000 A's came back; marker found: None; stdout chars 200011; error ''",
+  "evidence": "research/probes/llamaindex-codeact/out/P2.txt"
+}

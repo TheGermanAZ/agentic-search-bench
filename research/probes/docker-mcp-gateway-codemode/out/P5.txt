@@ -1,0 +1,6 @@
+--- code 1 ---
+return process.env.PROBE_SECRET
+--- result 1 ---
+{"ms":3,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (77 chars):
+Error running script: ReferenceError: process is not defined at <eval>:2:8(1)

@@ -1,0 +1,262 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R1c",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 3748,
+  "peakTreeRssMb": 58,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 3692,
+    "rssMb": 58
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R1c",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 72,
+        "ms": 458,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": "A done",
+            "logs": []
+          },
+          "stringChars": 6
+        },
+        "callsStarted": 2
+      },
+      "B": {
+        "label": "B(concurrent)",
+        "startMs": 175,
+        "ms": 20,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": [
+              "undefined",
+              "undefined"
+            ],
+            "logs": []
+          },
+          "stringChars": 18
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 54,
+    "hostEvents": [],
+    "totalMs": 530
+  },
+  "childStdoutOtherChars": 703,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      147,
+      52
+    ],
+    [
+      222,
+      57
+    ],
+    [
+      338,
+      58
+    ],
+    [
+      563,
+      58
+    ],
+    [
+      634,
+      58
+    ],
+    [
+      678,
+      58
+    ],
+    [
+      781,
+      58
+    ],
+    [
+      840,
+      58
+    ],
+    [
+      894,
+      58
+    ],
+    [
+      995,
+      58
+    ],
+    [
+      1095,
+      58
+    ],
+    [
+      1164,
+      58
+    ],
+    [
+      1237,
+      58
+    ],
+    [
+      1288,
+      58
+    ],
+    [
+      1338,
+      58
+    ],
+    [
+      1416,
+      58
+    ],
+    [
+      1461,
+      58
+    ],
+    [
+      1520,
+      58
+    ],
+    [
+      1579,
+      58
+    ],
+    [
+      1640,
+      58
+    ],
+    [
+      1696,
+      58
+    ],
+    [
+      1754,
+      58
+    ],
+    [
+      1811,
+      58
+    ],
+    [
+      1865,
+      58
+    ],
+    [
+      1934,
+      58
+    ],
+    [
+      2031,
+      58
+    ],
+    [
+      2092,
+      58
+    ],
+    [
+      2199,
+      58
+    ],
+    [
+      2252,
+      58
+    ],
+    [
+      2302,
+      58
+    ],
+    [
+      2353,
+      58
+    ],
+    [
+      2431,
+      58
+    ],
+    [
+      2505,
+      58
+    ],
+    [
+      2569,
+      58
+    ],
+    [
+      2611,
+      58
+    ],
+    [
+      2702,
+      58
+    ],
+    [
+      2840,
+      58
+    ],
+    [
+      2909,
+      58
+    ],
+    [
+      2977,
+      58
+    ],
+    [
+      3042,
+      58
+    ],
+    [
+      3125,
+      58
+    ],
+    [
+      3220,
+      58
+    ],
+    [
+      3310,
+      58
+    ],
+    [
+      3412,
+      58
+    ],
+    [
+      3486,
+      58
+    ],
+    [
+      3561,
+      58
+    ],
+    [
+      3620,
+      58
+    ],
+    [
+      3692,
+      58
+    ],
+    [
+      3747,
+      0
+    ]
+  ]
+}

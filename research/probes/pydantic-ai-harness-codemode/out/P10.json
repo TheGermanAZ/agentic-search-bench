@@ -1,0 +1,8 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "detail": "model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 1, in <module>\\n    raise ValueError(\"probe-boom\")\\nValueError: probe-boom'; line number present: True",
+  "config": "CodeMode()",
+  "peak_tree_rss_mib": 79,
+  "harness_wall_s": 0.5
+}

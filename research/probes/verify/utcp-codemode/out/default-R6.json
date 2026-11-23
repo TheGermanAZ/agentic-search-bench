@@ -1,0 +1,348 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R6",
+  "exit": {
+    "code": null,
+    "signal": "SIGSEGV"
+  },
+  "wallMs": 30182,
+  "peakTreeRssMb": 60,
+  "watchKill": null,
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R6",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "startMs": 47,
+      "ms": 30009,
+      "ok": true,
+      "result": {
+        "value": {
+          "result": null,
+          "logs": [
+            "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+          ]
+        },
+        "stringChars": 69
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 30,
+    "hostEvents": [],
+    "totalMs": 30056
+  },
+  "childStdoutOtherChars": 569,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      156,
+      53
+    ],
+    [
+      562,
+      60
+    ],
+    [
+      969,
+      60
+    ],
+    [
+      1332,
+      60
+    ],
+    [
+      1740,
+      60
+    ],
+    [
+      2127,
+      60
+    ],
+    [
+      2482,
+      60
+    ],
+    [
+      2847,
+      60
+    ],
+    [
+      3214,
+      60
+    ],
+    [
+      3564,
+      60
+    ],
+    [
+      3960,
+      60
+    ],
+    [
+      4304,
+      60
+    ],
+    [
+      4686,
+      60
+    ],
+    [
+      5067,
+      60
+    ],
+    [
+      5466,
+      60
+    ],
+    [
+      5826,
+      60
+    ],
+    [
+      6260,
+      60
+    ],
+    [
+      6687,
+      60
+    ],
+    [
+      7144,
+      60
+    ],
+    [
+      7504,
+      60
+    ],
+    [
+      7879,
+      60
+    ],
+    [
+      8341,
+      60
+    ],
+    [
+      8778,
+      60
+    ],
+    [
+      9143,
+      60
+    ],
+    [
+      9533,
+      60
+    ],
+    [
+      9886,
+      60
+    ],
+    [
+      10255,
+      60
+    ],
+    [
+      10619,
+      60
+    ],
+    [
+      11030,
+      60
+    ],
+    [
+      11425,
+      60
+    ],
+    [
+      11773,
+      60
+    ],
+    [
+      12287,
+      60
+    ],
+    [
+      12642,
+      60
+    ],
+    [
+      12991,
+      60
+    ],
+    [
+      13469,
+      60
+    ],
+    [
+      13905,
+      60
+    ],
+    [
+      14268,
+      60
+    ],
+    [
+      14644,
+      60
+    ],
+    [
+      15015,
+      60
+    ],
+    [
+      15373,
+      60
+    ],
+    [
+      15752,
+      60
+    ],
+    [
+      16103,
+      60
+    ],
+    [
+      16493,
+      60
+    ],
+    [
+      16862,
+      60
+    ],
+    [
+      17222,
+      60
+    ],
+    [
+      17584,
+      60
+    ],
+    [
+      17934,
+      60
+    ],
+    [
+      18336,
+      60
+    ],
+    [
+      18724,
+      60
+    ],
+    [
+      19095,
+      60
+    ],
+    [
+      19501,
+      60
+    ],
+    [
+      19849,
+      60
+    ],
+    [
+      20210,
+      60
+    ],
+    [
+      20553,
+      60
+    ],
+    [
+      20919,
+      60
+    ],
+    [
+      21387,
+      60
+    ],
+    [
+      21847,
+      60
+    ],
+    [
+      22311,
+      60
+    ],
+    [
+      22697,
+      60
+    ],
+    [
+      23102,
+      60
+    ],
+    [
+      23545,
+      60
+    ],
+    [
+      23969,
+      60
+    ],
+    [
+      24330,
+      60
+    ],
+    [
+      24799,
+      60
+    ],
+    [
+      25219,
+      60
+    ],
+    [
+      25615,
+      60
+    ],
+    [
+      26059,
+      60
+    ],
+    [
+      26551,
+      60
+    ],
+    [
+      26983,
+      60
+    ],
+    [
+      27362,
+      60
+    ],
+    [
+      27776,
+      60
+    ],
+    [
+      28241,
+      60
+    ],
+    [
+      28756,
+      60
+    ],
+    [
+      29133,
+      60
+    ],
+    [
+      29662,
+      60
+    ],
+    [
+      30059,
+      60
+    ]
+  ]
+}

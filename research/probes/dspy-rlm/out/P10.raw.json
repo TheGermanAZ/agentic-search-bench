@@ -1,0 +1,32 @@
+{
+  "probe": "P10",
+  "config": "default",
+  "codes": [
+    "x = 1\nraise ValueError(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "model_view_all": [
+        "<repl_output>\n[Error] ValueError: ['probe-boom']\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        34,
+        25
+      ],
+      "answer": "done",
+      "error": "<repl_output>\n[Error] ValueError: ['probe-boom']\n</repl_output>",
+      "ms": 477.7,
+      "started": 1795381967.199232
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.93,
+  "peak_tree_rss_gb": 0.46,
+  "calls": [],
+  "child_log_tail": ""
+}

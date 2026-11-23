@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P3",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 4.898124999999993,
+  "source": [
+    "const r = await fetch(\"https://example.com\"); return r.status;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "'fetch' is not defined",
+          "name": "ReferenceError",
+          "stack": "    at <anonymous> (<code-mode>:5:17)\n    at <anonymous> (<code-mode>:6:7)\n    at <eval> (<code-mode>:11:3)\n"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 168.00829199999998,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: 'fetch' is not defined",
+    "ms": 168,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 52.1
+}

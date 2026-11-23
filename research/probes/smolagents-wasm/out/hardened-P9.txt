@@ -1,0 +1,21 @@
+config: WasmExecutor(additional_imports=[], timeout=5)
+code:
+"import time, asyncio\nt = time.time()\nrs = [lookup(id=i) for i in [1, 2, 3, 4, 5]]\nprint('loop', int((time.time() - t) * 1000), sum(r['value'] for r in rs))"
+
+{
+  "probe": "P9",
+  "hardened": true,
+  "harness_wall_s": 3.4,
+  "peak_tree_rss_mib": 283,
+  "raw": {
+    "setup_ms": 2073,
+    "result": {
+      "ok": true,
+      "output": "None",
+      "logs": "loop 1013 30\n",
+      "ms": 1015.7
+    },
+    "wall_s": 3.1
+  },
+  "child_tail": ""
+}

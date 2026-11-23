@@ -1,0 +1,93 @@
+{
+  "mode": "hardened",
+  "probe": "P4",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 0,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+      "ms": 19.72,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "Error: Cannot import \"fs\": it isn't available here, where packages and files can't be loaded. Use the provided globals. (line 1, col 8)",
+          "location": {
+            "line": 1,
+            "column": 8
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\")",
+      "ms": 1.13,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "Error: Cannot import \"fs\": it isn't available here, where packages and files can't be loaded. Use the provided globals. (line 1, col 18)",
+          "location": {
+            "line": 1,
+            "column": 18
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "return await Deno.readTextFile(\"/etc/hosts\")",
+      "ms": 0.62,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "ReferenceError: Unknown identifier 'Deno'. (line 1, col 14)",
+          "location": {
+            "line": 1,
+            "column": 14
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "return await (await fetch(\"file:///etc/hosts\")).text()",
+      "ms": 0.52,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "ReferenceError: Unknown identifier 'fetch'. (line 1, col 21)",
+          "location": {
+            "line": 1,
+            "column": 21
+          }
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "return [typeof require, typeof Bun, typeof Deno, typeof path, typeof fs]",
+      "ms": 1.08,
+      "hostCalls": 0,
+      "result": {
+        "ok": true,
+        "value": [
+          "function",
+          "undefined",
+          "undefined",
+          "undefined",
+          "undefined"
+        ],
+        "toolCalls": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "probe": "P9",
+  "container": "codeact-hardened-P9",
+  "startup_s": 1.4,
+  "elapsed_s": 1.23,
+  "output": "loop 1016\nthreads 204 30\n",
+  "after": null,
+  "mem_peak_mib": 0,
+  "harness_killed_at_4gib": false,
+  "config": "JupyterGatewayDocker RESOURCE_CONSTRAINTS={'mem_limit': '8g', 'nano_cpus': 2e9}, JupyterKernel.execute timeout=60"
+}

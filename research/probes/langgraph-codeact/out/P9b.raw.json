@@ -1,0 +1,61 @@
+{
+  "probe": "P9b",
+  "config": "default",
+  "codes": [
+    "from concurrent.futures import ThreadPoolExecutor\nwith ThreadPoolExecutor(5) as ex:\n    rs = list(ex.map(lookup, [1, 2, 3, 4, 5]))\nprint(sum(x['value'] for x in rs))"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "30\n",
+      "error": null,
+      "context_keys": [
+        "ThreadPoolExecutor",
+        "ex",
+        "rs"
+      ],
+      "host_builtins_leak": false,
+      "ms": 208.6,
+      "started": 1795377310.07933
+    }
+  ],
+  "setup_ms": 3.7,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.5,
+  "peak_tree_rss_gb": 0.073,
+  "calls": [
+    {
+      "id": 2,
+      "start": 1795377310.081598,
+      "end": 1795377310.2816262,
+      "pid": 36901
+    },
+    {
+      "id": 3,
+      "start": 1795377310.0816529,
+      "end": 1795377310.2817159,
+      "pid": 36901
+    },
+    {
+      "id": 4,
+      "start": 1795377310.081685,
+      "end": 1795377310.281705,
+      "pid": 36901
+    },
+    {
+      "id": 1,
+      "start": 1795377310.0815191,
+      "end": 1795377310.282478,
+      "pid": 36901
+    },
+    {
+      "id": 5,
+      "start": 1795377310.081732,
+      "end": 1795377310.2867389,
+      "pid": 36901
+    }
+  ],
+  "child_log_tail": ""
+}

@@ -1,0 +1,4 @@
+ERROR: out of memory
+    at <eval> (eval.js:1:45)
+---
+wall_ms=1465 host_calls=0

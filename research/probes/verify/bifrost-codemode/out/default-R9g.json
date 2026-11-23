@@ -1,0 +1,495 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/../_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/adapter.mjs default R9g",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 9362,
+  "peakTreeRssMb": 167,
+  "peakTreeFootprintMb": 88,
+  "watchKill": null,
+  "record": {
+    "impl": "bifrost-codemode",
+    "config": "default",
+    "test": "R9g",
+    "notes": "maximhq/bifrost:v2.6.0, data/config.json; gateway restarted for this test (8317 ms); new MCP client per execution; Starlark codes",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 8437,
+          "ms": 883,
+          "ok": false,
+          "threw": "TypeError: fetch failed",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 8450,
+          "ms": 871,
+          "ok": false,
+          "threw": "TypeError: fetch failed",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 8453,
+          "ms": 865,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 482,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:3:11: in <toplevel>\n  ... 109993 more frames ...\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\nError: stack overflow\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 482
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 8453,
+          "ms": 868,
+          "ok": false,
+          "threw": "TypeError: fetch failed",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 8453,
+          "ms": 867,
+          "ok": false,
+          "threw": "TypeError: fetch failed",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 8454,
+          "ms": 866,
+          "ok": false,
+          "threw": "TypeError: fetch failed",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 8454,
+          "ms": 867,
+          "ok": false,
+          "threw": "TypeError: fetch failed",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 8454,
+          "ms": 867,
+          "ok": false,
+          "threw": "TypeError: fetch failed",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor8",
+          "startMs": 8454,
+          "ms": 867,
+          "ok": false,
+          "threw": "TypeError: fetch failed",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor9",
+          "startMs": 8454,
+          "ms": 866,
+          "ok": false,
+          "threw": "TypeError: fetch failed",
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor10",
+          "startMs": 8454,
+          "ms": 864,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 482,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:3:11: in <toplevel>\n  ... 109993 more frames ...\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\n  code.star:2:13: in f\nError: stack overflow\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 482
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor11",
+          "startMs": 8454,
+          "ms": 867,
+          "ok": false,
+          "threw": "TypeError: fetch failed",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 8606,
+        "ms": 332,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 50,
+            "text": "Execution completed successfully.\nReturn value: 42"
+          },
+          "stringChars": 50
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 8945,
+        "ms": 376,
+        "ok": false,
+        "threw": "TypeError: fetch failed",
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 9321,
+        "ms": 1,
+        "ok": false,
+        "threw": "TypeError: fetch failed",
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "gatewayStartMs": 8317,
+      "containerBaselineMb": 223,
+      "containerPeakMb": 4146,
+      "containerLastMb": 4146,
+      "containerKilled": {
+        "atMs": 759,
+        "mb": 4146
+      },
+      "containerRssMsMb": [
+        [
+          86,
+          223
+        ],
+        [
+          759,
+          4146
+        ]
+      ]
+    },
+    "hostMaxEventLoopLagMs": 165,
+    "hostEvents": [],
+    "totalMs": 9323
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      73,
+      63,
+      21
+    ],
+    [
+      225,
+      76,
+      33
+    ],
+    [
+      377,
+      76,
+      33
+    ],
+    [
+      530,
+      76,
+      33
+    ],
+    [
+      681,
+      76,
+      33
+    ],
+    [
+      853,
+      76,
+      33
+    ],
+    [
+      987,
+      76,
+      33
+    ],
+    [
+      1140,
+      76,
+      33
+    ],
+    [
+      1293,
+      121,
+      46
+    ],
+    [
+      1443,
+      76,
+      43
+    ],
+    [
+      1595,
+      76,
+      33
+    ],
+    [
+      1747,
+      76,
+      33
+    ],
+    [
+      1900,
+      76,
+      33
+    ],
+    [
+      2058,
+      76,
+      32
+    ],
+    [
+      2209,
+      76,
+      33
+    ],
+    [
+      2360,
+      76,
+      32
+    ],
+    [
+      2512,
+      76,
+      33
+    ],
+    [
+      2661,
+      76,
+      33
+    ],
+    [
+      2814,
+      76,
+      33
+    ],
+    [
+      2968,
+      76,
+      32
+    ],
+    [
+      3122,
+      76,
+      33
+    ],
+    [
+      3274,
+      76,
+      33
+    ],
+    [
+      3429,
+      76,
+      33
+    ],
+    [
+      3580,
+      76,
+      32
+    ],
+    [
+      3733,
+      76,
+      33
+    ],
+    [
+      3887,
+      76,
+      32
+    ],
+    [
+      4040,
+      76,
+      33
+    ],
+    [
+      4192,
+      76,
+      33
+    ],
+    [
+      4344,
+      75,
+      33
+    ],
+    [
+      4495,
+      76,
+      33
+    ],
+    [
+      4649,
+      77,
+      32
+    ],
+    [
+      4801,
+      76,
+      33
+    ],
+    [
+      4953,
+      118,
+      33
+    ],
+    [
+      5105,
+      76,
+      33
+    ],
+    [
+      5257,
+      76,
+      32
+    ],
+    [
+      5412,
+      76,
+      33
+    ],
+    [
+      5564,
+      76,
+      32
+    ],
+    [
+      5718,
+      76,
+      33
+    ],
+    [
+      5870,
+      76,
+      33
+    ],
+    [
+      6020,
+      76,
+      33
+    ],
+    [
+      6173,
+      76,
+      33
+    ],
+    [
+      6328,
+      76,
+      33
+    ],
+    [
+      6479,
+      76,
+      32
+    ],
+    [
+      6632,
+      76,
+      33
+    ],
+    [
+      6785,
+      76,
+      33
+    ],
+    [
+      6938,
+      76,
+      33
+    ],
+    [
+      7097,
+      76,
+      33
+    ],
+    [
+      7244,
+      75,
+      33
+    ],
+    [
+      7395,
+      76,
+      33
+    ],
+    [
+      7549,
+      82,
+      33
+    ],
+    [
+      7703,
+      76,
+      33
+    ],
+    [
+      7855,
+      121,
+      33
+    ],
+    [
+      8006,
+      76,
+      33
+    ],
+    [
+      8160,
+      76,
+      32
+    ],
+    [
+      8314,
+      78,
+      35
+    ],
+    [
+      8468,
+      167,
+      35
+    ],
+    [
+      8628,
+      117,
+      36
+    ],
+    [
+      8787,
+      117,
+      73
+    ],
+    [
+      9118,
+      140,
+      73
+    ],
+    [
+      9262,
+      159,
+      88
+    ]
+  ]
+}

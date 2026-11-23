@@ -1,0 +1,7 @@
+{
+  "probe": "P1",
+  "outcome": "error",
+  "display": "error (tool source lacks its imports)",
+  "detail": "42 in printed stdout: False; 42 in returned value: False; output \"Error during execution: name 'time' is not defined Error during execution: name 'time' is not defined\"; host lookup calls: 0",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P1.txt"
+}

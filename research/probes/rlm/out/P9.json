@@ -1,0 +1,5 @@
+{
+  "probe": "P9",
+  "outcome": "works",
+  "detail": "serial: 1032 ms for 5 lookups, 5 host calls, sum 30"
+}

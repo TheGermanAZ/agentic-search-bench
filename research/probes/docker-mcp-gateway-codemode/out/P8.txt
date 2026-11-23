@@ -1,0 +1,12 @@
+--- code 1 ---
+globalThis.kept = 7; return "set"
+--- result 1 ---
+{"ms":3,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (3 chars):
+set
+--- code 2 ---
+return typeof kept === "undefined" ? "gone" : String(kept)
+--- result 2 ---
+{"ms":2,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (4 chars):
+gone

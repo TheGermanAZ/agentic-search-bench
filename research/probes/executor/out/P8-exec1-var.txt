@@ -1,0 +1,27 @@
+{
+  "probe": "P8-exec1-var",
+  "code": "var kept = 7; kept",
+  "wallMs": 4,
+  "hostToolCalls": 0,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 10,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":true,\"value\":7,\"toolCalls\":[]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": true,
+          "value": 7,
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

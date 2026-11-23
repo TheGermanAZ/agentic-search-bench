@@ -1,0 +1,11 @@
+--- code 1 ---
+local r = probe.lookup({id = 21}):await()
+print(r.value)
+result(r.value)
+--- result 1 ---
+{"ms":206,"hostCalls":1,"side":{"proxyLogBytes":234673},"ok":true,"isError":false}
+text (41 chars):
+Script executed successfully.
+
+Result:
+42

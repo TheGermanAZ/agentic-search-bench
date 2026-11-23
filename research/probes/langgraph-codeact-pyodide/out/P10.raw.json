@@ -1,0 +1,26 @@
+{
+  "probe": "P10",
+  "config": "default",
+  "codes": [
+    "x = 1\nraise ValueError(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: probe-boom",
+      "error": "Error during execution: probe-boom",
+      "context_keys": [],
+      "host_builtins_leak": false,
+      "ms": 1163.8,
+      "started": 1795377419.787383
+    }
+  ],
+  "setup_ms": 17.6,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.53,
+  "peak_tree_rss_gb": 0.29,
+  "calls": [],
+  "child_log_tail": ""
+}

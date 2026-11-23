@@ -1,0 +1,28 @@
+{
+  "probe": "P12d",
+  "config": "default",
+  "codes": [
+    "def f():\n    global PROBE_LEAK\n    PROBE_LEAK = 'leaked'\nf()\nprint('set')"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "set",
+      "error": null,
+      "context_keys": [
+        "f"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1123.5,
+      "started": 1795377425.1490188
+    }
+  ],
+  "setup_ms": 18.4,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.53,
+  "peak_tree_rss_gb": 0.291,
+  "calls": [],
+  "child_log_tail": ""
+}

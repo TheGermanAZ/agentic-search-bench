@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-run",
+  "probe": "P12e",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return String(Object.getPrototypeOf(async function(){}).constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "TypeError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "Function constructor is not allowed",
+        "stack": "TypeError: Function constructor is not allowed\n    at <anonymous> (run.js:1:57)",
+        "string": "TypeError: Function constructor is not allowed"
+      },
+      "wallMs": 81.43941600000001,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "TypeError: RUN_USER_SOURCE_ERROR Function constructor is not allowed",
+    "ms": 81,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 132.7
+}

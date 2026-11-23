@@ -1,0 +1,24 @@
+
+ ██████╗ ██████╗ ███████╗███╗   ██╗      ██████╗ ████████╗ ██████╗
+██╔═══██╗██╔══██╗██╔════╝████╗  ██║      ██╔══██╗╚══██╔══╝██╔════╝
+██║   ██║██████╔╝█████╗  ██╔██╗ ██║█████╗██████╔╝   ██║   ██║     
+██║   ██║██╔═══╝ ██╔══╝  ██║╚██╗██║╚════╝██╔═══╝    ██║   ██║     
+╚██████╔╝██║     ███████╗██║ ╚████║      ██║        ██║   ╚██████╗
+ ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═══╝      ╚═╝        ╚═╝    ╚═════╝
+
+Initializing MCP registry...
+Loaded 0 MCP tools
+Listening on http://0.0.0.0:41302/ (http://localhost:41302/)
+[internal] RPC Server on port 41302 (sandbox <-> tools)
+Listening on http://0.0.0.0:41303/ (http://localhost:41303/)
+[OK] WebSocket Server on port 41303
+    register_tools  - Register custom tools
+    get_signatures  - Get TypeScript signatures
+    execute_code    - Execute code with tools
+    tool_result     - Return result for tool call
+
+==================================================
+Open-PTC Unified Server running
+==================================================
+[WS] Connection opened: ws_1795376015692_1
+[WS] Registered 1 tools for ws_1795376015692_1

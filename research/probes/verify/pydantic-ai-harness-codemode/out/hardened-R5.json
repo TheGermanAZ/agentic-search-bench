@@ -1,0 +1,335 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py hardened R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 4216,
+  "peakTreeRssMb": 111,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R5",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode({'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})]); agent.run() per execution",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 863,
+        "ms": 255,
+        "ok": true,
+        "result": [
+          "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 2, in <module>\n    rs = await asyncio.gather(*[lookup(id=i) for i in range(2000)])\n                                ~~~~~~~~~~~~\nRuntimeError: Code mode allows 100 nested tool calls per `run_code` call and this snippet asked for more. Call fewer tools, for example by filtering the inputs first, or split the work across several `run_code` calls.\n\n100 nested tool calls started before execution stopped:\n- lookup({'id':…[2591 chars]…y have applied a partial change\n- lookup({'id': 24}) did not finish, so it may have applied a partial change\n- lookup({'id': 25}) did not finish, so it may have applied a partial change\n- ... and 74 more not shown\nAccount for all 100 before retrying; repeating a call repeats whatever it already did."
+        ],
+        "callsStarted": 100
+      },
+      "atReturn": {
+        "started": 100,
+        "done": 0
+      },
+      "after3s": {
+        "started": 100,
+        "done": 0
+      }
+    },
+    "hostMaxEventLoopLagMs": 21,
+    "totalMs": 4119
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      104,
+      28
+    ],
+    [
+      144,
+      35
+    ],
+    [
+      201,
+      41
+    ],
+    [
+      243,
+      47
+    ],
+    [
+      298,
+      52
+    ],
+    [
+      352,
+      56
+    ],
+    [
+      427,
+      59
+    ],
+    [
+      480,
+      63
+    ],
+    [
+      528,
+      65
+    ],
+    [
+      574,
+      65
+    ],
+    [
+      637,
+      66
+    ],
+    [
+      763,
+      67
+    ],
+    [
+      812,
+      70
+    ],
+    [
+      856,
+      71
+    ],
+    [
+      917,
+      72
+    ],
+    [
+      959,
+      75
+    ],
+    [
+      1015,
+      78
+    ],
+    [
+      1066,
+      110
+    ],
+    [
+      1129,
+      111
+    ],
+    [
+      1179,
+      111
+    ],
+    [
+      1223,
+      82
+    ],
+    [
+      1304,
+      82
+    ],
+    [
+      1362,
+      82
+    ],
+    [
+      1436,
+      82
+    ],
+    [
+      1481,
+      82
+    ],
+    [
+      1538,
+      82
+    ],
+    [
+      1596,
+      82
+    ],
+    [
+      1640,
+      82
+    ],
+    [
+      1694,
+      82
+    ],
+    [
+      1744,
+      82
+    ],
+    [
+      1789,
+      82
+    ],
+    [
+      1840,
+      82
+    ],
+    [
+      1896,
+      82
+    ],
+    [
+      1948,
+      82
+    ],
+    [
+      2009,
+      82
+    ],
+    [
+      2060,
+      82
+    ],
+    [
+      2103,
+      82
+    ],
+    [
+      2152,
+      82
+    ],
+    [
+      2225,
+      82
+    ],
+    [
+      2311,
+      82
+    ],
+    [
+      2357,
+      82
+    ],
+    [
+      2403,
+      82
+    ],
+    [
+      2451,
+      82
+    ],
+    [
+      2547,
+      82
+    ],
+    [
+      2623,
+      82
+    ],
+    [
+      2684,
+      82
+    ],
+    [
+      2744,
+      82
+    ],
+    [
+      2797,
+      82
+    ],
+    [
+      2860,
+      82
+    ],
+    [
+      2898,
+      82
+    ],
+    [
+      2963,
+      82
+    ],
+    [
+      3014,
+      82
+    ],
+    [
+      3055,
+      82
+    ],
+    [
+      3119,
+      82
+    ],
+    [
+      3170,
+      82
+    ],
+    [
+      3204,
+      82
+    ],
+    [
+      3268,
+      82
+    ],
+    [
+      3309,
+      82
+    ],
+    [
+      3364,
+      82
+    ],
+    [
+      3433,
+      82
+    ],
+    [
+      3472,
+      82
+    ],
+    [
+      3528,
+      82
+    ],
+    [
+      3581,
+      82
+    ],
+    [
+      3698,
+      82
+    ],
+    [
+      3797,
+      82
+    ],
+    [
+      3848,
+      82
+    ],
+    [
+      3887,
+      82
+    ],
+    [
+      3932,
+      82
+    ],
+    [
+      3987,
+      82
+    ],
+    [
+      4041,
+      82
+    ],
+    [
+      4114,
+      82
+    ],
+    [
+      4159,
+      82
+    ],
+    [
+      4215,
+      0
+    ]
+  ]
+}

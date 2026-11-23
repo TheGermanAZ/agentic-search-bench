@@ -1,0 +1,363 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R9c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 31652,
+  "peakTreeRssMb": 151,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9c",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 888,
+          "ms": 30311,
+          "ok": true,
+          "result": [
+            "Runtime error:\n[stdout before error]\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[10486097 chars]…\n[/stdout before error]\nMemoryError: memory limit exceeded: 10493952 bytes > 10485760 bytes\n\nThe sandbox ran out of memory and the session was reset. Re-run any imports, recreate any state you need, and use less memory: process smaller batches, avoid large intermediate values, and print less output."
+          ],
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1038,
+        "ms": 256,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1294,
+        "ms": 254,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 31236,
+        "ms": 261,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 152,
+    "totalMs": 31497
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      111,
+      20
+    ],
+    [
+      540,
+      52
+    ],
+    [
+      966,
+      67
+    ],
+    [
+      1384,
+      150
+    ],
+    [
+      1796,
+      122
+    ],
+    [
+      2208,
+      122
+    ],
+    [
+      2606,
+      122
+    ],
+    [
+      3039,
+      122
+    ],
+    [
+      3456,
+      122
+    ],
+    [
+      3869,
+      122
+    ],
+    [
+      4286,
+      122
+    ],
+    [
+      4681,
+      122
+    ],
+    [
+      5099,
+      122
+    ],
+    [
+      5594,
+      122
+    ],
+    [
+      6035,
+      122
+    ],
+    [
+      6478,
+      122
+    ],
+    [
+      6936,
+      122
+    ],
+    [
+      7337,
+      122
+    ],
+    [
+      7765,
+      122
+    ],
+    [
+      8203,
+      122
+    ],
+    [
+      8607,
+      122
+    ],
+    [
+      9009,
+      122
+    ],
+    [
+      9526,
+      122
+    ],
+    [
+      9922,
+      122
+    ],
+    [
+      10432,
+      122
+    ],
+    [
+      10849,
+      122
+    ],
+    [
+      11278,
+      122
+    ],
+    [
+      11682,
+      122
+    ],
+    [
+      12105,
+      122
+    ],
+    [
+      12546,
+      122
+    ],
+    [
+      12978,
+      122
+    ],
+    [
+      13411,
+      122
+    ],
+    [
+      13838,
+      122
+    ],
+    [
+      14243,
+      115
+    ],
+    [
+      14665,
+      89
+    ],
+    [
+      15072,
+      88
+    ],
+    [
+      15507,
+      88
+    ],
+    [
+      15923,
+      88
+    ],
+    [
+      16382,
+      88
+    ],
+    [
+      16770,
+      88
+    ],
+    [
+      17183,
+      88
+    ],
+    [
+      17592,
+      88
+    ],
+    [
+      18140,
+      88
+    ],
+    [
+      18588,
+      88
+    ],
+    [
+      19036,
+      88
+    ],
+    [
+      19432,
+      88
+    ],
+    [
+      19909,
+      88
+    ],
+    [
+      20477,
+      88
+    ],
+    [
+      20875,
+      88
+    ],
+    [
+      21284,
+      88
+    ],
+    [
+      21754,
+      88
+    ],
+    [
+      22193,
+      88
+    ],
+    [
+      22660,
+      88
+    ],
+    [
+      23130,
+      88
+    ],
+    [
+      23595,
+      88
+    ],
+    [
+      23994,
+      88
+    ],
+    [
+      24415,
+      88
+    ],
+    [
+      24871,
+      88
+    ],
+    [
+      25285,
+      88
+    ],
+    [
+      25696,
+      88
+    ],
+    [
+      26110,
+      88
+    ],
+    [
+      26559,
+      88
+    ],
+    [
+      27019,
+      88
+    ],
+    [
+      27433,
+      88
+    ],
+    [
+      27846,
+      88
+    ],
+    [
+      28244,
+      88
+    ],
+    [
+      28649,
+      88
+    ],
+    [
+      29076,
+      88
+    ],
+    [
+      29488,
+      88
+    ],
+    [
+      29904,
+      88
+    ],
+    [
+      30323,
+      88
+    ],
+    [
+      30732,
+      88
+    ],
+    [
+      31150,
+      88
+    ],
+    [
+      31550,
+      151
+    ]
+  ]
+}

@@ -1,0 +1,3 @@
+EXEC1: kept = 7
+EXEC2 same session prints: '7'
+EXEC3 new checkout prints/raises: "NameError: name 'kept' is not defined"

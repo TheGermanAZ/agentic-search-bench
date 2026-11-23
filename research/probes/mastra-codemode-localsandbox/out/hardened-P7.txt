@@ -1,0 +1,59 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 11967,
+    "totalWallMs": 12308,
+    "peakTreeRssMB": 2847.7,
+    "stderrTail": ""
+  },
+  "backend": "localsandbox",
+  "probe": "P7",
+  "mode": "hardened",
+  "setupMs": 153.4,
+  "record": {
+    "rssBeforeMB": 84,
+    "probe": {
+      "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+      "wallMs": 5104.6,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "Code Mode execution timed out after 5000ms",
+          "name": "TimeoutError"
+        }
+      },
+      "threw": null
+    },
+    "rssAfterMB": 97.3,
+    "survivalCheck": {
+      "code": "const r = await external_lookup({id: 21}); return r.value",
+      "wallMs": 308.2,
+      "hostCalls": 1,
+      "out": {
+        "success": true,
+        "result": 42,
+        "logs": []
+      },
+      "threw": null
+    },
+    "secondProbe": {
+      "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+      "wallMs": 5031.7,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "Code Mode execution timed out after 5000ms",
+          "name": "TimeoutError"
+        }
+      },
+      "threw": null
+    },
+    "rssAfterSecondMB": 97.5
+  }
+}

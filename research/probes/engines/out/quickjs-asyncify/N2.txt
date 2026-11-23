@@ -1,0 +1,1 @@
+neighbor printed "42" in 261 ms; aggressor P7 ended after 1473 ms with "ERROR: out of memory\n    at <eval> (eval.js:1:45)"

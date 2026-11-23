@@ -1,0 +1,6 @@
+MCP default child env (secret not forwarded) | python os.environ.get: status=success return=None error='' output=[]
+MCP default child env (secret not forwarded) | js process.env: status=success return=None error='' output=[]
+MCP default child env (secret not forwarded) | Deno.env.get: status=run-error return=None error='pyodide.ffi.JsException: NotCapable: Requires env access to "PROBE_SECRET", run again with the --allow-env flag' output=[]
+full host env forwarded to deno | python os.environ.get: status=success return=None error='' output=[]
+full host env forwarded to deno | js process.env: status=success return=None error='' output=[]
+full host env forwarded to deno | Deno.env.get: status=run-error return=None error='pyodide.ffi.JsException: NotCapable: Requires env access to "PROBE_SECRET", run again with the --allow-env flag' output=[]

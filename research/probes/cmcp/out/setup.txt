@@ -1,0 +1,81 @@
+{
+  "init_ms": 390,
+  "ready_ms": 391,
+  "serverInfo": {
+    "name": "rmcp",
+    "version": "0.16.0"
+  },
+  "instructions": "Code Mode MCP Proxy.\n\nUse `search` to discover available tools by writing TypeScript filter code.\nUse `execute` to call tools across servers by writing TypeScript code.\n\nEach connected server is a typed object in `execute` with auto-generated type declarations from tool schemas.\nExample: `await canva.create_design({ type: \"poster\" })`\n\nHot-reload: add or remove servers with `cmcp add`/`cmcp remove` — changes are picked up on the next call.",
+  "tools": [
+    {
+      "name": "execute",
+      "description": "Execute TypeScript code that calls tools across all connected MCP servers. Each server is a typed global object (e.g. `canva`, `figma`) where every tool is an async function with typed parameters: `await server.tool_name({ param: value })`. Chain calls sequentially or run them in parallel with Promise.all across different servers.",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "code": {
+            "description": "TypeScript code to execute. Each connected server is a typed global object where every tool is an async function. Type declarations are auto-generated from tool schemas. Chain calls sequentially: await chrome_devtools.navigate_page({ url: \"https://example.com\" }); const screenshot = await chrome_devtools.take_screenshot({ format: \"png\" }); return screenshot; Or run calls in parallel with Promise.all: const [issues, designs] = await Promise.all([github.list_issues({ repo: \"myorg/app\" }), canva.list_designs({})]);",
+            "type": "string"
+          },
+          "max_length": {
+            "default": null,
+            "description": "Max response length in characters. Default: 40000. Use your code to extract only what you need rather than increasing this.",
+            "format": "uint",
+            "minimum": 0,
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "title": "ExecuteRequest",
+        "type": "object"
+      }
+    },
+    {
+      "name": "search",
+      "description": "Search across all tools from all connected MCP servers. Write TypeScript code to filter the tool catalog. A typed `tools` array is available with { server, name, description, input_schema } fields.",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "code": {
+            "description": "TypeScript code to filter/explore the tools catalog. A typed `tools` array is available with fields: { server, name, description, input_schema }. Must return a value. Example: return tools.filter(t => t.description.toLowerCase().includes(\"design\"))",
+            "type": "string"
+          },
+          "max_length": {
+            "default": null,
+            "description": "Max response length in characters. Default: 40000. Use your code to extract only what you need rather than increasing this.",
+            "format": "uint",
+            "minimum": 0,
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "title": "SearchRequest",
+        "type": "object"
+      }
+    }
+  ],
+  "search_filter": "[\n  {\n    \"name\": \"lookup\",\n    \"server\": \"lookup\"\n  },\n  {\n    \"name\": \"lookup\",\n    \"server\": \"lookup2\"\n  }\n]",
+  "search_keys": "[\n  \"description\",\n  \"input_schema\",\n  \"name\",\n  \"server\"\n]",
+  "ts_strip": {
+    "probe": "ts-strip",
+    "code": "interface Foo { a: number }\nconst x: number = 21;\nconst f = (y: Foo): number => y.a * 2;\nreturn f({ a: x } as Foo);",
+    "args_extra": {},
+    "wall_ms": 2,
+    "host_calls": 0,
+    "isError": false,
+    "response_text": "42",
+    "response_text_length": 2,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  }
+}

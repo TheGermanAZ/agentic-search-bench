@@ -1,0 +1,32 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P9c",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.30895799999999,
+  "source": [
+    "let s = 0; for (let i = 0; i < 12; i++) s += (await external_lookup({id: i})).value; return s;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Exceeded maximum tool callback rounds (10)",
+          "name": "MaxRoundsExceeded"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 2193.790333,
+      "hostCalls": 10
+    }
+  ],
+  "summary": {
+    "out": "MaxRoundsExceeded: Exceeded maximum tool callback rounds (10)",
+    "ms": 2194,
+    "hostCalls": 10
+  },
+  "hostRssAfterMB": 121.3
+}

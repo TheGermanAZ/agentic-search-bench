@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "no-limit-within-120s",
+  "detail": "no memory limit below 4 GB: harness stopped the process at 4.17 GB peak RSS after 3.7 s; no error from the executor",
+  "killed_by": "harness RSS watchdog",
+  "peak_rss_gb": 4.17
+}

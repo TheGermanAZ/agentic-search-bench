@@ -1,0 +1,15 @@
+code:
+while True:
+    pass
+
+{
+  "probe": "P6",
+  "container": "codeact-hardened-P6",
+  "startup_s": 1.2,
+  "elapsed_s": 60.0,
+  "output": "[Execution timed out (60 seconds).]",
+  "after": "[Code executed successfully with no output]",
+  "mem_peak_mib": 0,
+  "harness_killed_at_4gib": false,
+  "config": "JupyterGatewayDocker RESOURCE_CONSTRAINTS={'mem_limit': '8g', 'nano_cpus': 2e9}, JupyterKernel.execute timeout=60"
+}

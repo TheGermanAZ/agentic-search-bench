@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "detail": "iteration cap, not the time limit: InterpreterError: Code execution failed at line 'while True:\n    pass' due to: InterpreterError: Maximum number of 1000000 iterations in While loop exceeded",
+  "wall_s": 2.02,
+  "config": "LocalPythonExecutor(additional_authorized_imports=[], timeout_seconds=5)"
+}

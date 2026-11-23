@@ -1,0 +1,328 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs hardened R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 7159,
+  "peakTreeRssMb": 153,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "hardened",
+    "test": "R7b",
+    "notes": "createRunner({limits: HARDENED_LIMITS}) shared",
+    "data": {
+      "r": {
+        "startMs": 38,
+        "ms": 5207,
+        "ok": false,
+        "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+        "callsStarted": 0
+      },
+      "atReturn": {
+        "started": 0,
+        "done": 0
+      },
+      "after1500ms": {
+        "started": 1,
+        "done": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 6745,
+        "ms": 328,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "value": 42
+          },
+          "stringChars": 9
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 61,
+    "hostEvents": [],
+    "totalMs": 7073
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:22297) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      97,
+      51
+    ],
+    [
+      196,
+      109
+    ],
+    [
+      305,
+      138
+    ],
+    [
+      409,
+      138
+    ],
+    [
+      511,
+      138
+    ],
+    [
+      628,
+      138
+    ],
+    [
+      713,
+      138
+    ],
+    [
+      892,
+      138
+    ],
+    [
+      999,
+      138
+    ],
+    [
+      1090,
+      138
+    ],
+    [
+      1188,
+      138
+    ],
+    [
+      1376,
+      139
+    ],
+    [
+      1475,
+      139
+    ],
+    [
+      1575,
+      139
+    ],
+    [
+      1685,
+      139
+    ],
+    [
+      1854,
+      139
+    ],
+    [
+      1952,
+      139
+    ],
+    [
+      2045,
+      139
+    ],
+    [
+      2145,
+      140
+    ],
+    [
+      2252,
+      140
+    ],
+    [
+      2348,
+      140
+    ],
+    [
+      2458,
+      140
+    ],
+    [
+      2573,
+      140
+    ],
+    [
+      2668,
+      140
+    ],
+    [
+      2784,
+      140
+    ],
+    [
+      2877,
+      140
+    ],
+    [
+      2987,
+      140
+    ],
+    [
+      3097,
+      140
+    ],
+    [
+      3198,
+      140
+    ],
+    [
+      3296,
+      140
+    ],
+    [
+      3404,
+      140
+    ],
+    [
+      3514,
+      140
+    ],
+    [
+      3614,
+      140
+    ],
+    [
+      3717,
+      140
+    ],
+    [
+      3808,
+      140
+    ],
+    [
+      3918,
+      140
+    ],
+    [
+      4022,
+      140
+    ],
+    [
+      4133,
+      140
+    ],
+    [
+      4227,
+      140
+    ],
+    [
+      4329,
+      140
+    ],
+    [
+      4435,
+      140
+    ],
+    [
+      4533,
+      140
+    ],
+    [
+      4639,
+      140
+    ],
+    [
+      4771,
+      140
+    ],
+    [
+      4865,
+      140
+    ],
+    [
+      4978,
+      140
+    ],
+    [
+      5103,
+      140
+    ],
+    [
+      5244,
+      140
+    ],
+    [
+      5329,
+      132
+    ],
+    [
+      5437,
+      132
+    ],
+    [
+      5537,
+      132
+    ],
+    [
+      5644,
+      132
+    ],
+    [
+      5740,
+      132
+    ],
+    [
+      5836,
+      132
+    ],
+    [
+      5946,
+      132
+    ],
+    [
+      6053,
+      132
+    ],
+    [
+      6142,
+      132
+    ],
+    [
+      6243,
+      132
+    ],
+    [
+      6352,
+      132
+    ],
+    [
+      6442,
+      132
+    ],
+    [
+      6547,
+      132
+    ],
+    [
+      6644,
+      132
+    ],
+    [
+      6752,
+      132
+    ],
+    [
+      6854,
+      138
+    ],
+    [
+      6953,
+      148
+    ],
+    [
+      7058,
+      148
+    ],
+    [
+      7158,
+      0
+    ]
+  ]
+}

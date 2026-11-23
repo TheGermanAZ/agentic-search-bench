@@ -1,0 +1,21 @@
+mode: default
+code:
+async () => {
+  const x = 1;
+  throw new Error("probe-boom line 3 /Users/someone/secret.txt https://internal.example.com/x");
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"probe-boom line 3 [path] [url]\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 14,
+  "hostCalls": 0
+}

@@ -1,0 +1,5 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "detail": "returned as text, not raised: message True; traceback True; line number True. Text: '--\\nValueError                                Traceback (most recent call last)\\nCell In[1], line 1\\n----> 1 raise ValueError(\"probe-boom\")\\n\\nValueError: probe-boom'"
+}

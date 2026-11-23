@@ -1,0 +1,27 @@
+{
+  "probe": "P10",
+  "config": "default",
+  "codes": [
+    "x = 1\nraise ValueError(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "stderr": "",
+      "result": null,
+      "error": "ValueError: probe-boom\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py\", line 283, in run_code\n    compiled = compile(code, \"<sandbox>\", \"eval\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<sandbox>\", line 1\n    x = 1\n      ^\nSyntaxError: invalid syntax\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py\", line 321, in run_code\n    exec(compile(parsed, \"<sandbox>\", \"exec\"), namespace)\n  File \"<sandbox>\", line 2, in <module>\nValueError: probe-boom\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/eval/eval.py\", line 323, in run_code\n    exec(code, namespace)\n  File \"<string>\", line 2, in <module>\nValueError: probe-boom\n",
+      "interrupted": false,
+      "ms": 2.7,
+      "started": 1795377182.748328
+    }
+  ],
+  "setup_ms": 306.7,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.0,
+  "peak_tree_rss_gb": 0.165,
+  "calls": [],
+  "child_log_tail": "[11/22/26 14:53:02] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-vveloo6f/generate              \n                             d (mcp dir:                                        \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-vveloo6f/generate              \n                             d/mcp)                                             \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-vveloo6f/generate              \n                             d/mcp/probe                                        \n"
+}

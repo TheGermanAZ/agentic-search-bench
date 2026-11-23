@@ -1,0 +1,33 @@
+probe: hardened-P7
+outcome: no-limit-within-120s
+display: no limit (killed at 4.0 GB)
+detail: harness RSS watchdog at 4.02 GB after 3.3 s; peak tree RSS 4.022 GB; no error from the sandbox
+
+code:
+----
+a = []
+while True:
+    a.append("x" * 10**6)
+----
+
+setup_ms: 300.6
+wall_s (whole child process): 3.4
+killed: harness RSS watchdog at 4.02 GB after 3.3 s
+child exit code: -9
+peak tree RSS GB: 4.022
+host lookup calls: 0
+
+=== child process log (tail) ===
+[11/22/26 15:15:07] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-lgnrxie_/generate              
+                             d (mcp dir:                                        
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-lgnrxie_/generate              
+                             d/mcp)                                             
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-lgnrxie_/generate              
+                             d/mcp/probe                                        
+

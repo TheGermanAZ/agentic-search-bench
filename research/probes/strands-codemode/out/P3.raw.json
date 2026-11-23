@@ -1,0 +1,34 @@
+{
+  "probe": "P3",
+  "config": "default",
+  "codes": [
+    "import urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10)\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg",
+    "import ssl, urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10, context=ssl._create_unverified_context())\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 1, in <module>\n    import urllib.request\nModuleNotFoundError: No module named 'urllib.request'",
+      "ms": 74.7,
+      "started": 1795381197.6161249
+    },
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 1, in <module>\n    import ssl, urllib.request\nModuleNotFoundError: No module named 'ssl'",
+      "ms": 43.5,
+      "started": 1795381197.691179
+    }
+  ],
+  "setup_ms": 1020.3,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.76,
+  "peak_tree_rss_gb": 0.094,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

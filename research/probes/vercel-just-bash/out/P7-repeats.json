@@ -1,0 +1,46 @@
+{
+  "probe": "P7",
+  "runs": 5,
+  "rows": [
+    {
+      "run": 1,
+      "wallMs": 131,
+      "execMs": 56,
+      "exitCode": 126,
+      "stderr": "bash: word expansion: string length limit exceeded (67108864 bytes)",
+      "peakRssKb": 348784
+    },
+    {
+      "run": 2,
+      "wallMs": 126,
+      "execMs": 56,
+      "exitCode": 126,
+      "stderr": "bash: word expansion: string length limit exceeded (67108864 bytes)",
+      "peakRssKb": 349136
+    },
+    {
+      "run": 3,
+      "wallMs": 130,
+      "execMs": 57,
+      "exitCode": 126,
+      "stderr": "bash: word expansion: string length limit exceeded (67108864 bytes)",
+      "peakRssKb": 348880
+    },
+    {
+      "run": 4,
+      "wallMs": 131,
+      "execMs": 57,
+      "exitCode": 126,
+      "stderr": "bash: word expansion: string length limit exceeded (67108864 bytes)",
+      "peakRssKb": 349328
+    },
+    {
+      "run": 5,
+      "wallMs": 137,
+      "execMs": 62,
+      "exitCode": 126,
+      "stderr": "bash: word expansion: string length limit exceeded (67108864 bytes)",
+      "peakRssKb": 348880
+    }
+  ]
+}

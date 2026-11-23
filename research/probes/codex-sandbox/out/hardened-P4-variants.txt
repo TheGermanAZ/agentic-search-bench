@@ -1,0 +1,42 @@
+probe: P4 filesystem-deny variants (supplementary to hardened-P4)
+codex: ~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex
+
+--- no /etc deny (only :minimal, workspace, python keg readable) ---
+flags: "-c" "shell_environment_policy.inherit=\"core\"" "-c" "shell_environment_policy.ignore_default_excludes=false" "-c" "permissions.hardened.filesystem={\":minimal\"=\"read\",\":workspace_roots\"=\"read\",\"/opt/homebrew/Cellar/python@3.15/3.15.0_1\"=\"read\"}" "-c" "permissions.hardened.network.enabled=false" "-P" "hardened" "-C" "~/p/agentic-search-bench/research/probes/codex-sandbox/work"
+exit: 0
+stdout:
+##
+# Host Database
+#
+# localhost is used to configure the lo
+stderr:
+
+
+--- plain path deny "/etc"="deny", "/private/etc"="deny" ---
+flags: "-c" "shell_environment_policy.inherit=\"core\"" "-c" "shell_environment_policy.ignore_default_excludes=false" "-c" "permissions.hardened.filesystem={\":minimal\"=\"read\",\":workspace_roots\"=\"read\",\"/opt/homebrew/Cellar/python@3.15/3.15.0_1\"=\"read\",\"/etc\"=\"deny\",\"/private/etc\"=\"deny\"}" "-c" "permissions.hardened.network.enabled=false" "-P" "hardened" "-C" "~/p/agentic-search-bench/research/probes/codex-sandbox/work"
+exit: 0
+stdout:
+##
+# Host Database
+#
+# localhost is used to configure the lo
+stderr:
+
+
+--- glob deny "/etc/**"="deny", "/private/etc/**"="deny" (the hardened config) ---
+flags: "-c" "shell_environment_policy.inherit=\"core\"" "-c" "shell_environment_policy.ignore_default_excludes=false" "-c" "permissions.hardened.filesystem={\":minimal\"=\"read\",\":workspace_roots\"=\"read\",\"/opt/homebrew/Cellar/python@3.15/3.15.0_1\"=\"read\",\"/etc/**\"=\"deny\",\"/private/etc/**\"=\"deny\"}" "-c" "permissions.hardened.network.enabled=false" "-P" "hardened" "-C" "~/p/agentic-search-bench/research/probes/codex-sandbox/work"
+exit: 1
+stdout:
+
+stderr:
+head: /etc/hosts: Operation not permitted
+
+
+--- full-disk read ":root"="read" with plain path deny "/etc", "/private/etc" ---
+flags: "-c" "shell_environment_policy.inherit=\"core\"" "-c" "shell_environment_policy.ignore_default_excludes=false" "-c" "permissions.hardened.filesystem={\":root\"=\"read\",\"/etc\"=\"deny\",\"/private/etc\"=\"deny\"}" "-c" "permissions.hardened.network.enabled=false" "-P" "hardened" "-C" "~/p/agentic-search-bench/research/probes/codex-sandbox/work"
+exit: 1
+stdout:
+
+stderr:
+head: /etc/hosts: Operation not permitted
+

@@ -1,0 +1,205 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R1c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3190,
+  "peakTreeRssMb": 109,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R1c",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 2297,
+        "ms": 738,
+        "ok": true,
+        "result": [
+          "A done"
+        ],
+        "callsStarted": 2
+      },
+      "B": {
+        "label": "B(concurrent)",
+        "startMs": 2422,
+        "ms": 187,
+        "ok": true,
+        "result": [
+          "Type error in code:\nerror[unresolved-reference]: Name `leftC` used when not defined\n --> main.py:2:9\n  |\n1 | try:\n2 |     x = leftC\n  |         ^^^^^\n3 | except NameError:\n4 |     x = \"gone\"\n  |\n\n"
+        ],
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 96,
+    "totalMs": 3035
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      120,
+      25
+    ],
+    [
+      202,
+      32
+    ],
+    [
+      328,
+      34
+    ],
+    [
+      393,
+      40
+    ],
+    [
+      528,
+      40
+    ],
+    [
+      591,
+      41
+    ],
+    [
+      640,
+      43
+    ],
+    [
+      706,
+      46
+    ],
+    [
+      760,
+      49
+    ],
+    [
+      832,
+      50
+    ],
+    [
+      958,
+      52
+    ],
+    [
+      1107,
+      53
+    ],
+    [
+      1152,
+      55
+    ],
+    [
+      1235,
+      56
+    ],
+    [
+      1305,
+      56
+    ],
+    [
+      1373,
+      57
+    ],
+    [
+      1457,
+      59
+    ],
+    [
+      1524,
+      60
+    ],
+    [
+      1626,
+      60
+    ],
+    [
+      1689,
+      60
+    ],
+    [
+      1754,
+      60
+    ],
+    [
+      1814,
+      61
+    ],
+    [
+      1862,
+      62
+    ],
+    [
+      1982,
+      63
+    ],
+    [
+      2031,
+      65
+    ],
+    [
+      2101,
+      65
+    ],
+    [
+      2167,
+      67
+    ],
+    [
+      2337,
+      67
+    ],
+    [
+      2414,
+      74
+    ],
+    [
+      2530,
+      86
+    ],
+    [
+      2584,
+      101
+    ],
+    [
+      2682,
+      108
+    ],
+    [
+      2749,
+      108
+    ],
+    [
+      2798,
+      108
+    ],
+    [
+      2843,
+      108
+    ],
+    [
+      2919,
+      109
+    ],
+    [
+      2989,
+      109
+    ],
+    [
+      3047,
+      109
+    ],
+    [
+      3106,
+      109
+    ],
+    [
+      3188,
+      0
+    ]
+  ]
+}

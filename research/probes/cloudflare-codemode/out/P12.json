@@ -1,0 +1,110 @@
+{
+  "functionConstructor": {
+    "tool": {
+      "code": "const p = this.constructor.constructor(\"return process\")(); return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "tool",
+      "httpStatus": 200,
+      "wallMs": 4,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": false,
+          "thrown": "Code execution failed: Code generation from strings disallowed for this context"
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    },
+    "raw": {
+      "code": "const p = this.constructor.constructor(\"return process\")(); return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "raw",
+      "httpStatus": 200,
+      "wallMs": 3,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "error": "Code generation from strings disallowed for this context",
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    }
+  },
+  "sloppyThis": {
+    "tool": {
+      "code": "const p = (function(){return this})().process; return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "tool",
+      "httpStatus": 200,
+      "wallMs": 5,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": false,
+          "thrown": "Code execution failed: Cannot read properties of undefined (reading 'process')"
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    },
+    "raw": {
+      "code": "const p = (function(){return this})().process; return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "raw",
+      "httpStatus": 200,
+      "wallMs": 4,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "error": "Cannot read properties of undefined (reading 'process')",
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    }
+  },
+  "ambientProcess": {
+    "tool": {
+      "code": "const p = globalThis.process; return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "tool",
+      "httpStatus": 200,
+      "wallMs": 5,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": true,
+          "output": {
+            "result": {
+              "type": "object",
+              "platform": "linux",
+              "cwd": "cwd threw: p.cwd is not a function",
+              "envKeys": []
+            }
+          }
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    },
+    "raw": {
+      "code": "const p = globalThis.process; return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "raw",
+      "httpStatus": 200,
+      "wallMs": 4,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "result": {
+            "type": "object",
+            "platform": "linux",
+            "cwd": "cwd threw: p.cwd is not a function",
+            "envKeys": []
+          },
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    }
+  }
+}

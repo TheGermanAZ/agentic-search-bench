@@ -1,0 +1,63 @@
+{
+  "probe": "P12js",
+  "config": "default",
+  "codes": [
+    "import js\nprint('JSREAD ' + str(js.Deno.readTextFileSync('/etc/hosts'))[:60])",
+    "import js\nprint('JSENV ' + str(js.Deno.env.get('PROBE_SECRET')))",
+    "import js\nfrom pyodide.ffi import to_js\ncmd = js.Deno.Command.new('echo', to_js({'args': ['PWNED']}))\nprint('JSRUN ' + str(cmd.outputSync().code))",
+    "import js\nfrom pyodide.ffi import run_sync\nr = run_sync(js.fetch('https://example.com'))\nprint('JSFETCH ' + str(r.status))",
+    "import js\nprint('JSPERM ' + str(js.Deno.permissions.querySync(js.Object.fromEntries([['name', 'read'], ['path', '/etc/hosts']])).state))"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": "CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)",
+      "raised": true,
+      "ms": 563.8,
+      "started": 1795381983.625609
+    },
+    {
+      "ok": false,
+      "error": "CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)",
+      "raised": true,
+      "ms": 452.7,
+      "started": 1795381984.189769
+    },
+    {
+      "ok": false,
+      "error": "CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)",
+      "raised": true,
+      "ms": 549.8,
+      "started": 1795381984.642754
+    },
+    {
+      "ok": false,
+      "error": "CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)",
+      "raised": true,
+      "ms": 570.0,
+      "started": 1795381985.192873
+    },
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nJSPERM prompt\n\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\nJSPERM prompt\n\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        14,
+        25
+      ],
+      "answer": "done",
+      "ms": 524.0,
+      "started": 1795381985.763335
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 3.24,
+  "peak_tree_rss_gb": 0.495,
+  "calls": [],
+  "child_log_tail": ""
+}

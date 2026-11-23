@@ -1,0 +1,105 @@
+{
+  "sem-30": {
+    "Lawsuit only (damages), not injunctive relief": true,
+    "Lawsuit only, not injunctive relief": true,
+    "Lawsuit only, not injunctive relief (i.e., a damages-type suit rather than an injunction)": true,
+    "Lawsuit only (monetary relief), not injunctive relief": true
+  },
+  "sem-31": {
+    "Madras (Chennai)": true,
+    "Delhi (unsupported guess)": false,
+    "Unknown (best guess: Mumbai, low confidence)": false,
+    "Madras": true
+  },
+  "sem-26": {
+    "tana.jones@enron.com": true,
+    "sara.shackleton@enron.com": false
+  },
+  "sem-32": {
+    "Next week (the week after April 5, 2001, i.e., the week of April 9)": true,
+    "April 13, 2001": false,
+    "Next week (the week of April 9, 2001)": true,
+    "Next week (the week after her April 5, 2001 email)": true,
+    "Next week (the week of April 9, 2001), per her April 5, 2001 email.": true,
+    "The week after April 5, 2001 (i.e., \"next week,\" roughly April 9–13, 2001)": true
+  },
+  "sem-27": {
+    "The air/water lines (plumbing)": true,
+    "The air/water lines": true,
+    "The air/water lines (plumbing) of the spa": true,
+    "The air/water lines (plumbing lines) of the spa": true,
+    "The air/water lines (the spa's plumbing)": true,
+    "Air/water lines": true,
+    "air/water lines": true
+  },
+  "sem-28": {
+    "alove@talisman-energy.com": true
+  },
+  "sem-35": {
+    "500": true,
+    "5:00 PM": true,
+    "5:00 (500)": true,
+    "5:00 (written \"500\")": true,
+    "5:00 (written as \"500\")": true,
+    "5:00": true
+  },
+  "sem-34": {
+    "Only transactions entered into by entities that are the subject of the Central Bank regulations; she thought the revisions would not otherwise impact the matrix.": true,
+    "Only transactions entered into by entities that are the subject of the Central Bank regulations (the revisions would not otherwise affect the matrix)": true,
+    "Nothing in the matrix, except transactions entered into by entities that are the subject of the Central Bank regulations.": true,
+    "She believed the Central Bank revisions would not affect the matrix, except for transactions entered into by entities that are the subject of the Central Bank regulations.": true,
+    "Only transactions entered into by entities that are subject to the Central Bank regulations; otherwise the revisions would not impact the matrix.": true,
+    "Only transactions entered into by entities that are themselves subject to the Central Bank regulations; she believed the revisions would not otherwise affect the matrix.": true,
+    "Only transactions entered into by entities that are subject to the Central Bank regulations; otherwise the matrix would not be affected.": true,
+    "The Central Bank revisions would not impact the matrix except with respect to transactions entered into by entities that are the subject of the Central Bank regulations.": true
+  },
+  "sem-29": {
+    "Print them out for him instead of sending them by e-mail": true,
+    "Print them out for him instead of sending them by e-mail.": true,
+    "Print the calendars out for him instead of sending them by e-mail.": true,
+    "He asked that the calendars be printed out for him instead of being sent by e-mail.": true,
+    "Printed out for him instead of sent by e-mail": true,
+    "": false,
+    "Printed out (hard copy) instead of sent by e-mail": true,
+    "Print the calendars out for him rather than sending them by e-mail": true
+  },
+  "sem-36": {
+    "Mark Palmer signed for Enron Corp. and Ken Price signed for ERI. Both are only the named signature blanks on an unexecuted draft.": true,
+    "Mark Palmer was the Enron Corp. signatory, and Ken Price was the signatory for ERI.": true,
+    "Not determinable from the retrieved messages (best guess for ERI signatory: Diane Nielsen)": false,
+    "Mark Palmer signed for Enron Corp. and Ken Price for ERI (source email from britt.davis@enron.com)": true,
+    "Not found in the retrieved messages. Best guess: Diane Nielsen signed for ERI (no email address for her appears in the retrieved messages, and the Enron signatory is unknown).": false,
+    "Mark Palmer (Enron Corp.) was the Enron signatory; Ken Price signed for ERI": true,
+    "Enron signatory: Mark Palmer (Corp.); ERI signatory: Ken Price (signature block only; the draft was unexecuted)": true,
+    "Mark Palmer (Enron Corp. signatory); Ken Price was the designated ERI signatory, but the draft was never executed": true
+  },
+  "sem-39": {
+    "7/1/2001": true,
+    "7/1/2001 (July 1, 2001)": true,
+    "7/1/2001 (lkp.datevalue > '7/1/2001')": true,
+    "'7/1/2001' (condition: lkp.datevalue > '7/1/2001')": true
+  },
+  "sem-37": {
+    "$250": true
+  },
+  "sem-38": {
+    "Power Merchant agreement": true,
+    "The Power merchant agreement": true,
+    "Power merchant agreement": true,
+    "Power Merchants Group agreement (the \"Power merchant agreement\")": true,
+    "The Power merchant agreement (Power Merchants Group agreement)": true
+  },
+  "sem-40": {
+    "$100 per MWh, replacing the $250 per MWh cap": true,
+    "$100/MWh, replacing the $250/MWh cap": true,
+    "$100 per megawatt-hour, replacing the $250/MWh cap": true,
+    "$100/MWh (replacing the $250/MWh cap)": true,
+    "$100 per MWh (replacing the $250/MWh cap)": true
+  },
+  "sem-33": {
+    "The 25th day following the service month": true,
+    "25th day following the service month": true,
+    "The twenty-fifth (25th) day following the service month": true,
+    "twenty-fifth (25th) day following the service month": true
+  }
+}

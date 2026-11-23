@@ -1,0 +1,24 @@
+{
+  "impl": "vercel-run",
+  "probe": "P12b",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return String((function(){return this})().process);"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "status": "completed",
+      "value": "undefined",
+      "wallMs": 82.641209,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": "undefined",
+    "ms": 83,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 132.9
+}

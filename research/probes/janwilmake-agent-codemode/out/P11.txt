@@ -1,0 +1,27 @@
+{
+  "note": "each run is a fresh tsx process; there is no separate setup step",
+  "timesMs": [
+    258,
+    174,
+    173,
+    159,
+    143,
+    150,
+    150,
+    155,
+    158,
+    158,
+    158,
+    158,
+    154,
+    201,
+    234,
+    250,
+    189,
+    218,
+    187,
+    201
+  ],
+  "medianMs": 173,
+  "p90Ms": 250
+}

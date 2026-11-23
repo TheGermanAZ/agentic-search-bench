@@ -1,0 +1,158 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs hardened R8b",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 3270,
+  "peakTreeRssMb": 137,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 3200,
+    "rssMb": 107
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "hardened",
+    "test": "R8b",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, 10000, 64)",
+    "data": {
+      "startMs": 36,
+      "ms": 47,
+      "ok": true,
+      "result": {
+        "value": {
+          "result": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy…[20971520 chars]…yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+          "logs": []
+        },
+        "stringChars": 20971520
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 17,
+    "hostEvents": [],
+    "totalMs": 83
+  },
+  "childStdoutOtherChars": 435,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      170,
+      48
+    ],
+    [
+      268,
+      137
+    ],
+    [
+      612,
+      137
+    ],
+    [
+      711,
+      134
+    ],
+    [
+      824,
+      107
+    ],
+    [
+      917,
+      107
+    ],
+    [
+      1022,
+      107
+    ],
+    [
+      1089,
+      107
+    ],
+    [
+      1164,
+      107
+    ],
+    [
+      1310,
+      107
+    ],
+    [
+      1433,
+      107
+    ],
+    [
+      1588,
+      107
+    ],
+    [
+      1700,
+      107
+    ],
+    [
+      1818,
+      107
+    ],
+    [
+      2027,
+      107
+    ],
+    [
+      2099,
+      107
+    ],
+    [
+      2166,
+      107
+    ],
+    [
+      2230,
+      107
+    ],
+    [
+      2324,
+      107
+    ],
+    [
+      2401,
+      107
+    ],
+    [
+      2503,
+      107
+    ],
+    [
+      2578,
+      107
+    ],
+    [
+      2650,
+      107
+    ],
+    [
+      2735,
+      107
+    ],
+    [
+      2827,
+      107
+    ],
+    [
+      3096,
+      107
+    ],
+    [
+      3200,
+      107
+    ],
+    [
+      3269,
+      0
+    ]
+  ]
+}

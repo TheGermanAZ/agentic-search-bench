@@ -1,0 +1,40 @@
+{
+  "impl": "pi-codemode",
+  "config": "hardened",
+  "probe": "P5",
+  "options": {
+    "timeoutMs": 30000,
+    "memoryLimitBytes": 33554432
+  },
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "return process.env.PROBE_SECRET",
+      "ms": 62,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "script",
+        "name": "ReferenceError",
+        "message": "process is not defined",
+        "stack": "ReferenceError: process is not defined\n    at <anonymous> (codemode.js:1:36)"
+      }
+    },
+    {
+      "code": "return typeof process + \"/\" + JSON.stringify(Object.getOwnPropertyNames(globalThis))",
+      "ms": 50,
+      "hostCalls": 0,
+      "ok": true,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "value": "undefined/[\"Object\",\"Function\",\"Error\",\"EvalError\",\"RangeError\",\"ReferenceError\",\"SyntaxError\",\"TypeError\",\"URIError\",\"InternalError\",\"AggregateError\",\"SuppressedError\",\"Iterator\",\"Array\",\"parseInt\",\"parseFloat\",\"isNaN\",\"isFinite\",\"queueMicrotask\",\"decodeURI\",\"decodeURIComponent\",\"encodeURI\",\"encodeURIComponent\",\"escape\",\"unescape\",\"Infinity\",\"NaN\",\"undefined\",\"eval\",\"Number\",\"Boolean\",\"String\",\"Math\",\"Reflect\",\"Symbol\",\"DisposableStack\",\"globalThis\",\"BigInt\",\"Date\",\"RegExp\",\"JSON\",\"Proxy\",\"Map\",\"Set\",\"WeakMap\",\"WeakSet\",\"ArrayBuffer\",\"SharedArrayBuffer\",\"Uint8ClampedArray\",\"Int8Array\",\"Uint8Array\",\"Int16Array\",\"Uint16Array\",\"Int32Array\",\"Uint32Array\",\"BigInt64Array\",\"BigUint64Array\",\"Float16Array\",\"Float32Array\",\"Float64Array\",\"DataView\",\"Promise\",\"AsyncDisposableStack\",\"WeakRef\",\"FinalizationRegistry\",\"DOMException\",\"btoa\",\"atob\",\"performance\",\"store\",\"load\",\"tools\",\"ALL_TOOLS\",\"console\",\"text\",\"image\",\"exit\"]"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "hardened", "P5"], "exit_code": 0, "wall_ms": 222, "peak_tree_rss_mb": 98.2, "watch_kill": null}

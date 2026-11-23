@@ -1,0 +1,7 @@
+{
+  "probe": "P8",
+  "outcome": "works",
+  "display": "persists",
+  "detail": "execution 2 printed '7 Out[2]: 7'",
+  "evidence": "research/probes/agno-codemode/out/P8.txt"
+}

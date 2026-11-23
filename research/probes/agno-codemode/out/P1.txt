@@ -1,0 +1,29 @@
+probe: P1
+outcome: works
+display: works (42, 1 call)
+detail: 42 in printed stdout: True; 42 in returned value: False; output '42 Out[1]: 42'; host lookup calls: 1
+
+code:
+----
+r = await lookup(id=21)
+msg = r["value"]
+print(msg)
+msg
+----
+
+setup_ms: 0.5
+wall_s (whole child process): 5.9
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.18
+host lookup calls: 1
+  call id=21 start=1795382332.615 end=1795382332.816 pid=99679
+
+=== run 0 (3469.1 ms) ===
+ok: true
+stdout: 42
+Out[1]: 42
+
+=== child process log (tail) ===
+WARNING CodeMode runs arbitrary Python and shell with the permissions of this process. It is not a sandbox: provide human supervision or run the agent in an isolated container.
+

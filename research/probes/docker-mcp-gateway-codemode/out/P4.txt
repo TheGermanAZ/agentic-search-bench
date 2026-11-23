@@ -1,0 +1,18 @@
+--- code 1 ---
+return require("fs").readFileSync("/etc/hosts","utf8")
+--- result 1 ---
+{"ms":4,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (78 chars):
+Error running script: ReferenceError: require is not defined at <eval>:2:15(3)
+--- code 2 ---
+return String(import("fs"))
+--- result 2 ---
+{"ms":2,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (115 chars):
+Error running script: SyntaxError: SyntaxError: (anonymous): Line 2:15 Unexpected reserved word (and 4 more errors)
+--- code 3 ---
+return typeof Deno === "undefined" ? "Deno undefined" : String(Deno.readTextFileSync("/etc/hosts"))
+--- result 3 ---
+{"ms":7,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (14 chars):
+Deno undefined

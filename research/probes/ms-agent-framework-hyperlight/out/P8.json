@@ -1,0 +1,7 @@
+{
+  "probe": "P8",
+  "outcome": "fresh",
+  "detail": "second execution printed 'gone'",
+  "display": "fresh",
+  "config": "default"
+}

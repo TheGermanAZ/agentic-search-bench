@@ -1,0 +1,16 @@
+probe: P7 (codex code-mode host, V8)
+host: codex-code-mode-host codex 0.169.0
+handshake: {"type": "connection/ready", "selectedVersion": 1, "capabilities": ["bounded-output-v1", "delegate-capacity-4096", "session-cell-execution-resource-limits", "yield-observation"]}
+session/open: {"type": "operation/response", "id": 1, "result": {"status": "ok", "value": {"type": "session/ready", "sessionId": "s1"}}}
+setup_ms (spawn + handshake): 61.5
+wall_ms: 9255.0
+peak_rss_mb: 1491.9
+killed: None
+
+--- execution 0 ---
+source:
+const a = []; while (true) a.push("x".repeat(1e6) + a.length);
+elapsed_ms: 9191.43
+host_calls: 0
+initial response:
+null

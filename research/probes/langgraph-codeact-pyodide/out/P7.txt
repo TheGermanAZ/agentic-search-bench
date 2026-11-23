@@ -1,0 +1,28 @@
+probe: P7
+outcome: limited
+display: limited (wasm32 ceiling, 3.6 GB)
+detail: stopped after 1.74 s, peak tree RSS 3.607 GB: Error during execution:
+
+code:
+----
+a = []
+while True:
+    a.append("x" * 10**6)
+----
+
+setup_ms: 15.3
+wall_s (whole child process): 2.01
+killed: None
+child exit code: 0
+peak tree RSS GB: 3.607
+host lookup calls: 0
+
+=== run 0 (1735.0 ms) ===
+ok: false
+stdout: Error during execution: 
+error: Error during execution: 
+context_keys: []
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

@@ -1,0 +1,54 @@
+[
+  {
+    "probe": "P1-spec",
+    "code": "const r = await lookup.lookup({id: 21}); console.log(r.value)",
+    "args_extra": {},
+    "wall_ms": 204,
+    "host_calls": 1,
+    "isError": false,
+    "response_text": "null",
+    "response_text_length": 4,
+    "console_on_proxy_stderr": [
+      "[js] LOG: "
+    ],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P1-shape",
+    "code": "const r = await lookup.lookup({id: 21}); console.log(JSON.stringify(r)); return r",
+    "args_extra": {},
+    "wall_ms": 206,
+    "host_calls": 1,
+    "isError": false,
+    "response_text": "{\n  \"content\": [\n    {\n      \"text\": \"{\\\"id\\\":21,\\\"value\\\":42}\",\n      \"type\": \"text\"\n    }\n  ]\n}",
+    "response_text_length": 97,
+    "console_on_proxy_stderr": [
+      "[js] LOG: {\"content\":[{\"type\":\"text\",\"text\":\"{\\\"id\\\":21,\\\"value\\\":42}\"}]}"
+    ],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  },
+  {
+    "probe": "P1-unwrapped",
+    "code": "const r = await lookup.lookup({id: 21}); return JSON.parse(r.content[0].text).value",
+    "args_extra": {},
+    "wall_ms": 207,
+    "host_calls": 1,
+    "isError": false,
+    "response_text": "42",
+    "response_text_length": 2,
+    "console_on_proxy_stderr": [],
+    "raw_flags": {
+      "harnessTimeout": false,
+      "transportClosed": false,
+      "rpcError": null
+    }
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "probe": "Pclock",
+  "config": "default",
+  "codes": [
+    "import time\nprint(time.time())"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 1, in <module>\n    import time\nModuleNotFoundError: No module named 'time'",
+      "ms": 16.2,
+      "started": 1795381222.439756
+    }
+  ],
+  "setup_ms": 483.3,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.12,
+  "peak_tree_rss_gb": 0.093,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

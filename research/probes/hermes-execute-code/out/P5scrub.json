@@ -1,0 +1,7 @@
+{
+  "probe": "P5scrub",
+  "outcome": "works",
+  "display": "leaks (PATH* var; parent env via ps)",
+  "detail": "PATHFINDER_DB_URL reached the kernel (printed redacted as postgres://probe:***@db.invalid/x in the output the model sees); PROBE_PLAIN_VALUE dropped; ps -E -ww -p <ppid> showed PROBE_SECRET=s3cr3t in the parent's environment (2,598 chars).",
+  "evidence": "research/probes/hermes-execute-code/out/P5scrub.txt"
+}

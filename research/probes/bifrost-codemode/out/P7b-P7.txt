@@ -1,0 +1,64 @@
+--- code 1 ---
+a = [None] * 100000000
+result = len(a)
+--- result 1 ---
+{"ms":5,"hostCalls":0,"peakRssMB":277,"ok":true,"isError":true}
+text (364 chars):
+Execution runtime error:
+
+Traceback (most recent call last):
+  code.star:1:12: in <toplevel>
+Error: code mode resource limit: too many steps
+
+Hints:
+Check the error message above for details.
+Available server keys: probe
+Use: result = server_name.tool_name(param="value")
+Access dict values with brackets: result["key"]
+
+Environment:
+  Available server keys: probe
+--- code 2 ---
+s = "x"
+for i in range(40):
+    s = s + s
+result = len(s)
+--- result 2 ---
+{"ms":2,"hostCalls":0,"peakRssMB":277,"ok":true,"isError":true}
+text (364 chars):
+Execution runtime error:
+
+Traceback (most recent call last):
+  code.star:3:11: in <toplevel>
+Error: code mode resource limit: too many steps
+
+Hints:
+Check the error message above for details.
+Available server keys: probe
+Use: result = server_name.tool_name(param="value")
+Access dict values with brackets: result["key"]
+
+Environment:
+  Available server keys: probe
+--- code 3 ---
+d = {}
+for i in range(10000000):
+    d[i] = i
+result = len(d)
+--- result 3 ---
+{"ms":39,"hostCalls":0,"peakRssMB":278,"ok":true,"isError":true}
+text (363 chars):
+Execution runtime error:
+
+Traceback (most recent call last):
+  code.star:3:7: in <toplevel>
+Error: code mode resource limit: too many steps
+
+Hints:
+Check the error message above for details.
+Available server keys: probe
+Use: result = server_name.tool_name(param="value")
+Access dict values with brackets: result["key"]
+
+Environment:
+  Available server keys: probe

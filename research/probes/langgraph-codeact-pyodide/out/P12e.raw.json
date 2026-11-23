@@ -1,0 +1,28 @@
+{
+  "probe": "P12e",
+  "config": "default",
+  "codes": [
+    "import js\nprint('DENO', js.Deno.version.deno, js.Deno.pid)"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "DENO 2.9.8 44570",
+      "error": null,
+      "context_keys": [
+        "js"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1140.2,
+      "started": 1795377459.269589
+    }
+  ],
+  "setup_ms": 16.1,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.53,
+  "peak_tree_rss_gb": 0.295,
+  "calls": [],
+  "child_log_tail": ""
+}

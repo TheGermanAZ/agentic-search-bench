@@ -1,0 +1,7 @@
+{
+  "probe": "P9",
+  "outcome": "works",
+  "display": "serial (1,026 ms)",
+  "detail": "5 host calls spanning 1026 ms host-side (first start to last end); execution wall 1235.4 ms; output '30'",
+  "evidence": "research/probes/hermes-execute-code/out/P9.txt"
+}

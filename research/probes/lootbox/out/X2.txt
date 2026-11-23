@@ -1,0 +1,10 @@
+code:
+const ws = new WebSocket("ws://localhost:41310/ws"); await new Promise(r => ws.onopen = r); ws.send(JSON.stringify({script: "console.log('nested run')", id: "n1"})); const m = await new Promise(r => ws.onmessage = e => { const d = JSON.parse(e.data); if (d.id === "n1") r(d) }); console.log(JSON.stringify(m)); ws.close()
+
+result:
+{
+  "id": "14909211-c587-4029-b2aa-7205c42bdcde",
+  "result": "{\"id\":\"n1\",\"result\":\"nested run\\n\"}\n",
+  "ms": 1710,
+  "hostCalls": 0
+}

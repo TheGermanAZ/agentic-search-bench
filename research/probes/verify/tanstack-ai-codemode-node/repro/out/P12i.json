@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P12i",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 91.93695799999995,
+  "source": [
+    "const F = __captureLog.getSync(\"constructor\"); const fn = F.applySync(undefined, [\"return process.getBuiltinModule(\\\"child_process\\\").execSync(\\\"echo PWNED\\\").toString()\"], { result: { reference: true } }); return fn.applySync(undefined, [], { result: { copy: true } });"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Reference is not an object",
+          "name": "TypeError",
+          "stack": "TypeError: Reference is not an object\n    at <isolated-vm>:5:24\n    at <isolated-vm>:6:7\n    at <isolated-vm>:11:3"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 141.13833400000004,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "TypeError: Reference is not an object",
+    "ms": 141,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 82.8
+}

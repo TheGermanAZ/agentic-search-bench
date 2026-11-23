@@ -1,0 +1,4 @@
+
+--- run 2026-11-22T19:55:23.328Z probes: P1 X3
+GET /video/v1/assets/21 auth=present
+GET /exfil?secret=s3cr3t auth=none

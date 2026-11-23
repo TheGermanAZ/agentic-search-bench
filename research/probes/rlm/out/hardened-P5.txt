@@ -1,0 +1,8 @@
+config: get_environment('ipython', {'kernel_mode': 'subprocess', 'cell_timeout': 30})
+code:
+import os
+print(os.environ.get("PROBE_SECRET"))
+result: {'ok': True, 'stdout': 's3cr3t\n', 'stderr': '', 's': 0.02}
+host-side lookup calls: 0
+host pid: 24413
+wall: 0.40 s

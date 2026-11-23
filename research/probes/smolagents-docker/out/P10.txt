@@ -1,0 +1,20 @@
+config: {"port": 41940, "image_name": "smolagents-docker-jupyter-kernel", "container_run_kwargs": {"name": "smolagents-docker-p10"}}
+code:
+raise ValueError("probe-boom")
+
+{
+  "probe": "P10",
+  "hardened": false,
+  "harness_wall_s": 2.5,
+  "peak_container_mem_mib": 0,
+  "raw": {
+    "setup_ms": 1515,
+    "result": {
+      "ok": false,
+      "error": "AgentError: \u001b[31m---------------------------------------------------------------------------\u001b[39m\n\u001b[31mValueError\u001b[39m                                Traceback (most recent call last)\n\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[2]\u001b[39m\u001b[32m, line 1\u001b[39m\n\u001b[32m----> \u001b[39m\u001b[32m1\u001b[39m \u001b[38;5;28;01mraise\u001b[39;00m ValueError(\u001b[33m\"probe-boom\"\u001b[39m)\n\n\u001b[31mValueError\u001b[39m: probe-boom",
+      "ms": 28.8
+    },
+    "wall_s": 1.93
+  },
+  "child_tail": "\\x1b[31m------------------------------------------------------------------------\n---\\x1b[39m\n\\x1b[31mValueError\\x1b[39m                                Traceback (most recent\ncall last)\n\\x1b[36mCell\\x1b[39m\\x1b[36m \\x1b[39m\\x1b[32mIn[2]\\x1b[39m\\x1b[32m, line \n1\\x1b[39m\n\\x1b[32m----> \\x1b[39m\\x1b[32m1\\x1b[39m \\x1b[38;5;28;01mraise\\x1b[39;00m \nValueError(\\x1b[33m\"probe-boom\"\\x1b[39m)\n\n\\x1b[31mValueError\\x1b[39m: probe-boom\nCode execution failed: \n\\x1b[31m------------------------------------------------------------------------\n---\\x1b[39m\n\\x1b[31mValueError\\x1b[39m                                Traceback (most recent\ncall last)\n\\x1b[36mCell\\x1b[39m\\x1b[36m \\x1b[39m\\x1b[32mIn[2]\\x1b[39m\\x1b[32m, line \n1\\x1b[39m\n\\x1b[32m----> \\x1b[39m\\x1b[32m1\\x1b[39m \\x1b[38;5;28;01mraise\\x1b[39;00m \nValueError(\\x1b[33m\"probe-boom\"\\x1b[39m)\n\n\\x1b[31mValueError\\x1b[39m: probe-boom\n"
+}

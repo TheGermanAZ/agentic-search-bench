@@ -1,0 +1,48 @@
+probe: P10
+outcome: works
+display: message, no line
+detail: message survives: True; 'line 2' present: False; text: "Error calling tool 'execute': ValueError: probe-boom"
+
+code:
+----
+x = 1
+raise ValueError("probe-boom")
+----
+
+setup_ms: 24.1
+wall_s (whole child process): 0.62
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.087
+host lookup calls: 0
+
+=== run 0 (40.5 ms) ===
+ok: false
+structured: null
+stdout: 
+error: Error calling tool 'execute': ValueError: probe-boom
+
+=== child process log (tail) ===
+[11/22/26 15:24:05] Error calling tool 'execute'                                
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/server/server.py:1673 in call_tool                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/tools/base.py:555 in _run                           │
+                    │                                                          │
+                    │                 ... 7 frames hidden ...                  │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │
+                    │                                                          │
+                    │ ~/p/agentic-search-bench/research/impls │
+                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │
+                    │ tmcp/experimental/transforms/code_mode.py:309 in         │
+                    │ _run_monty                                               │
+                    ╰──────────────────────────────────────────────────────────╯
+                    MontyRuntimeError: ValueError: probe-boom                   
+

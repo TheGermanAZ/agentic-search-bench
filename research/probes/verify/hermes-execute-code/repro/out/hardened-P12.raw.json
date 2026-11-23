@@ -1,0 +1,49 @@
+{
+  "probe": "P12",
+  "config": "hardened",
+  "codes": [
+    "subs = ().__class__.__base__.__subclasses__()\nnames = [c.__name__ for c in subs]\nmsg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)\nprint(msg)\nmsg",
+    "msg = \"SYSTEM \" + str(__import__(\"os\").system(\"echo PWNED\"))\nprint(msg)\nmsg",
+    "wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']\nmsg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "SUBS 240 True False\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"SUBS 240 True False\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 1.28, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 20, \"stdout_bytes_total\": 20, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 0,
+      "model_sees_len": 280,
+      "ms": 2631.9,
+      "started": 1795384491.208406
+    },
+    {
+      "ok": true,
+      "stdout": "SYSTEM 0\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"SYSTEM 0\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 0.65, \"kernel\": {\"reused\": true, \"remote\": true, \"execution_count\": 2}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 9, \"stdout_bytes_total\": 9, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 0,
+      "model_sees_len": 266,
+      "ms": 655.2,
+      "started": 1795384493.840578
+    },
+    {
+      "ok": true,
+      "stdout": "WRAP PWNED2\n\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"WRAP PWNED2\\n\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 0.97, \"kernel\": {\"reused\": true, \"remote\": true, \"execution_count\": 3}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 13, \"stdout_bytes_total\": 13, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 0,
+      "model_sees_len": 273,
+      "ms": 975.8,
+      "started": 1795384494.4960158
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 5.01,
+  "peak_tree_rss_gb": 0.213,
+  "calls": [],
+  "child_log_tail": ""
+}

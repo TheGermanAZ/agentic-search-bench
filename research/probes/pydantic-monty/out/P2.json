@@ -1,0 +1,1 @@
+{"id": "P2", "outcome": "works", "detail": "return value came back as 'RETURNED'; print() arrived only via print_callback: 200001 chars, 200000 of them 'A', truncation marker: False. Return value and print output are separate channels.", "error": null}

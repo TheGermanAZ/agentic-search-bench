@@ -1,0 +1,183 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py hardened R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1508,
+  "peakTreeRssMb": 108,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9b",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode({'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})]); agent.run() per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 557,
+          "ms": 101,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 3, in <module>\n    a.append(\"x\" * 10**6)\n             ~~~~~~~~~~~\nMemoryError: memory limit exceeded: 10302147 bytes > 10000000 bytes\n\nThe sandbox ran out of memory and the session was reset. Re-run any imports, recreate any state you need, and use less memory: process smaller batches, avoid large intermediate values, and print less output."
+          ],
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 708,
+        "ms": 230,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 227,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1228,
+        "ms": 229,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 4,
+    "totalMs": 1457
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      80,
+      30
+    ],
+    [
+      128,
+      36
+    ],
+    [
+      183,
+      41
+    ],
+    [
+      232,
+      46
+    ],
+    [
+      282,
+      49
+    ],
+    [
+      333,
+      53
+    ],
+    [
+      383,
+      56
+    ],
+    [
+      434,
+      59
+    ],
+    [
+      486,
+      62
+    ],
+    [
+      536,
+      66
+    ],
+    [
+      586,
+      70
+    ],
+    [
+      635,
+      77
+    ],
+    [
+      689,
+      101
+    ],
+    [
+      738,
+      79
+    ],
+    [
+      789,
+      95
+    ],
+    [
+      839,
+      108
+    ],
+    [
+      890,
+      108
+    ],
+    [
+      938,
+      108
+    ],
+    [
+      988,
+      108
+    ],
+    [
+      1040,
+      80
+    ],
+    [
+      1091,
+      108
+    ],
+    [
+      1148,
+      108
+    ],
+    [
+      1199,
+      108
+    ],
+    [
+      1246,
+      108
+    ],
+    [
+      1298,
+      80
+    ],
+    [
+      1347,
+      108
+    ],
+    [
+      1399,
+      108
+    ],
+    [
+      1448,
+      108
+    ],
+    [
+      1500,
+      108
+    ]
+  ]
+}

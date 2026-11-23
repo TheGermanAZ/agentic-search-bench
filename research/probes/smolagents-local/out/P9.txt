@@ -1,0 +1,10 @@
+probe: P9
+code (python, run through LocalPythonExecutor):
+import time
+t = time.time()
+rs = [lookup(id=i) for i in [1, 2, 3, 4, 5]]
+print(int((time.time() - t) * 1000))
+print(sum(r['value'] for r in rs))
+host_calls_so_far: 5
+result: {'ok': True, 'output': 'None', 'logs': '1030\n30\n', 'is_final_answer': False, 'ms': 1031.1}
+host calls: 5

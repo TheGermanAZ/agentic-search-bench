@@ -1,0 +1,72 @@
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P6",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 41.796291,
+  "source": [
+    "while (true) {}"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 102,
+    "siblingEndMs": 307,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Script execution timed out.",
+          "name": "Error",
+          "stack": "Error: Script execution timed out.\n    at <isolated-vm>:5:1\n    at (<isolated-vm boundary>)\n    at execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:35:73)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 30017.259167,
+      "hostCalls": 1
+    }
+  ],
+  "concurrentSiblingRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 204.53825,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 205.8691669999971,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 102,
+    "siblingEndMs": 307,
+    "main": "Error: Script execution timed out.",
+    "ms": 30017,
+    "sibling": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    },
+    "siblingMs": 205,
+    "after": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    }
+  },
+  "hostRssAfterMB": 56.3
+}

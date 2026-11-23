@@ -1,0 +1,197 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3132,
+  "peakTreeRssMb": 110,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R2a",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "label": "",
+      "startMs": 2393,
+      "ms": 499,
+      "ok": true,
+      "result": [
+        "['dict', \"threw AttributeError: 'dict' object has no attribute '__class__'\", \"threw AttributeError: type object 'dict' has no attribute '__subclasses__'\", \"threw AttributeError: 'dict' object has no attribute '__class__'\"]"
+      ],
+      "callsStarted": 1
+    },
+    "hostMaxEventLoopLagMs": 78,
+    "totalMs": 2892
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      134,
+      25
+    ],
+    [
+      271,
+      26
+    ],
+    [
+      343,
+      36
+    ],
+    [
+      425,
+      39
+    ],
+    [
+      471,
+      39
+    ],
+    [
+      539,
+      39
+    ],
+    [
+      590,
+      39
+    ],
+    [
+      708,
+      39
+    ],
+    [
+      762,
+      43
+    ],
+    [
+      837,
+      43
+    ],
+    [
+      950,
+      47
+    ],
+    [
+      1019,
+      50
+    ],
+    [
+      1134,
+      50
+    ],
+    [
+      1210,
+      52
+    ],
+    [
+      1291,
+      52
+    ],
+    [
+      1355,
+      53
+    ],
+    [
+      1414,
+      54
+    ],
+    [
+      1463,
+      56
+    ],
+    [
+      1539,
+      56
+    ],
+    [
+      1581,
+      56
+    ],
+    [
+      1670,
+      56
+    ],
+    [
+      1711,
+      56
+    ],
+    [
+      1815,
+      59
+    ],
+    [
+      1933,
+      64
+    ],
+    [
+      1983,
+      66
+    ],
+    [
+      2033,
+      66
+    ],
+    [
+      2139,
+      66
+    ],
+    [
+      2191,
+      67
+    ],
+    [
+      2240,
+      67
+    ],
+    [
+      2283,
+      67
+    ],
+    [
+      2335,
+      70
+    ],
+    [
+      2420,
+      71
+    ],
+    [
+      2482,
+      71
+    ],
+    [
+      2554,
+      71
+    ],
+    [
+      2667,
+      77
+    ],
+    [
+      2722,
+      77
+    ],
+    [
+      2809,
+      77
+    ],
+    [
+      2890,
+      110
+    ],
+    [
+      2990,
+      110
+    ],
+    [
+      3035,
+      110
+    ],
+    [
+      3131,
+      0
+    ]
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../tanstack-ai-codemode-node/adapter.mjs hardened R2b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 287,
+  "peakTreeRssMb": 123,
+  "watchKill": null,
+  "record": {
+    "impl": "tanstack-ai-codemode-node",
+    "config": "hardened",
+    "test": "R2b",
+    "notes": "one createCodeModeTool({driver: node}) shared; execute({typescriptCode}) as chat() calls it",
+    "data": {
+      "startMs": 230,
+      "ms": 10,
+      "ok": true,
+      "result": {
+        "value": {
+          "success": true,
+          "result": {
+            "type": "object",
+            "name": "Error",
+            "msg": "host-tool-boom internal detail db=postgres://user:pw@host",
+            "stack": "Error: host-tool-boom internal detail db=postgres://user:pw@host\n    at external_failing (<isolated-vm>:9:21)\n    at async <isolated-vm>:5:14\n    at async <isolated-vm>:4:26",
+            "own": [
+              "stack",
+              "message"
+            ],
+            "esc": "undefined"
+          },
+          "logs": []
+        },
+        "stringChars": 262
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 215,
+    "hostEvents": [],
+    "totalMs": 241
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      86,
+      50
+    ],
+    [
+      133,
+      59
+    ],
+    [
+      183,
+      68
+    ],
+    [
+      236,
+      73
+    ],
+    [
+      286,
+      123
+    ]
+  ]
+}

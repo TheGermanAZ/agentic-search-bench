@@ -1,0 +1,27 @@
+{
+  "probe": "P9t",
+  "config": "default",
+  "codes": [
+    "from hermes_tools import terminal\nimport time\nt = time.time()\nfor i in range(5):\n    terminal('sleep 0.2')\nprint(round((time.time() - t) * 1000))"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "1502\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"1502\\n\", \"exit_code\": 0, \"tool_calls_made\": 5, \"duration_seconds\": 1.55, \"kernel\": {\"mode\": \"session\", \"reused\": false, \"execution_count\": 1, \"state_reset\": false}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 5, \"stdout_bytes_total\": 5, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 5,
+      "model_sees_len": 304,
+      "ms": 1557.4,
+      "started": 1795382855.259218
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.35,
+  "peak_tree_rss_gb": 0.17,
+  "calls": [],
+  "child_log_tail": ""
+}

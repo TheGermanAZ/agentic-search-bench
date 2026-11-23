@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Runs every probe for this folder's driver: default config, then the hardened config.
+# RUNTIME is node, except bun for the quickjs-bun driver. P7 runs under the machine-wide memory lock.
+set -u
+cd "$(dirname "$0")"
+RUNTIME="${RUNTIME:-node}"
+DEFAULT="P1 P2 P2b P2c P2d P2e P3 P4 P4b P4c P5 P5b P8 P9 P9b P10 P10b P10c P10d P11 P12 P12b P12c P12d P12e P12f P12g P6"
+EXTRA_MEM="P7b P7c P7d"
+HARD="P3 P4 P4b P5 P6 P9 P12 P12b P12c P12e P12g"
+for p in $DEFAULT; do node watch.mjs "$p" "$RUNTIME" probe.mjs "$p"; done
+../mem-lock.sh node watch.mjs P7 "$RUNTIME" probe.mjs P7
+for p in $HARD; do node watch.mjs "hardened-$p" "$RUNTIME" probe.mjs "$p" --hardened; done
+../mem-lock.sh node watch.mjs hardened-P7 "$RUNTIME" probe.mjs P7 --hardened
+../mem-lock.sh sh -c "for p in $EXTRA_MEM; do node watch.mjs \$p node probe.mjs \$p; done; node watch.mjs hardened-P7b node probe.mjs P7b --hardened; node qjs-memlimit-check.mjs > out/qjs-memlimit-check.txt"

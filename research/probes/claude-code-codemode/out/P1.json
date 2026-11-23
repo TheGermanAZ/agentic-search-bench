@@ -1,0 +1,63 @@
+{
+ "tag": "default",
+ "probe": "P1",
+ "settings": "~/p/agentic-search-bench/research/probes/claude-code-codemode/settings-default.json",
+ "permissionMode": "default",
+ "transcript": "~/.claude/projects/-Users-thegermanaz-p-agentic-search-bench-research-probes-claude-code-codemode-work/d5380fa7-7b34-46b6-9d47-8739a250392b.jsonl",
+ "hostLookupCalls": [
+  {
+   "id": 21,
+   "start": 1795378994154,
+   "end": 1795378994355
+  }
+ ],
+ "steps": [
+  {
+   "step": "P1.1",
+   "code": "const r = await tools[\"mcp__lookup__lookup\"]({id: 21}); log(r.value); console.log(r.value); r",
+   "typist": "model",
+   "wallS": 4.1,
+   "calls": [
+    {
+     "tool": "REPL",
+     "codeSent": "const r = await tools[\"mcp__lookup__lookup\"]({id: 21}); log(r.value); console.log(r.value); r",
+     "codeRan": "const r = await tools[\"mcp__lookup__lookup\"]({id: 21}); log(r.value); console.log(r.value); r",
+     "exactCode": true,
+     "toolUseTs": null,
+     "result": {
+      "content": "<repl-output>\n<tools-used-before-summary>mcp__lookup__lookup</tools-used-before-summary>\n<log>[console.log wrote 1 line to the console ring, not to this output \u2014 use self.log(...) for output you want to see, or read the ring with console.tail()]</log>\n<result>{\"id\":21,\"value\":42}</result>\n</repl-output>",
+      "is_error": false,
+      "ts": "2026-11-22T20:23:14.359Z",
+      "toolUseResult": {
+       "code": "const r = await tools[\"mcp__lookup__lookup\"]({id: 21}); log(r.value); console.log(r.value); r",
+       "result": "{\"id\":21,\"value\":42}",
+       "stdout": "[console.log wrote 1 line to the console ring, not to this output \u2014 use self.log(...) for output you want to see, or read the ring with console.tail()]",
+       "stderr": "",
+       "toolsUsed": [
+        "mcp__lookup__lookup"
+       ]
+      }
+     }
+    },
+    {
+     "tool": "mcp__lookup__lookup",
+     "codeSent": null,
+     "codeRan": null,
+     "exactCode": null,
+     "toolUseTs": "2026-11-22T20:23:14.358Z",
+     "result": {
+      "content": "",
+      "is_error": false,
+      "ts": "2026-11-22T20:23:14.358Z",
+      "toolUseResult": "{\"id\":21,\"value\":42}"
+     }
+    }
+   ],
+   "permissionPrompts": [],
+   "stopped": null,
+   "rssBaselineKB": 377440,
+   "rssPeakKB": null,
+   "sessionAliveAfter": true
+  }
+ ]
+}

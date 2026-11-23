@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "works",
+  "detail": "STATUS 200",
+  "display": "works (example.com 200)",
+  "config": "hardened"
+}

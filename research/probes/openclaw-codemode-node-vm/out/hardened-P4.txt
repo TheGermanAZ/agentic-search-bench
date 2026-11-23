@@ -1,0 +1,94 @@
+engine=node hardened=true config={"enabled":true,"executor":"node","timeoutMs":5000,"memoryLimitBytes":16777216,"maxOutputBytes":8192,"maxSnapshotBytes":1048576,"maxPendingToolCalls":8,"snapshotTtlSeconds":60} setupMs=1
+--- code 1 ---
+return require("fs").readFileSync("/etc/hosts","utf8");
+--- result 1 ---
+{"ms":141.4,"hostCalls":0,"ok":true,"waits":0}
+content text (529 chars):
+{"status":"failed","code":"invalid_input","failurePhase":"input","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"error":"code mode module access is disabled. Call an enabled async tool global from guest JavaScript; use catalog.search(query) when the bounded quick index omits it. Do not retry the same source with require() or an import."}
+details (610 chars):
+{
+ "status": "failed",
+ "code": "invalid_input",
+ "failurePhase": "input",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "code mode module access is disabled. Call an enabled async tool global from guest JavaScript; use catalog.search(query) when the bounded quick index omits it. Do not retry the same source with require() or an import."
+}
+--- code 2 ---
+const fs = await import("fs"); return fs.readFileSync("/etc/hosts","utf8");
+--- result 2 ---
+{"ms":142.77,"hostCalls":0,"ok":true,"waits":0}
+content text (529 chars):
+{"status":"failed","code":"invalid_input","failurePhase":"input","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"error":"code mode module access is disabled. Call an enabled async tool global from guest JavaScript; use catalog.search(query) when the bounded quick index omits it. Do not retry the same source with require() or an import."}
+details (610 chars):
+{
+ "status": "failed",
+ "code": "invalid_input",
+ "failurePhase": "input",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "code mode module access is disabled. Call an enabled async tool global from guest JavaScript; use catalog.search(query) when the bounded quick index omits it. Do not retry the same source with require() or an import."
+}
+--- code 3 ---
+return await Deno.readTextFile("/etc/hosts");
+--- result 3 ---
+{"ms":151.13,"hostCalls":0,"ok":true,"waits":0}
+content text (388 chars):
+{"status":"failed","code":"internal_error","failurePhase":"guest","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"bcf4a0ebe4e93726fee428fd","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"error":"ReferenceError: Deno is not defined\n    at openclaw-code-mode:user.js:1:1"}
+details (469 chars):
+{
+ "status": "failed",
+ "code": "internal_error",
+ "failurePhase": "guest",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "bcf4a0ebe4e93726fee428fd",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "ReferenceError: Deno is not defined\n    at openclaw-code-mode:user.js:1:1"
+}

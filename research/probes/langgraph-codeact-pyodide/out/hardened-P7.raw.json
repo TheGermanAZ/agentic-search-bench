@@ -1,0 +1,15 @@
+{
+  "probe": "P7",
+  "config": "hardened",
+  "codes": [
+    "a = []\nwhile True:\n    a.append(\"x\" * 10**6)"
+  ],
+  "runs": [],
+  "setup_ms": 20.8,
+  "killed": "harness RSS watchdog at 4.11 GB after 1.9 s",
+  "exit_code": -9,
+  "wall_s": 1.95,
+  "peak_tree_rss_gb": 4.113,
+  "calls": [],
+  "child_log_tail": ""
+}

@@ -1,0 +1,91 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../tanstack-ai-codemode-node/adapter.mjs default R2c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 858,
+  "peakTreeRssMb": 103,
+  "watchKill": null,
+  "record": {
+    "impl": "tanstack-ai-codemode-node",
+    "config": "default",
+    "test": "R2c",
+    "notes": "one createCodeModeTool({driver: node}) shared; execute({typescriptCode}) as chat() calls it",
+    "data": {
+      "startMs": 632,
+      "ms": 41,
+      "ok": true,
+      "result": {
+        "value": {
+          "success": true,
+          "result": {
+            "keys": [
+              "d",
+              "m",
+              "s"
+            ],
+            "fn": "undefined",
+            "call": "threw r.fn is not a function",
+            "d": "string",
+            "ds": "1970-01-01T00:00:00.000Z",
+            "m": "object",
+            "ms": "{}"
+          },
+          "logs": []
+        },
+        "stringChars": 78
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 622,
+    "hostEvents": [],
+    "totalMs": 673
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      156,
+      56
+    ],
+    [
+      225,
+      69
+    ],
+    [
+      271,
+      69
+    ],
+    [
+      347,
+      69
+    ],
+    [
+      437,
+      70
+    ],
+    [
+      490,
+      73
+    ],
+    [
+      619,
+      103
+    ],
+    [
+      694,
+      78
+    ],
+    [
+      857,
+      78
+    ]
+  ]
+}

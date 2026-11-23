@@ -1,0 +1,58 @@
+{
+ "probe": "P10",
+ "host": "~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex-code-mode-host",
+ "hello": {
+  "type": "connection/ready",
+  "selectedVersion": 1,
+  "capabilities": [
+   "bounded-output-v1",
+   "delegate-capacity-4096",
+   "session-cell-execution-resource-limits",
+   "yield-observation"
+  ]
+ },
+ "session_open": {
+  "type": "operation/response",
+  "id": 1,
+  "result": {
+   "status": "ok",
+   "value": {
+    "type": "session/ready",
+    "sessionId": "s1"
+   }
+  }
+ },
+ "setup_ms": 34.62,
+ "wall_ms": 39.2,
+ "peak_rss_mb": 7.9,
+ "killed": null,
+ "records": [
+  {
+   "source": "throw new Error(\"probe-boom\");",
+   "elapsed_ms": 4.35,
+   "host_calls": 0,
+   "response": {
+    "type": "execute/initialResponse",
+    "id": 2,
+    "result": {
+     "status": "ok",
+     "value": {
+      "Result": {
+       "cell_id": "1",
+       "content_items": [
+        {
+         "type": "input_text",
+         "text": "Script error:\nError: probe-boom\n    at exec_main.mjs:1:7"
+        }
+       ],
+       "error_text": "Error: probe-boom\n    at exec_main.mjs:1:7",
+       "result_buffered_for_ns": 0,
+       "code_mode_host_duration_ns": 4211167
+      }
+     }
+    }
+   },
+   "waits": []
+  }
+ ]
+}

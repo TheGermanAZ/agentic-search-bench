@@ -1,0 +1,5 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "detail": "InterpreterError: 'Code execution failed at line \\'raise ValueError(\"probe-boom\")\\' due to: ValueError: probe-boom'; message survives: True; numeric line number present: False (the message quotes the failing statement instead)"
+}

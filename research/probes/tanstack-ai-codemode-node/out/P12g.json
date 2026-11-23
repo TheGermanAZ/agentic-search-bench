@@ -1,0 +1,39 @@
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P12g",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 71.57579199999998,
+  "source": [
+    "const ref = globalThis.__external_lookup_ref ?? globalThis.__external_lookup_impl; let d; try { d = String(ref.deref && ref.deref()); } catch (e) { d = \"deref threw: \" + e.message; } let c; try { c = String(ref.constructor.constructor(\"return process\")()); } catch (e) { c = \"ctor threw: \" + e.message; } return { deref: d, ctor: c };"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": {
+          "deref": "deref threw: Cannot dereference this from current isolate",
+          "ctor": "ctor threw: process is not defined"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 25.770250000000033,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": {
+        "deref": "deref threw: Cannot dereference this from current isolate",
+        "ctor": "ctor threw: process is not defined"
+      },
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 26,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 82.7
+}

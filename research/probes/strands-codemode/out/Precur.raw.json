@@ -1,0 +1,25 @@
+{
+  "probe": "Precur",
+  "config": "default",
+  "codes": [
+    "def f(n):\n    return f(n + 1)\nf(0)"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 3, in <module>\n    f(0)\n    ~~~~\n  File \"<python-input-0>\", line 2, in f\n    return f(n + 1)\n           ~~~~~~~~\n  File \"<python-input-0>\", line 2, in f\n    return f(n + 1)\n           ~~~~~~~~\n  File \"<python-input-0>\", line 2, in f\n    return f(n + 1)\n           ~~~~~~~~\n  [Previous line repeated 997 more times]\nRecursionError: maximum recursion depth exceeded",
+      "ms": 25.2,
+      "started": 1795381221.33406
+    }
+  ],
+  "setup_ms": 464.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.09,
+  "peak_tree_rss_gb": 0.092,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

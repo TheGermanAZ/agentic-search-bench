@@ -1,0 +1,19 @@
+probe: P1
+binary: goose-codemode-probe
+process wall_ms: 287.2
+peak_rss_mb: 7.8
+exit: 0
+killed: None
+
+--- execution 0 ---
+code:
+async function run() {
+const r = await tools.call("lookup", {id: 21}); console.log(r.value)
+}
+is_error: False
+elapsed_ms: 224.31
+host_calls: 1
+returned chars: 3
+text returned to model:
+42
+

@@ -1,0 +1,7 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "display": "works (message + line 2)",
+  "detail": "message survives: True; 'line 2' present: True; text: '--------------------------------------------------------------------------- ValueError Traceback (most recent call last) Cell In[1], line 2 1 x = 1 ----> 2 raise ValueError(\"probe-boom\") ValueError: probe-boom --------------------------------------------------------------------------- ValueError Traceback (most recent call last) Cell In[1], line 2 1 x = 1 ----> 2 raise ValueError(\"probe-boom\") ValueError: probe-boom'",
+  "evidence": "research/probes/agno-codemode/out/P10.txt"
+}

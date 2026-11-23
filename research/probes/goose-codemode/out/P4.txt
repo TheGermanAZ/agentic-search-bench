@@ -1,0 +1,46 @@
+probe: P4
+binary: goose-codemode-probe
+process wall_ms: 63.8
+peak_rss_mb: 5.9
+exit: 0
+killed: None
+
+--- execution 0 ---
+code:
+async function run() {
+return require("fs").readFileSync("/etc/hosts", "utf8")
+}
+is_error: True
+elapsed_ms: 0.59
+host_calls: 0
+returned chars: 128
+text returned to model:
+Error: ReferenceError: require is not defined (code_mode.js:4:5)
+    at run (code_mode.js:1:22)
+    at <main> (code_mode.js:4:5)
+
+--- execution 1 ---
+code:
+async function run() {
+return (await import("fs")).readFileSync("/etc/hosts", "utf8")
+}
+is_error: True
+elapsed_ms: 0.52
+host_calls: 0
+returned chars: 73
+text returned to model:
+Error: TypeError: module resolution is disabled for this context (native)
+
+--- execution 2 ---
+code:
+async function run() {
+return await Deno.readTextFile("/etc/hosts")
+}
+is_error: True
+elapsed_ms: 0.21
+host_calls: 0
+returned chars: 125
+text returned to model:
+Error: ReferenceError: Deno is not defined (code_mode.js:4:5)
+    at run (code_mode.js:1:22)
+    at <main> (code_mode.js:4:5)

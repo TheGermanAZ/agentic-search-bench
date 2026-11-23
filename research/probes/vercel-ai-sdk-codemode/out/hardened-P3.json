@@ -1,0 +1,43 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P3",
+  "config": {
+    "executionPolicy": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxToolInputBytes": 262144,
+      "maxToolOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "const r = await fetch(\"https://example.com\"); return r.status;"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "fetch is not defined",
+        "stack": "ReferenceError: fetch is not defined\n    at <anonymous> (code-mode.js:1:17)\n    at <anonymous> (code-mode.js:2:1)",
+        "string": "ReferenceError: fetch is not defined"
+      },
+      "wallMs": 80.06641699999999,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR fetch is not defined",
+    "ms": 80,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 149.9
+}

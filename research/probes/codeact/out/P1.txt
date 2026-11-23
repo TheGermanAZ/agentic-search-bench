@@ -1,0 +1,6 @@
+probe: P1
+code (python, run through PythonREPL.__call__):
+r = lookup(id=21)
+print(r['value'])
+host_calls_so_far: 1
+output: '42\n'

@@ -1,0 +1,85 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 22,
+    "totalWallMs": 223,
+    "peakTreeRssMB": 139.2,
+    "stderrTail": "🚀 Starting Code Mode Unified MCP Server...\n   Name: codemode-unified\n   Version: 0.1.0\n   Transport: stdio\n\n🔌 MCP Integration enabled via CODEMODE_ENABLE_MCP_INTEGRATION\n🔌 Initializing MCP Manager...\n   Connecting to 1 MCP server(s)\n✅ MCP Manager initialized - 1 tools available\n   Namespaces: probe\n🔧 Generating TypeScript declarations for MCP tools...\n✅ TypeScript declarations generated: ./generated/mcp.d.ts\n\nAvailable tools:\n   - execute_code: Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes wi...\n   - list_runtimes: List all available code execution runtimes with their capabilities and status\n   - get_runtime_capabilities: Get detailed capabilities and constraints for a specific runtime\n   - runtime_health_check: Check if a runtime is operational and ready to execute code\n\n✅ Server ready and listening on stdio\n\n🔄 Shutting down Code Mode MCP server...\n✅ MCP Manager shut down\n✅ Code Mode MCP server shut down complete\n"
+  },
+  "runtime": "e2b",
+  "probe": "P12",
+  "mode": "default",
+  "setupMs": 157.9,
+  "executeToolDescription": "Execute JavaScript/TypeScript code in a sandboxed runtime environment. Supports multiple runtimes with different capabilities. When MCP integration is enabled, code has access to MCP tools via the global `mcp` object (e.g., mcp.automem.store_memory(), mcp[\"sequential-thinking\"].sequentialthinking()). For TypeScript type definitions and API documentation of available MCP tools, read the resource mcp://types/declarations before writing code.",
+  "transportErrors": [],
+  "record": {
+    "A_functionCtor": {
+      "code": "return String(this.constructor.constructor(\"return process\")())",
+      "wallMs": 1.1,
+      "hostCalls": 0,
+      "out": {
+        "error": "E2B runtime requires apiKey in config",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:36.414Z"
+      },
+      "threw": null
+    },
+    "B_sloppyThis": {
+      "code": "return String((function(){ return this })().process)",
+      "wallMs": 0.2,
+      "hostCalls": 0,
+      "out": {
+        "error": "E2B runtime requires apiKey in config",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:36.414Z"
+      },
+      "threw": null
+    },
+    "C_typeofs": {
+      "code": "return [typeof process, typeof require, typeof Deno, typeof Bun, typeof fetch].join(\",\")",
+      "wallMs": 0.4,
+      "hostCalls": 0,
+      "out": {
+        "error": "E2B runtime requires apiKey in config",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:36.415Z"
+      },
+      "threw": null
+    },
+    "D_exec_node": {
+      "code": "const p = Function(\"return process\")(); return p.getBuiltinModule(\"child_process\").execSync(\"echo PWNED; id -un\").toString()",
+      "wallMs": 0.4,
+      "hostCalls": 0,
+      "out": {
+        "error": "E2B runtime requires apiKey in config",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:36.415Z"
+      },
+      "threw": null
+    },
+    "E_exec_bun": {
+      "code": "return Bun.spawnSync([\"sh\",\"-c\",\"echo PWNED; id -un\"]).stdout.toString()",
+      "wallMs": 0.6,
+      "hostCalls": 0,
+      "out": {
+        "error": "E2B runtime requires apiKey in config",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:36.415Z"
+      },
+      "threw": null
+    },
+    "F_exec_deno": {
+      "code": "const o = await new Deno.Command(\"sh\", { args: [\"-c\", \"echo PWNED; id -un\"] }).output(); return new TextDecoder().decode(o.stdout)",
+      "wallMs": 0.2,
+      "hostCalls": 0,
+      "out": {
+        "error": "E2B runtime requires apiKey in config",
+        "tool": "execute_code",
+        "timestamp": "2026-11-22T19:45:36.416Z"
+      },
+      "threw": null
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-run",
+  "probe": "P5",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return process.env.PROBE_SECRET;"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "process is not defined",
+        "stack": "ReferenceError: process is not defined\n    at <anonymous> (run.js:1:8)",
+        "string": "ReferenceError: process is not defined"
+      },
+      "wallMs": 349.499542,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR process is not defined",
+    "ms": 349,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 135.8
+}

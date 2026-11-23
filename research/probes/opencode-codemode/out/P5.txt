@@ -1,0 +1,30 @@
+{
+  "mode": "default",
+  "probe": "P5",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 0,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "return process.env.PROBE_SECRET",
+      "ms": 22.01,
+      "hostCalls": 0,
+      "result": {
+        "output": "ReferenceError: Unknown identifier 'process'. (line 1, col 8)",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "return typeof process",
+      "ms": 1.14,
+      "hostCalls": 0,
+      "result": {
+        "output": "undefined",
+        "toolCalls": [],
+        "files": []
+      }
+    }
+  ]
+}

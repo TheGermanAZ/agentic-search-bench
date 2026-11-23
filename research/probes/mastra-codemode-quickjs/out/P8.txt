@@ -1,0 +1,40 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 48,
+    "totalWallMs": 330,
+    "peakTreeRssMB": 154.4,
+    "stderrTail": ""
+  },
+  "backend": "quickjs",
+  "probe": "P8",
+  "mode": "default",
+  "setupMs": 253.6,
+  "record": {
+    "first": {
+      "code": "globalThis.kept = 7; return \"set\"",
+      "wallMs": 19.7,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "result": "set",
+        "logs": []
+      },
+      "threw": null
+    },
+    "second": {
+      "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+      "wallMs": 2,
+      "hostCalls": 0,
+      "out": {
+        "success": true,
+        "logs": [
+          "gone"
+        ]
+      },
+      "threw": null
+    }
+  }
+}

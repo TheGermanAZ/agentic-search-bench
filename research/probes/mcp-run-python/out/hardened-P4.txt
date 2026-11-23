@@ -1,0 +1,5 @@
+python open('/etc/hosts'): status=run-error return=None error="FileNotFoundError: [Errno 44] No such file or directory: '/etc/hosts'" output=[]
+Deno.readTextFileSync('/etc/hosts'): status=run-error return=None error='pyodide.ffi.JsException: NotCapable: Requires read access to "/etc/hosts", run again with the --allow-read flag' output=[]
+Deno readDirSync node_modules (inside --allow-read): status=success return=['zod', '@types', '.bin', '.deno', '@modelcontextprotocol'] error='' output=[]
+Deno.writeTextFileSync in cwd: status=run-error return=None error='pyodide.ffi.JsException: NotCapable: Requires write access to "probe-write.txt", run again with the --allow-write flag' output=[]
+Pyodide in-memory /tmp write+read: status=success return='x' error='' output=[]

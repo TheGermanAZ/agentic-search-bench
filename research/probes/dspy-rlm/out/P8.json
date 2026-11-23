@@ -1,0 +1,7 @@
+{
+  "probe": "P8",
+  "outcome": "works",
+  "display": "persists within one RLM call",
+  "detail": "Two iterations of one forward: the second printed 7 (P8within). Two separate forwards: the second printed 'gone'.",
+  "evidence": "research/probes/dspy-rlm/out/P8.txt"
+}

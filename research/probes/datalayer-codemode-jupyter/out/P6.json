@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "no-limit-within-120s",
+  "display": "not stopped (caller freed at 30 s)",
+  "detail": "execute returned after 30.01 s with execution_ok=True, no output and no error, but the kernel kept running the loop: P6b shows the next execution in the same session hung until the harness stopped it at 120 s, and the kernel process sat at 100% CPU.",
+  "evidence": "research/probes/datalayer-codemode-jupyter/out/P6.txt"
+}

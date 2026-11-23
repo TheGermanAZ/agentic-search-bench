@@ -1,0 +1,195 @@
+{
+  "impl": "openclaw-codemode-quickjs-wasi",
+  "name": "OpenClaw Code Mode, QuickJS executor (bundled code-mode-quickjs plugin, QuickJS-WASI)",
+  "source": "https://github.com/openclaw/openclaw (extensions/code-mode-quickjs, src/agents/code-mode*.ts); npm openclaw (dist/extensions/code-mode-quickjs)",
+  "pinned": "npm openclaw@2026.11.6 (published dist, installed with --ignore-scripts into research/impls/openclaw-codemode-node-vm/npm); source read at tag v2026.11.6 = 06afb10d3272cc9deaf38ca6a3b7b839d5935638 (2026-11-19), cloned to research/impls/openclaw-codemode-node-vm/src. Same install and clone as openclaw-codemode-node-vm (shared on purpose; research/impls/openclaw-codemode-quickjs-wasi/README.md points there). quickjs-wasi 3.6.3 bundled in the plugin.",
+  "language": "JS",
+  "engine": "QuickJS compiled to WASM/WASI (quickjs-wasi 3.6.3) in a pooled Node worker thread, fresh VM per cell, serialized VM snapshot while suspended",
+  "how_run": "createCodeModeTools(ctx) + applyCodeModeCatalog({...ctx, tools: [exec, wait, lookup]}) from the published dist chunks (src/agents/code-mode.ts:220 and :313; not in the package's public exports, so imported from dist/prompt-tool-policy-XiWNJtPU.mjs), then execTool.execute(id, {code}) and waitTool.execute on status 'waiting': the same exec/wait control tools the embedded agent runtime gives the model. lookup is a plugin-tagged AgentTool (setPluginToolMeta) in the hidden catalog; guest code calls it as the async global lookup({id}). OpenClaw HOME/state/config are pointed at research/probes/<impl>/state. P11 is also measured with WARM_HOST=1, which runs cells inside a bound LegacyPluginSdkResourceHost + GatewayScheduler as the Gateway does (scripts/perf/code-mode-engine-measure.ts does the same). Executor: tools.codeMode = {enabled: true, executor: 'quickjs'}; resolvePluginCodeModeExecutor loads the bundled plugin from the dist manifest with no extra plugin config.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "display": "works (42, 1 call)",
+      "detail": "lookup({id:21}) returned {id:21, value:42}; output text '42'; 1 host call; 613 ms including first worker and WASM start.",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "limited",
+      "display": "truncated (512 chars + marker)",
+      "detail": "Identical to the Node executor: console.log of 200,000 chars became one 512-char text + '…[truncated]'; trailing \"RETURNED\" gave value null, `return` gave \"RETURNED\"; text() and a returned 200,000-char string became {truncated:true, omittedBytes:134619/134576, guidance, prefix} at maxOutputBytes 64 KiB.",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "display": "not-defined",
+      "detail": "ReferenceError: fetch is not defined; XMLHttpRequest, WebSocket, require, process all undefined. The TextDecoder-error path that escapes the Node executor yields a guest-realm Function here, so 'return process' fails with process is not defined (reported as module access disabled, #3).",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "display": "not-defined",
+      "detail": "require(\"fs\") and import(\"fs\") rejected before execution with 'code mode module access is disabled' (invalid_input); Deno is not defined.",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "display": "not-defined",
+      "detail": "process is not defined (reported as 'code mode module access is disabled.'); globals are ECMAScript builtins plus the Code Mode API (P5 #2). Host had PROBE_SECRET=s3cr3t.",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "limited",
+      "display": "limited (10 s wall)",
+      "detail": "code timeout 'code mode timeout exceeded' after 10,004 ms (interrupt handler). A concurrent cell returned 42 in 150 ms; a later cell returned 42.",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/P6.txt"
+    },
+    "P7": {
+      "outcome": "limited",
+      "display": "limited (64 MiB)",
+      "detail": "'InternalError: out of memory at openclaw-code-mode:user.js:1:39' after 714 ms; peak host RSS 459 MB; concurrent and later cells returned 42.",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/P7.txt"
+    },
+    "P8": {
+      "outcome": "works",
+      "display": "fresh",
+      "detail": "Second cell printed 'gone'. store()/load() need a session-bound run (failed in this harness).",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/P8.txt"
+    },
+    "P9": {
+      "outcome": "works",
+      "display": "parallel (207 ms)",
+      "detail": "Promise.all of 5 lookups: 207 ms guest-measured, 212 ms host wall, 5 host calls. 40 concurrent calls succeeded in 618 ms (three waves of 16).",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/P9.txt"
+    },
+    "P10": {
+      "outcome": "works",
+      "display": "works (message + line:col)",
+      "detail": "status failed, internal_error, 'Error: probe-boom\\n    at <anonymous> (openclaw-code-mode:user.js:1:11)'; nested: 'at inner (openclaw-code-mode:user.js:3:30) / at <anonymous> (...:4:1)'.",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "display": "works (median 1.9 ms warm host)",
+      "detail": "Warm Gateway-style host: median 1.92 ms, p90 2.36 ms, first exec 3.3 ms. Without the bound host: median 2.88 ms, p90 5.12 ms, first 5.5 ms (QuickJS workers are pooled by the plugin either way). Load average 26-31.",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/warm-P11.txt, research/probes/openclaw-codemode-quickjs-wasi/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "display": "blocked",
+      "detail": "Function('return process')() -> process is not defined; sloppy this.process undefined; Function from handles, results and tool errors is the guest's; scan of 551 reachable objects found no foreign constructor; TextDecoder errors are guest-realm (e.constructor === RangeError/TypeError true) and their Function sees process undefined; the PWNED and ps -E attempts were refused because process is not defined.",
+      "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/P12.txt"
+    }
+  },
+  "hardened": {
+    "config": "tools.codeMode = {enabled: true, executor: 'quickjs', timeoutMs: 5000, memoryLimitBytes: 16 MiB, maxOutputBytes: 8192, maxSnapshotBytes: 1 MiB, maxPendingToolCalls: 8, snapshotTtlSeconds: 60} (docs/tools/code-mode/configuration.md; https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L104-L117). Tight but usable values inside the documented clamps (floors: timeoutMs 100 ms, memoryLimitBytes 1 MiB, maxOutputBytes 1 KiB, maxPendingToolCalls 1). The docs' own hardening advice beyond this is OS-level (separate user, container or host).",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "display": "not-defined",
+        "detail": "fetch is not defined.",
+        "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/hardened-P3.txt"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "display": "not-defined",
+        "detail": "module access rejected; Deno not defined.",
+        "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/hardened-P4.txt"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "display": "not-defined",
+        "detail": "process is not defined.",
+        "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/hardened-P5.txt"
+      },
+      "P6": {
+        "outcome": "limited",
+        "display": "limited (5 s wall)",
+        "detail": "timeout after 5,003 ms; concurrent cell returned 42 in 144 ms; later cell 42.",
+        "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/hardened-P6.txt"
+      },
+      "P7": {
+        "outcome": "limited",
+        "display": "limited (16 MiB)",
+        "detail": "InternalError: out of memory after 464 ms; peak host RSS 376 MB; concurrent and later cells returned 42.",
+        "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/hardened-P7.txt"
+      },
+      "P9": {
+        "outcome": "works",
+        "display": "parallel (215 ms)",
+        "detail": "5 lookups 215 ms, 5 host calls; 40 calls in 1,018 ms (waves of 8).",
+        "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/hardened-P9.txt"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "display": "blocked",
+        "detail": "Same as default.",
+        "evidence": "research/probes/openclaw-codemode-quickjs-wasi/out/hardened-P12.txt"
+      }
+    }
+  },
+  "defaults": {
+    "time": "timeoutMs 10,000 ms wall clock per exec or wait call (clamp 100-60,000), shared by worker preparation, guest work and inline tool waits; approval waits pause it. Pending tool calls can instead return status 'waiting' for a later wait with a fresh budget (src/agents/code-mode-runtime.ts:110; docs/tools/code-mode/configuration.md).",
+    "output": "maxOutputBytes 64 KiB shared by output entries, value and error across waits (clamp 1 KiB-10 MiB); over the cap a {truncated, omittedBytes, guidance, prefix} marker replaces the item. Console: each string clipped to 512 UTF-16 units with '…[truncated]', 16,384 units per cell then '[console output truncated]' (code-mode-runtime.ts:112; code-mode-controller-source.ts:101-115; code-mode-json.ts:93). A trailing expression returns null; only `return` sets the value.",
+    "tool_calls": "maxPendingToolCalls 16 in flight (clamp 1-128); further calls queue in the guest, up to 128 queued ordinary calls (code-mode-runtime.ts:114; code-mode-controller-source.ts:12, :227-230; code-mode-worker-types.ts:10). No per-exec total call cap was found on the exec path: 40 calls ran. Headless scripts default to 5 calls (code-mode-runtime.ts:26).",
+    "memory": "memoryLimitBytes 64 MiB as the QuickJS engine memory limit (clamp 1 MiB-1 GiB), fixed maxStackSize; serialized suspended state capped by maxSnapshotBytes 10 MiB (code-mode.worker.ts:264-265; code-mode-runtime.ts:111-113). Not a Gateway RSS limit."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Every catalog-eligible tool becomes an async global function (callableName) plus a callable handle; bindings come from createCodeModeCatalogBindings. The model sees a bounded quick index of `name input -> output` hints built from JSON Schema, capped at 8,000 chars, and TypeScript-style declarations through API.list/API.read. Executable cells are plain JavaScript; TypeScript syntax and require/import are rejected before execution.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode.ts#L64, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode.ts#L111-L149, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-catalog.ts#L73, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L660-L671"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Hidden catalog, searched on demand: only exec and wait (plus required direct-only tools) are model-visible (telemetry visibleTools [exec, wait] in every result). Tools past the 8,000-char index are reachable through catalog.search(query) (BM25 lexical index, default 8 results, max 50) and handle.describe(). Scales past 100 tools without putting every schema in the prompt.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode.ts#L95-L100, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L629-L638, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L104-L117; research/probes/openclaw-codemode-quickjs-wasi/out/P1.txt"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Guest calls go through the controller's request() into a host callback that carries only strings (method, JSON args, id, stack); the host runs the call through runtime.callExactValue, the same tool execution path as normal turns (policy, approvals, before_tool_call hooks). Replies are queued on the host and pulled by the guest (__openclawSettleBridge). QuickJS: host functions installed with vm.newFunction in the worker; the guest keeps a serializable snapshot while suspended.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L20-L32, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L221-L231, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-bridge.ts#L386, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/extensions/code-mode-quickjs/src/code-mode.worker.ts#L176-L230, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/extensions/code-mode-quickjs/src/code-mode.worker.ts#L328"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "QuickJS compiled to WASM/WASI (quickjs-wasi 3.6.3, bundled; TextEncoder/TextDecoder come from the encoding.so extension inside the same WASM heap), in a worker thread from a shared WorkerTaskPool. No WASI preopens or env are given, so no ambient fs, network, subprocess or environment. memoryLimit = memoryLimitBytes, fixed maxStackSize, and an interruptHandler that checks the wall-clock deadline. The docs claim 'hardened guest isolation' with 'no ambient host access', which matches the probes: guest errors are guest-realm (e.constructor === RangeError), every Function-constructor path returns undefined for process.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/extensions/code-mode-quickjs/src/code-mode.worker.ts#L255-L275, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/extensions/code-mode-quickjs/src/executor.ts#L36-L62, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/extensions/code-mode-quickjs/package.json#L7-L9, docs/tools/code-mode/internals.md 'Security boundary'; research/probes/openclaw-codemode-quickjs-wasi/out/P12.txt"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "The model gets one JSON document: status, telemetry, ordered output entries (text(), json(), console.*) and the returned value or error. Over-budget items become an explicit truncation marker with the original JSON prefix and omittedBytes, not a silent cut. Console strings are clipped to 512 units each.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L101-L115, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-json.ts#L93, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode.ts#L226-L245; research/probes/openclaw-codemode-quickjs-wasi/out/P2.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "All limits come from tools.codeMode (global or per agent) and are clamped in resolveCodeModeConfig: timeoutMs 10 s (100 ms-60 s), memoryLimitBytes 64 MiB (1 MiB-1 GiB), maxOutputBytes 64 KiB, maxSnapshotBytes 10 MiB, maxPendingToolCalls 16, snapshotTtlSeconds 900. For QuickJS, memoryLimitBytes is the engine heap limit and timeoutMs drives the interrupt handler; snapshots are capped by maxSnapshotBytes.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L96-L119, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/extensions/code-mode-quickjs/src/code-mode.worker.ts#L264-L271"
+    },
+    {
+      "topic": "State",
+      "finding": "Each exec gets a fresh context (globals never carry over), confirmed by P8. Workers are pooled and reused only when cells run inside the Gateway's bound resource host; without it every Node cell starts a new worker (about 200 ms). There is opt-in persistence: store(key, value)/load(key) keep small JSON values per session across cells and restarts, but only for a session-bound run (P8 #3 fails in this harness). A suspended cell (status 'waiting') keeps a serialized VM snapshot for wait.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L430-L445, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-session-store.ts#L315, docs/tools/code-mode/executors.md 'Understand waits and limits'; research/probes/openclaw-codemode-quickjs-wasi/out/P8.txt, out/P11.txt, out/warm-P11.txt"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Guest errors return status failed with code internal_error and `Name: message` plus stack frames rewritten to openclaw-code-mode:user.js:line:col (user line numbers, wrapper removed); error text is bounded to 16,384 units. Parse errors are reported before execution with line and column. A runtime `ReferenceError: process|require|module is not defined` is rewritten into the generic 'module access is disabled' invalid_input message. Tool errors are catchable in guest code and are redacted (input shown as [redacted]).",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-source.ts#L212-L231, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-node.worker.ts#L360-L380, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/extensions/code-mode-quickjs/src/code-mode.worker.ts#L455-L470, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-controller-source.ts#L62-L85"
+    },
+    {
+      "topic": "Activation and credentials",
+      "finding": "With tools.codeMode absent, activation is 'auto': Code Mode engages automatically for catalog-preferred models (for example claude-opus-5-5, gpt-5.6, gemini-3.5-flash) with the Node executor unless executor: 'quickjs' is set. Credentials stay host-side: tools run in the Gateway with their normal auth, and the guest only receives JSON results. The lexical module check (code-mode-source.ts:226) is a usability guard, not a security control: it blocks the literal require()/import() but not Function-constructor paths.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L75-L77, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L107-L108, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-runtime.ts#L128-L140, docs/tools/code-mode/configuration.md 'Shipped preferred models'"
+    },
+    {
+      "topic": "Maintenance",
+      "finding": "MIT license; tag v2026.11.6 committed 2026-11-19; npm openclaw 2026.11.6. Extensive tests under src/agents/code-mode*.test.ts, including an engine-parity suite.",
+      "evidence": "https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/package.json, https://github.com/openclaw/openclaw/blob/06afb10d3272cc9deaf38ca6a3b7b839d5935638/src/agents/code-mode-engine-parity.test.ts"
+    }
+  ],
+  "surprises": [
+    "QuickJS is opt-in: the default executor is Node (not a security boundary), and 'auto' activation engages Code Mode for preferred models without selecting QuickJS. Only an explicit executor: 'quickjs' gets this isolation.",
+    "The plugin's register() is empty; selection works through the manifest's codeModeExecutors contract and a public-surface module load, and an explicit executor choice bypasses plugins.allow for this bundled plugin (src/plugins/code-mode-executor.ts:15-66).",
+    "A runtime 'process is not defined' is reported as invalid_input 'code mode module access is disabled.' (shorter text than the Node executor's), which hides the real ReferenceError.",
+    "A trailing expression yields null (documented in the exec schema), so the SPEC's P2 form returns no value; only `return` does.",
+    "No docs-vs-code mismatch found on isolation: the docs' 'no ambient filesystem, networking, subprocess, environment, or module access' matched every probe."
+  ]
+}

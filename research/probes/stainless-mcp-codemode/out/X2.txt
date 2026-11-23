@@ -1,0 +1,20 @@
+mode: default
+code:
+async function run(client) {
+  const env = (globalThis as any).Deno.env.toObject();
+  return Object.keys(env).sort();
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[\"DENO_DIR\",\"DENO_PATH\",\"HOME\",\"LOGNAME\",\"MUX_BASE_URL\",\"MUX_TOKEN_ID\",\"MUX_TOKEN_SECRET\",\"PATH\",\"PROBE_SECRET\",\"SHELL\",\"USER\",\"__CF_USER_TEXT_ENCODING\"]"
+      }
+    ]
+  },
+  "ms": 428,
+  "hostCalls": 0
+}

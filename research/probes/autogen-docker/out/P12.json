@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "blocked",
+  "detail": "P12a: blocked (ran, no host marker): PWNED-a\nsh: 1: cannot create ~/p/agentic-search-bench/research/probes/autogen-docker/out/P12-escape-marker.txt: Directory nonexistent\nwrap_close no-Popen | P12b: blocked (ran, no host marker): PWNED-b\nsh: 1: cannot create ~/p/agentic-search-bench/research/probes/autogen-docker/out/P12-escape-marker.txt: Directory nonexistent",
+  "display": "blocked",
+  "config": "default"
+}

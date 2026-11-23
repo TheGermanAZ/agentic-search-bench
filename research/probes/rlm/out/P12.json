@@ -1,0 +1,5 @@
+{
+  "probe": "P12",
+  "outcome": "escaped",
+  "detail": "P12a spec: subclasses walk: ran; stdout '428' | P12b spec: __import__ os system: escaped; os.system exit status printed as '0' | P12c spec: os._wrap_close globals -> system: escaped; os.system exit status printed as '0'"
+}

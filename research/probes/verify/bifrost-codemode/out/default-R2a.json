@@ -1,0 +1,372 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/../_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/adapter.mjs default R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 10147,
+  "peakTreeRssMb": 166,
+  "peakTreeFootprintMb": 72,
+  "watchKill": null,
+  "record": {
+    "impl": "bifrost-codemode",
+    "config": "default",
+    "test": "R2a",
+    "notes": "maximhq/bifrost:v2.6.0, data/config.json; gateway restarted for this test (9465 ms); new MCP client per execution; Starlark codes",
+    "data": {
+      "startMs": 9770,
+      "ms": 280,
+      "ok": true,
+      "result": {
+        "value": {
+          "isError": false,
+          "textChars": 717,
+          "text": "Execution completed successfully.\nReturn value: [\n  \"dict\",\n  [\n    \"clear\",\n    \"get\",\n    \"items\",\n    \"keys\",\n    \"pop\",\n    \"popitem\",\n    \"setdefault\",\n    \"update\",\n    \"values\"\n  ],\n  \"struct\",\n  [\n    \"failing\",\n    \"lookup\",\n    \"rich\"\n  ],\n  \"builtin_function_or_method\",\n  [],\n  [\n    \"dec…[717 chars]…   \"fabs\",\n    \"floor\",\n    \"gamma\",\n    \"hypot\",\n    \"log\",\n    \"mod\",\n    \"pi\",\n    \"pow\",\n    \"radians\",\n    \"remainder\",\n    \"round\",\n    \"sin\",\n    \"sinh\",\n    \"sqrt\",\n    \"tan\",\n    \"tanh\"\n  ]\n]"
+        },
+        "stringChars": 717
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "gatewayStartMs": 9465,
+      "containerBaselineMb": 287,
+      "containerPeakMb": 287,
+      "containerLastMb": 287,
+      "containerKilled": null,
+      "containerRssMsMb": [
+        [
+          213,
+          287
+        ]
+      ]
+    },
+    "hostMaxEventLoopLagMs": 59,
+    "hostEvents": [],
+    "totalMs": 10051
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      102,
+      59,
+      0
+    ],
+    [
+      262,
+      121,
+      47
+    ],
+    [
+      431,
+      121,
+      47
+    ],
+    [
+      611,
+      121,
+      47
+    ],
+    [
+      775,
+      121,
+      47
+    ],
+    [
+      910,
+      121,
+      47
+    ],
+    [
+      1069,
+      76,
+      47
+    ],
+    [
+      1231,
+      76,
+      34
+    ],
+    [
+      1372,
+      77,
+      34
+    ],
+    [
+      1530,
+      77,
+      34
+    ],
+    [
+      1687,
+      77,
+      34
+    ],
+    [
+      1859,
+      77,
+      34
+    ],
+    [
+      1991,
+      77,
+      33
+    ],
+    [
+      2144,
+      77,
+      34
+    ],
+    [
+      2332,
+      77,
+      33
+    ],
+    [
+      2492,
+      77,
+      33
+    ],
+    [
+      2641,
+      77,
+      34
+    ],
+    [
+      2777,
+      77,
+      33
+    ],
+    [
+      2930,
+      77,
+      34
+    ],
+    [
+      3084,
+      77,
+      34
+    ],
+    [
+      3238,
+      77,
+      34
+    ],
+    [
+      3429,
+      77,
+      34
+    ],
+    [
+      3581,
+      75,
+      34
+    ],
+    [
+      3715,
+      77,
+      34
+    ],
+    [
+      3880,
+      85,
+      34
+    ],
+    [
+      4030,
+      77,
+      34
+    ],
+    [
+      4184,
+      77,
+      34
+    ],
+    [
+      4374,
+      77,
+      34
+    ],
+    [
+      4519,
+      77,
+      34
+    ],
+    [
+      4661,
+      77,
+      34
+    ],
+    [
+      4822,
+      77,
+      34
+    ],
+    [
+      4973,
+      77,
+      34
+    ],
+    [
+      5129,
+      77,
+      34
+    ],
+    [
+      5410,
+      77,
+      34
+    ],
+    [
+      5569,
+      77,
+      34
+    ],
+    [
+      5722,
+      77,
+      34
+    ],
+    [
+      5876,
+      77,
+      34
+    ],
+    [
+      6032,
+      77,
+      34
+    ],
+    [
+      6207,
+      77,
+      34
+    ],
+    [
+      6385,
+      77,
+      33
+    ],
+    [
+      6550,
+      85,
+      33
+    ],
+    [
+      6686,
+      77,
+      34
+    ],
+    [
+      6911,
+      84,
+      34
+    ],
+    [
+      7058,
+      77,
+      34
+    ],
+    [
+      7196,
+      77,
+      34
+    ],
+    [
+      7370,
+      77,
+      34
+    ],
+    [
+      7519,
+      75,
+      34
+    ],
+    [
+      7669,
+      77,
+      34
+    ],
+    [
+      7826,
+      77,
+      34
+    ],
+    [
+      7982,
+      77,
+      34
+    ],
+    [
+      8146,
+      77,
+      34
+    ],
+    [
+      8305,
+      77,
+      34
+    ],
+    [
+      8476,
+      77,
+      34
+    ],
+    [
+      8643,
+      76,
+      34
+    ],
+    [
+      8793,
+      77,
+      33
+    ],
+    [
+      8940,
+      75,
+      34
+    ],
+    [
+      9105,
+      77,
+      33
+    ],
+    [
+      9253,
+      87,
+      34
+    ],
+    [
+      9433,
+      77,
+      33
+    ],
+    [
+      9580,
+      87,
+      34
+    ],
+    [
+      9797,
+      166,
+      32
+    ],
+    [
+      9935,
+      115,
+      60
+    ],
+    [
+      10107,
+      115,
+      72
+    ]
+  ]
+}

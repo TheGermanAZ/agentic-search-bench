@@ -1,0 +1,6 @@
+console.log(require("fs").readFileSync("/etc/hosts", "utf8").length)
+--- output
+ERROR: ReferenceError: require is not defined
+    at <anonymous> (line 1:13)
+---
+wall_ms=5 host_calls=0 peak_tree_rss_mb=161

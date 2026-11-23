@@ -1,0 +1,8 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "detail": "fresh agent run with one run_code(1+1): median 16.5 ms, p90 29.0 ms (n=20); first run incl. imports and pool spawn 498 ms; 20 run_code calls in one run 115 ms total",
+  "config": "CodeMode()",
+  "peak_tree_rss_mib": 99,
+  "harness_wall_s": 1.17
+}

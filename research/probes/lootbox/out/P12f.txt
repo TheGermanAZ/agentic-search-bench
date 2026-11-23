@@ -1,0 +1,11 @@
+code:
+// @ts-ignore
+console.log(String((function(){return this})().process))
+
+result:
+{
+  "id": "9089d244-62ab-439c-8b62-7195e3acf1a3",
+  "error": "\u001b[0m\u001b[32mDownload\u001b[0m http://localhost:41310/client.ts?v=1\n\u001b[0m\u001b[32mCheck\u001b[0m file:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/a1191201e71c19f1.ts\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'process')\nconsole.log(String((function(){return this})().process))\n\u001b[0m\u001b[31m                                          ^\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/a1191201e71c19f1.ts\u001b[0m:\u001b[0m\u001b[33m5\u001b[0m:\u001b[0m\u001b[33m43\u001b[0m\n",
+  "ms": 888,
+  "hostCalls": 0
+}

@@ -1,0 +1,1 @@
+{"ms":2579.91,"peakRssMB":1553,"msg":{"type":"error","error":"out of memory\n    at <anonymous> (exec.js:4:91)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n","output":""}}

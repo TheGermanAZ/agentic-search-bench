@@ -1,0 +1,32 @@
+{
+  "probe": "P7",
+  "config": "default",
+  "codes": [
+    "a = []\nwhile True:\n    a.append(\"x\" * 10**6)"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "model_view_all": [
+        "<repl_output>\n[Error] MemoryError: \n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        21,
+        25
+      ],
+      "answer": "done",
+      "error": "<repl_output>\n[Error] MemoryError: \n</repl_output>",
+      "ms": 3037.9,
+      "started": 1795382139.092472
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 4.83,
+  "peak_tree_rss_gb": 2.528,
+  "calls": [],
+  "child_log_tail": ""
+}

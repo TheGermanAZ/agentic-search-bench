@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { forge.log("A".repeat(200000)); return "RETURNED"; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "\"RETURNED\""
+      }
+    ],
+    "isError": false
+  },
+  "ms": 13,
+  "hostCalls": 0
+}

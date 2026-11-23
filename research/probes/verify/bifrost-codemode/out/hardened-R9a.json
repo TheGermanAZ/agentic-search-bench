@@ -1,0 +1,486 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/../_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/adapter.mjs hardened R9a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 11400,
+  "peakTreeRssMb": 165,
+  "peakTreeFootprintMb": 72,
+  "watchKill": null,
+  "record": {
+    "impl": "bifrost-codemode",
+    "config": "hardened",
+    "test": "R9a",
+    "notes": "maximhq/bifrost:v2.6.0, data-hardened/config.json; gateway restarted for this test (10422 ms); new MCP client per execution; Starlark codes",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 10543,
+          "ms": 31,
+          "ok": true,
+          "result": {
+            "value": {
+              "isError": true,
+              "textChars": 363,
+              "text": "Execution runtime error:\n\nTraceback (most recent call last):\n  code.star:1:1: in <toplevel>\nError: code mode resource limit: too many steps\n\nHints:\nCheck the error message above for details.\nAvailable server keys: probe\nUse: result = server_name.tool_name(param=\"value\")\nAccess dict values with brackets: result[\"key\"]\n\nEnvironment:\n  Available server keys: probe"
+            },
+            "stringChars": 363
+          },
+          "callsStarted": 0
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 10707,
+        "ms": 218,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 50,
+            "text": "Execution completed successfully.\nReturn value: 42"
+          },
+          "stringChars": 50
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 10925,
+        "ms": 212,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 50,
+            "text": "Execution completed successfully.\nReturn value: 42"
+          },
+          "stringChars": 50
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 11137,
+        "ms": 228,
+        "ok": true,
+        "result": {
+          "value": {
+            "isError": false,
+            "textChars": 50,
+            "text": "Execution completed successfully.\nReturn value: 42"
+          },
+          "stringChars": 50
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "gatewayStartMs": 10422,
+      "containerBaselineMb": 277,
+      "containerPeakMb": 278,
+      "containerLastMb": 278,
+      "containerKilled": null,
+      "containerRssMsMb": [
+        [
+          45,
+          277
+        ],
+        [
+          504,
+          278
+        ]
+      ]
+    },
+    "hostMaxEventLoopLagMs": 57,
+    "hostEvents": [],
+    "totalMs": 11365
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      76,
+      60,
+      0
+    ],
+    [
+      227,
+      76,
+      33
+    ],
+    [
+      385,
+      76,
+      34
+    ],
+    [
+      535,
+      76,
+      34
+    ],
+    [
+      693,
+      76,
+      34
+    ],
+    [
+      840,
+      76,
+      34
+    ],
+    [
+      991,
+      76,
+      34
+    ],
+    [
+      1150,
+      76,
+      34
+    ],
+    [
+      1297,
+      121,
+      33
+    ],
+    [
+      1458,
+      85,
+      46
+    ],
+    [
+      1600,
+      76,
+      34
+    ],
+    [
+      1759,
+      85,
+      34
+    ],
+    [
+      1907,
+      76,
+      34
+    ],
+    [
+      2056,
+      77,
+      34
+    ],
+    [
+      2213,
+      76,
+      34
+    ],
+    [
+      2364,
+      121,
+      34
+    ],
+    [
+      2516,
+      76,
+      34
+    ],
+    [
+      2669,
+      122,
+      34
+    ],
+    [
+      2822,
+      76,
+      34
+    ],
+    [
+      2981,
+      76,
+      34
+    ],
+    [
+      3133,
+      76,
+      34
+    ],
+    [
+      3285,
+      76,
+      34
+    ],
+    [
+      3438,
+      76,
+      34
+    ],
+    [
+      3592,
+      76,
+      33
+    ],
+    [
+      3744,
+      76,
+      34
+    ],
+    [
+      3896,
+      76,
+      34
+    ],
+    [
+      4050,
+      76,
+      34
+    ],
+    [
+      4204,
+      76,
+      33
+    ],
+    [
+      4356,
+      76,
+      34
+    ],
+    [
+      4509,
+      76,
+      33
+    ],
+    [
+      4664,
+      76,
+      34
+    ],
+    [
+      4815,
+      76,
+      34
+    ],
+    [
+      4966,
+      76,
+      34
+    ],
+    [
+      5118,
+      76,
+      34
+    ],
+    [
+      5271,
+      76,
+      34
+    ],
+    [
+      5421,
+      76,
+      34
+    ],
+    [
+      5574,
+      80,
+      34
+    ],
+    [
+      5728,
+      76,
+      34
+    ],
+    [
+      5881,
+      109,
+      34
+    ],
+    [
+      6035,
+      76,
+      34
+    ],
+    [
+      6184,
+      76,
+      33
+    ],
+    [
+      6341,
+      76,
+      34
+    ],
+    [
+      6490,
+      76,
+      34
+    ],
+    [
+      6642,
+      76,
+      34
+    ],
+    [
+      6796,
+      76,
+      33
+    ],
+    [
+      6948,
+      76,
+      34
+    ],
+    [
+      7101,
+      76,
+      33
+    ],
+    [
+      7255,
+      76,
+      34
+    ],
+    [
+      7407,
+      76,
+      33
+    ],
+    [
+      7559,
+      76,
+      34
+    ],
+    [
+      7710,
+      76,
+      34
+    ],
+    [
+      7862,
+      76,
+      34
+    ],
+    [
+      8019,
+      76,
+      33
+    ],
+    [
+      8170,
+      76,
+      34
+    ],
+    [
+      8321,
+      76,
+      34
+    ],
+    [
+      8475,
+      86,
+      34
+    ],
+    [
+      8628,
+      76,
+      34
+    ],
+    [
+      8782,
+      116,
+      34
+    ],
+    [
+      8932,
+      76,
+      34
+    ],
+    [
+      9085,
+      76,
+      33
+    ],
+    [
+      9237,
+      76,
+      34
+    ],
+    [
+      9389,
+      122,
+      34
+    ],
+    [
+      9540,
+      76,
+      34
+    ],
+    [
+      9695,
+      76,
+      33
+    ],
+    [
+      9851,
+      77,
+      34
+    ],
+    [
+      10004,
+      77,
+      34
+    ],
+    [
+      10159,
+      77,
+      34
+    ],
+    [
+      10308,
+      77,
+      34
+    ],
+    [
+      10462,
+      77,
+      34
+    ],
+    [
+      10617,
+      103,
+      61
+    ],
+    [
+      10773,
+      114,
+      70
+    ],
+    [
+      10923,
+      114,
+      71
+    ],
+    [
+      11073,
+      115,
+      72
+    ],
+    [
+      11225,
+      115,
+      72
+    ],
+    [
+      11380,
+      115,
+      72
+    ]
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "impl": "pi-codemode-mcp",
+  "config": "hardened",
+  "probe": "P9",
+  "options": {
+    "timeoutMs": 1000
+  },
+  "warmupExecIncludingServerSpawnMs": 420.05,
+  "hostCalls": 5,
+  "hostCallLog": [
+    "1795376435392 1",
+    "1795376435392 2",
+    "1795376435392 3",
+    "1795376435392 4",
+    "1795376435392 5"
+  ],
+  "results": [
+    {
+      "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => call(\"host\", \"lookup\", {id:i}))); console.log(Date.now()-t)",
+      "ms": 209,
+      "hostCalls": 5,
+      "isError": false,
+      "textChars": 123,
+      "text": "{\n  \"logs\": [\n    {\n      \"level\": \"log\",\n      \"message\": \"206\",\n      \"timestamp\": \"2026-11-22T19:40:35.594Z\"\n    }\n  ]\n}"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "hardened", "P9"], "exit_code": 0, "wall_ms": 998, "peak_tree_rss_mb": 191.1, "watch_kill": null}

@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "display": "limited (30.0 s)",
+  "detail": "stopped after 30.03 s: Error calling tool 'execute': TimeoutError: feed time limit exceeded: 30.000945292s > 30s",
+  "evidence": "research/probes/fastmcp-codemode/out/P6.txt"
+}

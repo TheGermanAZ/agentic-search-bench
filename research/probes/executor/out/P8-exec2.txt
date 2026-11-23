@@ -1,0 +1,30 @@
+{
+  "probe": "P8-exec2",
+  "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+  "wallMs": 6,
+  "hostToolCalls": 0,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 11,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":true,\"value\":null,\"logs\":[\"gone\"],\"toolCalls\":[]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": true,
+          "value": null,
+          "logs": [
+            "gone"
+          ],
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

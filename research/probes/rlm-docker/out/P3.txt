@@ -1,0 +1,18 @@
+code:
+import urllib.request
+print(urllib.request.urlopen("https://example.com").status)
+
+{
+  "probe": "P3",
+  "harness_wall_s": 6.6,
+  "peak_container_mem_mib": 0,
+  "raw": {
+    "result": {
+      "stdout": "200\n",
+      "stderr": "",
+      "ms": 437.0
+    },
+    "wall_s": 6.08
+  },
+  "child_tail": "{\"result\": {\"stdout\": \"200\\n\", \"stderr\": \"\", \"ms\": 437.0}, \"wall_s\": 6.08}\n"
+}

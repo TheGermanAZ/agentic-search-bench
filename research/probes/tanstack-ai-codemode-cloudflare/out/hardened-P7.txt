@@ -1,0 +1,126 @@
+label: hardened-P7
+command: node probe.mjs P7 --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 15982
+peak child RSS: 88.0 MB (ps every 50 ms)
+peak server (pid 34182) RSS: 73.9 MB; alive after probe: yes
+child stdout length: 1505 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P7",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 1.974375000000009,
+  "source": [
+    "const a = []; while (true) a.push(\"x\".repeat(1e6));"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 103,
+    "siblingEndMs": 15819,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)",
+          "name": "WorkerError"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 15817.743625,
+      "hostCalls": 0
+    }
+  ],
+  "concurrentSiblingRun": {
+    "returned": {
+      "success": false,
+      "error": {
+        "message": "Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)",
+        "name": "WorkerError"
+      },
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 15715.734625,
+    "hostCalls": 0
+  },
+  "afterRun": {
+    "returned": {
+      "success": false,
+      "error": {
+        "message": "Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)",
+        "name": "WorkerError"
+      },
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 2.469874999998865,
+    "hostCalls": 0
+  },
+  "summary": {
+    "siblingStartMs": 103,
+    "siblingEndMs": 15819,
+    "main": "WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)",
+    "ms": 15818,
+    "sibling": "WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)",
+    "siblingMs": 15716,
+    "after": "WorkerError: Worker returned 500: Error: Network connection lost.\n    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)"
+  },
+  "hostRssAfterMB": 88.7
+}
+--- child stdout ---
+{
+  timestamp: [33m1795376692334[39m,
+  durationMs: [33m15817[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'WorkerError'[39m,
+    message: [32m'Worker returned 500: Error: Network connection lost.\n'[39m +
+      [32m'    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)'[39m
+  }
+}
+{
+  timestamp: [33m1795376692335[39m,
+  durationMs: [33m15716[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'WorkerError'[39m,
+    message: [32m'Worker returned 500: Error: Network connection lost.\n'[39m +
+      [32m'    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)'[39m
+  }
+}
+{
+  timestamp: [33m1795376692338[39m,
+  durationMs: [33m3[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'WorkerError'[39m,
+    message: [32m'Worker returned 500: Error: Network connection lost.\n'[39m +
+      [32m'    at async Object.fetch (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-cloudflare/pkg/node_modules/miniflare/dist/src/workers/core/entry.worker.js:5499:22)'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

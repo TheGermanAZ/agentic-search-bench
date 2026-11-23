@@ -1,0 +1,51 @@
+{
+  "mode": "hardened",
+  "probe": "P10",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 0,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "throw new Error(\"probe-boom\")",
+      "ms": 24.57,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "Error: probe-boom"
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "const a = 1\nconst b = 2\nthrow new Error(\"probe-boom\")",
+      "ms": 1.13,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "ExecutionFailure",
+          "message": "Error: probe-boom"
+        },
+        "toolCalls": []
+      }
+    },
+    {
+      "code": "await tools.lookup({id: \"x\"})",
+      "ms": 2.2,
+      "hostCalls": 0,
+      "result": {
+        "ok": false,
+        "error": {
+          "kind": "InvalidToolInput",
+          "message": "Invalid input for tool 'lookup': SchemaError(Expected number\n  at [\"id\"])",
+          "suggestions": [
+            "The signature may have changed. Use search to get the current signature."
+          ]
+        },
+        "toolCalls": []
+      }
+    }
+  ]
+}

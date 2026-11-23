@@ -1,0 +1,43 @@
+label: P5
+command: node probe.mjs P5
+child exit: code=0 signal=null
+child wall ms (process start to exit): 543
+peak child RSS: 135.7 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P5",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return process.env.PROBE_SECRET;"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "process is not defined",
+        "stack": "ReferenceError: process is not defined\n    at <anonymous> (run.js:1:8)",
+        "string": "ReferenceError: process is not defined"
+      },
+      "wallMs": 349.499542,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR process is not defined",
+    "ms": 349,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 135.8
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:72045) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

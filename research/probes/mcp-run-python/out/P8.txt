@@ -1,0 +1,1 @@
+Python global kept: same server 'gone', new server 'gone'; sys attribute survives in same server '7', new server 'absent'; JS global set in run 1 read in run 2 '9'; Array.prototype taint read in run 2 '42'

@@ -1,0 +1,26 @@
+{
+ "probe": "P1",
+ "pid": 31776,
+ "env_GOOSE_DEFAULT_EXTENSION_TIMEOUT": "10",
+ "wall_ms": 686.6,
+ "peak_rss_mb": 7.6,
+ "exit": 0,
+ "killed": null,
+ "stderr": "",
+ "records": [
+  {
+   "exec": "config",
+   "probe": "P1",
+   "timeout_seconds": 10
+  },
+  {
+   "code": "async function run() {\nconst r = await tools.call(\"lookup\", {id: 21}); console.log(r.value)\n}",
+   "elapsed_ms": 206.72691700000001,
+   "exec": 0,
+   "host_calls": 1,
+   "is_error": false,
+   "probe": "P1",
+   "text": "42\n"
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+  "probe": "P12e",
+  "outcome": "works",
+  "display": "reaches Deno global (no perms)",
+  "detail": "DENO 2.9.8 57210",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/hardened-P12e.txt"
+}

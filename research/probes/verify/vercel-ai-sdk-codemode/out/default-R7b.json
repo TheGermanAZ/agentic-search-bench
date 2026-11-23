@@ -1,0 +1,357 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs default R7b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 12441,
+  "peakTreeRssMb": 164,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "default",
+    "test": "R7b",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "r": {
+        "startMs": 194,
+        "ms": 10240,
+        "ok": false,
+        "threw": "G: JavaScript runtime exceeded its CPU time limit of 10000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+        "callsStarted": 0
+      },
+      "atReturn": {
+        "started": 0,
+        "done": 0
+      },
+      "after1500ms": {
+        "started": 1,
+        "done": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 11936,
+        "ms": 390,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 242,
+    "hostEvents": [],
+    "totalMs": 12326
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:7178) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      99,
+      51
+    ],
+    [
+      257,
+      77
+    ],
+    [
+      467,
+      131
+    ],
+    [
+      613,
+      159
+    ],
+    [
+      765,
+      159
+    ],
+    [
+      944,
+      160
+    ],
+    [
+      1101,
+      160
+    ],
+    [
+      1268,
+      160
+    ],
+    [
+      1418,
+      160
+    ],
+    [
+      1573,
+      160
+    ],
+    [
+      1723,
+      160
+    ],
+    [
+      1868,
+      160
+    ],
+    [
+      2025,
+      161
+    ],
+    [
+      2190,
+      161
+    ],
+    [
+      2338,
+      161
+    ],
+    [
+      2486,
+      161
+    ],
+    [
+      2644,
+      161
+    ],
+    [
+      2832,
+      161
+    ],
+    [
+      3047,
+      161
+    ],
+    [
+      3205,
+      161
+    ],
+    [
+      3346,
+      161
+    ],
+    [
+      3510,
+      161
+    ],
+    [
+      3710,
+      161
+    ],
+    [
+      3873,
+      161
+    ],
+    [
+      4021,
+      161
+    ],
+    [
+      4173,
+      161
+    ],
+    [
+      4355,
+      161
+    ],
+    [
+      4535,
+      161
+    ],
+    [
+      4699,
+      161
+    ],
+    [
+      4848,
+      161
+    ],
+    [
+      5029,
+      161
+    ],
+    [
+      5204,
+      161
+    ],
+    [
+      5371,
+      161
+    ],
+    [
+      5544,
+      161
+    ],
+    [
+      5706,
+      161
+    ],
+    [
+      5868,
+      161
+    ],
+    [
+      6054,
+      161
+    ],
+    [
+      6211,
+      161
+    ],
+    [
+      6369,
+      161
+    ],
+    [
+      6518,
+      161
+    ],
+    [
+      6676,
+      161
+    ],
+    [
+      6821,
+      161
+    ],
+    [
+      6984,
+      161
+    ],
+    [
+      7132,
+      161
+    ],
+    [
+      7294,
+      161
+    ],
+    [
+      7441,
+      161
+    ],
+    [
+      7588,
+      161
+    ],
+    [
+      7741,
+      161
+    ],
+    [
+      7887,
+      161
+    ],
+    [
+      8049,
+      161
+    ],
+    [
+      8234,
+      162
+    ],
+    [
+      8382,
+      162
+    ],
+    [
+      8546,
+      162
+    ],
+    [
+      8720,
+      162
+    ],
+    [
+      8869,
+      162
+    ],
+    [
+      9013,
+      162
+    ],
+    [
+      9178,
+      162
+    ],
+    [
+      9340,
+      162
+    ],
+    [
+      9482,
+      162
+    ],
+    [
+      9696,
+      162
+    ],
+    [
+      9891,
+      162
+    ],
+    [
+      10052,
+      162
+    ],
+    [
+      10204,
+      162
+    ],
+    [
+      10358,
+      162
+    ],
+    [
+      10518,
+      153
+    ],
+    [
+      10690,
+      153
+    ],
+    [
+      10837,
+      153
+    ],
+    [
+      11086,
+      153
+    ],
+    [
+      11290,
+      153
+    ],
+    [
+      11462,
+      153
+    ],
+    [
+      11612,
+      153
+    ],
+    [
+      11831,
+      153
+    ],
+    [
+      12036,
+      153
+    ],
+    [
+      12184,
+      164
+    ],
+    [
+      12344,
+      164
+    ]
+  ]
+}

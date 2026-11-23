@@ -1,0 +1,9 @@
+{
+  "probe": "P7",
+  "outcome": "limited",
+  "detail": "stopped after 0.3 s, peak tree RSS 760 MB: RuntimeError: Execution failed: guest execution failed: Guest aborted: 13 Out of physical memory: Guest aborted: 13 Out of physical memory. same session after P7: ok=True stdout='2\\n' error=None. fresh session ok=True",
+  "display": "limited (760 MB peak)",
+  "peak_rss_mb": 760,
+  "host_survived": true,
+  "config": "default"
+}

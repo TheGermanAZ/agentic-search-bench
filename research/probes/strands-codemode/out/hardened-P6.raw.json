@@ -1,0 +1,25 @@
+{
+  "probe": "P6",
+  "config": "hardened",
+  "codes": [
+    "while True:\n    pass"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error: timed out after 10 seconds.",
+      "ms": 10012.2,
+      "started": 1795381412.852106
+    }
+  ],
+  "setup_ms": 746.9,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 11.38,
+  "peak_tree_rss_gb": 0.108,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

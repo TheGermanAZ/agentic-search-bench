@@ -1,0 +1,14 @@
+{
+  "probe": "P6",
+  "code": "while (true) {}",
+  "error": "AbortError: This operation was aborted",
+  "wallMs": 120003,
+  "stoppedByHarnessAt120s": true,
+  "concurrentExecuteDuringLoop": {
+    "code": "1+1",
+    "ms": 8,
+    "value": 2
+  },
+  "serverCpuPercentDuringLoop": 172.1,
+  "serverCpuPercent5sAfterClientAbort": 0.6
+}

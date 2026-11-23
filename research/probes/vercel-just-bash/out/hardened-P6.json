@@ -1,0 +1,33 @@
+{
+  "id": "P6",
+  "workerPid": 99909,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 363,
+  "peakRssKbSampled": 98416,
+  "stderr": "",
+  "parsed": {
+    "probe": "P6",
+    "config": {
+      "executionLimitProfile": "hardened"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 99909
+    },
+    "runs": [
+      {
+        "script": "while true; do :; done",
+        "exitCode": 126,
+        "stdout": "",
+        "stderr": "bash: too many commands executed (>10000), increase executionLimits.maxCommandCount\n",
+        "ms": 190,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 98800,
+    "maxInFlight": 0,
+    "hostCalls": 0
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "display": "limited (60 s VM time)",
+  "detail": "stopped after 60.04 s: Execution error: TimeoutError: time limit exceeded: 60.000058375s > 60s",
+  "evidence": "research/probes/repro/out/P6.txt"
+}

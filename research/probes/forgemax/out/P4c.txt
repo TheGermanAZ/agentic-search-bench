@@ -1,0 +1,18 @@
+mode: default
+code:
+async () => { return await Deno.readTextFile("/etc/hosts"); }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"banned pattern detected: `Deno.* access is banned in the sandbox` — the sandbox has no filesystem, network, or module access. Use forge.callTool() or forge.server() to interact with external services.\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 0,
+  "hostCalls": 0
+}

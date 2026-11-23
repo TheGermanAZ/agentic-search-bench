@@ -1,0 +1,53 @@
+{
+  "impl": "pi-codemode-mcp",
+  "config": "default",
+  "probe": "P12",
+  "options": {},
+  "firstExecIncludingServerSpawnMs": 2.44,
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "return String(this.constructor.constructor(\"return process\")())",
+      "ms": 1,
+      "hostCalls": 0,
+      "isError": false,
+      "textChars": 48,
+      "text": "{\n  \"result\": \"[object process]\",\n  \"logs\": []\n}"
+    },
+    {
+      "code": "return String((function(){return this})().process)",
+      "ms": 1,
+      "hostCalls": 0,
+      "isError": false,
+      "textChars": 41,
+      "text": "{\n  \"result\": \"undefined\",\n  \"logs\": []\n}"
+    },
+    {
+      "code": "const p = Buffer.constructor.constructor(\"return process\")(); return p.getBuiltinModule(\"child_process\").execSync(\"echo PWNED\").toString()",
+      "ms": 89,
+      "hostCalls": 0,
+      "isError": false,
+      "textChars": 39,
+      "text": "{\n  \"result\": \"PWNED\\n\",\n  \"logs\": []\n}"
+    },
+    {
+      "code": "const p = console.log.constructor.constructor(\"return process\")(); return [p.pid === 34574, typeof p.getBuiltinModule].join(\"/\")",
+      "ms": 11,
+      "hostCalls": 0,
+      "isError": false,
+      "textChars": 45,
+      "text": "{\n  \"result\": \"true/function\",\n  \"logs\": []\n}"
+    },
+    {
+      "code": "return call.constructor.constructor(\"return globalThis.__HOST_CANARY\")()",
+      "ms": 18,
+      "hostCalls": 0,
+      "isError": false,
+      "textChars": 43,
+      "text": "{\n  \"result\": \"host-canary\",\n  \"logs\": []\n}"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P12"], "exit_code": 0, "wall_ms": 1147, "peak_tree_rss_mb": 107.0, "watch_kill": null}

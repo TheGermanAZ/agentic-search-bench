@@ -1,0 +1,17 @@
+Reproduction of Go flag-ordering behaviour in `voidmcp add` (v0.0.10 darwin-arm64 release binary), 2026-11-22.
+
+Command run (flags after the positional arguments, as the README and usage text show for --token):
+  voidmcp add lookup "<node> <harness>/lookup-server.mjs <harness>/state/calls.log" --db <harness>/state/voidmcp.db
+Output:
+  Added "lookup" with 1 tools:
+    - lookup: Look up a value by numeric id. Returns { id, value: id * 2 } after 200 ms.
+Then `voidmcp list --db <harness>/state/voidmcp.db` printed: No servers registered.
+`ls ~/.voidmcp` showed a new key and voidmcp.db created at that moment: the --db flag after the positionals was ignored
+and the server went into the default database. (The probe removed that ~/.voidmcp directory, which it had just created.)
+
+Cause: runAdd parses with flag.FlagSet.Parse(os.Args[2:]) (cmd/voidmcp/main.go:186-191). Go's flag package stops at the first
+non-flag argument, so everything after <name> <target> is left in fs.Args() and never parsed. The same applies to the README's
+`voidmcp add github https://mcp.github.com --token ghp_...` (README.md "Servers with authentication"): the token would be silently
+dropped (inferred from the same code path; not run, no real token used).
+
+Re-running with flags first (`voidmcp add --db <path> lookup "<cmd>"`) stored the server in the harness database as intended.

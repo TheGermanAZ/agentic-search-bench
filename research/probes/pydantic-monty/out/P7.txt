@@ -1,0 +1,3 @@
+CODE: a=[]; while True: a.append('x'*10**6)
+OUTCOME: no-limit-within-120s
+no Monty limit fired; harness killed the process tree on the first sample above 4 GiB, at 0.6 s (sampled peak 5.63 GiB)

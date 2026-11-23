@@ -1,0 +1,6 @@
+probe: P4b
+code (python, run through LocalPythonExecutor):
+import os
+print(os.path.exists("/etc/hosts"))
+host_calls_so_far: 0
+result: {'ok': False, 'error_type': 'InterpreterError', 'error': "Code execution failed at line 'import os' due to: InterpreterError: Import of os is not allowed. Authorized imports are: ['unicodedata', 'queue', 'itertools', 'datetime', 're', 'stat', 'collections', 'statistics', 'time', 'math', 'random']", 'ms': 0.3}

@@ -1,0 +1,57 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P11",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 20.0865,
+  "source": [
+    "return 1+1;"
+  ],
+  "first": {
+    "returned": {
+      "success": true,
+      "result": 2,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 36.74087499999996,
+    "hostCalls": 0
+  },
+  "timesMs": [
+    1.31,
+    1.04,
+    0.99,
+    0.89,
+    0.75,
+    0.72,
+    0.67,
+    0.74,
+    0.93,
+    0.67,
+    0.62,
+    0.63,
+    0.61,
+    0.61,
+    0.62,
+    0.65,
+    0.7,
+    0.66,
+    5.13,
+    2.37
+  ],
+  "medianMs": 0.71,
+  "p90Ms": 1.31,
+  "summary": {
+    "median": 0.71,
+    "p90": 1.31,
+    "first": 36.7,
+    "driverSetup": 20.1,
+    "firstResult": {
+      "result": 2,
+      "logCount": 0,
+      "logChars": 0
+    }
+  },
+  "hostRssAfterMB": 101.3
+}

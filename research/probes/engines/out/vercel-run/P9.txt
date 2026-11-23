@@ -1,0 +1,5 @@
+const t = Date.now(); const rs = await Promise.all([1,2,3,4,5].map(i => corpus.read(i))); console.log(Date.now() - t, rs.map(r => r.value).join(","))
+--- output
+220 2,4,6,8,10
+---
+wall_ms=222 host_calls=5 peak_tree_rss_mb=168

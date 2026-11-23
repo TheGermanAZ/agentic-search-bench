@@ -1,0 +1,66 @@
+[
+ {
+  "mode": "read-only",
+  "argv": [
+   "python3",
+   "-c",
+   "import os;print(os.environ.get(\"PROBE_SECRET\"))"
+  ],
+  "exit": 0,
+  "wall_ms": 52.7,
+  "peak_tree_rss_mb": 1.6,
+  "killed": null,
+  "stdout_len": 7,
+  "stdout": "s3cr3t\n",
+  "stderr": "",
+  "label": "python os.environ"
+ },
+ {
+  "mode": "read-only",
+  "argv": [
+   "/bin/sh",
+   "-c",
+   "echo \"$PROBE_SECRET\""
+  ],
+  "exit": 0,
+  "wall_ms": 107.4,
+  "peak_tree_rss_mb": 22.1,
+  "killed": null,
+  "stdout_len": 7,
+  "stdout": "s3cr3t\n",
+  "stderr": "",
+  "label": "sh echo"
+ },
+ {
+  "mode": "workspace-write",
+  "argv": [
+   "python3",
+   "-c",
+   "import os;print(os.environ.get(\"PROBE_SECRET\"))"
+  ],
+  "exit": 0,
+  "wall_ms": 52.3,
+  "peak_tree_rss_mb": 4.0,
+  "killed": null,
+  "stdout_len": 7,
+  "stdout": "s3cr3t\n",
+  "stderr": "",
+  "label": "python os.environ"
+ },
+ {
+  "mode": "workspace-write",
+  "argv": [
+   "/bin/sh",
+   "-c",
+   "echo \"$PROBE_SECRET\""
+  ],
+  "exit": 0,
+  "wall_ms": 45.4,
+  "peak_tree_rss_mb": 2.6,
+  "killed": null,
+  "stdout_len": 7,
+  "stdout": "s3cr3t\n",
+  "stderr": "",
+  "label": "sh echo"
+ }
+]

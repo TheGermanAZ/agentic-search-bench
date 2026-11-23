@@ -1,0 +1,142 @@
+{
+  "initialize": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "protocolVersion": "2024-11-05",
+      "capabilities": {
+        "tools": {}
+      },
+      "serverInfo": {
+        "name": "mcp-gway",
+        "version": "6.9.2"
+      }
+    }
+  },
+  "tools/list": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "tools": [
+        {
+          "name": "listToolFiles",
+          "description": "Lists the virtual .pyi stub files for connected CodeMode MCP servers (CodeMode VFS). Default server-level binding returns servers/<server>.pyi per server (e.g., servers/filesystem.pyi); tool-level binding returns servers/<server>/<tool>.pyi per tool. The <tool> filename stem is the exact callable name for executeTool. Workflow: listToolFiles -> readToolFile -> (optional) getToolDocs -> executeTool. In code, call tools as Server.tool_name(param=value) (e.g., Filesystem.read_file(path=\".\")). CALL THIS FIRST when the user names a server, tool, or capability not in your visible tool list \u2014 connected MCP servers are only discoverable here. Do NOT claim a server or capability is unavailable until listToolFiles confirms it is unavailable, then offer the closest alternative from the visible list or explain that it is not connected.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "readToolFile",
+          "description": "Reads a virtual .pyi stub: servers/<server>.pyi for the full server signature list, or servers/<server>/<tool>.pyi for a single tool (both listed by listToolFiles). Matching is case-insensitive and the .pyi extension is optional. Returns the authoritative callable name and arguments for executeTool as Server.tool_name(param=value). If the compact signature is insufficient, use getToolDocs. Workflow: listToolFiles -> readToolFile -> (optional) getToolDocs -> executeTool.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "fileName": {
+                "type": "string",
+                "description": "Stub to read - e.g., servers/filesystem.pyi or servers/filesystem/read_file.pyi"
+              },
+              "startLine": {
+                "type": "integer",
+                "description": "Where to start reading \u2014 useful for large servers (leave empty for full view)."
+              },
+              "endLine": {
+                "type": "integer",
+                "description": "Where to stop reading \u2014 useful for large servers (leave empty for full view)."
+              }
+            },
+            "required": [
+              "fileName"
+            ]
+          }
+        },
+        {
+          "name": "getToolDocs",
+          "description": "Get detailed documentation for a specific tool including full parameter descriptions, types, and usage examples. Use this when the compact signature from readToolFile is not sufficient to understand how to use a tool. Requires both server name and tool name as parameters (e.g., server=\"filesystem\", tool=\"read_file\").",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "server": {
+                "type": "string",
+                "description": "The server that owns the tool, like filesystem"
+              },
+              "tool": {
+                "type": "string",
+                "description": "The tool you want to explore, like read_file"
+              }
+            },
+            "required": [
+              "server",
+              "tool"
+            ]
+          }
+        },
+        {
+          "name": "executeTool",
+          "description": "Executes Python-like (Starlark) code in a sandboxed interpreter with MCP tool access as Server.tool_name(param=value) (e.g., Filesystem.read_file(path=\".\")). Final step of listToolFiles -> readToolFile -> (optional) getToolDocs -> executeTool; read the stub first and use the exact callable name shown. Security: L1 code validation (no imports/classes/file-IO/network primitives), L2 sandboxed runtime (no external modules, no filesystem/network/process access except via MCP tools, memory isolation), L3 bounded execution timeout, L4 Tool ACL (only tools_to_execute-allowed CodeMode servers/tools are visible). CALLS: keyword or positional arguments; positional ones bind in the order the stub declares them (Filesystem.read_file(\".\")). STARLARK RULES: no try/except/raise, no classes, no imports, no f-strings (use % formatting), no `is` (use ==), synchronous calls only, dict access via result[\"key\"]. RETURN: assign `result`, or end the script with an expression and it is returned implicitly; a script that does neither returns null and says so in logs. Each call runs in a FRESH ISOLATED SCOPE (no state persists); print() output is captured to logs. Returns {\"result\": ..., \"logs\": [...]}. BUDGET: optional timeout in seconds; omitted uses MCP_GWAY_EXEC_TIMEOUT, then 30s.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "Starlark code calling tools as Server.tool_name(param=\"value\") or Server.tool_name(\"value\") \u2014 assign `result`, or end with an expression"
+              },
+              "timeout": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "Wall-clock budget in seconds (float). Omit to use MCP_GWAY_EXEC_TIMEOUT, then the 30s default."
+              }
+            },
+            "required": [
+              "code"
+            ]
+          }
+        },
+        {
+          "name": "callManyTool",
+          "description": "Runs up to 50 tool calls in one bounded fan-out (8 concurrent) and returns results in input order. Use it when several calls are independent - across servers or within one - and you want one round trip instead of N. Each item is {server, tool, arguments}; server and tool names are the ones readToolFile shows. A failed item returns ok=false with its error and never cancels its siblings, so a partial result is still usable. Do NOT use it when one call depends on another call's result: write an executeTool script for that. BUDGET: optional timeout in seconds caps the whole batch; omitted uses MCP_GWAY_EXEC_TIMEOUT, then 120s. Unfinished calls return ok=false with error.type=TimeoutError.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "calls": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 50,
+                "description": "Independent tool calls to run in parallel. Results come back in this order.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "server": {
+                      "type": "string",
+                      "description": "Server name as listed by listToolFiles (e.g. Filesystem)."
+                    },
+                    "tool": {
+                      "type": "string",
+                      "description": "Upstream tool name (e.g. read_file)."
+                    },
+                    "arguments": {
+                      "type": "object",
+                      "description": "Keyword arguments for the tool; omit when the tool takes none."
+                    }
+                  },
+                  "required": [
+                    "server",
+                    "tool"
+                  ]
+                }
+              },
+              "timeout": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "description": "Wall-clock budget in seconds (float) for the whole batch. Omit to use MCP_GWAY_EXEC_TIMEOUT, then the 120s default. Finished calls keep their results; unfinished calls return ok=false with error.type=TimeoutError."
+              }
+            },
+            "required": [
+              "calls"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

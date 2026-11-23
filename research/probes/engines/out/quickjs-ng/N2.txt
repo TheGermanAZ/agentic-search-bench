@@ -1,0 +1,1 @@
+neighbor printed "42" in 258 ms; aggressor P7 ended after 1291 ms with "ERROR: InternalError: out of memory\n    at <anonymous> (line 1:39)"

@@ -1,0 +1,139 @@
+{
+  "engine": "py-fastmcp",
+  "description": "FastMCP 4.2.4 CodeMode execute tool (Monty 1.6.0 worker per execution) on an in-process FastMCP server in a Python sidecar; call_tool bridge, return value only, errors masked",
+  "results": [
+    {
+      "id": "P1",
+      "ms": 987,
+      "hostCalls": 1,
+      "peakTreeMb": 195,
+      "out": "42"
+    },
+    {
+      "id": "P2",
+      "ms": 18,
+      "hostCalls": 0,
+      "peakTreeMb": 186,
+      "out": "RETURNED"
+    },
+    {
+      "id": "P3",
+      "ms": 16,
+      "hostCalls": 0,
+      "peakTreeMb": 187,
+      "out": "ModuleNotFoundError: No module named 'urllib'"
+    },
+    {
+      "id": "P4",
+      "ms": 17,
+      "hostCalls": 0,
+      "peakTreeMb": 187,
+      "out": "PermissionError: Permission denied: '/etc/hosts'"
+    },
+    {
+      "id": "P5",
+      "ms": 16,
+      "hostCalls": 0,
+      "peakTreeMb": 187,
+      "out": "RuntimeError: 'os.environ' is not supported in this environment"
+    },
+    {
+      "id": "P8a",
+      "ms": 16,
+      "hostCalls": 0,
+      "peakTreeMb": 192,
+      "out": "set"
+    },
+    {
+      "id": "P8b",
+      "ms": 15,
+      "hostCalls": 0,
+      "peakTreeMb": 192,
+      "out": "gone"
+    },
+    {
+      "id": "P9",
+      "ms": 228,
+      "hostCalls": 5,
+      "peakTreeMb": 203,
+      "out": "2,4,6,8,10"
+    },
+    {
+      "id": "P10",
+      "ms": 17,
+      "hostCalls": 0,
+      "peakTreeMb": 193,
+      "out": "ERROR: Error calling tool 'execute'"
+    },
+    {
+      "id": "P12a",
+      "ms": 16,
+      "hostCalls": 0,
+      "peakTreeMb": 193,
+      "out": "AttributeError: 'tuple' object has no attribute '__class__'"
+    },
+    {
+      "id": "P12b",
+      "ms": 15,
+      "hostCalls": 0,
+      "peakTreeMb": 193,
+      "out": "NameError: name '__import__' is not defined"
+    },
+    {
+      "id": "P12c",
+      "ms": 16,
+      "hostCalls": 0,
+      "peakTreeMb": 194,
+      "out": "NameError: name 'globals' is not defined"
+    },
+    {
+      "id": "E1",
+      "ms": 19,
+      "hostCalls": 0,
+      "peakTreeMb": 198,
+      "out": "caught: call_tool('search') failed: host-tool-boom internal detail db=<url>"
+    },
+    {
+      "id": "P6",
+      "ms": 60017,
+      "hostCalls": 0,
+      "peakTreeMb": 230,
+      "out": "ERROR: Error calling tool 'execute'"
+    },
+    {
+      "id": "P7",
+      "ms": 77,
+      "hostCalls": 0,
+      "peakTreeMb": 221,
+      "out": "ERROR: Error calling tool 'execute'"
+    },
+    {
+      "id": "P11",
+      "ms": 15.2,
+      "hostCalls": 0,
+      "peakTreeMb": -1,
+      "out": "P11 median 15.2 ms p90 16.3 ms over 20 executions"
+    },
+    {
+      "id": "N1",
+      "ms": 219,
+      "hostCalls": 0,
+      "peakTreeMb": 191,
+      "out": "neighbor printed \"42\" in 219 ms; aggressor P6 ended after 60038 ms with \"ERROR: Error calling tool 'execute'\""
+    },
+    {
+      "id": "N2",
+      "ms": 218,
+      "hostCalls": 0,
+      "peakTreeMb": 193,
+      "out": "neighbor printed \"42\" in 218 ms; aggressor P7 ended after 391 ms with \"ERROR: Error calling tool 'execute'\""
+    },
+    {
+      "id": "N3",
+      "ms": 221,
+      "hostCalls": 0,
+      "peakTreeMb": 195,
+      "out": "neighbor printed \"42\" in 221 ms; aggressor FLOOD ended after 60038 ms with \"ERROR: Error calling tool 'execute'\""
+    }
+  ]
+}

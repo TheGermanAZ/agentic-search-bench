@@ -1,0 +1,216 @@
+{
+  "probe": "P11",
+  "config": "default",
+  "codes": [
+    "print(2)"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 2.0,
+      "started": 1795377183.755104
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.7,
+      "started": 1795377183.75724
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.6,
+      "started": 1795377183.758007
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.7,
+      "started": 1795377183.758667
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.7,
+      "started": 1795377183.759431
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.8,
+      "started": 1795377183.760231
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.9,
+      "started": 1795377183.7610922
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.8,
+      "started": 1795377183.7620769
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 1.2,
+      "started": 1795377183.763063
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.9,
+      "started": 1795377183.764436
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.9,
+      "started": 1795377183.765719
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.7,
+      "started": 1795377183.7668018
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.7,
+      "started": 1795377183.767612
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.7,
+      "started": 1795377183.76878
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.6,
+      "started": 1795377183.769699
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.7,
+      "started": 1795377183.770494
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.9,
+      "started": 1795377183.771355
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.6,
+      "started": 1795377183.7724621
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.7,
+      "started": 1795377183.773221
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 0.7,
+      "started": 1795377183.774091
+    }
+  ],
+  "setup_ms": 311.1,
+  "killed": null,
+  "exit_code": 1,
+  "wall_s": 2.25,
+  "peak_tree_rss_gb": 0.395,
+  "calls": [],
+  "child_log_tail": "                        cancel scope in a different                        \n                             task than it was entered in                        \nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/anyio/streams/memory.py\", line 119, in receive\n    return self.receive_nowait()\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/anyio/streams/memory.py\", line 114, in receive_nowait\n    raise WouldBlock\nanyio._core._exceptions.WouldBlock\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/datalayer-codemode-eval/probe_core.py\", line 469, in <module>\n    child(sys.argv[2], sys.argv[3])\n  File \"~/p/agentic-search-bench/research/probes/datalayer-codemode-eval/probe_core.py\", line 158, in child\n    loop.run_until_complete(go())\n  File \"~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/base_events.py\", line 691, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/probes/datalayer-codemode-eval/probe_core.py\", line 145, in go\n    s2 = await ad.open_session(config)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/probes/datalayer-codemode-eval/adapter.py\", line 50, in open_session\n    await registry.discover_all()\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/agent_codemode/discovery/registry.py\", line 91, in discover_all\n    tools = await client.list_tools()\n            ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/agent_codemode/proxy/mcp_client.py\", line 197, in list_tools\n    session = await self._get_stdio_session()\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/agent_codemode/proxy/mcp_client.py\", line 118, in _get_stdio_session\n    await stdio_session.initialize()\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/mcp/client/session.py\", line 654, in initialize\n    result = await self.send_request(\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/mcp/client/session.py\", line 586, in send_request\n    raw = await self._dispatcher.send_raw_request(method, data.get(\"params\"), opts)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/mcp/shared/jsonrpc_dispatcher.py\", line 416, in send_raw_request\n    outcome = await receive.receive()\n              ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/anyio/streams/memory.py\", line 131, in receive\n    await receive_event.wait()\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py\", line 2009, in wait\n    await self._event.wait()\n  File \"~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/locks.py\", line 212, in wait\n    await fut\nasyncio.exceptions.CancelledError: Cancelled via cancel scope 10c649d10 by <Task pending name='Task-6' coro=<<async_generator_athrow without __name__>()>>\n"
+}

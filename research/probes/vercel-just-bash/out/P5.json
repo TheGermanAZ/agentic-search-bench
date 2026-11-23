@@ -1,0 +1,40 @@
+{
+  "worker": {
+    "exitCode": 0,
+    "signal": null,
+    "killed": null,
+    "wallMs": 98,
+    "peakRssKb": 0
+  },
+  "parsed": {
+    "probe": "P5",
+    "host": {
+      "node": "v24.22.1",
+      "pid": 62105
+    },
+    "runs": [
+      {
+        "label": "echo \"[$PROBE_SECRET]\"",
+        "script": "echo \"[$PROBE_SECRET]\"",
+        "exitCode": 0,
+        "stdout": "[]\n",
+        "stderr": "",
+        "ms": 32,
+        "stdoutLength": 3,
+        "hostCalls": 0
+      },
+      {
+        "label": "printenv PROBE_SECRET; echo \"exit=$?\"",
+        "script": "printenv PROBE_SECRET; echo \"exit=$?\"",
+        "exitCode": 0,
+        "stdout": "exit=1\n",
+        "stderr": "",
+        "ms": 3,
+        "stdoutLength": 7,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 83104,
+    "maxInFlight": 0
+  }
+}

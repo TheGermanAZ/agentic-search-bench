@@ -1,0 +1,224 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs hardened R6",
+  "exit": {
+    "code": null,
+    "signal": "SIGABRT"
+  },
+  "wallMs": 10260,
+  "peakTreeRssMb": 60,
+  "watchKill": null,
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "hardened",
+    "test": "R6",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, 10000, 64)",
+    "data": {
+      "startMs": 73,
+      "ms": 10019,
+      "ok": true,
+      "result": {
+        "value": {
+          "result": null,
+          "logs": [
+            "[ERROR] Code execution failed: Script execution timeout after 10000ms"
+          ]
+        },
+        "stringChars": 69
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 54,
+    "hostEvents": [],
+    "totalMs": 10093
+  },
+  "childStdoutOtherChars": 569,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\n",
+  "childStderrTail": "\n  #  Node.js[56751]: virtual void node::NodePlatform::UnregisterIsolate(Isolate *) at ../src/node_platform.cc:510\n  #  Assertion failed: (existing_it) != (per_isolate_.end())\n\n----- Native stack trace -----\n\n",
+  "rssSamplesMsMb": [
+    [
+      194,
+      34
+    ],
+    [
+      485,
+      57
+    ],
+    [
+      840,
+      58
+    ],
+    [
+      1158,
+      54
+    ],
+    [
+      1423,
+      54
+    ],
+    [
+      1720,
+      54
+    ],
+    [
+      1966,
+      54
+    ],
+    [
+      2224,
+      54
+    ],
+    [
+      2425,
+      54
+    ],
+    [
+      2644,
+      54
+    ],
+    [
+      2872,
+      54
+    ],
+    [
+      3131,
+      54
+    ],
+    [
+      3350,
+      54
+    ],
+    [
+      3636,
+      54
+    ],
+    [
+      3869,
+      54
+    ],
+    [
+      4069,
+      54
+    ],
+    [
+      4317,
+      54
+    ],
+    [
+      4541,
+      54
+    ],
+    [
+      4729,
+      54
+    ],
+    [
+      4946,
+      54
+    ],
+    [
+      5127,
+      54
+    ],
+    [
+      5333,
+      54
+    ],
+    [
+      5665,
+      54
+    ],
+    [
+      5909,
+      54
+    ],
+    [
+      6245,
+      54
+    ],
+    [
+      6450,
+      54
+    ],
+    [
+      6630,
+      54
+    ],
+    [
+      6817,
+      54
+    ],
+    [
+      7039,
+      54
+    ],
+    [
+      7230,
+      54
+    ],
+    [
+      7457,
+      54
+    ],
+    [
+      7657,
+      54
+    ],
+    [
+      7894,
+      54
+    ],
+    [
+      8130,
+      54
+    ],
+    [
+      8353,
+      54
+    ],
+    [
+      8600,
+      54
+    ],
+    [
+      8726,
+      54
+    ],
+    [
+      8902,
+      54
+    ],
+    [
+      9050,
+      54
+    ],
+    [
+      9241,
+      54
+    ],
+    [
+      9408,
+      54
+    ],
+    [
+      9576,
+      54
+    ],
+    [
+      9736,
+      54
+    ],
+    [
+      9923,
+      54
+    ],
+    [
+      10108,
+      54
+    ]
+  ]
+}

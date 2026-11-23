@@ -1,0 +1,7 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "display": "works (message + line 2)",
+  "detail": "message survives: True; 'line 2' present: True; text: '--- stderr --- Traceback (most recent call last): File \"/tmp/hermes_rkernel_5748aeeb4338/kernel_runner.py\", line 68, in run_cell exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS) ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"<cell>\", line 2, in <module> ValueError: probe-boom ValueError: probe-boom --- stderr --- Traceback (most recent call last): File \"/tmp/hermes_rkernel_5748aeeb4338/kernel_runner.py\", line 68, in run_cell exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS) ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"<cell>\", line 2, in <mo...'",
+  "evidence": "research/probes/hermes-execute-code/out/hardened-P10.txt"
+}

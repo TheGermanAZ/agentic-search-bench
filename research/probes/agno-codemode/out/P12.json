@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "escaped",
+  "display": "escaped (os.system, popen)",
+  "detail": "P12a subclasses walk: ran; \"SUBS 801 True True Out[1]: 'SUBS 801 True True'\" | P12b __import__('os').system: ran; \"PWNED SYSTEM 0 Out[2]: 'SYSTEM 0'\" | P12c _wrap_close globals popen: ran; \"WRAP PWNED2 Out[3]: 'WRAP PWNED2\\\\n'\"",
+  "evidence": "research/probes/agno-codemode/out/P12.txt"
+}

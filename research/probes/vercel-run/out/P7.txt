@@ -1,0 +1,65 @@
+label: P7
+command: node probe.mjs P7
+child exit: code=0 signal=null
+child wall ms (process start to exit): 687
+peak child RSS: 225.7 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P7",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "const a = []; while (true) a.push(\"x\".repeat(1e6));"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 132,
+    "siblingEndMs": 407,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "InternalError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "out of memory",
+        "stack": "InternalError: out of memory\n    at <anonymous> (run.js:1:39)",
+        "string": "InternalError: out of memory"
+      },
+      "wallMs": 353.463417,
+      "hostCalls": 1
+    }
+  ],
+  "concurrentSiblingRun": {
+    "ok": true,
+    "status": "completed",
+    "value": 42,
+    "wallMs": 275.07379199999997,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "ok": true,
+    "status": "completed",
+    "value": 42,
+    "wallMs": 207.77087500000005,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 132,
+    "siblingEndMs": 407,
+    "error": "InternalError: RUN_USER_SOURCE_ERROR out of memory",
+    "ms": 353,
+    "sibling": 42,
+    "after": 42
+  },
+  "hostRssAfterMB": 225.8
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:88125) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

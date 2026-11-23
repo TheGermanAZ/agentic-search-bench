@@ -1,0 +1,66 @@
+label: hardened-P4
+command: node probe.mjs P4 --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 368
+peak child RSS: 78.2 MB (ps every 50 ms)
+child stdout length: 459 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P4",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 95.380292,
+  "source": [
+    "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "require is not defined",
+          "name": "ReferenceError",
+          "stack": "ReferenceError: require is not defined\n    at <isolated-vm>:5:1\n    at <isolated-vm>:6:7\n    at <isolated-vm>:11:3"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 19.284374999999955,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: require is not defined",
+    "ms": 19,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 81.3
+}
+--- child stdout ---
+{
+  timestamp: [33m1795381409990[39m,
+  durationMs: [33m15[39m,
+  phase: [32m'execute'[39m,
+  success: [33mfalse[39m,
+  logCount: [33m0[39m,
+  error: {
+    name: [32m'ReferenceError'[39m,
+    message: [32m'require is not defined'[39m,
+    stack: [32m'ReferenceError: require is not defined\n'[39m +
+      [32m'    at <isolated-vm>:5:1\n'[39m +
+      [32m'    at <isolated-vm>:6:7\n'[39m +
+      [32m'    at <isolated-vm>:11:3'[39m
+  }
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

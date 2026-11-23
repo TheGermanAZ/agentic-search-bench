@@ -1,0 +1,2 @@
+{"exec":"config","probe":"P3","timeout_seconds":10}
+{"code":"async function run() {\nawait fetch(\"https://example.com\")\n}","elapsed_ms":0.977459,"exec":0,"host_calls":0,"is_error":true,"probe":"P3","text":"Error: ReferenceError: fetch is not defined (code_mode.js:4:5)\n    at run (code_mode.js:1:22)\n    at <main> (code_mode.js:4:5)"}

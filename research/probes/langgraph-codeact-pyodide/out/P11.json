@@ -1,0 +1,7 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "display": "median 1135.3 ms",
+  "detail": "20 runs in one session: median 1135.3 ms, p90 1167.0 ms; one-time setup 19.6 ms; fresh session per run (open+run+close, n=5): median 1166.0 ms",
+  "evidence": "research/probes/langgraph-codeact-pyodide/out/P11.txt"
+}

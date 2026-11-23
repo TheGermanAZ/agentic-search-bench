@@ -1,0 +1,3 @@
+CODE: while True: pass
+OUTCOME: no-limit-within-120s
+harness stopped the run at 120 s wall; no limit fired inside the sandbox

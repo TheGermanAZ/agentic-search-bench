@@ -1,0 +1,11 @@
+{
+  "file": "P1.ts",
+  "exitCode": 0,
+  "signal": null,
+  "killedByHarness": null,
+  "wallMs": 975,
+  "hostCalls": 1,
+  "stdoutChars": 3,
+  "stdout": "42\n",
+  "stderr": ""
+}

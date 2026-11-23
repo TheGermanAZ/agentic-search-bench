@@ -1,0 +1,383 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R9a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 31961,
+  "peakTreeRssMb": 127,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R9a",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1482,
+          "ms": 30115,
+          "ok": true,
+          "result": [
+            "Runtime error:\nTimeoutError: feed time limit exceeded: 30.000613833s > 30s\n\nThe code ran longer than its time limit and was stopped, so the session was reset. Re-run any imports, recreate any state you need, and make the code do less work per call."
+          ],
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1628,
+        "ms": 320,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1948,
+        "ms": 257,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 31597,
+        "ms": 243,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 18,
+    "totalMs": 31840
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      105,
+      25
+    ],
+    [
+      615,
+      45
+    ],
+    [
+      1033,
+      53
+    ],
+    [
+      1396,
+      65
+    ],
+    [
+      1903,
+      126
+    ],
+    [
+      2275,
+      127
+    ],
+    [
+      2632,
+      98
+    ],
+    [
+      3014,
+      98
+    ],
+    [
+      3373,
+      98
+    ],
+    [
+      3725,
+      98
+    ],
+    [
+      4123,
+      98
+    ],
+    [
+      4518,
+      98
+    ],
+    [
+      4990,
+      98
+    ],
+    [
+      5336,
+      98
+    ],
+    [
+      5699,
+      98
+    ],
+    [
+      6062,
+      98
+    ],
+    [
+      6417,
+      98
+    ],
+    [
+      6892,
+      98
+    ],
+    [
+      7233,
+      98
+    ],
+    [
+      7622,
+      98
+    ],
+    [
+      8005,
+      98
+    ],
+    [
+      8358,
+      98
+    ],
+    [
+      8719,
+      98
+    ],
+    [
+      9080,
+      98
+    ],
+    [
+      9470,
+      98
+    ],
+    [
+      10059,
+      98
+    ],
+    [
+      10431,
+      98
+    ],
+    [
+      10838,
+      98
+    ],
+    [
+      11266,
+      98
+    ],
+    [
+      11727,
+      98
+    ],
+    [
+      12082,
+      98
+    ],
+    [
+      12462,
+      98
+    ],
+    [
+      12891,
+      98
+    ],
+    [
+      13380,
+      98
+    ],
+    [
+      13829,
+      98
+    ],
+    [
+      14182,
+      98
+    ],
+    [
+      14577,
+      98
+    ],
+    [
+      14989,
+      98
+    ],
+    [
+      15357,
+      98
+    ],
+    [
+      15706,
+      98
+    ],
+    [
+      16130,
+      98
+    ],
+    [
+      16588,
+      98
+    ],
+    [
+      17018,
+      98
+    ],
+    [
+      17388,
+      98
+    ],
+    [
+      17792,
+      98
+    ],
+    [
+      18214,
+      98
+    ],
+    [
+      18693,
+      98
+    ],
+    [
+      19157,
+      98
+    ],
+    [
+      19691,
+      71
+    ],
+    [
+      20272,
+      71
+    ],
+    [
+      20688,
+      70
+    ],
+    [
+      21201,
+      70
+    ],
+    [
+      21729,
+      70
+    ],
+    [
+      22134,
+      70
+    ],
+    [
+      22534,
+      70
+    ],
+    [
+      22922,
+      70
+    ],
+    [
+      23307,
+      70
+    ],
+    [
+      23673,
+      70
+    ],
+    [
+      24022,
+      70
+    ],
+    [
+      24398,
+      70
+    ],
+    [
+      24805,
+      70
+    ],
+    [
+      25223,
+      70
+    ],
+    [
+      25564,
+      70
+    ],
+    [
+      25922,
+      70
+    ],
+    [
+      26282,
+      70
+    ],
+    [
+      26632,
+      70
+    ],
+    [
+      26997,
+      70
+    ],
+    [
+      27353,
+      70
+    ],
+    [
+      27778,
+      70
+    ],
+    [
+      28137,
+      70
+    ],
+    [
+      28578,
+      70
+    ],
+    [
+      29107,
+      70
+    ],
+    [
+      29463,
+      70
+    ],
+    [
+      29830,
+      70
+    ],
+    [
+      30180,
+      70
+    ],
+    [
+      30556,
+      70
+    ],
+    [
+      30931,
+      70
+    ],
+    [
+      31320,
+      70
+    ],
+    [
+      31708,
+      75
+    ]
+  ]
+}

@@ -1,0 +1,111 @@
+probe P11
+code:
+1+1
+{"ok":true,"error":null,"ms":1.2}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.3}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.3}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.3}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.3}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.3}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.3}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.3}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.3}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.3}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.2}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.2}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.2}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.2}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.2}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.2}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.2}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.3}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.3}
+stdout (0 chars): ""
+
+code:
+1+1
+{"ok":true,"error":null,"ms":0.2}
+stdout (0 chars): ""
+
+per-execution ms: [0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,1.2]
+session setup ms (client + stdio server): 229.2
+
+child exit=0 signal=null killedBy=null wall=0.6s peakRSS=91MB
+stderr tail:
+[11/22/26 14:50:45] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+[11/22/26 14:50:45] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+

@@ -1,0 +1,59 @@
+{
+  "supervisor": {
+    "exitCode": 0,
+    "signal": null,
+    "killedByHarness": null,
+    "msSinceProbeStart": 32931,
+    "totalWallMs": 33807,
+    "peakTreeRssMB": 1214.4,
+    "stderrTail": ""
+  },
+  "backend": "quickjs",
+  "probe": "P7",
+  "mode": "default",
+  "setupMs": 585,
+  "record": {
+    "rssBeforeMB": 138.2,
+    "probe": {
+      "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+      "wallMs": 6799.8,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "out of memory",
+          "name": "InternalError"
+        }
+      },
+      "threw": null
+    },
+    "rssAfterMB": 140.9,
+    "survivalCheck": {
+      "code": "const r = await external_lookup({id: 21}); return r.value",
+      "wallMs": 235.4,
+      "hostCalls": 1,
+      "out": {
+        "success": true,
+        "result": 42,
+        "logs": []
+      },
+      "threw": null
+    },
+    "secondProbe": {
+      "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+      "wallMs": 24451.8,
+      "hostCalls": 0,
+      "out": {
+        "success": false,
+        "logs": [],
+        "error": {
+          "message": "out of memory",
+          "name": "InternalError"
+        }
+      },
+      "threw": null
+    },
+    "rssAfterSecondMB": 1213.7
+  }
+}

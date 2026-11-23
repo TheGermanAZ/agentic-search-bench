@@ -1,0 +1,193 @@
+{
+  "impl": "mastra-codemode-localsandbox",
+  "name": "Mastra Code Mode, default stdio transport on LocalSandbox",
+  "source": "npm @mastra/core 1.85.0 (createCodeMode from @mastra/core/tools); repo https://github.com/mastra-ai/mastra",
+  "language": "TS (types stripped before running)",
+  "pinned": "@mastra/core 1.85.0; source read at aa82a4a7858c637f654be24391ff306dcb568c00",
+  "engine": "A child `node --experimental-strip-types` process per run (host Node 24.22.1), spawned through LocalSandbox; no isolation unless `isolation` is set",
+  "how_run": "createCodeMode({ tools: { lookup }, sandbox: new LocalSandbox() }).tool.execute({ code }, {}), the docs quickstart setup",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed 42, 1 host call, 372 ms",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P1.txt",
+      "display": "works (42, 1 call)"
+    },
+    "P2": {
+      "outcome": "works",
+      "detail": "full 200,000-char log line, no marker; result only with `return`",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P2.txt",
+      "display": "works (200,000 chars, no cap)"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "fetch returned status 200, 577 bytes",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P3.txt",
+      "display": "works (example.com 200)"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "await import('fs') and process.getBuiltinModule('fs') both read /etc/hosts; require is undefined only because the program is an ES module",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P4.txt",
+      "display": "works (/etc/hosts read)"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "process.env.PROBE_SECRET undefined; child env keys were PATH, PWD, SHLVL, _, __CF_USER_TEXT_ENCODING. Files the user can read stay readable (P4)",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P5.txt",
+      "display": "blocked (env scrubbed to PATH)"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "TimeoutError after 30,062 ms; process tree killed",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P6.txt",
+      "display": "limited (30 s)"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "No Mastra memory limit. Run 1: the child node died on its own V8 heap limit after 25.9 s at 3.5 GB tree RSS ('Program exited without returning a result'); run 2 passed 4 GB host RSS at 16.4 s and the harness killed it",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P7.txt; research/probes/mastra-codemode-localsandbox/out/P7-run1-nosurvival.txt",
+      "display": "no cap (4 GB harness kill)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "second execution printed gone (new process)",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P8.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "in-code 205 ms, 5 host calls",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P9.txt",
+      "display": "parallel (205 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "{message: 'probe-boom', name: 'Error'}; no stack or line",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P10.txt",
+      "display": "message only (no line)"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "median 97 ms, p90 187 ms (one node process per run); first execution 376 ms; setup 133 ms",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P11.txt",
+      "display": "97 ms median"
+    },
+    "P12": {
+      "outcome": "escaped",
+      "detail": "Function('return process')() reached process; child_process.execSync printed 'PWNED' and the host user name. The two spec one-liners fail only because `this` is undefined in an ES module",
+      "evidence": "research/probes/mastra-codemode-localsandbox/out/P12.txt",
+      "display": "escaped (child_process exec)"
+    }
+  },
+  "hardened": {
+    "config": "new LocalSandbox({ isolation: 'seatbelt', nativeSandbox: { allowNetwork: false, readOnly: true } }) and createCodeMode timeout: 5000; options at https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/workspace/sandbox/local-sandbox.ts#L87-L134 and https://mastra.ai/docs/sandbox/overview",
+    "probes": {
+      "P3": {
+        "outcome": "blocked",
+        "detail": "TypeError: fetch failed (seatbelt denies network*)",
+        "evidence": "research/probes/mastra-codemode-localsandbox/out/hardened-P3.txt",
+        "display": "blocked (seatbelt)"
+      },
+      "P4": {
+        "outcome": "works",
+        "detail": "seatbelt profile allows every file read; /etc/hosts read as in default",
+        "evidence": "research/probes/mastra-codemode-localsandbox/out/hardened-P4.txt",
+        "display": "works (/etc/hosts read)"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "same as default",
+        "evidence": "research/probes/mastra-codemode-localsandbox/out/hardened-P5.txt",
+        "display": "blocked (env scrubbed to PATH)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "TimeoutError after 5,118 ms",
+        "evidence": "research/probes/mastra-codemode-localsandbox/out/hardened-P6.txt",
+        "display": "limited (5 s)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "stopped only by the 5 s timeout at 2.7 to 2.8 GB tree RSS; host made a tool call afterwards",
+        "evidence": "research/probes/mastra-codemode-localsandbox/out/hardened-P7.txt; research/probes/mastra-codemode-localsandbox/out/hardened-P7-run1-nosurvival.txt",
+        "display": "limited (5 s timeout, no mem cap)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "5 host calls in parallel",
+        "evidence": "research/probes/mastra-codemode-localsandbox/out/hardened-P9.txt",
+        "display": "parallel (205 ms)"
+      },
+      "P12": {
+        "outcome": "escaped",
+        "detail": "execSync still printed PWNED: seatbelt allows process-exec",
+        "evidence": "research/probes/mastra-codemode-localsandbox/out/hardened-P12.txt",
+        "display": "escaped (child_process exec)"
+      }
+    }
+  },
+  "defaults": {
+    "time": "30 s, then the process tree is killed",
+    "memory": "none from Mastra; the child node's own V8 heap limit (about 4.2 GB here)",
+    "output": "no cap",
+    "tool_calls": "no cap"
+  },
+  "source_notes": [
+    {
+      "topic": "Isolation boundary",
+      "finding": "The stdio transport writes the program to a temp .ts file and spawns `node --experimental-strip-types` through the sandbox. With LocalSandbox the isolation default is 'none', and the docs say this runs 'as a host node process with host privileges'.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/transport.ts#L29-L55; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/workspace/sandbox/local-sandbox.ts#L120-L129"
+    },
+    {
+      "topic": "Env",
+      "finding": "LocalSandbox passes only PATH plus explicitly configured env to commands, so host secrets in env do not reach the program by default.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/workspace/sandbox/local-sandbox.ts#L92-L109; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/workspace/sandbox/local-sandbox.ts#L682-L688"
+    },
+    {
+      "topic": "Seatbelt profile",
+      "finding": "The generated macOS profile allows all file reads, allows process-exec and fork, limits writes to the workspace and temp dirs, and denies network unless allowNetwork.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/workspace/sandbox/native-sandbox/seatbelt.ts#L103-L108; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/workspace/sandbox/native-sandbox/seatbelt.ts#L148-L150; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/workspace/sandbox/native-sandbox/seatbelt.ts#L186-L192"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Newline-delimited JSON frames on stdout with a NUL-delimited prefix; the host answers rpc frames on the child's stdin, matched by id so Promise.all works.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/runner.ts#L98-L138"
+    },
+    {
+      "topic": "API shape",
+      "finding": "Each Mastra tool's input and output schema goes zod -> JSON Schema -> a TypeScript string, and becomes one `declare function external_<id>(input): Promise<output>` line with the tool description as a doc comment.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/stub-generator.ts#L164-L186"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "Everything upfront: createCodeModeInstructions joins a fixed usage contract and every stub into one instructions string for the system prompt. No search or lazy loading; the docs scope tools by making several createCodeMode instances instead.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/stub-generator.ts#L189-L213"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "Tools run on the host: each external_* call re-enters the real Mastra tool's execute with the outer tool's requestContext, mastra instance and workspace, and an allow-list rejects tool ids that were not exposed. Credentials the tool uses stay on the host side of the bridge.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/code-mode.ts#L102-L119"
+    },
+    {
+      "topic": "Defaults",
+      "finding": "Timeout defaults to 30 s for every backend (DEFAULT_TIMEOUT). The tool id defaults to execute_typescript.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/code-mode.ts#L20-L21"
+    },
+    {
+      "topic": "Errors",
+      "finding": "The result type declares error.line, but no transport ever sets it: the stdio runner, the isolated-vm envelope and the QuickJS envelope all copy only message and name. The model never sees a line number or stack.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/types.ts#L50-L54; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/runner.ts#L153-L157; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/isolated-vm/src/transport.ts#L266-L270; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/code-mode/quickjs/src/transport.ts#L425-L429"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Both console output (logs[], one entry per call, in order) and the program's `return` value come back. Nothing truncates either; a bare final expression is not returned because the program is wrapped in an async function body.",
+      "evidence": "https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/transport.ts#L76-L80; https://github.com/mastra-ai/mastra/blob/aa82a4a7858c637f654be24391ff306dcb568c00/packages/core/src/tools/code-mode/runner.ts#L38-L40"
+    }
+  ],
+  "surprises": [
+    "The quickstart on the docs page uses `new LocalSandbox()`, which runs model code as a full host Node process: it read /etc/hosts, reached example.com and ran a shell command.",
+    "Even with seatbelt isolation the program reads any file the user can read and can exec binaries; only network and writes are restricted.",
+    "Env is scrubbed to PATH by default, which is stricter than most host-process runners."
+  ]
+}

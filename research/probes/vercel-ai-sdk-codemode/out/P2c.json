@@ -1,0 +1,23 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P2c",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "console.log(\"A\".repeat(1000)); return \"RETURNED\";"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "value": "RETURNED",
+      "wallMs": 83.81133399999999,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": "RETURNED",
+    "ms": 84,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 150.2
+}

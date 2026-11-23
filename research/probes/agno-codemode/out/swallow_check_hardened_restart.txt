@@ -1,0 +1,8 @@
+first cell returned after 11.5 s: 'stderr:\n[cell interrupted: exceeded timeout of 10s]\n[cell aborted: the kernel did not respond to the interrupt in time and may still be running. Wait and retry, or call restart to discard state.]'
+  +12 s kernel processes: ['67410 67365  98.6 ~/p/agentic-search-bench/research/probes/agno-codemode/../../impls/agno-codemode/.venv/bin/python -m ipyk']
+  +17 s kernel processes: ['67410 67365 100.0 ~/p/agentic-search-bench/research/probes/agno-codemode/../../impls/agno-codemode/.venv/bin/python -m ipyk']
+  +22 s kernel processes: ['67410 67365 100.0 ~/p/agentic-search-bench/research/probes/agno-codemode/../../impls/agno-codemode/.venv/bin/python -m ipyk']
+  +27 s kernel processes: ['67410 67365  98.7 ~/p/agentic-search-bench/research/probes/agno-codemode/../../impls/agno-codemode/.venv/bin/python -m ipyk']
+second cell after 5.7 s: '<code_mode_reset>\nThe code environment was restarted. Variables, imports, async tasks, and open resources from before the restart are gone. Recreate them before use.\n</code_mode_reset>\nsecond cell ran in pid 69769'
+  kernel processes: ['69769 67365  14.2 ~/p/agentic-search-bench/research/probes/agno-codemode/../../impls/agno-codemode/.venv/bin/python -m ipyk']
+  after close: ['69769 67365  14.2 ~/p/agentic-search-bench/research/probes/agno-codemode/../../impls/agno-codemode/.venv/bin/python -m ipyk']

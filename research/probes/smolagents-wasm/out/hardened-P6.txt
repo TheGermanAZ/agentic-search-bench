@@ -1,0 +1,25 @@
+config: WasmExecutor(additional_imports=[], timeout=5)
+code:
+"while True:\n    pass"
+
+{
+  "probe": "P6",
+  "hardened": true,
+  "harness_wall_s": 12.4,
+  "peak_tree_rss_mib": 289,
+  "raw": {
+    "setup_ms": 2081,
+    "result": {
+      "ok": false,
+      "error": "AgentError: Failed to communicate with Deno server: HTTPConnectionPool(host='127.0.0.1', port=41986): Read timed out. (read timeout=5)",
+      "ms": 5002.1
+    },
+    "after": {
+      "ok": false,
+      "error": "AgentError: Failed to communicate with Deno server: HTTPConnectionPool(host='127.0.0.1', port=41986): Read timed out. (read timeout=5)",
+      "ms": 5002.0
+    },
+    "wall_s": 12.11
+  },
+  "child_tail": "Failed to communicate with Deno server: HTTPConnectionPool(host='127.0.0.1', \nport=41986): Read timed out. (read timeout=5)\nFailed to communicate with Deno server: HTTPConnectionPool(host='127.0.0.1', \nport=41986): Read timed out. (read timeout=5)\n"
+}

@@ -1,0 +1,18 @@
+mode: hardened
+code:
+async () => { while (true) {} }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"execution timed out after 5000ms\"}"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 5011,
+  "hostCalls": 0
+}

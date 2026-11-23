@@ -1,0 +1,322 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs hardened R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 4505,
+  "peakTreeRssMb": 171,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "hardened",
+    "test": "R5",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "r": {
+        "startMs": 323,
+        "ms": 1065,
+        "ok": false,
+        "threw": "RunBridgeLimitError: JavaScript runtime exceeded the 8 in-flight bridge request limit.\n    at handleHostFunctionRequest (file://~/p/agentic-search-bench/research/impls/vercel-ai-sdk-codemode/pkg/node_modules/run/dist/runtime/manager.js:791:9)\n    at async runInBackground (file://~/p/agentic-search-bench/research/impls/vercel-ai-sdk-codemode/pkg/node_modules/run/dist/runtime/manager.js:93:3)",
+        "callsStarted": 8
+      },
+      "atReturn": {
+        "started": 8,
+        "done": 0
+      },
+      "after3s": {
+        "started": 8,
+        "done": 8
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 562,
+    "hostEvents": [],
+    "totalMs": 4389
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:36448) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      133,
+      36
+    ],
+    [
+      193,
+      55
+    ],
+    [
+      337,
+      66
+    ],
+    [
+      383,
+      69
+    ],
+    [
+      438,
+      80
+    ],
+    [
+      498,
+      102
+    ],
+    [
+      575,
+      102
+    ],
+    [
+      624,
+      102
+    ],
+    [
+      681,
+      106
+    ],
+    [
+      741,
+      116
+    ],
+    [
+      803,
+      130
+    ],
+    [
+      883,
+      158
+    ],
+    [
+      938,
+      165
+    ],
+    [
+      1012,
+      165
+    ],
+    [
+      1064,
+      167
+    ],
+    [
+      1121,
+      167
+    ],
+    [
+      1173,
+      167
+    ],
+    [
+      1237,
+      167
+    ],
+    [
+      1278,
+      169
+    ],
+    [
+      1333,
+      169
+    ],
+    [
+      1388,
+      171
+    ],
+    [
+      1441,
+      171
+    ],
+    [
+      1486,
+      158
+    ],
+    [
+      1536,
+      157
+    ],
+    [
+      1602,
+      157
+    ],
+    [
+      1659,
+      157
+    ],
+    [
+      1720,
+      157
+    ],
+    [
+      1775,
+      157
+    ],
+    [
+      1841,
+      157
+    ],
+    [
+      1915,
+      157
+    ],
+    [
+      1996,
+      157
+    ],
+    [
+      2057,
+      157
+    ],
+    [
+      2126,
+      157
+    ],
+    [
+      2183,
+      157
+    ],
+    [
+      2239,
+      157
+    ],
+    [
+      2305,
+      157
+    ],
+    [
+      2372,
+      157
+    ],
+    [
+      2444,
+      157
+    ],
+    [
+      2532,
+      157
+    ],
+    [
+      2593,
+      157
+    ],
+    [
+      2650,
+      157
+    ],
+    [
+      2767,
+      157
+    ],
+    [
+      2916,
+      157
+    ],
+    [
+      2999,
+      157
+    ],
+    [
+      3040,
+      157
+    ],
+    [
+      3117,
+      157
+    ],
+    [
+      3172,
+      157
+    ],
+    [
+      3260,
+      157
+    ],
+    [
+      3315,
+      157
+    ],
+    [
+      3421,
+      157
+    ],
+    [
+      3466,
+      157
+    ],
+    [
+      3521,
+      157
+    ],
+    [
+      3566,
+      157
+    ],
+    [
+      3647,
+      157
+    ],
+    [
+      3708,
+      157
+    ],
+    [
+      3758,
+      157
+    ],
+    [
+      3813,
+      157
+    ],
+    [
+      3863,
+      157
+    ],
+    [
+      3903,
+      157
+    ],
+    [
+      3965,
+      157
+    ],
+    [
+      4032,
+      157
+    ],
+    [
+      4076,
+      157
+    ],
+    [
+      4128,
+      157
+    ],
+    [
+      4180,
+      157
+    ],
+    [
+      4226,
+      157
+    ],
+    [
+      4326,
+      157
+    ],
+    [
+      4391,
+      157
+    ],
+    [
+      4433,
+      157
+    ],
+    [
+      4504,
+      157
+    ]
+  ]
+}

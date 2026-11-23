@@ -1,0 +1,7 @@
+{
+  "probe": "P4",
+  "outcome": "works",
+  "detail": "read host /etc/hosts (450 chars, matches host)",
+  "display": "works (host /etc/hosts)",
+  "config": "default"
+}

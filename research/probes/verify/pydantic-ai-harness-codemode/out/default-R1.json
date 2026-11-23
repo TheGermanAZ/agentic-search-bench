@@ -1,0 +1,173 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R1",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2886,
+  "peakTreeRssMb": 104,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R1",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 2113,
+        "ms": 341,
+        "ok": true,
+        "result": [
+          "set"
+        ],
+        "callsStarted": 0
+      },
+      "B": {
+        "label": "B",
+        "startMs": 2454,
+        "ms": 288,
+        "ok": true,
+        "result": [
+          "Type error in code:\nerror[unresolved-reference]: Name `leftover` used when not defined\n --> main.py:2:9\n  |\n1 | try:\n2 |     x = leftover\n  |         ^^^^^^^^\n3 | except NameError:\n4 |     x = \"gone\"\n  |\n\n"
+        ],
+        "callsStarted": 0
+      }
+    },
+    "hostMaxEventLoopLagMs": 61,
+    "totalMs": 2742
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      222,
+      31
+    ],
+    [
+      278,
+      35
+    ],
+    [
+      358,
+      37
+    ],
+    [
+      494,
+      40
+    ],
+    [
+      554,
+      44
+    ],
+    [
+      712,
+      45
+    ],
+    [
+      783,
+      46
+    ],
+    [
+      842,
+      48
+    ],
+    [
+      940,
+      49
+    ],
+    [
+      1061,
+      53
+    ],
+    [
+      1129,
+      57
+    ],
+    [
+      1185,
+      59
+    ],
+    [
+      1293,
+      61
+    ],
+    [
+      1394,
+      63
+    ],
+    [
+      1458,
+      63
+    ],
+    [
+      1534,
+      63
+    ],
+    [
+      1603,
+      64
+    ],
+    [
+      1657,
+      66
+    ],
+    [
+      1704,
+      67
+    ],
+    [
+      1769,
+      67
+    ],
+    [
+      1881,
+      71
+    ],
+    [
+      1962,
+      76
+    ],
+    [
+      2041,
+      76
+    ],
+    [
+      2134,
+      76
+    ],
+    [
+      2319,
+      76
+    ],
+    [
+      2370,
+      98
+    ],
+    [
+      2444,
+      98
+    ],
+    [
+      2617,
+      98
+    ],
+    [
+      2690,
+      79
+    ],
+    [
+      2773,
+      98
+    ],
+    [
+      2819,
+      104
+    ],
+    [
+      2885,
+      0
+    ]
+  ]
+}

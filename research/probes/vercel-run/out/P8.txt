@@ -1,0 +1,46 @@
+label: P8
+command: node probe.mjs P8
+child exit: code=0 signal=null
+child wall ms (process start to exit): 149
+peak child RSS: 114.2 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P8",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "globalThis.kept = 7; return \"set\";",
+    "return typeof kept === \"undefined\" ? \"gone\" : kept;"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "status": "completed",
+      "value": "set",
+      "wallMs": 79.367792,
+      "hostCalls": 0
+    },
+    {
+      "ok": true,
+      "status": "completed",
+      "value": "gone",
+      "wallMs": 5.269750000000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": "gone",
+    "ms": 5,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 139.1
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:66668) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

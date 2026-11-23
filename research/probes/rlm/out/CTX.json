@@ -1,0 +1,7 @@
+{
+  "probe": "CTX",
+  "outcome": "works",
+  "detail": "context is a str variable of 66000 chars; context_0 aliases it; corpus file on disk in the temp dir: True",
+  "stdout": "str 66000 3000\nstr True\nAvailable variables: {'f': 'TextIOWrapper', 'context_0': 'str', 'context': 'str'}\n",
+  "corpus_file": "/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/repl_env_5d50f434-468d-4a21-9e58-0cb53a904000_d9h_atvo/context_0.txt"
+}

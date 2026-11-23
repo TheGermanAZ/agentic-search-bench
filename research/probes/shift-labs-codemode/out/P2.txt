@@ -1,0 +1,25 @@
+{
+  "literal": {
+    "code": "console.log(\"A\".repeat(200000)); \"RETURNED\"",
+    "logsCount": 3,
+    "logChars": 51196,
+    "aCharsInLogs": 51006,
+    "logsTail": [
+      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ...<51006 chars>... AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "",
+      "[Showing the last 49.8KB of line 1 (195.3KB in all). Full output: ~/p/agentic-search-bench/research/probes/shift-labs-codemode/out/outbox/codemode-logs-89fa4c12bfaadce3.log]"
+    ]
+  },
+  "returnForm": {
+    "code": "console.log(\"A\".repeat(200000)); return \"RETURNED\"",
+    "result": "RETURNED",
+    "logsCount": 3,
+    "logChars": 51196,
+    "aCharsInLogs": 51006,
+    "logsTail": [
+      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ...<51006 chars>... AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "",
+      "[Showing the last 49.8KB of line 1 (195.3KB in all). Full output: ~/p/agentic-search-bench/research/probes/shift-labs-codemode/out/outbox/codemode-logs-5d6d7909be16d199.log]"
+    ]
+  }
+}

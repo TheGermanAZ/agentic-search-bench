@@ -1,0 +1,6 @@
+code:
+print("A" * 200000)
+"RETURNED"
+
+{"ok": true, "result": null, "error": null, "ms": 4.5}
+stdout (0 chars): ''

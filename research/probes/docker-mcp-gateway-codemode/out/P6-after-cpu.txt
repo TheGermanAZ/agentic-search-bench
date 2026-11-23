@@ -1,0 +1,3 @@
+docker-mcp-gateway-codemode-gw cpu=110.69% mem=12.21MiB / 4GiB
+docker-mcp-gateway-codemode-gw cpu=109.61% mem=11.06MiB / 4GiB
+cpu=112.51%

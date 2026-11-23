@@ -1,0 +1,20 @@
+mode: hardened
+code:
+async function run(client) {
+  return await client.video.assets.create({ inputs: [] } as any);
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "The following methods have been blocked by the MCP server and cannot be used in code execution: video.assets.create"
+      }
+    ],
+    "isError": true
+  },
+  "ms": 2,
+  "hostCalls": 0
+}

@@ -1,0 +1,16 @@
+probe: P6c
+worker exit: 0 signal: null killed: null
+wall ms: 913
+peak host RSS KB: 101872
+
+script: while true; do :; done
+exit: 126
+stdout (0 chars):
+
+stderr:
+bash: while loop: too many iterations (100000), increase executionLimits.maxLoopIterations
+
+ms: 745, host lookup calls so far: 0
+
+outcome: limited
+detail: with only maxCommandCount raised, the loop stopped after 745 ms on the loop limit: "bash: while loop: too many iterations (100000), increase executionLimits.maxLoopIterations" exit 126

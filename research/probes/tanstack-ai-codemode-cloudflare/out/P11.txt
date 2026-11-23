@@ -1,0 +1,70 @@
+label: P11
+command: node probe.mjs P11
+child exit: code=0 signal=null
+child wall ms (process start to exit): 400
+peak child RSS: 119.6 MB (ps every 50 ms)
+peak server (pid 76929) RSS: 79.7 MB; alive after probe: yes
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P11",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.396000000000015,
+  "source": [
+    "return 1+1;"
+  ],
+  "first": {
+    "returned": {
+      "success": true,
+      "result": 2,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 46.29970800000001,
+    "hostCalls": 0
+  },
+  "timesMs": [
+    7.9,
+    9.08,
+    7.34,
+    9.26,
+    7.35,
+    7.38,
+    7.46,
+    7.11,
+    6.25,
+    5.27,
+    5.99,
+    6.55,
+    6.37,
+    6.55,
+    6.46,
+    6.36,
+    8.4,
+    6.39,
+    5.62,
+    6.72
+  ],
+  "medianMs": 6.63,
+  "p90Ms": 8.4,
+  "summary": {
+    "median": 6.63,
+    "p90": 8.4,
+    "first": 46.3,
+    "driverSetup": 2.4,
+    "firstResult": {
+      "result": 2,
+      "logCount": 0,
+      "logChars": 0
+    }
+  },
+  "hostRssAfterMB": 119.6
+}
+--- child stdout ---
+
+--- child stderr ---
+

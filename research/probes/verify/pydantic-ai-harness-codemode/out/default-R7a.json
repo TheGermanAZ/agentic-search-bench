@@ -1,0 +1,101 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 934,
+  "peakTreeRssMb": 80,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R7a",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "label": "",
+      "startMs": 764,
+      "ms": 67,
+      "ok": true,
+      "result": [
+        "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 2, in <module>\n    await asyncio.sleep(100000)\n          ~~~~~~~~~~~~~~~~~~~~~\nTimeoutError: sleeping 100000s would exceed the 30s this code may sleep (max_duration_seconds); 30s left"
+      ],
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 1,
+    "totalMs": 831
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      95,
+      28
+    ],
+    [
+      148,
+      34
+    ],
+    [
+      207,
+      39
+    ],
+    [
+      256,
+      41
+    ],
+    [
+      299,
+      45
+    ],
+    [
+      362,
+      48
+    ],
+    [
+      410,
+      51
+    ],
+    [
+      451,
+      53
+    ],
+    [
+      506,
+      56
+    ],
+    [
+      563,
+      59
+    ],
+    [
+      610,
+      60
+    ],
+    [
+      656,
+      63
+    ],
+    [
+      729,
+      65
+    ],
+    [
+      764,
+      67
+    ],
+    [
+      820,
+      70
+    ],
+    [
+      872,
+      77
+    ],
+    [
+      932,
+      80
+    ]
+  ]
+}

@@ -1,0 +1,22 @@
+mode: default
+code:
+async function run(client) {
+  const x = 1;
+  const y = 2;
+  throw new Error("probe-boom line 4");
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Error: probe-boom line 4"
+      }
+    ],
+    "isError": true
+  },
+  "ms": 438,
+  "hostCalls": 0
+}

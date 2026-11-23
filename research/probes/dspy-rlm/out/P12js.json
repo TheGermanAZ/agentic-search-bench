@@ -1,0 +1,7 @@
+{
+  "probe": "P12js",
+  "outcome": "blocked",
+  "display": "blocked (Deno perms; crashes sandbox)",
+  "detail": "Uncaught, each of js.Deno.readTextFileSync, Deno.env.get, Deno.Command and fetch ended the Deno process (CodeInterpreterError 'Deno exited (code 0)'). Deno.permissions.querySync for /etc/hosts reports 'prompt' (not granted; no TTY to prompt).",
+  "evidence": "research/probes/dspy-rlm/out/P12js.txt"
+}

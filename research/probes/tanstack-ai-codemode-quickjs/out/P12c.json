@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs",
+  "probe": "P12c",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 7.375416999999999,
+  "source": [
+    "return String(external_lookup.constructor(\"return process\")());"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "[object Promise]",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 29.510500000000008,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "[object Promise]",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 30,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 84.6
+}

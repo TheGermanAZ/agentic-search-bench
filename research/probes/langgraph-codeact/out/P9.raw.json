@@ -1,0 +1,61 @@
+{
+  "probe": "P9",
+  "config": "default",
+  "codes": [
+    "tot = 0\nfor i in [1, 2, 3, 4, 5]:\n    x = lookup(i)\n    tot += x[\"value\"]\nprint(tot)\ntot"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "30\n",
+      "error": null,
+      "context_keys": [
+        "i",
+        "tot",
+        "x"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1023.9,
+      "started": 1795377308.706132
+    }
+  ],
+  "setup_ms": 3.4,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.38,
+  "peak_tree_rss_gb": 0.072,
+  "calls": [
+    {
+      "id": 1,
+      "start": 1795377308.708459,
+      "end": 1795377308.9134772,
+      "pid": 36828
+    },
+    {
+      "id": 2,
+      "start": 1795377308.91518,
+      "end": 1795377309.119825,
+      "pid": 36828
+    },
+    {
+      "id": 3,
+      "start": 1795377309.120009,
+      "end": 1795377309.320927,
+      "pid": 36828
+    },
+    {
+      "id": 4,
+      "start": 1795377309.321197,
+      "end": 1795377309.526218,
+      "pid": 36828
+    },
+    {
+      "id": 5,
+      "start": 1795377309.526433,
+      "end": 1795377309.728369,
+      "pid": 36828
+    }
+  ],
+  "child_log_tail": ""
+}

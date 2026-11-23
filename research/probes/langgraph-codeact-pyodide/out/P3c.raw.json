@@ -1,0 +1,28 @@
+{
+  "probe": "P3c",
+  "config": "default",
+  "codes": [
+    "import js\nprint('NET', js.Deno.permissions.querySync(js.JSON.parse('{\"name\": \"net\", \"host\": \"example.com\"}')).state)"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "NET granted",
+      "error": null,
+      "context_keys": [
+        "js"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1212.7,
+      "started": 1795377456.182013
+    }
+  ],
+  "setup_ms": 41.1,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.52,
+  "peak_tree_rss_gb": 0.3,
+  "calls": [],
+  "child_log_tail": ""
+}

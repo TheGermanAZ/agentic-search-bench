@@ -1,0 +1,44 @@
+probe: P3
+outcome: works
+display: works (example.com 200)
+detail: spec form failed with "Error during execution: URLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))"; same URL with an unverified SSL context printed HTTP 200, so the socket reached the network
+
+code:
+----
+import urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10)
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+import ssl, urllib.request
+r = urllib.request.urlopen("https://example.com", timeout=10, context=ssl._create_unverified_context())
+msg = "HTTP " + str(r.status)
+print(msg)
+msg
+----
+
+setup_ms: 3.4
+wall_s (whole child process): 0.38
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.068
+host lookup calls: 0
+
+=== run 0 (45.7 ms) ===
+ok: false
+stdout: Error during execution: URLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))
+error: Error during execution: URLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))
+context_keys: ["urllib"]
+host_builtins_leak: false
+
+=== run 1 (38.6 ms) ===
+ok: true
+stdout: HTTP 200
+
+error: null
+context_keys: ["msg", "r", "ssl", "urllib"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

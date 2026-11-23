@@ -1,0 +1,5 @@
+probe=P7 mode=wasm AGENTICA_NO_SANDBOX=None PROBE_SECRET set in host: True
+sandbox mode: wasm
+baseline host RSS 153 MiB
+KILL: host RSS 4193 MiB > 4096 MiB at 1.6s; no limit stopped it
+[harness] exit=3 wall=3s container=symbolica-agentica-hardened-P7-99109

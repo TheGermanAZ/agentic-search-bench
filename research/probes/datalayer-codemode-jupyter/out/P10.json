@@ -1,0 +1,7 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "display": "message + line",
+  "detail": "message survives: True; 'line 2' present: True; text: 'ValueError: probe-boom \\x1b[31m---------------------------------------------------------------------------\\x1b[39m \\x1b[31mValueError\\x1b[39m Traceback (most recent call last) \\x1b[36mCell\\x1b[39m\\x1b[36m \\x1b[39m\\x1b[32mIn[8]\\x1b[39m\\x1b[32m, line 2\\x1b[39m \\x1b[32m 1\\x1b[39m x = \\x1b[32m1\\x1b[39m \\x1b[32m----> \\x1b[39m\\x1b[32m2\\x1b[39m \\x1b[38;5;28;01mraise\\x1b[39;00m ValueError(\\x1b[33m\"probe-boom\"\\x1b[39m) \\x1b[31mValueError\\x1b[39m: probe-boom'",
+  "evidence": "research/probes/datalayer-codemode-jupyter/out/P10.txt"
+}

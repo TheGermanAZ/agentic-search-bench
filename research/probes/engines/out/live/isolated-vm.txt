@@ -1,0 +1,17 @@
+
+── call 1: mcp__corpus__execute (3 chars back)
+const n = await corpus.count({ from: "vince.kaminski@enron.com", after: "2001-04-01", before: "2001-05-01" });
+console.log(n);
+
+── call 2: mcp__corpus__execute (149 chars back)
+const msgs = await corpus.messages({ from: "vince.kaminski@enron.com", after: "2001-04-01", before: "2001-05-01", limit: 5000 });
+const exact = msgs.filter(m => m.from.toLowerCase() === "vince.kaminski@enron.com");
+console.log(msgs.length, exact.length, [...new Set(msgs.map(m => m.from))].join(" | "));
+console.log(exact.slice(0,3).map(m => m.id + " " + m.date).join("\n"));
+
+vince.kaminski@enron.com sent 458 messages in April 2001 (UTC). All 458 have that exact sender address, and the count covers April 1 through April 30 inclusive.
+
+ANSWER: 458
+SOURCES: E1554858ab4b5, E72a31f377f27, E710caacc5ce1
+
+codemode (isolated-vm) on claude-haiku-5-5: 4.7s, 2 tool calls, 8,132 input tokens, $0.001

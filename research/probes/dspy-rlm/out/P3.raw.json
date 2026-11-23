@@ -1,0 +1,32 @@
+{
+  "probe": "P3",
+  "config": "default",
+  "codes": [
+    "import urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10)\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg",
+    "import ssl, urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10, context=ssl._create_unverified_context())\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": "CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)",
+      "raised": true,
+      "ms": 419.7,
+      "started": 1795381960.0115619
+    },
+    {
+      "ok": false,
+      "error": "CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)",
+      "raised": true,
+      "ms": 360.0,
+      "started": 1795381960.431524
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.14,
+  "peak_tree_rss_gb": 0.471,
+  "calls": [],
+  "child_log_tail": ""
+}

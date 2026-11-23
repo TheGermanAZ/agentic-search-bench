@@ -1,0 +1,158 @@
+engine=quickjs hardened=true warmHost=false config={"enabled":true,"executor":"quickjs","timeoutMs":5000,"memoryLimitBytes":16777216,"maxOutputBytes":8192,"maxSnapshotBytes":1048576,"maxPendingToolCalls":8,"snapshotTtlSeconds":60} setupMs=1
+--- code 1 ---
+return process.env.PROBE_SECRET;
+--- result 1 ---
+{"ms":3.04,"hostCalls":0,"ok":true,"waits":0}
+content text (349 chars):
+{"status":"failed","code":"invalid_input","failurePhase":"input","bridgeDispatchStarted":false,"telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"cdab8bb48e46192febd7fdfa","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"error":"code mode module access is disabled."}
+details (430 chars):
+{
+ "status": "failed",
+ "code": "invalid_input",
+ "failurePhase": "input",
+ "bridgeDispatchStarted": false,
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "cdab8bb48e46192febd7fdfa",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "error": "code mode module access is disabled."
+}
+--- code 2 ---
+return Object.getOwnPropertyNames(globalThis);
+--- result 2 ---
+{"ms":2.68,"hostCalls":0,"ok":true,"waits":0}
+content text (1557 chars):
+{"status":"completed","telemetry":{"catalogSize":1,"sources":{"openclaw":1,"mcp":0,"client":0},"counterScope":"cdab8bb48e46192febd7fdfa","searchCount":0,"describeCount":0,"callCount":0,"visibleTools":["exec","wait"]},"output":[],"value":["Object","Function","Error","EvalError","RangeError","ReferenceError","SyntaxError","TypeError","URIError","InternalError","AggregateError","SuppressedError","Iterator","Array","parseInt","parseFloat","isNaN","isFinite","queueMicrotask","decodeURI","decodeURIComponent","encodeURI","encodeURIComponent","escape","unescape","Infinity","NaN","undefined","eval","Number","Boolean","String","Math","Reflect","Symbol","DisposableStack","globalThis","BigInt","Date","RegExp","JSON","Proxy","Map","Set","WeakMap","WeakSet","ArrayBuffer","SharedArrayBuffer","Uint8ClampedArray","Int8Array","Uint8Array","Int16Array","Uint16Array","Int32Array","Uint32Array","BigInt64Array","BigUint64Array","Float16Array","Float32Array","Float64Array","DataView","Promise","AsyncDisposableStack","WeakRef","FinalizationRegistry","DOMException","btoa","atob","performance","TextEncoder","TextDecoder","__openclawSwarmEnabled","lookup","API","catalog","nodes","namespaces","skills","results","store","load","setTimeout","clearTimeout","console","text","json","yield_control","__openclawSettleBridge","__openclawBridgeFailureCode","__openclawEncodeError","__openclawDrainQueuedRequests","__openclawAdmissionError","__openclawRunCell","__openclawTakeOutputJson","__openclawTrackRejection","__openclawUnhandledRejection","__openclawSourceLocation"]}
+details (1922 chars):
+{
+ "status": "completed",
+ "telemetry": {
+  "catalogSize": 1,
+  "sources": {
+   "openclaw": 1,
+   "mcp": 0,
+   "client": 0
+  },
+  "counterScope": "cdab8bb48e46192febd7fdfa",
+  "searchCount": 0,
+  "describeCount": 0,
+  "callCount": 0,
+  "visibleTools": [
+   "exec",
+   "wait"
+  ]
+ },
+ "output": [],
+ "value": [
+  "Object",
+  "Function",
+  "Error",
+  "EvalError",
+  "RangeError",
+  "ReferenceError",
+  "SyntaxError",
+  "TypeError",
+  "URIError",
+  "InternalError",
+  "AggregateError",
+  "SuppressedError",
+  "Iterator",
+  "Array",
+  "parseInt",
+  "parseFloat",
+  "isNaN",
+  "isFinite",
+  "queueMicrotask",
+  "decodeURI",
+  "decodeURIComponent",
+  "encodeURI",
+  "encodeURIComponent",
+  "escape",
+  "unescape",
+  "Infinity",
+  "NaN",
+  "undefined",
+  "eval",
+  "Number",
+  "Boolean",
+  "String",
+  "Math",
+  "Reflect",
+  "Symbol",
+  "DisposableStack",
+  "globalThis",
+  "BigInt",
+  "Date",
+  "RegExp",
+  "JSON",
+  "Proxy",
+  "Map",
+  "Set",
+  "WeakMap",
+  "WeakSet",
+  "ArrayBuffer",
+  "SharedArrayBuffer",
+  "Uint8ClampedArray",
+  "Int8Array",
+  "Uint8Array",
+  "Int16Array",
+  "Uint16Array",
+  "Int32Array",
+  "Uint32Array",
+  "BigInt64Array",
+  "BigUint64Array",
+  "Float16Array",
+  "Float32Array",
+  "Float64Array",
+  "DataView",
+  "Promise",
+  "AsyncDisposableStack",
+  "WeakRef",
+  "FinalizationRegistry",
+  "DOMException",
+  "btoa",
+  "atob",
+  "performance",
+  "TextEncoder",
+  "TextDecoder",
+  "__openclawSwarmEnabled",
+  "lookup",
+  "API",
+  "catalog",
+  "nodes",
+  "namespaces",
+  "skills",
+  "results",
+  "store",
+  "load",
+  "setTimeout",
+  "clearTimeout",
+  "console",
+  "text",
+  "json",
+  "yield_control",
+  "__openclawSettleBridge",
+  "__openclawBridgeFailureCode",
+  "__openclawEncodeError",
+  "__openclawDrainQueuedRequests",
+  "__openclawAdmissionError",
+  "__openclawRunCell",
+  "__openclawTakeOutputJson",
+  "__openclawTrackRejection",
+  "__openclawUnhandledRejection",
+  "__openclawSourceLocation"
+ ]
+}

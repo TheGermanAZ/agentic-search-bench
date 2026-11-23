@@ -1,0 +1,71 @@
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P7",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 80.96804100000003,
+  "source": [
+    "const a = []; while (true) a.push(\"x\".repeat(1e6));"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 105,
+    "siblingEndMs": 311,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "threw": {
+        "name": "Error",
+        "message": "Isolate is already disposed",
+        "stack": "Error: Isolate is already disposed\n    at NodeIsolateContext.dispose (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:66:17)\n    at disposeContext (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:112:32)\n    at Object.execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-code-mode/dist/esm/create-code-mode-tool.js:233:10)\n    at async once (file://~/p/agentic-search-bench/research/probes/verify/tanstack-ai-codemode-node/repro/probe.mjs:113:15)"
+      },
+      "wallMs": 300.3885,
+      "hostCalls": 1
+    }
+  ],
+  "concurrentSiblingRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 206.57083300000005,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 205.61616700000002,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 105,
+    "siblingEndMs": 311,
+    "main": "THREW Error: Isolate is already disposed",
+    "ms": 300,
+    "sibling": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    },
+    "siblingMs": 207,
+    "after": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    }
+  },
+  "hostRssAfterMB": 125
+}

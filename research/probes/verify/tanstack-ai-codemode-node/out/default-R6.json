@@ -1,0 +1,343 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../tanstack-ai-codemode-node/adapter.mjs default R6",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 30797,
+  "peakTreeRssMb": 107,
+  "watchKill": null,
+  "record": {
+    "impl": "tanstack-ai-codemode-node",
+    "config": "default",
+    "test": "R6",
+    "notes": "one createCodeModeTool({driver: node}) shared; execute({typescriptCode}) as chat() calls it",
+    "data": {
+      "startMs": 453,
+      "ms": 30238,
+      "ok": true,
+      "result": {
+        "value": {
+          "success": false,
+          "error": {
+            "message": "Script execution timed out.",
+            "name": "Error",
+            "stack": "Error: Script execution timed out.\n    at <isolated-vm>:5:33\n    at (<isolated-vm boundary>)\n    at execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:35:73)"
+          },
+          "logs": []
+        },
+        "stringChars": 308
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 441,
+    "hostEvents": [],
+    "totalMs": 30691
+  },
+  "childStdoutOtherChars": 620,
+  "childStdoutHead": "{\n  timestamp: \u001b[33m1795382285435\u001b[39m,\n  durationMs: \u001b[33m30230\u001b[39m,\n  phase: \u001b[32m'execute'\u001b[39m,\n  success: \u001b[33mfalse\u001b[39m,\n  logCount: \u001b[33m0\u001b[39m,\n  error: {\n    name: \u001b[32m'Error'\u001b[39m,\n    message: \u001b[32m'Script execution timed out.'\u001b[39m,\n    stack: \u001b[32m'Error: Script execution timed out.\\n'\u001b[39m +\n      \u001b[32m'    at <isolated-vm>:5:33\\n'\u001b[39m +\n      \u001b[32m'    at (<isolated-vm boundary>)\\n'\u001b[39m +\n      \u001b[32m'    at execute (file://~/p/agentic-search-bench/research/impls/tanstack-ai-codemode-node/pkg/node_modules/@tanstack/ai-isolate-node/dist/esm/isolate-context.js:35:73)'\u001b[39m\n  }\n}\n",
+  "childStderrTail": "❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed\n",
+  "rssSamplesMsMb": [
+    [
+      103,
+      47
+    ],
+    [
+      570,
+      79
+    ],
+    [
+      915,
+      80
+    ],
+    [
+      1291,
+      80
+    ],
+    [
+      1641,
+      80
+    ],
+    [
+      2076,
+      80
+    ],
+    [
+      2433,
+      80
+    ],
+    [
+      2781,
+      80
+    ],
+    [
+      3160,
+      80
+    ],
+    [
+      3553,
+      80
+    ],
+    [
+      3910,
+      80
+    ],
+    [
+      4289,
+      80
+    ],
+    [
+      4737,
+      80
+    ],
+    [
+      5120,
+      80
+    ],
+    [
+      5530,
+      80
+    ],
+    [
+      5947,
+      80
+    ],
+    [
+      6311,
+      80
+    ],
+    [
+      6799,
+      80
+    ],
+    [
+      7240,
+      80
+    ],
+    [
+      7640,
+      80
+    ],
+    [
+      8095,
+      80
+    ],
+    [
+      8814,
+      80
+    ],
+    [
+      9174,
+      54
+    ],
+    [
+      9535,
+      55
+    ],
+    [
+      9889,
+      55
+    ],
+    [
+      10245,
+      55
+    ],
+    [
+      10632,
+      55
+    ],
+    [
+      11003,
+      55
+    ],
+    [
+      11392,
+      55
+    ],
+    [
+      11784,
+      55
+    ],
+    [
+      12254,
+      55
+    ],
+    [
+      12653,
+      55
+    ],
+    [
+      13034,
+      55
+    ],
+    [
+      13387,
+      55
+    ],
+    [
+      13735,
+      55
+    ],
+    [
+      14129,
+      55
+    ],
+    [
+      14571,
+      55
+    ],
+    [
+      14948,
+      55
+    ],
+    [
+      15315,
+      55
+    ],
+    [
+      15772,
+      55
+    ],
+    [
+      16160,
+      55
+    ],
+    [
+      16535,
+      55
+    ],
+    [
+      16933,
+      55
+    ],
+    [
+      17298,
+      55
+    ],
+    [
+      17649,
+      55
+    ],
+    [
+      17997,
+      55
+    ],
+    [
+      18368,
+      55
+    ],
+    [
+      18786,
+      55
+    ],
+    [
+      19190,
+      55
+    ],
+    [
+      19564,
+      55
+    ],
+    [
+      19945,
+      55
+    ],
+    [
+      20331,
+      55
+    ],
+    [
+      20791,
+      55
+    ],
+    [
+      21205,
+      55
+    ],
+    [
+      21567,
+      55
+    ],
+    [
+      21981,
+      55
+    ],
+    [
+      22820,
+      55
+    ],
+    [
+      23264,
+      56
+    ],
+    [
+      23737,
+      56
+    ],
+    [
+      24219,
+      56
+    ],
+    [
+      24634,
+      56
+    ],
+    [
+      24995,
+      56
+    ],
+    [
+      25464,
+      56
+    ],
+    [
+      25952,
+      56
+    ],
+    [
+      26372,
+      56
+    ],
+    [
+      26760,
+      56
+    ],
+    [
+      27160,
+      56
+    ],
+    [
+      27722,
+      56
+    ],
+    [
+      28279,
+      56
+    ],
+    [
+      28845,
+      56
+    ],
+    [
+      29276,
+      56
+    ],
+    [
+      29778,
+      56
+    ],
+    [
+      30163,
+      56
+    ],
+    [
+      30688,
+      56
+    ]
+  ]
+}

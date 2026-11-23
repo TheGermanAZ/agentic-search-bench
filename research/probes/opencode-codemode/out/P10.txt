@@ -1,0 +1,50 @@
+{
+  "mode": "default",
+  "probe": "P10",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 0,
+  "hostPolluted": null,
+  "result": [
+    {
+      "code": "throw new Error(\"probe-boom\")",
+      "ms": 21.83,
+      "hostCalls": 0,
+      "result": {
+        "output": "Error: probe-boom",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "const a = 1\nconst b = 2\nthrow new Error(\"probe-boom\")",
+      "ms": 1.59,
+      "hostCalls": 0,
+      "result": {
+        "output": "Error: probe-boom",
+        "toolCalls": [],
+        "files": [],
+        "error": true
+      }
+    },
+    {
+      "code": "await tools.lookup({id: \"x\"})",
+      "ms": 4.86,
+      "hostCalls": 0,
+      "result": {
+        "output": "Invalid arguments for tool \"lookup\":\n- id: Expected number\n\nArguments provided:\n{\n  \"id\": \"x\"\n}\n\nUpdate the arguments and call the tool again.",
+        "toolCalls": [
+          {
+            "tool": "lookup",
+            "status": "error",
+            "input": {
+              "id": "x"
+            }
+          }
+        ],
+        "files": [],
+        "error": true
+      }
+    }
+  ]
+}

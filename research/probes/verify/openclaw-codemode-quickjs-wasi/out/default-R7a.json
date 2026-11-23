@@ -1,0 +1,163 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1226,
+  "peakTreeRssMb": 315,
+  "peakTreeFootprintMb": 272,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R7a",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "startMs": 893,
+      "ms": 261,
+      "ok": true,
+      "result": {
+        "value": {
+          "status": "failed",
+          "code": "invalid_input",
+          "waits": 0,
+          "error": "code mode promise is pending without host work",
+          "output": [],
+          "textChars": 359,
+          "text": "{\"status\":\"failed\",\"code\":\"invalid_input\",\"failurePhase\":\"input\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"59fd842dc56b31b153343b44\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"code mode promise is pending without host work\"}"
+        },
+        "stringChars": 424
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 986,
+    "hostEvents": [],
+    "totalMs": 1154
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_4a5d5a86-1121-44c4-a188-6b24289e0f93 workerId=code-mode-quickjs:1 failurePhase=input bridgeDispatchStarted=false errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      90,
+      58,
+      0
+    ],
+    [
+      163,
+      78,
+      21
+    ],
+    [
+      250,
+      87,
+      21
+    ],
+    [
+      282,
+      96,
+      21
+    ],
+    [
+      331,
+      102,
+      61
+    ],
+    [
+      385,
+      112,
+      61
+    ],
+    [
+      463,
+      124,
+      61
+    ],
+    [
+      528,
+      132,
+      92
+    ],
+    [
+      560,
+      139,
+      92
+    ],
+    [
+      600,
+      148,
+      116
+    ],
+    [
+      653,
+      172,
+      116
+    ],
+    [
+      705,
+      176,
+      116
+    ],
+    [
+      758,
+      203,
+      147
+    ],
+    [
+      811,
+      209,
+      147
+    ],
+    [
+      863,
+      226,
+      198
+    ],
+    [
+      915,
+      231,
+      198
+    ],
+    [
+      966,
+      249,
+      198
+    ],
+    [
+      1019,
+      265,
+      229
+    ],
+    [
+      1071,
+      283,
+      229
+    ],
+    [
+      1122,
+      301,
+      272
+    ],
+    [
+      1174,
+      315,
+      272
+    ],
+    [
+      1225,
+      0,
+      272
+    ]
+  ]
+}

@@ -1,0 +1,45 @@
+# qwen-code-codemode P3 (default)
+--- exec 1 source ---
+const r = await fetch("https://example.com"); text(r.status)
+--- exec 1 result (331.35 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (165 chars):
+[{"type":"text","text":"Script error:\n'fetch' is not defined\n    at <anonymous> (exec.js:4:54)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]
+--- exec 2 source ---
+text([typeof fetch, typeof XMLHttpRequest, typeof WebSocket].join(","))
+--- exec 2 result (277.78 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (56 chars):
+[{"type":"text","text":"undefined,undefined,undefined"}]
+--- exec 3 source ---
+const r = await tools.web_fetch({url: "https://example.com", prompt: "Return the page title verbatim."}); text(r.output.slice(0, 600))
+--- exec 3 result (497.37 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (218 chars):
+[{"type":"text","text":"Script error:\nQwen Code requires permission to use \"web_fetch\", but that permission was declined (non-interactive mode cannot prompt for confirmation).\n    at <anonymous> (exec.js:4:69)\n"}]
+--- summary ---
+{
+ "config": "default",
+ "exit": {
+  "code": 0,
+  "sig": null
+ },
+ "setupMsSpawnToFirstExec": 1518,
+ "totalHostCalls": 0,
+ "remoteEndpoints": [
+  "127.0.0.1:42101"
+ ],
+ "sideRequests": 1
+}
+--- cli stdout (json, first 3000 chars) ---
+[{"type":"system","subtype":"init","uuid":"f5af5b1f-fa27-43c9-ac14-c45a737be547","session_id":"f5af5b1f-fa27-43c9-ac14-c45a737be547","cwd":"~/p/agentic-search-bench/research/probes/qwen-code-codemode/work","tools":["exec","read_mcp_resource","read_file","zoom_image","grep_search","cron_list","cron_delete","autofix_pr","web_fetch","list_agents","task_stop","skill","search_memory","enter_worktree","exit_worktree","record_artifact","get_goal","update_goal","tool_call","tool_search","agent","glob","report_findings","cron_create","loop_wakeup","send_message","manage_memory","mcp__probe__lookup"],"mcp_servers":[{"name":"probe","status":"connected"}],"model":"mock-model","permission_mode":"auto","slash_commands":["advisor","agent-delegation","auth","autofix-pr","batch","batch-api","bug","clear","compress","compress-fast","config","context","coordinate","curator","dataviz","diff","docs","doctor","effort","export","extension-creator","extensions","goal","goal-draft","hooks","import-config","init","insight","language","loop","model","new-app","output-style","pr","qc-helper","review","simplify","stats","status","stuck","summary","tasks","update","workflow-authoring","workflow-creator","workflows","zvec-grep-install"],"qwen_code_version":"0.28.4","agents":["general-purpose","Explore","statusline-setup","review-agent","claude-code","codex"]},{"type":"assistant","uuid":"bfb2df80-ff93-4d41-82e1-190feae0c105","session_id":"f5af5b1f-fa27-43c9-ac14-c45a737be547","parent_tool_use_id":null,"message":{"id":"bfb2df80-ff93-4d41-82e1-190feae0c105","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_1","name":"exec","input":{"source":"const r = await fetch(\"https://example.com\"); text(r.status)"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"2788889e-139d-4890-8d26-b6810cc2b765","session_id":"f5af5b1f-fa27-43c9-ac14-c45a737be547","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_1","is_error":true,"content":"Script error:\n'fetch' is not defined\n    at <anonymous> (exec.js:4:54)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]}},{"type":"assistant","uuid":"7746ca1d-317d-4021-94d8-955370b966ed","session_id":"f5af5b1f-fa27-43c9-ac14-c45a737be547","parent_tool_use_id":null,"message":{"id":"7746ca1d-317d-4021-94d8-955370b966ed","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_2","name":"exec","input":{"source":"text([typeof fetch, typeof XMLHttpRequest, typeof WebSocket].join(\",\"))"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"d0640e2a-9b68-4517-941b-eb0df775bcf8","session_id":"f5af5b1f-fa27-43c9-ac14-c45a737be547","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result"
+--- cli stderr (first 3000 chars) ---
+Warning: Node.js 24.22.1 can cause high temporary memory usage during shell safety checks. Upgrade to Node.js 26.12.1. Qwen Code will continue normally. See https://github.com/QwenLM/qwen-code/issues/15165
+
+--- mock events ---
+{"t":1526.97,"kind":"exec-issued","n":1,"hostCallsSoFar":13}
+{"t":1858.32,"kind":"exec-result","n":1,"hostCallsSoFar":13,"textLen":165}
+{"t":1858.46,"kind":"exec-issued","n":2,"hostCallsSoFar":13}
+{"t":2136.24,"kind":"exec-result","n":2,"hostCallsSoFar":13,"textLen":56}
+{"t":2136.35,"kind":"exec-issued","n":3,"hostCallsSoFar":13}
+{"t":2406.82,"kind":"side-request","tools":["respond_in_schema"]}
+{"t":2633.72,"kind":"exec-result","n":3,"hostCallsSoFar":13,"textLen":218}
+{"t":2633.81,"kind":"final"}
+{"t":2837.49,"kind":"final"}

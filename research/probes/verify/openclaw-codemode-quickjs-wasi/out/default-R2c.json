@@ -1,0 +1,189 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R2c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1369,
+  "peakTreeRssMb": 321,
+  "peakTreeFootprintMb": 285,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R2c",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "startMs": 923,
+      "ms": 367,
+      "ok": true,
+      "result": {
+        "value": {
+          "status": "completed",
+          "waits": 0,
+          "value": {
+            "keys": [
+              "d",
+              "m",
+              "s"
+            ],
+            "fn": "undefined",
+            "call": "threw not a function",
+            "d": "string",
+            "ds": "1970-01-01T00:00:00.000Z",
+            "m": "object",
+            "ms": "{}"
+          },
+          "output": [],
+          "textChars": 375,
+          "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"b1dbfe94d3dcd9b7d2278d32\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":{\"keys\":[\"d\",\"m\",\"s\"],\"fn\":\"undefined\",\"call\":\"threw not a function\",\"d\":\"string\",\"ds\":\"1970-01-01T00:00:00.000Z\",\"m\":\"object\",\"ms\":\"{}\"}}"
+        },
+        "stringChars": 454
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 1053,
+    "hostEvents": [],
+    "totalMs": 1290
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      114,
+      64,
+      0
+    ],
+    [
+      156,
+      77,
+      25
+    ],
+    [
+      248,
+      92,
+      25
+    ],
+    [
+      290,
+      111,
+      25
+    ],
+    [
+      325,
+      116,
+      77
+    ],
+    [
+      371,
+      126,
+      77
+    ],
+    [
+      420,
+      135,
+      77
+    ],
+    [
+      481,
+      150,
+      105
+    ],
+    [
+      532,
+      163,
+      105
+    ],
+    [
+      580,
+      177,
+      145
+    ],
+    [
+      642,
+      180,
+      145
+    ],
+    [
+      726,
+      206,
+      145
+    ],
+    [
+      761,
+      207,
+      183
+    ],
+    [
+      811,
+      210,
+      183
+    ],
+    [
+      874,
+      236,
+      183
+    ],
+    [
+      933,
+      257,
+      212
+    ],
+    [
+      978,
+      265,
+      212
+    ],
+    [
+      1024,
+      266,
+      241
+    ],
+    [
+      1064,
+      267,
+      241
+    ],
+    [
+      1124,
+      270,
+      241
+    ],
+    [
+      1176,
+      279,
+      244
+    ],
+    [
+      1220,
+      287,
+      244
+    ],
+    [
+      1269,
+      299,
+      244
+    ],
+    [
+      1316,
+      309,
+      285
+    ],
+    [
+      1369,
+      321,
+      285
+    ]
+  ]
+}

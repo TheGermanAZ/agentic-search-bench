@@ -1,0 +1,31 @@
+{
+  "probe": "P2both",
+  "config": "default",
+  "codes": [
+    "print(\"PRINTED\")\n\"RETURNED\""
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "<repl_output>\nRETURNED\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\nRETURNED\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        8,
+        25
+      ],
+      "answer": "done",
+      "ms": 450.9,
+      "started": 1795381950.0063202
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.8,
+  "peak_tree_rss_gb": 0.512,
+  "calls": [],
+  "child_log_tail": ""
+}

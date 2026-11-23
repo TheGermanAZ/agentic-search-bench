@@ -1,0 +1,27 @@
+{
+  "probe": "P3x",
+  "config": "hardened",
+  "codes": [
+    "import _socket\ns = _socket.socket(_socket.AF_INET, _socket.SOCK_STREAM)\ns.settimeout(5)\ns.connect((_socket.gethostbyname(\"example.com\"), 443))\nmsg = \"RAW CONNECT ok\"\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "RAW CONNECT ok",
+      "stderr": "",
+      "result": "'RAW CONNECT ok'",
+      "error": null,
+      "interrupted": false,
+      "ms": 16.7,
+      "started": 1795378520.7885811
+    }
+  ],
+  "setup_ms": 290.9,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.98,
+  "peak_tree_rss_gb": 0.173,
+  "calls": [],
+  "child_log_tail": "[11/22/26 15:15:20] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-maadhp06/generate              \n                             d (mcp dir:                                        \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-maadhp06/generate              \n                             d/mcp)                                             \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-eval-maadhp06/generate              \n                             d/mcp/probe                                        \n"
+}

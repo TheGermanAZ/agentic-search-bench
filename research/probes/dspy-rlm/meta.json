@@ -1,0 +1,148 @@
+{
+ "impl": "dspy-rlm",
+ "name": "DSPy RLM with tools= (PythonInterpreter: Pyodide on Deno)",
+ "source": "https://github.com/stanfordnlp/dspy (dspy/predict/rlm.py, dspy/primitives/python_interpreter.py, dspy/primitives/runner.js); PyPI dspy",
+ "pinned": "dspy 3.5.0 from PyPI = stanfordnlp/dspy tag 3.5.0 = 4e9db7a83e71e4c36315a2402ae7ffd0c6493404 (clone at research/impls/dspy-rlm/src; diff -r against the installed package differs only in __metadata__.py's version stamp and one .code-workspace file). Runtime: Pyodide 0.29.4 (npm, pinned in runner.js:3), Deno 2.9.8 (host install, found on PATH), CPython 3.12. DSPY_CACHEDIR and DENO_DIR pointed into research/impls/dspy-rlm/.",
+ "language": "Python (full CPython compiled to WASM)",
+ "engine": "Pyodide 0.29.4 (CPython in WebAssembly) inside a `deno run` subprocess with only --allow-read for the runner file and Deno's cache (cache read revoked after start-up); no --allow-net, --allow-env, --allow-write or --allow-run by default. JSON-RPC over the subprocess's stdin/stdout.",
+ "how_run": "dspy.RLM('question -> answer', tools=[lookup]) with the default interpreter_factory=PythonInterpreter, driven by dspy.utils.DummyLM returning a scripted {plan, code} action per iteration (probe code, then SUBMIT). One probe execution = one rlm(question=...) forward. What the model sees is read from the next LM request (the chat message after the assistant turn that held the code). No LLM, no API key.",
+ "defaults": {
+  "time": "None. PythonInterpreter has no timeout option and blocks on readline() until Deno answers (research/impls/dspy-rlm/src/dspy/primitives/python_interpreter.py:677-688 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/python_interpreter.py#L677-L688); execute loop research/impls/dspy-rlm/src/dspy/primitives/python_interpreter.py:862-946 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/python_interpreter.py#L862-L946)). RLM's max_iters=20 bounds iterations, not time. Observed P6: no-limit-within-120s.",
+  "memory": "No DSPy option. The only ceiling is wasm32's 4 GiB address space (Pyodide's memory maximum is 65,536 pages, research/impls/dspy-rlm/deno-cache/npm/registry.npmjs.org/pyodide/0.29.4/pyodide.asm.js). Observed P7: MemoryError after 3.0 s at 2.5 GB peak host tree RSS; host alive, and the same interpreter ran the next iteration (out/P7next.txt).",
+  "output": "max_output_chars=10,000 per REPL entry, head 5,000 + tail 5,000 with '... (N characters omitted) ...' (research/impls/dspy-rlm/src/dspy/predict/rlm.py:327 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/predict/rlm.py#L327); research/impls/dspy-rlm/src/dspy/primitives/repl_types.py:156-164 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/repl_types.py#L156-L164)). The sandbox returns the last expression's value if it is not None, else captured stdout, never both (research/impls/dspy-rlm/src/dspy/primitives/runner.js:495-499 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/runner.js#L495-L499)).",
+  "tool_calls": "No cap on user tool calls. max_llm_calls=50 caps llm_query/llm_query_batched and sandbox sub-agent LM calls per forward (research/impls/dspy-rlm/src/dspy/predict/rlm.py:326 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/predict/rlm.py#L326)). Tool calls are serial: each blocks the guest in pyodide.ffi.run_sync and the host handles one at a time (research/impls/dspy-rlm/src/dspy/primitives/runner.js:59-60 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/runner.js#L59-L60); research/impls/dspy-rlm/src/dspy/primitives/python_interpreter.py:612-616 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/python_interpreter.py#L612-L616)).",
+  "hardened": "hardened is null: the default PythonInterpreter already has every permission off (no read beyond its runtime files, no write, env, net or run), and neither PythonInterpreter nor RLM exposes a time or memory option (python_interpreter.py:233-246, rlm.py:322-333). The only interpreter with a timeout, LocalInterpreter(execution_timeout=...), is documented as not a sandbox (docs/docs/api/tools/LocalInterpreter.md:16-19), so it is looser, not stricter."
+ },
+ "hardened_config": null,
+ "source_notes": [
+  {
+   "topic": "API shape",
+   "finding": "User tools are normalized to dspy.Tool; the action prompt lists each as `name(arg: type)` - description. Inside the sandbox each tool is a generated synchronous Python def with the tool's parameter names and types, whose body JSON-encodes the kwargs and calls the JS bridge through pyodide.ffi.run_sync.",
+   "evidence": "research/impls/dspy-rlm/src/dspy/predict/rlm.py:469-488 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/predict/rlm.py#L469-L488); research/impls/dspy-rlm/src/dspy/primitives/runner.js:44-66 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/runner.js#L44-L66)"
+  },
+  {
+   "topic": "Discovery",
+   "finding": "All tools upfront: every tool signature and description is formatted into the action instructions at construction. No search or lazy loading.",
+   "evidence": "research/impls/dspy-rlm/src/dspy/predict/rlm.py:469-488 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/predict/rlm.py#L469-L488)"
+  },
+  {
+   "topic": "Bridge",
+   "finding": "Guest code -> run_sync(JS toolCallBridge) -> a JSON-RPC 'tool_call' line on Deno's stdout -> the host's execute() loop calls the Python tool in the host process and writes the result back on stdin -> the bridge returns it as JSON. One stdin reader and a synchronous host loop make tool calls strictly serial (P9 1,051 ms for five 200 ms calls). Tools, LM credentials and host files stay on the host: the in-sandbox dspy facade sends LM calls to a host SandboxLM that keeps credentials on the wrapped LM and refuses host-file media.",
+   "evidence": "research/impls/dspy-rlm/src/dspy/primitives/runner.js:305-363 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/runner.js#L305-L363); research/impls/dspy-rlm/src/dspy/primitives/python_interpreter.py:583-616 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/python_interpreter.py#L583-L616); research/impls/dspy-rlm/src/dspy/primitives/facade.py:187-201 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/facade.py#L187-L201); research/impls/dspy-rlm/src/dspy/primitives/facade.py:717-731 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/facade.py#L717-L731); research/probes/dspy-rlm/out/P9.txt"
+  },
+  {
+   "topic": "Isolation boundary",
+   "finding": "Two layers: Pyodide's virtual filesystem (open('/etc/hosts') -> FileNotFoundError, os.environ empty) and Deno's permission system. Pyodide's `js` module reaches the Deno global, so Deno permissions are the real boundary: js.Deno.readTextFileSync, Deno.env.get, Deno.Command and fetch all raise NotCapable. The Deno process itself inherits the full host environment (deno_subprocess_env copies os.environ), so secrets are one --allow-env flag away. Docs claim 'no filesystem or network access'; probes agree.",
+   "evidence": "research/impls/dspy-rlm/src/dspy/primitives/python_interpreter.py:300-350 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/python_interpreter.py#L300-L350); research/impls/dspy-rlm/src/dspy/primitives/deno_utils.py:6-10; research/impls/dspy-rlm/src/docs/docs/diving-deeper/rlm.md:37; research/probes/dspy-rlm/out/P12jsTry.txt; research/probes/dspy-rlm/out/P3try.txt"
+  },
+  {
+   "topic": "Output channel",
+   "finding": "The REPL entry the model sees holds the last expression's value when it is not None, otherwise captured stdout; printed text is discarded when the code ends in an expression (P2: only 'RETURNED', none of the 200,000 A's). Each entry is cut to max_output_chars=10,000 as head+tail with an '(N characters omitted)' marker (Pcap).",
+   "evidence": "research/impls/dspy-rlm/src/dspy/primitives/runner.js:495-499 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/runner.js#L495-L499); research/impls/dspy-rlm/src/dspy/primitives/repl_types.py:156-164 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/repl_types.py#L156-L164); research/probes/dspy-rlm/out/P2.txt; research/probes/dspy-rlm/out/P2both.txt; research/probes/dspy-rlm/out/Pcap.txt"
+  },
+  {
+   "topic": "Limits",
+   "finding": "No time limit and no memory option anywhere in PythonInterpreter or RLM; the RLM knobs are max_iters, max_llm_calls and max_output_chars. LocalInterpreter has execution_timeout, but its docs say it is not a security sandbox, so it is not a hardened option.",
+   "evidence": "research/impls/dspy-rlm/src/dspy/primitives/python_interpreter.py:233-246 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/python_interpreter.py#L233-L246); research/impls/dspy-rlm/src/dspy/predict/rlm.py:322-333 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/predict/rlm.py#L322-L333); research/impls/dspy-rlm/src/docs/docs/api/tools/LocalInterpreter.md:1-22"
+  },
+  {
+   "topic": "State",
+   "finding": "One interpreter per forward(): variables persist across REPL iterations of one RLM call and start fresh in the next call. Start-up restores a DSPy-built Pyodide memory snapshot from $DSPY_CACHEDIR/sandbox.",
+   "evidence": "research/impls/dspy-rlm/src/dspy/predict/rlm.py:883-898 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/predict/rlm.py#L883-L898); research/impls/dspy-rlm/src/docs/docs/diving-deeper/rlm.md:37; research/probes/dspy-rlm/out/P8.txt; research/probes/dspy-rlm/out/P8within.txt"
+  },
+  {
+   "topic": "Errors",
+   "finding": "A Python exception reaches the model as '[Error] <Type>: <args list>' (P10: \"[Error] ValueError: ['probe-boom']\"): no traceback, no line number. A JS-side failure that ends the Deno process (uncaught network or Deno-permission errors, os.system) raises CodeInterpreterError out of rlm(); RLM only catches CodeExecutionError and SyntaxError, so the whole forward fails and the model never sees an error.",
+   "evidence": "research/impls/dspy-rlm/src/dspy/primitives/python_interpreter.py:939 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/python_interpreter.py#L939); research/impls/dspy-rlm/src/dspy/predict/rlm.py:1034-1046 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/predict/rlm.py#L1034-L1046); research/probes/dspy-rlm/out/P10.txt; research/probes/dspy-rlm/out/P3.txt; research/probes/dspy-rlm/out/P12.txt"
+  },
+  {
+   "topic": "Other",
+   "finding": "llm_query / llm_query_batched and in-sandbox dspy sub-agents (Predict, ReAct, nested RLM) are bridged to the host LM. Deno is found on PATH unless the dspy[deno] extra is installed; versions 2.x only. The sandbox cache is written under $DSPY_CACHEDIR (default ~/.dspy_cache) unless DSPY_SANDBOX_CACHE=0.",
+   "evidence": "research/impls/dspy-rlm/src/dspy/predict/rlm.py:490-556 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/predict/rlm.py#L490-L556); research/impls/dspy-rlm/src/dspy/primitives/python_interpreter.py:88-140 (https://github.com/stanfordnlp/dspy/blob/4e9db7a83e71e4c36315a2402ae7ffd0c6493404/dspy/primitives/python_interpreter.py#L88-L140); research/impls/dspy-rlm/src/docs/docs/api/tools/PythonInterpreter.md:30-36"
+  }
+ ],
+ "surprises": [
+  "Printed output is silently dropped whenever the code's last statement is an expression with a non-None value: runner.js returns the value instead of stdout (runner.js:499). The RLM prompt tells the model to 'ALWAYS print to see results' (rlm.py:83), so a natural trailing expression hides everything it printed. Evidence out/P2.txt (0 of 200,000 A's returned) and out/P2both.txt.",
+  "Several blocked operations kill the sandbox instead of raising inside it: an uncaught urllib error (P3), an uncaught js.Deno permission error (P12js), and os.system (P12b, 'Pyodide has suffered a fatal error ... NotCapable: Requires env access'). Deno exits, rlm() raises CodeInterpreterError to the caller, and the run is lost. The same calls inside try/except raise catchable errors (out/P3try.txt, out/P12jsTry.txt).",
+  "No time limit at all: P6 ran past 120 s and there is no option for one in PythonInterpreter or RLM, so a single `while True: pass` hangs the forward indefinitely.",
+  "Error text keeps the message but loses the traceback and line number, and shows exception args as a Python list (\"ValueError: ['probe-boom']\").",
+  "The Deno subprocess receives the whole host environment; only the absence of --allow-env keeps it from guest code (P12jsTry A1: NotCapable for PROBE_SECRET). A user who passes enable_env_vars for one variable grants exactly that one, which is correct, but the secret values are present in the sandbox process's own memory.",
+  "Pyodide's subclasses walk works (P12a: 1,122 classes, Popen and _wrap_close present), but they are the WASM interpreter's, not the host's: os.popen fails with 'emscripten does not support processes.'"
+ ],
+ "overrides": {
+  "P2": {
+   "outcome": "works",
+   "display": "return only (0 of 200,000 A)",
+   "detail": "The model saw '<repl_output>\\nRETURNED\\n</repl_output>': the last expression's value replaced stdout entirely, so none of the 200,000 printed A's came back and there is no marker (runner.js:499). Print-only output is capped at 10,000 with a marker (Pcap)."
+  },
+  "P2both": {
+   "outcome": "works",
+   "display": "return replaces print",
+   "detail": "print('PRINTED') then 'RETURNED': the model saw only RETURNED."
+  },
+  "Pcap": {
+   "outcome": "limited",
+   "display": "truncated (10,000 + marker)",
+   "detail": "print('B' * 30000): the model saw 9,999 B's (head 5,000 + tail 5,000 incl. newline) around '... (20,001 characters omitted) ...'."
+  },
+  "P3": {
+   "outcome": "blocked",
+   "display": "blocked (Deno --allow-net off)",
+   "detail": "Both SPEC forms killed the interpreter: 'CodeInterpreterError: Deno exited (code 0) during execution: (last sandbox diagnostic: Unhandled async error: PythonError)', raised out of rlm(). Wrapped in try/except (P3try): urllib -> URLError <urlopen error [Errno 23] Host is unreachable>; pyodide.http.pyfetch -> 'Requires net access to \"example.com:443\", run again with the --allow-net flag'; js.fetch -> NotCapable (P12jsTry)."
+  },
+  "P4": {
+   "display": "blocked (not in Pyodide FS)",
+   "detail": "'[Error] FileNotFoundError: [44, \\'No such file or directory\\']' (Pyodide's in-memory FS has no /etc/hosts); js.Deno.readTextFileSync('/etc/hosts') -> 'NotCapable: Requires read access to \"/etc/hosts\"' (P12jsTry)."
+  },
+  "P5": {
+   "display": "blocked (env empty)",
+   "detail": "os.environ.get('PROBE_SECRET') -> None inside Pyodide; js.Deno.env.get('PROBE_SECRET') -> 'NotCapable: Requires env access to \"PROBE_SECRET\"' (P12jsTry). The Deno process does hold the host env."
+  },
+  "P7": {
+   "display": "limited (wasm32 4 GiB ceiling)"
+  },
+  "P7next": {
+   "outcome": "works",
+   "display": "survives (next iteration ran)",
+   "detail": "In one forward: the memory loop caught MemoryError, then the next iteration printed 'next iteration 2'. Peak tree RSS 3.0 GB."
+  },
+  "P8": {
+   "outcome": "works",
+   "display": "persists within one RLM call",
+   "detail": "Two iterations of one forward: the second printed 7 (P8within). Two separate forwards: the second printed 'gone'."
+  },
+  "P8within": {
+   "outcome": "works",
+   "display": "persists",
+   "detail": "Second iteration of the same forward printed 7."
+  },
+  "P9": {
+   "display": "serial (1,051 ms)"
+  },
+  "P10": {
+   "display": "works (message, no line)"
+  },
+  "P11": {
+   "display": "works (467 ms per RLM call)",
+   "detail": "20 fresh RLM forwards (new Deno + Pyodide each, plus DummyLM and the SUBMIT turn): median 466.9 ms, p90 528.7 ms. p11_breakdown.txt, taken under heavier machine load: 1,258 ms per 1-iteration forward and ~69 ms per extra iteration in a warm interpreter."
+  },
+  "P12": {
+   "display": "blocked (WASM, no host process)"
+  },
+  "P12js": {
+   "outcome": "blocked",
+   "display": "blocked (Deno perms; crashes sandbox)",
+   "detail": "Uncaught, each of js.Deno.readTextFileSync, Deno.env.get, Deno.Command and fetch ended the Deno process (CodeInterpreterError 'Deno exited (code 0)'). Deno.permissions.querySync for /etc/hosts reports 'prompt' (not granted; no TTY to prompt)."
+  },
+  "P12jsTry": {
+   "outcome": "blocked",
+   "display": "blocked (NotCapable x4)",
+   "detail": "read /etc/hosts, env PROBE_SECRET, run echo, net example.com:443: each raised JsException NotCapable 'Requires ... access ..., run again with the --allow-... flag'."
+  },
+  "P3try": {
+   "outcome": "blocked",
+   "display": "blocked (URLError / NotCapable)",
+   "detail": "urllib -> URLError Host is unreachable; pyfetch -> AbortError Requires net access to example.com:443."
+  }
+ }
+}

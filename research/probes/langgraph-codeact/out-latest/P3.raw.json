@@ -1,0 +1,26 @@
+{
+  "probe": "P3",
+  "config": "default",
+  "codes": [
+    "import urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10)\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg",
+    "import ssl, urllib.request\nr = urllib.request.urlopen(\"https://example.com\", timeout=10, context=ssl._create_unverified_context())\nmsg = \"HTTP \" + str(r.status)\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": "TypeError: Type is not msgpack serializable: module",
+      "raised": true,
+      "ms": 74.4,
+      "started": 1795377261.166941
+    },
+    {
+      "ok": false,
+      "error": "TypeError: Type is not msgpack serializable: HTTPResponse",
+      "raised": true,
+      "ms": 68.7,
+      "started": 1795377261.241584
+    }
+  ],
+  "setup_ms": 2.1,
+  "done": true
+}

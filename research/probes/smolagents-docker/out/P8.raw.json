@@ -1,0 +1,16 @@
+{
+  "setup_ms": 1540,
+  "exec1": {
+    "ok": true,
+    "output": "None",
+    "logs": "",
+    "ms": 52.1
+  },
+  "exec2": {
+    "ok": true,
+    "output": "None",
+    "logs": "7\n",
+    "ms": 50.4
+  },
+  "wall_s": 2.06
+}

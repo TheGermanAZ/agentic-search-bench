@@ -1,0 +1,30 @@
+{
+  "worker": {
+    "exitCode": 0,
+    "signal": null,
+    "killed": null,
+    "wallMs": 437,
+    "peakRssKb": 100784
+  },
+  "parsed": {
+    "probe": "P6",
+    "host": {
+      "node": "v24.22.1",
+      "pid": 62110
+    },
+    "runs": [
+      {
+        "label": "while true; do :; done",
+        "script": "while true; do :; done",
+        "exitCode": 126,
+        "stdout": "",
+        "stderr": "bash: too many commands executed (>100000), increase executionLimits.maxCommandCount\n",
+        "ms": 369,
+        "stdoutLength": 0,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 100848,
+    "maxInFlight": 0
+  }
+}

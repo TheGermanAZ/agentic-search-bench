@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "blocked",
+  "display": "blocked (WASM, no host process)",
+  "detail": "P12a subclasses walk: ran; '<repl_output> SUBS 1122 True True </repl_output>' | P12b __import__('os').system: failed; 'CodeInterpreterError: Deno exited (code 1) during execution: Pyodide has suffered a fatal error. Please report this to the Pyodide maintainers. The cause of the fatal error was: NotCapable: Requires env access, run again...' | P12c _wrap_close globals popen: failed; \"<repl_output> [Error] OSError: [138, 'emscripten does not support processes.'] </repl_output>\"",
+  "evidence": "research/probes/dspy-rlm/out/P12.txt"
+}

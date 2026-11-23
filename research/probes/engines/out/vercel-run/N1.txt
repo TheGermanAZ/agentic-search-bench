@@ -1,0 +1,1 @@
+neighbor printed "42" in 245 ms; aggressor P6 ended after 60033 ms with "ERROR: stopped at the 60 s CPU limit. Do less per execution."

@@ -1,0 +1,7 @@
+probe P6b
+
+child exit=null signal=SIGKILL killedBy=harness: still running after 120 s wall=120.1s peakRSS=87MB
+stderr tail:
+[11/22/26 14:48:43] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+

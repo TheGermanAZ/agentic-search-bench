@@ -1,0 +1,7 @@
+{
+  "probe": "P12d",
+  "outcome": "escaped",
+  "display": "escaped (writes host builtins)",
+  "detail": "set",
+  "evidence": "research/probes/langgraph-codeact/out/P12d.txt"
+}

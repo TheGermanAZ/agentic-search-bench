@@ -1,0 +1,18 @@
+{
+  "note": "supplementary: async hang to exercise the 60 s Promise.race timeout",
+  "tool": {
+    "code": "await new Promise(() => {})",
+    "mode": "tool",
+    "httpStatus": 200,
+    "wallMs": 60022,
+    "body": {
+      "mode": "tool",
+      "res": {
+        "ok": false,
+        "thrown": "Code execution failed: Execution timed out"
+      },
+      "hostCalls": 0,
+      "hostMs": 60007
+    }
+  }
+}

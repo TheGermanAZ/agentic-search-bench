@@ -1,0 +1,438 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs hardened R9a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 30361,
+  "peakTreeRssMb": 117,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "hardened",
+    "test": "R9a",
+    "notes": "one CodemodeSandbox({\"timeoutMs\":30000,\"memoryLimitBytes\":33554432}) shared",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 57,
+          "ms": 30001,
+          "ok": true,
+          "result": {
+            "value": {
+              "ok": false,
+              "error": {
+                "kind": "timeout",
+                "message": "Execution timed out after 30000 ms"
+              },
+              "output": [],
+              "calls": []
+            },
+            "stringChars": 41
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 210,
+        "ms": 268,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 203.05975
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 304,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 199.95383400000014
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 30058,
+        "ms": 230,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 201.3429580000011
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 39,
+    "hostEvents": [],
+    "totalMs": 30288
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      204,
+      41
+    ],
+    [
+      926,
+      96
+    ],
+    [
+      1584,
+      99
+    ],
+    [
+      2150,
+      99
+    ],
+    [
+      2694,
+      99
+    ],
+    [
+      3204,
+      99
+    ],
+    [
+      3746,
+      99
+    ],
+    [
+      4228,
+      99
+    ],
+    [
+      4671,
+      99
+    ],
+    [
+      5162,
+      99
+    ],
+    [
+      5585,
+      99
+    ],
+    [
+      6094,
+      99
+    ],
+    [
+      6624,
+      99
+    ],
+    [
+      7132,
+      99
+    ],
+    [
+      7753,
+      99
+    ],
+    [
+      8384,
+      99
+    ],
+    [
+      8927,
+      99
+    ],
+    [
+      9328,
+      95
+    ],
+    [
+      9685,
+      88
+    ],
+    [
+      10041,
+      52
+    ],
+    [
+      10397,
+      53
+    ],
+    [
+      10749,
+      53
+    ],
+    [
+      11106,
+      53
+    ],
+    [
+      11465,
+      53
+    ],
+    [
+      11819,
+      53
+    ],
+    [
+      12177,
+      53
+    ],
+    [
+      12531,
+      53
+    ],
+    [
+      12888,
+      53
+    ],
+    [
+      13243,
+      53
+    ],
+    [
+      13599,
+      53
+    ],
+    [
+      13957,
+      53
+    ],
+    [
+      14314,
+      53
+    ],
+    [
+      14667,
+      53
+    ],
+    [
+      15023,
+      53
+    ],
+    [
+      15380,
+      53
+    ],
+    [
+      15739,
+      53
+    ],
+    [
+      16095,
+      53
+    ],
+    [
+      16448,
+      53
+    ],
+    [
+      16801,
+      53
+    ],
+    [
+      17155,
+      53
+    ],
+    [
+      17517,
+      53
+    ],
+    [
+      17868,
+      53
+    ],
+    [
+      18224,
+      53
+    ],
+    [
+      18582,
+      53
+    ],
+    [
+      18934,
+      53
+    ],
+    [
+      19289,
+      53
+    ],
+    [
+      19643,
+      53
+    ],
+    [
+      20002,
+      53
+    ],
+    [
+      20358,
+      53
+    ],
+    [
+      20714,
+      53
+    ],
+    [
+      21074,
+      53
+    ],
+    [
+      21425,
+      53
+    ],
+    [
+      21782,
+      53
+    ],
+    [
+      22140,
+      53
+    ],
+    [
+      22494,
+      53
+    ],
+    [
+      22852,
+      53
+    ],
+    [
+      23209,
+      53
+    ],
+    [
+      23566,
+      53
+    ],
+    [
+      23923,
+      53
+    ],
+    [
+      24280,
+      53
+    ],
+    [
+      24637,
+      53
+    ],
+    [
+      24994,
+      53
+    ],
+    [
+      25351,
+      53
+    ],
+    [
+      25707,
+      53
+    ],
+    [
+      26064,
+      53
+    ],
+    [
+      26419,
+      53
+    ],
+    [
+      26776,
+      53
+    ],
+    [
+      27133,
+      53
+    ],
+    [
+      27490,
+      53
+    ],
+    [
+      27847,
+      53
+    ],
+    [
+      28203,
+      53
+    ],
+    [
+      28561,
+      53
+    ],
+    [
+      28918,
+      53
+    ],
+    [
+      29272,
+      53
+    ],
+    [
+      29629,
+      53
+    ],
+    [
+      29984,
+      53
+    ],
+    [
+      30342,
+      74
+    ]
+  ]
+}

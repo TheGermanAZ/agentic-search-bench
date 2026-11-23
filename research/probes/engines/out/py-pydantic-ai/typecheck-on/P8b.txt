@@ -1,0 +1,17 @@
+try:
+    print(kept)
+except NameError:
+    print("gone")
+--- output
+ERROR: Type error in code:
+error[unresolved-reference]: Name `kept` used when not defined
+ --> main.py:2:11
+  |
+1 | try:
+2 |     print(kept)
+  |           ^^^^
+3 | except NameError:
+4 |     print("gone")
+  |
+---
+wall_ms=19 host_calls=0 peak_tree_rss_mb=207

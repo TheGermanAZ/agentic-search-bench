@@ -1,0 +1,34 @@
+probe: hardened-P5
+outcome: blocked
+display: blocked (os.environ unsupported)
+detail: Execution error: Traceback (most recent call last): File "<python-input-0>", line 2, in <module> msg = "ENV " + str(os.environ.get("PROBE_SECRET")) ~~~~~~~~~~ RuntimeError: 'os.environ' is not supported in this environment
+
+code:
+----
+import os
+msg = "ENV " + str(os.environ.get("PROBE_SECRET"))
+print(msg)
+msg
+----
+
+setup_ms: 263.6
+wall_s (whole child process): 0.65
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.095
+host lookup calls: 0
+
+=== run 0 (9.7 ms) ===
+ok: false
+stdout: 
+status: error
+error: Execution error:
+Traceback (most recent call last):
+  File "<python-input-0>", line 2, in <module>
+    msg = "ENV " + str(os.environ.get("PROBE_SECRET"))
+                       ~~~~~~~~~~
+RuntimeError: 'os.environ' is not supported in this environment
+
+=== child process log (tail) ===
+prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance
+

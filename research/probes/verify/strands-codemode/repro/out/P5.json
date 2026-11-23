@@ -1,0 +1,7 @@
+{
+  "probe": "P5",
+  "outcome": "blocked",
+  "display": "blocked (os.environ unsupported)",
+  "detail": "Execution error: Traceback (most recent call last): File \"<python-input-0>\", line 2, in <module> msg = \"ENV \" + str(os.environ.get(\"PROBE_SECRET\")) ~~~~~~~~~~ RuntimeError: 'os.environ' is not supported in this environment",
+  "evidence": "research/probes/repro/out/P5.txt"
+}

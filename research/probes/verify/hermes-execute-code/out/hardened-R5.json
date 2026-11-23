@@ -1,0 +1,447 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/hermes-execute-code/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../hermes-execute-code/adapter.py hardened R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 16428,
+  "peakTreeRssMb": 233,
+  "peakTreeFootprintMb": 139,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R5",
+    "impl": "hermes-execute-code",
+    "notes": "HERMES_HOME=home-hardened (docker, no network, 512 MB, 1 CPU, strict, timeout 10 s, 50 calls); one process, fresh task_id (container + kernel) per execution",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 1155,
+        "ms": 12103,
+        "ok": true,
+        "result": {
+          "status": "timeout",
+          "output": "⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+          "error": "Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+          "tool_calls_made": 30,
+          "model_sees_chars": 640,
+          "model_sees_head": "{\"status\": \"timeout\", \"output\": \"⏰ Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\", \"tool_calls_made\": 30, \"duration_seconds\": 11.24, \"kernel\": {\"reused\": false, \"remote\": true, \"ended\": true, \"state_lost\": true, \"note\": \"Cell timed out; the remote session kernel was killed and its state was lost. The next call starts a fresh kernel.\"}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 0, \"stdout_bytes_total\": 0, \"stdout_bytes_omitted\": 0, \"error\": \"Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.\"}"
+        },
+        "callsStarted": 30
+      },
+      "atReturn": {
+        "started": 30,
+        "done": 30
+      },
+      "after3s": {
+        "started": 30,
+        "done": 30
+      }
+    },
+    "adapterStats": {
+      "tasks": 1
+    },
+    "hostMaxEventLoopLagMs": 14,
+    "totalMs": 16260
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      173,
+      22,
+      0
+    ],
+    [
+      410,
+      46,
+      32
+    ],
+    [
+      634,
+      62,
+      44
+    ],
+    [
+      831,
+      79,
+      57
+    ],
+    [
+      1037,
+      91,
+      77
+    ],
+    [
+      1253,
+      122,
+      81
+    ],
+    [
+      1441,
+      171,
+      109
+    ],
+    [
+      1666,
+      171,
+      123
+    ],
+    [
+      1857,
+      171,
+      123
+    ],
+    [
+      2064,
+      170,
+      123
+    ],
+    [
+      2270,
+      171,
+      123
+    ],
+    [
+      2473,
+      130,
+      110
+    ],
+    [
+      2682,
+      126,
+      110
+    ],
+    [
+      2885,
+      135,
+      116
+    ],
+    [
+      3092,
+      142,
+      126
+    ],
+    [
+      3302,
+      142,
+      126
+    ],
+    [
+      3506,
+      147,
+      139
+    ],
+    [
+      3712,
+      142,
+      126
+    ],
+    [
+      3920,
+      183,
+      126
+    ],
+    [
+      4124,
+      142,
+      126
+    ],
+    [
+      4331,
+      142,
+      126
+    ],
+    [
+      4539,
+      183,
+      126
+    ],
+    [
+      4746,
+      142,
+      139
+    ],
+    [
+      4952,
+      188,
+      126
+    ],
+    [
+      5159,
+      142,
+      126
+    ],
+    [
+      5365,
+      142,
+      139
+    ],
+    [
+      5574,
+      144,
+      126
+    ],
+    [
+      5781,
+      142,
+      126
+    ],
+    [
+      5989,
+      210,
+      139
+    ],
+    [
+      6191,
+      142,
+      126
+    ],
+    [
+      6409,
+      142,
+      126
+    ],
+    [
+      6603,
+      142,
+      126
+    ],
+    [
+      6804,
+      142,
+      126
+    ],
+    [
+      7013,
+      166,
+      126
+    ],
+    [
+      7217,
+      142,
+      126
+    ],
+    [
+      7427,
+      188,
+      126
+    ],
+    [
+      7640,
+      188,
+      126
+    ],
+    [
+      7844,
+      142,
+      126
+    ],
+    [
+      8050,
+      188,
+      126
+    ],
+    [
+      8252,
+      142,
+      126
+    ],
+    [
+      8458,
+      142,
+      126
+    ],
+    [
+      8667,
+      169,
+      126
+    ],
+    [
+      8871,
+      142,
+      126
+    ],
+    [
+      9075,
+      188,
+      126
+    ],
+    [
+      9280,
+      142,
+      126
+    ],
+    [
+      9486,
+      142,
+      126
+    ],
+    [
+      9692,
+      188,
+      126
+    ],
+    [
+      9896,
+      142,
+      126
+    ],
+    [
+      10101,
+      187,
+      126
+    ],
+    [
+      10308,
+      142,
+      126
+    ],
+    [
+      10512,
+      142,
+      126
+    ],
+    [
+      10720,
+      142,
+      126
+    ],
+    [
+      10921,
+      170,
+      139
+    ],
+    [
+      11132,
+      187,
+      126
+    ],
+    [
+      11341,
+      142,
+      126
+    ],
+    [
+      11545,
+      188,
+      126
+    ],
+    [
+      11752,
+      142,
+      126
+    ],
+    [
+      11958,
+      188,
+      139
+    ],
+    [
+      12165,
+      142,
+      126
+    ],
+    [
+      12373,
+      142,
+      139
+    ],
+    [
+      12578,
+      187,
+      126
+    ],
+    [
+      12784,
+      142,
+      126
+    ],
+    [
+      12991,
+      143,
+      126
+    ],
+    [
+      13199,
+      142,
+      126
+    ],
+    [
+      13402,
+      168,
+      126
+    ],
+    [
+      13609,
+      142,
+      126
+    ],
+    [
+      13812,
+      142,
+      126
+    ],
+    [
+      14020,
+      142,
+      126
+    ],
+    [
+      14227,
+      142,
+      126
+    ],
+    [
+      14469,
+      142,
+      126
+    ],
+    [
+      14670,
+      142,
+      126
+    ],
+    [
+      14879,
+      142,
+      126
+    ],
+    [
+      15085,
+      142,
+      126
+    ],
+    [
+      15289,
+      142,
+      126
+    ],
+    [
+      15498,
+      142,
+      126
+    ],
+    [
+      15702,
+      142,
+      126
+    ],
+    [
+      15907,
+      142,
+      126
+    ],
+    [
+      16115,
+      142,
+      126
+    ],
+    [
+      16321,
+      142,
+      126
+    ]
+  ]
+}

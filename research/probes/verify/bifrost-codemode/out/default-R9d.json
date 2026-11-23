@@ -1,0 +1,336 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/../_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/bifrost-codemode/adapter.mjs default R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 9185,
+  "peakTreeRssMb": 152,
+  "peakTreeFootprintMb": 46,
+  "watchKill": null,
+  "record": {
+    "impl": "bifrost-codemode",
+    "config": "default",
+    "test": "R9d",
+    "notes": "maximhq/bifrost:v2.6.0, data/config.json; gateway restarted for this test (9033 ms); new MCP client per execution; Starlark codes",
+    "data": {
+      "notApplicable": "no regex module in Starlark"
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "gatewayStartMs": 9033,
+      "containerBaselineMb": 299,
+      "containerPeakMb": 0,
+      "containerLastMb": null,
+      "containerKilled": null,
+      "containerRssMsMb": []
+    },
+    "hostMaxEventLoopLagMs": 25,
+    "hostEvents": [],
+    "totalMs": 9138
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      77,
+      68,
+      24
+    ],
+    [
+      229,
+      121,
+      46
+    ],
+    [
+      384,
+      119,
+      46
+    ],
+    [
+      542,
+      76,
+      45
+    ],
+    [
+      694,
+      76,
+      33
+    ],
+    [
+      852,
+      76,
+      33
+    ],
+    [
+      1006,
+      76,
+      33
+    ],
+    [
+      1158,
+      76,
+      33
+    ],
+    [
+      1313,
+      75,
+      33
+    ],
+    [
+      1472,
+      76,
+      33
+    ],
+    [
+      1627,
+      76,
+      32
+    ],
+    [
+      1780,
+      76,
+      33
+    ],
+    [
+      1933,
+      76,
+      32
+    ],
+    [
+      2088,
+      76,
+      33
+    ],
+    [
+      2244,
+      76,
+      33
+    ],
+    [
+      2399,
+      86,
+      33
+    ],
+    [
+      2554,
+      76,
+      33
+    ],
+    [
+      2708,
+      76,
+      33
+    ],
+    [
+      2864,
+      76,
+      33
+    ],
+    [
+      3017,
+      76,
+      33
+    ],
+    [
+      3172,
+      76,
+      33
+    ],
+    [
+      3329,
+      76,
+      33
+    ],
+    [
+      3486,
+      81,
+      33
+    ],
+    [
+      3644,
+      76,
+      33
+    ],
+    [
+      3789,
+      76,
+      32
+    ],
+    [
+      3945,
+      76,
+      33
+    ],
+    [
+      4097,
+      76,
+      32
+    ],
+    [
+      4255,
+      76,
+      33
+    ],
+    [
+      4410,
+      76,
+      33
+    ],
+    [
+      4617,
+      84,
+      33
+    ],
+    [
+      4759,
+      76,
+      32
+    ],
+    [
+      4909,
+      76,
+      33
+    ],
+    [
+      5062,
+      76,
+      33
+    ],
+    [
+      5218,
+      76,
+      33
+    ],
+    [
+      5373,
+      76,
+      33
+    ],
+    [
+      5528,
+      76,
+      33
+    ],
+    [
+      5680,
+      76,
+      33
+    ],
+    [
+      5836,
+      76,
+      33
+    ],
+    [
+      5990,
+      76,
+      33
+    ],
+    [
+      6145,
+      76,
+      32
+    ],
+    [
+      6301,
+      76,
+      33
+    ],
+    [
+      6454,
+      76,
+      35
+    ],
+    [
+      6612,
+      84,
+      33
+    ],
+    [
+      6773,
+      76,
+      33
+    ],
+    [
+      6923,
+      76,
+      33
+    ],
+    [
+      7072,
+      76,
+      33
+    ],
+    [
+      7234,
+      76,
+      33
+    ],
+    [
+      7377,
+      76,
+      33
+    ],
+    [
+      7531,
+      76,
+      33
+    ],
+    [
+      7687,
+      76,
+      33
+    ],
+    [
+      7843,
+      76,
+      33
+    ],
+    [
+      8013,
+      84,
+      33
+    ],
+    [
+      8156,
+      76,
+      33
+    ],
+    [
+      8306,
+      76,
+      33
+    ],
+    [
+      8462,
+      76,
+      33
+    ],
+    [
+      8616,
+      76,
+      32
+    ],
+    [
+      8772,
+      76,
+      33
+    ],
+    [
+      8925,
+      76,
+      32
+    ],
+    [
+      9082,
+      78,
+      33
+    ]
+  ]
+}

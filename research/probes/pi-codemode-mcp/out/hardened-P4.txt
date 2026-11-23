@@ -1,0 +1,48 @@
+{
+  "impl": "pi-codemode-mcp",
+  "config": "hardened",
+  "probe": "P4",
+  "options": {
+    "timeoutMs": 1000
+  },
+  "warmupExecIncludingServerSpawnMs": 392.17,
+  "hostCalls": 0,
+  "hostCallLog": [],
+  "results": [
+    {
+      "code": "return require(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\")",
+      "ms": 1,
+      "hostCalls": 0,
+      "isError": true,
+      "textChars": 998,
+      "text": "{\n  \"ok\": false,\n  \"error\": {\n    \"name\": \"ReferenceError\",\n    \"message\": \"require is not defined\",\n    \"stack\": \"ReferenceError: require is not defined\\n    at call-mcp-user-script.js:4:3\\n    at call-mcp-user-script.js:5:3\\n    at Script.runInContext (node:vm:149:12)\\n    at JavaScriptSandboxRuntime.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/sandbox-runtime.ts:84:18)\\n    at Object.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/index.ts:356:45)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\\n    at async run (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:40:15)\\n    at async Object.P4 (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:53:3)\\n    at async file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:92:17\"\n  },\n  \"logs\": []\n}"
+    },
+    {
+      "code": "const fs = await import(\"fs\"); return fs.readFileSync(\"/etc/hosts\",\"utf8\")",
+      "ms": 2,
+      "hostCalls": 0,
+      "isError": true,
+      "textChars": 1154,
+      "text": "{\n  \"ok\": false,\n  \"error\": {\n    \"name\": \"TypeError\",\n    \"message\": \"A dynamic import callback was not specified.\",\n    \"stack\": \"TypeError [ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING]: A dynamic import callback was not specified.\\n    at importModuleDynamicallyCallback (node:internal/modules/esm/utils:280:9)\\n    at call-mcp-user-script.js:4:14\\n    at call-mcp-user-script.js:5:3\\n    at Script.runInContext (node:vm:149:12)\\n    at JavaScriptSandboxRuntime.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/sandbox-runtime.ts:84:18)\\n    at Object.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/index.ts:356:45)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\\n    at async run (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:40:15)\\n    at async Object.P4 (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:54:3)\\n    at async file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:92:17\"\n  },\n  \"logs\": []\n}"
+    },
+    {
+      "code": "return await Deno.readTextFile(\"/etc/hosts\")",
+      "ms": 1,
+      "hostCalls": 0,
+      "isError": true,
+      "textChars": 992,
+      "text": "{\n  \"ok\": false,\n  \"error\": {\n    \"name\": \"ReferenceError\",\n    \"message\": \"Deno is not defined\",\n    \"stack\": \"ReferenceError: Deno is not defined\\n    at call-mcp-user-script.js:4:3\\n    at call-mcp-user-script.js:5:3\\n    at Script.runInContext (node:vm:149:12)\\n    at JavaScriptSandboxRuntime.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/sandbox-runtime.ts:84:18)\\n    at Object.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/index.ts:356:45)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\\n    at async run (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:40:15)\\n    at async Object.P4 (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:55:3)\\n    at async file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:92:17\"\n  },\n  \"logs\": []\n}"
+    },
+    {
+      "code": "const p = Buffer.constructor.constructor(\"return process\")(); return p.getBuiltinModule(\"fs\").readFileSync(\"/etc/hosts\",\"utf8\").slice(0, 200)",
+      "ms": 1,
+      "hostCalls": 0,
+      "isError": false,
+      "textChars": 242,
+      "text": "{\n  \"result\": \"##\\n# Host Database\\n#\\n# localhost is used to configure the loopback interface\\n# when the system is booting.  Do not change this entry.\\n##\\n127.0.0.1\\tlocalhost\\n255.255.255.255\\tbroadcasthost\\n::1          \",\n  \"logs\": []\n}"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "hardened", "P4"], "exit_code": 0, "wall_ms": 948, "peak_tree_rss_mb": 192.7, "watch_kill": null}

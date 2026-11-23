@@ -1,0 +1,43 @@
+label: P10c
+command: node probe.mjs P10c
+child exit: code=0 signal=null
+child wall ms (process start to exit): 378
+peak child RSS: 123.6 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 182 chars
+--- probe record ---
+{
+  "impl": "vercel-run",
+  "probe": "P10c",
+  "config": "defaults (run())",
+  "node": "v24.22.1",
+  "source": [
+    "return await host.failing();"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "Error",
+        "code": "RUN_HOST_FUNCTION_ERROR",
+        "message": "Host function failed.",
+        "stack": "Error: Host function failed.\n    at <anonymous> (run.js:1:19)",
+        "string": "Error: Host function failed."
+      },
+      "wallMs": 189.52200000000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "Error: RUN_HOST_FUNCTION_ERROR Host function failed.",
+    "ms": 190,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 135.3
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:1402) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

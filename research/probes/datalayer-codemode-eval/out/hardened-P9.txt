@@ -1,0 +1,36 @@
+probe: hardened-P9
+outcome: error
+display: hangs (tool call never returns)
+detail: harness time watchdog at 120.1 s; no result came back
+
+code:
+----
+from generated.mcp.probe import lookup
+import asyncio
+rs = await asyncio.gather(lookup({"id": 1}), lookup({"id": 2}), lookup({"id": 3}), lookup({"id": 4}), lookup({"id": 5}))
+msg = sum(x["value"] for x in rs)
+print(msg)
+msg
+----
+
+setup_ms: 316.6
+wall_s (whole child process): 120.06
+killed: harness time watchdog at 120.1 s
+child exit code: -9
+peak tree RSS GB: 0.18
+host lookup calls: 0
+
+=== child process log (tail) ===
+[11/22/26 15:13:07] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-ildldngw/generate              
+                             d (mcp dir:                                        
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-ildldngw/generate              
+                             d/mcp)                                             
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-ildldngw/generate              
+                             d/mcp/probe                                        
+

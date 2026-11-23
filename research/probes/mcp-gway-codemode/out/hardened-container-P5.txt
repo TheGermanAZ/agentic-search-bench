@@ -1,0 +1,14 @@
+--- code 1 ---
+result = os.environ.get("PROBE_SECRET")
+--- result 1 ---
+{"ok": true, "jsonrpcError": {"code": -32602, "message": "Invalid params", "data": {"type": "InvalidParamsError", "reason": "code_validation"}}, "ms": 16.55, "hostCalls": 0, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 74}
+--- code 2 ---
+result = environ.get("PROBE_SECRET")
+--- result 2 ---
+{"ok": true, "jsonrpcError": {"code": -32603, "message": "Internal error", "data": {"type": "StarlarkError"}}, "ms": 31.32, "hostCalls": 0, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 74}
+--- code 3 ---
+result = [dir(Probe), type(Probe), type(Probe.lookup), dir(Probe.lookup), type(print), dir(print)]
+--- result 3 ---
+{"ok": true, "isError": false, "ms": 27.68, "hostCalls": 0, "gatewayAlive": "true exit=0 oom=false", "footprintAfterMB": 75}
+text (196 chars):
+{"result": [["lookup"], "struct", "python_callable_value", [], "python_callable_value", []], "logs": [], "calls": [], "usage": {"call_count": 0, "ms": 13, "limit_bytes": 1024, "truncated": false}}

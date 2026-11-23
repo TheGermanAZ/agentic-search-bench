@@ -1,0 +1,203 @@
+{
+  "impl": "goose-codemode",
+  "name": "goose Code Mode (code_execution platform extension)",
+  "source": "https://github.com/aaif-goose/goose (github.com/block/goose redirects here)",
+  "pinned": "36b29113aff691e1a46a21a5c25900824caf9949 (main, 2026-11-20); boa_engine 0.22.0 per goose Cargo.lock",
+  "language": "JS",
+  "engine": "Boa 0.22.0 (pure-Rust JS interpreter) on a dedicated OS thread inside the goose process; no OS sandbox",
+  "how_run": "Rust harness compiles goose's javascript.rs verbatim (include!) and calls javascript::execute, the function CodeExecutionClient::handle_execute_javascript calls (code_execution.rs:123), with goose's 300 s default timeout and a lookup callback dispatched onto the host runtime like dispatch_tool; the MCP/agent layer above it was not built.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "await tools.call(\"lookup\", {id: 21}) printed 42; 1 host call; 205.9 ms",
+      "evidence": "research/probes/goose-codemode/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "Spec code fails before printing: \"A\".repeat(200000) throws \"RuntimeLimitError: reached the maximum number of iteration loops on this execution\" because Boa charges each repeat iteration to the 100,000 loop limit. Nothing of the print or the return came back.",
+      "evidence": "research/probes/goose-codemode/out/P2.txt"
+    },
+    "P2b": {
+      "outcome": "works",
+      "detail": "Variant building the same 200,000 chars by doubling: both came back, console output then \"Result: \\\"RETURNED\\\"\" (200,019 chars, all 200,000 A's, no truncation marker). Over 1,000,000 bytes total the call fails with \"Output limit exceeded\" instead of truncating (source: javascript.rs:31-33,51-58).",
+      "evidence": "research/probes/goose-codemode/out/P2b.txt"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "Error: ReferenceError: fetch is not defined (code_mode.js:4:5)",
+      "evidence": "research/probes/goose-codemode/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "not-defined",
+      "detail": "require: ReferenceError: require is not defined; import(\"fs\"): TypeError: module resolution is disabled for this context; Deno.readTextFile: ReferenceError: Deno is not defined",
+      "evidence": "research/probes/goose-codemode/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "not-defined",
+      "detail": "ReferenceError: process is not defined; PROBE_SECRET=s3cr3t was set in the host process and never reached JS",
+      "evidence": "research/probes/goose-codemode/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "while(true){} stopped after 9.1 ms by Boa's loop-iteration limit (100,000): \"RuntimeLimitError: reached the maximum number of iteration loops on this execution\"",
+      "evidence": "research/probes/goose-codemode/out/P6.txt",
+      "display": "limited (loop count)"
+    },
+    "P6b": {
+      "outcome": "no-limit-within-120s",
+      "detail": "Variant: catastrophic regex /^(a+)+$/ on 40 a's + b runs in native code that neither the instruction nor the loop limit counts; still running when the harness killed it at 120 s. goose's 300 s deadline would return an error to the caller but cannot stop the thread, which keeps 1 of the 4 global worker slots until it finishes (source: javascript.rs:28,384-386,409-423).",
+      "evidence": "research/probes/goose-codemode/out/P6b.txt"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "Spec code stopped in 0.9 ms by the loop-iteration limit inside \"x\".repeat(1e6) (1e6 > 100,000), not by any memory limit",
+      "evidence": "research/probes/goose-codemode/out/P7.txt",
+      "display": "limited (loop count; P7b 4.2 GB)"
+    },
+    "P7b": {
+      "outcome": "no-limit-within-120s",
+      "detail": "Variant: 1e6-char string built by doubling, then a.push(s + a.length): harness killed the process at 4,256 MB RSS after 0.3 s. No memory cap exists, and the JS runs inside the goose process.",
+      "evidence": "research/probes/goose-codemode/out/P7b.txt"
+    },
+    "P7c": {
+      "outcome": "no-limit-within-120s",
+      "detail": "Variant: a.push(new ArrayBuffer(1e8)): harness killed the process at 4,171 MB RSS after 0.2 s",
+      "evidence": "research/probes/goose-codemode/out/P7c.txt"
+    },
+    "P8": {
+      "outcome": "fresh",
+      "detail": "execution 2 printed \"gone\"; a new Boa Context is built per call",
+      "evidence": "research/probes/goose-codemode/out/P8.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "Promise.all of 5 tools.call: 204 ms elapsed (parallel), 5 host calls",
+      "evidence": "research/probes/goose-codemode/out/P9.txt",
+      "display": "parallel (204 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "is_error result: \"Error: Error: probe-boom (code_mode.js:4:5)\\n    at run (code_mode.js:2:7)\\n    at <main> (code_mode.js:4:5)\". Message and stack survive; the first location points at the appended ;run() line, the stack frame has the right line.",
+      "evidence": "research/probes/goose-codemode/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "median 0.12 ms, p90 0.15 ms per execution over 20 runs; first execution 0.54 ms; no separate setup step (each call spawns a thread, a current-thread tokio runtime and a fresh Boa Context)",
+      "evidence": "research/probes/goose-codemode/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "this.constructor.constructor(\"return process\")(): Function constructor works but returns ReferenceError: process is not defined. (function(){return this})().process: undefined. Global names are only ECMAScript builtins plus tools, console, run.",
+      "evidence": "research/probes/goose-codemode/out/P12.txt"
+    }
+  },
+  "defaults": {
+    "time": "300 s wall deadline (goose DEFAULT_EXTENSION_TIMEOUT, overridable by GOOSE_DEFAULT_EXTENSION_TIMEOUT); plus Boa limits of 2,000,000 VM instructions, 100,000 loop iterations per frame, recursion 128. Native builtins (regex) are not counted, and the deadline cannot stop the worker thread.",
+    "memory": "none (P7b, P7c reached 4 GB in under 0.4 s)",
+    "output": "1,000,000 bytes for console output plus serialized return value combined; exceeding it is an error, not a truncation",
+    "tool_calls": "no count limit; at most 4 concurrent executions process-wide (WORKER_SLOTS)"
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "No generated interface. One native object `tools` with a single method `call(name, args)`; args must be a JSON object. Model writes `async function run()`; goose appends `;run();`.",
+      "evidence": "https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L237-L246 and https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/code_execution.rs#L25"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On demand. The model sees three tools: list_functions (name + first line of description, 240 chars), get_function_details (original JSON input/output schemas), execute_javascript.",
+      "evidence": "https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/code_execution.rs#L247-L251 and https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/code_execution.rs#L262-L275"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Boa NativeFunction::from_async_fn; the async job is polled by goose's own job loop on the worker thread; the callback spawns the MCP call onto goose's main tokio runtime. Tool results are flattened to assistant-visible text and JSON-parsed if possible.",
+      "evidence": "https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L152-L187, https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L271-L333, https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/code_execution.rs#L153-L233"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Boa interpreter in-process, on a thread named goose-javascript. Claimed boundary (INSTRUCTIONS): 'isolated, with no filesystem, shell, network, packages, or environment access'. Code matches for capabilities (no host objects, IdleModuleLoader, timers rejected) but there is no memory cap and native builtins escape the CPU limits.",
+      "evidence": "https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/code_execution.rs#L25, https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L222-L254, https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L285"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "Captured console lines plus 'Result: <JSON of run() return>' in one text block. 1,000,000-byte combined limit raises an error. Errors are prefixed 'Error: ' and capped by limit_error.",
+      "evidence": "https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L31-L63, https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L302-L321, https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/code_execution.rs#L282-L287"
+    },
+    {
+      "topic": "Limits",
+      "finding": "INSTRUCTION_LIMIT 2,000,000; loop limit 100,000; recursion 128; WORKER_SLOTS 4; timeout from goose config (default 300 s). Boa charges String.prototype.repeat per iteration against the loop limit, which is why the spec's repeat() probes fail.",
+      "evidence": "https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L27-L31, https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L222-L232, https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/code_execution.rs#L146-L151; boa_engine 0.22.0 (crates.io) src/builtins/string/mod.rs:736-740, src/vm/opcode/iteration/loop_ops.rs:13-23"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh Boa Context per execute_javascript call; no snapshot, no persistence API.",
+      "evidence": "https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L214-L228 and test https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L709-L717"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Boa JsError to_string includes message, location and stack; syntax errors get a hint to define async function run().",
+      "evidence": "https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L257-L266, https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L299-L301, test https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/javascript.rs#L979-L1001"
+    },
+    {
+      "topic": "Other",
+      "finding": "Code mode is behind cargo feature `code-mode` (on in goose-cli default features) and the extension is default_enabled: false. Tool calls from JS reuse goose's normal tool dispatch (CallRequest), so approvals and permissions of the underlying tools apply; summon's delegate and app-only/resource tools are excluded from the catalog.",
+      "evidence": "crates/goose/Cargo.toml:23, crates/goose-cli/Cargo.toml:95, https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/mod.rs#L158-L175, https://github.com/aaif-goose/goose/blob/36b29113aff691e1a46a21a5c25900824caf9949/crates/goose/src/agents/platform_extensions/code_execution.rs#L57-L67"
+    }
+  ],
+  "surprises": [
+    "The Dec 2025 blog says goose 'generates a JavaScript interface representing the connected MCP tools'. At this commit there is no generated interface: one tools.call(name, args) proxy plus list_functions/get_function_details discovery (code_execution.rs:25).",
+    "Boa's 100,000 loop limit is charged per String.prototype.repeat iteration, so ordinary code like \"A\".repeat(200000) fails with RuntimeLimitError (P2, P7).",
+    "No memory limit: 4 GB in 0.3 s, inside the goose agent process itself (P7b, P7c).",
+    "CPU limits count VM instructions only. A catastrophic regex ran past 120 s (P6b); after goose's 300 s deadline the thread keeps running and holds one of only 4 process-wide worker slots (javascript.rs:28,384-386,409-423).",
+    "Error headline location points at goose's appended ';run();' line (code_mode.js:4:5), not the throw; the stack frame below it is correct (P10).",
+    "The blog links block/goose; the repo now lives at aaif-goose/goose."
+  ],
+  "hardened": {
+    "config": "GOOSE_DEFAULT_EXTENSION_TIMEOUT=10 seconds (my choice; default 300, crates/goose/src/config/extensions.rs:10; read by execution_timeout() crates/goose/src/agents/platform_extensions/code_execution.rs:146-151; key declared crates/goose/src/config/base.rs:1459; the env var wins over config.yaml, base.rs:773-777). It is the only public knob: instruction limit 2,000,000, loop limit 100,000, recursion 128, output 1,000,000 bytes and 4 worker slots are constants (crates/goose/src/agents/platform_extensions/javascript.rs:27-31, 226-232); a Platform extension config has no timeout field (crates/goose/src/agents/extension_config.rs:73-84); there is no memory option. Harness research/probes/goose-codemode/hardened-harness compiles javascript.rs verbatim and reads the env var as execution_timeout() does.",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "Error: ReferenceError: fetch is not defined (code_mode.js:4:5)",
+        "evidence": "research/probes/goose-codemode/out/hardened-P3.txt",
+        "display": "not-defined"
+      },
+      "P4": {
+        "outcome": "not-defined",
+        "detail": "require: ReferenceError: require is not defined; import(\"fs\"): TypeError: module resolution is disabled for this context; Deno: ReferenceError: Deno is not defined",
+        "evidence": "research/probes/goose-codemode/out/hardened-P4.txt",
+        "display": "not-defined"
+      },
+      "P5": {
+        "outcome": "not-defined",
+        "detail": "ReferenceError: process is not defined; PROBE_SECRET=s3cr3t was in the host process env",
+        "evidence": "research/probes/goose-codemode/out/hardened-P5.txt",
+        "display": "not-defined"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "while(true){} stopped in 15 ms by Boa's loop-iteration limit (RuntimeLimitError), as with defaults; the 10 s timeout never comes into play. A trivial run after returned Result: 2. Extra (hardened-P6b-thread.txt): a regex the guards do not count returned 'Execution timed out after 10 seconds' at 11.0 s, but the worker thread kept running; after four more such runs all 4 worker slots were held and 'return 1+1' failed with 'Execution timed out after 10 seconds while waiting for a JavaScript worker'.",
+        "evidence": "research/probes/goose-codemode/out/hardened-P6.txt, research/probes/goose-codemode/out/hardened-P6b-thread.txt",
+        "display": "limited (loop count)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "SPEC code unchanged. Stopped in 16 ms by the loop-iteration limit inside \"x\".repeat(1e6), not by any memory limit; a trivial run after in the same process returned Result: 2. Variant P7b (1e6-char string built by doubling, then a.push(s + a.length)) under the same config reached 4,494 MB RSS in 0.6 s and was killed by the harness: no memory limit exists and the 10 s timeout does not fire first.",
+        "evidence": "research/probes/goose-codemode/out/hardened-P7.txt, research/probes/goose-codemode/out/hardened-P7b.txt",
+        "display": "limited (loop count, not memory)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "Promise.all of 5 tools.call: 203 ms elapsed (parallel), 5 host calls",
+        "evidence": "research/probes/goose-codemode/out/hardened-P9.txt",
+        "display": "parallel (203 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "this.constructor.constructor(\"return process\")(): Function constructor works, returns ReferenceError: process is not defined. (function(){return this})().process: undefined. Lower-case globals: only ECMAScript builtins plus tools, console, run.",
+        "evidence": "research/probes/goose-codemode/out/hardened-P12.txt",
+        "display": "blocked"
+      }
+    }
+  }
+}

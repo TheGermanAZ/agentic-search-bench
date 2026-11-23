@@ -1,0 +1,27 @@
+# qwen-code-codemode hardened-P6 (hardened)
+--- exec 1 source ---
+while (true) {}
+--- exec 1 result (30105.24 ms from tool call issued to tool result received; host lookup calls 0) ---
+text (154 chars):
+[{"type":"text","text":"Script error:\ninterrupted\n    at <anonymous> (exec.js:4:25)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]
+--- summary ---
+{
+ "config": "hardened",
+ "exit": {
+  "code": 0,
+  "sig": null
+ },
+ "setupMsSpawnToFirstExec": 713,
+ "totalHostCalls": 0,
+ "sideRequests": 0
+}
+--- cli stdout (json, first 3000 chars) ---
+[{"type":"system","subtype":"init","uuid":"2e9ba131-8d90-4005-b58b-02ab52224171","session_id":"2e9ba131-8d90-4005-b58b-02ab52224171","cwd":"~/p/agentic-search-bench/research/probes/qwen-code-codemode/work","tools":["exec","cron_list","cron_delete","autofix_pr","list_agents","task_stop","skill","search_memory","enter_worktree","exit_worktree","record_artifact","get_goal","update_goal","tool_call","tool_search","agent","report_findings","cron_create","loop_wakeup","send_message","manage_memory","mcp__probe__lookup"],"mcp_servers":[{"name":"probe","status":"connected"}],"model":"mock-model","permission_mode":"default","slash_commands":["advisor","agent-delegation","auth","autofix-pr","batch","batch-api","bug","clear","compress","compress-fast","config","context","coordinate","curator","dataviz","diff","docs","doctor","effort","export","extension-creator","extensions","goal","goal-draft","hooks","import-config","init","insight","language","loop","model","new-app","output-style","pr","qc-helper","review","simplify","stats","status","stuck","summary","tasks","update","workflow-authoring","workflow-creator","workflows","zvec-grep-install"],"qwen_code_version":"0.28.4","agents":["general-purpose","Explore","statusline-setup","review-agent","claude-code","codex"]},{"type":"assistant","uuid":"57b5f215-47c9-4b4a-b4b1-4cebf6f3cec1","session_id":"2e9ba131-8d90-4005-b58b-02ab52224171","parent_tool_use_id":null,"message":{"id":"57b5f215-47c9-4b4a-b4b1-4cebf6f3cec1","type":"message","role":"assistant","model":"mock-model","content":[{"type":"tool_use","id":"call_1","name":"exec","input":{"source":"while (true) {}"}}],"stop_reason":"tool_use","usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"user","uuid":"5a1bbded-293e-4d76-a0cf-19aed7426e62","session_id":"2e9ba131-8d90-4005-b58b-02ab52224171","parent_tool_use_id":null,"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_1","is_error":true,"content":"Script error:\ninterrupted\n    at <anonymous> (exec.js:4:25)\n    at <anonymous> (exec.js:5:3)\n    at <eval> (exec.js:10:9)\n"}]}},{"type":"assistant","uuid":"2aa6bc87-8e2f-4f76-b80f-6d4e19a96f86","session_id":"2e9ba131-8d90-4005-b58b-02ab52224171","parent_tool_use_id":null,"message":{"id":"2aa6bc87-8e2f-4f76-b80f-6d4e19a96f86","type":"message","role":"assistant","model":"mock-model","content":[{"type":"text","text":"done"}],"stop_reason":null,"usage":{"input_tokens":1,"output_tokens":1,"cache_read_input_tokens":0,"total_tokens":2}}},{"type":"result","subtype":"success","uuid":"65634f4a-49e4-47ea-b997-6230c3dea98e","session_id":"2e9ba131-8d90-4005-b58b-02ab52224171","is_error":false,"duration_ms":30231,"duration_api_ms":145,"num_turns":2,"result":"done","usage":{"input_tokens":2,"output_tokens":2,"cache_read_input_tokens":0,"total_tokens":4},"permission_denials":[],"stats":{"models":{"mock":{"api":{"totalRequests":3,"totalErrors":0,"totalLatencyMs":107},"tokens":{"prompt":3
+--- cli stderr (first 3000 chars) ---
+Warning: Node.js 24.22.1 can cause high temporary memory usage during shell safety checks. Upgrade to Node.js 26.12.1. Qwen Code will continue normally. See https://github.com/QwenLM/qwen-code/issues/15165
+
+--- mock events ---
+{"t":716.32,"kind":"exec-issued","n":1,"hostCallsSoFar":589}
+{"t":30821.56,"kind":"exec-result","n":1,"hostCallsSoFar":589,"textLen":154}
+{"t":30821.85,"kind":"final"}
+{"t":30882.23,"kind":"final"}

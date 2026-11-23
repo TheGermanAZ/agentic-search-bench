@@ -1,0 +1,330 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs default R3",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 4838,
+  "peakTreeRssMb": 119,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "default",
+    "test": "R3",
+    "notes": "one CodemodeSandbox({}) shared",
+    "data": {
+      "A": {
+        "label": "recursion",
+        "startMs": 40,
+        "ms": 196,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": "RangeError: Maximum call stack size exceeded",
+            "output": [],
+            "calls": [],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 44
+        },
+        "callsStarted": 0
+      },
+      "deep": {
+        "label": "deep-return",
+        "startMs": 236,
+        "ms": 4351,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": false,
+            "error": {
+              "kind": "sandbox",
+              "message": "RangeError: Maximum call stack size exceeded"
+            },
+            "output": [],
+            "calls": []
+          },
+          "stringChars": 51
+        },
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 4587,
+        "ms": 51,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": "alive",
+            "output": [],
+            "calls": [],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 5
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 22,
+    "hostEvents": [],
+    "totalMs": 4638
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      117,
+      49
+    ],
+    [
+      189,
+      65
+    ],
+    [
+      241,
+      100
+    ],
+    [
+      288,
+      104
+    ],
+    [
+      401,
+      107
+    ],
+    [
+      485,
+      115
+    ],
+    [
+      601,
+      115
+    ],
+    [
+      651,
+      116
+    ],
+    [
+      711,
+      116
+    ],
+    [
+      804,
+      116
+    ],
+    [
+      892,
+      116
+    ],
+    [
+      968,
+      116
+    ],
+    [
+      1033,
+      116
+    ],
+    [
+      1102,
+      116
+    ],
+    [
+      1197,
+      116
+    ],
+    [
+      1249,
+      117
+    ],
+    [
+      1294,
+      117
+    ],
+    [
+      1367,
+      117
+    ],
+    [
+      1419,
+      117
+    ],
+    [
+      1475,
+      117
+    ],
+    [
+      1526,
+      117
+    ],
+    [
+      1653,
+      117
+    ],
+    [
+      1792,
+      117
+    ],
+    [
+      1868,
+      117
+    ],
+    [
+      2032,
+      117
+    ],
+    [
+      2142,
+      117
+    ],
+    [
+      2196,
+      117
+    ],
+    [
+      2260,
+      118
+    ],
+    [
+      2371,
+      118
+    ],
+    [
+      2435,
+      118
+    ],
+    [
+      2546,
+      118
+    ],
+    [
+      2659,
+      118
+    ],
+    [
+      2740,
+      118
+    ],
+    [
+      2841,
+      118
+    ],
+    [
+      2884,
+      118
+    ],
+    [
+      3006,
+      118
+    ],
+    [
+      3071,
+      118
+    ],
+    [
+      3134,
+      118
+    ],
+    [
+      3189,
+      118
+    ],
+    [
+      3289,
+      118
+    ],
+    [
+      3356,
+      118
+    ],
+    [
+      3450,
+      118
+    ],
+    [
+      3549,
+      118
+    ],
+    [
+      3641,
+      118
+    ],
+    [
+      3729,
+      118
+    ],
+    [
+      3825,
+      119
+    ],
+    [
+      3892,
+      119
+    ],
+    [
+      3954,
+      119
+    ],
+    [
+      4029,
+      119
+    ],
+    [
+      4121,
+      119
+    ],
+    [
+      4218,
+      119
+    ],
+    [
+      4296,
+      119
+    ],
+    [
+      4340,
+      119
+    ],
+    [
+      4431,
+      119
+    ],
+    [
+      4491,
+      119
+    ],
+    [
+      4586,
+      119
+    ],
+    [
+      4638,
+      119
+    ],
+    [
+      4709,
+      119
+    ],
+    [
+      4766,
+      0
+    ],
+    [
+      4838,
+      0
+    ]
+  ]
+}

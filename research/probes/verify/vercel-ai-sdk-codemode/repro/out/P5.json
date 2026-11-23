@@ -1,0 +1,29 @@
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P5",
+  "config": "defaults (no executionPolicy)",
+  "node": "v24.22.1",
+  "source": [
+    "return process.env.PROBE_SECRET;"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "ReferenceError",
+        "code": "RUN_USER_SOURCE_ERROR",
+        "message": "process is not defined",
+        "stack": "ReferenceError: process is not defined\n    at <anonymous> (code-mode.js:1:8)\n    at <anonymous> (code-mode.js:2:1)",
+        "string": "ReferenceError: process is not defined"
+      },
+      "wallMs": 593.948625,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "error": "ReferenceError: RUN_USER_SOURCE_ERROR process is not defined",
+    "ms": 594,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 158.2
+}

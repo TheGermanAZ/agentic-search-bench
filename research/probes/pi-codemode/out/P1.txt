@@ -1,0 +1,32 @@
+{
+  "impl": "pi-codemode",
+  "config": "default",
+  "probe": "P1",
+  "options": {},
+  "hostCalls": 1,
+  "results": [
+    {
+      "code": "const r = await tools.lookup({id: 21}); console.log(r.value)",
+      "ms": 251,
+      "hostCalls": 1,
+      "ok": true,
+      "output": [
+        {
+          "type": "text",
+          "text": "42",
+          "console": true
+        }
+      ],
+      "outputTextChars": 2,
+      "calls": [
+        {
+          "name": "lookup",
+          "status": "ok"
+        }
+      ]
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P1"], "exit_code": 0, "wall_ms": 320, "peak_tree_rss_mb": 104.0, "watch_kill": null}

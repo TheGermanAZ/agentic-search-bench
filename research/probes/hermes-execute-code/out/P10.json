@@ -1,0 +1,7 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "display": "works (message + line 2)",
+  "detail": "message survives: True; 'line 2' present: True; text: '--- stderr --- Traceback (most recent call last): File \"/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/hermes_kernel_ven3q3jc/hermes_kernel_runner.py\", line 124, in run_cell exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS) ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"<cell>\", line 2, in <module> ValueError: probe-boom Traceback (most recent call last): File \"/var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/hermes_kernel_ven3q3jc/hermes_kernel_runner.py\", line 124, in run_cell exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS) ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^...'",
+  "evidence": "research/probes/hermes-execute-code/out/P10.txt"
+}

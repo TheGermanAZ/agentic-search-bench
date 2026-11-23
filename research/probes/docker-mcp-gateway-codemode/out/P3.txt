@@ -1,0 +1,12 @@
+--- code 1 ---
+await fetch("https://example.com")
+--- result 1 ---
+{"ms":27,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (91 chars):
+Error running script: SyntaxError: SyntaxError: (anonymous): Line 2:7 Unexpected identifier
+--- code 2 ---
+return String(fetch("https://example.com"))
+--- result 2 ---
+{"ms":13,"hostCalls":0,"side":{"gatewayStdoutChars":0,"head":""},"ok":true,"isError":false}
+text (76 chars):
+Error running script: ReferenceError: fetch is not defined at <eval>:2:20(4)

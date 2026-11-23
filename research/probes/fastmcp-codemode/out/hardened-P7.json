@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "limited",
+  "display": "limited (50 MB)",
+  "detail": "stopped after 0.04 s, peak tree RSS 0.091 GB: Error calling tool 'execute': MemoryError: memory limit exceeded: 50044922 bytes > 50000000 bytes",
+  "evidence": "research/probes/fastmcp-codemode/out/hardened-P7.txt"
+}

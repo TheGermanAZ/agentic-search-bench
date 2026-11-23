@@ -1,0 +1,14 @@
+label: P6
+command: node probe.mjs P6
+child exit: code=null signal=SIGKILL killed by watcher: no-limit-within-120s
+child wall ms (process start to exit): 120009
+peak child RSS: 89.0 MB (ps every 50 ms)
+peak server (pid 91852) RSS: 72.9 MB; alive after probe: yes
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 0 chars
+--- probe record ---
+(no record written: the probe process died before reporting)
+--- child stdout ---
+
+--- child stderr ---
+

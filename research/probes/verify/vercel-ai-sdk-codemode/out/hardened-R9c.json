@@ -1,0 +1,326 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-ai-sdk-codemode/adapter.mjs hardened R9c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 13209,
+  "peakTreeRssMb": 184,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-ai-sdk-codemode",
+    "config": "hardened",
+    "test": "R9c",
+    "notes": "one experimental_createCodeModeTool shared; execute({js}) as generateText calls it",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 119,
+          "ms": 12812,
+          "ok": false,
+          "threw": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 299,
+        "ms": 301,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 215,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 12931,
+        "ms": 210,
+        "ok": true,
+        "result": {
+          "value": 42,
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 140,
+    "hostEvents": [],
+    "totalMs": 13141
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:35903) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      99,
+      55
+    ],
+    [
+      302,
+      127
+    ],
+    [
+      518,
+      181
+    ],
+    [
+      775,
+      181
+    ],
+    [
+      1008,
+      181
+    ],
+    [
+      1224,
+      182
+    ],
+    [
+      1426,
+      182
+    ],
+    [
+      1629,
+      182
+    ],
+    [
+      1840,
+      182
+    ],
+    [
+      2073,
+      182
+    ],
+    [
+      2261,
+      182
+    ],
+    [
+      2466,
+      182
+    ],
+    [
+      2668,
+      182
+    ],
+    [
+      2876,
+      182
+    ],
+    [
+      3078,
+      182
+    ],
+    [
+      3283,
+      182
+    ],
+    [
+      3487,
+      182
+    ],
+    [
+      3688,
+      182
+    ],
+    [
+      3896,
+      182
+    ],
+    [
+      4093,
+      182
+    ],
+    [
+      4335,
+      183
+    ],
+    [
+      4572,
+      183
+    ],
+    [
+      4764,
+      183
+    ],
+    [
+      4959,
+      183
+    ],
+    [
+      5161,
+      183
+    ],
+    [
+      5378,
+      183
+    ],
+    [
+      5625,
+      183
+    ],
+    [
+      5815,
+      183
+    ],
+    [
+      6012,
+      183
+    ],
+    [
+      6229,
+      183
+    ],
+    [
+      6423,
+      183
+    ],
+    [
+      6647,
+      183
+    ],
+    [
+      6865,
+      183
+    ],
+    [
+      7065,
+      183
+    ],
+    [
+      7269,
+      183
+    ],
+    [
+      7464,
+      183
+    ],
+    [
+      7740,
+      183
+    ],
+    [
+      7935,
+      183
+    ],
+    [
+      8153,
+      183
+    ],
+    [
+      8366,
+      183
+    ],
+    [
+      8565,
+      183
+    ],
+    [
+      8768,
+      183
+    ],
+    [
+      8970,
+      183
+    ],
+    [
+      9174,
+      183
+    ],
+    [
+      9372,
+      183
+    ],
+    [
+      9579,
+      183
+    ],
+    [
+      9783,
+      183
+    ],
+    [
+      9989,
+      184
+    ],
+    [
+      10190,
+      184
+    ],
+    [
+      10406,
+      184
+    ],
+    [
+      10658,
+      184
+    ],
+    [
+      10861,
+      184
+    ],
+    [
+      11060,
+      184
+    ],
+    [
+      11265,
+      184
+    ],
+    [
+      11493,
+      184
+    ],
+    [
+      11681,
+      184
+    ],
+    [
+      11885,
+      184
+    ],
+    [
+      12100,
+      184
+    ],
+    [
+      12302,
+      184
+    ],
+    [
+      12509,
+      184
+    ],
+    [
+      12711,
+      184
+    ],
+    [
+      13005,
+      176
+    ],
+    [
+      13208,
+      177
+    ]
+  ]
+}

@@ -1,0 +1,29 @@
+probe: hardened-P4
+outcome: blocked
+display: blocked (virtual FS, Errno 44)
+detail: Error during execution: [Errno 44] No such file or directory: '/etc/hosts'
+
+code:
+----
+data = open("/etc/hosts").read()
+msg = "HOSTS " + str(len(data)) + " " + data.strip().splitlines()[-1]
+print(msg)
+msg
+----
+
+setup_ms: 15.5
+wall_s (whole child process): 1.52
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.29
+host lookup calls: 0
+
+=== run 0 (1168.1 ms) ===
+ok: false
+stdout: Error during execution: [Errno 44] No such file or directory: '/etc/hosts'
+error: Error during execution: [Errno 44] No such file or directory: '/etc/hosts'
+context_keys: []
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

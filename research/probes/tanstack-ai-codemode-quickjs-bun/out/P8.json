@@ -1,0 +1,45 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P8",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 8.437124999999995,
+  "source": [
+    "globalThis.kept = 7; return \"set\";",
+    "return typeof kept === \"undefined\" ? \"gone\" : kept;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "set",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 237.388584,
+      "hostCalls": 0
+    },
+    {
+      "returned": {
+        "success": true,
+        "result": "gone",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 1.4245409999999765,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "gone",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 1,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 47.4
+}

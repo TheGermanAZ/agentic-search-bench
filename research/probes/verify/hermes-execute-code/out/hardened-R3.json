@@ -1,0 +1,334 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/hermes-execute-code/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../hermes-execute-code/adapter.py hardened R3",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 5366,
+  "peakTreeRssMb": 218,
+  "peakTreeFootprintMb": 139,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R3",
+    "impl": "hermes-execute-code",
+    "notes": "HERMES_HOME=home-hardened (docker, no network, 512 MB, 1 CPU, strict, timeout 10 s, 50 calls); one process, fresh task_id (container + kernel) per execution",
+    "data": {
+      "recursion": {
+        "label": "recursion",
+        "startMs": 497,
+        "ms": 1756,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "RecursionError: maximum recursion depth exceeded\n",
+          "error": null,
+          "tool_calls_made": 0,
+          "model_sees_chars": 309,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"RecursionError: maximum recursion depth exceeded\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 1.06, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 49, \"stdout_bytes_total\": 49, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 0
+      },
+      "deep-return": {
+        "label": "deep-return",
+        "startMs": 2253,
+        "ms": 1416,
+        "ok": true,
+        "result": {
+          "status": "error",
+          "output": "\n--- stderr ---\nTraceback (most recent call last):\n  File \"/tmp/hermes_rkernel_7b746087e248/kernel_runner.py\", line 68, in run_cell\n    exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<cell>\", line 8, in <module>\nRecursionError: maximum recursion depth exceeded while getting the repr of an object\n",
+          "error": "RecursionError: maximum recursion depth exceeded while getting the repr of an object",
+          "tool_calls_made": 0,
+          "model_sees_chars": 752,
+          "model_sees_head": "{\"status\": \"error\", \"output\": \"\\n--- stderr ---\\nTraceback (most recent call last):\\n  File \\\"/tmp/hermes_rkernel_7b746087e248/kernel_runner.py\\\", line 68, in run_cell\\n    exec(compile(request[\\\"code\\\"], \\\"<cell>\\\", \\\"exec\\\"), GLOBALS)\\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"<cell>\\\", line 8, in <module>\\nRecursionError: maximum recursion depth exceeded while getting the repr of an object\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 1.07, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 378, \"stdout_bytes_total\": 378, \"stdout_bytes_omitted\": 0, \"error\": \"RecursionError: maximum recursion depth exceeded while getting the repr of an object\"}"
+        },
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 3669,
+        "ms": 1652,
+        "ok": true,
+        "result": {
+          "status": "success",
+          "output": "alive\n",
+          "error": null,
+          "tool_calls_made": 0,
+          "model_sees_chars": 264,
+          "model_sees_head": "{\"status\": \"success\", \"output\": \"alive\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 1.07, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 6, \"stdout_bytes_total\": 6, \"stdout_bytes_omitted\": 0}"
+        },
+        "callsStarted": 0
+      }
+    },
+    "adapterStats": {
+      "tasks": 3
+    },
+    "hostMaxEventLoopLagMs": 10,
+    "totalMs": 5321
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      78,
+      31,
+      19
+    ],
+    [
+      177,
+      54,
+      19
+    ],
+    [
+      280,
+      73,
+      42
+    ],
+    [
+      383,
+      82,
+      62
+    ],
+    [
+      487,
+      113,
+      80
+    ],
+    [
+      590,
+      140,
+      80
+    ],
+    [
+      691,
+      169,
+      109
+    ],
+    [
+      794,
+      170,
+      123
+    ],
+    [
+      895,
+      170,
+      123
+    ],
+    [
+      999,
+      170,
+      109
+    ],
+    [
+      1100,
+      170,
+      109
+    ],
+    [
+      1204,
+      160,
+      123
+    ],
+    [
+      1303,
+      165,
+      123
+    ],
+    [
+      1405,
+      171,
+      123
+    ],
+    [
+      1511,
+      125,
+      123
+    ],
+    [
+      1619,
+      215,
+      123
+    ],
+    [
+      1719,
+      125,
+      137
+    ],
+    [
+      1819,
+      125,
+      110
+    ],
+    [
+      1923,
+      170,
+      110
+    ],
+    [
+      2025,
+      125,
+      110
+    ],
+    [
+      2129,
+      125,
+      110
+    ],
+    [
+      2239,
+      217,
+      110
+    ],
+    [
+      2338,
+      218,
+      121
+    ],
+    [
+      2439,
+      218,
+      126
+    ],
+    [
+      2555,
+      173,
+      126
+    ],
+    [
+      2650,
+      173,
+      126
+    ],
+    [
+      2749,
+      173,
+      112
+    ],
+    [
+      2852,
+      173,
+      112
+    ],
+    [
+      2953,
+      128,
+      126
+    ],
+    [
+      3055,
+      193,
+      125
+    ],
+    [
+      3158,
+      128,
+      125
+    ],
+    [
+      3260,
+      128,
+      112
+    ],
+    [
+      3361,
+      173,
+      112
+    ],
+    [
+      3466,
+      128,
+      112
+    ],
+    [
+      3567,
+      128,
+      112
+    ],
+    [
+      3670,
+      218,
+      139
+    ],
+    [
+      3776,
+      218,
+      139
+    ],
+    [
+      3875,
+      218,
+      112
+    ],
+    [
+      3979,
+      173,
+      139
+    ],
+    [
+      4080,
+      173,
+      126
+    ],
+    [
+      4187,
+      173,
+      126
+    ],
+    [
+      4285,
+      173,
+      126
+    ],
+    [
+      4390,
+      173,
+      126
+    ],
+    [
+      4492,
+      141,
+      126
+    ],
+    [
+      4596,
+      128,
+      123
+    ],
+    [
+      4702,
+      196,
+      112
+    ],
+    [
+      4805,
+      128,
+      112
+    ],
+    [
+      4901,
+      128,
+      112
+    ],
+    [
+      5005,
+      136,
+      112
+    ],
+    [
+      5102,
+      128,
+      112
+    ],
+    [
+      5210,
+      128,
+      112
+    ],
+    [
+      5315,
+      204,
+      112
+    ]
+  ]
+}

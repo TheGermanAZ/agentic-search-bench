@@ -1,0 +1,18 @@
+code:
+import os
+print(os.environ.get("PROBE_SECRET"))
+
+{
+  "probe": "P5",
+  "harness_wall_s": 4.0,
+  "peak_container_mem_mib": 0,
+  "raw": {
+    "result": {
+      "stdout": "None\n",
+      "stderr": "",
+      "ms": 111.5
+    },
+    "wall_s": 3.56
+  },
+  "child_tail": "{\"result\": {\"stdout\": \"None\\n\", \"stderr\": \"\", \"ms\": 111.5}, \"wall_s\": 3.56}\n"
+}

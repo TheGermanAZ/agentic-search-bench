@@ -1,0 +1,18 @@
+mode: inprocess
+code:
+async () => { const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => forge.callTool("host", "lookup", {id: i}))); return Date.now() - t; }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "224"
+      }
+    ],
+    "isError": false
+  },
+  "ms": 237,
+  "hostCalls": 5
+}

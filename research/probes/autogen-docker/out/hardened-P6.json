@@ -1,0 +1,8 @@
+{
+  "probe": "P6",
+  "outcome": "limited",
+  "detail": "stopped after 10.1 s: exit_code=124: \n Timeout",
+  "display": "limited (10 s)",
+  "wall_s": 10.1,
+  "config": "hardened"
+}

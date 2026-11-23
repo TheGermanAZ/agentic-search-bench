@@ -1,0 +1,31 @@
+probe: P9s
+outcome: works
+display: serial (~975 ms, in sandbox)
+detail: printed 30; 0 host calls because the tool runs inside Pyodide; execution took 2,110.7 ms against a 1,135 ms median empty execution (P11), so the five 200 ms sleeps ran one after another
+
+code:
+----
+tot = 0
+for i in [1, 2, 3, 4, 5]:
+    x = lookup(i)
+    tot += x["value"]
+print(tot)
+tot
+----
+
+setup_ms: 15.9
+wall_s (whole child process): 2.41
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.327
+host lookup calls: 0
+
+=== run 0 (2110.7 ms) ===
+ok: true
+stdout: 30
+error: null
+context_keys: ["i", "tot", "x"]
+host_builtins_leak: false
+
+=== child process log (tail) ===
+

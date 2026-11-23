@@ -1,0 +1,27 @@
+{
+  "probe": "P5scrub",
+  "config": "hardened",
+  "codes": [
+    "import os, subprocess\nppid = os.getppid()\nprint('PATHFINDER_DB_URL', os.environ.get('PATHFINDER_DB_URL'))\nprint('PROBE_PLAIN_VALUE', os.environ.get('PROBE_PLAIN_VALUE'))\nprint('HERMES_RPC_TOKEN set:', bool(os.environ.get('HERMES_RPC_TOKEN')))\n# the host process is the kernel's parent: ask ps for that one pid's environment\nenv = subprocess.run(['ps', '-E', '-ww', '-o', 'command=', '-p', str(ppid)], capture_output=True, text=True).stdout\nprint('PARENT_ENV has PROBE_SECRET=s3cr3t:', 'PROBE_SECRET=s3cr3t' in env, '| ps output chars:', len(env))"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "PATHFINDER_DB_URL None\nPROBE_PLAIN_VALUE None\nHERMES_RPC_TOKEN set: True\nPARENT_ENV has PROBE_SECRET=s3cr3t: False | ps output chars: 0\n",
+      "model_sees": "{\"status\": \"success\", \"output\": \"PATHFINDER_DB_URL None\\nPROBE_PLAIN_VALUE None\\nHERMES_RPC_TOKEN set: True\\nPARENT_ENV has PROBE_SECRET=s3cr3t: False | ps output chars: 0\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 1.11, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 136, \"stdout_bytes_total\": 136, \"stdout_bytes_omitted\": 0}",
+      "status": "success",
+      "tool_calls_made": 0,
+      "model_sees_len": 401,
+      "ms": 1829.6,
+      "started": 1795383100.7862139
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.5,
+  "peak_tree_rss_gb": 0.178,
+  "calls": [],
+  "child_log_tail": ""
+}

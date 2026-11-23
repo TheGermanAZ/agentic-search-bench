@@ -1,0 +1,24 @@
+# qwen-code-codemode P6c (default)
+--- exec 1 source ---
+let n = 0; const t = Date.now(); while (true) { await tools.mcp__probe__lookup({id: 1}); n++; if (n % 50 === 0) text(n + " calls, " + (Date.now() - t) + " ms"); }
+--- exec 1 result (undefined ms from tool call issued to tool result received; host lookup calls undefined) ---
+(no exec result reached the model)
+--- summary ---
+{
+ "config": "default",
+ "exit": {
+  "code": null,
+  "sig": "SIGKILL"
+ },
+ "capped": true,
+ "setupMsSpawnToFirstExec": 1057,
+ "totalHostCalls": 564,
+ "sideRequests": 0
+}
+--- cli stdout (json, first 3000 chars) ---
+
+--- cli stderr (first 3000 chars) ---
+Warning: Node.js 24.22.1 can cause high temporary memory usage during shell safety checks. Upgrade to Node.js 26.12.1. Qwen Code will continue normally. See https://github.com/QwenLM/qwen-code/issues/15165
+
+--- mock events ---
+{"t":1060.88,"kind":"exec-issued","n":1,"hostCallsSoFar":13}

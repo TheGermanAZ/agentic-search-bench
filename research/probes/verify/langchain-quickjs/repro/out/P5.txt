@@ -1,0 +1,27 @@
+{
+ "config": "default",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ]
+ },
+ "probe": "P5",
+ "result": [
+  {
+   "code": "process.env.PROBE_SECRET",
+   "output": "<error type=\"ReferenceError\">process is not defined\n    at &lt;eval&gt; (eval_script:1:1)\n</error>",
+   "turn_ms": 801.7,
+   "eval_ms": 785.3,
+   "host_calls": 0
+  },
+  {
+   "code": "const out = {};\ntry { out[\"process\"] = String(typeof process); } catch (e) { out[\"process\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"std\"] = String(std.getenv(\"PROBE_SECRET\")); } catch (e) { out[\"std\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"importStd\"] = String((await import(\"std\")).getenv(\"PROBE_SECRET\")); } catch (e) { out[\"importStd\"] = 'THREW ' + e.name + ': ' + e.message; }\ntry { out[\"scriptArgs\"] = String(typeof scriptArgs); } catch (e) { out[\"scriptArgs\"] = 'THREW ' + e.name + ': ' + e.message; }\nJSON.stringify(out, null, 1)",
+   "output": "<result>{\n \"process\": \"undefined\",\n \"std\": \"THREW ReferenceError: std is not defined\",\n \"importStd\": \"THREW ReferenceError: Error loading module 'std'\",\n \"scriptArgs\": \"undefined\"\n}</result>",
+   "turn_ms": 479.1,
+   "eval_ms": 3.7,
+   "host_calls": 0
+  }
+ ]
+}
+
+monitor: {"config": "default", "probe": "P5", "exit_code": 0, "wall_s": 4.86, "peak_rss_mb": 199.3, "first_rss_mb": 19.8, "killed": null, "stderr_tail": []}

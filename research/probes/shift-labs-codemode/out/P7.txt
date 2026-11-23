@@ -1,0 +1,13 @@
+{
+  "repeatedString": {
+    "code": "const a = []; while (true) a.push(\"x\".repeat(1e6))",
+    "ms": 376.78,
+    "hostCalls": 0,
+    "result": null,
+    "error": "Memory limit exceeded (64MB)",
+    "logs": []
+  },
+  "distinctStrings": "skipped",
+  "hostAliveAfter": true,
+  "hostRssMbAtEnd": 122
+}

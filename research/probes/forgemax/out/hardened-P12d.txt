@@ -1,0 +1,18 @@
+mode: hardened
+code:
+async () => { const g = (function(){ return this })(); return Object.getOwnPropertyNames(g).join(","); }
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "\"Object,Function,Array,Number,parseFloat,parseInt,Infinity,NaN,undefined,Boolean,String,Symbol,Date,Promise,RegExp,Error,AggregateError,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,globalThis,JSON,Math,Intl,ArrayBuffer,Atomics,Uint8Array,Int8Array,Uint16Array,Int16Array,Uint32Array,Int32Array,BigUint64Array,BigInt64Array,Uint8ClampedArray,Float32Array,Float64Array,DataView,Map,BigInt,Set,Iterator,WeakMap,WeakSet,Proxy,Reflect,FinalizationRegistry,WeakRef,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,isFinite,isNaN,console,Temporal,SuppressedError,DisposableStack,AsyncDisposableStack,Float16Array,SharedArrayBuffer,queueMicrotask,WebAssembly,__bootstrap,forge\""
+      }
+    ],
+    "isError": false
+  },
+  "ms": 5,
+  "hostCalls": 0
+}

@@ -1,0 +1,35 @@
+{
+  "probe": "P12h",
+  "serverPid": 16365,
+  "code": "const o = {}; o.__proto__.polluted = 1; return [({}).polluted, Object.keys(Object)]",
+  "wallMs": 15,
+  "hostToolCalls": 0,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 15,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":false,\"error\":{\"kind\":\"ExecutionFailure\",\"message\":\"Property '__proto__' is not available. (line 2, col 3)\",\"location\":{\"line\":2,\"column\":3}},\"toolCalls\":[]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": false,
+          "error": {
+            "kind": "ExecutionFailure",
+            "message": "Property '__proto__' is not available. (line 2, col 3)",
+            "location": {
+              "line": 2,
+              "column": 3
+            }
+          },
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

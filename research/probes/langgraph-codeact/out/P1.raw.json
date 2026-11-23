@@ -1,0 +1,36 @@
+{
+  "probe": "P1",
+  "config": "default",
+  "codes": [
+    "r = lookup(21)\nmsg = r[\"value\"]\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "42\n",
+      "error": null,
+      "context_keys": [
+        "msg",
+        "r"
+      ],
+      "host_builtins_leak": false,
+      "ms": 211.7,
+      "started": 1795377306.23585
+    }
+  ],
+  "setup_ms": 14.4,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 0.95,
+  "peak_tree_rss_gb": 0.072,
+  "calls": [
+    {
+      "id": 21,
+      "start": 1795377306.23898,
+      "end": 1795377306.444544,
+      "pid": 36697
+    }
+  ],
+  "child_log_tail": ""
+}

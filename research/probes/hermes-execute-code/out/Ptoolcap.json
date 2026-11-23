@@ -1,0 +1,7 @@
+{
+  "probe": "Ptoolcap",
+  "outcome": "limited",
+  "display": "limited (50 calls)",
+  "detail": "55 sequential lookups: 50 returned values, the rest returned 'Tool call limit reached (50)'.",
+  "evidence": "research/probes/hermes-execute-code/out/Ptoolcap.txt"
+}

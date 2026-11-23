@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "blocked",
+  "detail": "Execution error | details=None",
+  "display": "blocked",
+  "config": "hardened"
+}

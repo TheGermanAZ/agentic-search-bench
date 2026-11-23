@@ -1,0 +1,7 @@
+{
+  "probe": "Pcap",
+  "outcome": "limited",
+  "display": "truncated (10,000 + marker)",
+  "detail": "print('B' * 30000): the model saw 9,999 B's (head 5,000 + tail 5,000 incl. newline) around '... (20,001 characters omitted) ...'.",
+  "evidence": "research/probes/dspy-rlm/out/Pcap.txt"
+}

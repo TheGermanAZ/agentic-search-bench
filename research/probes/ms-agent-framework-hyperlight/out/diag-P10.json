@@ -1,0 +1,7 @@
+{
+  "probe": "P10",
+  "outcome": "works",
+  "detail": "returned: 'Execution error | details=ValueError: probe-boom'; message survives: True; line number survives: False",
+  "display": "message, no line",
+  "config": "default"
+}

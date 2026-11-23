@@ -1,0 +1,125 @@
+{
+  "config": {
+    "executorOptions": {
+      "loader": "env.LOADER",
+      "timeout": 10000,
+      "globalOutbound": null,
+      "modules": {},
+      "bindings": {}
+    }
+  },
+  "functionConstructor": {
+    "tool": {
+      "code": "const p = this.constructor.constructor(\"return process\")(); return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "tool",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 32,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": false,
+          "thrown": "Code execution failed: Code generation from strings disallowed for this context"
+        },
+        "hostCalls": 0,
+        "hostMs": 19
+      }
+    },
+    "raw": {
+      "code": "const p = this.constructor.constructor(\"return process\")(); return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "raw",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 21,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "error": "Code generation from strings disallowed for this context",
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 8
+      }
+    }
+  },
+  "sloppyThis": {
+    "tool": {
+      "code": "const p = (function(){return this})().process; return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "tool",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 27,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": false,
+          "thrown": "Code execution failed: Cannot read properties of undefined (reading 'process')"
+        },
+        "hostCalls": 0,
+        "hostMs": 11
+      }
+    },
+    "raw": {
+      "code": "const p = (function(){return this})().process; return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "raw",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 15,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "error": "Cannot read properties of undefined (reading 'process')",
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 6
+      }
+    }
+  },
+  "ambientProcess": {
+    "tool": {
+      "code": "const p = globalThis.process; return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "tool",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 35,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": true,
+          "output": {
+            "result": {
+              "type": "object",
+              "platform": "linux",
+              "cwd": "cwd threw: p.cwd is not a function",
+              "envKeys": []
+            }
+          }
+        },
+        "hostCalls": 0,
+        "hostMs": 7
+      }
+    },
+    "raw": {
+      "code": "const p = globalThis.process; return p === undefined ? 'undefined' : { type: typeof p, version: p.version, pid: p.pid, platform: p.platform, cwd: (()=>{try{return p.cwd()}catch(e){return 'cwd threw: '+e.message}})(), envKeys: Object.keys(p.env ?? {}) }",
+      "mode": "raw",
+      "path": "/run",
+      "httpStatus": 200,
+      "wallMs": 22,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "result": {
+            "type": "object",
+            "platform": "linux",
+            "cwd": "cwd threw: p.cwd is not a function",
+            "envKeys": []
+          },
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 4
+      }
+    }
+  }
+}

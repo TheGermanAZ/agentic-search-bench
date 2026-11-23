@@ -1,0 +1,72 @@
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P7",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 3.666249999999991,
+  "source": [
+    "const a = []; while (true) a.push(\"x\".repeat(1e6));"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 628,
+    "siblingEndMs": 833,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Code execution exceeded memory limit",
+          "name": "MemoryLimitError",
+          "stack": "    at <anonymous> (<code-mode>:5:45)\n    at <anonymous> (<code-mode>:6:7)\n    at <eval> (<code-mode>:11:3)\n"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 627.452792,
+      "hostCalls": 0
+    }
+  ],
+  "concurrentSiblingRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 205.12641599999995,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "returned": {
+      "success": true,
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0,
+      "logs": []
+    },
+    "wallMs": 202.24208299999987,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 628,
+    "siblingEndMs": 833,
+    "main": "MemoryLimitError: Code execution exceeded memory limit",
+    "ms": 627,
+    "sibling": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    },
+    "siblingMs": 205,
+    "after": {
+      "result": 42,
+      "logCount": 0,
+      "logChars": 0
+    }
+  },
+  "hostRssAfterMB": 175.1
+}

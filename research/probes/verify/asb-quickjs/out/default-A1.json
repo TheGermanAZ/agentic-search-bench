@@ -1,0 +1,128 @@
+{
+  "cmd": "bun ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../asb-quickjs/adapter.mjs default A1",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 327,
+  "peakTreeRssMb": 94,
+  "peakTreeFootprintMb": 66,
+  "watchKill": null,
+  "record": {
+    "impl": "asb-quickjs",
+    "config": "default",
+    "test": "A1",
+    "notes": "src/sandbox.ts runCode(code, corpus) as strategies.ts calls it; stand-in corpus",
+    "data": {
+      "keys": {
+        "label": "globals",
+        "startMs": 6,
+        "ms": 23,
+        "ok": true,
+        "result": {
+          "value": "undefined",
+          "stringChars": 9
+        },
+        "callsStarted": 0
+      },
+      "ctor": {
+        "label": "constructor",
+        "startMs": 29,
+        "ms": 11,
+        "ok": true,
+        "result": {
+          "value": "ERROR: '__host' is not defined\n    at <eval> (eval.js:1:11)",
+          "stringChars": 59
+        },
+        "callsStarted": 0
+      },
+      "proto": {
+        "label": "__proto__",
+        "startMs": 40,
+        "ms": 9,
+        "ok": true,
+        "result": {
+          "value": "ERROR: '__host' is not defined\n    at <eval> (eval.js:1:13)",
+          "stringChars": 59
+        },
+        "callsStarted": 0
+      },
+      "tostr": {
+        "label": "toString",
+        "startMs": 49,
+        "ms": 26,
+        "ok": true,
+        "result": {
+          "value": "ERROR: '__host' is not defined\n    at <eval> (eval.js:1:13)",
+          "stringChars": 59
+        },
+        "callsStarted": 0
+      },
+      "bad": {
+        "label": "invalid-json",
+        "startMs": 75,
+        "ms": 13,
+        "ok": true,
+        "result": {
+          "value": "guest caught: ReferenceError: '__host' is not defined",
+          "stringChars": 53
+        },
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 88,
+        "ms": 213,
+        "ok": true,
+        "result": {
+          "value": "42",
+          "stringChars": 2
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 11,
+    "hostEvents": [],
+    "totalMs": 301
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      96,
+      73,
+      52
+    ],
+    [
+      132,
+      84,
+      52
+    ],
+    [
+      178,
+      94,
+      52
+    ],
+    [
+      225,
+      94,
+      66
+    ],
+    [
+      277,
+      94,
+      66
+    ],
+    [
+      327,
+      94,
+      41
+    ]
+  ]
+}

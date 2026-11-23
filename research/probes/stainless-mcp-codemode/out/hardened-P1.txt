@@ -1,0 +1,25 @@
+mode: hardened
+code:
+async function run(client) {
+  const r: any = await client.video.assets.retrieve("21");
+  console.log(r.value);
+  return r;
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"id\":\"21\",\"value\":42}"
+      },
+      {
+        "type": "text",
+        "text": "42"
+      }
+    ]
+  },
+  "ms": 630,
+  "hostCalls": 1
+}

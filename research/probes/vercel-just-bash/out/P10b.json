@@ -1,0 +1,30 @@
+{
+  "worker": {
+    "exitCode": 0,
+    "signal": null,
+    "killed": null,
+    "wallMs": 112,
+    "peakRssKb": 83200
+  },
+  "parsed": {
+    "probe": "P10b",
+    "host": {
+      "node": "v24.22.1",
+      "pid": 83276
+    },
+    "runs": [
+      {
+        "label": "boom; echo after-boom",
+        "script": "boom; echo after-boom",
+        "exitCode": 0,
+        "stdout": "after-boom\n",
+        "stderr": "boom: probe-boom\n",
+        "ms": 36,
+        "stdoutLength": 11,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 83312,
+    "maxInFlight": 0
+  }
+}

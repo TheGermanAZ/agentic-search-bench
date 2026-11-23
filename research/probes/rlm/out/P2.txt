@@ -1,0 +1,16 @@
+probe: P2
+code (python, run through LocalREPL.execute_code):
+print("A" * 200000)  then last expression "RETURNED"
+host_calls_so_far: 0
+ok: True
+stdout length from execute_code: 200001 chars (no truncation at this layer)
+stderr: ''
+final_answer: None
+RETURNED present in stdout: False
+model-facing text length (format_iteration): 20036 chars; truncation marker present: True
+--- model-facing text, first 200 and last 200 chars ---
+REPL output:
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+...
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA... + [180031 chars...]

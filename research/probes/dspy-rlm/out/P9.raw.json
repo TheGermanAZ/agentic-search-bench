@@ -1,0 +1,62 @@
+{
+  "probe": "P9",
+  "config": "default",
+  "codes": [
+    "tot = 0\nfor i in [1, 2, 3, 4, 5]:\n    x = lookup(id=i)\n    tot += x[\"value\"]\nprint(tot)\ntot"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "<repl_output>\n30\n</repl_output>",
+      "model_view_all": [
+        "<repl_output>\n30\n</repl_output>"
+      ],
+      "raw_outputs_untruncated_len": [
+        2,
+        25
+      ],
+      "answer": "done",
+      "ms": 1571.9,
+      "started": 1795381965.1492438
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.0,
+  "peak_tree_rss_gb": 0.54,
+  "calls": [
+    {
+      "id": 1,
+      "start": 1795381965.613376,
+      "end": 1795381965.813708,
+      "pid": 15195
+    },
+    {
+      "id": 2,
+      "start": 1795381965.836509,
+      "end": 1795381966.0385458,
+      "pid": 15195
+    },
+    {
+      "id": 3,
+      "start": 1795381966.0443919,
+      "end": 1795381966.249409,
+      "pid": 15195
+    },
+    {
+      "id": 4,
+      "start": 1795381966.257751,
+      "end": 1795381966.458231,
+      "pid": 15195
+    },
+    {
+      "id": 5,
+      "start": 1795381966.463773,
+      "end": 1795381966.663996,
+      "pid": 15195
+    }
+  ],
+  "child_log_tail": ""
+}

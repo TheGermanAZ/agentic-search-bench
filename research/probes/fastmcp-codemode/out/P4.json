@@ -1,0 +1,7 @@
+{
+  "probe": "P4",
+  "outcome": "blocked",
+  "display": "blocked",
+  "detail": "Error calling tool 'execute': PermissionError: Permission denied: '/etc/hosts'",
+  "evidence": "research/probes/fastmcp-codemode/out/P4.txt"
+}

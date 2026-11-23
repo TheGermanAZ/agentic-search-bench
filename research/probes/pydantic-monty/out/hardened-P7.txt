@@ -1,0 +1,10 @@
+LIMITS: {'max_memory': 10000000, 'max_feed_duration_secs': 1.0, 'max_recursion_depth': 100}
+CODE: a=[]; while True: a.append('x'*10**6)
+OUTCOME: limited
+MontyRuntimeError: MemoryError: memory limit exceeded: 10044037 bytes > 10000000 bytes after 0.03 s; host process alive afterwards, new session returned 2
+DISPLAY:
+Traceback (most recent call last):
+  File "<python-input-0>", line 3, in <module>
+    a.append("x" * 10**6)
+             ~~~~~~~~~~~
+MemoryError: memory limit exceeded: 10044037 bytes > 10000000 bytes

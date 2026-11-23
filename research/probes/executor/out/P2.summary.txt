@@ -1,0 +1,8 @@
+{
+  "value": "RETURNED",
+  "logLines": 1,
+  "firstLogChars": 200000,
+  "truncatedFlag": null,
+  "textContentChars": 200113,
+  "textContainsFullPrint": true
+}

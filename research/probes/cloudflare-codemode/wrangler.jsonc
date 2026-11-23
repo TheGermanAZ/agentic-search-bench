@@ -1,0 +1,8 @@
+{
+  "name": "cloudflare-codemode-probe",
+  "main": "harness.ts",
+  "compatibility_date": "2026-06-11",
+  "compatibility_flags": ["nodejs_compat"],
+  "worker_loaders": [{ "binding": "LOADER" }],
+  "dev": { "port": 8799, "ip": "127.0.0.1" }
+}

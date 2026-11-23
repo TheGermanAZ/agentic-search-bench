@@ -1,0 +1,84 @@
+probe: Ptoolcap
+outcome: limited
+display: limited (50 calls)
+detail: 55 sequential lookups: 50 returned values, the rest returned 'Tool call limit reached (50)'.
+
+code:
+----
+from hermes_tools import lookup
+n = 0
+for i in range(55):
+    r = lookup(id=i)
+    if 'value' in r:
+        n += 1
+print('ok calls', n)
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 11.13
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.164
+host lookup calls: 50
+  call id=0 start=1795382864.722 end=1795382864.927 pid=26833
+  call id=1 start=1795382864.928 end=1795382865.128 pid=26833
+  call id=2 start=1795382865.129 end=1795382865.334 pid=26833
+  call id=3 start=1795382865.335 end=1795382865.540 pid=26833
+  call id=4 start=1795382865.541 end=1795382865.743 pid=26833
+  call id=5 start=1795382865.744 end=1795382865.948 pid=26833
+  call id=6 start=1795382865.948 end=1795382866.150 pid=26833
+  call id=7 start=1795382866.151 end=1795382866.354 pid=26833
+  call id=8 start=1795382866.355 end=1795382866.560 pid=26833
+  call id=9 start=1795382866.560 end=1795382866.765 pid=26833
+  call id=10 start=1795382866.766 end=1795382866.971 pid=26833
+  call id=11 start=1795382866.972 end=1795382867.176 pid=26833
+  call id=12 start=1795382867.177 end=1795382867.379 pid=26833
+  call id=13 start=1795382867.380 end=1795382867.580 pid=26833
+  call id=14 start=1795382867.581 end=1795382867.783 pid=26833
+  call id=15 start=1795382867.783 end=1795382867.988 pid=26833
+  call id=16 start=1795382867.989 end=1795382868.194 pid=26833
+  call id=17 start=1795382868.195 end=1795382868.401 pid=26833
+  call id=18 start=1795382868.414 end=1795382868.616 pid=26833
+  call id=19 start=1795382868.617 end=1795382868.820 pid=26833
+  call id=20 start=1795382868.821 end=1795382869.026 pid=26833
+  call id=21 start=1795382869.027 end=1795382869.232 pid=26833
+  call id=22 start=1795382869.232 end=1795382869.434 pid=26833
+  call id=23 start=1795382869.435 end=1795382869.640 pid=26833
+  call id=24 start=1795382869.640 end=1795382869.845 pid=26833
+  call id=25 start=1795382869.846 end=1795382870.051 pid=26833
+  call id=26 start=1795382870.052 end=1795382870.255 pid=26833
+  call id=27 start=1795382870.256 end=1795382870.459 pid=26833
+  call id=28 start=1795382870.461 end=1795382870.666 pid=26833
+  call id=29 start=1795382870.666 end=1795382870.870 pid=26833
+  call id=30 start=1795382870.871 end=1795382871.074 pid=26833
+  call id=31 start=1795382871.075 end=1795382871.279 pid=26833
+  call id=32 start=1795382871.280 end=1795382871.483 pid=26833
+  call id=33 start=1795382871.484 end=1795382871.685 pid=26833
+  call id=34 start=1795382871.686 end=1795382871.886 pid=26833
+  call id=35 start=1795382871.887 end=1795382872.089 pid=26833
+  call id=36 start=1795382872.090 end=1795382872.295 pid=26833
+  call id=37 start=1795382872.295 end=1795382872.498 pid=26833
+  call id=38 start=1795382872.499 end=1795382872.702 pid=26833
+  call id=39 start=1795382872.703 end=1795382872.903 pid=26833
+  call id=40 start=1795382872.905 end=1795382873.106 pid=26833
+  call id=41 start=1795382873.112 end=1795382873.316 pid=26833
+  call id=42 start=1795382873.318 end=1795382873.523 pid=26833
+  call id=43 start=1795382873.524 end=1795382873.729 pid=26833
+  call id=44 start=1795382873.730 end=1795382873.935 pid=26833
+  call id=45 start=1795382873.936 end=1795382874.140 pid=26833
+  call id=46 start=1795382874.141 end=1795382874.346 pid=26833
+  call id=47 start=1795382874.347 end=1795382874.552 pid=26833
+  call id=48 start=1795382874.553 end=1795382874.758 pid=26833
+  call id=49 start=1795382874.759 end=1795382874.963 pid=26833
+
+=== run 0 (10408.8 ms) ===
+ok: true
+stdout: ok calls 50
+
+model_sees: {"status": "success", "output": "ok calls 50\n", "exit_code": 0, "tool_calls_made": 50, "duration_seconds": 10.4, "kernel": {"mode": "session", "reused": false, "execution_count": 1, "state_reset": false}, "stdout_truncated": false, "stdout_bytes_captured": 12, "stdout_bytes_total": 12, "stdout_bytes_omitted": 0}
+status: success
+tool_calls_made: 50
+model_sees_len: 314
+
+=== child process log (tail) ===
+

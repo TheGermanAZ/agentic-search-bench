@@ -1,0 +1,201 @@
+{
+  "impl": "rlm",
+  "name": "Recursive Language Models (Zhang, Kraska, Khattab; arXiv 2512.24601): LocalREPL",
+  "source": "https://github.com/alexzhang13/rlm (MIT), paper https://arxiv.org/html/2512.24601v3",
+  "pinned": "commit e11f1a8f8ee4490686e16dd6463233abe08a07eb (default branch HEAD, pushed 2026-11-21); rlm 0.1.3",
+  "language": "Python",
+  "engine": "CPython exec() in the host process, with a restricted builtins dict (LocalREPL is a NonIsolatedEnv). No isolation. (default local environment; container backends not probed)",
+  "how_run": "LocalREPL(lm_handler_address=None, custom_tools={'lookup': fn}) with llm_query replaced by a stub, then env.execute_code(code) for each cell. This is the call rlm/core/rlm.py makes at rlm.py:757.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "printed '42', 1 host call",
+      "evidence": "research/probes/rlm/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "execute_code returned 200001 chars of stdout with no cap; the last expression 'RETURNED' is not returned (exec drops it). format_iteration cuts the model view to 20036 chars with a head-only marker: True",
+      "evidence": "research/probes/rlm/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "works",
+      "detail": "printed HTTP status 200 from https://example.com",
+      "evidence": "research/probes/rlm/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "works",
+      "detail": "read /etc/hosts: '## | # Host Database | # | # localhost is used to configure '",
+      "evidence": "research/probes/rlm/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "works",
+      "detail": "sandbox printed 's3cr3t'; host PROBE_SECRET is set",
+      "evidence": "research/probes/rlm/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "detail": "no limit stopped the cell within 120 s; harness stopped it",
+      "evidence": "research/probes/rlm/out/P6.txt"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "detail": "no memory limit below 4 GB: harness stopped the process at 4.03 GB peak RSS after 1.0 s; no error from the REPL",
+      "evidence": "research/probes/rlm/out/P7.txt"
+    },
+    "P8": {
+      "outcome": "persists",
+      "detail": "execution 2 printed '7'; env.locals['kept'] = 7 (persistent=False)",
+      "evidence": "research/probes/rlm/out/P8.txt",
+      "display": "persists"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "serial: 1032 ms for 5 lookups, 5 host calls, sum 30",
+      "evidence": "research/probes/rlm/out/P9.txt",
+      "display": "serial (1,032 ms); threads 210 ms"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "raised inside execute_code is caught: stderr = '\\nValueError: probe-boom'; message survives: True; traceback: False; line number: False",
+      "evidence": "research/probes/rlm/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "same env, execute_code time: {'median_ms': 0.03, 'p90_ms': 0.04, 'n': 20}; wall: {'median_ms': 0.0, 'p90_ms': 0.0, 'n': 20}. fresh env per run, execute_code time: {'median_ms': 0.03, 'p90_ms': 0.04, 'n': 20}; wall: {'median_ms': 0.0, 'p90_ms': 0.0, 'n': 20}. one-time setup (LocalREPL construct): median 0.07 ms",
+      "evidence": "research/probes/rlm/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "escaped",
+      "detail": "P12a spec: subclasses walk: ran; stdout '428' | P12b spec: __import__ os system: escaped; os.system exit status printed as '0' | P12c spec: os._wrap_close globals -> system: escaped; os.system exit status printed as '0'",
+      "evidence": "research/probes/rlm/out/P12.txt"
+    },
+    "P9b": {
+      "outcome": "works",
+      "detail": "extra: parallel via concurrent.futures: 210 ms, 5 host calls, sum 30 (extra beyond SPEC)",
+      "evidence": "research/probes/rlm/out/P9b.txt"
+    },
+    "CTX": {
+      "outcome": "works",
+      "detail": "context is a str variable of 66000 chars; context_0 aliases it; corpus file on disk in the temp dir: True (extra beyond SPEC)",
+      "evidence": "research/probes/rlm/out/CTX.txt"
+    }
+  },
+  "defaults": {
+    "time": "None at the REPL level: P6 ran past the 120 s watchdog. RLM(max_timeout=None) is checked only between iterations (rlm.py:421-422, 551-553), not inside a cell.",
+    "memory": "None. P7 reached 4.03 GB peak RSS in 1.0 s with no error; the harness stopped it.",
+    "output": "execute_code returns all stdout, uncapped (P2: 200,001 chars). The model view is capped at 20,000 chars per block, head only, with a '... + [N chars...]' marker (parsing.py:26, 58-62).",
+    "tool_calls": "No cap on custom-tool calls. Sub-LLM concurrency is capped at max_concurrent_subcalls=4 (local_repl.py:170, 397)."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "custom_tools is a dict of name to callable. setup() copies each callable into self.globals, so the cell sees it as a plain name (P1). Names in RESERVED_TOOL_NAMES are refused. The reserved helpers are llm_query, llm_query_batched, rlm_query, rlm_query_batched, SHOW_VARS and answer.",
+      "evidence": "https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/local_repl.py#L167, #L198, #L241-L243; https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/base_env.py#L13, #L130-L147"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "The system prompt lists the built-in helpers and the context variable up front (context, llm_query, rlm_query, SHOW_VARS). I did not find where custom tool names reach the prompt, so I did not claim it.",
+      "evidence": "https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/utils/prompts.py#L132-L140"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Custom tools: none. They are direct calls in the same process. llm_query is the only bridge, and it is a socket request to an LM handler: send_lm_request(lm_handler_address, LMRequest(...)). With no handler it returns the string 'Error: No LM handler configured', which is what the stub replaces.",
+      "evidence": "https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/local_repl.py#L266-L289; https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/core/comms_utils.py"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "None for the default local REPL. The builtins dict keeps __import__, open and getattr, and drops only eval, exec, input, compile, globals and locals (set to None). The code runs through exec() in the host process (P3, P4, P5 and P12 all reached the host). The LocalREPL docstring says 'sandboxed namespace', and base_env.py's NonIsolatedEnv docstring says the default runs 'as a subprocess'. The code does neither. The README says 'generally safe' for local use.",
+      "evidence": "https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/local_repl.py#L60, #L107, #L121-L122, #L145, #L156-L157, #L578 (exec); https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/base_env.py#L259-L263; https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/README.md (Local Environments, line 99)"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "execute_code returns REPLResult(stdout, stderr, locals, execution_time, llm_calls, final_answer). exec() returns None, so the last expression's value is not returned (P2). stdout is captured by swapping sys.stdout, a process-wide change for the duration of the cell. The model sees formatted output cut at 20,000 chars (head only), and the prompt tells the model about it.",
+      "evidence": "https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/local_repl.py#L509-L518 (_capture_output), #L564-L604 (execute_code), #L578 (exec); https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/utils/parsing.py#L26, #L57-L62 (format_iteration); https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/utils/prompts.py#L141"
+    },
+    {
+      "topic": "Limits",
+      "finding": "The REPL has no time limit and no memory limit (P6, P7). The RLM-level max_timeout is checked between iterations only. The only numeric caps are the 20,000-char model view and max_concurrent_subcalls=4 for batched sub-calls.",
+      "evidence": "https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/core/rlm.py#L66, #L421-L422, #L551-L553; https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/local_repl.py#L170, #L382-L397 (ThreadPoolExecutor for batched sub-calls)"
+    },
+    {
+      "topic": "State",
+      "finding": "Persistent within one environment object. self.globals and self.locals survive between execute_code calls, and _restore_scaffold resets the reserved names after each cell (P8). The RLM persistent flag only controls whether a fresh environment is spawned per completion() call (default False: a new one each call).",
+      "evidence": "https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/local_repl.py#L215-L243 (setup), #L530-L562 (_restore_scaffold), #L578-L586 (namespace update); https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/core/rlm.py#L224, #L267-L272, #L303-L304"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Exceptions are caught in execute_code and appended to stderr as '\\n<Type>: <message>'. No traceback and no line number (P10). The harness saw only that string.",
+      "evidence": "https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/local_repl.py#L589-L592"
+    },
+    {
+      "topic": "Corpus exposure",
+      "finding": "The corpus is the completion's prompt (rlm.py sets env_kwargs['context_payload'] = prompt). A str is written as plain text to <temp_dir>/context_0.txt and read back inside the REPL. A list or dict goes to context_0.json. 'context' is an alias of context_0. The corpus sits on disk in plaintext until cleanup (CTX).",
+      "evidence": "https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/core/rlm.py#L317; https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/local_repl.py#L415-L455 (load_context, add_context), #L438-L452"
+    },
+    {
+      "topic": "Parallelism",
+      "finding": "Batched sub-calls use a ThreadPoolExecutor. Custom tools get no such helper, but any cell can import concurrent.futures, since __import__ is available (P9b ran 5 lookups in 210 ms). The plain loop (P9) is serial at about 1 s.",
+      "evidence": "https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/rlm/environments/local_repl.py#L382-L397 (batched sub-calls)"
+    },
+    {
+      "topic": "Other environments",
+      "finding": "The probed LocalREPL is the default (environment=\"local\"), but the repo also ships docker, e2b, modal, daytona, prime and ipython environments, which were not probed. The escape result applies to the default only.",
+      "evidence": "research/impls/rlm/repo/rlm/core/rlm.py:60; research/impls/rlm/repo/rlm/environments/__init__.py:46"
+    }
+  ],
+  "surprises": [
+    "The 'sandboxed namespace' wording in the LocalREPL docstring and the 'as a subprocess' wording in base_env.py do not match the code, which runs exec() in the host process with open, __import__ and getattr available (local_repl.py#L156-L157, base_env.py#L259-L263, local_repl.py#L578).",
+    "The default REPL has no time limit, so a cell that never ends never returns (P6). The RLM loop calls execute_code synchronously (rlm.py#L757), so the loop waits with it. max_timeout is checked only between iterations (rlm.py#L421-L422).",
+    "The last expression of a cell is silently dropped, since exec returns None. The model's view of output is also cut to 20,000 chars with the tail gone (P2).",
+    "P12 escaped twice: __import__('os').system and the os._wrap_close globals route both ran echo on the host (the PWNED lines are in out/P12.log).",
+    "Corpus sits in plaintext in a temp directory during the run (CTX).",
+    "The P3 network probe needed a CA bundle fix on this machine. Without it the failure was a certificate error, not a sandbox block."
+  ],
+  "hardened": {
+    "config": "rlm.environments.get_environment('ipython', {'kernel_mode': 'subprocess', 'cell_timeout': 30, 'custom_tools': {'lookup': lookup}}), from the IPython environment docs (docs/src/app/environments/ipython/page.tsx:46-49 at e11f1a8, https://github.com/alexzhang13/rlm/blob/e11f1a8f8ee4490686e16dd6463233abe08a07eb/docs/src/app/environments/ipython/page.tsx#L46-L49) and rlm/environments/ipython_repl.py:507-512 (cell_timeout is a hard limit via interrupt_kernel). Installed as rlms[ipython] (ipykernel 7.4.0, jupyter_client 8.10.0, dill 0.4.1) in research/impls/rlm/.venv-ipython. RLM has no memory or network option for local environments; the docker, modal, e2b, daytona and prime backends are the isolation path (rlm-docker probed separately). Harness: research/probes/rlm/hardened.py",
+    "probes": {
+      "P3": {
+        "outcome": "works",
+        "detail": "printed HTTP status 200 from https://example.com; the kernel is a normal host process with no network restriction",
+        "evidence": "research/probes/rlm/out/hardened-P3.txt",
+        "display": "works (example.com 200)"
+      },
+      "P4": {
+        "outcome": "works",
+        "detail": "read host /etc/hosts: '##\\n# Host Database\\n#\\n# localhost is used to configure the lo'",
+        "evidence": "research/probes/rlm/out/hardened-P4.txt",
+        "display": "works (host /etc/hosts)"
+      },
+      "P5": {
+        "outcome": "works",
+        "detail": "kernel printed 's3cr3t'; jupyter_client starts the kernel with the host environment",
+        "evidence": "research/probes/rlm/out/hardened-P5.txt",
+        "display": "works (s3cr3t)"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "TimeoutError: cell execution exceeded 30s and was interrupted, returned after 30.03 s in stderr; the same env ran print(1+1) afterwards",
+        "evidence": "research/probes/rlm/out/hardened-P6.txt",
+        "display": "limited (30 s cell_timeout)"
+      },
+      "P7": {
+        "outcome": "no-limit-within-120s",
+        "detail": "no memory option exists; harness killed the process group at 4 GiB summed tree RSS after 32.1 s (peak 4,163 MiB). The 30 s cell_timeout interrupted the cell first, but the list stays alive in the kernel namespace, so nothing freed it. Guess: RSS rose slowly before 30 s because macOS compresses the identical pages.",
+        "evidence": "research/probes/rlm/out/hardened-P7.txt",
+        "display": "no-limit-within-120s (4 GiB kill)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "threads: 206 ms for 5 lookups (sum 30); plain loop 1,018 ms. Host-side call count 0: in subprocess mode rlm pickles the tool with dill and runs it inside the kernel (ipython_repl.py:778-812), so the \"host\" tool is not on the host",
+        "evidence": "research/probes/rlm/out/hardened-P9.txt",
+        "display": "parallel with threads (206 ms)"
+      },
+      "P12": {
+        "outcome": "escaped",
+        "detail": "subclass walk ran (810 classes, 1 _wrap_close); __import__(\"os\").system printed PWNED and returned 0; _wrap_close.__init__.__globals__[\"system\"] printed PWNED2 and returned 0. The kernel is a host process under the same user.",
+        "evidence": "research/probes/rlm/out/hardened-P12.txt",
+        "display": "escaped (os.system)"
+      }
+    }
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R2c",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 3637,
+  "peakTreeRssMb": 57,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 3501,
+    "rssMb": 57
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R2c",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "startMs": 136,
+      "ms": 7,
+      "ok": true,
+      "result": {
+        "value": {
+          "result": {
+            "keys": [
+              "d",
+              "m",
+              "s"
+            ],
+            "fn": "undefined",
+            "call": "threw r.fn is not a function",
+            "d": "string",
+            "ds": "1970-01-01T00:00:00.000Z",
+            "m": "object",
+            "ms": "{}"
+          },
+          "logs": []
+        },
+        "stringChars": 78
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 117,
+    "hostEvents": [],
+    "totalMs": 143
+  },
+  "childStdoutOtherChars": 563,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.rich' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.rich' via callable 'rich'\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      145,
+      49
+    ],
+    [
+      203,
+      53
+    ],
+    [
+      354,
+      57
+    ],
+    [
+      420,
+      57
+    ],
+    [
+      460,
+      57
+    ],
+    [
+      539,
+      57
+    ],
+    [
+      605,
+      57
+    ],
+    [
+      657,
+      57
+    ],
+    [
+      728,
+      57
+    ],
+    [
+      785,
+      57
+    ],
+    [
+      845,
+      57
+    ],
+    [
+      928,
+      57
+    ],
+    [
+      980,
+      57
+    ],
+    [
+      1040,
+      57
+    ],
+    [
+      1124,
+      57
+    ],
+    [
+      1198,
+      57
+    ],
+    [
+      1277,
+      57
+    ],
+    [
+      1337,
+      57
+    ],
+    [
+      1388,
+      57
+    ],
+    [
+      1478,
+      57
+    ],
+    [
+      1537,
+      57
+    ],
+    [
+      1582,
+      57
+    ],
+    [
+      1667,
+      57
+    ],
+    [
+      1714,
+      57
+    ],
+    [
+      1804,
+      57
+    ],
+    [
+      1855,
+      57
+    ],
+    [
+      1947,
+      57
+    ],
+    [
+      2008,
+      57
+    ],
+    [
+      2061,
+      57
+    ],
+    [
+      2133,
+      57
+    ],
+    [
+      2181,
+      57
+    ],
+    [
+      2249,
+      57
+    ],
+    [
+      2323,
+      57
+    ],
+    [
+      2413,
+      57
+    ],
+    [
+      2461,
+      57
+    ],
+    [
+      2520,
+      57
+    ],
+    [
+      2578,
+      57
+    ],
+    [
+      2638,
+      57
+    ],
+    [
+      2694,
+      57
+    ],
+    [
+      2742,
+      57
+    ],
+    [
+      2791,
+      57
+    ],
+    [
+      2910,
+      57
+    ],
+    [
+      2945,
+      57
+    ],
+    [
+      3028,
+      57
+    ],
+    [
+      3089,
+      57
+    ],
+    [
+      3131,
+      57
+    ],
+    [
+      3258,
+      57
+    ],
+    [
+      3350,
+      57
+    ],
+    [
+      3501,
+      57
+    ],
+    [
+      3636,
+      0
+    ]
+  ]
+}

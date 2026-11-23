@@ -1,0 +1,24 @@
+{
+  "mode": "hardened",
+  "probe": "P1",
+  "runtime": "bun 1.4.4",
+  "hostCallsTotal": 1,
+  "hostPolluted": null,
+  "result": {
+    "code": "const r = await tools.lookup({id: 21}); console.log(r.value)",
+    "ms": 225.25,
+    "hostCalls": 1,
+    "result": {
+      "ok": true,
+      "value": null,
+      "logs": [
+        "42"
+      ],
+      "toolCalls": [
+        {
+          "name": "lookup"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "P3js",
+  "workerPid": 98114,
+  "exitCode": 0,
+  "signal": null,
+  "killed": null,
+  "wallMs": 608,
+  "peakRssKbSampled": 146704,
+  "stderr": "(node:98114) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "parsed": {
+    "probe": "P3js",
+    "config": {
+      "executionLimitProfile": "hardened"
+    },
+    "host": {
+      "node": "v24.22.1",
+      "pid": 98114
+    },
+    "runs": [
+      {
+        "script": "js-exec -c 'const r = await fetch(\"https://example.com\"); console.log(r.status)'",
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "at <eval> (-c:1:44): Network access not configured. Enable network in Bash options.\n",
+        "ms": 325,
+        "hostCalls": 0
+      }
+    ],
+    "peakRssKb": 176896,
+    "maxInFlight": 0,
+    "hostCalls": 0
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py hardened R9c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1878,
+  "peakTreeRssMb": 160,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R9c",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode({'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})]); agent.run() per execution",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 420,
+          "ms": 1151,
+          "ok": true,
+          "result": [
+            "Runtime error:\n[stdout before error]\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[10486097 chars]…\n[/stdout before error]\nMemoryError: memory limit exceeded: 10493952 bytes > 10485760 bytes\n\nThe sandbox ran out of memory and the session was reset. Re-run any imports, recreate any state you need, and use less memory: process smaller batches, avoid large intermediate values, and print less output."
+          ],
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 571,
+        "ms": 237,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1002,
+        "ms": 248,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 1601,
+        "ms": 230,
+        "ok": true,
+        "result": [
+          "42"
+        ],
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 95,
+    "totalMs": 1831
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      80,
+      31
+    ],
+    [
+      129,
+      39
+    ],
+    [
+      180,
+      47
+    ],
+    [
+      255,
+      52
+    ],
+    [
+      286,
+      56
+    ],
+    [
+      336,
+      60
+    ],
+    [
+      386,
+      64
+    ],
+    [
+      446,
+      70
+    ],
+    [
+      492,
+      76
+    ],
+    [
+      543,
+      121
+    ],
+    [
+      604,
+      122
+    ],
+    [
+      656,
+      129
+    ],
+    [
+      704,
+      151
+    ],
+    [
+      762,
+      151
+    ],
+    [
+      807,
+      151
+    ],
+    [
+      856,
+      151
+    ],
+    [
+      905,
+      123
+    ],
+    [
+      976,
+      123
+    ],
+    [
+      1036,
+      123
+    ],
+    [
+      1084,
+      123
+    ],
+    [
+      1115,
+      151
+    ],
+    [
+      1167,
+      151
+    ],
+    [
+      1215,
+      151
+    ],
+    [
+      1265,
+      151
+    ],
+    [
+      1318,
+      123
+    ],
+    [
+      1366,
+      123
+    ],
+    [
+      1415,
+      123
+    ],
+    [
+      1466,
+      123
+    ],
+    [
+      1520,
+      123
+    ],
+    [
+      1573,
+      153
+    ],
+    [
+      1621,
+      153
+    ],
+    [
+      1672,
+      132
+    ],
+    [
+      1723,
+      160
+    ],
+    [
+      1775,
+      160
+    ],
+    [
+      1826,
+      160
+    ],
+    [
+      1876,
+      160
+    ]
+  ]
+}

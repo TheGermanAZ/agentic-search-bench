@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "escaped",
+  "display": "escaped (os.system)",
+  "detail": "P12a subclasses walk: ran; \"SUBS 1539 True True 'SUBS 1539 True True'\" | P12b __import__('os').system: ran; \"SYSTEM 0 'SYSTEM 0'\" | P12c _wrap_close globals popen: ran; \"WRAP PWNED2 'WRAP PWNED2\\\\n'\"",
+  "evidence": "research/probes/datalayer-codemode-eval/out/hardened-P12.txt"
+}

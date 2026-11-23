@@ -1,0 +1,9 @@
+{
+  "probe": "P9",
+  "outcome": "works",
+  "detail": "1028 ms for five 200 ms lookups (serial); 5 host-side calls",
+  "display": "serial (1,028 ms)",
+  "elapsed_ms": 1028,
+  "host_calls": 5,
+  "config": "default"
+}

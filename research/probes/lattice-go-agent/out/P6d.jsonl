@@ -1,0 +1,2 @@
+{"probe":"P6d","code":"let a = 1..900; reduce(a, reduce(a, reduce(a, reduce(a, #acc + 1, 0), 0), 0), 0)","value":null,"stdout":"","stderr":"context deadline exceeded","err":"execution timed out after 20000ms","ms":20002.955,"host_calls":0,"rss_mb":506.05078125}
+{"probe":"P6d-after","code":"","value":null,"stdout":"","stderr":"","err":"","ms":0,"host_calls":0,"rss_mb":0,"extra":"3 s after Execute returned: goroutines=3 rss_mb=491 heap_mb=165"}

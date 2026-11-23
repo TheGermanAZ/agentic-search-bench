@@ -1,0 +1,12 @@
+--- code 1 ---
+console.log("A".repeat(200000)); "RETURNED"
+--- result 1 ---
+{"ms":8,"hostCalls":0,"side":{"gatewayStdoutChars":200001,"head":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"ok":true,"isError":false}
+text (11 chars):
+<no output>
+--- code 2 ---
+console.log("A".repeat(200000)); return "RETURNED"
+--- result 2 ---
+{"ms":6,"hostCalls":0,"side":{"gatewayStdoutChars":200001,"head":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"ok":true,"isError":false}
+text (8 chars):
+RETURNED

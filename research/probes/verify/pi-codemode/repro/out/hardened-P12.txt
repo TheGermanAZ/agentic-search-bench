@@ -1,0 +1,69 @@
+{
+  "impl": "pi-codemode",
+  "config": "hardened",
+  "probe": "P12",
+  "options": {
+    "timeoutMs": 30000,
+    "memoryLimitBytes": 33554432
+  },
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "return this.constructor.constructor(\"return process\")()",
+      "ms": 50,
+      "hostCalls": 0,
+      "ok": false,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "error": {
+        "kind": "script",
+        "name": "ReferenceError",
+        "message": "process is not defined",
+        "stack": "ReferenceError: process is not defined\n    at anonymous (<input>:3:8)\n    at <anonymous> (codemode.js:1:52)"
+      }
+    },
+    {
+      "code": "return (function(){return this})().process",
+      "ms": 31,
+      "hostCalls": 0,
+      "ok": true,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": []
+    },
+    {
+      "code": "return typeof (function(){return this})().__HOST_CANARY",
+      "ms": 32,
+      "hostCalls": 0,
+      "ok": true,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "value": "undefined"
+    },
+    {
+      "code": "return Function(\"return typeof process + '/' + typeof require + '/' + typeof WebAssembly + '/' + typeof globalThis.__HOST_CANARY\")()",
+      "ms": 32,
+      "hostCalls": 0,
+      "ok": true,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "value": "undefined/undefined/undefined/undefined"
+    },
+    {
+      "code": "return tools.lookup.constructor.constructor(\"return typeof process\")()",
+      "ms": 34,
+      "hostCalls": 0,
+      "ok": true,
+      "output": [],
+      "outputTextChars": 0,
+      "calls": [],
+      "value": "undefined"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "hardened", "P12"], "exit_code": 0, "wall_ms": 250, "peak_tree_rss_mb": 109.1, "watch_kill": null}

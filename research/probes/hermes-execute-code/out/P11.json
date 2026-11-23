@@ -1,0 +1,7 @@
+{
+  "probe": "P11",
+  "outcome": "works",
+  "display": "works (0.7 ms warm; 63 ms new kernel)",
+  "detail": "20 cells in one session kernel: median 0.7 ms, p90 1.0 ms. Fresh session (new kernel, run, shutdown), n=5: median 62.8 ms.",
+  "evidence": "research/probes/hermes-execute-code/out/P11.txt"
+}

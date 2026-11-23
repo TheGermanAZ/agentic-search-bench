@@ -1,0 +1,11 @@
+probe P7 hardened=True
+code:
+a = []
+while True:
+    a.append("x" * 10**6)
+{"ok": false, "result": null, "error": "RuntimeError: Code execution failed.", "ms": 324.6}
+stdout (0 chars): ''
+baseline tree RSS 46 MB, peak 761 MB
+same session after P7: ok=True stdout='2\n' error=None
+fresh session after: {"ok": true, "result": null, "error": null, "ms": 254.9}
+stdout (2 chars): '2\n'

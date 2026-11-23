@@ -1,0 +1,5 @@
+{
+  "probe": "P3",
+  "outcome": "works",
+  "detail": "printed HTTP status 200 from https://example.com"
+}

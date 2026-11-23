@@ -1,0 +1,25 @@
+{
+  "probe": "P6",
+  "config": "default",
+  "codes": [
+    "while True:\n    pass"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "",
+      "status": "error",
+      "error": "Execution error:\nTimeoutError: time limit exceeded: 60.002132209s > 60s",
+      "ms": 60085.8,
+      "started": 1795381236.271569
+    }
+  ],
+  "setup_ms": 1611.6,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 63.62,
+  "peak_tree_rss_gb": 0.104,
+  "calls": [],
+  "child_log_tail": "prompt caching not applied to a pre-built Model instance or ModelRouter; configure it on the instance\n"
+}

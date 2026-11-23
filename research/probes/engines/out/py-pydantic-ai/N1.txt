@@ -1,0 +1,1 @@
+neighbor printed "42" in 219 ms; aggressor P6 ended after 60035 ms with "ERROR: Runtime error:\nTimeoutError: feed time limit exceeded: 60.000080083s > 60"

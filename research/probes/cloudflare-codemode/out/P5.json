@@ -1,0 +1,104 @@
+{
+  "hostWorkerEnv": {
+    "hostWorkerSeesProbeSecret": "s3cr3t"
+  },
+  "processEnv": {
+    "tool": {
+      "code": "return process.env.PROBE_SECRET",
+      "mode": "tool",
+      "httpStatus": 200,
+      "wallMs": 4,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": true,
+          "output": {}
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    },
+    "raw": {
+      "code": "return process.env.PROBE_SECRET",
+      "mode": "raw",
+      "httpStatus": 200,
+      "wallMs": 4,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    }
+  },
+  "processEnvKeys": {
+    "tool": {
+      "code": "return Object.keys(process.env)",
+      "mode": "tool",
+      "httpStatus": 200,
+      "wallMs": 4,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": true,
+          "output": {
+            "result": []
+          }
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    },
+    "raw": {
+      "code": "return Object.keys(process.env)",
+      "mode": "raw",
+      "httpStatus": 200,
+      "wallMs": 4,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "result": [],
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    }
+  },
+  "globalEnv": {
+    "tool": {
+      "code": "return typeof env === 'undefined' ? 'no global env' : env",
+      "mode": "tool",
+      "httpStatus": 200,
+      "wallMs": 4,
+      "body": {
+        "mode": "tool",
+        "res": {
+          "ok": true,
+          "output": {
+            "result": "no global env"
+          }
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    },
+    "raw": {
+      "code": "return typeof env === 'undefined' ? 'no global env' : env",
+      "mode": "raw",
+      "httpStatus": 200,
+      "wallMs": 3,
+      "body": {
+        "mode": "raw",
+        "res": {
+          "result": "no global env",
+          "logs": []
+        },
+        "hostCalls": 0,
+        "hostMs": 2
+      }
+    }
+  }
+}

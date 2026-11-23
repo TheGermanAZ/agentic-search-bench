@@ -1,0 +1,235 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R1",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 3478,
+  "peakTreeRssMb": 58,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 3341,
+    "rssMb": 58
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R1",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 74,
+        "ms": 43,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": null,
+            "logs": [
+              "[ERROR] Code execution failed: Unexpected token 'h', \"hijacked\" is not valid JSON"
+            ]
+          },
+          "stringChars": 81
+        },
+        "callsStarted": 0
+      },
+      "B": {
+        "label": "B",
+        "startMs": 125,
+        "ms": 69,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": [
+              "undefined",
+              "undefined",
+              "undefined",
+              "{\"a\":1}",
+              false
+            ],
+            "logs": []
+          },
+          "stringChars": 34
+        },
+        "callsStarted": 0
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 55,
+    "hostEvents": [],
+    "totalMs": 194
+  },
+  "childStdoutOtherChars": 435,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      178,
+      48
+    ],
+    [
+      317,
+      58
+    ],
+    [
+      407,
+      58
+    ],
+    [
+      475,
+      58
+    ],
+    [
+      718,
+      58
+    ],
+    [
+      809,
+      58
+    ],
+    [
+      880,
+      58
+    ],
+    [
+      926,
+      58
+    ],
+    [
+      1018,
+      58
+    ],
+    [
+      1118,
+      58
+    ],
+    [
+      1197,
+      58
+    ],
+    [
+      1244,
+      58
+    ],
+    [
+      1326,
+      58
+    ],
+    [
+      1399,
+      58
+    ],
+    [
+      1531,
+      58
+    ],
+    [
+      1612,
+      58
+    ],
+    [
+      1664,
+      58
+    ],
+    [
+      1722,
+      58
+    ],
+    [
+      1768,
+      58
+    ],
+    [
+      1830,
+      58
+    ],
+    [
+      1931,
+      58
+    ],
+    [
+      2007,
+      58
+    ],
+    [
+      2060,
+      58
+    ],
+    [
+      2121,
+      58
+    ],
+    [
+      2178,
+      58
+    ],
+    [
+      2267,
+      58
+    ],
+    [
+      2341,
+      58
+    ],
+    [
+      2419,
+      58
+    ],
+    [
+      2507,
+      58
+    ],
+    [
+      2556,
+      58
+    ],
+    [
+      2723,
+      58
+    ],
+    [
+      2799,
+      58
+    ],
+    [
+      2867,
+      58
+    ],
+    [
+      2973,
+      58
+    ],
+    [
+      3018,
+      58
+    ],
+    [
+      3077,
+      58
+    ],
+    [
+      3135,
+      58
+    ],
+    [
+      3205,
+      58
+    ],
+    [
+      3272,
+      58
+    ],
+    [
+      3341,
+      58
+    ],
+    [
+      3476,
+      0
+    ]
+  ]
+}

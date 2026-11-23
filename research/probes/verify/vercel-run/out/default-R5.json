@@ -1,0 +1,298 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../vercel-run/adapter.mjs default R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 4404,
+  "peakTreeRssMb": 144,
+  "watchKill": null,
+  "record": {
+    "impl": "vercel-run",
+    "config": "default",
+    "test": "R5",
+    "notes": "run() (module default runner, shared)",
+    "data": {
+      "r": {
+        "startMs": 37,
+        "ms": 1222,
+        "ok": false,
+        "threw": "RunBridgeLimitError: JavaScript runtime exceeded the 32 in-flight bridge request limit.\n    at handleHostFunctionRequest (file://~/p/agentic-search-bench/research/impls/vercel-run/pkg/node_modules/run/dist/runtime/manager.js:791:9)\n    at async runInBackground (file://~/p/agentic-search-bench/research/impls/vercel-run/pkg/node_modules/run/dist/runtime/manager.js:93:3)",
+        "callsStarted": 32
+      },
+      "atReturn": {
+        "started": 32,
+        "done": 0
+      },
+      "after3s": {
+        "started": 32,
+        "done": 32
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 136,
+    "hostEvents": [],
+    "totalMs": 4260
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "(node:98867) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+  "rssSamplesMsMb": [
+    [
+      171,
+      37
+    ],
+    [
+      243,
+      70
+    ],
+    [
+      305,
+      87
+    ],
+    [
+      430,
+      113
+    ],
+    [
+      594,
+      137
+    ],
+    [
+      696,
+      138
+    ],
+    [
+      791,
+      138
+    ],
+    [
+      846,
+      138
+    ],
+    [
+      896,
+      138
+    ],
+    [
+      989,
+      138
+    ],
+    [
+      1204,
+      139
+    ],
+    [
+      1260,
+      141
+    ],
+    [
+      1307,
+      144
+    ],
+    [
+      1369,
+      144
+    ],
+    [
+      1447,
+      129
+    ],
+    [
+      1510,
+      129
+    ],
+    [
+      1567,
+      129
+    ],
+    [
+      1618,
+      129
+    ],
+    [
+      1669,
+      129
+    ],
+    [
+      1716,
+      129
+    ],
+    [
+      1769,
+      129
+    ],
+    [
+      1844,
+      129
+    ],
+    [
+      1892,
+      129
+    ],
+    [
+      1946,
+      129
+    ],
+    [
+      1982,
+      129
+    ],
+    [
+      2058,
+      129
+    ],
+    [
+      2163,
+      129
+    ],
+    [
+      2229,
+      129
+    ],
+    [
+      2274,
+      129
+    ],
+    [
+      2370,
+      129
+    ],
+    [
+      2418,
+      129
+    ],
+    [
+      2486,
+      129
+    ],
+    [
+      2562,
+      129
+    ],
+    [
+      2628,
+      129
+    ],
+    [
+      2685,
+      129
+    ],
+    [
+      2729,
+      129
+    ],
+    [
+      2775,
+      129
+    ],
+    [
+      2834,
+      129
+    ],
+    [
+      2882,
+      129
+    ],
+    [
+      2974,
+      129
+    ],
+    [
+      3027,
+      129
+    ],
+    [
+      3086,
+      129
+    ],
+    [
+      3127,
+      129
+    ],
+    [
+      3196,
+      129
+    ],
+    [
+      3274,
+      129
+    ],
+    [
+      3333,
+      129
+    ],
+    [
+      3394,
+      129
+    ],
+    [
+      3450,
+      129
+    ],
+    [
+      3503,
+      129
+    ],
+    [
+      3554,
+      129
+    ],
+    [
+      3632,
+      129
+    ],
+    [
+      3688,
+      129
+    ],
+    [
+      3763,
+      129
+    ],
+    [
+      3842,
+      129
+    ],
+    [
+      3905,
+      129
+    ],
+    [
+      3970,
+      129
+    ],
+    [
+      4040,
+      129
+    ],
+    [
+      4110,
+      129
+    ],
+    [
+      4156,
+      129
+    ],
+    [
+      4233,
+      129
+    ],
+    [
+      4292,
+      129
+    ],
+    [
+      4348,
+      129
+    ],
+    [
+      4403,
+      0
+    ]
+  ]
+}

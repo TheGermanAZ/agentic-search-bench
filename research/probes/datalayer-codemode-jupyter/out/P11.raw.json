@@ -1,0 +1,216 @@
+{
+  "probe": "P11",
+  "config": "default",
+  "codes": [
+    "print(2)"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 10.6,
+      "started": 1795378260.590909
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.8,
+      "started": 1795378260.6016881
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 9.3,
+      "started": 1795378260.610645
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.8,
+      "started": 1795378260.620045
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 9.3,
+      "started": 1795378260.6289868
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 9.4,
+      "started": 1795378260.6384299
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 9.0,
+      "started": 1795378260.647941
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.3,
+      "started": 1795378260.657109
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.6,
+      "started": 1795378260.665569
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.4,
+      "started": 1795378260.674326
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.7,
+      "started": 1795378260.6828291
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.8,
+      "started": 1795378260.6916952
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.5,
+      "started": 1795378260.700662
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.7,
+      "started": 1795378260.709312
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.7,
+      "started": 1795378260.7181199
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.6,
+      "started": 1795378260.726953
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.8,
+      "started": 1795378260.735657
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 9.2,
+      "started": 1795378260.744598
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 8.8,
+      "started": 1795378260.753943
+    },
+    {
+      "ok": true,
+      "stdout": "2",
+      "stderr": "",
+      "result": null,
+      "error": null,
+      "interrupted": false,
+      "ms": 9.4,
+      "started": 1795378260.7629619
+    }
+  ],
+  "setup_ms": 2569.8,
+  "killed": null,
+  "exit_code": 1,
+  "wall_s": 4.56,
+  "peak_tree_rss_gb": 0.517,
+  "calls": [],
+  "child_log_tail": "ebsocket connected                 _logging.py:104\n[11/22/26 15:11:01] INFO     Generating MCP bindings to            codegen.py:62\n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-ypir2po              \n                             g/generated (mcp dir:                              \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-ypir2po              \n                             g/generated/mcp)                                   \n                    INFO     Generating bindings for server        codegen.py:73\n                             'probe' into                                       \n                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              \n                             dpw0000gn/T/dl-jupyter-server-ypir2po              \n                             g/generated/mcp/probe                              \n                    INFO     Starting Jupyter server       jupyter_server.py:262\n                             subprocess on 127.0.0.1:41520                      \n                             (workdir=/var/folders/tg/x0gc                      \n                             vxzs2ks8jyz23g3pgdpw0000gn/T/                      \n                             dl-jupyter-server-ypir2pog/wo                      \n                             rkspace)                                           \nTraceback (most recent call last):\n  File \"~/p/agentic-search-bench/research/probes/datalayer-codemode-jupyter/probe_core.py\", line 485, in <module>\n    child(sys.argv[2], sys.argv[3])\n  File \"~/p/agentic-search-bench/research/probes/datalayer-codemode-jupyter/probe_core.py\", line 159, in child\n    loop.run_until_complete(go())\n  File \"~/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/base_events.py\", line 691, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/probes/datalayer-codemode-jupyter/probe_core.py\", line 146, in go\n    s2 = await ad.open_session(config)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/p/agentic-search-bench/research/probes/datalayer-codemode-jupyter/adapter.py\", line 74, in open_session\n    await executor.setup()\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/agent_codemode/composition/executor.py\", line 264, in setup\n    self._sandbox_client.start()\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/client.py\", line 386, in start\n    start_fn()\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/jupyter_server/jupyter_server.py\", line 451, in start\n    self._wait_for_server(timeout=self.config.timeout or DEFAULT_STARTUP_TIMEOUT)\n  File \"~/p/agentic-search-bench/research/impls/datalayer-codemode-eval/.venv/lib/python3.12/site-packages/code_sandboxes/sandboxes/jupyter_server/jupyter_server.py\", line 367, in _wait_for_server\n    raise SandboxConfigurationError(\ncode_sandboxes.exceptions.SandboxConfigurationError: The Jupyter Server exited with code 1 before it was ready: [W 2026-11-22 15:11:01.714 ServerApp] ServerApp.token config is deprecated in 2.0. Use IdentityProvider.token.\n[I 2026-11-22 15:11:01.723 ServerApp] jupyter_server_terminals | extension was successfully linked.\n[I 2026-11-22 15:11:01.750 ServerApp] jupyter_server_terminals | extension was successfully loaded.\n[I 2026-11-22 15:11:01.751 ServerApp] The port 41520 is already in use.\n[C 2026-11-22 15:11:01.751 ServerApp] ERROR: the Jupyter server could not be started because port 41520 is not available.\n"
+}

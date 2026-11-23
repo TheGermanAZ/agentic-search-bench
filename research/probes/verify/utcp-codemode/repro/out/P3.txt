@@ -1,0 +1,10 @@
+{
+  "probe": "P3 network",
+  "code": "await fetch(\"https://example.com\")",
+  "wallMs": 6.552999999999997,
+  "result": null,
+  "logs": [
+    "[ERROR] Code execution failed: ReferenceError: fetch is not defined\n    at <isolated-vm>:5:15\n    at <isolated-vm>:6:15\n    at <isolated-vm>:11:11"
+  ],
+  "threw": null
+}

@@ -1,0 +1,343 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py default R1c",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 5113,
+  "peakTreeRssMb": 114,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R1c",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(defaults); new in-process Client per execution",
+    "data": {
+      "A": {
+        "label": "A",
+        "startMs": 4250,
+        "ms": 712,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "A done"
+        },
+        "callsStarted": 2
+      },
+      "B": {
+        "label": "B(concurrent)",
+        "startMs": 4407,
+        "ms": 167,
+        "ok": true,
+        "result": {
+          "is_error": false,
+          "text": "gone"
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostMaxEventLoopLagMs": 113,
+    "totalMs": 4962
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      101,
+      25
+    ],
+    [
+      183,
+      33
+    ],
+    [
+      298,
+      34
+    ],
+    [
+      364,
+      36
+    ],
+    [
+      437,
+      39
+    ],
+    [
+      498,
+      44
+    ],
+    [
+      565,
+      44
+    ],
+    [
+      615,
+      44
+    ],
+    [
+      661,
+      44
+    ],
+    [
+      708,
+      44
+    ],
+    [
+      757,
+      45
+    ],
+    [
+      826,
+      46
+    ],
+    [
+      878,
+      46
+    ],
+    [
+      961,
+      47
+    ],
+    [
+      1028,
+      49
+    ],
+    [
+      1091,
+      49
+    ],
+    [
+      1165,
+      53
+    ],
+    [
+      1240,
+      55
+    ],
+    [
+      1331,
+      55
+    ],
+    [
+      1387,
+      56
+    ],
+    [
+      1482,
+      56
+    ],
+    [
+      1533,
+      56
+    ],
+    [
+      1613,
+      56
+    ],
+    [
+      1672,
+      56
+    ],
+    [
+      1729,
+      56
+    ],
+    [
+      1810,
+      56
+    ],
+    [
+      1902,
+      56
+    ],
+    [
+      1982,
+      56
+    ],
+    [
+      2063,
+      57
+    ],
+    [
+      2144,
+      57
+    ],
+    [
+      2212,
+      58
+    ],
+    [
+      2276,
+      59
+    ],
+    [
+      2337,
+      59
+    ],
+    [
+      2378,
+      59
+    ],
+    [
+      2505,
+      61
+    ],
+    [
+      2573,
+      61
+    ],
+    [
+      2625,
+      62
+    ],
+    [
+      2692,
+      62
+    ],
+    [
+      2752,
+      63
+    ],
+    [
+      2837,
+      64
+    ],
+    [
+      2947,
+      64
+    ],
+    [
+      3033,
+      66
+    ],
+    [
+      3093,
+      66
+    ],
+    [
+      3168,
+      66
+    ],
+    [
+      3247,
+      67
+    ],
+    [
+      3327,
+      69
+    ],
+    [
+      3392,
+      75
+    ],
+    [
+      3439,
+      76
+    ],
+    [
+      3530,
+      77
+    ],
+    [
+      3598,
+      77
+    ],
+    [
+      3689,
+      77
+    ],
+    [
+      3735,
+      80
+    ],
+    [
+      3787,
+      81
+    ],
+    [
+      3845,
+      84
+    ],
+    [
+      3902,
+      86
+    ],
+    [
+      3971,
+      86
+    ],
+    [
+      4025,
+      86
+    ],
+    [
+      4080,
+      87
+    ],
+    [
+      4123,
+      88
+    ],
+    [
+      4177,
+      88
+    ],
+    [
+      4249,
+      90
+    ],
+    [
+      4323,
+      91
+    ],
+    [
+      4429,
+      92
+    ],
+    [
+      4469,
+      93
+    ],
+    [
+      4554,
+      104
+    ],
+    [
+      4605,
+      114
+    ],
+    [
+      4680,
+      106
+    ],
+    [
+      4745,
+      106
+    ],
+    [
+      4801,
+      106
+    ],
+    [
+      4859,
+      106
+    ],
+    [
+      4924,
+      106
+    ],
+    [
+      4985,
+      106
+    ],
+    [
+      5044,
+      106
+    ],
+    [
+      5111,
+      0
+    ]
+  ]
+}

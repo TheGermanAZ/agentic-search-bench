@@ -1,0 +1,20 @@
+mode: hardened
+code:
+async function run(client) {
+  return (globalThis as any).Deno.readTextFileSync("/etc/hosts");
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "NotCapable: Requires read access to \"/etc/hosts\", run again with the --allow-read flag"
+      }
+    ],
+    "isError": true
+  },
+  "ms": 399,
+  "hostCalls": 0
+}

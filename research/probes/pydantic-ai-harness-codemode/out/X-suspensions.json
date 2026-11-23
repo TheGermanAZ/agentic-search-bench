@@ -1,0 +1,8 @@
+{
+  "probe": "X-suspensions",
+  "outcome": "limited",
+  "detail": "12 snippets of 100 gathered lookups in one agent run: 991 host calls; first failing snippet index 9; its text 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-9>\", line 2, in <module>\\n    r = await asyncio.gather(*[lookup(id=i) for i in range(100)])\\n                               ~~~~~~~~~~~~\\nRuntimeError: suspension limit 1000 exceeded\\n\\n91 nested tool calls started before execution stopped:\\n- lookup({\\'id\\': 0}) did not finish, so it may have applied a partial change\\n- lookup({\\'id\\': 1}) did not finish, so it may have applied a partial change\\n- lookup({\\'id\\': 2}) did not finish, so it may have applied a partial change\\n- lookup({\\'id\\': 3}) did not finish, so it may have applied a par'; agent_error None",
+  "config": "CodeMode()",
+  "peak_tree_rss_mib": 114,
+  "harness_wall_s": 2.49
+}

@@ -1,0 +1,13 @@
+mode: hardened
+code:
+while (true) {}
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "33f8c6a7-15c6-4e8e-91a6-5de92b9a9445",
+  "success": false,
+  "output": "\n\n\n\n[Process terminated after exceeding timeout of 5000 ms]",
+  "ms": 5004,
+  "hostCalls": 0
+}

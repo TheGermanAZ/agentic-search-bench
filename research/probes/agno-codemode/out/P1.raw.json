@@ -1,0 +1,30 @@
+{
+  "probe": "P1",
+  "config": "default",
+  "codes": [
+    "r = await lookup(id=21)\nmsg = r[\"value\"]\nprint(msg)\nmsg"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "42\nOut[1]: 42",
+      "ms": 3469.1,
+      "started": 1795382329.360896
+    }
+  ],
+  "setup_ms": 0.5,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 5.9,
+  "peak_tree_rss_gb": 0.18,
+  "calls": [
+    {
+      "id": 21,
+      "start": 1795382332.615081,
+      "end": 1795382332.8161979,
+      "pid": 99679
+    }
+  ],
+  "child_log_tail": "WARNING CodeMode runs arbitrary Python and shell with the permissions of this process. It is not a sandbox: provide human supervision or run the agent in an isolated container.\n"
+}

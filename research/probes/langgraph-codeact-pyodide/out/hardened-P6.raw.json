@@ -1,0 +1,26 @@
+{
+  "probe": "P6",
+  "config": "hardened",
+  "codes": [
+    "while True:\n    pass"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "Error during execution: Execution timed out after 30 seconds",
+      "error": "Error during execution: Execution timed out after 30 seconds",
+      "context_keys": [],
+      "host_builtins_leak": false,
+      "ms": 30020.5,
+      "started": 1795377632.855057
+    }
+  ],
+  "setup_ms": 14.6,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 30.28,
+  "peak_tree_rss_gb": 0.36,
+  "calls": [],
+  "child_log_tail": ""
+}

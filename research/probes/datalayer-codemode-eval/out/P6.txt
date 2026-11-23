@@ -1,0 +1,32 @@
+probe: P6
+outcome: no-limit-within-120s
+display: no-limit-within-120s
+detail: harness time watchdog at 120.1 s; nothing stopped the loop
+
+code:
+----
+while True:
+    pass
+----
+
+setup_ms: 303.0
+wall_s (whole child process): 120.06
+killed: harness time watchdog at 120.1 s
+child exit code: -9
+peak tree RSS GB: 0.18
+host lookup calls: 0
+
+=== child process log (tail) ===
+[11/22/26 14:57:11] INFO     Generating MCP bindings to            codegen.py:62
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-yujfmzzn/generate              
+                             d (mcp dir:                                        
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-yujfmzzn/generate              
+                             d/mcp)                                             
+                    INFO     Generating bindings for server        codegen.py:73
+                             'probe' into                                       
+                             /var/folders/tg/x0gcvxzs2ks8jyz23g3pg              
+                             dpw0000gn/T/dl-eval-yujfmzzn/generate              
+                             d/mcp/probe                                        
+

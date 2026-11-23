@@ -1,0 +1,7 @@
+{
+  "probe": "P7",
+  "outcome": "limited",
+  "display": "limited (256 MiB)",
+  "detail": "stopped after 0.09 s, peak tree RSS 0.095 GB: Execution error: Traceback (most recent call last): File \"<python-input-0>\", line 3, in <module> a.append(\"x\" * 10**6) ~~~~~~~~~~~ MemoryError: memory limit exceeded: 269066748 bytes > 268435456 bytes",
+  "evidence": "research/probes/repro/out/P7.txt"
+}

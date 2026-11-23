@@ -1,0 +1,27 @@
+{
+ "config": "default",
+ "middleware_kwargs": {
+  "ptc": [
+   "lookup"
+  ]
+ },
+ "probe": "P8",
+ "result": [
+  {
+   "code": "globalThis.kept = 7",
+   "output": "<result>7</result>",
+   "turn_ms": 182.0,
+   "eval_ms": 173.2,
+   "host_calls": 0
+  },
+  {
+   "code": "console.log(typeof kept === \"undefined\" ? \"gone\" : kept)",
+   "output": "<stdout>\n7\n</stdout>\n<result>null</result>",
+   "turn_ms": 155.8,
+   "eval_ms": 1.4,
+   "host_calls": 0
+  }
+ ]
+}
+
+monitor: {"config": "default", "probe": "P8", "exit_code": 0, "wall_s": 0.97, "peak_rss_mb": 203.6, "first_rss_mb": 16.2, "killed": null, "stderr_tail": []}

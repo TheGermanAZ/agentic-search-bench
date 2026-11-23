@@ -1,0 +1,41 @@
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P12f",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 66.756542,
+  "source": [
+    "const names = Object.getOwnPropertyNames(globalThis).filter(n => n.startsWith(\"__\")); const out = {}; for (const n of names) { const v = globalThis[n]; out[n] = typeof v + \":\" + (v && Object.getOwnPropertyNames(Object.getPrototypeOf(v) || {}).join(\"/\")); } return out;"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": {
+          "__captureLog": "object:deref/derefInto/release/copy/copySync/delete/deleteIgnored/deleteSync/get/getSync/set/setIgnored/setSync/apply/applyIgnored/applySync/applySyncPromise/typeof/constructor",
+          "__external_lookup_ref": "object:deref/derefInto/release/copy/copySync/delete/deleteIgnored/deleteSync/get/getSync/set/setIgnored/setSync/apply/applyIgnored/applySync/applySyncPromise/typeof/constructor",
+          "__external_failing_ref": "object:deref/derefInto/release/copy/copySync/delete/deleteIgnored/deleteSync/get/getSync/set/setIgnored/setSync/apply/applyIgnored/applySync/applySyncPromise/typeof/constructor"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 17.860708999999986,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": {
+        "__captureLog": "object:deref/derefInto/release/copy/copySync/delete/deleteIgnored/deleteSync/get/getSync/set/setIgnored/setSync/apply/applyIgnored/applySync/applySyncPromise/typeof/constructor",
+        "__external_lookup_ref": "object:deref/derefInto/release/copy/copySync/delete/deleteIgnored/deleteSync/get/getSync/set/setIgnored/setSync/apply/applyIgnored/applySync/applySyncPromise/typeof/constructor",
+        "__external_failing_ref": "object:deref/derefInto/release/copy/copySync/delete/deleteIgnored/deleteSync/get/getSync/set/setIgnored/setSync/apply/applyIgnored/applySync/applySyncPromise/typeof/constructor"
+      },
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 18,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 82.5
+}

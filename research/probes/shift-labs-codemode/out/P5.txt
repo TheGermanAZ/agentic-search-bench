@@ -1,0 +1,25 @@
+{
+  "processEnv": {
+    "code": "return process.env.PROBE_SECRET",
+    "ms": 2,
+    "hostCalls": 0,
+    "logs": []
+  },
+  "envKeyCount": {
+    "code": "return Object.keys(process.env).length",
+    "ms": 8,
+    "hostCalls": 0,
+    "result": 0,
+    "logs": []
+  },
+  "hostEnvViaPs": {
+    "code": "const o = require(\"node:child_process\").execSync(\"ps eww -o command= -p \" + process.pid).toString(); return { sawProbeSecret: /PROBE_SECRET=s3cr3t/.test(o) }",
+    "ms": 68,
+    "hostCalls": 0,
+    "result": {
+      "sawProbeSecret": true
+    },
+    "logs": []
+  },
+  "hostHasSecret": true
+}

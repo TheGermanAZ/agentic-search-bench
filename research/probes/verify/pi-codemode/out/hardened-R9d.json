@@ -1,0 +1,430 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../pi-codemode/adapter.mjs hardened R9d",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 30299,
+  "peakTreeRssMb": 119,
+  "watchKill": null,
+  "record": {
+    "impl": "pi-codemode",
+    "config": "hardened",
+    "test": "R9d",
+    "notes": "one CodemodeSandbox({\"timeoutMs\":30000,\"memoryLimitBytes\":33554432}) shared",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 10,
+          "ms": 30001,
+          "ok": true,
+          "result": {
+            "value": {
+              "ok": false,
+              "error": {
+                "kind": "timeout",
+                "message": "Execution timed out after 30000 ms"
+              },
+              "output": [],
+              "calls": []
+            },
+            "stringChars": 41
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 162,
+        "ms": 230,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 201.502
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1001,
+        "ms": 227,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 201.09508299999993
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 30011,
+        "ms": 225,
+        "ok": true,
+        "result": {
+          "value": {
+            "ok": true,
+            "value": 42,
+            "output": [],
+            "calls": [
+              {
+                "name": "lookup",
+                "status": "ok",
+                "durationMs": 199.98495800000092
+              }
+            ],
+            "storeWrites": {
+              "set": {},
+              "delete": []
+            }
+          },
+          "stringChars": 8
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 7,
+    "hostEvents": [],
+    "totalMs": 30236
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      75,
+      71
+    ],
+    [
+      480,
+      114
+    ],
+    [
+      886,
+      114
+    ],
+    [
+      1295,
+      116
+    ],
+    [
+      1702,
+      116
+    ],
+    [
+      2108,
+      116
+    ],
+    [
+      2511,
+      116
+    ],
+    [
+      2922,
+      116
+    ],
+    [
+      3327,
+      116
+    ],
+    [
+      3735,
+      116
+    ],
+    [
+      4143,
+      116
+    ],
+    [
+      4549,
+      116
+    ],
+    [
+      4956,
+      116
+    ],
+    [
+      5363,
+      116
+    ],
+    [
+      5768,
+      116
+    ],
+    [
+      6178,
+      116
+    ],
+    [
+      6585,
+      116
+    ],
+    [
+      6992,
+      116
+    ],
+    [
+      7401,
+      116
+    ],
+    [
+      7807,
+      116
+    ],
+    [
+      8215,
+      116
+    ],
+    [
+      8623,
+      116
+    ],
+    [
+      9029,
+      116
+    ],
+    [
+      9436,
+      108
+    ],
+    [
+      9842,
+      108
+    ],
+    [
+      10249,
+      108
+    ],
+    [
+      10663,
+      108
+    ],
+    [
+      11064,
+      108
+    ],
+    [
+      11469,
+      108
+    ],
+    [
+      11875,
+      108
+    ],
+    [
+      12282,
+      108
+    ],
+    [
+      12689,
+      108
+    ],
+    [
+      13097,
+      108
+    ],
+    [
+      13503,
+      108
+    ],
+    [
+      13913,
+      108
+    ],
+    [
+      14319,
+      108
+    ],
+    [
+      14738,
+      108
+    ],
+    [
+      15133,
+      108
+    ],
+    [
+      15541,
+      108
+    ],
+    [
+      15947,
+      108
+    ],
+    [
+      16355,
+      108
+    ],
+    [
+      16767,
+      108
+    ],
+    [
+      17171,
+      108
+    ],
+    [
+      17577,
+      108
+    ],
+    [
+      17984,
+      108
+    ],
+    [
+      18391,
+      108
+    ],
+    [
+      18799,
+      108
+    ],
+    [
+      19208,
+      108
+    ],
+    [
+      19617,
+      108
+    ],
+    [
+      20020,
+      108
+    ],
+    [
+      20426,
+      108
+    ],
+    [
+      20836,
+      108
+    ],
+    [
+      21242,
+      108
+    ],
+    [
+      21648,
+      108
+    ],
+    [
+      22053,
+      108
+    ],
+    [
+      22460,
+      108
+    ],
+    [
+      22870,
+      108
+    ],
+    [
+      23275,
+      108
+    ],
+    [
+      23681,
+      108
+    ],
+    [
+      24090,
+      108
+    ],
+    [
+      24497,
+      108
+    ],
+    [
+      24900,
+      105
+    ],
+    [
+      25310,
+      105
+    ],
+    [
+      25716,
+      105
+    ],
+    [
+      26121,
+      105
+    ],
+    [
+      26528,
+      105
+    ],
+    [
+      26936,
+      105
+    ],
+    [
+      27344,
+      105
+    ],
+    [
+      27752,
+      105
+    ],
+    [
+      28158,
+      105
+    ],
+    [
+      28568,
+      105
+    ],
+    [
+      28974,
+      105
+    ],
+    [
+      29381,
+      105
+    ],
+    [
+      29790,
+      105
+    ],
+    [
+      30196,
+      106
+    ]
+  ]
+}

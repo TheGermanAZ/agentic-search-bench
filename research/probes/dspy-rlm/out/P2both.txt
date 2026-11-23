@@ -1,0 +1,29 @@
+probe: P2both
+outcome: works
+display: return replaces print
+detail: print('PRINTED') then 'RETURNED': the model saw only RETURNED.
+
+code:
+----
+print("PRINTED")
+"RETURNED"
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 0.8
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.512
+host lookup calls: 0
+
+=== run 0 (450.9 ms) ===
+ok: true
+stdout: <repl_output>
+RETURNED
+</repl_output>
+model_view_all: ["<repl_output>\nRETURNED\n</repl_output>"]
+raw_outputs_untruncated_len: [8, 25]
+answer: done
+
+=== child process log (tail) ===
+

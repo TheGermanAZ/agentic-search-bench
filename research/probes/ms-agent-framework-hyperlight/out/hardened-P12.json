@@ -1,0 +1,7 @@
+{
+  "probe": "P12",
+  "outcome": "blocked",
+  "detail": "P12a: blocked: wrap_close no-Popen | P12b: blocked: Execution error | details=None | P12c: blocked: Execution error | details=None",
+  "display": "blocked",
+  "config": "hardened"
+}

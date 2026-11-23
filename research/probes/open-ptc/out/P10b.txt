@@ -1,0 +1,15 @@
+mode: default
+code:
+const x = 1;
+const y = 2;
+throw new Error("probe-boom line 3")
+
+result:
+{
+  "type": "execution_result",
+  "executionId": "9a22129f-bf10-4b8a-8e15-1f9c97a685c3",
+  "success": false,
+  "output": "\n\n\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) Error: probe-boom line 3\nthrow new Error(\"probe-boom line 3\")\n\u001b[0m\u001b[31m      ^\u001b[0m\n    at \u001b[0m\u001b[36mfile:///var/folders/tg/x0gcvxzs2ks8jyz23g3pgdpw0000gn/T/c4f6f18a086c73e4.ts\u001b[0m:\u001b[0m\u001b[33m37\u001b[0m:\u001b[0m\u001b[33m7\u001b[0m\n",
+  "ms": 27,
+  "hostCalls": 0
+}

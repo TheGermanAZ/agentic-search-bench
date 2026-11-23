@@ -1,0 +1,20 @@
+mode: default
+code:
+async function run(client) {
+  return String((function (this: any) { return this; })().process);
+}
+
+result:
+{
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "TypeError: Cannot read properties of undefined (reading 'process')"
+      }
+    ],
+    "isError": true
+  },
+  "ms": 379,
+  "hostCalls": 0
+}

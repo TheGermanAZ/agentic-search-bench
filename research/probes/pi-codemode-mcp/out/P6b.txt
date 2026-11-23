@@ -1,0 +1,3 @@
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P6b"], "exit_code": -9, "wall_ms": 120047, "peak_tree_rss_mb": 184.9, "watch_kill": "killed-at-120s"}

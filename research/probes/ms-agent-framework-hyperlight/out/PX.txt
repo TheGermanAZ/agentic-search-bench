@@ -1,0 +1,117 @@
+--- P2-sizes: largest print that survives, and whether the same tool recovers after the abort
+code:
+print("A" * 10000)
+{"ok": true, "result": null, "error": null, "ms": 320.8}
+stdout (10001 chars): 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+
+--- P2-sizes: largest print that survives, and whether the same tool recovers after the abort
+code:
+print("A" * 50000)
+{"ok": false, "result": null, "error": "RuntimeError: Code execution failed.", "ms": 54.5}
+stdout (0 chars): ''
+
+--- P2-sizes: largest print that survives, and whether the same tool recovers after the abort
+code:
+print("A" * 100000)
+{"ok": false, "result": null, "error": "RuntimeError: Code execution failed.", "ms": 242.1}
+stdout (0 chars): ''
+
+--- P2-sizes: largest print that survives, and whether the same tool recovers after the abort
+code:
+print("A" * 150000)
+{"ok": false, "result": null, "error": "RuntimeError: Code execution failed.", "ms": 252.6}
+stdout (0 chars): ''
+
+--- P2-sizes: largest print that survives, and whether the same tool recovers after the abort
+code:
+print("A" * 200000)
+{"ok": false, "result": null, "error": "RuntimeError: Code execution failed.", "ms": 257.4}
+stdout (0 chars): ''
+
+--- P2-sizes: largest print that survives, and whether the same tool recovers after the abort
+code:
+print("after-crash")
+{"ok": true, "result": null, "error": null, "ms": 259.0}
+stdout (12 chars): 'after-crash\n'
+
+--- P4-canary: a host file inside the repo
+code:
+print(open("~/p/agentic-search-bench/research/probes/ms-agent-framework-hyperlight/canary.txt").read())
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 270.5}
+stdout (0 chars): ''
+
+--- P4-listdir: guest root filesystem
+code:
+import os
+print(os.listdir("/"))
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 247.5}
+stdout (0 chars): ''
+
+--- P5-environ: whole guest environment
+code:
+import os
+print(dict(os.environ))
+{"ok": true, "result": null, "error": null, "ms": 254.6}
+stdout (3 chars): '{}\n'
+
+--- P9-asyncio: asyncio.gather over the sync call_tool
+code:
+import asyncio, time
+t = time.time()
+async def one(i):
+    return call_tool("lookup", id=i)
+async def main():
+    return await asyncio.gather(*[one(i) for i in [1, 2, 3, 4, 5]])
+asyncio.run(main())
+print(int((time.time() - t) * 1000))
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 247.3}
+stdout (0 chars): ''
+
+--- P9-threads: threads
+code:
+import threading, time
+t = time.time()
+th = [threading.Thread(target=call_tool, args=("lookup",), kwargs={"id": i}) for i in [1, 2, 3, 4, 5]]
+[x.start() for x in th]
+[x.join() for x in th]
+print(int((time.time() - t) * 1000))
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 241.5}
+stdout (0 chars): ''
+
+--- P10-trace: same as P10 (default include_detailed_errors=False)
+code:
+x = 1
+raise ValueError("probe-boom")
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 265.5}
+stdout (0 chars): ''
+
+--- P12-sys: what runtime the guest is
+code:
+import sys, os
+print(sys.platform, sys.version, os.name, hasattr(os, "system"))
+{"ok": true, "result": null, "error": null, "ms": 284.1}
+stdout (146 chars): 'wasi 3.14.0 (0e13686:0e13686, Feb 12 2026, 21:31:17) [Clang 21.1.4-wasi-sdk (https://github.com/llvm/llvm-project 222fc11f2b8f25f6a0f posix False\n'
+
+--- P12-socket: raw socket
+code:
+import socket
+s = socket.socket()
+s.connect(("93.184.215.14", 80))
+print("connected")
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 346.9}
+stdout (0 chars): ''
+
+--- P8-files: guest files across executions
+code:
+open("/tmp/kept.txt", "w").write("7")
+print("wrote")
+{"ok": false, "result": null, "error": "Execution error | details=None", "ms": 289.9}
+stdout (0 chars): ''
+
+--- P8-files: guest files across executions
+code:
+import os
+print(open("/tmp/kept.txt").read() if os.path.exists("/tmp/kept.txt") else "gone")
+{"ok": true, "result": null, "error": null, "ms": 63.0}
+stdout (5 chars): 'gone\n'
+

@@ -1,0 +1,7 @@
+{
+  "probe": "P12d",
+  "outcome": "error",
+  "display": "TypeError: Type is not msgpack serializa",
+  "detail": "TypeError: Type is not msgpack serializable: function",
+  "evidence": "research/probes/langgraph-codeact/out/P12d.txt"
+}

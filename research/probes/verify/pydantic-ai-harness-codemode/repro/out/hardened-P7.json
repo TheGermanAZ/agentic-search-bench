@@ -1,0 +1,8 @@
+{
+  "probe": "P7",
+  "outcome": "limited",
+  "detail": "stopped after 0.14 s agent-run wall; model saw (ToolReturnPart): 'Runtime error:\\nTraceback (most recent call last):\\n  File \"<python-input-0>\", line 3, in <module>\\n    a.append(\"x\" * 10**6)\\n             ~~~~~~~~~~~\\nMemoryError: memory limit exceeded: 10295018 bytes > 10000000 bytes\\n\\nThe sandbox ran out of memory and the session was reset. Re-run any imports, recreate any state you need, and use less memory: process smaller batches, avoid large intermediate values, and print less output.'; host alive, next agent run returned '2'",
+  "config": "CodeMode(**{'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})",
+  "peak_tree_rss_mib": 80,
+  "harness_wall_s": 1.28
+}

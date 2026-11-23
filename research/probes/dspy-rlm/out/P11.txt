@@ -1,0 +1,221 @@
+probe: P11
+outcome: works
+display: works (467 ms per RLM call)
+detail: 20 fresh RLM forwards (new Deno + Pyodide each, plus DummyLM and the SUBMIT turn): median 466.9 ms, p90 528.7 ms. p11_breakdown.txt, taken under heavier machine load: 1,258 ms per 1-iteration forward and ~69 ms per extra iteration in a warm interpreter.
+
+code:
+----
+print(2)
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 13.01
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.517
+host lookup calls: 0
+
+=== run 0 (467.0 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 1 (450.9 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 2 (430.6 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 3 (458.1 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 4 (490.3 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 5 (461.8 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 6 (528.2 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 7 (573.9 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 8 (528.0 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 9 (571.6 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 10 (456.9 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 11 (366.8 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 12 (370.0 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 13 (386.7 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 14 (389.8 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 15 (466.7 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 16 (484.9 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 17 (500.7 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 18 (528.7 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+=== run 19 (526.8 ms) ===
+ok: true
+stdout: <repl_output>
+2
+
+</repl_output>
+model_view_all: ["<repl_output>\n2\n\n</repl_output>"]
+raw_outputs_untruncated_len: [2, 25]
+answer: done
+
+fresh session (open+run+close) ms: [789.2, 674.3, 637.3, 593.1, 512.5]
+
+=== child process log (tail) ===
+

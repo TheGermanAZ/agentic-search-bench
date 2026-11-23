@@ -1,0 +1,169 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py hardened R7a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1894,
+  "peakTreeRssMb": 86,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R7a",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode({'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})]); agent.run() per execution",
+    "data": {
+      "label": "",
+      "startMs": 1686,
+      "ms": 116,
+      "ok": true,
+      "result": [
+        "Runtime error:\nTraceback (most recent call last):\n  File \"<python-input-0>\", line 2, in <module>\n    await asyncio.sleep(100000)\n          ~~~~~~~~~~~~~~~~~~~~~\nTimeoutError: sleeping 100000s would exceed the 1s this code may sleep (max_duration_seconds); 1s left"
+      ],
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 49,
+    "totalMs": 1802
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      100,
+      29
+    ],
+    [
+      145,
+      35
+    ],
+    [
+      188,
+      40
+    ],
+    [
+      251,
+      41
+    ],
+    [
+      311,
+      41
+    ],
+    [
+      365,
+      41
+    ],
+    [
+      414,
+      46
+    ],
+    [
+      467,
+      49
+    ],
+    [
+      521,
+      49
+    ],
+    [
+      574,
+      49
+    ],
+    [
+      631,
+      51
+    ],
+    [
+      675,
+      53
+    ],
+    [
+      730,
+      54
+    ],
+    [
+      810,
+      54
+    ],
+    [
+      855,
+      56
+    ],
+    [
+      903,
+      56
+    ],
+    [
+      959,
+      56
+    ],
+    [
+      1026,
+      60
+    ],
+    [
+      1069,
+      60
+    ],
+    [
+      1112,
+      61
+    ],
+    [
+      1180,
+      62
+    ],
+    [
+      1215,
+      62
+    ],
+    [
+      1264,
+      63
+    ],
+    [
+      1350,
+      63
+    ],
+    [
+      1416,
+      64
+    ],
+    [
+      1465,
+      66
+    ],
+    [
+      1521,
+      66
+    ],
+    [
+      1556,
+      67
+    ],
+    [
+      1609,
+      69
+    ],
+    [
+      1663,
+      70
+    ],
+    [
+      1741,
+      71
+    ],
+    [
+      1781,
+      77
+    ],
+    [
+      1836,
+      86
+    ],
+    [
+      1892,
+      0
+    ]
+  ]
+}

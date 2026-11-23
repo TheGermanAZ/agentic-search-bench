@@ -1,0 +1,10 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "autoAllowBashIfSandboxed": true,
+    "allowUnsandboxedCommands": false,
+    "network": { "allowedDomains": [], "strictAllowlist": true },
+    "credentials": { "envVars": [ { "name": "PROBE_SECRET", "mode": "deny" } ] }
+  }
+}

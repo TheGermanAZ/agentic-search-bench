@@ -1,0 +1,187 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R2a",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1419,
+  "peakTreeRssMb": 333,
+  "peakTreeFootprintMb": 307,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R2a",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "startMs": 848,
+      "ms": 511,
+      "ok": true,
+      "result": {
+        "value": {
+          "status": "completed",
+          "waits": 0,
+          "value": [
+            true,
+            "undefined",
+            "undefined",
+            "Object,Function,Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,InternalError,AggregateError,SuppressedError,Iterator,Array,parseInt,parseFloat,isNaN,isFinite,queueMicrotask,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,escape,unescape,Infinity,NaN,undefined,eval…[1153 chars]…eError,__openclawDrainQueuedRequests,__openclawAdmissionError,__openclawRunCell,__openclawTakeOutputJson,__openclawTrackRejection,__openclawUnhandledRejection,__openclawSourceLocation,__openclawResult"
+          ],
+          "output": [],
+          "textChars": 1424,
+          "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"f52b4d62f898a89ad886ec88\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":[true,\"undefined\",\"undefined\",\"Object,Function,Error,EvalError,…[1424 chars]…ror,__openclawDrainQueuedRequests,__openclawAdmissionError,__openclawRunCell,__openclawTakeOutputJson,__openclawTrackRejection,__openclawUnhandledRejection,__openclawSourceLocation,__openclawResult\"]}"
+        },
+        "stringChars": 2604
+      },
+      "callsStarted": 1
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 958,
+    "hostEvents": [],
+    "totalMs": 1359
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      114,
+      67,
+      0
+    ],
+    [
+      169,
+      81,
+      28
+    ],
+    [
+      216,
+      96,
+      28
+    ],
+    [
+      273,
+      101,
+      28
+    ],
+    [
+      313,
+      113,
+      64
+    ],
+    [
+      356,
+      124,
+      64
+    ],
+    [
+      412,
+      133,
+      95
+    ],
+    [
+      504,
+      150,
+      95
+    ],
+    [
+      553,
+      173,
+      95
+    ],
+    [
+      586,
+      175,
+      142
+    ],
+    [
+      640,
+      187,
+      142
+    ],
+    [
+      706,
+      205,
+      142
+    ],
+    [
+      742,
+      209,
+      181
+    ],
+    [
+      805,
+      224,
+      181
+    ],
+    [
+      855,
+      232,
+      205
+    ],
+    [
+      907,
+      241,
+      205
+    ],
+    [
+      963,
+      261,
+      205
+    ],
+    [
+      1024,
+      268,
+      238
+    ],
+    [
+      1053,
+      275,
+      238
+    ],
+    [
+      1100,
+      290,
+      238
+    ],
+    [
+      1153,
+      308,
+      269
+    ],
+    [
+      1211,
+      330,
+      269
+    ],
+    [
+      1250,
+      332,
+      269
+    ],
+    [
+      1305,
+      332,
+      307
+    ],
+    [
+      1370,
+      332,
+      307
+    ],
+    [
+      1418,
+      333,
+      307
+    ]
+  ]
+}

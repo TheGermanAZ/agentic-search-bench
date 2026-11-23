@@ -1,0 +1,30 @@
+{
+  "probe": "P3b",
+  "config": "default",
+  "codes": [
+    "import js\nfrom pyodide.ffi import run_sync\nr = run_sync(js.fetch('https://example.com'))\nprint('HTTP', r.status)"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "stdout": "HTTP 200",
+      "error": null,
+      "context_keys": [
+        "js",
+        "r",
+        "run_sync"
+      ],
+      "host_builtins_leak": false,
+      "ms": 1179.3,
+      "started": 1795377454.6508071
+    }
+  ],
+  "setup_ms": 19.9,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 1.5,
+  "peak_tree_rss_gb": 0.29,
+  "calls": [],
+  "child_log_tail": ""
+}

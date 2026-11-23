@@ -1,0 +1,26 @@
+tools/list names:
+['run_python_code']
+inputSchema:
+{
+ "run_python_code": {
+  "type": "object",
+  "properties": {
+   "python_code": {
+    "type": "string",
+    "description": "Python code to run"
+   },
+   "global_variables": {
+    "type": "object",
+    "additionalProperties": {},
+    "default": {},
+    "description": "Map of global variables in context when the code is executed"
+   }
+  },
+  "required": [
+   "python_code"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+ }
+}
+Host functions: none can be registered. global_variables is a JSON map (pyodide.toPy), so a callable cannot be passed.

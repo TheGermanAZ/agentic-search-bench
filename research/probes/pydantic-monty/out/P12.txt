@@ -1,0 +1,4 @@
+subclasses: MontyRuntimeError: AttributeError: 'tuple' object has no attribute '__class__'
+import os system: MontyRuntimeError: NameError: name '__import__' is not defined
+extra: type mro: MontyRuntimeError: AttributeError: type object 'tuple' has no attribute '__mro__'
+extra: function globals: MontyRuntimeError: AttributeError: 'function' object has no attribute '__globals__'

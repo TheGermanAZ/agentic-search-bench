@@ -1,0 +1,241 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py default R3",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 3177,
+  "peakTreeRssMb": 101,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R3",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode()]); agent.run() per execution",
+    "data": {
+      "recursion": {
+        "label": "recursion",
+        "startMs": 2528,
+        "ms": 191,
+        "ok": true,
+        "result": [
+          "RecursionError: maximum recursion depth exceeded"
+        ],
+        "callsStarted": 0
+      },
+      "deep-return": {
+        "label": "deep-return",
+        "startMs": 2719,
+        "ms": 163,
+        "ok": false,
+        "threw": "RecursionError: maximum recursion depth exceeded",
+        "callsStarted": 0
+      },
+      "after": {
+        "label": "after",
+        "startMs": 2883,
+        "ms": 65,
+        "ok": true,
+        "result": [
+          "alive"
+        ],
+        "callsStarted": 0
+      }
+    },
+    "hostMaxEventLoopLagMs": 51,
+    "totalMs": 2948
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      215,
+      22
+    ],
+    [
+      262,
+      30
+    ],
+    [
+      333,
+      33
+    ],
+    [
+      382,
+      35
+    ],
+    [
+      434,
+      38
+    ],
+    [
+      483,
+      41
+    ],
+    [
+      548,
+      41
+    ],
+    [
+      618,
+      43
+    ],
+    [
+      661,
+      46
+    ],
+    [
+      720,
+      46
+    ],
+    [
+      772,
+      49
+    ],
+    [
+      847,
+      51
+    ],
+    [
+      904,
+      51
+    ],
+    [
+      966,
+      52
+    ],
+    [
+      1070,
+      52
+    ],
+    [
+      1123,
+      56
+    ],
+    [
+      1192,
+      56
+    ],
+    [
+      1234,
+      56
+    ],
+    [
+      1315,
+      57
+    ],
+    [
+      1400,
+      59
+    ],
+    [
+      1466,
+      60
+    ],
+    [
+      1540,
+      61
+    ],
+    [
+      1600,
+      61
+    ],
+    [
+      1696,
+      62
+    ],
+    [
+      1750,
+      62
+    ],
+    [
+      1794,
+      62
+    ],
+    [
+      1850,
+      63
+    ],
+    [
+      1958,
+      64
+    ],
+    [
+      2019,
+      65
+    ],
+    [
+      2071,
+      65
+    ],
+    [
+      2134,
+      65
+    ],
+    [
+      2202,
+      66
+    ],
+    [
+      2250,
+      66
+    ],
+    [
+      2295,
+      67
+    ],
+    [
+      2351,
+      67
+    ],
+    [
+      2404,
+      67
+    ],
+    [
+      2484,
+      70
+    ],
+    [
+      2554,
+      70
+    ],
+    [
+      2609,
+      71
+    ],
+    [
+      2670,
+      72
+    ],
+    [
+      2722,
+      75
+    ],
+    [
+      2779,
+      76
+    ],
+    [
+      2837,
+      86
+    ],
+    [
+      2924,
+      86
+    ],
+    [
+      2966,
+      79
+    ],
+    [
+      3120,
+      90
+    ],
+    [
+      3175,
+      101
+    ]
+  ]
+}

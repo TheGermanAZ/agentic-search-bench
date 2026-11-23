@@ -1,0 +1,519 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R9e",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 33399,
+  "peakTreeRssMb": 71,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 33392,
+    "rssMb": 70
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R9e",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 46,
+          "ms": 30038,
+          "ok": true,
+          "result": {
+            "value": {
+              "result": null,
+              "logs": [
+                "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+              ]
+            },
+            "stringChars": 69
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor1",
+          "startMs": 46,
+          "ms": 30038,
+          "ok": true,
+          "result": {
+            "value": {
+              "result": null,
+              "logs": [
+                "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+              ]
+            },
+            "stringChars": 69
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor2",
+          "startMs": 46,
+          "ms": 30038,
+          "ok": true,
+          "result": {
+            "value": {
+              "result": null,
+              "logs": [
+                "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+              ]
+            },
+            "stringChars": 69
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor3",
+          "startMs": 46,
+          "ms": 30038,
+          "ok": true,
+          "result": {
+            "value": {
+              "result": null,
+              "logs": [
+                "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+              ]
+            },
+            "stringChars": 69
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor4",
+          "startMs": 46,
+          "ms": 30038,
+          "ok": true,
+          "result": {
+            "value": {
+              "result": null,
+              "logs": [
+                "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+              ]
+            },
+            "stringChars": 69
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor5",
+          "startMs": 46,
+          "ms": 30038,
+          "ok": true,
+          "result": {
+            "value": {
+              "result": null,
+              "logs": [
+                "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+              ]
+            },
+            "stringChars": 69
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor6",
+          "startMs": 46,
+          "ms": 30038,
+          "ok": true,
+          "result": {
+            "value": {
+              "result": null,
+              "logs": [
+                "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+              ]
+            },
+            "stringChars": 69
+          },
+          "callsStarted": 2
+        },
+        {
+          "label": "aggressor7",
+          "startMs": 46,
+          "ms": 30038,
+          "ok": true,
+          "result": {
+            "value": {
+              "result": null,
+              "logs": [
+                "[ERROR] Code execution failed: Script execution timeout after 30000ms"
+              ]
+            },
+            "stringChars": 69
+          },
+          "callsStarted": 2
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 203,
+        "ms": 209,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1002,
+        "ms": 205,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 30084,
+        "ms": 206,
+        "ok": true,
+        "result": {
+          "value": {
+            "result": 42,
+            "logs": []
+          },
+          "stringChars": 0
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 33,
+    "hostEvents": [],
+    "totalMs": 30290
+  },
+  "childStdoutOtherChars": 837,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\nCalling tool 'host.lookup' via protocol 'direct-call'.\n[DirectCommunicationProtocol] Calling tool 'host.lookup' via callable 'lookup'\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      108,
+      49
+    ],
+    [
+      658,
+      71
+    ],
+    [
+      1089,
+      71
+    ],
+    [
+      1532,
+      71
+    ],
+    [
+      1982,
+      71
+    ],
+    [
+      2402,
+      71
+    ],
+    [
+      2813,
+      71
+    ],
+    [
+      3241,
+      71
+    ],
+    [
+      3788,
+      71
+    ],
+    [
+      4259,
+      71
+    ],
+    [
+      4753,
+      71
+    ],
+    [
+      5237,
+      71
+    ],
+    [
+      5675,
+      71
+    ],
+    [
+      6110,
+      71
+    ],
+    [
+      6524,
+      71
+    ],
+    [
+      6959,
+      71
+    ],
+    [
+      7399,
+      71
+    ],
+    [
+      7806,
+      71
+    ],
+    [
+      8258,
+      71
+    ],
+    [
+      8693,
+      71
+    ],
+    [
+      9107,
+      71
+    ],
+    [
+      9547,
+      71
+    ],
+    [
+      10070,
+      71
+    ],
+    [
+      10507,
+      71
+    ],
+    [
+      10983,
+      71
+    ],
+    [
+      11371,
+      71
+    ],
+    [
+      11823,
+      71
+    ],
+    [
+      12315,
+      71
+    ],
+    [
+      12707,
+      71
+    ],
+    [
+      13124,
+      71
+    ],
+    [
+      13545,
+      71
+    ],
+    [
+      14049,
+      71
+    ],
+    [
+      14471,
+      71
+    ],
+    [
+      14883,
+      71
+    ],
+    [
+      15353,
+      71
+    ],
+    [
+      15745,
+      71
+    ],
+    [
+      16149,
+      71
+    ],
+    [
+      16570,
+      71
+    ],
+    [
+      16967,
+      71
+    ],
+    [
+      17391,
+      71
+    ],
+    [
+      17807,
+      71
+    ],
+    [
+      18211,
+      71
+    ],
+    [
+      18634,
+      71
+    ],
+    [
+      19114,
+      71
+    ],
+    [
+      19546,
+      71
+    ],
+    [
+      19980,
+      71
+    ],
+    [
+      20387,
+      71
+    ],
+    [
+      20812,
+      71
+    ],
+    [
+      21209,
+      71
+    ],
+    [
+      21614,
+      71
+    ],
+    [
+      22027,
+      71
+    ],
+    [
+      22430,
+      71
+    ],
+    [
+      22838,
+      71
+    ],
+    [
+      23237,
+      71
+    ],
+    [
+      23725,
+      71
+    ],
+    [
+      24119,
+      71
+    ],
+    [
+      24520,
+      71
+    ],
+    [
+      24928,
+      71
+    ],
+    [
+      25336,
+      71
+    ],
+    [
+      25746,
+      71
+    ],
+    [
+      26247,
+      71
+    ],
+    [
+      26654,
+      71
+    ],
+    [
+      27057,
+      71
+    ],
+    [
+      27458,
+      71
+    ],
+    [
+      27865,
+      71
+    ],
+    [
+      28278,
+      71
+    ],
+    [
+      28691,
+      71
+    ],
+    [
+      29084,
+      71
+    ],
+    [
+      29489,
+      71
+    ],
+    [
+      29891,
+      71
+    ],
+    [
+      30356,
+      71
+    ],
+    [
+      30766,
+      70
+    ],
+    [
+      31183,
+      70
+    ],
+    [
+      31619,
+      70
+    ],
+    [
+      32008,
+      70
+    ],
+    [
+      32445,
+      70
+    ],
+    [
+      32870,
+      70
+    ],
+    [
+      33285,
+      70
+    ]
+  ]
+}

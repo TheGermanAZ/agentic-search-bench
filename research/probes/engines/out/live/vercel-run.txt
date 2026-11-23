@@ -1,0 +1,23 @@
+(node:44202) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+── call 1: mcp__corpus__execute (3 chars back)
+const n = await corpus.count({ from: "vince.kaminski@enron.com", after: "2001-04-01", before: "2001-05-01" });
+console.log(n);
+
+── call 2: mcp__corpus__execute (187 chars back)
+const msgs = await corpus.messages({ from: "vince.kaminski@enron.com", after: "2001-04-01", before: "2001-05-01", limit: 5000 });
+const froms = {};
+for (const m of msgs) froms[m.from] = (froms[m.from]||0)+1;
+console.log(msgs.length, JSON.stringify(froms));
+console.log(msgs.slice(0,3).map(m=>m.id+" "+m.date+" "+m.subject).join("\n"));
+
+Vince Kaminski sent 458 messages in April 2001 (UTC). All 458 have his exact address as the sender, so the substring filter didn't pick up any other addresses.
+
+ANSWER: 458
+SOURCES: E1554858ab4b5, E72a31f377f27, E710caacc5ce1
+
+ANSWER: 458
+SOURCES: E1554858ab4b5, E72a31f377f27, E710caacc5ce1
+
+codemode (vercel-run) on claude-haiku-5-5: 5.2s, 2 tool calls, 8,158 input tokens, $0.001

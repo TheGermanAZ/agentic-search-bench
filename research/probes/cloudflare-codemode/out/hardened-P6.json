@@ -1,0 +1,20 @@
+{
+  "config": {
+    "executorOptions": {
+      "loader": "env.LOADER",
+      "timeout": 10000,
+      "globalOutbound": null,
+      "modules": {},
+      "bindings": {}
+    }
+  },
+  "code": "while (true) {}",
+  "mode": "tool",
+  "path": "/run",
+  "wallMs": 120004,
+  "harnessError": "harness-timeout",
+  "killedForRss": false,
+  "serverAliveAfter": false,
+  "recoveryWaitMs": 70060,
+  "trivialExecutionAfter": null
+}

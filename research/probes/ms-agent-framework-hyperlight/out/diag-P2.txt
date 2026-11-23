@@ -1,0 +1,6 @@
+code:
+print("A" * 200000)
+"RETURNED"
+
+{"ok": false, "result": null, "error": "RuntimeError: Execution failed: guest execution failed: Guest aborted: 8 panicked at /Users/gha-macos-4/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hyperlight-guest-bin-0.18.0/src/guest_function/call.rs:126:18:\nFailed to send function call result: HyperlightGuestError { kind: GuestError, message: \"G2H response submission failed.\\nCaused by: Backpressure\" }: Guest aborted: 8 panicked at /Users/gha-macos-4/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hyperlight-guest-bin-0.18.0/src/guest_function/call.rs:126:18:\nFailed to send function call result: HyperlightGuestError { kind: GuestError, message: \"G2H response submission failed.\\nCaused by: Backpressure\" }", "ms": 339.4}
+stdout (0 chars): ''

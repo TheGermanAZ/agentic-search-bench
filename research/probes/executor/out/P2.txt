@@ -1,0 +1,30 @@
+{
+  "probe": "P2",
+  "code": "console.log(\"A\".repeat(200000)); \"RETURNED\"",
+  "wallMs": 8,
+  "hostToolCalls": 0,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "<200113 chars, see P2.summary.txt>"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": true,
+          "value": "RETURNED",
+          "logs": [
+            "<200000 chars of A>"
+          ],
+          "toolCalls": []
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

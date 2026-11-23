@@ -1,0 +1,240 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../utcp-codemode/adapter.mjs default R8a",
+  "exit": {
+    "code": null,
+    "signal": "SIGKILL"
+  },
+  "wallMs": 3262,
+  "peakTreeRssMb": 77,
+  "watchKill": {
+    "reason": "exit-hang-after-record(3s)",
+    "atMs": 3210,
+    "rssMb": 77
+  },
+  "record": {
+    "impl": "utcp-codemode",
+    "config": "default",
+    "test": "R8a",
+    "notes": "one CodeModeUtcpClient shared; callToolChain(code, undefined, undefined)",
+    "data": {
+      "startMs": 55,
+      "ms": 40,
+      "ok": true,
+      "result": {
+        "value": {
+          "result": "done",
+          "logs": [
+            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…[20971520 chars]…xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          ]
+        },
+        "stringChars": 20971524
+      },
+      "callsStarted": 0
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "hostMaxEventLoopLagMs": 36,
+    "hostEvents": [],
+    "totalMs": 96
+  },
+  "childStdoutOtherChars": 435,
+  "childStdoutHead": "[DirectCommunicationProtocol] Registered callable: lookup\n[DirectCommunicationProtocol] Registered callable: failing\n[DirectCommunicationProtocol] Registered callable: rich\n[DirectCommunicationProtocol] Registered callable: hostManual\n[DirectCommunicationProtocol] Registering manual from callable 'hostManual'\n[DirectCommunicationProtocol] Loaded 3 tools from callable 'hostManual'\nSuccessfully registered manual 'host' with 3 tools.\n",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      116,
+      49
+    ],
+    [
+      158,
+      57
+    ],
+    [
+      260,
+      77
+    ],
+    [
+      311,
+      77
+    ],
+    [
+      380,
+      77
+    ],
+    [
+      431,
+      77
+    ],
+    [
+      476,
+      77
+    ],
+    [
+      562,
+      77
+    ],
+    [
+      602,
+      77
+    ],
+    [
+      661,
+      77
+    ],
+    [
+      718,
+      77
+    ],
+    [
+      773,
+      77
+    ],
+    [
+      827,
+      77
+    ],
+    [
+      867,
+      77
+    ],
+    [
+      920,
+      77
+    ],
+    [
+      971,
+      77
+    ],
+    [
+      1024,
+      77
+    ],
+    [
+      1079,
+      77
+    ],
+    [
+      1133,
+      77
+    ],
+    [
+      1180,
+      77
+    ],
+    [
+      1249,
+      77
+    ],
+    [
+      1301,
+      77
+    ],
+    [
+      1340,
+      77
+    ],
+    [
+      1436,
+      77
+    ],
+    [
+      1553,
+      77
+    ],
+    [
+      1687,
+      77
+    ],
+    [
+      1759,
+      77
+    ],
+    [
+      1824,
+      77
+    ],
+    [
+      1881,
+      77
+    ],
+    [
+      1977,
+      77
+    ],
+    [
+      2041,
+      77
+    ],
+    [
+      2097,
+      77
+    ],
+    [
+      2163,
+      77
+    ],
+    [
+      2204,
+      77
+    ],
+    [
+      2261,
+      77
+    ],
+    [
+      2311,
+      77
+    ],
+    [
+      2393,
+      77
+    ],
+    [
+      2562,
+      77
+    ],
+    [
+      2604,
+      77
+    ],
+    [
+      2670,
+      77
+    ],
+    [
+      2842,
+      77
+    ],
+    [
+      2881,
+      77
+    ],
+    [
+      3000,
+      77
+    ],
+    [
+      3047,
+      77
+    ],
+    [
+      3103,
+      77
+    ],
+    [
+      3154,
+      77
+    ],
+    [
+      3210,
+      77
+    ],
+    [
+      3261,
+      0
+    ]
+  ]
+}

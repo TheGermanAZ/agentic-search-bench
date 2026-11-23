@@ -1,0 +1,6 @@
+r = await call_tool("read", {"id": "21"})
+return r["result"]["value"]
+--- output
+42
+---
+wall_ms=987 host_calls=1 peak_tree_rss_mb=195

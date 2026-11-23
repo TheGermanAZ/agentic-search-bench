@@ -1,0 +1,48 @@
+{
+  "impl": "pi-codemode",
+  "config": "default",
+  "probe": "P9",
+  "options": {},
+  "hostCalls": 5,
+  "results": [
+    {
+      "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.lookup({id:i}))); console.log(Date.now()-t)",
+      "ms": 415,
+      "hostCalls": 5,
+      "ok": true,
+      "output": [
+        {
+          "type": "text",
+          "text": "208",
+          "console": true
+        }
+      ],
+      "outputTextChars": 3,
+      "calls": [
+        {
+          "name": "lookup",
+          "status": "ok"
+        },
+        {
+          "name": "lookup",
+          "status": "ok"
+        },
+        {
+          "name": "lookup",
+          "status": "ok"
+        },
+        {
+          "name": "lookup",
+          "status": "ok"
+        },
+        {
+          "name": "lookup",
+          "status": "ok"
+        }
+      ]
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P9"], "exit_code": 0, "wall_ms": 847, "peak_tree_rss_mb": 104.2, "watch_kill": null}

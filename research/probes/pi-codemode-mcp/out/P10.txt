@@ -1,0 +1,29 @@
+{
+  "impl": "pi-codemode-mcp",
+  "config": "default",
+  "probe": "P10",
+  "options": {},
+  "firstExecIncludingServerSpawnMs": 7.24,
+  "hostCalls": 0,
+  "results": [
+    {
+      "code": "throw new Error(\"probe-boom\")",
+      "ms": 3,
+      "hostCalls": 0,
+      "isError": true,
+      "textChars": 874,
+      "text": "{\n  \"ok\": false,\n  \"error\": {\n    \"name\": \"Error\",\n    \"message\": \"probe-boom\",\n    \"stack\": \"Error: probe-boom\\n    at call-mcp-user-script.js:4:9\\n    at call-mcp-user-script.js:5:3\\n    at Script.runInContext (node:vm:149:12)\\n    at JavaScriptSandboxRuntime.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/sandbox-runtime.ts:84:18)\\n    at Object.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/index.ts:356:45)\\n    at async run (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:40:15)\\n    at async Object.P10 (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:64:20)\\n    at async file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:92:17\"\n  },\n  \"logs\": []\n}"
+    },
+    {
+      "code": "const x = 1;\nconst y = 2;\nthrow new Error(\"probe-boom\")",
+      "ms": 1,
+      "hostCalls": 0,
+      "isError": true,
+      "textChars": 874,
+      "text": "{\n  \"ok\": false,\n  \"error\": {\n    \"name\": \"Error\",\n    \"message\": \"probe-boom\",\n    \"stack\": \"Error: probe-boom\\n    at call-mcp-user-script.js:6:7\\n    at call-mcp-user-script.js:7:3\\n    at Script.runInContext (node:vm:149:12)\\n    at JavaScriptSandboxRuntime.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/sandbox-runtime.ts:84:18)\\n    at Object.execute (~/p/agentic-search-bench/research/impls/pi-codemode-mcp/repo/src/index.ts:356:45)\\n    at async run (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:40:15)\\n    at async Object.P10 (file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:64:64)\\n    at async file://~/p/agentic-search-bench/research/probes/pi-codemode-mcp/probe.mjs:92:17\"\n  },\n  \"logs\": []\n}"
+    }
+  ]
+}
+
+--- watch ---
+{"cmd": ["node", "probe.mjs", "default", "P10"], "exit_code": 0, "wall_ms": 1415, "peak_tree_rss_mb": 92.7, "watch_kill": null}

@@ -1,0 +1,39 @@
+{
+  "impl": "vercel-run",
+  "probe": "P12b",
+  "config": {
+    "limits": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxHostFunctionArgumentsBytes": 262144,
+      "maxHostFunctionOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8,
+      "maxContinuationBytes": 8388608
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "return String((function(){return this})().process);"
+  ],
+  "runs": [
+    {
+      "ok": true,
+      "status": "completed",
+      "value": "undefined",
+      "wallMs": 184.165833,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "value": "undefined",
+    "ms": 184,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 141.2
+}

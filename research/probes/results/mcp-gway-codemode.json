@@ -1,0 +1,200 @@
+{
+  "impl": "mcp-gway-codemode",
+  "name": "mcp-gway (deuriib/mcp-gateway) Code Mode, executeTool (Starlark)",
+  "source": "https://github.com/deuriib/mcp-gateway (PyPI mcp-gway); docs/code-mode.md",
+  "pinned": "mcp-gway 6.9.2 from PyPI, byte-identical (diff -r) to src/mcp_gway at tag v6.9.2 = 93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71 (2026-11-10). Engine starlark-pyo3 2026.1.3 (PyO3 binding of starlark-rust), mcp 2.3.0 in the host venv. Container run: ghcr.io/deuriib/mcp-gway:6.9.2@sha256:3471b4784f3c3a882d9ea32d277ce499623b87421578cd4609cca99cf5955b18 (linux/amd64 only, emulated on arm64; ships mcp 2.0.0).",
+  "language": "Python subset (Starlark, standard dialect: no while, no top-level for, no recursion)",
+  "engine": "starlark-rust through starlark-pyo3, evaluated in-process in the gateway's Python process on a ThreadPoolExecutor worker, fresh starlark Module per execution, no step, memory or output limits in the interpreter. A regex validator rejects source containing import/class, the words open/os/sys/subprocess/socket, or any \"__\" before evaluation.",
+  "how_run": "mcp-gway serve --transport http on 127.0.0.1 (ports 42160-42164) with HOME pointed at research/probes/mcp-gway-codemode/home; one local stdio upstream `Probe` (node lookup-server.mjs) registered with `mcp-gway add`. probe.py sends raw JSON-RPC tools/call executeTool {code} to POST /mcp (the endpoint an MCP client uses), saving the full JSON-RPC body because failures come back as JSON-RPC errors. Hardened run uses the project's published image with docker-compose.prod.yml's limits.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "display": "works (42, 1 call, sync)",
+      "detail": "r = Probe.lookup(id=21); print(r[\"value\"]); result = r[\"value\"] -> envelope {\"result\": 42, \"logs\": [\"42\"], \"calls\": [{server, tool, ms: 581, status: ok}], \"usage\": {...}}. 1 host call, 1,322 ms wall: every executeTool spawns and initializes a fresh upstream stdio process (connections are reused only within one script). Calls are synchronous, keyword or positional args.",
+      "evidence": "research/probes/mcp-gway-codemode/out/P1.txt"
+    },
+    "P2": {
+      "outcome": "limited",
+      "display": "log line dropped + marker; result 8,192",
+      "detail": "print(\"A\"*200000) then \"RETURNED\" (implicit-result tail) -> result \"RETURNED\" and logs [\"…[earlier log output dropped at 65536 bytes]\"], usage.truncated true: the single 200,000-char line is dropped whole (0 chars of it returned), with a marker. Same with result = \"RETURNED\". A 60,000-char print comes back whole. A returned 200,000-char string comes back as its first 8,192 chars + \"…[truncated 191808 bytes — narrow the query, page the results, or read a slice ...]\". Both print output (logs) and return value (result) reach the caller.",
+      "evidence": "research/probes/mcp-gway-codemode/out/P2.txt"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "display": "not-defined",
+      "detail": "urllib..., load(\"net\", \"http\") and fetch(...) each return JSON-RPC error -32603 \"Internal error\" with data {\"type\": \"StarlarkError\"} (the undefined-name message itself is hidden, see P10). Starlark has no network builtins; predeclared names are the standard library, struct, print and the server structs.",
+      "evidence": "research/probes/mcp-gway-codemode/out/P3.txt"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "display": "blocked (regex validator)",
+      "detail": "open(\"/etc/hosts\").read() is rejected before evaluation: -32602 \"Invalid params\", data {type: InvalidParamsError, reason: code_validation} (word `open` is on the deny list). read_file(...) -> StarlarkError (undefined). getattr(Probe, \"op\"+\"en\", ...) -> \"no such attribute\". No file builtin exists in the engine either.",
+      "evidence": "research/probes/mcp-gway-codemode/out/P4.txt"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "display": "blocked (regex validator)",
+      "detail": "os.environ.get(\"PROBE_SECRET\") rejected by the validator (word `os`), code_validation. environ.get(...) -> StarlarkError (undefined). Reachable values: dir(Probe) = [\"lookup\"], type(Probe.lookup) = python_callable_value with dir() = []. Gateway process had PROBE_SECRET=s3cr3t; never seen.",
+      "evidence": "research/probes/mcp-gway-codemode/out/P5.txt"
+    },
+    "P6": {
+      "outcome": "no-limit-within-120s",
+      "display": "no-limit-within-120s (gateway frozen)",
+      "detail": "Nested for over range(2147483647) inside def f(): no response at the 120 s harness cap despite the documented 30 s default. A concurrent executeTool P1 started at 5 s also got no response, and GET /health timed out afterwards. Cause: starlark-pyo3's eval holds the Python GIL for the whole evaluation, so neither the sandbox's future.result(timeout) nor the event loop can run (out/gil-check.txt: main thread got 0 ticks in 30 s next to a looping Starlark thread vs 159 ticks in 3 s next to a pure-Python busy thread). Even when the timeout does fire it cannot stop the worker (see X2). Gateway killed by the harness (own PID).",
+      "evidence": "research/probes/mcp-gway-codemode/out/P6.txt, research/probes/mcp-gway-codemode/out/gil-check.txt"
+    },
+    "P7": {
+      "outcome": "no-limit-within-120s",
+      "display": "no-limit (56 GB footprint, frozen)",
+      "detail": "a.append(\"x\"*1000000) in a for loop: no response at the 120 s cap; concurrent P1 also unanswered. The RSS-based 4 GB kill never fired because macOS compressed and swapped the heap (peak RSS 2,814 MB), while phys_footprint was 56 GB when the gateway was killed at about 160 s. No memory limit exists anywhere in the code path. The hardened runs used a phys_footprint sampler instead.",
+      "evidence": "research/probes/mcp-gway-codemode/out/P7.txt, research/probes/mcp-gway-codemode/out/P7-after.txt"
+    },
+    "P8": {
+      "outcome": "works",
+      "display": "fresh",
+      "detail": "Execution 1 kept = 7 returned \"set\"; execution 2 result = kept -> StarlarkError (undefined). New starlark Module per execution. Note: the captured print log list is shared across concurrent executions (X1), so scope is fresh but logs are not isolated.",
+      "evidence": "research/probes/mcp-gway-codemode/out/P8.txt"
+    },
+    "P9": {
+      "outcome": "works",
+      "display": "serial (1,221 ms)",
+      "detail": "No async in Starlark; [Probe.lookup(id=i) for i in 1..5] took 1,221 ms wall, 5 host calls; the call trace shows 388 ms for the first call (spawn + initialize + 200 ms) then about 200 ms each on the reused session. Parallelism exists only outside code: the host-side callManyTool meta-tool ran the same 5 calls in 412 ms (X3), but the docs say it is never callable from Starlark.",
+      "evidence": "research/probes/mcp-gway-codemode/out/P9.txt, research/probes/mcp-gway-codemode/out/X3.txt"
+    },
+    "P10": {
+      "outcome": "works",
+      "display": "type only (no message, no line)",
+      "detail": "No raise in Starlark; fail(\"probe-boom\") returns JSON-RPC error {\"code\": -32603, \"message\": \"Internal error\", \"data\": {\"type\": \"StarlarkError\"}}. Same text for fail on line 3 and for a KeyError: no message, no line, no logs and no call trace survive. _safe_error_data deliberately keeps only the exception type and an allow-listed [reason=...] token. A tool-side validation error (lookup(id=\"not-a-number\")) is the opposite: it comes back as an ordinary string result with status ok in the trace.",
+      "evidence": "research/probes/mcp-gway-codemode/out/P10.txt"
+    },
+    "P11": {
+      "outcome": "works",
+      "display": "works (median 8.6 ms over HTTP)",
+      "detail": "20 executions of result = 1 + 1 through POST /mcp: median 8.59 ms, p90 29.25 ms, first 45 ms. One-time setup (initialize + tools/list) 74 ms; gateway boot about 2 to 3 s. Any tool call adds an upstream spawn (about 400 ms for the node lookup server).",
+      "evidence": "research/probes/mcp-gway-codemode/out/P11.txt"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "display": "blocked",
+      "detail": "().__class__ and __import__(\"os\").system(...) rejected by the validator (\"__\" substring, code_validation). Validator bypasses built at runtime: getattr(Probe.lookup, \"_\"+\"_globals\"+\"_\"+\"_\", ...), getattr(print, \"__self__\"), getattr(Probe, \"__class__\") all returned the default; func_globals/f_globals/gi_frame/im_self/cr_frame -> None. Python callables are opaque python_callable_value objects with no attributes. Holding a reference to print and calling it works but only appends to logs.",
+      "evidence": "research/probes/mcp-gway-codemode/out/P12.txt"
+    }
+  },
+  "hardened": {
+    "config": "Project's published image ghcr.io/deuriib/mcp-gway:6.9.2 (digest above) run with exactly the docker-compose.prod.yml limits and flags: --memory 256m --cpus 0.5 --read-only --tmpfs /tmp:size=64m --tmpfs /home/gateway/.cache:size=16m --cap-drop ALL --security-opt no-new-privileges:true (https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/docker-compose.prod.yml#L27-L46), plus the documented knobs MCP_GWAY_EXEC_TIMEOUT=1 (docs/code-mode.md Execution Budgets) and MCP_GWAY_MAX_RESULT_BYTES=1024 (the documented minimum, docs/code-mode.md Result Budget; budget.py:19-21). Upstream lookup is research/probes/mcp-gway-codemode/container/lookup_server.py run inside the container (MCP_GWAY_ALLOW_LOCAL_COMMANDS=python). Script: research/probes/mcp-gway-codemode/start-container.sh. The same env knobs were also run on the host without the container (out/hardened-*.txt); results agree except P7, where the harness killed the host gateway at 4,144 MB phys_footprint after 7.2 s. No interpreter step or memory limit is exposed.",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "display": "not-defined",
+        "detail": "Same as default: StarlarkError for urllib, load and fetch.",
+        "evidence": "research/probes/mcp-gway-codemode/out/hardened-container-P3.txt, research/probes/mcp-gway-codemode/out/hardened-P3.txt"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "display": "blocked (regex validator)",
+        "detail": "Same as default: open rejected by code_validation; read_file undefined.",
+        "evidence": "research/probes/mcp-gway-codemode/out/hardened-container-P4.txt"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "display": "blocked (regex validator)",
+        "detail": "Same as default: os rejected by code_validation; environ undefined. PROBE_SECRET set in the container env.",
+        "evidence": "research/probes/mcp-gway-codemode/out/hardened-container-P5.txt"
+      },
+      "P6": {
+        "outcome": "no-limit-within-120s",
+        "display": "no-limit-within-120s (gateway frozen)",
+        "detail": "With MCP_GWAY_EXEC_TIMEOUT=1 nothing came back within 120 s; the concurrent P1 and /health also hung; container sat at about 51% CPU (the 0.5 CPU cap). Same on the host with the env knob only. The 1 s budget cannot fire while starlark-pyo3 holds the GIL.",
+        "evidence": "research/probes/mcp-gway-codemode/out/hardened-container-P6.txt, research/probes/mcp-gway-codemode/out/hardened-P6.txt"
+      },
+      "P7": {
+        "outcome": "error",
+        "display": "host crash (OOM-kill at 256 MiB)",
+        "detail": "After 4.8 s the kernel OOM-killed the whole gateway container (exit 137, OOMKilled true); the probe and a concurrent P1 both got \"Remote end closed connection\". The limit is the container's, so it takes down every session; prod's restart: unless-stopped would then restart it. Host run with env knobs only: harness kill at 4,144 MB phys_footprint after 7.2 s.",
+        "evidence": "research/probes/mcp-gway-codemode/out/hardened-container-P7.txt, research/probes/mcp-gway-codemode/out/hardened-P7.txt"
+      },
+      "P9": {
+        "outcome": "limited",
+        "display": "timeout after 5 calls ran (5.0 s)",
+        "detail": "SandboxTimeoutError (type only) after 4,998 ms with 5 host calls made: the 1 s budget fired but the response waited for the script to finish (ThreadPoolExecutor exit). Even P1 times out here, because spawning the upstream at 0.5 CPU takes over 1 s (hardened-container-P1.txt). On the host with the env knob only: same error after 1,392 ms, 5 host calls. A caller-supplied timeout of 600 overrides MCP_GWAY_EXEC_TIMEOUT=1 and returns [2,4,6,8,10] (hardened-container-X2.txt, hardened-X2.txt).",
+        "evidence": "research/probes/mcp-gway-codemode/out/hardened-container-P9.txt, research/probes/mcp-gway-codemode/out/hardened-container-X2.txt, research/probes/mcp-gway-codemode/out/hardened-P9.txt"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "display": "blocked",
+        "detail": "Same as default.",
+        "evidence": "research/probes/mcp-gway-codemode/out/hardened-container-P12.txt"
+      }
+    }
+  },
+  "defaults": {
+    "time": "30 s wall per executeTool (DEFAULT_EXECUTE_TIMEOUT, code_mode.py:36), overridable by MCP_GWAY_EXEC_TIMEOUT and by a per-call `timeout` argument that the caller (the model) supplies with no ceiling (code_mode.py:83-87). Enforced only as future.result(timeout) on a worker thread (sandbox.py:285-297): it never stops CPU-bound Starlark (GIL held) and reports only after the script ends. Per upstream tool call: server config timeout 5,000 ms (server_factory.py:211-215).",
+    "memory": "None. Starlark runs in the gateway process with no heap or step budget. docker-compose.yml sets the whole container to 512m and docker-compose.prod.yml to 256m, which OOM-kills the gateway, not the execution.",
+    "output": "Envelope capped at MCP_GWAY_MAX_RESULT_BYTES (default 262,144, min 1,024, max 8,388,608); logs capped at 200 lines and 65,536 bytes, dropping whole lines from the front with a marker; result strings cut to 8,192 chars (2,048 on a second pass) with \"…[truncated N bytes — ...]\" (budget.py:19-31, 124-141, 176-248).",
+    "tool_calls": "No per-execution call-count limit. callManyTool (host-side only): at most 50 items, 8 concurrent, 120 s batch default (code_mode.py:37, 185, 615)."
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Each registered server with is_code_mode_client becomes a Starlark struct named after the server (and its PascalCase alias) whose fields are Python callables, one per tools_to_execute-allowed tool, built by introspecting a ServerStruct object and emitting `Name = struct(tool = Name_tool)` preamble lines. The model reads .pyi stubs generated from each tool's JSON Schema (flat params, type mapping, first line of the description).",
+      "evidence": "https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/sandbox.py#L233-L251, https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/server_factory.py#L370-L437, https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/registry.py#L361-L392"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On demand. tools/list returns only five meta-tools (listToolFiles, readToolFile, getToolDocs, executeTool, callManyTool; out/tools-list.json); stubs are read per server or per tool (binding_level server|tool), so the prompt does not grow with the catalog.",
+      "evidence": "https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/gateway.py#L207-L310, https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/code_mode.py#L390-L480"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "Synchronous Python callable inside the Starlark eval: tool_fn schedules _call_tool_async on the script's private event loop with run_coroutine_threadsafe and blocks on future.result. The call re-checks the tools_to_execute allow-list, opens (or reuses within this script) an MCP session to the upstream, and returns json.loads of the joined text content. Upstream isError is ignored, so a failed tool returns its error text as data. Serial by construction.",
+      "evidence": "https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/server_factory.py#L408-L431, #L185-L299, #L525-L541"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "In-process starlark-rust (standard dialect, no I/O builtins, no load loader) plus a regex pre-filter on source text (import/class lines, the words open/os/sys/subprocess/socket outside string literals, any \"__\"). The executeTool description claims L2 \"memory isolation\" and L3 \"bounded execution timeout\"; the code has neither: no heap limit, and the timeout is a future.result on a thread whose `with ThreadPoolExecutor` exit waits for the runaway eval, which also holds the GIL and freezes the gateway.",
+      "evidence": "https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/sandbox.py#L185-L299, https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/code_mode.py#L90-L145, https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/gateway.py#L255; research/probes/mcp-gway-codemode/out/gil-check.txt"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "JSON envelope {result, logs, calls, usage}: `result` global (or an implicit last-expression rewrite), print() captured into logs, the per-call trace, and usage.truncated. Size budget trims logs, trace, then result, always with a marker and valid JSON.",
+      "evidence": "https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/sandbox.py#L155-L179, https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/budget.py#L124-L248"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh sl.Module per execution, but one StarlarkSandbox object per gateway whose _logs list is reset at the start of every execution and read at the end. Concurrent executions share it: in X1, request B's response contained \"SECRET-FROM-A-2\" printed by request A, and A lost its first line. The server_factory comment says ContextVars keep concurrent scripts from sharing caches and traces; logs were left out.",
+      "evidence": "https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/sandbox.py#L196-L202 and #L224, https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/code_mode.py#L269 and #L526, https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/server_factory.py#L25-L27; research/probes/mcp-gway-codemode/out/X1.txt"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Any exception from executeTool becomes a JSON-RPC error whose data carries only the exception type and an allow-listed [reason=...] token, to avoid leaking secrets in messages. A model never sees the Starlark message, line, logs or call trace of a failed script.",
+      "evidence": "https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/gateway.py#L186-L202 and #L675-L708"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Execution timeout resolves per-call `timeout` > MCP_GWAY_EXEC_TIMEOUT > 30 s; the per-call value comes from the tool arguments, so the caller can raise its own budget (600 s accepted under MCP_GWAY_EXEC_TIMEOUT=1). No step, memory or tool-call limits.",
+      "evidence": "https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/code_mode.py#L35-L87 and #L482-L493; research/probes/mcp-gway-codemode/out/hardened-X2.txt"
+    },
+    {
+      "topic": "Credentials and approvals",
+      "finding": "Upstream secrets stay on the host side: per-server environment values may be {env:NAME} placeholders resolved only into the spawned child, OAuth tokens live under ~/.config/mcp-gway/tokens, and remote URLs pass an SSRF guard (https only, pinned DNS). Local commands must be on an allow-list (default npx, bunx, uvx, pipx). tools_to_auto_execute exists for an agent loop, but executeTool calls are not gated by approvals.",
+      "evidence": "https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/core/client.py#L53-L80, https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/src/mcp_gway/domain/policy.py#L29-L46"
+    },
+    {
+      "topic": "Maintenance",
+      "finding": "MIT, single author, 0 GitHub stars, last push 2026-11-10 (v6.9.2). Heavy release cadence (tags through v6.9.2); container image is linux/amd64 only.",
+      "evidence": "https://github.com/deuriib/mcp-gateway/blob/93d8f50ea4a5d16a8a7cfc5b7ad9056bd81e4b71/pyproject.toml#L1-L10, GitHub API repos/deuriib/mcp-gateway"
+    }
+  ],
+  "surprises": [
+    "docs/code-mode.md says \"Every Code Mode execution is time-bounded\" and the executeTool description promises \"L3 bounded execution timeout\", but a CPU-bound script is never stopped: starlark-pyo3 holds the GIL, so the 30 s (or 1 s) timeout never fires and the whole gateway, /health included, freezes (P6, gil-check.txt).",
+    "When the timeout does fire (tool-bound code releases the GIL), the error arrives only after the script finishes and all its tool calls have run (X2: 0.5 s budget, 5 calls, 1.85 s).",
+    "The executeTool description claims L2 \"memory isolation\"; there is no memory limit. On the host it grew to 56 GB phys_footprint; under the prod compose limit the kernel OOM-kills the entire gateway (P7).",
+    "AGENTS.md:109 says offloading every tools/call to asyncio.to_thread keeps /health and /metrics responsive; for CPU-bound Starlark it does not, because the GIL is never released.",
+    "Failed scripts return only {\"type\": \"StarlarkError\"}: no message or line. The docs tell the model to use the `calls` trace \"instead of guessing why a script failed\", but a failed script returns no trace at all.",
+    "Concurrent executions leak print output into each other's responses through the shared StarlarkSandbox._logs (X1), although the tool description says each call runs in a \"FRESH ISOLATED SCOPE\".",
+    "The per-call `timeout` argument from the model overrides the operator's MCP_GWAY_EXEC_TIMEOUT with no ceiling, so the operator cannot cap execution time.",
+    "File, env and escape blocking (P4, P5, P12) is a regex on the source text, which also rejects harmless code such as a comment containing the word \"os\"; the real boundary is starlark-rust having no I/O builtins.",
+    "An upstream tool's isError result is returned as a normal value with status \"ok\" in the trace (P10 code 4).",
+    "Each executeTool spawns a fresh upstream stdio process. With the documented hardened settings in the prod container (0.5 CPU, 1 s timeout) even a single tool call cannot finish."
+  ]
+}

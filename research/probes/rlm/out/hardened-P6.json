@@ -1,0 +1,10 @@
+{
+  "probe": "P6",
+  "config": {
+    "kernel_mode": "subprocess",
+    "cell_timeout": 30
+  },
+  "peak_tree_rss_mib": 104,
+  "wall_s": 31.58,
+  "child": "{\"r\": {\"ok\": true, \"stdout\": \"\", \"stderr\": \"\\nTimeoutError: cell execution exceeded 30s and was interrupted\", \"s\": 30.03}, \"host_calls\": 0, \"extra\": \"\\nsame env after the probe: {'ok': True, 'stdout': '2\\\\n', 'stderr': '', 's': 0.14}\"}"
+}

@@ -1,0 +1,345 @@
+{
+  "cmd": "node ~/p/agentic-search-bench/research/probes/verify/_js/rcore.mjs ~/p/agentic-search-bench/research/probes/verify/_js/../openclaw-codemode-quickjs-wasi/adapter.mjs default R9b",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 2415,
+  "peakTreeRssMb": 442,
+  "peakTreeFootprintMb": 417,
+  "watchKill": null,
+  "record": {
+    "impl": "openclaw-codemode-quickjs-wasi",
+    "config": "default",
+    "test": "R9b",
+    "notes": "tools.codeMode={\"enabled\":true,\"executor\":\"quickjs\"}; one resource host + GatewayScheduler shared; new session (exec/wait tools) per execution; 'waiting' followed with wait up to 64 times",
+    "data": {
+      "aggressors": [
+        {
+          "label": "aggressor0",
+          "startMs": 1479,
+          "ms": 459,
+          "ok": true,
+          "result": {
+            "value": {
+              "status": "failed",
+              "code": "internal_error",
+              "waits": 0,
+              "error": "InternalError: out of memory\n    at <anonymous> (openclaw-code-mode:user.js:1:39)\n",
+              "output": [],
+              "textChars": 398,
+              "text": "{\"status\":\"failed\",\"code\":\"internal_error\",\"failurePhase\":\"guest\",\"bridgeDispatchStarted\":false,\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"6bd91bdbb3f8b004f61caf2a\",\"searchCount\":0,\"describeCount\":0,\"callCount\":0,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"error\":\"InternalError: out of memory\\n    at <anonymous> (openclaw-code-mode:user.js:1:39)\\n\"}"
+            },
+            "stringChars": 500
+          },
+          "callsStarted": 1
+        }
+      ],
+      "b": {
+        "label": "B(+150ms)",
+        "startMs": 1633,
+        "ms": 326,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"1ed8d6e45cbf1071b4ac5951\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      },
+      "c": {
+        "label": "C(+1s)",
+        "startMs": 1960,
+        "ms": 206,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"2e209a807725c5973066a017\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      },
+      "after": {
+        "label": "after",
+        "startMs": 2166,
+        "ms": 205,
+        "ok": true,
+        "result": {
+          "value": {
+            "status": "completed",
+            "waits": 0,
+            "value": 42,
+            "output": [],
+            "textChars": 240,
+            "text": "{\"status\":\"completed\",\"telemetry\":{\"catalogSize\":3,\"sources\":{\"openclaw\":3,\"mcp\":0,\"client\":0},\"counterScope\":\"6dfb7b3c5c414b0ee80f7fc8\",\"searchCount\":0,\"describeCount\":0,\"callCount\":1,\"visibleTools\":[\"exec\",\"wait\"]},\"output\":[],\"value\":42}"
+          },
+          "stringChars": 249
+        },
+        "callsStarted": 1
+      }
+    },
+    "hostAfter": {
+      "objectProtoPolluted": null,
+      "arrayProtoLeak": null,
+      "jsonStringifyIntact": true
+    },
+    "adapterStats": {
+      "waitsPerExec": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "hostMaxEventLoopLagMs": 1598,
+    "hostEvents": [],
+    "totalMs": 2371
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[agents/code-mode] Code Mode execution failed sessionId=verify-1 sessionKey=agent:main:verify-1 runId=verify-run-1 toolCallId=verify-1 codeModeRunId=cm_44462be4-3b72-40ea-91e0-69dbb20a6bb4 workerId=code-mode-quickjs:1 failurePhase=guest bridgeDispatchStarted=false errorCategory=Error\n",
+  "rssSamplesMsMb": [
+    [
+      75,
+      55,
+      18
+    ],
+    [
+      127,
+      72,
+      18
+    ],
+    [
+      178,
+      86,
+      18
+    ],
+    [
+      230,
+      97,
+      53
+    ],
+    [
+      303,
+      104,
+      53
+    ],
+    [
+      334,
+      112,
+      75
+    ],
+    [
+      385,
+      123,
+      75
+    ],
+    [
+      437,
+      124,
+      75
+    ],
+    [
+      487,
+      130,
+      93
+    ],
+    [
+      541,
+      138,
+      93
+    ],
+    [
+      592,
+      146,
+      113
+    ],
+    [
+      643,
+      147,
+      113
+    ],
+    [
+      697,
+      147,
+      113
+    ],
+    [
+      747,
+      148,
+      116
+    ],
+    [
+      798,
+      152,
+      116
+    ],
+    [
+      850,
+      155,
+      123
+    ],
+    [
+      900,
+      157,
+      123
+    ],
+    [
+      952,
+      161,
+      123
+    ],
+    [
+      1003,
+      172,
+      134
+    ],
+    [
+      1055,
+      174,
+      134
+    ],
+    [
+      1104,
+      177,
+      146
+    ],
+    [
+      1155,
+      193,
+      146
+    ],
+    [
+      1209,
+      194,
+      146
+    ],
+    [
+      1258,
+      204,
+      172
+    ],
+    [
+      1308,
+      207,
+      172
+    ],
+    [
+      1360,
+      211,
+      186
+    ],
+    [
+      1412,
+      222,
+      186
+    ],
+    [
+      1465,
+      230,
+      186
+    ],
+    [
+      1517,
+      237,
+      206
+    ],
+    [
+      1567,
+      250,
+      206
+    ],
+    [
+      1618,
+      264,
+      235
+    ],
+    [
+      1668,
+      271,
+      235
+    ],
+    [
+      1721,
+      311,
+      235
+    ],
+    [
+      1772,
+      345,
+      297
+    ],
+    [
+      1823,
+      381,
+      297
+    ],
+    [
+      1877,
+      402,
+      374
+    ],
+    [
+      1926,
+      420,
+      374
+    ],
+    [
+      1979,
+      439,
+      374
+    ],
+    [
+      2029,
+      441,
+      415
+    ],
+    [
+      2085,
+      441,
+      415
+    ],
+    [
+      2133,
+      441,
+      416
+    ],
+    [
+      2185,
+      441,
+      416
+    ],
+    [
+      2245,
+      442,
+      416
+    ],
+    [
+      2289,
+      442,
+      417
+    ],
+    [
+      2343,
+      442,
+      417
+    ],
+    [
+      2393,
+      442,
+      417
+    ]
+  ]
+}

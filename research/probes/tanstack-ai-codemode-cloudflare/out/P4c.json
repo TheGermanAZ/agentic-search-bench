@@ -1,0 +1,33 @@
+{
+  "impl": "tanstack-ai-codemode-cloudflare",
+  "probe": "P4c",
+  "config": "defaults",
+  "runtime": "node v24.22.1",
+  "setupMs": 2.2822500000000048,
+  "source": [
+    "return await Deno.readTextFile(\"/etc/hosts\");"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Deno is not defined",
+          "name": "ReferenceError",
+          "stack": "ReferenceError: Deno is not defined\n    at main.js:47:11\n    at main.js:48:11\n    at Object.fetch (main.js:78:7)"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 61.143125000000026,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "ReferenceError: Deno is not defined",
+    "ms": 61,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 89.6
+}

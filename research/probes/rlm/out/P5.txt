@@ -1,0 +1,7 @@
+probe: P5
+code (python, run through LocalREPL.execute_code):
+import os
+print(os.environ.get("PROBE_SECRET"))
+host_calls_so_far: 0
+stdout: 's3cr3t\n'
+stderr: ''

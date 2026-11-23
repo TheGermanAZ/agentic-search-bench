@@ -1,0 +1,9 @@
+{
+  "probe": "P1",
+  "config": "default",
+  "outcome": "works",
+  "detail": "printed \"42\", 1 host-side calls; error=null",
+  "display": "works (42, 1 host call)",
+  "peak_child_rss_mb": 87,
+  "wall_s": 0.6
+}

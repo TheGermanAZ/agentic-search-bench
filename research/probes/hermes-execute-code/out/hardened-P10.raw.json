@@ -1,0 +1,28 @@
+{
+  "probe": "P10",
+  "config": "hardened",
+  "codes": [
+    "x = 1\nraise ValueError(\"probe-boom\")"
+  ],
+  "runs": [
+    {
+      "ok": false,
+      "stdout": "\n--- stderr ---\nTraceback (most recent call last):\n  File \"/tmp/hermes_rkernel_5748aeeb4338/kernel_runner.py\", line 68, in run_cell\n    exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<cell>\", line 2, in <module>\nValueError: probe-boom\n",
+      "model_sees": "{\"status\": \"error\", \"output\": \"\\n--- stderr ---\\nTraceback (most recent call last):\\n  File \\\"/tmp/hermes_rkernel_5748aeeb4338/kernel_runner.py\\\", line 68, in run_cell\\n    exec(compile(request[\\\"code\\\"], \\\"<cell>\\\", \\\"exec\\\"), GLOBALS)\\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \\\"<cell>\\\", line 2, in <module>\\nValueError: probe-boom\\n\", \"tool_calls_made\": 0, \"duration_seconds\": 1.05, \"kernel\": {\"reused\": false, \"remote\": true, \"execution_count\": 1}, \"stdout_truncated\": false, \"stdout_bytes_captured\": 316, \"stdout_bytes_total\": 316, \"stdout_bytes_omitted\": 0, \"error\": \"ValueError: probe-boom\"}",
+      "status": "error",
+      "tool_calls_made": 0,
+      "model_sees_len": 628,
+      "error": "ValueError: probe-boom\n\n--- stderr ---\nTraceback (most recent call last):\n  File \"/tmp/hermes_rkernel_5748aeeb4338/kernel_runner.py\", line 68, in run_cell\n    exec(compile(request[\"code\"], \"<cell>\", \"exec\"), GLOBALS)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<cell>\", line 2, in <module>\nValueError: probe-boom\n",
+      "ms": 1654.2,
+      "started": 1795383135.732385
+    }
+  ],
+  "setup_ms": 0.0,
+  "done": true,
+  "killed": null,
+  "exit_code": 0,
+  "wall_s": 2.24,
+  "peak_tree_rss_gb": 0.213,
+  "calls": [],
+  "child_log_tail": ""
+}

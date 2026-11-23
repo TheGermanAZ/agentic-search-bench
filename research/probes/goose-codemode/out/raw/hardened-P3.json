@@ -1,0 +1,26 @@
+{
+ "probe": "P3",
+ "pid": 32507,
+ "env_GOOSE_DEFAULT_EXTENSION_TIMEOUT": "10",
+ "wall_ms": 56.7,
+ "peak_rss_mb": 3.2,
+ "exit": 0,
+ "killed": null,
+ "stderr": "",
+ "records": [
+  {
+   "exec": "config",
+   "probe": "P3",
+   "timeout_seconds": 10
+  },
+  {
+   "code": "async function run() {\nawait fetch(\"https://example.com\")\n}",
+   "elapsed_ms": 0.977459,
+   "exec": 0,
+   "host_calls": 0,
+   "is_error": true,
+   "probe": "P3",
+   "text": "Error: ReferenceError: fetch is not defined (code_mode.js:4:5)\n    at run (code_mode.js:1:22)\n    at <main> (code_mode.js:4:5)"
+  }
+ ]
+}

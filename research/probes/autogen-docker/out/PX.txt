@@ -1,0 +1,60 @@
+--- P9-loop: serial loop form
+code:
+from functions import lookup
+import time
+t = time.time()
+rs = [lookup(id=i) for i in [1, 2, 3, 4, 5]]
+print(int((time.time() - t) * 1000))
+{"ok": true, "result": null, "error": null, "ms": 1083.8}
+stdout (65 chars): 'LOOKUP_CALL\nLOOKUP_CALL\nLOOKUP_CALL\nLOOKUP_CALL\nLOOKUP_CALL\n1021\n'
+
+--- P4-canary: a host file inside the repo (not mounted into Docker)
+code:
+print(open("~/p/agentic-search-bench/research/probes/autogen-docker/canary.txt").read())
+{"ok": false, "result": null, "error": "exit_code=1: Traceback (most recent call last):\n  File \"/workspace/tmp_code_6f595c4cc07b1d0601cc89a340c21bb35d9739f0a77e637398aad1b9dc3e0833.python\", line 1, in <module>\n    print(open(\"~/p/agentic-search-bench/research/probes/autogen-docker/canary.txt\").read())\n          ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '~/p/agentic-search-bench/research/probes/autogen-docker/canary.txt'\n", "ms": 154.1}
+stdout (511 chars): 'Traceback (most recent call last):\n  File "/workspace/tmp_code_6f595c4cc07b1d0601cc89a340c21bb35d9739f0a77e637398aad1b9dc3e0833.python", line 1, in <module>\n    print(open("~/p/agentic-search-bench/research/probes/autogen-docker/canary.txt").read())\n          ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: \'~/p/agentic-search-bench/research/probes/autogen-docker/canary.txt\'\n'
+
+--- P4-workdir: what the guest sees in its working directory
+code:
+import os
+print(os.getcwd(), sorted(os.listdir(".")))
+{"ok": true, "result": null, "error": null, "ms": 70.6}
+stdout (196 chars): "/workspace ['functions.py', 'tmp_code_1fb7db2832f7f3f7da06d3220839984114ac8a1e0933a7560e72bad4b2d61d52.python', 'tmp_code_5ea34411091ad072d74f3993d9189acf24b376b20dee6b125e3bbc20e604f0b7.python']\n"
+
+--- P8-files: files written by one execution, read by the next
+code:
+open("kept.txt", "w").write("7")
+print("wrote")
+{"ok": true, "result": null, "error": null, "ms": 167.3}
+stdout (6 chars): 'wrote\n'
+
+--- P8-files: files written by one execution, read by the next
+code:
+import os
+print(open("kept.txt").read() if os.path.exists("kept.txt") else "gone")
+{"ok": true, "result": null, "error": null, "ms": 67.9}
+stdout (2 chars): '7\n'
+
+--- P6-orphan: does the timeout kill children of the guest process
+code:
+import subprocess
+subprocess.Popen(["sleep", "97"])
+while True:
+    pass
+{"ok": false, "result": null, "error": "exit_code=124: \n Timeout", "ms": 60071.9}
+stdout (9 chars): '\n Timeout'
+
+--- P12-whoami: guest identity
+code:
+import os, platform
+print(os.getuid(), platform.platform())
+{"ok": true, "result": null, "error": null, "ms": 135.6}
+stdout (67 chars): '0 Linux-7.2.12-orbstack-00394-gbecdd6130068-aarch64-with-glibc2.41\n'
+
+--- shell-block: subprocess from guest
+code:
+import subprocess
+print(subprocess.run(['sh', '-c', 'echo shell-ok; uname -s'], capture_output=True, text=True).stdout)
+{"ok": true, "result": null, "error": null, "ms": 113.8}
+stdout (16 chars): 'shell-ok\nLinux\n\n'
+

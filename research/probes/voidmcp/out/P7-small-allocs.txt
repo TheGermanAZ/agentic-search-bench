@@ -1,0 +1,25 @@
+{
+  "flags": [],
+  "runs": [
+    {
+      "code": "const s = \"x\".repeat(20e6); return s.length",
+      "ms": 14,
+      "resp": "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"error\\\":\\\"InternalError: out of memory\\\",\\\"duration_ms\\\":1}\"}],\"isError\":true}}"
+    },
+    {
+      "code": "const a = []; for (let i = 0; i < 40; i++) a.push(\"x\".repeat(1e6)); return a.length",
+      "ms": 1104,
+      "resp": "{\"jsonrpc\":\"2.0\",\"id\":3,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"result\\\":40,\\\"duration_ms\\\":1091}\"}]}}"
+    },
+    {
+      "code": "const a = []; for (let i = 0; i < 200; i++) a.push(\"x\".repeat(1e6)); return a.length",
+      "ms": 5526,
+      "resp": "{\"jsonrpc\":\"2.0\",\"id\":4,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"result\\\":200,\\\"duration_ms\\\":5516}\"}]}}"
+    },
+    {
+      "code": "const a = []; for (let i = 0; i < 200; i++) a.push(new Array(1e5).fill(i)); return a.length",
+      "ms": 3498,
+      "resp": "{\"jsonrpc\":\"2.0\",\"id\":5,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"result\\\":200,\\\"duration_ms\\\":3483}\"}]}}"
+    }
+  ]
+}

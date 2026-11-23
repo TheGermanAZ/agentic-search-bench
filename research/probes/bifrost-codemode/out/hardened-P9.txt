@@ -1,0 +1,14 @@
+--- code 1 ---
+rs = [probe.lookup(id=i) for i in [1, 2, 3, 4, 5]]
+result = [r["value"] for r in rs]
+--- result 1 ---
+{"ms":1037,"hostCalls":5,"ok":true,"isError":false}
+text (76 chars):
+Execution completed successfully.
+Return value: [
+  2,
+  4,
+  6,
+  8,
+  10
+]

@@ -1,0 +1,56 @@
+{
+  "probe": "P9",
+  "code": "const t = Date.now(); await Promise.all([1,2,3,4,5].map(i => tools.probe.lookup({id:i}))); console.log(Date.now()-t)",
+  "wallMs": 231,
+  "hostToolCalls": 5,
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 12,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"status\":\"completed\",\"execution\":{\"ok\":true,\"value\":null,\"logs\":[\"223\"],\"toolCalls\":[{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":218},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":217},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":221},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":221},{\"name\":\"probe.lookup\",\"outcome\":\"success\",\"durationMs\":221}]},\"unavailableApps\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "status": "completed",
+        "execution": {
+          "ok": true,
+          "value": null,
+          "logs": [
+            "223"
+          ],
+          "toolCalls": [
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 218
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 217
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 221
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 221
+            },
+            {
+              "name": "probe.lookup",
+              "outcome": "success",
+              "durationMs": 221
+            }
+          ]
+        },
+        "unavailableApps": []
+      }
+    }
+  }
+}

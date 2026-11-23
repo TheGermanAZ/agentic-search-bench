@@ -1,0 +1,133 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/pydantic-ai-harness-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../pydantic-ai-harness-codemode/adapter.py hardened R4",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 1434,
+  "peakTreeRssMb": 110,
+  "watchKill": null,
+  "record": {
+    "config": "hardened",
+    "test": "R4",
+    "impl": "pydantic-ai-harness-codemode",
+    "notes": "one Agent(capabilities=[CodeMode({'resource_limits': {'max_duration_seconds': 1.0, 'max_memory': 10000000, 'max_suspensions': 1000}, 'max_tool_calls': 100})]); agent.run() per execution",
+    "data": {
+      "label": "",
+      "startMs": 1092,
+      "ms": 215,
+      "ok": true,
+      "result": [
+        "None"
+      ],
+      "callsStarted": 0
+    },
+    "hostMaxEventLoopLagMs": 28,
+    "totalMs": 1307
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "",
+  "rssSamplesMsMb": [
+    [
+      95,
+      23
+    ],
+    [
+      159,
+      32
+    ],
+    [
+      205,
+      36
+    ],
+    [
+      261,
+      41
+    ],
+    [
+      327,
+      45
+    ],
+    [
+      375,
+      45
+    ],
+    [
+      419,
+      49
+    ],
+    [
+      469,
+      51
+    ],
+    [
+      526,
+      54
+    ],
+    [
+      579,
+      54
+    ],
+    [
+      624,
+      54
+    ],
+    [
+      676,
+      57
+    ],
+    [
+      727,
+      59
+    ],
+    [
+      777,
+      60
+    ],
+    [
+      842,
+      63
+    ],
+    [
+      887,
+      65
+    ],
+    [
+      933,
+      66
+    ],
+    [
+      985,
+      71
+    ],
+    [
+      1066,
+      72
+    ],
+    [
+      1141,
+      72
+    ],
+    [
+      1203,
+      74
+    ],
+    [
+      1291,
+      78
+    ],
+    [
+      1332,
+      110
+    ],
+    [
+      1387,
+      110
+    ],
+    [
+      1433,
+      0
+    ]
+  ]
+}

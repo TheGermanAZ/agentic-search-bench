@@ -1,0 +1,38 @@
+{
+  "impl": "tanstack-ai-codemode-node",
+  "probe": "P12b",
+  "config": {
+    "createCodeModeTool": {
+      "timeout": 5000,
+      "memoryLimit": 32
+    }
+  },
+  "runtime": "node v24.22.1",
+  "setupMs": 96.695625,
+  "source": [
+    "return String((function(){return this})().process);"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": true,
+        "result": "undefined",
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 46.09004199999998,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": {
+      "result": "undefined",
+      "logCount": 0,
+      "logChars": 0
+    },
+    "ms": 46,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 82.3
+}

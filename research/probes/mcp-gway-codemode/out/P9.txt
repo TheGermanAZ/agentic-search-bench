@@ -1,0 +1,7 @@
+--- code 1 ---
+rs = [Probe.lookup(id=i) for i in [1, 2, 3, 4, 5]]
+result = [r["value"] for r in rs]
+--- result 1 ---
+{"ok": true, "isError": false, "ms": 1221.04, "hostCalls": 5, "gatewayAlive": true, "rssAfterMB": 74}
+text (650 chars):
+{"result": [2, 4, 6, 8, 10], "logs": [], "calls": [{"i": 1, "server": "Probe", "tool": "lookup", "ms": 388, "status": "ok", "bytes": 21, "reused": false}, {"i": 2, "server": "Probe", "tool": "lookup", "ms": 203, "status": "ok", "bytes": 21, "reused": true}, {"i": 3, "server": "Probe", "tool": "lookup", "ms": 203, "status": "ok", "bytes": 21, "reused": true}, {"i": 4, "server": "Probe", "tool": "lookup", "ms": 202, "status": "ok", "bytes": 21, "reused": true}, {"i": 5, "server": "Probe", "tool": "lookup", "ms": 202, "status": "ok", "bytes": 22, "reused": true}], "usage": {"call_count": 5, "ms": 1216, "limit_bytes": 262144, "truncated": false}}

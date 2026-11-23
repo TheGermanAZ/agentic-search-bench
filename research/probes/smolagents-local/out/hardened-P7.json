@@ -1,0 +1,8 @@
+{
+  "probe": "P7",
+  "outcome": "no-limit-within-120s",
+  "detail": "no memory limit below 4 GB: harness stopped the process at 4.02 GB peak RSS after 0.3 s; no error from the executor",
+  "killed_by": "harness RSS watchdog",
+  "peak_rss_gb": 4.02,
+  "config": "LocalPythonExecutor(additional_authorized_imports=[], timeout_seconds=5)"
+}

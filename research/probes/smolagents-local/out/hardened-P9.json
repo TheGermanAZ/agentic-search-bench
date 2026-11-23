@@ -1,0 +1,6 @@
+{
+  "probe": "P9",
+  "outcome": "works",
+  "detail": "serial: 1013 ms for 5 lookups (200 ms each), 5 host calls, sum 30",
+  "config": "LocalPythonExecutor(additional_authorized_imports=[], timeout_seconds=5)"
+}

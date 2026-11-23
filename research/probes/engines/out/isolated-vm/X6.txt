@@ -1,0 +1,5 @@
+const t = Date.now(); const rs = await Promise.all(Array.from({ length: 100 }, (_, i) => corpus.read(i))); console.log(rs.length, Date.now() - t, 'ms')
+--- output
+100 1406 ms
+---
+wall_ms=1408 host_calls=100 max_arg_chars=2 out_chars=11 peak_host_rss_mb=310

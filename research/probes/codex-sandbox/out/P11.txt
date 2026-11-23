@@ -1,0 +1,217 @@
+probe: P11
+codex: ~/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex (codex-cli 0.169.0)
+CODEX_HOME: ~/p/agentic-search-bench/research/impls/codex-sandbox/codex-home (empty, no user config)
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 58.5  peak_tree_rss_mb: 2.3  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 69.4  peak_tree_rss_mb: 12.0  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 44.6  peak_tree_rss_mb: 2.3  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 51.2  peak_tree_rss_mb: 2.4  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 51.7  peak_tree_rss_mb: 8.1  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 51.1  peak_tree_rss_mb: 2.3  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 45.7  peak_tree_rss_mb: 2.0  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 50.9  peak_tree_rss_mb: 2.3  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 52.4  peak_tree_rss_mb: 1.7  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 102.0  peak_tree_rss_mb: 2.1  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 56.1  peak_tree_rss_mb: 2.4  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 46.6  peak_tree_rss_mb: 2.1  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 94.5  peak_tree_rss_mb: 2.5  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 51.5  peak_tree_rss_mb: 2.3  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 51.3  peak_tree_rss_mb: 2.3  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 47.9  peak_tree_rss_mb: 2.0  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 53.3  peak_tree_rss_mb: 21.9  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 44.8  peak_tree_rss_mb: 1.9  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 46.3  peak_tree_rss_mb: 2.4  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 50.8  peak_tree_rss_mb: 2.5  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+--- [read-only] python print(2) ---
+argv: ["python3", "-c", "print(2)"]
+exit: 0  wall_ms: 46.2  peak_tree_rss_mb: 2.1  killed: None
+stdout chars: 2
+stdout:
+2
+
+stderr:
+
+
+first invocation ms: 58.5
+20 later invocations median ms: 51.150000000000006
+20 later invocations p90 ms: 69.4

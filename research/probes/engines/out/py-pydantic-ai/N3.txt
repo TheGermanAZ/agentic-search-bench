@@ -1,0 +1,1 @@
+neighbor printed "42" in 222 ms; aggressor FLOOD ended after 60044 ms with "[output truncated: 37 more chars. Print less.]\nERROR: Runtime error:\n[stdout bef"

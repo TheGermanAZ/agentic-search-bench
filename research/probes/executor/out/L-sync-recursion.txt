@@ -1,0 +1,8 @@
+{
+  "probe": "L-sync-recursion",
+  "code": "function f(n) { return f(n + 1) } f(0)",
+  "wallMs": 31537,
+  "peakRssMb": 4401,
+  "serverAliveAfter": false,
+  "error": "TypeError: fetch failed"
+}

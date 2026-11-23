@@ -1,0 +1,16 @@
+{
+  "config": {
+    "timeoutMs": 10000,
+    "memoryLimitMB": 64,
+    "call": "client.callToolChain(code, 10000, 64)"
+  },
+  "probe": "P1 tool-call (sanity)",
+  "code": "const r = await host.lookup({id: 21}); console.log(r.value)",
+  "wallMs": 203.4,
+  "hostCalls": 1,
+  "result": null,
+  "logs": [
+    "42"
+  ],
+  "threw": null
+}

@@ -1,0 +1,7 @@
+{
+  "probe": "P3",
+  "outcome": "blocked",
+  "display": "blocked (--network=none)",
+  "detail": "urllib.error.URLError: <urlopen error [Errno -3] Temporary failure in name resolution> (container NetworkMode none).",
+  "evidence": "research/probes/repro/out/hardened-P3.txt"
+}

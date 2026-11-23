@@ -1,0 +1,84 @@
+{
+  "impl": "datalayer-codemode-eval",
+  "name": "Datalayer Agent Codemode, eval sandbox (default variant)",
+  "source": "https://github.com/datalayer/agent-codemode (installed from the clone); sandbox from PyPI code-sandboxes (repo https://github.com/datalayer/code-sandboxes)",
+  "pinned": "agent-codemode 566e324a42e86074d29fd5e6bb5da2f282d459ea (version 1.1.1), code-sandboxes 1.12.4 (tag v1.12.4 = d7030b0bb37609195cc3048d1145622dd81170a5; installed files identical), mcp 2.3.0",
+  "language": "Python",
+  "engine": "CPython exec() in the host process. Code that contains 'await ' is wrapped in an async function and run with asyncio.run() on the worker thread that CodeModeExecutor hands it to (asyncio.to_thread).",
+  "how_run": "ToolRegistry with one stdio MCP server (lookup_server.py), CodeModeExecutor(registry, CodeModeConfig(sandbox_variant='eval')).setup(), then executor.execute(code, timeout=30), the call that the project's MCP server handler and pydantic-ai toolset make.",
+  "defaults": {
+    "time": "None enforced. execute() takes a timeout and the MCP server passes 30 s, but EvalSandbox.run_code documents 'timeout: Timeout in seconds (not enforced in this simple implementation)' (eval.py:166). P6 ran 120 s until the harness stopped it.",
+    "memory": "None. P7 reached 4.4 GB host RSS in 2.3 s and was killed by the harness.",
+    "output": "stdout, stderr and the last expression's repr all come back, untruncated (P2: all 200,000 A's plus 'RETURNED').",
+    "tool_calls": "CodeModeConfig.max_tool_calls defaults to None (types.py:233); when set, executor.call_tool raises 'Tool call limit exceeded' (executor.py:1094-1096). Not reachable here because tool calls hang (P1)."
+  },
+  "hardened_config": "sandbox_client=CodeSandboxClient.create(variant='eval', config=SandboxConfig(timeout=30, network_policy='none', env_vars={}, memory_limit=256 MiB, cpu_limit=1.0)) passed to CodeModeExecutor, plus CodeModeConfig(max_tool_calls=50) and execute(timeout=30). SandboxConfig fields at code_sandboxes/models.py:576-618; network_policy is the only one EvalSandbox reads (eval.py:406-455).",
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "Typed Python bindings are generated on disk from each MCP server's tool list: one async function per tool in generated/mcp/<server>/<tool>.py, all calling generated/client.py call_tool(), which awaits a host-registered __call_tool__. Code imports them: 'from generated.mcp.probe import lookup'.",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/discovery/codegen.py#L21-L127; https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/composition/executor.py#L224-L269"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "On demand: list_tool_names (fast, deferred tools hidden), search_tools (keyword overlap count over name plus description, not BM25 or embeddings) and get_tool_details. Tools can be marked defer_loading.",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/discovery/registry.py#L226-L318; https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/toolset.py#L320-L450"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "For eval, executor.call_tool is injected into the exec namespace as __call_tool__ and calls the host ToolRegistry's MCP client directly. The MCP session is created on the main event loop during discover_all, but the user code runs in asyncio.run() on a worker thread, so the first tool call waits forever on a session bound to another loop. P1 and P9 hung with 0 host calls over both stdio and streamable HTTP; out/P1-stack.txt shows the worker thread parked in asyncio.run inside eval.py _run_coroutine_sync.",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/eval/eval.py#L219-L263; https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/composition/executor.py#L1222-L1336; https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/proxy/mcp_client.py#L97-L120; research/probes/datalayer-codemode-eval/out/P1-stack.txt"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "None. The module and class docstrings say 'This sandbox does NOT provide security isolation. Do not use for executing untrusted code.' The namespace gets the real __builtins__. The project still makes eval the default sandbox_variant, and the docs call the sandbox 'isolated' ('Code executes in an isolated sandbox for safety').",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/eval/eval.py#L5-L12; #L43-L55; #L90; https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/types.py#L229; https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/docs/docs/programmatic-tools/index.mdx#L231"
+    },
+    {
+      "topic": "Network policy",
+      "finding": "network_policy='none' monkeypatches socket.create_connection and socket.socket.connect for the duration of run_code. That stopped urllib (hardened P3) but not a connect on the C-level _socket.socket class, which reached example.com:443 in both configs (P3x). The patch is also process-wide, so it briefly blocks the host's own sockets while sandbox code runs.",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/eval/eval.py#L406-L455; research/probes/datalayer-codemode-eval/out/hardened-P3x.txt"
+    },
+    {
+      "topic": "Credentials",
+      "finding": "CodeModeExecutor.setup() copies the whole host environment into SandboxConfig.env_vars (env_vars = dict(os.environ)) for every variant, and execute() can inject OAuth identity tokens (GITHUB_TOKEN and others) into os.environ inside the sandbox. For eval the code shares the host's os.environ anyway (P5 read s3cr3t in both configs).",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/composition/executor.py#L243-L252; #L1157-L1182; #L1-L23 (module docstring)"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "ExecutionResult carries stdout and stderr lines plus result reprs; the MCP server handler returns stdout, stderr and error fields. No truncation in either path.",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/server.py#L313-L352; research/probes/datalayer-codemode-eval/out/P2.txt"
+    },
+    {
+      "topic": "State",
+      "finding": "Persistent: one exec namespace per context for the executor's lifetime (P8 printed 7). Variables assigned in async code are copied back from locals() into the namespace.",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/eval/eval.py#L250-L279"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Exceptions become CodeError(name, value, traceback.format_exc()), so the message and '<sandbox>' line numbers survive (P10).",
+      "evidence": "https://github.com/datalayer/code-sandboxes/blob/d7030b0bb37609195cc3048d1145622dd81170a5/code_sandboxes/sandboxes/eval/eval.py#L342-L352"
+    },
+    {
+      "topic": "Anything else",
+      "finding": "MCPClient.call_tool catches every exception and returns {'error': str(e)} instead of raising, so a failed tool call looks like a normal return value to the code (seen as {'error': 'Connection closed'} in the jupyter variant, datalayer-codemode-jupyter/out/P9d.txt). BSD-3-Clause, pushed 2026-11-21.",
+      "evidence": "https://github.com/datalayer/agent-codemode/blob/566e324a42e86074d29fd5e6bb5da2f282d459ea/agent_codemode/proxy/mcp_client.py#L221-L260"
+    }
+  ],
+  "surprises": [
+    "The default variant cannot call a tool: the first await on a generated binding hangs forever (P1, P9), over stdio and over HTTP. The README's Quick Start shows exactly this pattern.",
+    "execute(timeout=30) is accepted but not enforced for eval, so a hung tool call or an infinite loop never returns (P1, P6).",
+    "The docs page says code 'executes in an isolated sandbox for safety' while the default variant's own docstring says it provides no isolation (P4, P5, P12 all reach the host).",
+    "network_policy='none' is a monkeypatch that a raw _socket connect bypasses (P3x).",
+    "Every variant receives a copy of the full host environment through SandboxConfig.env_vars."
+  ],
+  "overrides": {
+    "P1": {"display": "hangs (tool call never returns)"},
+    "P9": {"display": "hangs (tool call never returns)"},
+    "hardened-P9": {"display": "hangs (tool call never returns)"},
+    "P7": {"display": "no limit (killed at 4.4 GB)"},
+    "hardened-P3": {"display": "blocked (raw _socket bypasses)"},
+    "P3x": {"display": "works (raw _socket connect)"},
+    "hardened-P3x": {"outcome": "works", "display": "works (bypasses network_policy)"}
+  }
+}

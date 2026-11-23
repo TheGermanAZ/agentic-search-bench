@@ -1,0 +1,7 @@
+{
+  "probe": "P7next",
+  "outcome": "limited",
+  "display": "OOM shown as timeout; next cell ran",
+  "detail": "\u23f0 Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh. Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh. \u23f0 Cell timed out after 10s; the remote session kernel was killed and its state was lost. The next call starts fresh.",
+  "evidence": "research/probes/hermes-execute-code/out/hardened-P7next.txt"
+}

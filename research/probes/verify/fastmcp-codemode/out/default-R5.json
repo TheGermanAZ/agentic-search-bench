@@ -1,0 +1,244 @@
+{
+  "cmd": "~/p/agentic-search-bench/research/probes/verify/_py/../../../impls/fastmcp-codemode/.venv/bin/python ~/p/agentic-search-bench/research/probes/verify/_py/rcore.py ~/p/agentic-search-bench/research/probes/verify/_py/../fastmcp-codemode/adapter.py default R5",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "wallMs": 5639,
+  "peakTreeRssMb": 110,
+  "watchKill": null,
+  "record": {
+    "config": "default",
+    "test": "R5",
+    "impl": "fastmcp-codemode",
+    "notes": "one FastMCP server, CodeMode(defaults); new in-process Client per execution",
+    "data": {
+      "r": {
+        "label": "",
+        "startMs": 2109,
+        "ms": 424,
+        "ok": true,
+        "result": {
+          "is_error": true,
+          "text": "Error calling tool 'execute': RuntimeError: suspension limit 1000 exceeded"
+        },
+        "callsStarted": 50
+      },
+      "atReturn": {
+        "started": 50,
+        "done": 8
+      },
+      "after3s": {
+        "started": 50,
+        "done": 8
+      }
+    },
+    "hostMaxEventLoopLagMs": 70,
+    "totalMs": 5534
+  },
+  "childStdoutOtherChars": 0,
+  "childStdoutHead": "",
+  "childStderrTail": "[11/22/26 16:15:30] Error calling tool 'execute'                                \n                    ╭─────────── Traceback (most recent call last) ────────────╮\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/server/server.py:1673 in call_tool                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/tools/base.py:555 in _run                           │\n                    │                                                          │\n                    │                 ... 7 frames hidden ...                  │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:275 in run     │\n                    │                                                          │\n                    │ ~/p/agentic-search-bench/research/impls │\n                    │ /fastmcp-codemode/.venv/lib/python3.12/site-packages/fas │\n                    │ tmcp/experimental/transforms/code_mode.py:309 in         │\n                    │ _run_monty                                               │\n                    ╰──────────────────────────────────────────────────────────╯\n                    MontyRuntimeError: RuntimeError: suspension limit 1000      \n                    exceeded                                                    \n",
+  "rssSamplesMsMb": [
+    [
+      107,
+      29
+    ],
+    [
+      208,
+      41
+    ],
+    [
+      426,
+      44
+    ],
+    [
+      526,
+      46
+    ],
+    [
+      665,
+      48
+    ],
+    [
+      830,
+      50
+    ],
+    [
+      929,
+      55
+    ],
+    [
+      1149,
+      56
+    ],
+    [
+      1241,
+      61
+    ],
+    [
+      1336,
+      62
+    ],
+    [
+      1449,
+      64
+    ],
+    [
+      1540,
+      67
+    ],
+    [
+      1649,
+      76
+    ],
+    [
+      1749,
+      80
+    ],
+    [
+      1851,
+      80
+    ],
+    [
+      1957,
+      85
+    ],
+    [
+      2041,
+      87
+    ],
+    [
+      2153,
+      91
+    ],
+    [
+      2261,
+      92
+    ],
+    [
+      2404,
+      107
+    ],
+    [
+      2504,
+      110
+    ],
+    [
+      2608,
+      102
+    ],
+    [
+      2705,
+      102
+    ],
+    [
+      2803,
+      102
+    ],
+    [
+      2909,
+      102
+    ],
+    [
+      3028,
+      102
+    ],
+    [
+      3129,
+      102
+    ],
+    [
+      3232,
+      102
+    ],
+    [
+      3337,
+      102
+    ],
+    [
+      3447,
+      102
+    ],
+    [
+      3566,
+      102
+    ],
+    [
+      3659,
+      102
+    ],
+    [
+      3763,
+      102
+    ],
+    [
+      3860,
+      102
+    ],
+    [
+      3967,
+      102
+    ],
+    [
+      4074,
+      102
+    ],
+    [
+      4165,
+      102
+    ],
+    [
+      4277,
+      102
+    ],
+    [
+      4413,
+      102
+    ],
+    [
+      4530,
+      102
+    ],
+    [
+      4623,
+      102
+    ],
+    [
+      4724,
+      102
+    ],
+    [
+      4824,
+      102
+    ],
+    [
+      4931,
+      102
+    ],
+    [
+      5053,
+      102
+    ],
+    [
+      5170,
+      102
+    ],
+    [
+      5268,
+      102
+    ],
+    [
+      5372,
+      102
+    ],
+    [
+      5477,
+      102
+    ],
+    [
+      5585,
+      102
+    ]
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "impl": "fastmcp-codemode",
+  "name": "FastMCP CodeMode transform (experimental)",
+  "source": "PyPI fastmcp[code-mode]; repo https://github.com/PrefectHQ/fastmcp (fastmcp_slim/fastmcp/experimental/transforms/code_mode.py); docs https://gofastmcp.com/docs/servers/transforms/code-mode",
+  "pinned": "fastmcp 4.2.4 (tag v4.2.4 = 5ac27a2c6e0c31adf3bbc0ac46704ab0279902f9; installed code_mode.py is byte-identical to the tag), pydantic-monty 1.6.0 (tag v1.6.0 = 3f89dcbf82071896efb5e3ded507db4191e8d829)",
+  "language": "Python (Monty subset)",
+  "engine": "Monty, a Rust Python-subset interpreter, run by pydantic-monty's AsyncMonty in a separate `monty subprocess` worker process. CodeMode opens a new worker pool per execute call (out/worker-processes.txt shows the worker as a child of the server process).",
+  "how_run": "FastMCP('probe', transforms=[CodeMode()]) with a `lookup` tool, driven by an in-process fastmcp.Client calling the transformed server's `execute` tool (client.call_tool('execute', {'code': ...})); no model.",
+  "probes": {
+    "P1": {
+      "outcome": "works",
+      "detail": "42 in printed stdout: False; 42 in returned value: True; output '42'; host lookup calls: 1",
+      "evidence": "research/probes/fastmcp-codemode/out/P1.txt",
+      "display": "works (42, 1 call)"
+    },
+    "P2": {
+      "outcome": "limited",
+      "detail": "RETURNED came back: True (in result); 0 of 200000 A's came back; marker found: None; stdout chars 0; error ''",
+      "evidence": "research/probes/fastmcp-codemode/out/P2.txt",
+      "display": "return only (prints to host log)"
+    },
+    "P3": {
+      "outcome": "not-defined",
+      "detail": "Error calling tool 'execute': ModuleNotFoundError: No module named 'urllib'",
+      "evidence": "research/probes/fastmcp-codemode/out/P3.txt",
+      "display": "not-defined"
+    },
+    "P4": {
+      "outcome": "blocked",
+      "detail": "Error calling tool 'execute': PermissionError: Permission denied: '/etc/hosts'",
+      "evidence": "research/probes/fastmcp-codemode/out/P4.txt",
+      "display": "blocked"
+    },
+    "P5": {
+      "outcome": "blocked",
+      "detail": "Error calling tool 'execute': RuntimeError: 'os.environ' is not supported in this environment",
+      "evidence": "research/probes/fastmcp-codemode/out/P5.txt",
+      "display": "blocked"
+    },
+    "P6": {
+      "outcome": "limited",
+      "detail": "stopped after 30.03 s: Error calling tool 'execute': TimeoutError: feed time limit exceeded: 30.000945292s > 30s",
+      "evidence": "research/probes/fastmcp-codemode/out/P6.txt",
+      "display": "limited (30.0 s)"
+    },
+    "P7": {
+      "outcome": "limited",
+      "detail": "stopped after 0.04 s, peak tree RSS 0.086 GB: Error calling tool 'execute': MemoryError: memory limit exceeded: 100045946 bytes > 100000000 bytes",
+      "evidence": "research/probes/fastmcp-codemode/out/P7.txt",
+      "display": "limited (100 MB)"
+    },
+    "P8": {
+      "outcome": "works",
+      "detail": "execution 2: 'gone'",
+      "evidence": "research/probes/fastmcp-codemode/out/P8.txt",
+      "display": "fresh"
+    },
+    "P9": {
+      "outcome": "works",
+      "detail": "5 host calls spanning 202 ms host-side (first start to last end); execution wall 218.6 ms; output '30'",
+      "evidence": "research/probes/fastmcp-codemode/out/P9.txt",
+      "display": "parallel (202 ms)"
+    },
+    "P10": {
+      "outcome": "works",
+      "detail": "message survives: True; 'line 2' present: False; text: \"Error calling tool 'execute': ValueError: probe-boom\"",
+      "evidence": "research/probes/fastmcp-codemode/out/P10.txt",
+      "display": "message, no line"
+    },
+    "P11": {
+      "outcome": "works",
+      "detail": "20 runs in one session: median 7.7 ms, p90 8.0 ms; one-time setup 26.7 ms; fresh session per run (open+run+close, n=5): median 12.8 ms",
+      "evidence": "research/probes/fastmcp-codemode/out/P11.txt",
+      "display": "median 7.7 ms"
+    },
+    "P12": {
+      "outcome": "blocked",
+      "detail": "P12a subclasses walk: failed; \"Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'\" | P12b __import__('os').system: failed; \"Error calling tool 'execute': NameError: name '__import__' is not defined\" | P12c _wrap_close globals popen: failed; \"Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'\"",
+      "evidence": "research/probes/fastmcp-codemode/out/P12.txt",
+      "display": "blocked"
+    },
+    "Pcap": {
+      "outcome": "limited",
+      "detail": "Error calling tool 'execute': Exception: Tool call limit exceeded: at most 50 call_tool() invocations are allowed per execute().",
+      "evidence": "research/probes/fastmcp-codemode/out/Pcap.txt",
+      "display": "limited (50 calls)"
+    }
+  },
+  "defaults": {
+    "time": "max_feed_duration_secs=30 from MontySandboxProvider's baseline (code_mode.py:167-170). It counts sandbox time only; time spent awaiting call_tool is excluded. wall_clock_timeout_secs defaults to None (code_mode.py:636). P6 stopped at 30.2 s.",
+    "memory": "max_memory=100,000,000 bytes from the same baseline (code_mode.py:169). P7 stopped at 100,045,946 bytes, in 0.1 s.",
+    "output": "Only the value of the last expression (or `return`) comes back, as tool result text. print() output never reaches the caller: MontySandboxProvider passes no print_callback, and Monty then writes to the host process's stdout/stderr (P1, P2, out/P2-stdio.txt). No truncation of the returned value was observed or found in code_mode.py.",
+    "tool_calls": "max_tool_calls=50 per execute (code_mode.py:635, enforced at :730-736). Extra probe Pcap: 50 host calls ran, the 51st raised 'Tool call limit exceeded: at most 50 call_tool() invocations are allowed per execute().'"
+  },
+  "hardened": {
+    "config": "MontySandboxProvider(limits={'max_feed_duration_secs': 10, 'max_memory': 50_000_000}) and CodeMode(sandbox_provider=..., wall_clock_timeout_secs=60), max_tool_calls left at 50. Values are the ones the docs show in the 'Resource limits' and 'Wall-clock limit' sections (https://gofastmcp.com/docs/servers/transforms/code-mode); options at code_mode.py:176-210 and :628-643.",
+    "probes": {
+      "P3": {
+        "outcome": "not-defined",
+        "detail": "Error calling tool 'execute': ModuleNotFoundError: No module named 'urllib'",
+        "evidence": "research/probes/fastmcp-codemode/out/hardened-P3.txt",
+        "display": "not-defined"
+      },
+      "P4": {
+        "outcome": "blocked",
+        "detail": "Error calling tool 'execute': PermissionError: Permission denied: '/etc/hosts'",
+        "evidence": "research/probes/fastmcp-codemode/out/hardened-P4.txt",
+        "display": "blocked"
+      },
+      "P5": {
+        "outcome": "blocked",
+        "detail": "Error calling tool 'execute': RuntimeError: 'os.environ' is not supported in this environment",
+        "evidence": "research/probes/fastmcp-codemode/out/hardened-P5.txt",
+        "display": "blocked"
+      },
+      "P6": {
+        "outcome": "limited",
+        "detail": "stopped after 10.03 s: Error calling tool 'execute': TimeoutError: feed time limit exceeded: 10.000043375s > 10s",
+        "evidence": "research/probes/fastmcp-codemode/out/hardened-P6.txt",
+        "display": "limited (10.0 s)"
+      },
+      "P7": {
+        "outcome": "limited",
+        "detail": "stopped after 0.04 s, peak tree RSS 0.091 GB: Error calling tool 'execute': MemoryError: memory limit exceeded: 50044922 bytes > 50000000 bytes",
+        "evidence": "research/probes/fastmcp-codemode/out/hardened-P7.txt",
+        "display": "limited (50 MB)"
+      },
+      "P9": {
+        "outcome": "works",
+        "detail": "5 host calls spanning 202 ms host-side (first start to last end); execution wall 217.4 ms; output '30'",
+        "evidence": "research/probes/fastmcp-codemode/out/hardened-P9.txt",
+        "display": "parallel (202 ms)"
+      },
+      "P12": {
+        "outcome": "blocked",
+        "detail": "P12a subclasses walk: failed; \"Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'\" | P12b __import__('os').system: failed; \"Error calling tool 'execute': NameError: name '__import__' is not defined\" | P12c _wrap_close globals popen: failed; \"Error calling tool 'execute': AttributeError: 'tuple' object has no attribute '__class__'\"",
+        "evidence": "research/probes/fastmcp-codemode/out/hardened-P12.txt",
+        "display": "blocked"
+      }
+    }
+  },
+  "source_notes": [
+    {
+      "topic": "API shape",
+      "finding": "No generated stubs. The sandbox gets exactly one host function, call_tool(tool_name, params), passed to Monty as an external function. The execute tool's description says so: 'Only `call_tool(tool_name: str, params: dict) -> Any` is available in scope.' Tool results come back as structured_content when the tool has an output schema, else as concatenated text.",
+      "evidence": "https://github.com/PrefectHQ/fastmcp/blob/5ac27a2c6e0c31adf3bbc0ac46704ab0279902f9/fastmcp_slim/fastmcp/experimental/transforms/code_mode.py#L686-L694 (description); #L728-L758 (call_tool and run); #L116-L131 (_unwrap_tool_result)"
+    },
+    {
+      "topic": "Discovery",
+      "finding": "The transform replaces the whole tool list with discovery tools plus execute. Defaults are Search (BM25 over the catalog, 'brief' names and descriptions) and GetSchemas ('detailed' parameter markdown); GetTags and ListTools are opt-in. So schemas load on demand, and the model never sees every schema up front unless ListTools(detail='full') is added.",
+      "evidence": "https://github.com/PrefectHQ/fastmcp/blob/5ac27a2c6e0c31adf3bbc0ac46704ab0279902f9/fastmcp_slim/fastmcp/experimental/transforms/code_mode.py#L611-L612 (defaults); #L353-L435 (Search, BM25 at #L376-L381); #L438-L470 (GetSchemas); #L669-L670 (transform_tools)"
+    },
+    {
+      "topic": "Bridge",
+      "finding": "call_tool is an async Python callback that Monty's worker invokes over its host channel. On the host it looks the tool up in the auth-filtered catalog and runs ctx.fastmcp.call_tool, so the real tool, and any credentials it holds, stay in the server process. Concurrent un-awaited calls work: asyncio.gather of 5 lookups took 215 ms host-side (P9).",
+      "evidence": "https://github.com/PrefectHQ/fastmcp/blob/5ac27a2c6e0c31adf3bbc0ac46704ab0279902f9/fastmcp_slim/fastmcp/experimental/transforms/code_mode.py#L738-L751; research/probes/fastmcp-codemode/out/P9.txt"
+    },
+    {
+      "topic": "Isolation boundary",
+      "finding": "Two layers. Language: Monty has no urllib/socket (P3 ModuleNotFoundError), refuses os.environ (P5), denies open('/etc/hosts') (P4 PermissionError), and has no __class__ on tuples or __import__ (P12). Process: each execute creates a new AsyncMonty pool whose worker is a separate `monty subprocess` process. The docs and the SandboxProvider docstring tell implementers never to use plain exec() for this untrusted code.",
+      "evidence": "https://github.com/PrefectHQ/fastmcp/blob/5ac27a2c6e0c31adf3bbc0ac46704ab0279902f9/fastmcp_slim/fastmcp/experimental/transforms/code_mode.py#L139-L154 (SandboxProvider warning); #L305-L313 (AsyncMonty pool per run); pydantic_monty/_monty.pyi AsyncMonty docstring 'Async context manager owning a pool of `monty` subprocess workers' (v1.6.0); research/probes/fastmcp-codemode/out/worker-processes.txt"
+    },
+    {
+      "topic": "Output channel",
+      "finding": "The caller gets only the last expression's value or `return` (P2 returned 'RETURNED' and 0 of 200,000 A's). feed_run is called without print_callback, and pydantic-monty's documented default is the host process stdout/stderr, so sandbox prints land in the server's log. Over stdio transport they appeared on the server's stderr, not on the JSON-RPC channel, and the session kept working.",
+      "evidence": "https://github.com/PrefectHQ/fastmcp/blob/5ac27a2c6e0c31adf3bbc0ac46704ab0279902f9/fastmcp_slim/fastmcp/experimental/transforms/code_mode.py#L309-L313; pydantic_monty/_monty.pyi AsyncMontySession.feed_run docstring 'Defaults to the host process stdout/stderr'; research/probes/fastmcp-codemode/out/P2.txt; research/probes/fastmcp-codemode/out/P2-stdio.txt"
+    },
+    {
+      "topic": "Limits",
+      "finding": "Monty limits that CodeMode sets by default: max_feed_duration_secs=30 and max_memory=100 MB. It sets no max_turn_duration_secs, no gc_interval, and leaves max_recursion_depth at Monty's standard 1,000. limits=None disables time, memory and GC limits. Unknown keys raise ValueError. CodeMode adds max_tool_calls=50 and an optional wall_clock_timeout_secs (default None), which is the only bound on time spent inside host tools.",
+      "evidence": "https://github.com/PrefectHQ/fastmcp/blob/5ac27a2c6e0c31adf3bbc0ac46704ab0279902f9/fastmcp_slim/fastmcp/experimental/transforms/code_mode.py#L167-L173; #L176-L210; #L227-L236 (unknown keys); #L628-L643; #L753-L767 (wall clock)"
+    },
+    {
+      "topic": "State",
+      "finding": "Fresh per execute: a new pool and a new checkout every call, so P8 printed 'gone'.",
+      "evidence": "https://github.com/PrefectHQ/fastmcp/blob/5ac27a2c6e0c31adf3bbc0ac46704ab0279902f9/fastmcp_slim/fastmcp/experimental/transforms/code_mode.py#L305-L313; research/probes/fastmcp-codemode/out/P8.txt"
+    },
+    {
+      "topic": "Errors",
+      "finding": "Sandbox exceptions surface as a tool error 'Error calling tool 'execute': ValueError: probe-boom'. The type and message survive; no line number or traceback (P10). Failed call_tool calls raise with the tool's parameter list appended when the failure looks like a validation error.",
+      "evidence": "https://github.com/PrefectHQ/fastmcp/blob/5ac27a2c6e0c31adf3bbc0ac46704ab0279902f9/fastmcp_slim/fastmcp/experimental/transforms/code_mode.py#L65-L95; research/probes/fastmcp-codemode/out/P10.txt"
+    },
+    {
+      "topic": "Startup cost",
+      "finding": "Median 7.7 ms per execute through the in-process client in the final run_all.sh rerun (P11). An earlier run under heavier load from the other workers measured 51.1 ms, so the number is load-sensitive. A new AsyncMonty pool plus feed alone costs a median 6.0 ms versus 0.10 ms on a reused session (out/P11-breakdown.txt), so spawning the per-call `monty subprocess` worker is most of the cost.",
+      "evidence": "research/probes/fastmcp-codemode/out/P11.txt; research/probes/fastmcp-codemode/out/P11-breakdown.txt"
+    },
+    {
+      "topic": "Anything else",
+      "finding": "Apache-2.0, repo pushed 2026-11-22. The feature lives under fastmcp.experimental. Tools reach the sandbox through the same auth-filtered catalog the client would see (get_tool_catalog(ctx)), so visibility rules carry over.",
+      "evidence": "https://github.com/PrefectHQ/fastmcp/blob/5ac27a2c6e0c31adf3bbc0ac46704ab0279902f9/fastmcp_slim/fastmcp/experimental/transforms/code_mode.py#L33-L34; #L738-L741"
+    }
+  ],
+  "surprises": [
+    "print() output is silently dropped from the result. The docs example only uses `return`, but SPEC-style print-based code returns an empty result while the text goes to the server's own stdout/stderr (P1 print, P2).",
+    "Each execute spawns a fresh `monty subprocess` worker pool, so there is a process boundary as well as the interpreter boundary. Neither the FastMCP docs page nor code_mode.py says so; it comes from pydantic-monty 1.6.0's AsyncMonty.",
+    "The default time limit does not bound host tool time: feed duration excludes time awaiting call_tool, and wall_clock_timeout_secs defaults to None. The docs say this plainly, so it is a design choice, not a mismatch.",
+    "The tool-call cap error reaches the caller as 'Exception: Tool call limit exceeded...', losing the ToolError type (Pcap)."
+  ]
+}

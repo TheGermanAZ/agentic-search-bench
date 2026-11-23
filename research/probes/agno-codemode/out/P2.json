@@ -1,0 +1,7 @@
+{
+  "probe": "P2",
+  "outcome": "limited",
+  "display": "truncated (65,535 + marker; both)",
+  "detail": "65,535 of 200,000 A's, then '[... 134465 chars omitted; output capped at 65536 ...]', then Out[1]: 'RETURNED': both print and value came back.",
+  "evidence": "research/probes/agno-codemode/out/P2.txt"
+}

@@ -1,0 +1,8 @@
+{
+  "result": {
+    "stdout": "127.0.0.1\tlocalhost\n::1\tlocalhost ip6-localhost ip6-loopback\nfe00::\tip6-localnet\nff00::\tip6-mcastprefix\nff02::1\tip6-allnodes\nff02::2\tip6-allrouters\n0.250.250.254\thost.docker.internal\n192.168.215.3\t1ea7e6f3e60b\n\n",
+    "stderr": "",
+    "ms": 113.8
+  },
+  "wall_s": 4.64
+}

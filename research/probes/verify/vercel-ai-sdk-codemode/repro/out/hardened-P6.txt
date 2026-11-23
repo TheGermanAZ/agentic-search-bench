@@ -1,0 +1,80 @@
+label: hardened-P6
+command: node probe.mjs P6 --hardened
+child exit: code=0 signal=null
+child wall ms (process start to exit): 5822
+peak child RSS: 181.6 MB (ps every 50 ms)
+child stdout length: 0 chars, 'A' count: 0
+child stderr length: 183 chars
+--- probe record ---
+{
+  "impl": "vercel-ai-sdk-codemode",
+  "probe": "P6",
+  "config": {
+    "executionPolicy": {
+      "timeoutMs": 15000,
+      "cpuTimeoutMs": 5000,
+      "memoryLimitBytes": 33554432,
+      "maxStackSizeBytes": 1048576,
+      "maxSourceBytes": 131072,
+      "maxResultBytes": 524288,
+      "maxConsoleOutputBytes": 32768,
+      "maxToolInputBytes": 262144,
+      "maxToolOutputBytes": 1048576,
+      "maxBridgeRequests": 100,
+      "maxInFlightBridgeRequests": 8
+    }
+  },
+  "node": "v24.22.1",
+  "source": [
+    "while (true) {}"
+  ],
+  "siblingTiming": {
+    "siblingStartMs": 170,
+    "siblingEndMs": 679,
+    "note": "ms since the main program started; a start far above 100 means the host event loop was blocked"
+  },
+  "runs": [
+    {
+      "ok": false,
+      "error": {
+        "name": "CodeModeCpuTimeoutError",
+        "code": "CODE_MODE_CPU_TIMEOUT",
+        "message": "Code mode execution exceeded its CPU time limit of 5000ms.",
+        "details": {
+          "cpuTimeoutMs": 5000
+        },
+        "stack": "G: JavaScript runtime exceeded its CPU time limit of 5000ms.\n    at v (<run-worker>)\n    at er (<run-worker>)\n    at async Kt (<run-worker>)\n    at async Qt (<run-worker>)\n    at async MessagePort.<anonymous> (<run-worker>)",
+        "string": "CodeModeCpuTimeoutError: Code mode execution exceeded its CPU time limit of 5000ms."
+      },
+      "wallMs": 5273.889625000001,
+      "hostCalls": 1
+    }
+  ],
+  "concurrentSiblingRun": {
+    "ok": true,
+    "value": 42,
+    "wallMs": 509.143167,
+    "hostCalls": 1
+  },
+  "afterRun": {
+    "ok": true,
+    "value": 42,
+    "wallMs": 213.92929100000038,
+    "hostCalls": 1
+  },
+  "summary": {
+    "siblingStartMs": 170,
+    "siblingEndMs": 679,
+    "error": "CodeModeCpuTimeoutError: CODE_MODE_CPU_TIMEOUT Code mode execution exceeded its CPU time limit of 5000ms.",
+    "ms": 5274,
+    "sibling": 42,
+    "after": 42
+  },
+  "hostRssAfterMB": 139.3
+}
+--- child stdout ---
+
+--- child stderr ---
+(node:95506) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

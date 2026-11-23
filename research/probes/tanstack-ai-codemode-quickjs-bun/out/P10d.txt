@@ -1,0 +1,58 @@
+label: P10d
+command: bun probe.mjs P10d
+child exit: code=0 signal=null
+child wall ms (process start to exit): 236
+peak child RSS: 62.3 MB (ps every 50 ms)
+child stdout length: 692 chars, 'A' count: 0
+child stderr length: 61 chars
+--- probe record ---
+{
+  "impl": "tanstack-ai-codemode-quickjs-bun",
+  "probe": "P10d",
+  "config": "defaults",
+  "runtime": "bun 1.4.4",
+  "setupMs": 2.689208999999998,
+  "source": [
+    "return await external_lookup({id: \"not-a-number\"});"
+  ],
+  "runs": [
+    {
+      "returned": {
+        "success": false,
+        "error": {
+          "message": "Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string",
+          "name": "Error",
+          "stack": "    at <anonymous> (<tool-wrapper>:6:22)\n"
+        },
+        "logCount": 0,
+        "logChars": 0,
+        "logs": []
+      },
+      "wallMs": 166.18383300000002,
+      "hostCalls": 0
+    }
+  ],
+  "summary": {
+    "out": "Error: Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string",
+    "ms": 166,
+    "hostCalls": 0
+  },
+  "hostRssAfterMB": 45.2
+}
+--- child stdout ---
+{
+  [0mtimestamp[2m:[0m [0m[33m1795376531727[0m[0m[2m,[0m
+  [0mdurationMs[2m:[0m [0m[33m165[0m[0m[2m,[0m
+  [0mphase[2m:[0m [0m[32m[0m[32m"execute"[0m[0m[0m[2m,[0m
+  [0msuccess[2m:[0m [0m[33mfalse[0m[0m[2m,[0m
+  [0mlogCount[2m:[0m [0m[33m0[0m[0m[2m,[0m
+  [0merror[2m:[0m {
+    [0mname[2m:[0m [0m[32m[0m[32m"Error"[0m[0m[0m[2m,[0m
+    [0mmessage[2m:[0m [0m[32m[0m[32m"Input validation failed for tool lookup: Validation failed: Invalid input: expected number, received string"[0m[0m[0m[2m,[0m
+    [0mstack[2m:[0m [0m[32m[0m[32m"    at <anonymous> (<tool-wrapper>:6:22)\n"[0m[0m[0m[2m,[0m
+  }[0m[2m,[0m
+}
+
+--- child stderr ---
+❌ [tanstack-ai:errors] ❌ code-mode execute_typescript failed
+

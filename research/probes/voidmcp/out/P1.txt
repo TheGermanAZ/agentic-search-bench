@@ -1,0 +1,14 @@
+{
+  "probe": "P1",
+  "config": "defaults",
+  "code": "const r = await tools.lookup.lookup({id: 21}); console.log(r.value)",
+  "wall_ms": 230,
+  "host_calls": 1,
+  "isError": null,
+  "response_text": "{\"logs\":[{\"level\":\"log\",\"msg\":\"42\"}],\"tool_calls\":[{\"server\":\"lookup\",\"tool\":\"lookup\",\"duration_ms\":221,\"status\":\"success\"}],\"duration_ms\":223}",
+  "response_text_length": 143,
+  "raw_flags": {
+    "harnessTimeout": false,
+    "transportClosed": false
+  }
+}

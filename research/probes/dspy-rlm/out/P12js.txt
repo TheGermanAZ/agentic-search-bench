@@ -1,0 +1,66 @@
+probe: P12js
+outcome: blocked
+display: blocked (Deno perms; crashes sandbox)
+detail: Uncaught, each of js.Deno.readTextFileSync, Deno.env.get, Deno.Command and fetch ended the Deno process (CodeInterpreterError 'Deno exited (code 0)'). Deno.permissions.querySync for /etc/hosts reports 'prompt' (not granted; no TTY to prompt).
+
+code:
+----
+import js
+print('JSREAD ' + str(js.Deno.readTextFileSync('/etc/hosts'))[:60])
+----
+import js
+print('JSENV ' + str(js.Deno.env.get('PROBE_SECRET')))
+----
+import js
+from pyodide.ffi import to_js
+cmd = js.Deno.Command.new('echo', to_js({'args': ['PWNED']}))
+print('JSRUN ' + str(cmd.outputSync().code))
+----
+import js
+from pyodide.ffi import run_sync
+r = run_sync(js.fetch('https://example.com'))
+print('JSFETCH ' + str(r.status))
+----
+import js
+print('JSPERM ' + str(js.Deno.permissions.querySync(js.Object.fromEntries([['name', 'read'], ['path', '/etc/hosts']])).state))
+----
+
+setup_ms: 0.0
+wall_s (whole child process): 3.24
+killed: None
+child exit code: 0
+peak tree RSS GB: 0.495
+host lookup calls: 0
+
+=== run 0 (563.8 ms) ===
+ok: false
+error: CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)
+raised: true
+
+=== run 1 (452.7 ms) ===
+ok: false
+error: CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)
+raised: true
+
+=== run 2 (549.8 ms) ===
+ok: false
+error: CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)
+raised: true
+
+=== run 3 (570.0 ms) ===
+ok: false
+error: CodeInterpreterError: Deno exited (code 0) during execution:  (last sandbox diagnostic: Unhandled async error: PythonError)
+raised: true
+
+=== run 4 (524.0 ms) ===
+ok: true
+stdout: <repl_output>
+JSPERM prompt
+
+</repl_output>
+model_view_all: ["<repl_output>\nJSPERM prompt\n\n</repl_output>"]
+raw_outputs_untruncated_len: [14, 25]
+answer: done
+
+=== child process log (tail) ===
+

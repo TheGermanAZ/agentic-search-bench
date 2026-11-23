@@ -1,0 +1,30 @@
+# qwen-code-codemode hardened-P6c (hardened)
+--- exec 1 source ---
+let n = 0; const t = Date.now(); while (true) { await tools.mcp__probe__lookup({id: 1}); n++; if (n % 50 === 0) text(n + " calls, " + (Date.now() - t) + " ms"); }
+--- exec 1 result (undefined ms from tool call issued to tool result received; host lookup calls undefined) ---
+(no exec result reached the model)
+--- summary ---
+{
+ "config": "hardened",
+ "exit": {
+  "code": 55,
+  "sig": null
+ },
+ "setupMsSpawnToFirstExec": 1023,
+ "totalHostCalls": 286,
+ "sideRequests": 0
+}
+--- cli stdout (json, first 3000 chars) ---
+
+--- cli stderr (first 3000 chars) ---
+Warning: Node.js 24.22.1 can cause high temporary memory usage during shell safety checks. Upgrade to Node.js 26.12.1. Qwen Code will continue normally. See https://github.com/QwenLM/qwen-code/issues/15165
+{
+  "error": {
+    "type": "FatalBudgetExceededError",
+    "message": "Run aborted: wall-clock budget of 60s exceeded (--max-wall-time).",
+    "code": 55
+  }
+}
+
+--- mock events ---
+{"t":1027.95,"kind":"exec-issued","n":1,"hostCallsSoFar":589}
