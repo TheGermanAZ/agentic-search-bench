@@ -43,7 +43,7 @@ DEFAULTS = {
 
 SOURCE_NOTES = [
     {"topic": "API shape", "finding": "Functions and objects passed in scope appear in the sandbox as stubs/proxies (\"Warp\"); return values are proxies by reference, not serialized. Async host functions appear as functions returning Future[T].",
-     "evidence": f"{DOC} lines 19-24 and 137"},
+     "evidence": f"{DOC} (overview and async functions)"},
     {"topic": "Discovery", "finding": "All upfront: the request to the model includes signatures and docstrings of every function and type in scope.", "evidence": f"{DOC} (\"What Happens Behind the Scenes\", step 1)"},
     {"topic": "Bridge", "finding": "RPC over two host imports into the Wasm component, send-bytes and recv-bytes (plus recv-ready, write-log); messages are msgspec-encoded Warp frames relayed to the SDK process, where the real functions run.",
      "evidence": f"{LIB}#L193-L203 ; {SBX}#L170-L200"},

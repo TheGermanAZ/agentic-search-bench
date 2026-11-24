@@ -139,7 +139,7 @@
     {
       "topic": "API shape",
       "finding": "Functions and objects passed in scope appear in the sandbox as stubs/proxies (\"Warp\"); return values are proxies by reference, not serialized. Async host functions appear as functions returning Future[T].",
-      "evidence": "research/probes/symbolica-agentica/out/docs-how-it-works.md lines 19-24 and 137"
+      "evidence": "research/probes/symbolica-agentica/out/docs-how-it-works.md (overview and async functions)"
     },
     {
       "topic": "Discovery",
