@@ -158,20 +158,15 @@ const nQ = new Set(main.filter((r) => r.model === sonnet).map((r) => r.qid)).siz
 const hasLatency = latencyRows.length > 0;
 const traceQ = arg("trace", "hrd-02");
 const probeFile = (f: string) => (existsSync(join(ROOT, "research", "probes", f)) ? readFileSync(join(ROOT, "research", "probes", f), "utf8") : "");
-const matrix = probeFile("matrix.html");
 const leaderboard = probeFile("leaderboard.html");
 const gatesTable = probeFile("gates.html");
 const engineTable = probeFile("engines/table.html");
 const counts = existsSync(join(ROOT, "research", "probes", "gates.json")) ? JSON.parse(probeFile("gates.json")).counts : { rows: 0, probed: 0, notRun: 0, docsOnly: 0, eligible: 0 };
 const synthesisBullets = [
-  "<strong>For TypeScript, Vercel AI SDK Code Mode (or Vercel Run, the engine under it).</strong> QuickJS in WebAssembly in a worker thread. With defaults it held every limit, ran tool calls in parallel, kept other users' requests within about 0.3 s while a neighbor misbehaved, and replaced host errors with a generic message. Programs must return their result, because <code>console.log</code> output goes to the server's stdout. Make tools honor the abort signal, because calls already sent keep running when a program fails.",
-  "<strong>For Python, Pydantic AI Harness CodeMode, or FastMCP CodeMode for MCP servers.</strong> Both run Pydantic's Monty interpreter in a worker process with time and memory limits on by default and parallel tool calls. Mask host error text yourself (<code>mask_error_details=True</code> in FastMCP). Strands is close behind if you set its <code>timeout</code>, but it cannot mask host errors. In this repo, Monty used directly did better than either wrapper (see the engines section).",
-  "<strong>OpenCode and Claude Code's new Code Modes are safe at the language level but have no memory limit.</strong> OpenCode also allows <code>fetch</code> by default and its <code>execute</code> tool has no time limit; a memory bomb took its host process to 4.3 GB in a second.",
-  "<strong>Most implementations isolate code. Far fewer enforce limits.</strong> 30 of 69 let model code reach the host, mostly by running it with <code>exec</code>, IPython or a host-seeded <code>node:vm</code>. 33 had no working time limit and 40 no working memory limit with defaults. The causes were timers inside the guest that a loop never yields to, memory options accepted and ignored, and whole-process crashes that end every session.",
-  "<strong>A shared server needs tests the usual probes skip.</strong> A second review agent found one user's loop freezing everyone (engines on the host's main thread), guest logs growing host memory past 4 GB (UTCP, TanStack Node), recursion outside the memory budget killing a gateway (Bifrost), and database URLs in tool errors reaching the model in most implementations.",
-  "<strong>Tool discovery is keyword search or a searchable catalog, not embeddings.</strong> Pi and FastMCP use BM25; OpenClaw, Claude Code and Qwen Code let the program search a catalog; the Vercel AI SDK and langchain-quickjs can optionally defer tools to the provider's tool search, though by default they put every signature in the prompt. Cursor's current docs say its agent search is Instant Grep, a local regex index.",
-  "<strong>The probes found five bugs in this repo's own sandbox, all fixed and re-tested.</strong> Shared asyncify state, an import that wedged later runs, a 512 MB memory cap that never applied (3.08 GB before the fix), one runaway program freezing every request for 60 s, and a bridge call that could make the host serialize the whole corpus. It now runs each program in its own worker thread with a host-side wall clock.",
-  "<strong>Retention matters for case data.</strong> Anthropic's programmatic tool calling docs list zero data retention and HIPAA as not eligible, with data retained up to 30 days; OpenAI's docs say its version supports zero data retention.",
+  "<strong>For TypeScript, Vercel AI SDK Code Mode (Vercel Run underneath).</strong> QuickJS in WebAssembly in a worker thread. With defaults it held every limit, ran tool calls in parallel and kept host error text away from the model.",
+  "<strong>For Python, Pydantic AI Harness CodeMode, or FastMCP CodeMode for MCP servers.</strong> Both run Pydantic's Monty interpreter with time and memory limits on by default. In this repo, Monty used directly did better than either wrapper.",
+  "<strong>Most implementations isolate code. Far fewer enforce limits.</strong> 30 of 69 let model code reach the host, 33 had no working time limit and 40 no working memory limit with defaults. OpenCode and Claude Code's Code Modes have no memory limit; a memory bomb took OpenCode's host process to 4.3 GB in a second.",
+  "<strong>The probes found five bugs in this repo's own sandbox, all fixed and re-tested.</strong> The worst was a 512 MB memory cap that never applied (3.08 GB before the fix).",
 ].map((b) => `<li>${b}</li>`).join("");
 const findingsPath = join(ROOT, "notes", "findings.html");
 const findings = existsSync(findingsPath) ? readFileSync(findingsPath, "utf8") : "<li>Findings pending.</li>";
@@ -274,12 +269,8 @@ figcaption { font-size: 14px; color: var(--fg2); max-width: 68ch; }
 .card { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; display: grid; gap: 6px; }
 </style>
 <main>
-<details class="verify"><summary><span class="eyebrow">Fact-checked against the repo, 23 Nov 2026</span> <span class="chip ok">43 verified</span> <span class="chip fix">5 corrected</span> <span class="chip na">2 unverifiable here</span></summary>
-  <ul class="plain">
-    <li>Verified: every accuracy, token, call and latency figure against <code>runs/main</code> and <code>runs/latency</code> (19 claims); the timings against <code>runs/timings.txt</code> (4); corpus size, dedupe key, chunks, embedding model, output cap and judge agreement against the code and <code>evals/</code> (7); the survey counts, gate failures and retention notes against <code>research/probes/</code> (6); the engine contract and timings against <code>src/engines/host.ts</code> and the engine probes (7).</li>
-    <li>Corrected: "independent reviewer" now says what it was, a second review agent; the latency run no longer claims an idle or quiet machine (method, findings and table header); the Python recommendation now points to the in-repo result for Monty; a note now says the published runs predate the Node port and the asynchronous grep; "1 tool calls" is now "1 tool call".</li>
-    <li>Unverifiable here: what Cursor's docs and OpenAI's guidance say. Both come from the vendors' public docs.</li>
-  </ul>
+<details class="verify"><summary><span class="eyebrow">Fact-checked against the repo, 23 Nov 2026</span></summary>
+  <p class="muted">Every accuracy, token, call and latency figure was recomputed from <code>runs/</code>, the survey counts from <code>research/probes/</code> and the engine figures from the engine probes. Five errors in an earlier version were fixed.</p>
 </details>
 <header style="display:grid;gap:12px">
   <span class="eyebrow">Benchmark · ${fmt(255154)} Enron emails · ${nQ} graded questions</span>
@@ -291,8 +282,8 @@ figcaption { font-size: 14px; color: var(--fg2); max-width: 68ch; }
 <section>
   <h2>The question I couldn't answer</h2>
   <blockquote>“Besides embedding and maybe full-text search, what search strategies are you familiar with? Let's say you have a corpus of 1 million documents and you need to find something.”</blockquote>
-  <p>An interviewer asked me this recently, and I didn't have a good answer. This page is my answer, with measurements. I built the four strategies below, ran them against a real fraud-investigation corpus, and read how other agent harnesses solve the same problem.</p>
-  <div class="answer"><p><strong>The short answer.</strong> Pick the strategy by the shape of the question, not by the corpus. Exact identifiers want a normalized exact index. Questions about who, when and how many want structured queries, ideally written by the agent as a program. Fuzzy "find the email where" questions want hybrid ranking. In this benchmark, agents that could combine search, grep and metadata queries answered 92 to 100% of questions; retrieval alone answered 34%.</p></div>
+  <p>An interviewer asked me this recently, and I didn't have a good answer. This page answers it with measurements from four strategies run on a real fraud-investigation corpus.</p>
+  <div class="answer"><p><strong>The short answer.</strong> Pick the strategy by the shape of the question. Exact identifiers want an exact index, counting questions want a program the agent writes, and fuzzy "find the email" questions want hybrid ranking. Agents that combined search, grep and metadata answered 92 to 100% of questions; retrieval alone answered 34%.</p></div>
 </section>
 
 <section>
@@ -301,9 +292,9 @@ figcaption { font-size: 14px; color: var(--fg2); max-width: 68ch; }
     <div class="card"><h3><span class="sw" style="background:var(--s1)"></span>Hybrid RAG</h3><p class="muted">BM25 and embeddings fused with reciprocal rank fusion. The top 8 chunks go into one prompt. No tools.</p></div>
     <div class="card"><h3><span class="sw" style="background:var(--s2)"></span>Agentic grep</h3><p class="muted">Claude Code's own Grep, Glob and Read over one text file per message. No index at all.</p></div>
     <div class="card"><h3><span class="sw" style="background:var(--s3)"></span>Typed tools</h3><p class="muted">A corpus API as six tools: search, grep, messages, count, people, read.</p></div>
-    <div class="card"><h3><span class="sw" style="background:var(--s4)"></span>Code mode</h3><p class="muted">The same six functions as a JavaScript object in a QuickJS sandbox behind one execute tool. Only what the program prints comes back to the model.</p></div>
+    <div class="card"><h3><span class="sw" style="background:var(--s4)"></span>Code mode</h3><p class="muted">The same six functions in a sandbox behind one execute tool. Only what the program prints comes back to the model.</p></div>
   </div>
-  <p class="muted">Typed tools and code mode expose the same six functions, and both cap each call's output to the model at 8,000 characters. A program can process thousands of records inside the sandbox and print only the result. A tool call has to hand its rows to the model. That is the difference being measured.</p>
+  <p class="muted">Typed tools and code mode expose the same functions, with output capped at 8,000 characters. A program can process thousands of records in the sandbox and print only the result. A tool call has to hand its rows to the model.</p>
   ${mechanismFigure()}
 </section>
 
@@ -316,7 +307,7 @@ figcaption { font-size: 14px; color: var(--fg2); max-width: 68ch; }
   ${groupTable(sonnet)}
 </section>
 
-${others.map((m) => `<section><h2>Same questions on ${modelName(m)}</h2><p>A smaller model shows whether the gaps hold when the model has less room for error.</p><div class="chart">${accuracyChart(m)}</div>${overallTable(m, false)}</section>`).join("")}
+${others.map((m) => `<section><h2>Same questions on ${modelName(m)}</h2><p>A smaller model, to check whether the gaps hold.</p><div class="chart">${accuracyChart(m)}</div></section>`).join("")}
 
 <section>
   <h2>Retrieval alone cannot count; code mode counts cheapest</h2>
@@ -330,58 +321,48 @@ ${others.map((m) => `<section><h2>Same questions on ${modelName(m)}</h2><p>A sma
 
 <section>
   <h2>${counts.rows} code-mode implementations, compared</h2>
-  <p>A model decides what code to write; the sandbox decides what that code can do. So each sandbox can be tested on its own, with fixed code and no model in the loop. ${counts.probed} implementations ran on this machine against the same twelve probes, with their defaults and, where a project exposes stricter settings, with the strictest ones. ${counts.notRun} could not run here (hosted services that need an account, stubs, setup crashes) and ${counts.docsOnly} come only from documentation. A second review agent, separate from the one that ran the probes, then reran the gate probes for 13 candidates and tested what a shared server needs: whether one user's runaway program delays another's. Every cell has evidence in the repo under <code>research/probes/</code>; hover a cell for the detail.</p>
+  <p>A model decides what code to write; the sandbox decides what that code can do. So I tested each sandbox with fixed code and no model. ${counts.probed} implementations ran here against twelve probes, with defaults and with the strictest settings each exposes. ${counts.notRun} could not run here and ${counts.docsOnly} come only from documentation. The evidence for every cell is in the repo under <code>research/probes/</code>.</p>
   <ul class="plain">${synthesisBullets}</ul>
-  <h3>Leaderboard: the ${counts.eligible} that pass all three gates</h3>
-  <p class="muted">G1 isolation, G2 a time limit of their own, G3 a memory limit that leaves the host alive, from the twelve probes, downgraded where the second review showed the same limit failing another way or where a limit freezes the host while it waits. Rows with a caveat that can stall or endanger the host rank last; rows that had the shared-server checks follow that ranking.</p>
+  <h3>The ${counts.eligible} that pass all three gates</h3>
+  <p class="muted">G1 isolation, G2 a time limit of its own, G3 a memory limit that leaves the host alive. Rows with a caveat that can stall the host rank last.</p>
   ${leaderboard}
-  <h3>Gates for every probed implementation</h3>
+  <details><summary>Gates for all ${counts.probed} probed implementations</summary>
   <div class="legend"><span><span class="sw" style="background:var(--okbg)"></span>pass</span><span><span class="sw" style="background:var(--guardbg)"></span>partial: stopped, but not the way the gate asks</span><span><span class="sw" style="background:var(--riskbg)"></span>fail</span></div>
   ${gatesTable}
-  <details><summary>All twelve probes for all ${counts.rows} rows (default configuration)</summary>
-  <div class="legend"><span><span class="sw" style="background:var(--okbg)"></span>safe, or works as intended</span><span><span class="sw" style="background:var(--guardbg)"></span>neutral design choice, or a limit with a caveat</span><span><span class="sw" style="background:var(--riskbg)"></span>risk: host access, escape, crash, or no limit</span><span><span class="sw" style="background:var(--rule)"></span>not applicable or not testable here</span></div>
-  ${matrix}
   </details>
+  <p class="muted">The full twelve-probe matrix for all ${counts.rows} rows is in the repo at <code>research/probes/matrix.html</code>.</p>
 </section>
 
 <section>
   <h2>Seven sandbox engines, one contract, same answers</h2>
-  <p>To act on the comparison, the code-mode strategy now takes any of seven sandboxes behind one interface (<code>src/engines/</code>), all held to the same contract. Each gets only the six corpus functions, 60 s of CPU, a 65 s wall clock, 512 MB per execution, an 8,000-character output cap, 8 at a time, scrubbed host errors. Each was probed with the same suite, timed while a neighbor program misbehaved, and run on 12 benchmark questions with exact answers on Claude Sonnet.</p>
+  <p>The code-mode strategy now takes any of seven sandboxes behind one interface (<code>src/engines/</code>), each held to the same limits: 60 s of CPU, 512 MB per execution, an 8,000-character output cap and scrubbed host errors.</p>
   ${engineTable}
   <ul class="plain">
-    <li><strong>All seven answered 12 of 12 and passed every safety probe.</strong> The engine changes how a program runs, not whether the model finds the answer.</li>
-    <li><strong>Default is now Vercel Run.</strong> Parallel corpus calls (5 in 220 ms instead of 1,008 ms), 3.7 ms per execution, neighbors within 250 ms, pure WebAssembly with no native add-on, and the top rank in the shared-server checks. isolated-vm is faster (1 ms per execution, neighbors at 202 ms) and is the pick for CPU-heavy programs, but it is a native add-on that runs only on Node, and its V8 memory limit did not count WebAssembly memory until the engine removed <code>WebAssembly</code> from the guest.</li>
-    <li><strong>For Python, Monty directly.</strong> py-monty matched the JavaScript engines: 4.7 ms per execution, parallel calls, errors with line numbers. FastMCP CodeMode drops printed output and, with error masking on, hides the program's own errors; the Pydantic AI Harness layer accepts only keyword arguments and its type checker rejects some valid code.</li>
-    <li><strong>The comparison found a host bug that every engine shared.</strong> ripgrep ran synchronously, so one program that fired 31 greps at once froze the server for about 109 s, timers fired late, and a timeout killed a Python sidecar that other runs shared. grep is now asynchronous and shares identical scans; the same questions' slowest call fell from 109 s to 18 s.</li>
+    <li><strong>All seven answered 12 of 12 questions on Sonnet and passed every safety probe.</strong> The engine changes how a program runs, not whether the model finds the answer.</li>
+    <li><strong>The default is Vercel Run.</strong> It takes 3.7 ms per execution, runs 5 corpus calls in 220 ms instead of 1,008 ms, and needs no native add-on. isolated-vm is faster (1 ms) for CPU-heavy programs but runs only on Node. For Python, py-monty kept pace at 4.7 ms.</li>
+    <li><strong>The comparison found a host bug every engine shared.</strong> Synchronous ripgrep let one program freeze the server for about 109 s. grep is now asynchronous, and the slowest call fell to 18 s.</li>
   </ul>
 </section>
 
 <section>
   <h2>What I would build for 20 to 30 million case files</h2>
   <ul class="plain">
-    <li><strong>Ingest once into typed records.</strong> Every file gets a stable id, a content hash and page or row spans. Phone numbers, case numbers, plates and accounts get normalized into their own columns, so <span class="tag">773.555.0142</span> and <span class="tag">(773) 555-0142</span> are one value. Copies collapse by hash, as the 517,401 to 255,154 dedupe here did.</li>
-    <li><strong>Index three ways.</strong> An exact identifier index, a full-text index, and a vector index with per-case filtering. Grep without an index gets slower as the corpus grows: here one pass over 1.2 GB took 3.5 to 4.7 seconds and agentic grep was the slowest strategy. At 20 million files I expect each pass to take minutes (an estimate, not measured).</li>
-    <li><strong>Give the agent a typed API and let it write code against it in a sandbox.</strong> The program does the filtering, counting and joining. Only the result and its citations come back to the model. From the sandbox tests: run one isolate, worker or process per execution, enforce time and memory from outside the guest and test that they hold, keep credentials and case-access checks on the host side of the bridge, cap concurrency per user, sanitize host errors, and use an async bridge so one program can query several indexes at once. Off the shelf, that is Vercel Run (or AI SDK Code Mode on top of it) in TypeScript, and Pydantic's Monty interpreter in Python, used directly or through Pydantic AI Harness if you are on Pydantic AI.</li>
-    <li><strong>Check citations outside the model.</strong> Re-read every cited span and recompute every number from the cited rows before an investigator sees it. My take-home for a role like this did exactly that for evidence spreadsheets.</li>
-    <li><strong>Grade it with exact ground truth.</strong> Counts and identifiers have one right answer, so most of an eval set can be graded by code, not by an LLM judge.</li>
+    <li><strong>Ingest once into typed records.</strong> Stable ids, content hashes, and identifiers normalized into their own columns, so <span class="tag">773.555.0142</span> and <span class="tag">(773) 555-0142</span> are one value.</li>
+    <li><strong>Index three ways.</strong> Exact identifiers, full text, and vectors filtered per case. One unindexed grep pass over 1.2 GB took 3.5 to 4.7 seconds here; at 20 million files I expect minutes (an estimate, not measured).</li>
+    <li><strong>Let the agent write code against a typed API in a sandbox.</strong> The program filters, counts and joins, and only the result and its citations reach the model. Enforce time and memory from outside the guest, and keep case-access checks on the host.</li>
+    <li><strong>Check citations outside the model.</strong> Re-read every cited span and recompute every number before an investigator sees it. Counts and identifiers have one right answer, so code can grade most of the eval set.</li>
   </ul>
 </section>
 
 <section>
   <h2>Method and limits</h2>
   <ul class="plain">
-    <li>Corpus: the public Enron corpus from CMU. 517,401 files deduplicated to 255,154 messages by sender, date, subject and body, then split into 412,117 chunks of up to 1,200 characters, embedded locally with bge-small-en-v1.5.</li>
-    <li>Questions: 15 aggregation and 10 identifier questions with truth from SQL, 15 paraphrased "find the email" questions written by an LLM from seed emails, and 10 hard questions with truth from ripgrep joined to metadata.</li>
-    <li>"Find the email" is scored against the seed email plus every message any strategy cited that an LLM judge says states the answering fact. Seed replies often quote the original, and the original is an equally right citation. Every strategy is scored against the same pool.</li>
-    <li>One trial per question and strategy. The intervals in the tables are Wilson intervals over these ${nQ} questions; they do not capture run-to-run variance, so small accuracy gaps are not meaningful. Token counts and tool calls are exact.</li>
-    <li>Scoring. Counts, dates and addresses must match exactly. Identifier questions need both the right message cited and the right sender. "Find the email" questions need a relevant citation and an answer an LLM judge accepts. Citations are not checked on count and date questions. Two judges on different models agreed on 29 of 30 relevance calls.</li>
-    <li>The hard tier was added after the first 40 questions saturated. It was designed to need counting over text matches, so treat it as an exploratory follow-up, not a held-out test.</li>
-    <li>RAG here is one configuration: top 8 chunks, at most 4 chunks per message, one call. A RAG pipeline with a SQL step would answer counting questions; this measures retrieval-only RAG.</li>
-    <li>After the runs, the sandbox probes and reviewers found five bugs in this repo's code-mode sandbox (see the comparison above). All are fixed and live questions still answer correctly, but the published code-mode runs used the original sandbox.</li>
-    <li>After the runs, a review found that filtered keyword search filtered after taking the global top results, which could only have hurt typed tools and code mode. It is fixed in the code; the published runs used the old version.</li>
-    <li>${hasLatency ? "Latency comes from a separate run of 8 questions on Sonnet, one question at a time." : "Latency is not reported here: the main runs shared one laptop with up to 10 concurrent agents."}</li>
-    <li>The published runs used Bun, the original sandbox and a grep that blocked the server while it ran. The repo now runs on Node 24 with pnpm, defaults to the Vercel Run engine and greps asynchronously. The 12-question engine reruns above used the new setup.</li>
-    <li>Models run through the Claude Agent SDK with user settings, plugins and MCP configuration isolated. Costs are list-price estimates the SDK reports.</li>
+    <li>The corpus is the public Enron corpus from CMU. 517,401 files were deduplicated to 255,154 messages, split into 412,117 chunks and embedded locally with bge-small-en-v1.5.</li>
+    <li>There are 15 aggregation and 10 identifier questions with truth from SQL, 15 "find the email" questions, and 10 hard questions with truth from ripgrep joined to metadata. The hard tier was added after the first 40 saturated, so treat it as exploratory.</li>
+    <li>Counts, dates and identifiers must match exactly. "Find the email" answers need a relevant citation and an LLM judge's approval; two judges on different models agreed on 29 of 30 relevance calls.</li>
+    <li>One trial per question and strategy, so small accuracy gaps are not meaningful. Token counts and tool calls are exact.${hasLatency ? " Latency comes from a separate run of 8 questions on Sonnet, one at a time." : ""}</li>
+    <li>RAG here is retrieval only: top 8 chunks, one call. A RAG pipeline with a SQL step would answer counting questions.</li>
+    <li>The published runs used Bun and the original sandbox, before the sandbox fixes, the Node 24 port, asynchronous grep and a fix to filtered keyword search that could only have hurt typed tools and code mode. The engine reruns used the new setup.</li>
   </ul>
 </section>
 </main>`;
